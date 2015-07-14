@@ -96,7 +96,7 @@
             height: 400,
             full_width: true,
             right: 40,
-            target: '#fake_users2',
+            target: '#p_delays',
             baselines: [{
                 value: 15,
                 label: 'Ideal'

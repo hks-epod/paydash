@@ -1,50 +1,50 @@
-html{
-	font-size: 12px;
-}
-body{
-	/*background-color: #272727;*/
-	background-color: #092234;
-  	color: #6A8093;
-  	font-family: 'Open Sans';
-}
-.header{
-	padding:40px;
-
-}
-h1{
-	font-size: 34px;
-	font-weight: lighter;
-}
-.logo{
-	float: left;
-	height: 70px;
-	margin-top: 11px; 
-	margin-right: 10px
+html {
+    font-size: 12px;
 }
 
-/*********[ Helper ]************/
-.container{
-	padding: 0 40px;
+body {
+    background-color: #092234;
+    color: #6A8093;
+    font-family: 'Open Sans';
 }
-.pull-right{
-	float: right
+
+h1 {
+    font-size: 34px;
+    font-weight: lighter;
 }
-.clearfix{
-	clear: both
+
+.header {
+    padding: 40px;
 }
+
+.logo {
+    float: left;
+    height: 70px;
+    margin-top: 11px;
+    margin-right: 10px
+}
+
+.container {
+    padding: 0 5%;
+}
+
 /******[ Chart custom styles ]**********/
-.mg-chart-title  {
-  font-size: 1.2rem;
-  font-weight: normal;
+.chart-holder{
+	padding-bottom: 40px;
+	border-bottom: solid 2px #6A8093;
+}
+.mg-chart-title {
+    font-size: 1.5rem;
+    font-weight: lighter;
+    text-align: left
 }
 
-.legend{
-	margin-top: 20px
-}
-.legend span{
-	display: inline-block;
-	width: 25%;
-	margin-bottom: 15px
+.legend {
+    margin-top: 20px
 }
 
-
+.legend span {
+    display: inline-block;
+    width: 25%;
+    margin-bottom: 15px
+}
