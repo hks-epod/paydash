@@ -21,6 +21,15 @@
 .mg-area5-color {
     fill: #f7f7f7;
 }
+.mg-area6-color {
+    fill: #F22613;
+}
+.mg-area7-color {
+    fill: #FDE3A7;
+}
+.mg-area8-color {
+    fill: #9B59B6;
+}
 
 .mg-barplot .mg-bar-prediction {
     fill: #5b5b5b;
@@ -117,6 +126,27 @@ li {
 .mg-hover-line5-color {
     stroke: #f7f7f7;
 }
+.mg-line6-color {
+    stroke: #F22613;
+}
+
+.mg-hover-line6-color {
+    stroke: #F22613;
+}
+.mg-line7-color {
+    stroke: #FDE3A7;
+}
+
+.mg-hover-line7-color {
+    stroke: #FDE3A7;
+}
+.mg-line8-color {
+    stroke: #9B59B6;
+}
+
+.mg-hover-line8-color {
+    stroke: #9B59B6;
+}
 
 .mg-line1-legend-color {
     color: #ffd300;
@@ -136,6 +166,15 @@ li {
 
 .mg-line5-legend-color {
     color: #f7f7f7;
+}
+.mg-line6-legend-color {
+    color: #F22613;
+}
+.mg-line7-legend-color {
+    color: #FDE3A7;
+}
+.mg-line8-legend-color {
+    color: #9B59B6;
 }
 
 #logo g path {

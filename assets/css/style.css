@@ -38,7 +38,19 @@ body{
 .clearfix{
 	clear: both
 }
+/******[ Chart custom styles ]**********/
 h2.mg-chart-title  {
   font-size: 1.2rem;
   font-weight: normal;
 }
+
+.legend{
+	margin-top: 20px
+}
+.legend span{
+	display: inline-block;
+	width: 25%;
+	margin-bottom: 15px
+}
+
+
