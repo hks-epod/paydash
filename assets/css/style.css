@@ -1,0 +1,44 @@
+html{
+	font-size: 12px;
+}
+body{
+	background-color: #272727;
+  	color: #cfcfcf;
+  	font-family: 'Open Sans';
+}
+.header{
+	background-color: #fff;
+	box-shadow: 0 1px 5px rgba(0,0,0,1)
+}
+.header .pure-menu {
+    border-bottom-color: black;
+    border-radius: 0;
+}
+.header .pure-menu-link {
+  padding: 1.4em 1.4em;
+}
+.header .pure-menu-heading{
+	text-transform: none;
+	color: #000;
+	font-size: 14px
+}
+.logo{
+	max-height: 37px;
+	vertical-align: middle;
+	padding-right: 10px;
+}
+
+/*********[ Helper ]************/
+.container{
+	padding: 0 40px;
+}
+.pull-right{
+	float: right
+}
+.clearfix{
+	clear: both
+}
+h2.mg-chart-title  {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
