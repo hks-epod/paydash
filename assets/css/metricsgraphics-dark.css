@@ -1,5 +1,8 @@
 .mg-active-datapoint {
     fill: #fff;
+    font-size: 1.3rem;
+    font-weight: 200;
+    opacity: 1;
 }
 
 .mg-area1-color {

@@ -2,30 +2,18 @@ html{
 	font-size: 12px;
 }
 body{
-	background-color: #272727;
-  	color: #cfcfcf;
+	/*background-color: #272727;*/
+	background-color: #092234;
+  	color: #6A8093;
   	font-family: 'Open Sans';
 }
 .header{
-	background-color: #fff;
-	box-shadow: 0 1px 5px rgba(0,0,0,1)
+	padding:40px;
+
 }
-.header .pure-menu {
-    border-bottom-color: black;
-    border-radius: 0;
-}
-.header .pure-menu-link {
-  padding: 1.4em 1.4em;
-}
-.header .pure-menu-heading{
-	text-transform: none;
-	color: #000;
-	font-size: 14px
-}
-.logo{
-	max-height: 37px;
-	vertical-align: middle;
-	padding-right: 10px;
+.header h1{
+	font-size: 34px;
+	font-weight: lighter;
 }
 
 /*********[ Helper ]************/
