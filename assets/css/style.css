@@ -11,9 +11,15 @@ body{
 	padding:40px;
 
 }
-.header h1{
+h1{
 	font-size: 34px;
 	font-weight: lighter;
+}
+.logo{
+	float: left;
+	height: 70px;
+	margin-top: 11px; 
+	margin-right: 10px
 }
 
 /*********[ Helper ]************/
@@ -27,7 +33,7 @@ body{
 	clear: both
 }
 /******[ Chart custom styles ]**********/
-h2.mg-chart-title  {
+.mg-chart-title  {
   font-size: 1.2rem;
   font-weight: normal;
 }
