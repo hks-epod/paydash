@@ -30,7 +30,7 @@ h1 {
 
 /******[ Chart custom styles ]**********/
 .chart-holder{
-	padding-bottom: 40px;
+	padding-bottom: 0;
 	border-bottom: solid 2px #6A8093;
 }
 .mg-chart-title {
