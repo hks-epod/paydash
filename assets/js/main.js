@@ -3,10 +3,9 @@
 
     // Load json data with  d3
     d3.json('data/delays_sample.json', function(data) {
-        var headers = data[0].block.headers;
-        var b_data = data[0].block.data;
-        var vizData = buildDataArray(b_data);
-        var labels = ['Muster roll closure to muster roll entry',
+
+        var labels = [
+            'Muster roll closure to muster roll entry',
             'Muster roll entry to wage list generation',
             'Wage list generation to wage list sign',
             'Wage list sign to FTO generation',
@@ -14,10 +13,40 @@
             'First signature to second signature',
             'Second signature to processed by bank',
         ];
-        blockViz(vizData, labels);
+
+        blockViz({
+            data: buildDataArray(data[0].block.data),
+            title: 'Block Performance',
+            target: '#block_performance',
+            legend_target: '.legend',
+            labels: labels
+        });
+
+
+        // Draw stepwise charts
+        for (var i = 0; i <= 8; i++) {
+            if (i!==2 && i!==5) {
+                smallViz({
+                    data: buildStepArray(data, i, 'block'),
+                    title: data[0].block.headers[i],
+                    target: '#s_' + i,
+                    legend_target: '.s_' + i + '_legend',
+                    labels: labels
+                });
+
+            }
+
+
+        }
+
+
+
+
+
+
     });
 
-
+    //  Transform to  MD supported structure
     function buildDataArray(data) {
         var result = [];
         data.forEach(function(dateArr, index) {
@@ -43,9 +72,21 @@
         return result;
     }
 
-    // --------------------------
-    //  Utility methods
-    // --------------------------
+    //  Transfrom step data
+    function buildStepArray(data, col, region) {
+        var result = [];
+        var f_data = data[0][region].data;
+        f_data.forEach(function(dateArr, index) {
+            var obj = {
+                value: dateArr[col],
+                date: parseDate(dateArr[5]),
+            };
+            result[0] = result[0] || [];
+            result[0].push(obj);
+        });
+        return result;
+    }
+
 
     //  Parse the "20140412" string to date object
     function parseDate(string) {
@@ -55,33 +96,48 @@
         return new Date(y, m, d);
     }
 
-    // --------------------------
-    //  Visualization Loaders
-    // --------------------------
-    function blockViz(data, headers) {
+    // Block Performance viz
+    function blockViz(options) {
         MG.data_graphic({
-            title: "Payment delay analysis",
-            data: data,
+            title: options.title,
+            data: options.data,
             width: 600,
             height: 400,
             full_width: true,
             right: 40,
-            target: '#p_delays',
+            target: options.target,
             baselines: [{
                 value: 15,
                 label: 'Ideal'
             }],
             xax_count: 20,
-            legend: headers,
-            legend_target: '.legend',
+            legend: options.labels,
+            legend_target: options.legend_target,
             show_tooltips: false,
             y_extended_ticks: false,
             aggregate_rollover: true,
-            animate_on_load: true,
-            missing_is_hidden: false,
+            linked: true,
+            // animate_on_load: true,
+            // missing_is_hidden: true,
+            // missing_is_zero: true,
+        });
+    }
+
+    // Small Viz
+    function smallViz(options) {
+        MG.data_graphic({
+            title: options.title,
+            data: options.data,
+            width: 295,
+            height: 150,
+            right: 10,
+            small_text: true,
+            xax_count: 1,
+            target: options.target,
+            full_width: true,
         });
     }
 
 
-
+    // IIFE end
 }());

@@ -12,6 +12,11 @@ h1 {
     font-size: 34px;
     font-weight: lighter;
 }
+h2{
+	font-size: 25px;
+	font-weight: lighter;
+	margin-top: 30px;
+}
 
 .header {
     padding: 40px;
@@ -30,13 +35,16 @@ h1 {
 
 /******[ Chart custom styles ]**********/
 .chart-holder{
-	padding-bottom: 0;
+	padding-bottom: 20px;
 	border-bottom: solid 2px #6A8093;
 }
 .mg-chart-title {
-    font-size: 1.5rem;
+    font-size: 2.1rem;
     font-weight: lighter;
-    text-align: left
+    text-align: left;
+    font-family: 'Open Sans';
+    margin-bottom: 0;
+    margin-top: 20px;
 }
 
 .legend {
@@ -47,4 +55,13 @@ h1 {
     display: inline-block;
     width: 25%;
     margin-bottom: 15px
+}
+.small_chart .mg-active-datapoint {
+    fill: #aaa;
+    font-size: .9rem;
+    font-weight: 200;
+    opacity: 1;
+}
+.small_chart .mg-chart-title {
+    font-size: 1.2rem;
 }
