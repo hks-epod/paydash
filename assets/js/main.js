@@ -25,24 +25,16 @@
 
         // Draw stepwise charts
         for (var i = 0; i <= 8; i++) {
-            if (i!==2 && i!==5) {
+            if (i !== 2 && i !== 5) {
                 smallViz({
-                    data: buildStepArray(data, i, 'block'),
+                    data: buildStepArray(data, i, ['block', 'state', 'district']),
                     title: data[0].block.headers[i],
                     target: '#s_' + i,
                     legend_target: '.s_' + i + '_legend',
                     labels: labels
                 });
-
             }
-
-
         }
-
-
-
-
-
 
     });
 
@@ -73,17 +65,22 @@
     }
 
     //  Transfrom step data
-    function buildStepArray(data, col, region) {
+    function buildStepArray(data, col, regions) {
         var result = [];
-        var f_data = data[0][region].data;
-        f_data.forEach(function(dateArr, index) {
-            var obj = {
-                value: dateArr[col],
-                date: parseDate(dateArr[5]),
-            };
-            result[0] = result[0] || [];
-            result[0].push(obj);
+
+
+        regions.forEach(function(region, i) {
+            var f_data = data[0][region].data;
+            f_data.forEach(function(dateArr, index) {
+                var obj = {
+                    value: dateArr[col],
+                    date: parseDate(dateArr[5]),
+                };
+                result[i] = result[i] || [];
+                result[i].push(obj);
+            });
         });
+
         return result;
     }
 
@@ -117,6 +114,8 @@
             y_extended_ticks: false,
             aggregate_rollover: true,
             linked: true,
+            y_scale_type: 'log',
+            // y_rug: true,
             // animate_on_load: true,
             // missing_is_hidden: true,
             // missing_is_zero: true,
@@ -135,6 +134,7 @@
             xax_count: 1,
             target: options.target,
             full_width: true,
+            y_scale_type: 'log',
         });
     }
 
