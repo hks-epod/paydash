@@ -31,18 +31,21 @@
 
   // handle selection
   d3.selectAll(".blockSelector").on("click", function() {
+    console.log(window.performance.now());
     var lines = [];
     d3.selectAll(".blockSelector").each(function(){
       if (this.checked === true){
         lines.push(this.value);
       }
     });
+    console.log(window.performance.now());
     drawBlockwiseCharts(lines);
   });
 
   function drawBlockwiseCharts(lines) {
     for (var i = 0; i <= 8; i++) {
       if (i !== 2 && i !== 5) {
+        console.log(window.performance.now());
         smallViz({
           data: buildStepArray(delayDash.data, i, lines),
           title: delayDash.data[0].block.headers[i],
@@ -148,6 +151,8 @@
       xax_count: 1,
       target: options.target,
       full_width: true,
+      transition_on_update: false,
+      interpolate: "monotone",
       // y_scale_type: 'log',
     });
   }
