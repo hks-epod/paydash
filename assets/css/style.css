@@ -44,6 +44,16 @@ a {
   margin-left: 10px;
   cursor: pointer;
 }
+.modify-time-period-controls button{
+  background-color: transparent;
+  border:0;
+}
+.modify-time-period-controls  button:focus {
+  outline: none;
+}
+.modify-time-period-controls .selected{
+  color: #fff;
+}
 
 /******[ Chart custom styles ]**********/
 

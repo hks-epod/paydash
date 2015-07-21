@@ -13,12 +13,15 @@
     ]
   };
 
+
   // Load json data with  d3
   d3.json('data/delays_sample.json', function(data) {
     delayDash.data = data;
+
     // Draw block performance chart
+    delayDash.blockData = buildDataArray(data[0].block.data);
     blockViz({
-      data: buildDataArray(data[0].block.data),
+      data: delayDash.blockData,
       title: 'Block Performance',
       target: '#block_performance',
       legend_target: '.legend',
@@ -31,21 +34,19 @@
 
   // handle selection
   d3.selectAll(".blockSelector").on("click", function() {
-    console.log(window.performance.now());
     var lines = [];
-    d3.selectAll(".blockSelector").each(function(){
-      if (this.checked === true){
+    d3.selectAll(".blockSelector").each(function() {
+      if (this.checked === true) {
         lines.push(this.value);
       }
     });
-    console.log(window.performance.now());
     drawBlockwiseCharts(lines);
   });
 
   function drawBlockwiseCharts(lines) {
     for (var i = 0; i <= 8; i++) {
       if (i !== 2 && i !== 5) {
-        console.log(window.performance.now());
+
         smallViz({
           data: buildStepArray(delayDash.data, i, lines),
           title: delayDash.data[0].block.headers[i],
@@ -56,6 +57,50 @@
       }
     }
   }
+
+  d3.selectAll(".modify-time-period-controls button").on("click", function() {
+    var target = d3.select(d3.event.target);
+    var past_n_days = target.attr("data-timeperiod");
+    var data = modify_time_period(delayDash.blockData, past_n_days);
+    // change button state
+    d3.selectAll(".modify-time-period-controls button").classed("selected", false);
+    target.classed("selected", true);
+
+    blockViz({
+      data: data,
+      title: 'Block Performance',
+      target: '#block_performance',
+      legend_target: '.legend',
+      labels: delayDash.labels
+    });
+
+    // drawBlockwiseCharts(delaydash.lines);
+
+  });
+
+  function modify_time_period(data, past_n_days) {
+    if (past_n_days !== '') {
+      var fdata = [];
+      var d = new Date();
+      d.setDate(d.getDate() - past_n_days);
+      data.forEach(function(line) {
+        line = line.filter(function(obj) {
+          if (obj.date >= d) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+        fdata.push(line);
+      });
+      return fdata;
+    }
+    return data;
+  }
+
+
+
+
 
 
   //  Transform to  MD supported structure
@@ -131,9 +176,11 @@
       y_extended_ticks: false,
       aggregate_rollover: true,
       linked: true,
+      show_year_markers: true,
       // y_scale_type: 'log',
       // y_rug: true,
-      // animate_on_load: true,
+      animate_on_load: false,
+      transition_on_update: false,
       // missing_is_hidden: true,
       // missing_is_zero: true,
     });
@@ -152,7 +199,7 @@
       target: options.target,
       full_width: true,
       transition_on_update: false,
-      interpolate: "monotone",
+      max_y: 400,
       // y_scale_type: 'log',
     });
   }

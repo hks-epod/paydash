@@ -24,6 +24,11 @@
     <h1>MGNREGA payment dashboard</h1>
   </div>
   <div class="container">
+    <div class="modify-time-period-controls">
+      <button class="selected" data-timeperiod>All</button>
+      <button data-timeperiod="61">Past 60 days</button>
+      <button data-timeperiod="31">Past 30 days</button>
+    </div>
     <div class="pure-g">
       <div class="pure-u-24-24">
         <div class="chart-holder">
@@ -52,7 +57,7 @@
           <input class="blockSelector" id="option-three" type="checkbox" value="state" checked>
         </label>
       </div>
-     <!--  <div class="pure-u-3-24">
+      <!--  <div class="pure-u-3-24">
         <label for="option-four" class="pure-checkbox">
           Mandated Maximum
           <input class="blockSelector" id="option-four" type="checkbox" value="mandated" checked>
