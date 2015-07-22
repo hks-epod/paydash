@@ -50,6 +50,7 @@ a {
 }
 .modify-time-period-controls  button:focus {
   outline: none;
+  border:0;
 }
 .modify-time-period-controls .selected{
   color: #fff;

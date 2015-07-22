@@ -1,7 +1,10 @@
 (function() {
   "use strict";
 
-  var delayDash = {
+  // Global state holder for the dashbaord  
+  var paydash = {
+    past_n_days: '',
+    lines : ['block', 'state', 'district'],
     labels: [
       'Muster roll closure to muster roll entry',
       'Muster roll entry to wage list generation',
@@ -13,98 +16,81 @@
     ]
   };
 
+  // Load JSON
+  d3.json('data/delays_sample.json')
+    .on("progress", function() {
+      console.info("progress", d3.event.loaded);
+    })
+    .get(function(error, data) {
+      init(data);
+    });
 
-  // Load json data with  d3
-  d3.json('data/delays_sample.json', function(data) {
-    delayDash.data = data;
-
+  // Intialisation function
+  function init(data) {
+    paydash.data = data;
     // Draw block performance chart
-    delayDash.blockData = buildDataArray(data[0].block.data);
+    paydash.blockData = buildBlockData(paydash.data[0].block.data);
+
     blockViz({
-      data: delayDash.blockData,
+      data: paydash.blockData,
       title: 'Block Performance',
       target: '#block_performance',
       legend_target: '.legend',
-      labels: delayDash.labels
+      labels: paydash.labels
     });
-
     // Draw stepwise charts
-    drawBlockwiseCharts(['block', 'state', 'district']);
-  });
+    drawBlockwiseCharts(paydash.lines);
 
-  // handle selection
-  d3.selectAll(".blockSelector").on("click", function() {
-    var lines = [];
-    d3.selectAll(".blockSelector").each(function() {
-      if (this.checked === true) {
-        lines.push(this.value);
-      }
-    });
-    drawBlockwiseCharts(lines);
-  });
-
-  function drawBlockwiseCharts(lines) {
-    for (var i = 0; i <= 8; i++) {
-      if (i !== 2 && i !== 5) {
-
-        smallViz({
-          data: buildStepArray(delayDash.data, i, lines),
-          title: delayDash.data[0].block.headers[i],
-          target: '#s_' + i,
-          legend_target: '.s_' + i + '_legend',
-          labels: delayDash.labels
-        });
-      }
-    }
   }
 
+  // Time period Selection
   d3.selectAll(".modify-time-period-controls button").on("click", function() {
     var target = d3.select(d3.event.target);
-    var past_n_days = target.attr("data-timeperiod");
-    var data = modify_time_period(delayDash.blockData, past_n_days);
+    paydash.past_n_days = target.attr("data-timeperiod");
+    var data = modify_time_period(paydash.blockData, paydash.past_n_days);
+
     // change button state
     d3.selectAll(".modify-time-period-controls button").classed("selected", false);
     target.classed("selected", true);
-
     blockViz({
       data: data,
       title: 'Block Performance',
       target: '#block_performance',
       legend_target: '.legend',
-      labels: delayDash.labels
+      labels: paydash.labels
     });
-
-    // drawBlockwiseCharts(delaydash.lines);
-
+    drawBlockwiseCharts(paydash.lines, paydash.past_n_days);
   });
 
-  function modify_time_period(data, past_n_days) {
-    if (past_n_days !== '') {
-      var fdata = [];
-      var d = new Date();
-      d.setDate(d.getDate() - past_n_days);
-      data.forEach(function(line) {
-        line = line.filter(function(obj) {
-          if (obj.date >= d) {
-            return true;
-          } else {
-            return false;
-          }
+  // Stepwise charts step selection
+  d3.selectAll(".blockSelector").on("click", function() {
+    paydash.lines = [];
+    d3.selectAll(".blockSelector").each(function() {
+      if (this.checked === true) {
+        paydash.lines.push(this.value);
+      }
+    });
+    drawBlockwiseCharts(paydash.lines, paydash.past_n_days);
+  });
+
+  function drawBlockwiseCharts(lines, past_n_days) {
+    for (var i = 0; i <= 8; i++) {
+      if (i !== 2 && i !== 5) {
+        var data = paydash.past_n_days==='' ? buildStepArray(paydash.data, i, lines) : modify_time_period(buildStepArray(paydash.data, i, lines), past_n_days) ;
+
+        smallViz({
+          data: data,
+          title: paydash.data[0].block.headers[i],
+          target: '#s_' + i,
+          legend_target: '.s_' + i + '_legend',
+          labels: paydash.labels
         });
-        fdata.push(line);
-      });
-      return fdata;
+      }
     }
-    return data;
   }
 
-
-
-
-
-
   //  Transform to  MD supported structure
-  function buildDataArray(data) {
+  function buildBlockData(data) {
     var result = [];
     data.forEach(function(dateArr, index) {
       // Cumulate step time
@@ -116,7 +102,6 @@
         s5 = s4 + dateArr[4],
         s6 = s5 + dateArr[7],
         columnIndex = [s0, s1, s2, s3, s4, s5, s6];
-
       for (var i = 0; i <= 6; i++) {
         var obj = {
           value: columnIndex[i],
@@ -146,6 +131,25 @@
     return result;
   }
 
+  function modify_time_period(data, past_n_days) {
+    if (past_n_days !== '') {
+      var fdata = [];
+      var d = new Date();
+      d.setDate(d.getDate() - past_n_days);
+      data.forEach(function(line) {
+        line = line.filter(function(obj) {
+          if (obj.date >= d) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+        fdata.push(line);
+      });
+      return fdata;
+    }
+    return data;
+  }
 
   //  Parse the "20140412" string to date object
   function parseDate(string) {
