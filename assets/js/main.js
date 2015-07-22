@@ -4,7 +4,7 @@
   // Global state holder for the dashbaord  
   var paydash = {
     past_n_days: '',
-    lines : ['block', 'state', 'district'],
+    lines: ['block', 'state', 'district'],
     labels: [
       'Muster roll closure to muster roll entry',
       'Muster roll entry to wage list generation',
@@ -41,6 +41,9 @@
     // Draw stepwise charts
     drawBlockwiseCharts(paydash.lines);
 
+    // Build templates for panchayatdata
+    chartTemplate(paydash.data[0].panchayat);
+
   }
 
   // Time period Selection
@@ -73,10 +76,11 @@
     drawBlockwiseCharts(paydash.lines, paydash.past_n_days);
   });
 
+  // Draw block wise charts
   function drawBlockwiseCharts(lines, past_n_days) {
     for (var i = 0; i <= 8; i++) {
       if (i !== 2 && i !== 5) {
-        var data = paydash.past_n_days==='' ? buildStepArray(paydash.data, i, lines) : modify_time_period(buildStepArray(paydash.data, i, lines), past_n_days) ;
+        var data = paydash.past_n_days === '' ? buildStepArray(paydash.data, i, lines) : modify_time_period(buildStepArray(paydash.data, i, lines), past_n_days);
 
         smallViz({
           data: data,
@@ -131,6 +135,23 @@
     return result;
   }
 
+  function chartTemplate(data) {
+    d3.select('.panchayat_charts-container').selectAll('div')
+      .data(data)
+      .enter().append("div")
+      .classed("pure-u-6-24", true)
+      .html(function(d, index) {
+        return '<div class="chart-holder small_chart">' +
+          '<div id="p_0"></div>' +
+          '<div class="p_0_legend">'+d.panchayat_name +'</div>' +
+          '</div>';
+      });
+      
+  }
+
+
+
+  // TIme filter
   function modify_time_period(data, past_n_days) {
     if (past_n_days !== '') {
       var fdata = [];
@@ -138,11 +159,7 @@
       d.setDate(d.getDate() - past_n_days);
       data.forEach(function(line) {
         line = line.filter(function(obj) {
-          if (obj.date >= d) {
-            return true;
-          } else {
-            return false;
-          }
+          return obj.date >= d ? true : false;
         });
         fdata.push(line);
       });
@@ -157,6 +174,16 @@
     var m = string.substring(4, 6);
     var d = string.substring(6, 8);
     return new Date(y, m, d);
+  }
+
+  function getMax(data) {
+    var max = 30;
+    data.forEach(function(line) {
+      line.forEach(function(obj) {
+        max = obj.value >= max ? obj.value : max;
+      });
+    });
+    return max;
   }
 
   // Block Performance viz

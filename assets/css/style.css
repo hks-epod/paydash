@@ -62,7 +62,7 @@ a {
   padding-bottom: 50px;
   border-bottom: dashed 1px #6a8093;
 }
-.block_charts .chart-holder {
+.block_charts .chart-holder, .panchayat_charts-container .chart-holder {
   margin-bottom: 50px;
   padding: 0 10px;
   border-right: dotted 1px #6a8093;
