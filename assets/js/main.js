@@ -135,6 +135,11 @@
     return result;
   }
 
+  function drawPanchayatCharts(){
+
+  }
+
+
   function chartTemplate(data) {
     d3.select('.panchayat_charts-container').selectAll('div')
       .data(data)
@@ -142,11 +147,11 @@
       .classed("pure-u-6-24", true)
       .html(function(d, index) {
         return '<div class="chart-holder small_chart">' +
-          '<div id="p_0"></div>' +
-          '<div class="p_0_legend">'+d.panchayat_name +'</div>' +
+          '<div id="p_' + d.panchayat_code + '0"></div>' +
+          '<div class="p_' + d.panchayat_code + '_legend">' + d.panchayat_name + '</div>' +
           '</div>';
       });
-      
+
   }
 
 
@@ -213,7 +218,7 @@
       animate_on_load: false,
       transition_on_update: false,
       // missing_is_hidden: true,
-      // missing_is_zero: true,
+      missing_is_zero: true,
     });
   }
 
@@ -231,6 +236,7 @@
       full_width: true,
       transition_on_update: false,
       max_y: 400,
+      missing_is_zero: true,
       // y_scale_type: 'log',
     });
   }
