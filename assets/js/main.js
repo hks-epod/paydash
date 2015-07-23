@@ -3,7 +3,7 @@
 
   var paydash = {
     past_n_days: '',
-    lines: ['block', 'state', 'district'],
+    stepwise_compare_lines: ['block', 'state', 'district'],
     labels: [
       'Muster roll closure to muster roll entry',
       'Muster roll entry to wage list generation',
@@ -30,6 +30,7 @@
     paydash.data = data;
     // Prepare and draw block performance chart
     drawBlockPerformance();
+    drawStepwisePerformance(); 
   }
 
   // Time period Selection
@@ -38,7 +39,19 @@
     d3.selectAll(".modify-time-period-controls button").classed("selected", false); // change button state
     target.classed("selected", true);
     paydash.past_n_days = target.attr("data-timeperiod");
-    drawBlockPerformance();  // Draw block performance chart
+    drawBlockPerformance(); // Draw block performance chart
+    drawStepwisePerformance(); 
+  });
+
+  //Stepwise charts step selection
+  d3.selectAll(".blockSelector").on("click", function() {
+    paydash.stepwise_compare_lines = [];
+    d3.selectAll(".blockSelector").each(function() {
+      if (this.checked === true) {
+        paydash.stepwise_compare_lines.push(this.value);
+      }
+    });
+    drawStepwisePerformance(); 
   });
 
 
@@ -47,18 +60,6 @@
 
 
 
-
-  //  Specific Charts
-  function drawBlockPerformance() {
-    var b_data = parseLines(paydash.data.block.data, paydash.past_n_days, paydash.stepCols, true);
-    detailViz({
-      data: b_data,
-      title: 'Block Performance',
-      target: '#block_performance',
-      legend_target: '.legend',
-      labels: paydash.labels
-    });
-  }
 
 
   // Build Line Data 
@@ -89,6 +90,37 @@
     var d = string.substring(6, 8);
     return new Date(y, m, d);
   }
+
+  //  Specific Charts
+  function drawBlockPerformance() {
+    var b_data = parseLines(paydash.data.block.data, paydash.past_n_days, paydash.stepCols, true);
+    detailViz({
+      data: b_data,
+      title: 'Block Performance',
+      target: '#block_performance',
+      legend_target: '.legend',
+      labels: paydash.labels
+    });
+  }
+
+  function drawStepwisePerformance() {
+    paydash.stepCols.forEach(function(val, i) {
+      var s_data =[];
+      paydash.stepwise_compare_lines.forEach(function(stepwise_compare_line, index){
+        var line_data = parseLines(paydash.data[stepwise_compare_line].data, paydash.past_n_days, [val], false);
+        s_data.push(line_data[0]);  // Workaround to append region data
+      });
+
+      smallViz({
+        data: s_data,
+        title: paydash.data.config.headers[val],
+        target: '#s_' + val,
+        legend_target: '.s_' + val + '_legend',
+        labels: paydash.labels
+      });
+    });
+  }
+
 
   // Block Performance viz
   function detailViz(options) {
