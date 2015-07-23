@@ -156,7 +156,7 @@
 
 
 
-  // TIme filter
+  // Time filter
   function modify_time_period(data, past_n_days) {
     if (past_n_days !== '') {
       var fdata = [];
@@ -213,12 +213,13 @@
       aggregate_rollover: true,
       linked: true,
       show_year_markers: true,
-      // y_scale_type: 'log',
-      // y_rug: true,
       animate_on_load: false,
       transition_on_update: false,
+      interplate: 'linear',
+      interpolate_tension: 1,
+      area:true,
       // missing_is_hidden: true,
-      missing_is_zero: true,
+      // missing_is_zero: true,
     });
   }
 
@@ -236,8 +237,6 @@
       full_width: true,
       transition_on_update: false,
       max_y: 400,
-      missing_is_zero: true,
-      // y_scale_type: 'log',
     });
   }
 
