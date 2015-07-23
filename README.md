@@ -1,2 +1,2 @@
-# payment-delay
-Payment delay dashboard
+# Paydash
+MGNREGA - Payment delay dashboard
