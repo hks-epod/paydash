@@ -4,6 +4,7 @@
   var paydash = {
     past_n_days: '',
     stepwise_compare_lines: ['block', 'state', 'district'],
+    panchyat_compare_lines :'',
     labels: [
       'Muster roll closure to muster roll entry',
       'Muster roll entry to wage list generation',
@@ -31,6 +32,8 @@
     // Prepare and draw block performance chart
     drawBlockPerformance();
     drawStepwisePerformance();
+    chartTemplate(paydash.data.panchayats);
+    drawPanchayatPerformance();
   }
 
   // Time period Selection
@@ -41,6 +44,7 @@
     paydash.past_n_days = target.attr("data-timeperiod");
     drawBlockPerformance(); // Draw block performance chart
     drawStepwisePerformance();
+    drawPanchayatPerformance();
   });
 
   //Stepwise charts step selection
@@ -54,6 +58,11 @@
     drawStepwisePerformance();
   });
 
+  // panchayat_step_controls
+  d3.selectAll("#panchayat_step_controls").on("change", function() {
+    paydash.panchyat_compare_lines = d3.event.target.value;
+    drawPanchayatPerformance();
+  });
 
 
 
@@ -90,14 +99,12 @@
     var d = string.substring(6, 8);
     return new Date(y, m, d);
   }
-
+  // Get Maximum for stewise charts
   function getMaxofSteps() {
-
     if (paydash.past_n_days !== '') {
       var past_n_date = new Date();
       past_n_date.setDate(past_n_date.getDate() - paydash.past_n_days);
     }
-
     var max = 10;
     paydash.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
       paydash.data[stepwise_compare_line].data.forEach(function(arr) {
@@ -111,6 +118,19 @@
       });
     });
     return max;
+  }
+
+  function chartTemplate(data) {
+    d3.select('.panchayat_charts-container').selectAll('div')
+      .data(data)
+      .enter().append("div")
+      .classed("pure-u-6-24", true)
+      .html(function(d, index) {
+        return '<div class="chart-holder small_chart">' +
+          '<div id="p_' + d.panchayat_code + '"></div>' +
+          '<div class="p_' + d.panchayat_code + '_legend"></div>' +
+          '</div>';
+      });
   }
 
 
@@ -128,17 +148,13 @@
   }
 
   function drawStepwisePerformance() {
-
     var max_y = getMaxofSteps();
-    console.log(max_y);
-
     paydash.stepCols.forEach(function(val, i) {
       var s_data = [];
       paydash.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
         var line_data = parseLines(paydash.data[stepwise_compare_line].data, paydash.past_n_days, [val], false);
         s_data.push(line_data[0]); // Workaround to append region data
       });
-
       smallViz({
         data: s_data,
         title: paydash.data.config.headers[val],
@@ -147,6 +163,23 @@
         labels: paydash.labels,
         max_y: max_y,
       });
+    });
+  }
+
+  //  Specific Charts
+  function drawPanchayatPerformance() {
+    paydash.data.panchayats.forEach(function(panchayat, p_index) {
+      var p_step_lines = (paydash.panchyat_compare_lines!=='') ? [paydash.panchyat_compare_lines] : paydash.stepCols;
+      var isCumu =  (paydash.panchyat_compare_lines==='')? true: false;
+      var p_data = parseLines(panchayat.data, paydash.past_n_days, p_step_lines, isCumu);
+      smallViz({
+        data: p_data,
+        title: panchayat.panchayat_name,
+        target: '#p_' + panchayat.panchayat_code,
+        legend_target: '.p_' + panchayat.panchayat_code + '_legend',
+        labels: paydash.labels,
+      });
+
     });
   }
 
@@ -192,7 +225,7 @@
       target: options.target,
       full_width: true,
       transition_on_update: false,
-      max_y: options.max_y,
+      max_y: options.max_y || undefined,
       interplate: 'linear',
       interpolate_tension: 1,
       area: false

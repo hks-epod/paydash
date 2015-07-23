@@ -110,13 +110,25 @@
       <div class="pure-u-6-24">
       </div>
     </div>
-  
     <!-- reapeat -->
     <h2>Performance of your Panchayats</h2>
+    <div class="panchayat_selectors">
+      <select id="panchayat_step_controls">
+        <option value="">All</option>
+        <option value="1">Muster roll closure to muster roll entry</option>
+        <option value="2">Muster roll entry to wage list generation</option>
+        <option value="3">Wage list generation to wage list sign</option>
+        <option value="4">Wage list sign to FTO generation</option>
+        <option value="5">FTO generation to first signature</option>
+        <option value="6">First signature to second signature</option>
+        <option value="7">Second signature to processed by bank</option>
+      </select>
+    </div>
     <div class="pure-g panchayat_charts-container">
     </div>
-
-    <div style="height:300px"></div>
+  </div>
+  <div class="footer">
+    <div class="container">Copyright 2015</div>
   </div>
   <!-- JS -->
   <script type="text/javascript" src="lib/d3/d3.min.js" charset="utf-8"></script>

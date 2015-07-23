@@ -55,6 +55,14 @@ a {
 .modify-time-period-controls .selected{
   color: #fff;
 }
+.footer{
+  padding: 20px 0;
+  border-top: solid 1px #193244;
+  margin-top: 40px;
+}
+.panchayat_selectors{
+  padding: 20px 0;
+}
 
 /******[ Chart custom styles ]**********/
 
