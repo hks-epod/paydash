@@ -1,0 +1,23 @@
+{
+  "name": "paydash",
+  "version": "1.0.0",
+  "description": "MGNREGA - Payment delay dashboard",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hks-epod/paydash.git"
+  },
+  "keywords": [
+    "MGNREGA",
+    "DASHBOARD"
+  ],
+  "author": "Ravi Suhag",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hks-epod/paydash/issues"
+  },
+  "homepage": "https://github.com/hks-epod/paydash#readme"
+}

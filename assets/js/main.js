@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-
+  // Global state
   var paydash = {
     past_n_days: '',
     stepwise_compare_lines: ['block', 'state', 'district'],
@@ -29,7 +29,6 @@
   // Intialisation function
   function init(data) {
     paydash.data = data;
-    // Prepare and draw block performance chart
     drawBlockPerformance();
     drawStepwisePerformance();
     chartTemplate(paydash.data.panchayats);
@@ -63,13 +62,6 @@
     paydash.panchyat_compare_lines = d3.event.target.value;
     drawPanchayatPerformance();
   });
-
-
-
-
-
-
-
 
   // Build Line Data 
   function parseLines(data, past_n_days, col, isCumulative) {
@@ -119,7 +111,7 @@
     });
     return max;
   }
-
+  //  Prepare panchayat chart templates
   function chartTemplate(data) {
     d3.select('.panchayat_charts-container').selectAll('div')
       .data(data)
@@ -132,8 +124,6 @@
           '</div>';
       });
   }
-
-
 
   //  Specific Charts
   function drawBlockPerformance() {
@@ -182,7 +172,6 @@
 
     });
   }
-
 
   // Block Performance viz
   function detailViz(options) {

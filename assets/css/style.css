@@ -19,6 +19,12 @@ h2 {
 a {
   color: #f64747;
 }
+select{
+  background-color: transparent;
+  border-radius: 0;
+  border-color:#6a8093;
+  height: 30px;
+}
 .header {
   padding: 40px;
 }
@@ -61,7 +67,7 @@ a {
   margin-top: 40px;
 }
 .panchayat_selectors{
-  padding: 20px 0;
+  padding: 0 0 50px 0;
 }
 
 /******[ Chart custom styles ]**********/
