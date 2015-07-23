@@ -30,7 +30,7 @@
     paydash.data = data;
     // Prepare and draw block performance chart
     drawBlockPerformance();
-    drawStepwisePerformance(); 
+    drawStepwisePerformance();
   }
 
   // Time period Selection
@@ -40,7 +40,7 @@
     target.classed("selected", true);
     paydash.past_n_days = target.attr("data-timeperiod");
     drawBlockPerformance(); // Draw block performance chart
-    drawStepwisePerformance(); 
+    drawStepwisePerformance();
   });
 
   //Stepwise charts step selection
@@ -51,7 +51,7 @@
         paydash.stepwise_compare_lines.push(this.value);
       }
     });
-    drawStepwisePerformance(); 
+    drawStepwisePerformance();
   });
 
 
@@ -91,6 +91,30 @@
     return new Date(y, m, d);
   }
 
+  function getMaxofSteps() {
+
+    if (paydash.past_n_days !== '') {
+      var past_n_date = new Date();
+      past_n_date.setDate(past_n_date.getDate() - paydash.past_n_days);
+    }
+
+    var max = 10;
+    paydash.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
+      paydash.data[stepwise_compare_line].data.forEach(function(arr) {
+        paydash.stepCols.forEach(function(val) {
+          if (!past_n_date || parseDate(arr[0]) >= past_n_date) {
+            if (arr[val] > max) {
+              max = arr[val];
+            }
+          }
+        });
+      });
+    });
+    return max;
+  }
+
+
+
   //  Specific Charts
   function drawBlockPerformance() {
     var b_data = parseLines(paydash.data.block.data, paydash.past_n_days, paydash.stepCols, true);
@@ -104,11 +128,15 @@
   }
 
   function drawStepwisePerformance() {
+
+    var max_y = getMaxofSteps();
+    console.log(max_y);
+
     paydash.stepCols.forEach(function(val, i) {
-      var s_data =[];
-      paydash.stepwise_compare_lines.forEach(function(stepwise_compare_line, index){
+      var s_data = [];
+      paydash.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
         var line_data = parseLines(paydash.data[stepwise_compare_line].data, paydash.past_n_days, [val], false);
-        s_data.push(line_data[0]);  // Workaround to append region data
+        s_data.push(line_data[0]); // Workaround to append region data
       });
 
       smallViz({
@@ -116,7 +144,8 @@
         title: paydash.data.config.headers[val],
         target: '#s_' + val,
         legend_target: '.s_' + val + '_legend',
-        labels: paydash.labels
+        labels: paydash.labels,
+        max_y: max_y,
       });
     });
   }
@@ -163,7 +192,10 @@
       target: options.target,
       full_width: true,
       transition_on_update: false,
-      max_y: 400,
+      max_y: options.max_y,
+      interplate: 'linear',
+      interpolate_tension: 1,
+      area: false
     });
   }
 
