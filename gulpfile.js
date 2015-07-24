@@ -8,10 +8,9 @@ gulp.task('compress', function() {
     .pipe(uglify())
     .pipe(gulp.dest('assets/js/dist'));
 });
-
-
+//  Run server and Sync browser
 gulp.task('browser-sync', function() {
-  browserSync.init(['css/*.css', 'js/**/*.js', 'index.html'], {
+  browserSync.init([ 'assets/js/', 'index.html'], {
     server: {
       baseDir: './'
     }
@@ -20,5 +19,5 @@ gulp.task('browser-sync', function() {
 
 //  Default task
 gulp.task('default', ['compress', 'browser-sync'], function() {
-  gulp.watch('assets/js/*.js', ['scripts']);
+  gulp.watch('assets/js/main.js', ['compress']);
 });

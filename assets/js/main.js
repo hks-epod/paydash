@@ -4,7 +4,7 @@
   var paydash = {
     past_n_days: '',
     stepwise_compare_lines: ['block', 'state', 'district'],
-    panchyat_compare_lines :'',
+    panchyat_compare_lines: '',
     labels: [
       'Muster roll closure to muster roll entry',
       'Muster roll entry to wage list generation',
@@ -16,7 +16,6 @@
     ],
     stepCols: [1, 2, 3, 4, 5, 6, 7]
   };
-
   // Load JSON
   d3.json('data/delays_sample.json')
     .on("progress", function() {
@@ -25,7 +24,6 @@
     .get(function(error, data) {
       init(data);
     });
-
   // Intialisation function
   function init(data) {
     paydash.data = data;
@@ -34,7 +32,6 @@
     chartTemplate(paydash.data.panchayats);
     drawPanchayatPerformance();
   }
-
   // Time period Selection
   d3.selectAll(".modify-time-period-controls button").on("click", function() {
     var target = d3.select(d3.event.target); // Define target
@@ -45,7 +42,6 @@
     drawStepwisePerformance();
     drawPanchayatPerformance();
   });
-
   //Stepwise charts step selection
   d3.selectAll(".blockSelector").on("click", function() {
     paydash.stepwise_compare_lines = [];
@@ -56,13 +52,11 @@
     });
     drawStepwisePerformance();
   });
-
   // panchayat_step_controls
   d3.selectAll("#panchayat_step_controls").on("change", function() {
     paydash.panchyat_compare_lines = d3.event.target.value;
     drawPanchayatPerformance();
   });
-
   // Build Line Data 
   function parseLines(data, past_n_days, col, isCumulative) {
     if (past_n_days !== '') {
@@ -124,7 +118,6 @@
           '</div>';
       });
   }
-
   //  Specific Charts
   function drawBlockPerformance() {
     var b_data = parseLines(paydash.data.block.data, paydash.past_n_days, paydash.stepCols, true);
@@ -155,12 +148,11 @@
       });
     });
   }
-
   //  Specific Charts
   function drawPanchayatPerformance() {
     paydash.data.panchayats.forEach(function(panchayat, p_index) {
-      var p_step_lines = (paydash.panchyat_compare_lines!=='') ? [paydash.panchyat_compare_lines] : paydash.stepCols;
-      var isCumu =  (paydash.panchyat_compare_lines==='')? true: false;
+      var p_step_lines = (paydash.panchyat_compare_lines !== '') ? [paydash.panchyat_compare_lines] : paydash.stepCols;
+      var isCumu = (paydash.panchyat_compare_lines === '') ? true : false;
       var p_data = parseLines(panchayat.data, paydash.past_n_days, p_step_lines, isCumu);
       smallViz({
         data: p_data,
@@ -169,10 +161,8 @@
         legend_target: '.p_' + panchayat.panchayat_code + '_legend',
         labels: paydash.labels,
       });
-
     });
   }
-
   // Block Performance viz
   function detailViz(options) {
     MG.data_graphic({
@@ -200,7 +190,6 @@
       // missing_is_zero: true,
     });
   }
-
   // Small Viz
   function smallViz(options) {
     MG.data_graphic({

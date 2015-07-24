@@ -16,8 +16,12 @@ h2 {
   margin-top: 50px;
   margin-bottom: 60px;
 }
-a {
-  color: #f64747;
+a, button {
+  /*color: #f64747;*/
+  color: #2adbb9
+}
+a:hover, button:hover{
+  color: #cadce9;
 }
 select{
   background-color: transparent;
@@ -59,7 +63,7 @@ select{
   border:0;
 }
 .modify-time-period-controls .selected{
-  color: #fff;
+  color: #cadce9;
 }
 .footer{
   padding: 20px 0;
