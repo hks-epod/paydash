@@ -73,7 +73,12 @@ select{
 .panchayat_selectors{
   padding: 0 0 50px 0;
 }
-
+.total_trans{
+  font-size: 25px;
+  margin-top: 20px;
+  font-weight: lighter;
+  font-family: 'Open Sans'
+}
 /******[ Chart custom styles ]**********/
 
 .chart-holder {

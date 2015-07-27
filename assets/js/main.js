@@ -72,6 +72,7 @@
             date: parseDate(tSmry[0]),
           };
           obj.value = (isCumulative && result[index - 1]) ? tSmry[val] + result[index - 1][result[index - 1].length - 1].value : tSmry[val];
+          obj.total_trans = tSmry[8];
           result[index] = result[index] || [];
           result[index].push(obj);
         });
@@ -194,8 +195,17 @@
         d.values.forEach(function(val, index) {
           var prefix = d3.formatPrefix(val.value);
           var l_span = d3.select('.legend ' + '.mg-line' + val.line_id + '-legend-color');
+          console.log(d);
           l_span.text(' ');
-          l_span.text('— ' + paydash.labels[index] +' : '+ prefix.scale(val.value).toFixed(2));
+          l_span.text('— ' + paydash.labels[index] + ' : ' + prefix.scale(val.value).toFixed(2));
+          d3.select('#total_trans').text(val.total_trans);
+        });
+      },
+      mouseout: function(d, i) {
+        d.values.forEach(function(val, index) {
+          var l_span = d3.select('.legend ' + '.mg-line' + val.line_id + '-legend-color');
+          l_span.text(' ');
+          l_span.text('— ' + paydash.labels[index]);
         });
       }
 
