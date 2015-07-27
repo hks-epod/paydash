@@ -218,6 +218,7 @@
       height: 200,
       right: 10,
       left: 80,
+      linked:true,
       small_text: true,
       xax_count: 1,
       chart_type : options.data.length !==0 ? 'line' : 'missing-data',
