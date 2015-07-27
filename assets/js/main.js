@@ -195,7 +195,6 @@
         d.values.forEach(function(val, index) {
           var prefix = d3.formatPrefix(val.value);
           var l_span = d3.select('.legend ' + '.mg-line' + val.line_id + '-legend-color');
-          console.log(d);
           l_span.text(' ');
           l_span.text('— ' + paydash.labels[index] + ' : ' + prefix.scale(val.value).toFixed(2));
           d3.select('#total_trans').text(val.total_trans);
@@ -208,7 +207,6 @@
           l_span.text('— ' + paydash.labels[index]);
         });
       }
-
     });
   }
   // Small Viz
@@ -222,13 +220,15 @@
       left: 80,
       small_text: true,
       xax_count: 1,
+      chart_type : options.data.length !==0 ? 'line' : 'missing-data',
+      // chart_type :'missing-data',
+      missing_text: 'No data',
       target: options.target,
       full_width: true,
       transition_on_update: false,
       max_y: options.max_y || undefined,
       interplate: 'linear',
       interpolate_tension: 1,
-
       y_label: 'Days',
       area: options.area
     });
