@@ -3,7 +3,8 @@
   // Global state
   var paydash = {
     past_n_days: '',
-    stepwise_compare_lines: ['block', 'state', 'district'],
+    // stepwise_compare_lines: ['block', 'state', 'district'],
+    stepwise_compare_lines: ['block'],
     panchyat_compare_lines: '',
     labels: [
       'Muster roll closure to muster roll entry',
@@ -144,7 +145,8 @@
         target: '#s_' + val,
         legend_target: '.s_' + val + '_legend',
         labels: paydash.labels,
-        max_y: max_y,
+        // max_y: max_y,
+        area: false
       });
     });
   }
@@ -170,6 +172,7 @@
       data: options.data,
       width: 600,
       height: 400,
+      left: 80,
       full_width: true,
       target: options.target,
       baselines: [{
@@ -186,8 +189,16 @@
       interplate: 'linear',
       interpolate_tension: 1,
       area: true,
-      // missing_is_hidden: true,
-      // missing_is_zero: true,
+      y_label: 'Days',
+      mouseover: function(d, i) {
+        d.values.forEach(function(val, index) {
+          var prefix = d3.formatPrefix(val.value);
+          var l_span = d3.select('.legend ' + '.mg-line' + val.line_id + '-legend-color');
+          l_span.text(' ');
+          l_span.text('— ' + paydash.labels[index] +' : '+ prefix.scale(val.value).toFixed(2));
+        });
+      }
+
     });
   }
   // Small Viz
@@ -196,8 +207,9 @@
       title: options.title,
       data: options.data,
       width: 295,
-      height: 150,
+      height: 200,
       right: 10,
+      left: 80,
       small_text: true,
       xax_count: 1,
       target: options.target,
@@ -206,7 +218,9 @@
       max_y: options.max_y || undefined,
       interplate: 'linear',
       interpolate_tension: 1,
-      area: false
+
+      y_label: 'Days',
+      area: options.area
     });
   }
 
