@@ -252,6 +252,7 @@
       transition_on_update: false,
       max_y: options.max_y || undefined,
       interplate: 'linear',
+      linked: true,
       interpolate_tension: 1,
       y_label: 'Days',
       area: options.area
