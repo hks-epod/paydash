@@ -107,6 +107,28 @@
     });
     return max;
   }
+
+  function getMaxofPanchayats() {
+    if (paydash.past_n_days !== '') {
+      var past_n_date = new Date();
+      past_n_date.setDate(past_n_date.getDate() - paydash.past_n_days);
+    }
+    var max = 10;
+    paydash.data.panchayats.forEach(function(panchayat, index) {
+      panchayat.data.forEach(function(arr) {
+        paydash.stepCols.forEach(function(val) {
+          if (!past_n_date || parseDate(arr[0]) >= past_n_date) {
+            if (arr[val] > max) {
+              max = arr[val];
+            }
+          }
+        });
+      });
+    });
+    console.log(max);
+    return max;
+  }
+
   //  Prepare panchayat chart templates
   function chartTemplate(data) {
     d3.select('.panchayat_charts-container').selectAll('div')
@@ -153,16 +175,19 @@
   }
   //  Specific Charts
   function drawPanchayatPerformance() {
+    var max_y = getMaxofPanchayats();
     paydash.data.panchayats.forEach(function(panchayat, p_index) {
       var p_step_lines = (paydash.panchyat_compare_lines !== '') ? [paydash.panchyat_compare_lines] : paydash.stepCols;
       var isCumu = (paydash.panchyat_compare_lines === '') ? true : false;
       var p_data = parseLines(panchayat.data, paydash.past_n_days, p_step_lines, isCumu);
+      console.log(p_data);
       smallViz({
         data: p_data,
         title: panchayat.panchayat_name,
         target: '#p_' + panchayat.panchayat_code,
         legend_target: '.p_' + panchayat.panchayat_code + '_legend',
         labels: paydash.labels,
+        max_y: max_y,
       });
     });
   }
@@ -218,11 +243,9 @@
       height: 200,
       right: 10,
       left: 80,
-      linked:true,
       small_text: true,
       xax_count: 1,
-      chart_type : options.data.length !==0 ? 'line' : 'missing-data',
-      // chart_type :'missing-data',
+      chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
       missing_text: 'No data',
       target: options.target,
       full_width: true,
