@@ -87,23 +87,24 @@ pool.getConnection(function(err, connection) {
             
             var headers = ['date','mrc_mre','mre_wlg','wlg_wls','wls_fto','fto_sn1','sn1_sn2','sn2_prc','tot_trn'];
             var finYear = getFinYear();
+            var currentDate = getCurrentDate();
             final_dict['block_name'] = blockName
             final_dict['alerts'] = []
             final_dict['config'] = {'headers':headers,'mandated_days':{}}
             final_dict['api_helpers'] = {
                 'musters_on_date':{
                     'state_code':stateCode,
-                    'dt':current_date,
+                    'dt':currentDate,
                     'block_code':blockCode,
                     'fin_year':finYear,
-                    'state_block_code':'UP'+blockCode[2:4],
+                    'state_block_code':'UP'+blockCode.substring(2,4),
                     'url':''
                 },
                 'delayed_musters':{
                     'state_code':stateCode,
                     'block_code':blockCode,
                     'fin_year':finYear,
-                    'state_block_code':'UP'+blockCode[2:4],
+                    'state_block_code':'UP'+blockCode.substring(2,4),
                     'url':''
                 }
             }
@@ -129,33 +130,29 @@ pool.getConnection(function(err, connection) {
                 }
                 return out;
             }
-            function getFinYear():
+            function getFinYear() {
                 var today = new Date();
                 var month = today.getMonth() + 1;
                 var year = today.getFullYear();
                 var finYear = '';
-                if (month)<4 {
+                if (month<4) {
                     var prevYear = year-1;
-                    finYear = prevYear)+"-"+year;
+                    finYear = prevYear+"-"+year;
                 }
-                else:
+                else {
                     var nextYear = year+1;
                     finYear = year+"-"+nextYear;
+                }
                 return finYear;
             }
-            function getCurrentDate():
+            function getCurrentDate() {
                 var today = new Date();
                 var month = today.getMonth() + 1;
                 var year = today.getFullYear();
+                var day = today.getDate();
                 var finYear = '';
-                if (month)<4 {
-                    var prevYear = year-1;
-                    finYear = prevYear)+"-"+year;
-                }
-                else:
-                    var nextYear = year+1;
-                    finYear = year+"-"+nextYear;
-                return finYear;
+                var date = padNum(day)+'-'+padNum(month)+'-'+year;
+                return date;
             }
         }
         connection.release();

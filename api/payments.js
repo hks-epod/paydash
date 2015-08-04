@@ -11,16 +11,12 @@ var pool = mysql.createPool({
     multipleStatements: true
 });
 
-var BLOCK_CODE = "1709003" // not sure if we'll take this from login system or ajax call
+var BLOCK_CODE = "1709003" // we'll take this from the login system
 
 /* GET users listing. */
 router.get('/', function(req, res) {
- 
-    console.log(req);
-    
+     
 	pool.getConnection(function(err, connection) {
-
-		var data = {};
 
 	    if (err) {
 	        console.error("An error occurred: " + err);
@@ -70,7 +66,7 @@ router.get('/', function(req, res) {
 
 	            // process panchayat data
 	            final_dict['panchayats'] = [];
-	            var panchayats = uniq_fast(panchayatResponse.map(function(d) { return d.panchayat_code }));
+	            var panchayats = uniqFast(panchayatResponse.map(function(d) { return d.panchayat_code }));
 	            panchayats.forEach(function(c) {
 	                var thisPanchayat = panchayatResponse.filter(function(d) { return d.panchayat_code===c; });
 	                var panchayatName = thisPanchayat[0]['panchayat_name'];
@@ -89,6 +85,29 @@ router.get('/', function(req, res) {
 	                return bSum - aSum;
 	            });
 	            
+	            var headers = ['date','mrc_mre','mre_wlg','wlg_wls','wls_fto','fto_sn1','sn1_sn2','sn2_prc','tot_trn'];
+	            var finYear = getFinYear();
+	            var currentDate = getCurrentDate();
+	            final_dict['block_name'] = blockName
+	            final_dict['alerts'] = []
+	            final_dict['config'] = {'headers':headers,'mandated_days':{}}
+	            final_dict['api_helpers'] = {
+	                'musters_on_date':{
+	                    'state_code':stateCode,
+	                    'dt':currentDate,
+	                    'block_code':blockCode,
+	                    'fin_year':finYear,
+	                    'state_block_code':'UP'+blockCode.substring(2,4),
+	                    'url':''
+	                },
+	                'delayed_musters':{
+	                    'state_code':stateCode,
+	                    'block_code':blockCode,
+	                    'fin_year':finYear,
+	                    'state_block_code':'UP'+blockCode.substring(2,4),
+	                    'url':''
+	                }
+	            }
 	            console.log(JSON.stringify(final_dict));
 	            res.json(final_dict);
 	            res.end();
@@ -97,7 +116,7 @@ router.get('/', function(req, res) {
 	                var str = num.toString();
 	                return str.length===1 ? '0'+str : str;
 	            }
-	            function uniq_fast(a) { // quickly drop duplicate values from an array
+	            function uniqFast(a) { // quickly drop duplicate values from an array
 	                var seen = {};
 	                var out = [];
 	                var len = a.length;
@@ -111,11 +130,34 @@ router.get('/', function(req, res) {
 	                }
 	                return out;
 	            }
+	            function getFinYear() {
+	                var today = new Date();
+	                var month = today.getMonth() + 1;
+	                var year = today.getFullYear();
+	                var finYear = '';
+	                if (month<4) {
+	                    var prevYear = year-1;
+	                    finYear = prevYear+"-"+year;
+	                }
+	                else {
+	                    var nextYear = year+1;
+	                    finYear = year+"-"+nextYear;
+	                }
+	                return finYear;
+	            }
+	            function getCurrentDate() {
+	                var today = new Date();
+	                var month = today.getMonth() + 1;
+	                var year = today.getFullYear();
+	                var day = today.getDate();
+	                var finYear = '';
+	                var date = padNum(day)+'-'+padNum(month)+'-'+year;
+	                return date;
+	            }
 	        }
 	        connection.release();
 	    });
 	});
-
 });
  
 module.exports = router;
