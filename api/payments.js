@@ -1,7 +1,7 @@
 var express = require('express');
 var mysql = require('mysql');
 
-var router = express.Router();
+var app = express();
  
 var pool = mysql.createPool({
     host: 'epodindia.cvthz0qudx9w.ap-southeast-1.rds.amazonaws.com',
@@ -14,7 +14,7 @@ var pool = mysql.createPool({
 var BLOCK_CODE = "1709003" // we'll take this from the login system
 
 /* GET users listing. */
-router.get('/', function(req, res) {
+app.get('/', function(req, res) {
      
 	pool.getConnection(function(err, connection) {
 
@@ -108,7 +108,7 @@ router.get('/', function(req, res) {
 	                    'url':''
 	                }
 	            }
-	            console.log(JSON.stringify(final_dict));
+	            // console.log(JSON.stringify(final_dict));
 	            res.json(final_dict);
 	            res.end();
 
@@ -159,5 +159,9 @@ router.get('/', function(req, res) {
 	    });
 	});
 });
- 
-module.exports = router;
+
+var server = app.listen(3000, function () {
+
+});
+
+
