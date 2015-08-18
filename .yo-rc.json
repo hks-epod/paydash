@@ -1,0 +1,13 @@
+{
+  "generator-kraken": {
+    "taskModule": "grunt",
+    "description": "MGNREGA - Payment delay dashboard",
+    "author": "Ravi Suhag",
+    "templateModule": false,
+    "i18n": "i18n",
+    "componentPackager": "bower",
+    "cssModule": "less",
+    "jsModule": "browserify",
+    "useJson": null
+  }
+}
