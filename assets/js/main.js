@@ -180,7 +180,7 @@
       var p_step_lines = (paydash.panchyat_compare_lines !== '') ? [paydash.panchyat_compare_lines] : paydash.stepCols;
       var isCumu = (paydash.panchyat_compare_lines === '') ? true : false;
       var p_data = parseLines(panchayat.data, paydash.past_n_days, p_step_lines, isCumu);
-      console.log(p_data);
+      console.log(JSON.stringify(p_data));
       smallViz({
         data: p_data,
         title: panchayat.panchayat_name,
