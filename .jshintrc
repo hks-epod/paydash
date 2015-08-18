@@ -136,7 +136,7 @@
     // Whether trailing whitespace rules apply.
     "trailing": false,
     // Specify indentation.
-    "indent": 4,
+    "indent": 2,
     // Whether strict whitespace rules apply.
     "white": false,
     // Quote formatting

@@ -1,34 +1,40 @@
 {
+  "express": {
+    "view cache": true,
+    "view engine": "jsx",
+    "view": "require:react-engine/lib/expressView",
+  },
 
-    
 
-    
 
-    
-    "i18n": {
-        "contentPath": "path:./locales",
-        "fallback": "en-US"
+
+
+
+  "i18n": {
+    "contentPath": "path:./locales",
+    "fallback": "en-US"
+  },
+
+
+  "specialization": {},
+
+  "middleware": {
+
+
+
+    "static": {
+      "module": {
+        "arguments": ["path:./.build"]
+      }
     },
-    
 
-    "specialization": {
-    },
-
-    "middleware": {
-
-        
-
-        "static": {
-            "module": {
-                "arguments": [ "path:./.build" ]
-            }
-        },
-
-        "router": {
-            "module": {
-                "arguments": [{ "directory": "path:./controllers" }]
-            }
-        }
-
+    "router": {
+      "module": {
+        "arguments": [{
+          "directory": "path:./controllers"
+        }]
+      }
     }
+
+  }
 }
