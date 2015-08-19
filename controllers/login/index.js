@@ -10,9 +10,14 @@ module.exports = function(router) {
   var model = new LoginModel();
 
   router.get('/', function(req, res) {
-    //Include any error messages that come from the login process.
-    model.messages = req.flash('error');
-    res.render('login', model);
+    if (req.isAuthenticated()) {
+      res.redirect('/profile');
+    } else {
+      //Include any error messages that come from the login process.
+      model.messages = req.flash('error');
+      res.render('login', model);
+    }
+
   });
 
   /**
