@@ -8,12 +8,11 @@
   <body>
     <header class="grey">
       <div class="wrapper">
-        <h1>Kraken Central</h1>
+        <h1>Paydash</h1>
         <nav>
           <ul class="nm-np inline">
             <li><a href="/">Home</a></li>
             <li><a href="/profile">Profile</a></li>
-            <li><a href="/admin">Admin</a></li>
             <li>
               {#user}
                 <a href="/logout">Logout</a>
