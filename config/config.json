@@ -1,33 +1,62 @@
 {
   "express": {
-    "view cache": true,
-    "view engine": "jsx",
-    "view": "require:react-engine/lib/expressView",
+    "view cache": false,
+    "view engine": "js",
+    "views": "path:./.build/templates"
   },
 
+  "view engines": {
+    "js": {
+      "module": "makara",
+      "renderer": {
+        "method": "js",
+        "arguments": [{
+          "cache": true,
+          "helpers": "config:dust.helpers"
+        }]
+      }
+    }
+  },
 
+  "dust": {
+    "helpers": [
+      "dust-makara-helpers"
+    ]
+  },
 
+  "databaseConfig": {
+    "host": "localhost",
+    "database": "paydash"
+  },
 
-
+  "bcrypt": {
+    "difficulty": 8
+  },
 
   "i18n": {
     "contentPath": "path:./locales",
     "fallback": "en-US"
   },
 
-
   "specialization": {},
 
   "middleware": {
-
-
-
+    "makara": {
+      "priority": 100,
+      "enabled": true,
+      "module": {
+        "name": "makara",
+        "arguments": [{
+          "i18n": "config:i18n",
+          "specialization": "config:specialization"
+        }]
+      }
+    },
     "static": {
       "module": {
         "arguments": ["path:./.build"]
       }
     },
-
     "router": {
       "module": {
         "arguments": [{
@@ -35,6 +64,5 @@
         }]
       }
     }
-
   }
 }

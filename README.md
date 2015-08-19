@@ -1,4 +1,4 @@
-Paydash
+paydash
 ===========
 
-MGNREGA - Payment delay dashboard
+MGNREGA - Payment delat dashboard
