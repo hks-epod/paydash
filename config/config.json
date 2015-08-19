@@ -63,6 +63,34 @@
           "directory": "path:./controllers"
         }]
       }
+    },
+    //flash messaging middleware
+    "flash": {
+      "priority": 91,
+      "enabled": true,
+      "module": {
+        "name": "connect-flash",
+        "method": "flash"
+      }
+    },
+    //test if user session required to view page and if user has permission for given page
+    "isAuthenticated": {
+      "enabled": true,
+      "priority": 111,
+      "module": {
+        "name": "path:./lib/auth",
+        "method": "isAuthenticated"
+
+      }
+    },
+    //add the user to the response object
+    "injectUser": {
+      "enabled": true,
+      "priority": 112,
+      "module": {
+        "name": "path:./lib/auth",
+        "method": "injectUser"
+      }
     }
   }
 }

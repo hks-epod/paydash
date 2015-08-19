@@ -10,6 +10,8 @@
     "all": "npm run build && npm run test"
   },
   "dependencies": {
+    "bcrypt": "^0.8.5",
+    "connect-flash": "^0.1.1",
     "construx": "^1.0.0",
     "construx-copier": "^1.0.0",
     "construx-dustjs": "^1.1.0",
@@ -17,7 +19,10 @@
     "dust-makara-helpers": "^4.1.2",
     "express": "^4.12.2",
     "kraken-js": "^1.0.3",
-    "makara": "^2.0.3"
+    "makara": "^2.0.3",
+    "mongoose": "^4.1.3",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
