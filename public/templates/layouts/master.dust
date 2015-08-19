@@ -6,9 +6,29 @@
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body>
+    <header class="grey">
+      <div class="wrapper">
+        <h1>Kraken Central</h1>
+        <nav>
+          <ul class="nm-np inline">
+            <li><a href="/">Home</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li>
+              {#user}
+                <a href="/logout">Logout</a>
+              {:else}
+                <a href="/login">Login</a>
+              {/user}
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <div id="wrapper">
       {+body /}
     </div>
     <script src="/js/app.js"></script>
   </body>
 </html>
+
