@@ -8,7 +8,7 @@
           <img src="/images/settings.png" alt="">
         </div>
         <h1>MGNREGA</h1>
-        <h2>Payment delay dashboard</h2>
+        <h2>Worker Payments Dashboard</h2>
         <a class="pure-button dash-button" href="/login">Get started</a>
       </div>
     </div>

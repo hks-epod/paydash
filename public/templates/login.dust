@@ -3,13 +3,13 @@
 {<body}
   <div class="login-form">
     <h2>Login to continue</h2>
-    <form id="loginForm" method="post" class="pure-form pure-form-stacked paydash-form">
+    <form id="loginForm" action="" method="post" class="pure-form pure-form-stacked paydash-form">
       <fieldset>
         <label for="email">Username</label>
         <input class="pure-input-1" id="username" name="username" type="text" placeholder="Please enter your username">
 
         <label for="password">Password</label>
-        <input class="pure-input-1" id="password" type="password" placeholder="Please enter your password">
+        <input class="pure-input-1" name="password" id="password" type="password" placeholder="Please enter your password">
 
         <button type="submit" class="pure-button pure-button-primary dash-button">Sign in</button>
         <input type="hidden" name="_csrf" value="{_csrf}"/>
