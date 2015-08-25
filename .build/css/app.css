@@ -17,26 +17,55 @@ button {
   color: #2adbb9;
   text-decoration: none;
 }
-/* line 20, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+/* line 19, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+::-webkit-input-placeholder {
+  color: #2a333a;
+}
+/* line 23, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: #2a333a;
+}
+/* line 27, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #2a333a;
+}
+/* line 31, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+:-ms-input-placeholder {
+  color: #2a333a;
+}
+/* line 35, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 a:hover {
   color: #ffffff;
 }
-/* line 23, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+/* line 38, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 .pull-right {
   float: right;
 }
-/* line 26, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+/* line 41, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 .pure-menu-link {
   color: #00bff3;
 }
-/* line 29, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+/* line 44, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 .pure-menu-link:hover {
   color: #27d1ff;
   background: none;
 }
-/* line 33, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+/* line 48, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 .m-t-40 {
   margin-top: 140px;
+}
+/* line 53, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+.paydash-form input[type="text"],
+.paydash-form input[type="password"] {
+  background-color: #071c2b;
+  border: solid 1px #071927;
+  box-shadow: none;
+}
+/* line 59, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+.paydash-form label {
+  margin: 15px 0;
 }
 /* line 2, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
 .main {
@@ -60,6 +89,18 @@ a:hover {
   color: #fff;
   padding-top: 0;
   margin-top: 0;
+}
+/* line 24, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
+.login-form {
+  max-width: 400px;
+  padding-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 29, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
+.login-form .dash-button {
+  width: 100%;
+  margin-top: 40px;
 }
 /* line 2, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .dash-button {

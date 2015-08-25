@@ -16,6 +16,21 @@ button {
   color: @link-color;
   text-decoration: none;
 }
+::-webkit-input-placeholder {
+   color: darken(@body-color, 30%);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: darken(@body-color, 30%);
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: darken(@body-color, 30%);
+}
+
+:-ms-input-placeholder {
+   color: darken(@body-color, 30%);
+}
 
 a:hover {
   color: @link-hover-color
@@ -32,4 +47,15 @@ a:hover {
 }
 .m-t-40{
   margin-top: 140px
+}
+// forms
+//
+.paydash-form input[type ="text"],
+.paydash-form input[type ="password"]  {
+  background-color: darken(@background-color, 2%);
+  border : solid 1px darken(@background-color, 3%);
+  box-shadow: none;
+}
+.paydash-form label {
+  margin: 15px 0;
 }

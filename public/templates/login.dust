@@ -2,19 +2,16 @@
 
 {<body}
   <div class="login-form">
-    <form id="loginForm" method="post" class="pure-form pure-form-stacked">
+    <h2>Login to continue</h2>
+    <form id="loginForm" method="post" class="pure-form pure-form-stacked paydash-form">
       <fieldset>
-        <label for="email">Email</label>
-        <input id="username" name="username" type="text" placeholder="please enter your username">
+        <label for="email">Username</label>
+        <input class="pure-input-1" id="username" name="username" type="text" placeholder="Please enter your username">
 
         <label for="password">Password</label>
-        <input id="password" type="password" placeholder="please enter your username">
+        <input class="pure-input-1" id="password" type="password" placeholder="Please enter your password">
 
-        <label for="remember" class="pure-checkbox">
-            <input id="remember" type="checkbox"> Remember me
-        </label>
-
-        <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+        <button type="submit" class="pure-button pure-button-primary dash-button">Sign in</button>
         <input type="hidden" name="_csrf" value="{_csrf}"/>
       </fieldset>
     </form>
