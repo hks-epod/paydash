@@ -2,18 +2,65 @@
   Core Styles
 */
 /* line 11, css/app */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 17, css/app */
 body {
   background-color: #092234;
   font-family: 'Open Sans';
   color: #6a8093;
 }
-/* line 17, css/app */
+/* line 23, css/app */
 a,
 button {
   color: #2adbb9;
   text-decoration: none;
 }
-/* line 23, css/app */
+/* line 29, css/app */
 a:hover {
   color: #ffffff;
+}
+/* line 33, css/app */
+.dash-button {
+  color: rgba(255, 255, 255, 0.75);
+  margin: 10px 20px 0 0;
+  font-size: 20px;
+  padding: 10px 70px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.4);
+  background: -webkit-linear-gradient(top, #67809c, #323f5a);
+}
+/* line 43, css/app */
+.dash-button:hover {
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.4);
+  background: -webkit-linear-gradient(top, #57708c, #222f4a);
+}
+/* line 51, css/app */
+.main {
+  padding: 80px 60px 20px 60px;
+  font-family: 'Open Sans';
+}
+/* line 54, css/app */
+.main h1 {
+  font-weight: lighter;
+  font-size: 35px;
+  letter-spacing: 0.3em;
+  padding: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  margin-top: 40px;
+}
+/* line 63, css/app */
+.main h2 {
+  font-size: 44px;
+  font-weight: lighter;
+  color: #fff;
+  padding-top: 0;
+  margin-top: 0;
 }

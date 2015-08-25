@@ -4,44 +4,31 @@
 
 
 var kraken = require('kraken-js'),
-    express = require('express'),
-    path = require('path'),
-    request = require('supertest');
+  express = require('express'),
+  path = require('path'),
+  request = require('supertest');
 
 
-describe('index', function () {
+describe('index', function() {
 
-    var app, mock;
-
-
-    beforeEach(function (done) {
-        app = express();
-        app.on('start', done);
-        app.use(kraken({
-            basedir: path.resolve(__dirname, '..')
-        }));
-
-        mock = app.listen(1337);
-
-    });
+  var app, mock;
 
 
-    afterEach(function (done) {
-        mock.close(done);
-    });
+  beforeEach(function(done) {
+    app = express();
+    app.on('start', done);
+    app.use(kraken({
+      basedir: path.resolve(__dirname, '..')
+    }));
+
+    mock = app.listen(1337);
+
+  });
 
 
-    it('should say "hello"', function (done) {
-        request(mock)
-            .get('/')
-            .expect(200)
-            .expect('Content-Type', /html/)
-            
-                .expect(/Hello, /)
-            
-            .end(function (err, res) {
-                done(err);
-            });
-    });
+  afterEach(function(done) {
+    mock.close(done);
+  });
+
 
 });

@@ -8,6 +8,12 @@
   Core Styles
 */
 
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
   background-color: @background-color;
   font-family: 'Open Sans';
@@ -22,4 +28,43 @@ button {
 
 a:hover {
   color: @link-hover-color
+}
+
+.dash-button {
+  color: rgba(255, 255, 255, 0.75);
+  margin: 10px 20px 0 0;
+  font-size: 20px;
+  padding: 10px 70px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.4);
+  background: -webkit-linear-gradient(top, #67809c, #323f5a);
+}
+.dash-button:hover {
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.4);
+  background: -webkit-linear-gradient(top, #57708c, #222f4a);
+}
+
+// Layout
+.main {
+  padding: 80px 60px 20px 60px;
+  font-family: 'Open Sans';
+  h1 {
+    font-weight: lighter;
+    font-size: 35px;
+    letter-spacing: 0.3em;
+    padding: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    margin-top: 40px
+  }
+  h2 {
+    font-size: 44px;
+    font-weight: lighter;
+    color: #fff;
+    padding-top:0;
+    margin-top: 0;
+  }
 }
