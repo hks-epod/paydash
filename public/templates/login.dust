@@ -4,8 +4,6 @@
   <div class="login-form">
     <form id="loginForm" method="post" class="pure-form pure-form-stacked">
       <fieldset>
-        <legend>A Stacked Form</legend>
-
         <label for="email">Email</label>
         <input id="username" name="username" type="text" placeholder="please enter your username">
 

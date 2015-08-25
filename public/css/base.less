@@ -1,0 +1,32 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: @background-color;
+  font-family: 'Open Sans';
+  color: @body-color;
+  margin-top: 80px
+}
+
+a,
+button {
+  color: @link-color;
+  text-decoration: none;
+}
+
+a:hover {
+  color: @link-hover-color
+}
+.pull-right{
+  float: right;
+}
+.pure-menu-link{
+  color: @link-color-2
+}
+.pure-menu-link:hover{
+  color: lighten(@link-color-2, 10%);
+  background:none
+}

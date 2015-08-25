@@ -13,6 +13,16 @@
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body>
+    <div class="header">
+      <div class="pure-menu pure-menu-horizontal">
+        <a href="/" class="pure-menu-heading title">PAYDASH</a>
+        <ul class="pure-menu-list pull-right">
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">Dashboard</a></li>
+          <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+        </ul>
+      </div>
+    </div>
    {!  <header class="grey">
       <div class="wrapper">
         <h1>Paydash</h1>
