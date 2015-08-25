@@ -125,7 +125,6 @@
         });
       });
     });
-    console.log(max);
     return max;
   }
 
@@ -160,8 +159,11 @@
       var s_data = [];
       paydash.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
         var line_data = parseLines(paydash.data[stepwise_compare_line].data, paydash.past_n_days, [val], false);
-        s_data.push(line_data[0]); // Workaround to append region data
+        if (line_data[0]) {
+          s_data.push(line_data[0]); // Workaround to append region data
+        }
       });
+
       smallViz({
         data: s_data,
         title: paydash.data.config.headers[val],
@@ -180,7 +182,6 @@
       var p_step_lines = (paydash.panchyat_compare_lines !== '') ? [paydash.panchyat_compare_lines] : paydash.stepCols;
       var isCumu = (paydash.panchyat_compare_lines === '') ? true : false;
       var p_data = parseLines(panchayat.data, paydash.past_n_days, p_step_lines, isCumu);
-      console.log(JSON.stringify(p_data));
       smallViz({
         data: p_data,
         title: panchayat.panchayat_name,
@@ -193,6 +194,7 @@
   }
   // Block Performance viz
   function detailViz(options) {
+    console.log(options.data.length);
     MG.data_graphic({
       title: options.title,
       data: options.data,
@@ -206,6 +208,8 @@
         label: 'Ideal'
       }],
       xax_count: 20,
+      chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
+      missing_text: 'No data',
       legend: options.labels,
       legend_target: options.legend_target,
       show_tooltips: false,

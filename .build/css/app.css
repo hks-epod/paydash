@@ -394,9 +394,10 @@ a:hover {
 /* line 28, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .header .title {
   letter-spacing: 0.35em;
+  font-size: 15px;
   color: #00bff3;
 }
-/* line 32, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
+/* line 33, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .header h1 {
   font-size: 34px;
   font-weight: lighter;
