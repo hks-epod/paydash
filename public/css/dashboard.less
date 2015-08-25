@@ -1,88 +1,90 @@
-h1 {
-  font-size: 34px;
-  font-weight: lighter;
+.dashboard {
+  h1 {
+    font-size: 34px;
+    font-weight: lighter;
+  }
+  h2 {
+    font-size: 25px;
+    font-weight: lighter;
+    margin-top: 50px;
+    margin-bottom: 60px;
+  }
 }
-h2 {
-  font-size: 25px;
-  font-weight: lighter;
-  margin-top: 50px;
-  margin-bottom: 60px;
-}
-a, button {
-  /*color: #f64747;*/
-  color: #2adbb9
-}
-a:hover, button:hover{
-  color: #cadce9;
-}
-select{
+
+select {
   background-color: transparent;
   border-radius: 0;
-  border-color:#6a8093;
+  border-color: #6a8093;
   height: 30px;
 }
-.header {
-  padding: 40px;
-}
-.logo {
-  float: left;
-  height: 70px;
-  margin-top: 11px;
-  margin-right: 10px;
-}
+
 .container {
   padding: 0 5%;
 }
+
 .selectors {
   margin-bottom: 20px;
   padding: 15px;
   border: dotted 1px #6a8093;
 }
+
 .selectors .pure-checkbox {
   cursor: pointer;
   /*color: #16A085*/
 }
+
 .selectors input {
   margin-left: 10px;
   cursor: pointer;
 }
-.modify-time-period-controls button{
+
+.modify-time-period-controls button {
   background-color: transparent;
-  border:0;
+  border: 0;
 }
-.modify-time-period-controls  button:focus {
+
+.modify-time-period-controls button:focus {
   outline: none;
-  border:0;
+  border: 0;
 }
-.modify-time-period-controls .selected{
+
+.modify-time-period-controls .selected {
   color: #cadce9;
 }
-.footer{
+
+.footer {
   padding: 20px 0;
   border-top: solid 1px #193244;
   margin-top: 40px;
 }
-.panchayat_selectors{
+
+.panchayat_selectors {
   padding: 0 0 50px 0;
 }
-.total_trans{
+
+.total_trans {
   font-size: 25px;
   margin-top: 20px;
   font-weight: lighter;
   font-family: 'Open Sans'
 }
+
+
 /******[ Chart custom styles ]**********/
 
 .chart-holder {
   padding-bottom: 50px;
   border-bottom: dashed 1px #6a8093;
 }
-.block_charts .chart-holder, .panchayat_charts-container .chart-holder {
+
+.block_charts .chart-holder,
+.panchayat_charts-container .chart-holder {
   margin-bottom: 50px;
   padding: 0 10px;
   border-right: dotted 1px #6a8093;
   border-bottom: 0;
 }
+
 .mg-chart-title {
   font-family: 'Open Sans';
   font-size: 2.1rem;
@@ -91,20 +93,24 @@ select{
   margin-bottom: 0;
   text-align: left;
 }
+
 .legend {
   margin-top: 20px;
 }
+
 .legend span {
   display: inline-block;
   width: 25%;
   margin-bottom: 15px;
 }
+
 .small_chart .mg-active-datapoint {
   font-size: .9rem;
   font-weight: 200;
   opacity: 1;
   fill: #aaa;
 }
+
 .small_chart .mg-chart-title {
   font-size: 1.2rem;
   margin: 0;
