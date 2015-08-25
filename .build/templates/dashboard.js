@@ -1,1 +1,1 @@
-(function(dust){dust.register("dashboard",body_0);function body_0(chk,ctx){return chk;}body_0.__dustBody=!0;return body_0}(dust));
+(function(dust){dust.register("dashboard",body_0);var blocks={"body":body_1};function body_0(chk,ctx){ctx=ctx.shiftBlocks(blocks);return chk.p("layouts/master",ctx,ctx,{});}body_0.__dustBody=!0;function body_1(chk,ctx){ctx=ctx.shiftBlocks(blocks);return chk;}body_1.__dustBody=!0;return body_0}(dust));
