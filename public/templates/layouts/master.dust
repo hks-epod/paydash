@@ -20,29 +20,17 @@
           <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
           <li class="pure-menu-item"><a href="#" class="pure-menu-link">Dashboard</a></li>
           <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+          <li class="pure-menu-item">
+          {#user}
+            <a href="/logout" class="pure-menu-link">Logout</a>
+          {:else}
+            <a href="/login" class="pure-menu-link">Login</a>
+          {/user}
+          </li>
         </ul>
       </div>
     </div>
-   {!  <header class="grey">
-      <div class="wrapper">
-        <h1>Paydash</h1>
-        <nav>
-          <ul class="nm-np inline">
-            <li><a href="/">Home</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <li>
-              {#user}
-                <a href="/logout">Logout</a>
-              {:else}
-                <a href="/login">Login</a>
-              {/user}
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header> !}
-
-      {+body /}
+    {+body /}
     <script src="/js/app.js"></script>
   </body>
 </html>

@@ -34,6 +34,10 @@ a:hover {
   color: #27d1ff;
   background: none;
 }
+/* line 33, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
+.m-t-40 {
+  margin-top: 140px;
+}
 /* line 2, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
 .main {
   padding: 80px 60px 20px 60px;
@@ -83,8 +87,9 @@ a:hover {
 .header .title {
   letter-spacing: 0.35em;
   color: #00bff3;
+  background-color: #092234;
 }
-/* line 27, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
+/* line 28, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .header h1 {
   font-size: 34px;
   font-weight: lighter;

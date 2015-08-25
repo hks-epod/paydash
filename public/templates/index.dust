@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="pure-u-1 pure-u-md-1-2">
-
+      <img class="pure-img m-t-40" src="images/charts.png" alt="">
     </div>
   </div>
 {/body}
