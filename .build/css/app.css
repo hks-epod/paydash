@@ -1,65 +1,82 @@
 @import "metricsgraphics.css";
+@import "theme.css";
+/* line 1, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+/* line 7, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 body {
   background-color: #092234;
   font-family: 'Open Sans';
   color: #6a8093;
   margin-top: 80px;
 }
+/* line 14, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 a,
 button {
   color: #2adbb9;
   text-decoration: none;
 }
+/* line 19, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 ::-webkit-input-placeholder {
   color: #2a333a;
 }
+/* line 23, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 :-moz-placeholder {
   /* Firefox 18- */
   color: #2a333a;
 }
+/* line 27, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 ::-moz-placeholder {
   /* Firefox 19+ */
   color: #2a333a;
 }
+/* line 31, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 :-ms-input-placeholder {
   color: #2a333a;
 }
+/* line 35, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 a:hover {
   color: #ffffff;
 }
+/* line 38, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 .pull-right {
   float: right;
 }
+/* line 41, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 .pure-menu-link {
   color: #00bff3;
 }
+/* line 44, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 .pure-menu-link:hover,
 .pure-menu-link:active,
 .pure-menu-link:focus {
   color: #27d1ff;
   background: none;
 }
+/* line 48, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 .m-t-40 {
   margin-top: 140px;
 }
+/* line 53, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 .paydash-form input[type="text"],
 .paydash-form input[type="password"] {
   background-color: #071c2b;
   border: solid 1px #071927;
   box-shadow: none;
 }
+/* line 59, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/base.less */
 .paydash-form label {
   margin: 15px 0;
 }
+/* line 2, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
 .main {
   padding: 80px 60px 20px 60px;
   font-family: 'Open Sans';
 }
+/* line 5, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
 .main h1 {
   font-weight: lighter;
   font-size: 35px;
@@ -69,6 +86,7 @@ a:hover {
   margin-bottom: 0;
   margin-top: 40px;
 }
+/* line 14, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
 .main h2 {
   font-size: 44px;
   font-weight: lighter;
@@ -76,16 +94,19 @@ a:hover {
   padding-top: 0;
   margin-top: 0;
 }
+/* line 24, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
 .login-form {
   max-width: 400px;
   padding: 40px;
   margin-left: auto;
   margin-right: auto;
 }
+/* line 29, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
 .login-form .dash-button {
   width: 100%;
   margin-top: 40px;
 }
+/* line 2, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .dash-button {
   color: rgba(255, 255, 255, 0.75);
   margin: 10px 20px 0 0;
@@ -95,24 +116,166 @@ a:hover {
   box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.4);
   background: -webkit-linear-gradient(top, #67809c, #323f5a);
 }
+/* line 12, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .dash-button:hover,
 .dash-button:active,
 .dash-button:focus {
   box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.1), 2px 2px 6px rgba(0, 0, 0, 0.4);
   background: -webkit-linear-gradient(top, #57708c, #222f4a);
 }
+/* line 20, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .header {
   position: fixed;
   top: 0px;
   width: 100%;
   padding: 20px;
 }
+/* line 25, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .header .title {
   letter-spacing: 0.35em;
   color: #00bff3;
   background-color: #092234;
 }
+/* line 30, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .header h1 {
   font-size: 34px;
   font-weight: lighter;
+}
+/* line 1, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+h1 {
+  font-size: 34px;
+  font-weight: lighter;
+}
+/* line 5, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+h2 {
+  font-size: 25px;
+  font-weight: lighter;
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+/* line 11, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+a,
+button {
+  /*color: #f64747;*/
+  color: #2adbb9;
+}
+/* line 15, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+a:hover,
+button:hover {
+  color: #cadce9;
+}
+/* line 18, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+select {
+  background-color: transparent;
+  border-radius: 0;
+  border-color: #6a8093;
+  height: 30px;
+}
+/* line 24, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.header {
+  padding: 40px;
+}
+/* line 27, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.logo {
+  float: left;
+  height: 70px;
+  margin-top: 11px;
+  margin-right: 10px;
+}
+/* line 33, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.container {
+  padding: 0 5%;
+}
+/* line 36, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.selectors {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: dotted 1px #6a8093;
+}
+/* line 41, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.selectors .pure-checkbox {
+  cursor: pointer;
+  /*color: #16A085*/
+}
+/* line 45, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.selectors input {
+  margin-left: 10px;
+  cursor: pointer;
+}
+/* line 49, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.modify-time-period-controls button {
+  background-color: transparent;
+  border: 0;
+}
+/* line 53, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.modify-time-period-controls button:focus {
+  outline: none;
+  border: 0;
+}
+/* line 57, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.modify-time-period-controls .selected {
+  color: #cadce9;
+}
+/* line 60, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.footer {
+  padding: 20px 0;
+  border-top: solid 1px #193244;
+  margin-top: 40px;
+}
+/* line 65, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.panchayat_selectors {
+  padding: 0 0 50px 0;
+}
+/* line 68, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.total_trans {
+  font-size: 25px;
+  margin-top: 20px;
+  font-weight: lighter;
+  font-family: 'Open Sans';
+}
+/******[ Chart custom styles ]**********/
+/* line 76, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.chart-holder {
+  padding-bottom: 50px;
+  border-bottom: dashed 1px #6a8093;
+}
+/* line 80, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.block_charts .chart-holder,
+.panchayat_charts-container .chart-holder {
+  margin-bottom: 50px;
+  padding: 0 10px;
+  border-right: dotted 1px #6a8093;
+  border-bottom: 0;
+}
+/* line 86, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.mg-chart-title {
+  font-family: 'Open Sans';
+  font-size: 2.1rem;
+  font-weight: lighter;
+  margin-top: 20px;
+  margin-bottom: 0;
+  text-align: left;
+}
+/* line 94, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.legend {
+  margin-top: 20px;
+}
+/* line 97, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.legend span {
+  display: inline-block;
+  width: 25%;
+  margin-bottom: 15px;
+}
+/* line 102, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.small_chart .mg-active-datapoint {
+  font-size: .9rem;
+  font-weight: 200;
+  opacity: 1;
+  fill: #aaa;
+}
+/* line 108, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
+.small_chart .mg-chart-title {
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
 }

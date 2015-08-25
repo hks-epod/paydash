@@ -8,7 +8,7 @@ module.exports = function(grunt) {
         script: 'index.js',
         ext: 'js,dust',
         ignore: ['node_modules/**'],
-        watch: ['server', '.build']
+        watch: ['server']
       }
     }
   });

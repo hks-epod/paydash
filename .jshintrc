@@ -8,7 +8,7 @@
     // Predefined globals
 
     // Whether the standard browser globals should be predefined.
-    "browser": false,
+    "browser": true,
     // Whether the Node.js environment globals should be predefined.
     "node": true,
     // Whether the Rhino environment globals should be predefined.
@@ -28,7 +28,7 @@
     "dojo": false,
 
     // Custom predefined globals.
-    "predef": [],
+    "predef": [ "d3", "MG"],
 
     // Development
 
@@ -140,7 +140,7 @@
     // Whether strict whitespace rules apply.
     "white": false,
     // Quote formatting
-    "quotmark": true,
+    "quotmark": false,
 
     // Complexity
 
