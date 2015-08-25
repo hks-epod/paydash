@@ -353,12 +353,13 @@ a:hover {
 }
 /* line 24, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
 .login-form {
+  font-size: 15px;
   max-width: 400px;
   padding: 40px;
   margin-left: auto;
   margin-right: auto;
 }
-/* line 29, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
+/* line 30, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/layout.less */
 .login-form .dash-button {
   width: 100%;
   margin-top: 40px;
@@ -383,17 +384,19 @@ a:hover {
 /* line 20, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .header {
   position: fixed;
+  font-size: 13px;
   top: 0px;
   width: 100%;
   padding: 20px;
+  background-color: #092234;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.05);
 }
-/* line 25, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
+/* line 28, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .header .title {
   letter-spacing: 0.35em;
   color: #00bff3;
-  background-color: #092234;
 }
-/* line 30, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
+/* line 32, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/components.less */
 .header h1 {
   font-size: 34px;
   font-weight: lighter;
@@ -419,7 +422,7 @@ select {
 }
 /* line 21, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
 .container {
-  padding: 0 5%;
+  padding: 30px 5%;
 }
 /* line 25, /Users/ravisuhag/Batcave/Workspace/Harvard/dev/paydash/public/css/dashboard.less */
 .selectors {

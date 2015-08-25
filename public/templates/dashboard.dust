@@ -1,7 +1,7 @@
 {>"layouts/master" /}
 
 {<body}
-    <div class="container">
+    <div class="container dashboard">
     <div class="modify-time-period-controls">
       <button class="selected" data-timeperiod>All</button>
       <button data-timeperiod="61">Past 60 days</button>

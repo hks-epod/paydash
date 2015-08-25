@@ -2559,7 +2559,9 @@ MG.button_layout = function(target) {
 
                     //add the area
                     var areas = svg.selectAll('.mg-main-area.mg-area' + (line_id) + '-color');
-                    var displayArea = args.area && !args.use_data_y_min && !args.y_axis_negative && args.data.length <= 1;
+                    // var displayArea = args.area && !args.use_data_y_min && !args.y_axis_negative && args.data.length <= 1;
+                    // Hacking to show areas for multiple lines
+                    var displayArea = args.area && !args.use_data_y_min && !args.y_axis_negative;
                     if (displayArea) {
                         //if area already exists, transition it
                         if (!areas.empty()) {
@@ -2779,7 +2781,7 @@ MG.button_layout = function(target) {
                     .sort(function(a, b) { return new Date(a.key) - new Date(b.key); });
 
                 // Undo the keys getting coerced to strings, by setting the keys from the values
-                // This is necessary for when we have X axis keys that are things like 
+                // This is necessary for when we have X axis keys that are things like
                 data_nested.forEach(function(entry) {
                     var datum = entry.values[0];
                     entry.key = datum[args.x_accessor];
@@ -2925,7 +2927,7 @@ MG.button_layout = function(target) {
                         j = args.custom_line_color_map[i];
                     }
 
-                    if (args.data[i].length == 1 
+                    if (args.data[i].length == 1
                             && !svg.selectAll('.mg-voronoi .mg-line' + j + '-color').empty()
                         ) {
                         svg.selectAll('.mg-voronoi .mg-line' + j + '-color')
