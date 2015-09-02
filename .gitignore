@@ -28,3 +28,7 @@ node_modules
 
 # Editor specific
 *.sublime-workspace
+
+.build
+config/development.json
+config/production.json
