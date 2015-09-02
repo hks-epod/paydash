@@ -6,10 +6,10 @@ module.exports = function(router) {
 
   router.get('/', function(req, res) {
 
-    ApiModel.blocks();
+    ApiModel.blocks(function(data) {
+      res.json(data);
+    });
 
-
-    res.send('jellp');
   });
 
 };
