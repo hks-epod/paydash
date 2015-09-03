@@ -6,6 +6,7 @@
     // stepwise_compare_lines: ['block', 'state', 'district'],
     stepwise_compare_lines: ['block'],
     panchyat_compare_lines: '',
+    panchayatGroupBy: 'Sub-Engineer',
     labels: [
       'Muster roll closure to muster roll entry',
       'Muster roll entry to wage list generation',
@@ -31,13 +32,13 @@
     drawBlockPerformance();
     drawStepwisePerformance();
     // chartTemplate(paydash.data.panchayats);
-    panchayatSortingTemplate(paydash.data.employees['Sub-Engineer']);
+    panchayatSortingTemplate(paydash.data.employees[paydash.panchayatGroupBy]);
     drawPanchayatPerformance();
   }
   // Time period Selection
-  d3.selectAll(".modify-time-period-controls button").on("click", function() {
+  d3.selectAll("#modify-time-period-controls button").on("click", function() {
     var target = d3.select(d3.event.target); // Define target
-    d3.selectAll(".modify-time-period-controls button").classed("selected", false); // change button state
+    d3.selectAll("#modify-time-period-controls button").classed("selected", false); // change button state
     target.classed("selected", true);
     paydash.past_n_days = target.attr("data-timeperiod");
     drawBlockPerformance(); // Draw block performance chart
@@ -59,6 +60,17 @@
     paydash.panchyat_compare_lines = d3.event.target.value;
     drawPanchayatPerformance();
   });
+  // Panchayat group by control
+  d3.selectAll("#panchayat-groupby-controls button").on("click", function() {
+    var target = d3.select(d3.event.target); // Define target
+    d3.selectAll("#panchayat-groupby-controls button").classed("selected", false); // change button state
+    target.classed("selected", true);
+    paydash.panchayatGroupBy = target.attr("data-groupby");
+    panchayatSortingTemplate(paydash.data.employees[paydash.panchayatGroupBy]);
+    drawPanchayatPerformance();
+  });
+
+
   // Build Line Data
   function parseLines(data, past_n_days, col, isCumulative) {
     if (past_n_days !== '') {
@@ -132,26 +144,32 @@
 
   // Panchayat sorting template
   function panchayatSortingTemplate(data) {
-    d3.select('.panchayat_charts-container').selectAll('div')
-      .data(data)
-      .enter().append("div")
-      .classed("heading", true)
-      .html(function(d, index) {
-        var htmlString = '<h2>' + d.name + '</h2>' +
-          '<div class="pure-g">';
+    d3.select('.panchayat_charts-container').selectAll('div').remove();
 
-        d.panchayats.forEach(function(panchayat, index) {
-          htmlString = htmlString +
-            '<div class="pure-u-6-24">' +
-            '<div class="chart-holder small_chart">' +
-            '<div id="p_' + panchayat.panchayat_code + '"></div>' +
-            '<div class="p_' + panchayat.panchayat_code + '_legend"></div>' +
-            '</div>' +
-            '</div>';
+    if (paydash.panchayatGroupBy === 'no') {
+      chartTemplate(paydash.data.panchayats);
+    } else {
+      d3.select('.panchayat_charts-container').selectAll('div')
+        .data(data)
+        .enter().append("div")
+        .classed("heading", true)
+        .html(function(d, index) {
+          var htmlString = '<h3>' + d.name + '</h3>' +
+            '<div class="pure-g">';
+
+          d.panchayats.forEach(function(panchayat, index) {
+            htmlString = htmlString +
+              '<div class="pure-u-6-24">' +
+              '<div class="chart-holder small_chart">' +
+              '<div id="p_' + panchayat.panchayat_code + '"></div>' +
+              '<div class="p_' + panchayat.panchayat_code + '_legend"></div>' +
+              '</div>' +
+              '</div>';
+          });
+          htmlString = htmlString + '</div>';
+          return htmlString;
         });
-        htmlString = htmlString + '</div>';
-        return htmlString;
-      });
+    }
   }
 
   //  Prepare panchayat chart templates

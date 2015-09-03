@@ -2,7 +2,7 @@
 
 {<body}
     <div class="container dashboard">
-    <div class="modify-time-period-controls">
+    <div id="modify-time-period-controls" class="paydash-controls">
       <button class="selected" data-timeperiod>All</button>
       <button data-timeperiod="61">Past 60 days</button>
       <button data-timeperiod="31">Past 30 days</button>
@@ -92,7 +92,7 @@
     <!-- reapeat -->
     <h2>Performance of your Panchayats</h2>
     <div class="panchayat_selectors">
-      <select id="panchayat_step_controls">
+      {! <select id="panchayat_step_controls">
         <option value="">All</option>
         <option value="1">Muster roll closure to muster roll entry</option>
         <option value="2">Muster roll entry to wage list generation</option>
@@ -101,7 +101,14 @@
         <option value="5">FTO generation to first signature</option>
         <option value="6">First signature to second signature</option>
         <option value="7">Second signature to processed by bank</option>
-      </select>
+      </select> !}
+      <div class="panchayat-sort">
+        <div id="panchayat-groupby-controls" class="paydash-controls">
+          <button data-groupby="no">No</button>
+          <button data-groupby="Sub-Engineer" class="selected">Sub Engineer</button>
+          <button data-groupby="Gram Rozgar Sahayak">Gram Rozgar Sahayak</button>
+      </div>
+      </div>
     </div>
     <div class="panchayat_charts-container">
     </div>
