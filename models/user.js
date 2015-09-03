@@ -9,13 +9,28 @@ var mongoose = require('mongoose'),
 var userModel = function() {
 
   var userSchema = mongoose.Schema({
-    name: String,
-    login: {
+    firstName: String,
+    lastName: String,
+    username: {
       type: String,
       unique: true
     },
     password: String,
-    role: String
+    role: String,
+    gender: String,
+    dob: String,
+    mobile: String,
+    email: String,
+    sas: Boolean,
+    sas_years: String,
+    ias: Boolean,
+    ias_years: String,
+    title: String,
+    region_type: String,
+    region_name: String,
+    work_email: String,
+    work_years: String,
+    time_on_nrega: String,
   });
 
   /**
