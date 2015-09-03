@@ -30,7 +30,8 @@
     paydash.data = data;
     drawBlockPerformance();
     drawStepwisePerformance();
-    chartTemplate(paydash.data.panchayats);
+    // chartTemplate(paydash.data.panchayats);
+    panchayatSortingTemplate(paydash.data.employees['Sub-Engineer']);
     drawPanchayatPerformance();
   }
   // Time period Selection
@@ -126,6 +127,31 @@
       });
     });
     return max;
+  }
+
+
+  // Panchayat sorting template
+  function panchayatSortingTemplate(data) {
+    d3.select('.panchayat_charts-container').selectAll('div')
+      .data(data)
+      .enter().append("div")
+      .classed("heading", true)
+      .html(function(d, index) {
+        var htmlString = '<h2>' + d.name + '</h2>' +
+          '<div class="pure-g">';
+
+        d.panchayats.forEach(function(panchayat, index) {
+          htmlString = htmlString +
+            '<div class="pure-u-6-24">' +
+            '<div class="chart-holder small_chart">' +
+            '<div id="p_' + panchayat.panchayat_code + '"></div>' +
+            '<div class="p_' + panchayat.panchayat_code + '_legend"></div>' +
+            '</div>' +
+            '</div>';
+        });
+        htmlString = htmlString + '</div>';
+        return htmlString;
+      });
   }
 
   //  Prepare panchayat chart templates

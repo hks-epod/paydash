@@ -103,7 +103,7 @@
         <option value="7">Second signature to processed by bank</option>
       </select>
     </div>
-    <div class="pure-g panchayat_charts-container">
+    <div class="panchayat_charts-container">
     </div>
   </div>
   <div class="footer">
