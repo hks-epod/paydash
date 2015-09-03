@@ -4,62 +4,63 @@
   <div class="login-form">
     <h2>Edit your profile</h2>
     <form id="editpofileForm" action="" method="post" class="pure-form pure-form-stacked paydash-form">
+
       <fieldset>
         <label for="firstName">First name</label>
-        <input class="pure-input-1" id="firstName" name="firstName" type="text" placeholder="Please enter your first name">
+        <input class="pure-input-1" id="firstName" name="firstName" type="text" value="{user.firstName}" placeholder="Please enter your first name">
         <label for="lastName">Last name</label>
-        <input class="pure-input-1" id="lastName" name="lastName" type="text" placeholder="Please enter your last name">
+        <input class="pure-input-1" id="lastName" name="lastName" value="{user.lastName}" type="text" placeholder="Please enter your last name">
         <label for="lastName">Gender</label>
-        <select name="gender" id="gender">
+        <select class="pure-input-1" name="gender" value="{user.gender}" id="gender">
           <option value="male">Male</option>
           <option value="female">Female</option>
         </select>
         <label for="dob">DOB</label>
-        <input class="pure-input-1" id="dob" name="dob" type="text" placeholder="Please enter your date of birth">
+        <input class="pure-input-1" id="dob" name="dob" type="text" value="{user.dob}" placeholder="Please enter your date of birth">
         <label for="dob">Mobile</label>
-        <input class="pure-input-1" id="mobile" name="mobile" type="text" placeholder="Please enter your mobile no">
+        <input class="pure-input-1" id="mobile" name="mobile" type="text" value="{user.mobile}" placeholder="Please enter your mobile no">
         <label for="email">Personal email</label>
-        <input class="pure-input-1" id="email" name="email" type="text" placeholder="Please enter your email id">
+        <input class="pure-input-1" id="email" name="email" value="{user.email}" type="text" placeholder="Please enter your email id">
         <label for="lastName">Member of state administrative service?</label>
-        <select name="sas" id="sas">
+        <select class="pure-input-1" name="sas" value="{user.sas}" id="sas">
           <option value="yes">Yes</option>
           <option value="no">no</option>
         </select>
         <label for="lastName">If yes, how many years ?</label>
-        <input class="pure-input-1" id="sas_years" name="sas_years" type="text" placeholder="Please enter no. of years">
+        <input class="pure-input-1" id="sas_years" name="sas_years" value="{user.sas_years}"  type="text" placeholder="Please enter no. of years">
         <label for="lastName">Member of IAS?</label>
-        <select name="ias" id="ias">
+        <select class="pure-input-1" name="ias" value="{user.ias}" id="ias">
           <option value="yes">Yes</option>
           <option value="no">no</option>
         </select>
         <label for="lastName">If yes, how many years ?</label>
-        <input class="pure-input-1" id="ias_years" name="ias_years" type="text" placeholder="Please enter no. of years">
+        <input class="pure-input-1" id="ias_years" name="ias_years" value="{user.ias_years}" type="text" placeholder="Please enter no. of years">
         <label for="title">Primary post</label>
-        <input class="pure-input-1" id="title" name="title" type="text" placeholder="Please enter your primary post">
+        <input class="pure-input-1" id="title" name="title" value="{user.title}" type="text" placeholder="Please enter your primary post">
         <label for="region_type">Region Type</label>
-        <select name="ias" id="ias">
+        <select class="pure-input-1" name="ias" value="{user.region_type}" id="ias">
           <option value="state">State</option>
           <option value="district">District</option>
           <option value="block">Block</option>
           <option value="gp">GP</option>
         </select>
         <label for="region_type">Region Name</label>
-        <select name="region_name" id="region_name">
+        <select class="pure-input-1" name="region_name" value="{user.region_name}" id="region_name">
           <option value="name">name</option>
         </select>
         <label for="email">Work email</label>
-        <input class="pure-input-1" id="work_email" name="work_email" type="text" placeholder="Please enter your work email">
+        <input class="pure-input-1" id="work_email" value="{user.work_email}" name="work_email" type="text" placeholder="Please enter your work email">
         <label for="email">Work years</label>
-        <input class="pure-input-1" id="work_year" name="work_year" type="text" placeholder="Please enter your Years in this post">
+        <input class="pure-input-1" id="work_years" name="work_years" value="{user.work_years}" type="text" placeholder="Please enter your Years in this post">
         <label for="email">About what percentage of time do you devote to MGNREGS in any given work week?</label>
-        <select name="region_name" id="region_name">
+        <select class="pure-input-1" name="time_on_nrega" value="{user.time_on_nrega}" id="region_name">
           <option value="0-10">0-10%</option>
           <option value="10-20">10-20%</option>
           <option value="20-30">20-30%</option>
           <option value="30-40">30-40%</option>
           <option value="40-50">40-50%</option>
           <option value="50-60">50-60%</option>
-          <option value=>60-70">60-70%</option>
+          <option value="60-70">60-70%</option>
           <option value="70-80">70-80%</option>
           <option value="80-90">80-90%</option>
           <option value="90-100">90-100%</option>
