@@ -18,7 +18,7 @@
     stepCols: [1, 2, 3, 4, 5, 6, 7]
   };
   // Load JSON
-  d3.json('js/api.json')
+  d3.json('/api/block')
     .on("progress", function() {
       console.info("progress", d3.event.loaded);
     })
