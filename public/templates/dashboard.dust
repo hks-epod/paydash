@@ -9,8 +9,11 @@
     </div>
     <div class="pure-g">
       <div class="pure-u-24-24">
-        <div class="chart-holder">
-          <div id="block_performance"></div>
+        <div class="chart-holder ">
+          <h2>Block performance</h2>
+          <div class="block_chart_holder">
+            <div id="block_performance"></div>
+          </div>
           <div class="legend"></div>
           <div class="total_trans">Total transaction : <span id="total_trans"></span></div>
         </div>
@@ -18,19 +21,19 @@
     </div>
     <h2>Stepwise performance of your block</h2>
     <div class="selectors pure-g">
-      <div class="pure-u-3-24">
+      <div class="pure-u-24-24 pure-u-md-3-24">
         <label for="option-one" class="pure-checkbox">
           Block Mean
           <input class="blockSelector" id="option-one" type="checkbox" value="block" checked>
         </label>
       </div>
-      <div class="pure-u-3-24">
+      <div class="pure-u-24-24 pure-u-md-3-24">
         <label for="option-two" class="pure-checkbox">
           Disctrict Mean
           <input class="blockSelector" id="option-two" type="checkbox" value="district" >
         </label>
       </div>
-      <div class="pure-u-3-24">
+      <div class="pure-u-24-24 pure-u-md-3-24">
         <label for="option-three" class="pure-checkbox">
           State Mean
           <input class="blockSelector" id="option-three" type="checkbox" value="state">
@@ -44,49 +47,47 @@
       </div> -->
     </div>
     <div class="pure-g block_charts">
-      <div class="pure-u-6-24">
+      <div class="pure-u-24-24 pure-u-md-6-24">
         <div class="chart-holder small_chart">
           <div id="s_1"></div>
           <div class="s_1_legend"></div>
         </div>
       </div>
-      <div class="pure-u-6-24">
+      <div class="pure-u-24-24 pure-u-md-6-24">
         <div class="chart-holder small_chart">
           <div id="s_2"></div>
           <div class="s_2_legend"></div>
         </div>
       </div>
-      <div class="pure-u-6-24">
+      <div class="pure-u-24-24 pure-u-md-6-24">
         <div class="chart-holder small_chart">
           <div id="s_3"></div>
           <div class="s_3_legend"></div>
         </div>
       </div>
-      <div class="pure-u-6-24">
+      <div class="pure-u-24-24 pure-u-md-6-24">
         <div class="chart-holder small_chart">
           <div id="s_4"></div>
           <div class="s_4_legend"></div>
         </div>
       </div>
-      <div class="pure-u-6-24">
+      <div class="pure-u-24-24 pure-u-md-6-24">
         <div class="chart-holder small_chart">
           <div id="s_5"></div>
           <div class="s_5_legend"></div>
         </div>
       </div>
-      <div class="pure-u-6-24">
+      <div class="pure-u-24-24 pure-u-md-6-24">
         <div class="chart-holder small_chart">
           <div id="s_6"></div>
           <div class="s_6_legend"></div>
         </div>
       </div>
-      <div class="pure-u-6-24">
+      <div class="pure-u-24-24 pure-u-md-6-24">
         <div class="chart-holder small_chart">
           <div id="s_7"></div>
           <div class="s_7_legend"></div>
         </div>
-      </div>
-      <div class="pure-u-6-24">
       </div>
     </div>
     <!-- reapeat -->

@@ -1,5 +1,17 @@
 (function() {
   "use strict";
+
+  // MENU
+  d3.selectAll("#top-ham").on("click", function() {
+    d3.selectAll("#top-ham").classed("active", function (d, i) {
+      return !d3.select(this).classed("active");
+    });
+    d3.selectAll(".menu-wrapper").classed("active", function (d, i) {
+      return !d3.select(this).classed("active");
+    });
+  });
+
+
   // Global state
   var paydash = {
     past_n_days: '',
@@ -159,7 +171,7 @@
 
           d.panchayats.forEach(function(panchayat, index) {
             htmlString = htmlString +
-              '<div class="pure-u-6-24">' +
+              '<div class="pure-u-24-24 pure-u-md-6-24">' +
               '<div class="chart-holder small_chart">' +
               '<div id="p_' + panchayat.panchayat_code + '"></div>' +
               '<div class="p_' + panchayat.panchayat_code + '_legend"></div>' +
@@ -240,11 +252,12 @@
   function detailViz(options) {
     console.log(options.data.length);
     MG.data_graphic({
-      title: options.title,
+      // title: options.title,
+      title : '',
       data: options.data,
       width: 600,
       height: 400,
-      left: 80,
+      left: 70,
       full_width: true,
       target: options.target,
       baselines: [{
