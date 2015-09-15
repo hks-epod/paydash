@@ -92,7 +92,7 @@
     <!-- reapeat -->
     <h2>Performance of your Panchayats</h2>
     <div class="panchayat_selectors">
-      {! <select id="panchayat_step_controls">
+      <select id="panchayat_step_controls">
         <option value="">All</option>
         <option value="1">Muster roll closure to muster roll entry</option>
         <option value="2">Muster roll entry to wage list generation</option>
@@ -101,7 +101,7 @@
         <option value="5">FTO generation to first signature</option>
         <option value="6">First signature to second signature</option>
         <option value="7">Second signature to processed by bank</option>
-      </select> !}
+      </select>
       <div class="panchayat-sort">
         <div id="panchayat-groupby-controls" class="paydash-controls">
           <button data-groupby="no">No</button>

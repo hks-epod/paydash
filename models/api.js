@@ -10,7 +10,6 @@ module.exports.init = function(pool) {
 module.exports.blocks = function(cb) {
 
   sqlpool.getConnection(function(err, connection) {
-
     if (err) {
       console.error("An error occurred: " + err);
     }
@@ -185,8 +184,8 @@ module.exports.blocks = function(cb) {
       // http://164.100.129.6/Netnrega/nrega-reportdashboard/api/dashboard_delay.aspx?fin_year=2015-2016&r_date=2015-08-25&Block_code=1709003&state_block_code=mp09
       // http://164.100.129.6/Netnrega/nrega-reportdashboard/api/dashboard_delay_api_3.aspx?fin_year=2015-2016&Block_code=2602001&state_block_code=PB02&state_code=26
       // console.log(JSON.stringify(final_dict));
-
-       cb(final_dict);
+      connection.release();
+      cb(final_dict);
 
       function padNum(num) {
         var str = num.toString();
@@ -221,6 +220,6 @@ module.exports.blocks = function(cb) {
 
 
 
-    connection.release();
+
   });
 };

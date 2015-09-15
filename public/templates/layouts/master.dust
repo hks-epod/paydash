@@ -13,6 +13,7 @@
     <![endif]-->
     <!--[if gt IE 8]><!-->
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+    <link rel="stylesheet" href="/css/dynatable.css">
     <!--<![endif]-->
     <link rel="stylesheet" href="/css/app.css">
   </head>
@@ -23,6 +24,7 @@
         <ul class="pure-menu-list pull-right">
           {#user}
           <li class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>
+          <li class="pure-menu-item"><a href="/profile/edit" class="pure-menu-link">Edit Profile</a></li>
           <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a>
           {:else}
           <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Login</a></li>
@@ -35,6 +37,7 @@
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
     <script src="/js/metricsgraphics.js"></script>
+    <script src="/js/dynatable.js"></script>
     <script src="/js/app.js"></script>
   </body>
 </html>

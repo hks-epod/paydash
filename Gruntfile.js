@@ -5,7 +5,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     nodemon: {
       dev: {
-        script: 'index.js',
+        script: 'server.js',
         ext: 'js,dust',
         ignore: ['node_modules/**'],
         watch: ['server']
