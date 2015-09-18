@@ -2,6 +2,10 @@
 	"folders":
 	[
 		{
+			"file_exclude_patterns":
+			[
+				"npm-debug.log"
+			],
 			"folder_exclude_patterns":
 			[
 				"node_modules"
