@@ -23,16 +23,23 @@
   <div class="header">
     <div class="pure-menu pure-menu-horizontal">
       <a href="/" class="pure-menu-heading title">PAYDASH</a>
-      <button id ="top-ham" class="pure-menu-heading navlink-top">Menu</button>
+      <button id="top-ham" class="pure-menu-heading navlink-top">Menu</button>
       <div class="menu-wrapper">
         <ul class="pure-menu-list pull-right">
           {#user}
-          <li class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>
+          <li class="pure-menu-item"><a href="/alerts" class="pure-menu-link">Alerts</a></li>
           <li class="pure-menu-item"><a href="/profile/edit" class="pure-menu-link">Edit Profile</a></li>
-          <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a> {:else}
-            <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Login</a></li>
-            {/user}
-          </li>
+          <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Logout</a></li>
+          {:else}
+          <li class="pure-menu-item"><a href="/login" class="pure-menu-link">Login</a></li>
+          {/user}
+        </ul>
+        <ul class="pure-menu-list">
+          {#user}
+          <li class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>
+          <li class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Current Musters</a></li>
+          <li class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Delayed Musters</a></li>
+          {/user}
         </ul>
       </div>
     </div>

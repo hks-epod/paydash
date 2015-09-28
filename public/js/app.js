@@ -41,11 +41,12 @@
   // Intialisation function
   function init(data) {
     paydash.data = data;
+    loadMeta();
     drawBlockPerformance();
     drawStepwisePerformance();
-    // chartTemplate(paydash.data.panchayats);
     panchayatSortingTemplate(paydash.data.employees[paydash.panchayatGroupBy]);
     drawPanchayatPerformance();
+
   }
   // Time period Selection
   d3.selectAll("#modify-time-period-controls button").on("click", function() {
@@ -197,6 +198,13 @@
           '</div>';
       });
   }
+
+  // Load Meta
+  function loadMeta(){
+    d3.select('#block_name').text(paydash.data.block_name);
+  }
+
+
   //  Specific Charts
   function drawBlockPerformance() {
     var b_data = parseLines(paydash.data.block.data, paydash.past_n_days, paydash.stepCols, true);

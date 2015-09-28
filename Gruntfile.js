@@ -7,8 +7,7 @@ module.exports = function(grunt) {
       dev: {
         script: 'server.js',
         ext: 'js,dust',
-        ignore: ['node_modules/**'],
-        watch: ['server']
+        ignore: ['node_modules/**']
       }
     }
   });

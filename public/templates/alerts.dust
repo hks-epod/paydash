@@ -1,0 +1,18 @@
+{>"layouts/master" /}
+
+{<body}
+    <div class="container alert-container">
+        <div class="alert">
+            <div class="close-button pull-right">x</div>
+            <div class="alert-title">Warning</div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. </p>
+           {!  <form id="loginForm" action="" method="post" class="pure-form pure-form-stacked paydash-form">
+                <fieldset>
+                    <textarea class="pure-input-1" id="feedback" name="feedback" type="text" placeholder="Please enter your feedback"></textarea>
+                    <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+                </fieldset>
+            </form> !}
+        </div>
+    </div>
+{/body}

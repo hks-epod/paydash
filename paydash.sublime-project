@@ -4,7 +4,8 @@
 		{
 			"file_exclude_patterns":
 			[
-				"npm-debug.log"
+				"npm-debug.log",
+				"paydash.sublime-project"
 			],
 			"folder_exclude_patterns":
 			[

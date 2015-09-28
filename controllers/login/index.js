@@ -4,12 +4,13 @@
 var passport = require('passport');
 
 module.exports = function(router) {
-    var ctx;
+
     router.get('/', function(req, res) {
         if (req.isAuthenticated()) {
             res.redirect('/profile');
         } else {
             //Include any error messages that come from the login process.
+            var ctx = {};
             ctx.messages = req.flash('error');
             res.render('login', ctx);
         }

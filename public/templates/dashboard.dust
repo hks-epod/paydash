@@ -2,10 +2,13 @@
 
 {<body}
     <div class="container dashboard">
-    <div id="modify-time-period-controls" class="paydash-controls">
-      <button class="selected" data-timeperiod>All</button>
-      <button data-timeperiod="61">Past 60 days</button>
-      <button data-timeperiod="31">Past 30 days</button>
+    <div class="clearfix">
+        <div id="modify-time-period-controls" class="paydash-controls pull-right">
+          <button class="selected" data-timeperiod>All</button>
+          <button data-timeperiod="61">Past 60 days</button>
+          <button data-timeperiod="31">Past 30 days</button>
+        </div>
+        <h1 class="block_name" id="block_name"></h1>
     </div>
     <div class="pure-g">
       <div class="pure-u-24-24">
