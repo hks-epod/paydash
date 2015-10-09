@@ -20,7 +20,7 @@ module.exports = function(router) {
     router.post('/', function(req, res) {
 
         passport.authenticate('local', {
-            successRedirect: req.session.goingTo || '/profile',
+            successRedirect: req.session.goingTo || '/dashboard',
             failureRedirect: '/login',
             failureFlash: true
         })(req, res);

@@ -13,31 +13,31 @@
     <div class="pure-g">
       <div class="pure-u-24-24">
         <div class="chart-holder ">
-          <h2>Block performance</h2>
+          <h2>Performance of your block</h2>
           <div class="block_chart_holder">
             <div id="block_performance"></div>
           </div>
           <div class="legend"></div>
-          <div class="total_trans">Total transaction : <span id="total_trans"></span></div>
+          <div class="total_trans">Total transaction <span id="total_trans"></span></div>
         </div>
       </div>
     </div>
     <h2>Stepwise performance of your block</h2>
     <div class="selectors pure-g">
       <div class="pure-u-24-24 pure-u-md-3-24">
-        <label for="option-one" class="pure-checkbox">
+        <label for="option-one" class="pure-checkbox u-mg-line1-color">
           Block Mean
           <input class="blockSelector" id="option-one" type="checkbox" value="block" checked>
         </label>
       </div>
       <div class="pure-u-24-24 pure-u-md-3-24">
-        <label for="option-two" class="pure-checkbox">
+        <label for="option-two" class="pure-checkbox u-mg-line2-color">
           Disctrict Mean
           <input class="blockSelector" id="option-two" type="checkbox" value="district" >
         </label>
       </div>
       <div class="pure-u-24-24 pure-u-md-3-24">
-        <label for="option-three" class="pure-checkbox">
+        <label for="option-three" class="pure-checkbox u-mg-line3-color">
           State Mean
           <input class="blockSelector" id="option-three" type="checkbox" value="state">
         </label>
@@ -108,9 +108,9 @@
       </select> !}
       <div class="panchayat-sort">
         <div id="panchayat-groupby-controls" class="paydash-controls">
-          <button data-groupby="no">No</button>
-          <button data-groupby="Sub-Engineer" class="selected">Sub Engineer</button>
-          <button data-groupby="Gram Rozgar Sahayak">Gram Rozgar Sahayak</button>
+          <button data-groupby="no">No Grouping</button>
+          <button data-groupby="Sub-Engineer" class="selected">Group by Sub Engineer</button>
+          <button data-groupby="Gram Rozgar Sahayak">Group by Gram Rozgar Sahayak</button>
       </div>
       </div>
     </div>

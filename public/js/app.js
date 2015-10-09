@@ -265,14 +265,16 @@
       data: options.data,
       width: 600,
       height: 400,
-      left: 70,
+      left: 90,
       full_width: true,
+      decimals : 2,
       target: options.target,
       baselines: [{
         value: 15,
         label: 'Ideal'
       }],
       xax_count: 20,
+      xax_format :d3.time.format('%d %b'),
       chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
       missing_text: 'No data',
       legend: options.labels,
@@ -284,14 +286,16 @@
       interplate: 'linear',
       interpolate_tension: 1,
       area: true,
-      y_label: 'Days',
+      y_label: 'Days to Process',
       mouseover: function(d, i) {
         d.values.forEach(function(val, index) {
           var prefix = d3.formatPrefix(val.value);
           var l_span = d3.select('.legend ' + '.mg-line' + val.line_id + '-legend-color');
           l_span.text(' ');
           l_span.text('— ' + paydash.labels[index] + ' : ' + prefix.scale(val.value).toFixed(2));
-          d3.select('#total_trans').text(val.total_trans);
+          console.log(val);
+          var format = d3.time.format("%b %d, %Y");
+          d3.select('#total_trans').text('on ' + format(val.date) + ': ' + val.total_trans);
         });
       },
       mouseout: function(d, i) {
@@ -313,7 +317,9 @@
       right: 10,
       left: 80,
       small_text: true,
-      xax_count: 1,
+      xax_count: 3,
+      decimals : 2,
+      xax_format :d3.time.format('%d %b'),
       chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
       missing_text: 'No data',
       target: options.target,
