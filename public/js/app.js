@@ -230,7 +230,7 @@
 
       smallViz({
         data: s_data,
-        title: paydash.data.config.headers[val],
+        title: paydash.labels[val-1],
         target: '#s_' + val,
         legend_target: '.s_' + val + '_legend',
         labels: paydash.labels,
@@ -293,9 +293,8 @@
           var l_span = d3.select('.legend ' + '.mg-line' + val.line_id + '-legend-color');
           l_span.text(' ');
           l_span.text('— ' + paydash.labels[index] + ' : ' + prefix.scale(val.value).toFixed(2));
-          console.log(val);
           var format = d3.time.format("%b %d, %Y");
-          d3.select('#total_trans').text('on ' + format(val.date) + ': ' + val.total_trans);
+          d3.select('#total_trans').text(format(val.date) + ': ' + val.total_trans);
         });
       },
       mouseout: function(d, i) {
@@ -329,7 +328,7 @@
       interplate: 'linear',
       linked: true,
       interpolate_tension: 1,
-      y_label: 'Days',
+      y_label: 'Days to Process',
       area: options.area
     });
   }
