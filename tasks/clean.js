@@ -1,13 +1,11 @@
 'use strict';
 
+var Gulp = require('gulp');
+var Del = require('del');
 
-module.exports = function clean(grunt) {
-    // Load task
-    grunt.loadNpmTasks('grunt-contrib-clean');
+Gulp.task('clean', function() {
 
-    // Options
-    return {
-        tmp: 'tmp',
-        build: '.build/templates'
-    };
-};
+    Del('.build').then(function(paths) {
+        console.log('Deleted files/folders:\n', paths);
+    });
+});

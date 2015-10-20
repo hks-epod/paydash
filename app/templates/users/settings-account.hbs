@@ -1,0 +1,44 @@
+<div class="container u-spacing-page-top">
+  <div class="pure-g">
+    <div class="pure-u pure-u-7-24">
+      {{> settings-nav}}
+    </div>
+    <div class="pure-u pure-u-10-24">
+      <div class="">
+        {{> flash}}
+        <h5 class="heading--sub">Email Settings</h5>
+        <p>Your primary email address will be used for account-related notifications as well as any web-based operations.</p>
+        <p>
+          Your primary email <b>{{credentials.email}} </b>is
+          {{#compare credentials.status '===' 'verified'}}
+            verfiied. <span class="pe-7s-check u-textColor--success u-textSize--large"></span>
+          {{/compare}}
+          {{#compare credentials.status '===' 'registered'}}
+            <span class="u-textColor--error">not verfiied.</span>
+            <br><a href="/send-verification-email">Send me confirmation email</a>
+          {{/compare}}
+        </p>
+        {{!-- <form data-tab="profile" method="post" action="">
+          <label for="email"> email</label>
+          <input class="u-full-width" type="email" id="email" name="email" value="{{credentials.email}}
+       "> {{> form_security}}
+          <input type=" submit" value="update" class=" button button--primary">
+        </form> --}}
+        <h5 class="heading--sub">Change Password</h5>
+        <form data-tab="profile" method="post" action="/me/settings/account/change-password">
+          <label for="password">Old password</label>
+          <input class="u-full-width" type="password" id="OldPassword" name="oldPassword" value="">
+          <label for="password">New password</label>
+          <input class="u-full-width" type="password" id="newPassword" name="newPassword" value="">
+          <label for="verify">Verify new password</label>
+          <input class="u-full-width" type="password" id="verify" name="verify" value="" autocorrect="off" autocapitalize="off"> {{> form_security}}
+          <input type="submit" value="update" class=" button button--primary">
+          <a href="/forgot-password">I forgot my password</a>
+        </form>
+        <h5 class="heading--sub">Delete Account</h5>
+        <p class="u-text-small u-noSpacing">Deactivating your account will remove it from Hackers League within a few minutes. You can sign back in whenever to reactivate your account and restore its content..</p>
+        <a class="u-textColor--error" href="">Deactivate</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+html {
+  font-size: 62.5%;
+}
+html,
+* {
+  box-sizing: border-box
+}
+body {
+  font-family: $fontType--body;
+  font-size: 1.5em; //Should be sync with $fontSize-base
+  line-height: 1.6;
+  color: rgba($color-foreground, 1);
+  font-weight: $fontWeight-thinnest;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
+}

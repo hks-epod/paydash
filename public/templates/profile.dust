@@ -1,6 +1,0 @@
-{>"layouts/master" /}
-
-{<body}
-    <h1>{@pre type="content" key="greeting"/}</h1>
-    <p>You are <strong>{user.name}</strong> and your role is <strong>{user.role}</strong></p>
-{/body}

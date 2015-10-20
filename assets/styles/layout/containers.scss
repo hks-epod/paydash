@@ -1,0 +1,33 @@
+.container {
+  max-width: 1100px;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.container-narrow {
+  width: 70%;
+  max-width: 450px;
+  margin-right: auto;
+  margin-left: auto;
+}
+// Table  Vertical Aligner
+.u-table {
+  display: table;
+  width: 100%;
+  height: 100%
+}
+.u-table-cell {
+  display: table-cell;
+  vertical-align: middle
+}
+//  Form Containers
+.form-narrow{
+  width: 70%;
+  margin:auto;
+}

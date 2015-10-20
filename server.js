@@ -1,12 +1,13 @@
 'use strict';
 
-var app = require('./index');
-var http = require('http');
+var Composer = require('./index');
+var Hoek = require('hoek');
 
-var server;
+Composer(function(err, server) {
 
-server = http.createServer(app);
-server.listen(process.env.PORT || 8000);
-server.on('listening', function() {
-    console.log('Server listening on http://localhost:%d', this.address().port);
+    Hoek.assert(!err, err);
+    server.start(function() {
+        console.log('Server is listening on ' + server.info.port);
+    });
+
 });

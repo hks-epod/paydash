@@ -1,5 +1,3 @@
-Paydash
-===========
+## Paydash
 
-MGNREGA - Payment delay dashboard
-
+Workers Payment Dashboard

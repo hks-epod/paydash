@@ -1,0 +1,29 @@
+<div class="container u-spacing-page-top">
+  <div class="pure-g">
+    <div class="pure-u pure-u-7-24">
+      {{> settings-nav}}
+    </div>
+    <div class="pure-u pure-u-10-24">
+      <div class="">
+        <h5 class="heading--sub">Profile Settings</h5>
+        {{> flash}}
+        <form data-tab="profile" method="post" action="">
+          {{#with user}}
+            <label for="firstName">First Name</label>
+            <input class="u-full-width" type="text" id="firstName" name="firstName" value="{{firstName}}" required>
+            <label for="lastName">Last Name</label>
+            <input class="u-full-width" type="text" id="lastName" name="lastName" value="{{lastName}}" autocorrect="off" autocapitalize="off" required>
+            <label for="location">Location</label>
+            <input class="u-full-width" type="text" id="location" name="location" value="{{location}}" autocorrect="off" autocapitalize="off">
+            <label for="location">Website</label>
+            <input class="u-full-width" type="text" id="url" name="url" value="{{url}}" placeholder="http://mysite.com" autocorrect="off" autocapitalize="off">
+            <label for="location">Company</label>
+            <input class="u-full-width" type="text" id="company" name="company" value="{{company}}" autocorrect="off" autocapitalize="off">
+          {{/with}}
+          {{> form_security}}
+          <input type="submit" value="save" class=" button button--primary">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

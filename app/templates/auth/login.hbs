@@ -1,0 +1,19 @@
+<div class="container-narrow u-spacing-page-top">
+  <h4 class="text-logo u-text-center">Hackers League</h4>
+  <p class="u-text-center">Enter your email address to sign into your account</p>
+  <div class="form-narrow">
+    {{> flash}}
+    <form action='' method='post'>
+      <label for="username">Username</label>
+      <input class="u-full-width" type="text" id="name" name="username" required="true" tabindex=2 autocorrect="off" autocapitalize="off" autofocus/>
+      <label for="password">Password</label>
+      <input class="u-full-width" type="password" id="password" name="password" required="true" tabindex=3 />
+      <input class="button button--primary u-full-width" type="submit" value="Submit" />
+      <p>
+        <a href="/forgot-password">Forgot</a> |
+        <a href="/signup">Signup</a>
+      </p>
+      {{> form_security}}
+    </form>
+  </div>
+</div>

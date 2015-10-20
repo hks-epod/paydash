@@ -1,0 +1,35 @@
+.splash {
+  position: relative;
+  height: 770px;
+  color: #fff;
+}
+
+.splash .overlay,
+.splash .animator {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  width: 100%;
+}
+
+.splash .overlay {
+  background-image: url(/images/grid.png);
+  background-color: rgba(30, 44, 79, .8);
+}
+
+.splash .lead {
+  margin-top: -46px;
+  margin-bottom: -35px;
+  font-size: 8rem;
+  font-weight: lighter;
+  letter-spacing: .13em;
+  line-height: 1.7em;
+  font-family: 'Digital-7'
+}
+
+.splash .sub-lead {
+  font-size: 20px;
+  color: rgba(#fff, .5);
+  font-family: 'Open Sans';
+  font-weight: lighter
+}

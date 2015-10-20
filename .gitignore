@@ -26,9 +26,12 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-# Editor specific
-*.sublime-workspace
+# Hackers League  Specific ignores
+/config/config.js
+.build/*
+test/artifacts/*
 
-.build
-config/development.json
-config/production.json
+
+#Sublime project files 
+*.sublime-project
+*.sublime-workspace
