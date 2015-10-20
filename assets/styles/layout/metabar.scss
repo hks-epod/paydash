@@ -12,7 +12,6 @@ $metabar-nav-right-spacing: $metabar-height*20/100;
 body {
   margin-top: $metabar-height;
 }
-
 .metabar {
   font-size: $fontSize-base;
   position: fixed;
@@ -24,27 +23,19 @@ body {
   min-height: $metabar-height;
   box-shadow: 0 0 1px rgba(0, 0, 0, .15);
   @extend .clearfix;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2)
 }
-
 .metabar .brand {
-  font-family: 'Digital-7';
+  letter-spacing: 0.35em;
+  font-size: 15px;
+  color: #00bff3;
+  text-transform: uppercase;
+  padding: 16px 40px 15px 20px;
   font-weight: 500;
   display: inline-block;
   float: left;
-  margin: 11px 40px 11px 20px;
-  width: 38px;
-  height: 38px;
-  line-height: 40px;
-  text-align: center;
-  border-radius: $borderRadius-base;
-  vertical-align: middle;
-  letter-spacing: .05em;
-  font-size: 2.7rem;
-  font-stretch: expanded;
-  background-color: $color-brand;
-  color: #fff;
+  font-size: 1.7rem;
 }
-
 
 /*--------[ Metabar Menu ]---------*/
 
@@ -52,7 +43,6 @@ body {
   margin-bottom: 0;
   font-size: .7em;
 }
-
 .metabar .menu .menu-item {
   font-size: 1.1em;
   line-height: 1.1rem;
@@ -62,14 +52,12 @@ body {
   text-transform: uppercase;
 }
 
-
 /*--------[ Metabar Right Menu ]---------*/
 
 .metabar-nav-right {
   margin-left: $metabar-nav-right-spacing;
   padding: $metabar-nav-right-spacing 0;
 }
-
 .metabar-nav-right .button {
   font-size: .7em;
   line-height: $metabar-height*60/100 -2;
@@ -78,7 +66,6 @@ body {
   margin-left: 10px;
   border-radius: 999em;
 }
-
 .metabar-nav-right .avatar {
   width: 36px;
   height: 36px;
@@ -92,6 +79,6 @@ body {
   border-radius: 999em;
 }
 .metabar-nav-right .avatar:hover,
-.metabar-nav-right .avatar:focus{
+.metabar-nav-right .avatar:focus {
   border: solid 1px rgba($color-foreground, .3);
 }
