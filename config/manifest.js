@@ -50,11 +50,11 @@ var manifest = {
             partialsPath: './app/templates/partials',
             layout: 'default'
         },
-        './lib/mongoose': Config.get('/mongodb'),
+        './lib/sequelize': Config.get('/sequelize'),
         './lib/auth': Config.get('/authCookie'),
         './app/routes/core': {},
-        './app/routes/auth': {},
-        './app/routes/users': {}
+        // './app/routes/auth': {},
+        // './app/routes/users': {}
     }
 };
 
