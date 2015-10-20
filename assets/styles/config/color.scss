@@ -5,8 +5,8 @@
 // All colors should be defined and used from here in all other files.
 $color-brand: rgb(30, 44, 79);
 $color-accent: rgb(51, 195, 240);
-$color-foreground: rgb(0, 0, 0);
-$color-background: rgb(255, 255, 255);
+$color-foreground: rgb(255,255,255);
+$color-background:rgb(9, 34, 52);
 // 
 // Brand Shades
 // 
@@ -31,4 +31,3 @@ $color-grey-light: rgba($color-foreground, .45);
 $color-grey-lighter: rgba($color-foreground, .3);
 $color-grey-lightest: rgba($color-foreground, .15);
 $color-grey-dim: rgba($color-foreground, .05);
-

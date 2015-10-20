@@ -17,7 +17,7 @@ body {
   font-size: $fontSize-base;
   position: fixed;
   z-index: 999;
-  background-color: #fff;
+  background-color: $color-background;
   top: 0;
   left: 0;
   width: 100%;

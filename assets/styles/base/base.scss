@@ -9,6 +9,7 @@ body {
   font-family: $fontType--body;
   font-size: 1.5em; //Should be sync with $fontSize-base
   line-height: 1.6;
+  background-color: #092234;
   color: rgba($color-foreground, 1);
   font-weight: $fontWeight-thinnest;
   text-rendering: optimizeLegibility;
