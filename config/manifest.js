@@ -53,7 +53,7 @@ var manifest = {
         './lib/sequelize': Config.get('/sequelize'),
         './lib/auth': Config.get('/authCookie'),
         './app/routes/core': {},
-        // './app/routes/auth': {},
+        './app/routes/auth': {}
         // './app/routes/users': {}
     }
 };

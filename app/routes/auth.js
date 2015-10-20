@@ -18,15 +18,16 @@ exports.register = function(plugin, options, next) {
                 method: 'GET',
                 path: '/login',
                 config: Controllers.auth.login.showForm
-            }, {
-                method: 'POST',
-                path: '/login',
-                config: Controllers.auth.login.postForm
-            }, {
-                method: '*',
-                path: '/logout',
-                config: Controllers.auth.logout
             }
+            // }, {
+            //     method: 'POST',
+            //     path: '/login',
+            //     config: Controllers.auth.login.postForm
+            // }, {
+            //     method: '*',
+            //     path: '/logout',
+            //     config: Controllers.auth.logout
+            // }
         ]);
 
         next();
