@@ -5,7 +5,7 @@ var dummy = require('../../helpers/dummy');
 
 exports.showPage = {
     handler: function(request, reply) {
-        return reply.view('dashboard/panchayat');
+        return reply.view('dashboard/block');
     }
 };
 

@@ -14,6 +14,8 @@ Gulp.task('webpack', function() {
             vendor: ['jquery', 'd3'],
             app: './assets/scripts/index.js'
         },
+        watch: true,
+        cache: true,
         output: {
             path: '.build/js/',
             filename: 'bundle.js'

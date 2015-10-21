@@ -17,7 +17,7 @@ var paths = {
         vendor: ['./assets/scripts/vendor/*.js'],
     },
     lint: [
-        './assets/scripts/**/*.js',
+        './assets/scripts/viz/*.js',
         './models/**/*.js',
         './routes/**/*.js',
         './controllers/**/*.js',

@@ -37,6 +37,7 @@
     "hoek": "^2.x.x",
     "inert": "^3.0.1",
     "joi": "^6.6.1",
+    "metrics-graphics": "^2.6.0",
     "mysql": "^2.9.0",
     "sequelize": "^3.12.2",
     "vision": "^3.0.0",
