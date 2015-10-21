@@ -11,7 +11,7 @@ Gulp.task('webpack', function() {
 
     var config = {
         entry: {
-            vendor: ['jquery'],
+            vendor: ['jquery', 'd3'],
             app: './assets/scripts/index.js'
         },
         output: {

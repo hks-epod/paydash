@@ -1,6 +1,5 @@
 'use strict';
 
-var mongoose = require('mongoose');
 var Boom = require('boom');
 var Joi = require('joi');
 var crypto = require('crypto');
@@ -62,9 +61,6 @@ exports.postForm = {
             return reply.redirect('/account');
         }
         var User = request.server.plugins.sequelize.db.User;
-        // sySZ7k7Vef+odY4vQ9hRbAB0E0VW//3KEDjwqYvBzjG0uLMewJ+CmFkUwlk/hjNGmaRCczh3Zfv+9I9a778Xww==
-        // console.log(crypto.createHash('md5').update(request.payload.password).digest('hex'));
-        // e10adc3949ba59abbe56e057f20f883e
         User.findOne({
             where: {
                 username: request.payload.username,

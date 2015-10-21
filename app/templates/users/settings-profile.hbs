@@ -5,20 +5,68 @@
     </div>
     <div class="pure-u pure-u-10-24">
       <div class="">
-        <h5 class="heading--sub">Profile Settings</h5>
-        {{> flash}}
+        <h5 class="heading--sub">Profile Settings</h5> {{> flash}}
         <form data-tab="profile" method="post" action="">
           {{#with user}}
-            <label for="firstName">First Name</label>
-            <input class="u-full-width" type="text" id="firstName" name="firstName" value="{{firstName}}" required>
-            <label for="lastName">Last Name</label>
-            <input class="u-full-width" type="text" id="lastName" name="lastName" value="{{lastName}}" autocorrect="off" autocapitalize="off" required>
-            <label for="location">Location</label>
-            <input class="u-full-width" type="text" id="location" name="location" value="{{location}}" autocorrect="off" autocapitalize="off">
-            <label for="location">Website</label>
-            <input class="u-full-width" type="text" id="url" name="url" value="{{url}}" placeholder="http://mysite.com" autocorrect="off" autocapitalize="off">
-            <label for="location">Company</label>
-            <input class="u-full-width" type="text" id="company" name="company" value="{{company}}" autocorrect="off" autocapitalize="off">
+            <label for="firstname">First Name</label>
+            <input class="u-full-width" type="text" id="firstname" name="firstname" value="{{firstname}}" required>
+            <label for="lastname">Last Name</label>
+            <input class="u-full-width" type="text" id="lastname" name="lastname" value="{{lastname}}" autocorrect="off" autocapitalize="off" required>
+            <label for="lastName">Gender</label>
+            <select class="u-full-width" name="gender" value="{user.gender}" id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <label for="dob">DOB</label>
+            <input class="u-full-width" id="dob" name="dob" type="text" value="{{user.dob}}" placeholder="Please enter your date of birth">
+            <label for="dob">Mobile</label>
+            <input class="u-full-width" id="mobile" name="mobile" type="text" value="{{user.mobile}}" placeholder="Please enter your mobile no">
+            <label for="email">Personal email</label>
+            <input class="u-full-width" id="email" name="email" value="{{user.email}}" type="text" placeholder="Please enter your email id">
+            <label for="lastName">Member of state administrative service?</label>
+            <select class="u-full-width" name="sas" value="{{user.sas}}" id="sas">
+              <option value="yes">Yes</option>
+              <option value="no">no</option>
+            </select>
+            <label for="lastName">If yes, how many years ?</label>
+            <input class="u-full-width" id="sas_years" name="sas_years" value="{{user.sas_years}}" type="text" placeholder="Please enter no. of years">
+            <label for="lastName">Member of IAS?</label>
+            <select class="u-full-width" name="ias" value="{{user.ias}}" id="ias">
+              <option value="yes">Yes</option>
+              <option value="no">no</option>
+            </select>
+            <label for="lastName">If yes, how many years ?</label>
+            <input class="u-full-width" id="ias_years" name="ias_years" value="{{user.ias_years}}" type="text" placeholder="Please enter no. of years">
+            <label for="title">Primary post</label>
+            <input class="u-full-width" id="title" name="title" value="{{user.title}}" type="text" placeholder="Please enter your primary post">
+            <label for="region_type">Region Type</label>
+            <select class="u-full-width" name="ias" value="{{user.region_type}}" id="ias">
+              <option value="state">State</option>
+              <option value="district">District</option>
+              <option value="block">Block</option>
+              <option value="gp">GP</option>
+            </select>
+            <label for="region_type">Region Name</label>
+            <select class="u-full-width" name="region_name" value="{{user.region_name}}" id="region_name">
+              <option value="name">name</option>
+            </select>
+            <label for="email">Work email</label>
+            <input class="u-full-width" id="work_email" value="{{user.work_email}}" name="work_email" type="text" placeholder="Please enter your work email">
+            <label for="email">Work years</label>
+            <input class="u-full-width" id="work_years" name="work_years" value="{{user.work_years}}" type="text" placeholder="Please enter your Years in this post">
+            <label for="email">About what percentage of time do you devote to MGNREGS in any given work week?</label>
+            <select class="u-full-width" name="time_on_nrega" value="{{user.time_on_nrega}}" id="region_name">
+              <option value="0-10">0-10%</option>
+              <option value="10-20">10-20%</option>
+              <option value="20-30">20-30%</option>
+              <option value="30-40">30-40%</option>
+              <option value="40-50">40-50%</option>
+              <option value="50-60">50-60%</option>
+              <option value="60-70">60-70%</option>
+              <option value="70-80">70-80%</option>
+              <option value="80-90">80-90%</option>
+              <option value="90-100">90-100%</option>
+            </select>
           {{/with}}
           {{> form_security}}
           <input type="submit" value="save" class=" button button--primary">

@@ -1,8 +1,6 @@
 'use strict';
 
-var mongoose = require('mongoose');
 var Joi = require('joi');
-var User = mongoose.model('User');
 
 exports.showNotificationForm = {
     description: 'Show notifications settings',

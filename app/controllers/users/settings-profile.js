@@ -1,23 +1,16 @@
 'use strict';
 
-var mongoose = require('mongoose');
 var Joi = require('joi');
-var User = mongoose.model('User');
 
 exports.showEditProfile = {
     description: 'Show Edit profile settings',
     handler: function(request, reply) {
-        var id = request.auth.credentials._id.toString();
-        User.findById(id, function(err, user) {
-            if (err) {
-                request.session.flash('error', 'An internal server error occurred');
-                reply.redirect('/me/settings/profile');
-            }
-            var ctx = {
-                user: user
-            };
-            reply.view('users/settings-profile', ctx);
-        });
+        console.log(request.auth.credentials);
+        var ctx = {
+            user: request.auth.credentials
+        };
+        reply.view('users/settings-profile', ctx);
+
     }
 };
 
@@ -48,17 +41,17 @@ exports.postEditProfile = {
         var options = {
             new: true
         };
-        User.findByIdAndUpdate(id, update, options, function(err, user) {
-            if (err) {
-                request.session.flash('error', 'An internal server error occurred');
-                return reply.redirect('/me/settings/profile');
-            }
-            // Reset the session
-            request.auth.session.clear();
-            request.auth.session.set(user);
-            request.session.flash('success', 'Profile successfully saved');
-            return reply.redirect('/me/settings/profile');
-        });
+        // User.findByIdAndUpdate(id, update, options, function(err, user) {
+        //     if (err) {
+        //         request.session.flash('error', 'An internal server error occurred');
+        //         return reply.redirect('/me/settings/profile');
+        //     }
+        //     // Reset the session
+        //     request.auth.session.clear();
+        //     request.auth.session.set(user);
+        //     request.session.flash('success', 'Profile successfully saved');
+        //     return reply.redirect('/me/settings/profile');
+        // });
 
 
     }

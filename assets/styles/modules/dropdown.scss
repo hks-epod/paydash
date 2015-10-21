@@ -1,7 +1,7 @@
 // Variables
 $caret-width: .3em !default;
 $zindex-dropdown: 1000 !default;
-$dropdown--border: rgba(0, 0, 0, .15) !default;
+$dropdown--border: rgba($color-foreground, .15) !default;
 $dropdown--color: $color-grey-light;
 $dropdown--color-hover: $color-grey-dark;
 $dropdown--color-active: $color-grey-darkest;
@@ -70,7 +70,7 @@ $dropdown--fontSize: $fontSize-small;
   -ms-transform: rotate(45deg) translate(6px, 6px);
   transform: rotate(45deg) translate(6px, 6px);
   background: $color-background;
-  box-shadow: -1px -1px 1px -1px rgba(0, 0, 0, .44);
+  box-shadow: -1px -1px 1px -1px rgba($color-foreground, .44);
 }
 .dropdown-menu-right.dropdown-menu-pointing:before {
   top: -14px;

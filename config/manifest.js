@@ -39,7 +39,6 @@ var manifest = {
         },
         inert: {},
         vision: {},
-        bell: {},
         visionary: {
             engines: {
                 hbs: 'handlebars'
@@ -53,8 +52,9 @@ var manifest = {
         './lib/sequelize': Config.get('/sequelize'),
         './lib/auth': Config.get('/authCookie'),
         './app/routes/core': {},
-        './app/routes/auth': {}
-        // './app/routes/users': {}
+        './app/routes/auth': {},
+        './app/routes/users': {},
+        './app/routes/dashboard': {}
     }
 };
 

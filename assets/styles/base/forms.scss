@@ -75,3 +75,21 @@ label > .label-body {
 .honey {
   display: none
 }
+// 
+// Placeholder style
+// 
+::-webkit-input-placeholder {
+   color: $color-grey-lightest;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: $color-grey-lightest;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $color-grey-lightest;  
+}
+
+:-ms-input-placeholder {  
+   color: $color-grey-lightest;  
+}
