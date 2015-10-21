@@ -19,7 +19,7 @@ exports.large = function detailViz(options, paydash) {
             label: 'Ideal'
         }],
         xax_count: 20,
-        xax_format: d3.time.format('%b'),
+        xax_format: d3.time.format('%e %b'),
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
         missing_text: 'No data',
         legend: options.labels,
