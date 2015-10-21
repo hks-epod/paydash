@@ -17,7 +17,13 @@ exports.register = function(plugin, options, next) {
             {
                 method: 'GET',
                 path: '/dashboard/block',
-                config: Controllers.dashboard.block
+                config: Controllers.dashboard.block.showPage
+            },
+            // Block Dashoard
+            {
+                method: 'GET',
+                path: '/dashboard/block/data',
+                config: Controllers.dashboard.block.getData
             },
             // Panchayat Dashboard
             {
