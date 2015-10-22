@@ -4,21 +4,21 @@ var d3 = require('d3');
 var MG = require('../components/metricsgraphics');
 
 exports.large = function detailViz(options, paydash) {
-  
+
     MG.data_graphic({
         // title: options.title,
         title: '',
         data: options.data,
         width: 600,
         height: 500,
-        left: 90,
+        left: 100,
         full_width: true,
         target: options.target,
         baselines: [{
             value: 15,
             label: 'Ideal'
         }],
-        xax_count: 20,
+        xax_count: 15,
         xax_format: d3.time.format('%e %b'),
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
         missing_text: 'No data',

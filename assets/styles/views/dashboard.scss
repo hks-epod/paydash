@@ -9,3 +9,23 @@
   width: auto;
   margin-bottom: 0;
 }
+.legend {
+  margin-top: 20px;
+}
+.legend span {
+  display: inline-block;
+  width: 25%;
+  margin-bottom: 15px;
+}
+.mg-x-axis .label,
+.mg-y-axis .label,
+.mg-axis .label {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.mg-x-axis text,
+.mg-y-axis text,
+.mg-histogram .axis text {
+  font-size: 1.3rem;
+}
