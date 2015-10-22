@@ -1,0 +1,53 @@
+{
+  "express": {
+    "view cache": false,
+    "view engine": "dust",
+    "views": "path:./public/templates"
+  },
+  "view engines": {
+    "dust": {
+      "module": "makara",
+      "renderer": {
+        "method": "dust",
+        "arguments": [{
+          "cache": true,
+          "helpers": "config:dust.helpers"
+        }]
+      }
+    }
+  },
+  "sqldbConfig": {
+    "host": "epodindia.cvthz0qudx9w.ap-southeast-1.rds.amazonaws.com",
+    "user": "paydash",
+    "password": "ep()danalytics1235",
+    "database": "nrega_payments",
+    "multipleStatements": true
+  },
+  "middleware": {
+    "devtools": {
+      "enabled": true,
+      "priority": 35,
+      "module": {
+        "name": "construx",
+        "arguments": [
+          "path:./public",
+          "path:./.build", {
+            "template": {
+              "module": "construx-dustjs",
+              "files": "/templates/**/*.js",
+              "base": "templates"
+            },
+            "css": {
+              "module": "construx-less",
+              "files": "/css/**/*.css"
+            },
+            "copier": {
+              "module": "construx-copier",
+              "files": "**/*"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
