@@ -19,13 +19,12 @@ var paydash = {
         'First signature to second signature',
         'Second signature to processed by bank',
     ],
-    // stepCols: [1, 2, 3, 4, 5, 6, 7]
-    stepCols: [1,2]
+    stepCols: [1, 2, 3, 4, 5, 6, 7]
 };
 
 
 //  Specific Charts
-function drawBlockPerformance() {
+function drawBlockPerformance(area) {
     var b_data = parser.lines(paydash.data.block.data, paydash.past_n_days, paydash.stepCols, true);
     chart.large({
         data: b_data,
@@ -53,7 +52,12 @@ d3.selectAll('#modify-time-period-controls').on('change', function() {
 });
 
 // Step Selection
-d3.selectAll('#modify-time-period-controls').on('change', function() {
-    paydash.past_n_days = d3.event.target.value;
-    drawBlockPerformance();
-});
+// d3.selectAll('#modify-step-controls').on('change', function() {
+//     d3.selectAll('path.mg-main-area').remove(); // Hack to overcome MG's limitation of clearning areas
+//     if (d3.event.target.value === '') {
+//         paydash.stepCols = [1, 2, 3, 4, 5, 6, 7];
+//     } else {
+//         paydash.stepCols = [d3.event.target.value];
+//     }
+//     drawBlockPerformance();
+// });

@@ -2630,6 +2630,7 @@ MG.button_layout = function(target) {
                     // ravi suhag - hack to show areas for multiple lines
                     var displayArea = args.area && !args.use_data_y_min;
                     if (displayArea) {
+
                         //if area already exists, transition it
                         if (!areas.empty()) {
                             svg.select('.mg-y-axis').node().parentNode.appendChild(areas.node());
