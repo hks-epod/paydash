@@ -1,9 +1,31 @@
-<div class="container-fluid u-spacing-page-top">
-  <div id="modify-time-period-controls" class="">
-    <button class="button selected" data-timeperiod>All</button>
+<div class="container-fluid u-spacing-page-top dashboard">
+  <div class="u-textSize--large">
+    You are looking at
+    <select class="button" name="" id="" placeholder="Select a Block">
+      <option value="">Gunor</option>
+    </select>
+    block's performance for
+    <select id="modify-time-period-controls" class="button" name="">
+      <option value="">past all</option>
+      <option value="61">past 60</option>
+      <option value="31">past 30</option>
+    </select> days of
+    <select class="button" name="" id="">
+      <option value="">all the steps</option>
+      <option value="61">Muster roll closure to muster roll entry</option>
+      <option value="">Muster roll entry to wage list generation</option>
+      <option value="">FTO generation to first signature</option>
+      <option value="">Wage list generation to wage list sign</option>
+      <option value="">Wage list sign to FTO generation</option>
+      <option value="">First signature to second signature</option>
+      <option value="">Second signature to processed by bank</option>
+    </select>.
+  </div>
+  {{!--   <div id="modify-time-period-controls" class="">
+    <button class="button" data-timeperiod>All</button>
     <button class="button" data-timeperiod="61">Past 60 days</button>
     <button class="button" data-timeperiod="31">Past 30 days</button>
-  </div>
+  </div> --}}
   <div class="pure-g">
     <div class="pure-u-24-24">
       <div class="chart-holder">

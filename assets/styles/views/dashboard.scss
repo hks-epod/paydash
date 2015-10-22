@@ -1,0 +1,11 @@
+.dashboard .button,
+.dashboard .button:hover,
+.dashboard .button:focus {
+  font-size: 2rem;
+  color: rgba($color-foreground, 1);
+  border: 0;
+  text-transform: none;
+  font-weight: inherit;
+  width: auto;
+  margin-bottom: 0;
+}

@@ -75,10 +75,15 @@ d3.json('/dashboard/block/data')
     });
 
 // Time period Selection
-d3.selectAll('#modify-time-period-controls button').on('click', function() {
-    var target = d3.select(d3.event.target); // Define target
-    d3.selectAll('#modify-time-period-controls button').classed('selected', false); // change button state
-    target.classed('selected', true);
-    paydash.past_n_days = target.attr('data-timeperiod');
-    drawBlockPerformance(); // Draw block performance chart
+// d3.selectAll('#modify-time-period-controls button').on('click', function() {
+//     var target = d3.select(d3.event.target); // Define target
+//     d3.selectAll('#modify-time-period-controls button').classed('active', false); // change button state
+//     target.classed('active', true);
+//     paydash.past_n_days = target.attr('data-timeperiod');
+//     drawBlockPerformance(); // Draw block performance chart
+// });
+
+d3.selectAll('#modify-time-period-controls').on('change', function() {
+    paydash.past_n_days = d3.event.target.value;
+    drawBlockPerformance();
 });
