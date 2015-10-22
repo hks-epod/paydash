@@ -24,14 +24,34 @@ var paydash = {
 
 
 //  Specific Charts
-function drawBlockPerformance(area) {
+function drawBlockPerformance() {
     var b_data = parser.lines(paydash.data.block.data, paydash.past_n_days, paydash.stepCols, true);
     chart.large({
         data: b_data,
         title: 'Block Performance',
         target: '#block_performance',
-        legend_target: '.legend',
-        labels: paydash.labels
+        legend_target: '.block_legend',
+        labels: paydash.labels,
+        area: true
+    }, paydash);
+}
+
+function drawBlockComparison(val) {
+    var c_data = [];
+    paydash.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
+        var line_data = parser.lines(paydash.data[stepwise_compare_line].data, paydash.past_n_days, [val], false);
+        if (line_data[0]) {
+            c_data.push(line_data[0]); // Workaround to append region data
+        }
+    });
+
+    chart.large({
+        data: c_data,
+        title: paydash.labels[val - 1],
+        target: '#block_comparison',
+        legend_target: '.comparison_legend',
+        labels: paydash.labels,
+        area: false
     }, paydash);
 }
 
@@ -43,12 +63,25 @@ d3.json('/dashboard/block/data')
     .get(function(error, data) {
         paydash.data = data;
         drawBlockPerformance();
+        drawBlockComparison(1);
     });
 
 // Time period Selection
 d3.selectAll('#modify-time-period-controls').on('change', function() {
     paydash.past_n_days = d3.event.target.value;
     drawBlockPerformance();
+});
+
+
+//Stepwise charts step selection
+d3.selectAll('.blockSelector').on('click', function() {
+    paydash.stepwise_compare_lines = [];
+    d3.selectAll('.blockSelector').each(function() {
+        if (this.checked === true) {
+            paydash.stepwise_compare_lines.push(this.value);
+        }
+    });
+    drawBlockComparison(1);
 });
 
 // Step Selection

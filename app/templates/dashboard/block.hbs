@@ -10,7 +10,7 @@
       <option value="61">past 60</option>
       <option value="31">past 30</option>
     </select>
-{{!--     <select class="button" name="" id="modify-step-controls">
+    {{!--     <select class="button" name="" id="modify-step-controls">
       <option value="">all the steps</option>
       <option value="1">Muster roll closure to muster roll entry</option>
       <option value="2">Muster roll entry to wage list generation</option>
@@ -27,8 +27,41 @@
         <div class="block_chart_holder">
           <div id="block_performance"></div>
         </div>
-        <div class="legend"></div>
-        <div class="u-textSize--largest">Total transactions on <span id="total_trans"></span></div>
+        <div class="legend block_legend"></div>
+        <div class="u-textSize--largest">Total transactions on <span id="block_performance_total_trans"></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="u-block-divider"></div>
+  <div class="u-textSize--largest">Performance comparison</div>
+  <div class="selectors pure-g">
+    <div class="pure-u pure-u-24-24 pure-u-md-3-24">
+      <label for="option-one" class="pure-checkbox u-mg-line1-color">
+        Block Mean
+        <input class="blockSelector" id="option-one" type="checkbox" value="block" checked>
+      </label>
+    </div>
+    <div class="pure-u pure-u-24-24 pure-u-md-3-24">
+      <label for="option-two" class="pure-checkbox u-mg-line2-color">
+        District Mean
+        <input class="blockSelector" id="option-two" type="checkbox" value="district">
+      </label>
+    </div>
+    <div class="pure-u pure-u-24-24 pure-u-md-3-24">
+      <label for="option-three" class="pure-checkbox u-mg-line3-color">
+        State Mean
+        <input class="blockSelector" id="option-three" type="checkbox" value="state">
+      </label>
+    </div>
+  </div>
+  <div class="pure-g">
+    <div class="pure-u-24-24">
+      <div class="chart-holder">
+        <div class="block_chart_holder">
+          <div id="block_comparison"></div>
+        </div>
+        <div class="legend comparison_legend"></div>
+        <div class="u-textSize--largest">Total transactions on <span id="block_comparison_total_trans"></span></div>
       </div>
     </div>
   </div>

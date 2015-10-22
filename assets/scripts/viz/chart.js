@@ -30,7 +30,7 @@ exports.large = function detailViz(options, paydash) {
         transition_on_update: false,
         interplate: 'linear',
         interpolate_tension: 1,
-        area: true,
+        area: options.area,
         y_label: 'Days to Process',
         mouseover: function(d, i) {
             if (!d.values) {
@@ -38,11 +38,11 @@ exports.large = function detailViz(options, paydash) {
             }
             d.values.forEach(function(val, index) {
                 var prefix = d3.formatPrefix(val.value);
-                var l_span = d3.select('.legend ' + '.mg-line' + val.line_id + '-legend-color');
+                var l_span = d3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
                 l_span.text('— ' + paydash.labels[index] + ' : ' + prefix.scale(val.value).toFixed(2));
                 var format = d3.time.format('%b %d, %Y');
-                d3.select('#total_trans').text(format(val.date) + ': ' + val.total_trans);
+                d3.select(options.target + '_total_trans').text(format(val.date) + ': ' + val.total_trans);
             });
         },
         mouseout: function(d, i) {
@@ -50,7 +50,7 @@ exports.large = function detailViz(options, paydash) {
                 d.values = [d];
             }
             d.values.forEach(function(val, index) {
-                var l_span = d3.select('.legend ' + '.mg-line' + val.line_id + '-legend-color');
+                var l_span = d3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
                 l_span.text('— ' + paydash.labels[index]);
             });

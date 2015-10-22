@@ -29,3 +29,26 @@
 .mg-histogram .axis text {
   font-size: 1.3rem;
 }
+.u-block-divider {
+  margin: 40px 0;
+  border-bottom: dashed 1px $color-grey-lighter;
+}
+.selectors {
+  margin: 20px 0;
+  padding: 12px 15px;
+  border: dotted 1px #6a8093;
+}
+.selectors .pure-checkbox,
+.selectors input {
+  cursor: pointer;
+  margin-bottom: 0;
+}
+.u-mg-line1-color {
+  color: #ffd300;
+}
+.u-mg-line2-color {
+  color: #18ff00;
+}
+.u-mg-line3-color {
+  color: #f57070;
+}
