@@ -19,7 +19,8 @@ var paydash = {
         'First signature to second signature',
         'Second signature to processed by bank',
     ],
-    stepCols: [1, 2, 3, 4, 5, 6, 7]
+    // stepCols: [1, 2, 3, 4, 5, 6, 7]
+    stepCols: [1,2]
 };
 
 
@@ -41,12 +42,17 @@ d3.json('/dashboard/block/data')
         console.info('progress', d3.event.loaded);
     })
     .get(function(error, data) {
-        console.log(data);
         paydash.data = data;
         drawBlockPerformance();
     });
 
 // Time period Selection
+d3.selectAll('#modify-time-period-controls').on('change', function() {
+    paydash.past_n_days = d3.event.target.value;
+    drawBlockPerformance();
+});
+
+// Step Selection
 d3.selectAll('#modify-time-period-controls').on('change', function() {
     paydash.past_n_days = d3.event.target.value;
     drawBlockPerformance();

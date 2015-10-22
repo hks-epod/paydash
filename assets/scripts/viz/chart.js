@@ -33,6 +33,9 @@ exports.large = function detailViz(options, paydash) {
         area: true,
         y_label: 'Days to Process',
         mouseover: function(d, i) {
+            if (!d.values) {
+                d.values = [d];
+            }
             d.values.forEach(function(val, index) {
                 var prefix = d3.formatPrefix(val.value);
                 var l_span = d3.select('.legend ' + '.mg-line' + val.line_id + '-legend-color');
@@ -43,11 +46,41 @@ exports.large = function detailViz(options, paydash) {
             });
         },
         mouseout: function(d, i) {
+            if (!d.values) {
+                d.values = [d];
+            }
             d.values.forEach(function(val, index) {
                 var l_span = d3.select('.legend ' + '.mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
                 l_span.text('— ' + paydash.labels[index]);
             });
         }
+    });
+};
+
+
+exports.small = function(options) {
+    MG.data_graphic({
+        title: options.title,
+        data: options.data,
+        width: 295,
+        height: 200,
+        right: 10,
+        left: 80,
+        small_text: true,
+        xax_count: 3,
+        decimals: 2,
+        xax_format: d3.time.format('%d %b'),
+        chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
+        missing_text: 'No data',
+        target: options.target,
+        full_width: true,
+        transition_on_update: false,
+        max_y: options.max_y || undefined,
+        interplate: 'linear',
+        linked: true,
+        interpolate_tension: 1,
+        y_label: 'Days to Process',
+        area: options.area
     });
 };
