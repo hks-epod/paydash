@@ -10,7 +10,7 @@ module.exports = {
     },
     handler: function(request, reply) {
 
-        return reply.view('dashboard/panchayat'); // TO RAVI : NEED TO UPDATE THIS
+        return reply.view('dashboard/???'); // TO RAVI : NEED TO UPDATE THIS
 
     }
 };
