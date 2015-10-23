@@ -57,15 +57,21 @@ function drawBlockComparison(val) {
 }
 
 // Load JSON
-d3.json('/dashboard/block/data')
-    .on('progress', function() {
-        console.info('progress', d3.event.loaded);
-    })
-    .get(function(error, data) {
-        paydash.data = data;
-        drawBlockPerformance();
-        drawBlockComparison(1);
-    });
+function blockInit() {
+    d3.json('/dashboard/block/data')
+        .on('progress', function() {
+            console.info('progress', d3.event.loaded);
+        })
+        .get(function(error, data) {
+            paydash.data = data;
+            drawBlockPerformance();
+            drawBlockComparison(1);
+        });
+}
+if (window.location.pathname === '/dashboard/block') {
+    blockInit();
+}
+
 
 // Time period Selection
 d3.selectAll('#modify-time-period-controls').on('change', function() {
