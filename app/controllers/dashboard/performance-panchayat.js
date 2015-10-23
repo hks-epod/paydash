@@ -1,6 +1,6 @@
 'use strict';
-var d3 = require('d3');
 
+var d3 = require('d3');
 var queries = require('../../helpers/queries');
 var dummy = require('../../helpers/dummy');
 
@@ -26,12 +26,12 @@ exports.getData = {
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
-            
+
             var final_dict = {};
             var blockName = rows[0][0].block_name;
             var panchayatResponse = rows[1];
             var employeeResponse = rows[2];
-            
+
             // process panchayat data
             final_dict.panchayats = d3.nest()
                 .key(function(d) {
@@ -109,7 +109,7 @@ exports.getData = {
                 var str = num.toString();
                 return str.length === 1 ? '0' + str : str;
             }
-            
+
             reply(final_dict);
         });
 

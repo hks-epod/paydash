@@ -1,7 +1,18 @@
-.dashboard .button,
-.dashboard .button:hover,
-.dashboard .button:focus {
+.dashboard .button--bp,
+.dashboard .button--bp:hover,
+.dashboard .button--bp:focus {
   font-size: 2rem;
+  color: rgba($color-foreground, 1);
+  border: 0;
+  text-transform: none;
+  font-weight: inherit;
+  width: auto;
+  margin-bottom: 0;
+}
+.dashboard .button--pc,
+.dashboard .button--pc:hover,
+.dashboard .button--pc:focus {
+  font-size: 1.4rem;
   color: rgba($color-foreground, 1);
   border: 0;
   text-transform: none;
@@ -30,17 +41,18 @@
   font-size: 1.3rem;
 }
 .u-block-divider {
-  margin: 40px 0;
+  margin: 60px 0;
   border-bottom: dashed 1px $color-grey-lighter;
 }
 .selectors {
-  margin: 20px 0;
-  padding: 12px 15px;
+  margin: 30px 0;
+  padding: 6px 15px;
   border: dotted 1px #6a8093;
 }
 .selectors .pure-checkbox,
 .selectors input {
   cursor: pointer;
+  margin-top: 8px;
   margin-bottom: 0;
 }
 .u-mg-line1-color {

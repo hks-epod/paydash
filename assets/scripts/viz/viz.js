@@ -7,6 +7,7 @@ var parser = require('./parser');
 // Global state
 var paydash = {
     past_n_days: '',
+    stepwise_compare_step: 1,
     stepwise_compare_lines: ['block'],
     panchyat_compare_lines: '',
     panchayatGroupBy: 'Sub-Engineer',
@@ -85,12 +86,7 @@ d3.selectAll('.blockSelector').on('click', function() {
 });
 
 // Step Selection
-// d3.selectAll('#modify-step-controls').on('change', function() {
-//     d3.selectAll('path.mg-main-area').remove(); // Hack to overcome MG's limitation of clearning areas
-//     if (d3.event.target.value === '') {
-//         paydash.stepCols = [1, 2, 3, 4, 5, 6, 7];
-//     } else {
-//         paydash.stepCols = [d3.event.target.value];
-//     }
-//     drawBlockPerformance();
-// });
+d3.selectAll('#modify-step-controls').on('change', function() {
+    paydash.stepwise_compare_step = d3.event.target.value;
+    drawBlockComparison(paydash.stepwise_compare_step);
+});
