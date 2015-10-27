@@ -3,7 +3,7 @@
 var d3 = require('d3');
 var MG = require('../components/metricsgraphics');
 
-exports.large = function detailViz(options, paydash) {
+exports.large = function(options, paydash) {
 
     MG.data_graphic({
         // title: options.title,
@@ -59,7 +59,7 @@ exports.large = function detailViz(options, paydash) {
 };
 
 
-exports.small = function(options) {
+exports.small = function(options, paydash) {
     MG.data_graphic({
         title: options.title,
         data: options.data,

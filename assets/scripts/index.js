@@ -4,4 +4,5 @@ var $ = require('jquery');
 require('./components/dropdown');
 require('./components/active-link');
 require('./viz/viz');
+require('./viz/comparison');
 
