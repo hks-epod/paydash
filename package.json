@@ -40,6 +40,7 @@
     "joi": "^6.6.1",
     "lodash": "^3.10.1",
     "metrics-graphics": "^2.6.0",
+    "moment": "^2.10.6",
     "mysql": "^2.9.0",
     "request": "^2.65.0",
     "sequelize": "^3.12.2",
