@@ -13,6 +13,13 @@ function currentTableInit() {
             ajaxUrl: '/musters/current/data',
             ajaxOnLoad: true,
             records: []
+        },
+        table: {
+            defaultColumnIdStyle: 'underscore'
+        },
+        features: {
+            paginate: false,
+            recordCount: true
         }
     });
 }
