@@ -6,9 +6,7 @@ module.exports = function(sequelize, queryString, block_code, cb) {
         type: sequelize.QueryTypes.SELECT
     }).then(function(rows) {
 
-        console.log(rows);
-
-        
+ 
         var stateCode = rows[0].state_code;
         var shortName = rows[0].short_name;
         var blockCode = block_code;
