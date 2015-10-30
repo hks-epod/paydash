@@ -42,7 +42,8 @@
     "sequelize": "^3.12.2",
     "vision": "^3.0.0",
     "visionary": "^3.0.1",
-    "yar": "^4.2.0"
+    "yar": "^4.2.0",
+    "dynatable": "alfajango/jquery-dynatable#v0.3.1"
   },
   "devDependencies": {
     "code": "^1.5.0",

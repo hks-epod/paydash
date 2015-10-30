@@ -54,7 +54,8 @@ var manifest = {
         './app/routes/core': {},
         './app/routes/auth': {},
         './app/routes/users': {},
-        './app/routes/dashboard': {}
+        './app/routes/dashboard': {},
+        './app/routes/musters': {}
     }
 };
 
