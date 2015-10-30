@@ -72,18 +72,6 @@
 .pp-sidebar {
   position: fixed
 }
-// .panchayat-list{
-//   border-left: solid 1px $color-grey-lightest
-// }
-// .panchayat-list li{
-//   list-style: none;
-//   padding:20px;
-//   border-bottom : solid 1px $color-grey-lighter;
-//   margin-bottom: 0;
-//   font-size: $fontSize-small
-// }
-// .panchayat-list-tite{
-//   font-size: $fontSize-larger;
-//   display: block;
-//   color: $color-accent
-// }
+.paydash-controls .button.selected {
+  background-color: $color-grey-lighter
+}

@@ -23,10 +23,13 @@ var panchayatDash = {
 
 //  Prepare panchayat chart templates
 function chartTemplate(data) {
-    d3.select('.panchayat_charts-container').selectAll('div')
+    d3.select('.panchayat_charts-container')
+        .append('div')
+        .classed(' pure-g', true)
+        .selectAll('div')
         .data(data)
         .enter().append('div')
-        .classed('pure-u-6-24', true)
+        .classed(' pure-u pure-u-8-24', true)
         .html(function(d, index) {
             return '<div class="chart-holder small_chart">' +
                 '<div id="p_' + d.panchayat_code + '"></div>' +
@@ -47,12 +50,12 @@ function panchayatSortingTemplate(data) {
             .enter().append('div')
             .classed('heading', true)
             .html(function(d, index) {
-                var htmlString = '<h3>' + d.name + '</h3>' +
+                var htmlString = '<div class="u-block-divider"></div><h3>' + d.name + '</h3>' +
                     '<div class="pure-g">';
 
                 d.panchayats.forEach(function(panchayat, index) {
                     htmlString = htmlString +
-                        '<div class="pure-u-24-24 pure-u-md-8-24">' +
+                        '<div class="pure-u pure-u-24-24 pure-u-md-8-24">' +
                         '<div class="chart-holder small_chart">' +
                         '<div id="p_' + panchayat.panchayat_code + '"></div>' +
                         '<div class="p_' + panchayat.panchayat_code + '_legend"></div>' +
@@ -135,5 +138,15 @@ if (window.location.pathname === '/dashboard/panchayat') {
 // Time period Selection
 d3.selectAll('#p_modify-time-period-controls').on('change', function() {
     panchayatDash.past_n_days = d3.event.target.value;
+    drawPanchayatPerformance();
+});
+
+// Panchayat group by control
+d3.selectAll('#panchayat-groupby-controls button').on('click', function() {
+    var target = d3.select(d3.event.target); // Define target
+    d3.selectAll('#panchayat-groupby-controls button').classed('selected', false); // change button state
+    target.classed('selected', true);
+    panchayatDash.panchayatGroupBy = target.attr('data-groupby');
+    panchayatSortingTemplate(panchayatDash.data.employees[panchayatDash.panchayatGroupBy]);
     drawPanchayatPerformance();
 });
