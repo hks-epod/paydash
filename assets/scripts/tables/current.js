@@ -9,13 +9,10 @@ function currentTableInit() {
 
     $('#my-final-table').dynatable({
         dataset: {
-            records: [{
-                'band': 'Weezer',
-                'song': 'El Scorcho'
-            }, {
-                'band': 'Chevelle',
-                'song': 'Family System'
-            }]
+            ajax: true,
+            ajaxUrl: '/musters/current/data',
+            ajaxOnLoad: true,
+            records: []
         }
     });
 }

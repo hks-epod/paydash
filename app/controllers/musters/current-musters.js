@@ -23,7 +23,10 @@ exports.getData = {
 
             req(urls.musters_on_date, function(error, response, body) {
                 if (!error && response.statusCode === 200) {
-                    var current_musters = _.uniq(JSON.parse(body), 'muster_no');
+                    
+                    var current_musters = {
+                        records: _.uniq(JSON.parse(body), 'muster_no')
+                    };
                     reply(current_musters);
                 }
             });
