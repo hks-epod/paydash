@@ -11,7 +11,7 @@ a:hover {
 
 /* Headings
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-
+h1,
 h2,
 h3,
 h4,
@@ -19,6 +19,7 @@ h5,
 h6 {
   margin-top: 0;
   margin-bottom: $spacing-small;
+  font-weight: lighter
 }
 .heading--sub {
   border-bottom: solid 1px $color-grey-dim;

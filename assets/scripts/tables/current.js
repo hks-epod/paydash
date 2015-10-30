@@ -19,7 +19,8 @@ function currentTableInit() {
         },
         features: {
             paginate: false,
-            recordCount: true
+            recordCount: true,
+            search: false,
         }
     });
 }

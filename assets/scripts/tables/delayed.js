@@ -3,75 +3,30 @@
 var dynatable = require('../components/dynatable');
 var $ = require('jquery');
 
+var tim = [2, 5, 6, 7, 8];
+
 function dealyedTableInit() {
 
     $.ajax({
         url: '/musters/delayed/data',
         success: function(data) {
 
-            $('#delayed-table-2').dynatable({
-                dataset: {
-                    records: data.ds_t2
-                },
-                table: {
-                    defaultColumnIdStyle: 'underscore'
-                },
-                features: {
-                    paginate: false,
-                    recordCount: true
-                }
-            });
+            tim.forEach(function(val, index) {
 
-            $('#delayed-table-5').dynatable({
-                dataset: {
-                    records: data.ds_t5
-                },
-                table: {
-                    defaultColumnIdStyle: 'underscore'
-                },
-                features: {
-                    paginate: false,
-                    recordCount: true
-                }
-            });
+                $('#delayed-table-' + val).dynatable({
+                    dataset: {
+                        records: data['ds_t' + val]
+                    },
+                    table: {
+                        defaultColumnIdStyle: 'underscore'
+                    },
+                    features: {
+                        paginate: false,
+                        recordCount: true,
+                        search: false,
+                    }
+                });
 
-            $('#delayed-table-6').dynatable({
-                dataset: {
-                    records: data.ds_t6
-                },
-                table: {
-                    defaultColumnIdStyle: 'underscore'
-                },
-                features: {
-                    paginate: false,
-                    recordCount: true
-                }
-            });
-
-            $('#delayed-table-7').dynatable({
-                dataset: {
-                    records: data.ds_t7
-                },
-                table: {
-                    defaultColumnIdStyle: 'underscore'
-                },
-                features: {
-                    paginate: false,
-                    recordCount: true
-                }
-            });
-
-            $('#delayed-table-8').dynatable({
-                dataset: {
-                    records: data.ds_t8
-                },
-                table: {
-                    defaultColumnIdStyle: 'underscore'
-                },
-                features: {
-                    paginate: false,
-                    recordCount: true
-                }
             });
 
         }
