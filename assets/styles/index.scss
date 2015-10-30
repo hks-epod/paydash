@@ -28,6 +28,7 @@
 @import 'base/spacing'; // Need optmization
 @import 'base/typography'; 
 @import 'base/lists';
+@import 'base/tables';
 // Layout
 // ------------------------------------------------------
 @import 'modules/menu';
@@ -43,3 +44,4 @@
 // ------------------------------------------------------
 @import 'views/home';
 @import 'views/dashboard';
+@import 'views/musters';

@@ -3,7 +3,8 @@ var d3 = require('d3');
 
 var queries = require('../../helpers/queries');
 var musters_urls = require('../../helpers/musters');
-var request = require('request');
+var req = require('request');
+var _ = require('lodash');
 
 exports.showPage = {
     handler: function(request, reply) {
@@ -20,13 +21,11 @@ exports.getData = {
 
         musters_urls(sequelize, queryString, block_code, function(urls) {
 
-            request(urls.delayed_musters, function(error, response, body) {
+            req(urls.delayed_musters, function(error, response, body) {
                 if (!error && response.statusCode === 200) {
                     reply(body);
                 }
             });
-
         });
-
     }
 };
