@@ -7,11 +7,3 @@ td {
   text-align: left;
   border-bottom: 1px solid $color-grey-dim;
 }
-th:first-child,
-td:first-child {
-  padding-left: 0;
-}
-th:last-child,
-td:last-child {
-  padding-right: 0;
-}
