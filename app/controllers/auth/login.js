@@ -22,7 +22,7 @@ exports.showForm = {
     handler: function(request, reply) {
 
         if (request.auth.isAuthenticated) {
-            return reply.redirect('/account');
+            return reply.redirect('/dashboard/block');
         }
         reply.view('auth/login');
 
@@ -58,7 +58,7 @@ exports.postForm = {
     },
     handler: function(request, reply) {
         if (request.auth.isAuthenticated) {
-            return reply.redirect('/account');
+            return reply.redirect('/dashboard/block');
         }
         var User = request.server.plugins.sequelize.db.User;
         User.findOne({
@@ -69,7 +69,7 @@ exports.postForm = {
         }).then(function(user) {
             if (user) {
                 request.auth.session.set(user);
-                return reply.redirect('/account');
+                return reply.redirect('/dashboard/block');
             } else {
                 // User not fond in database
                 request.session.flash('error', 'Invalid username or password');
