@@ -6,9 +6,9 @@ module.exports = function(sequelize, queryString, block_code, cb) {
         type: sequelize.QueryTypes.SELECT
     }).then(function(rows) {
 
- 
-        var stateCode = rows[0].state_code;
-        var shortName = rows[0].short_name;
+        var stateCode = rows[0][0].state_code;
+        var shortName = rows[0][0].short_name;
+        var employees = rows[1];
         var blockCode = block_code;
 
 
@@ -48,7 +48,8 @@ module.exports = function(sequelize, queryString, block_code, cb) {
 
         var final_dict = {
             'musters_on_date': 'http://164.100.129.6/Netnrega/nrega-reportdashboard/api/dashboard_delay.aspx?fin_year=' + finYear + '&r_date=' + currentDate + '&Block_code=' + blockCode + '&state_block_code=' + stateBlockCode,
-            'delayed_musters': 'http://164.100.129.6/Netnrega/nrega-reportdashboard/api/dashboard_delay_api_3.aspx?fin_year=' + finYear + '&Block_code=' + blockCode + '&state_block_code=' + stateBlockCode + '&state_code=' + stateCode
+            'delayed_musters': 'http://164.100.129.6/Netnrega/nrega-reportdashboard/api/dashboard_delay_api_3.aspx?fin_year=' + finYear + '&Block_code=' + blockCode + '&state_block_code=' + stateBlockCode + '&state_code=' + stateCode,
+            'employees': employees
         };
 
 

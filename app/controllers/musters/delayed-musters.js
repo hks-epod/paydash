@@ -22,6 +22,9 @@ exports.getData = {
 
         musters_urls(sequelize, queryString, block_code, function(urls) {
 
+            urls.employees = _.mapKeys(urls.employees, function(value, key) {
+                return value.map_location + value.task_assign;
+            });
             req(urls.delayed_musters, function(error, response, body) {
                 if (!error && response.statusCode === 200) {
 
@@ -30,23 +33,28 @@ exports.getData = {
                     var pending_musters = {};
 
                     timInt.forEach(function(val, index) {
-
                         pending_musters['ds_t' + val] = body['ds_t' + val].filter(function(muster) {
-
                             var start_date = moment(muster.start_date, 'DD/MM/YYYY');
-                            var today = moment().startOf('day').subtract(val,'d');
+                            var today = moment().startOf('day').subtract(val, 'd');
                             return start_date.toDate() < today.toDate();
-
                         }).map(function(muster) {
+
+                            if (urls.employees[muster.panchayat_code + 'GRS']) {
+                                muster.grs_name = urls.employees[muster.panchayat_code + 'GRS'].name;
+                                muster.grs_mobile_no = urls.employees[muster.panchayat_code + 'GRS'].mobile_no;
+                            }
+                            if (urls.employees[muster.panchayat_code + 'TA ']) {
+                                muster.ta_name = urls.employees[muster.panchayat_code + 'TA '].name;
+                                muster.ta_mobile_no = urls.employees[muster.panchayat_code + 'TA '].mobile_no;
+                            }
+
                             muster.end_date = muster.End_date;
                             delete muster.End_date;
                             return muster;
                         });
-                      
                     });
 
                     reply(pending_musters);
-
 
                 }
             });
