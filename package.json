@@ -28,7 +28,6 @@
     "confidence": "^1.2.0",
     "crumb": "^4.0.3",
     "d3": "^3.5.6",
-    "dynatable": "alfajango/jquery-dynatable#v0.3.1",
     "glob": "^5.0.14",
     "glue": "^2.2.0",
     "handlebars": "^3.0.3",
