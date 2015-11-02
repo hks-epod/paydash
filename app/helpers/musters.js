@@ -11,7 +11,6 @@ module.exports = function(sequelize, queryString, block_code, cb) {
         var employees = rows[1];
         var blockCode = block_code;
 
-
         function padNum(num) {
             var str = num.toString();
             return str.length === 1 ? '0' + str : str;
