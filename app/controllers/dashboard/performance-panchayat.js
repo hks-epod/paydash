@@ -71,7 +71,7 @@ exports.getData = {
         //     // process employee data
         //     final_dict.employees = d3.nest()
         //         .key(function(d) {
-        //             return d.designation;
+        //             return d.task_assign;
         //         })
         //         .rollup(function(v) {
         //             return d3.nest()
