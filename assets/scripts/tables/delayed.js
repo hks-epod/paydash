@@ -10,7 +10,7 @@ function dealyedTableInit() {
     $.ajax({
         url: '/musters/delayed/data',
         success: function(data) {
-
+            $('#loading_message').hide();
             tim.forEach(function(val, index) {
 
                 $('#delayed-table-' + val).dynatable({
