@@ -8,14 +8,14 @@ var parser = require('./parser');
 var paydash = {
     past_n_days: '',
     stepwise_compare_step: 1,
-    stepwise_compare_lines: ['block'],
+    stepwise_compare_lines: ['block', 'state', 'district'],
     panchyat_compare_lines: '',
     panchayatGroupBy: 'Sub-Engineer',
     labels: [
         'Muster roll closure to muster roll entry',
         'Muster roll entry to wage list generation',
-        'Wage list generation to wage list sign',
-        'Wage list sign to FTO generation',
+        'Wage list generation to wage list signing',
+        'Wage list signing to FTO generation',
         'FTO generation to first signature',
         'First signature to second signature',
         'Second signature to processed by bank',
@@ -77,6 +77,7 @@ if (window.location.pathname === '/dashboard/block') {
 d3.selectAll('#modify-time-period-controls').on('change', function() {
     paydash.past_n_days = d3.event.target.value;
     drawBlockPerformance();
+    drawBlockComparison(1);
 });
 
 

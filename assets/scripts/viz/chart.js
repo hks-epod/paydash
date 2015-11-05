@@ -13,13 +13,14 @@ exports.large = function(options, paydash) {
         height: 500,
         left: 100,
         full_width: true,
+        decimals: 0,
         target: options.target,
         baselines: [{
             value: 15,
-            label: 'Ideal'
+            label: 'Days permitted'
         }],
         xax_count: 15,
-        xax_format: d3.time.format('%e %b'),
+        xax_format: d3.time.format('%e %b, %y'),
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
         missing_text: 'No data',
         legend: options.labels,
@@ -31,7 +32,7 @@ exports.large = function(options, paydash) {
         interplate: 'linear',
         interpolate_tension: 1,
         area: options.area,
-        y_label: 'Days to Process',
+        y_label: 'Days to Complete Process',
         mouseover: function(d, i) {
             if (!d.values) {
                 d.values = [d];
@@ -40,7 +41,7 @@ exports.large = function(options, paydash) {
                 var prefix = d3.formatPrefix(val.value);
                 var l_span = d3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
-                l_span.text('— ' + paydash.labels[index] + ' : ' + prefix.scale(val.value).toFixed(2));
+                l_span.text('— ' + paydash.labels[index] + ' : ' + prefix.scale(val.value).toFixed(0));
                 var format = d3.time.format('%b %d, %Y');
                 d3.select(options.target + '_total_trans').text(format(val.date) + ': ' + val.total_trans);
             });
@@ -80,7 +81,7 @@ exports.small = function(options, paydash) {
         interplate: 'linear',
         linked: true,
         interpolate_tension: 1,
-        y_label: 'Days to Process',
+        y_label: 'Days to Complete Process',
         area: options.area
     });
 };
