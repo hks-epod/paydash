@@ -25,6 +25,8 @@ function currentTableInit() {
     });
 }
 
+$('#loading_message').hide();
+
 
 if (window.location.pathname === '/musters/current') {
     currentTableInit();
