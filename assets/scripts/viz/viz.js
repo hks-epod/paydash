@@ -33,6 +33,7 @@ function drawBlockPerformance() {
         target: '#block_performance',
         legend_target: '.block_legend',
         labels: paydash.labels,
+        legend_labels: 'labels',
         area: true
     }, paydash);
 }
@@ -52,7 +53,9 @@ function drawBlockComparison(val) {
         target: '#block_comparison',
         legend_target: '.comparison_legend',
         labels: paydash.labels,
-        area: false
+        legend_labels: 'stepwise_compare_lines',
+        area: false,
+
     }, paydash);
 }
 

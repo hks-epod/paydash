@@ -37,11 +37,18 @@ exports.large = function(options, paydash) {
             if (!d.values) {
                 d.values = [d];
             }
+            if(options.data.length){
+                for(i=1; i<=options.data.length;i++){
+                    var l_span = d3.select(options.legend_target + ' .mg-line' + i + '-legend-color');
+                    l_span.text(' '); 
+                    l_span.text('— ' + paydash[options.legend_labels][i - 1]);
+                }
+            }
             d.values.forEach(function(val, index) {
                 var prefix = d3.formatPrefix(val.value);
                 var l_span = d3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
-                l_span.text('— ' + paydash.labels[index] + ' : ' + prefix.scale(val.value).toFixed(0));
+                l_span.text('— ' + paydash[options.legend_labels][val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
                 var format = d3.time.format('%b %d, %Y');
                 d3.select(options.target + '_total_trans').text(format(val.date) + ': ' + val.total_trans);
             });
@@ -53,7 +60,7 @@ exports.large = function(options, paydash) {
             d.values.forEach(function(val, index) {
                 var l_span = d3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
-                l_span.text('— ' + paydash.labels[index]);
+                l_span.text('— ' + paydash[options.legend_labels][index]);
             });
         }
     });
