@@ -30,7 +30,7 @@ node_modules
 #/config/config.js
 #.build/*
 test/artifacts/*
-
+.git/*
 
 #Sublime project files 
 *.sublime-project
