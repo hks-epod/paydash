@@ -45,8 +45,13 @@
     #/config/config.js
     #.build/*
     ```
-4. Create an `.ebextensions` folder in the root directory.
-5. Create an `01run.config` file in the `.ebextensions` folder, with these contents:
+4. Add the following lines:
+    ```
+    .git/*
+    node_modules/*
+    ```
+5. Create an `.ebextensions` folder in the root directory.
+6. Create an `01run.config` file in the `.ebextensions` folder, with these contents:
 ```
     option_settings:
   - namespace: aws:elasticbeanstalk:container:nodejs
@@ -61,4 +66,5 @@
   - option_name: NODE_ENV
     value: production
 ```
-6. Run `eb init` and follow the prompts.
+7. Run `eb init` and follow the prompts.
+8. Run `eb create` and follow the prompts.
