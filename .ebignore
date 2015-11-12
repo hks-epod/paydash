@@ -25,14 +25,19 @@ build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
-node_modules/
 
 # Hackers League  Specific ignores
 #/config/config.js
 #.build/*
 test/artifacts/*
-.git/*
+
 
 #Sublime project files 
 *.sublime-project
 *.sublime-workspace
+
+#ebignore specific
+.git/*
+#ebignore specific - there is a known bug about this one
+node_modules/
+

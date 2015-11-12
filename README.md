@@ -68,3 +68,10 @@
 ```
 7. Run `eb init` and follow the prompts.
 8. Run `eb create` and follow the prompts.
+
+
+#### Common Problems
+1. Be sure to run node on port 8081 (default AWS / Nginx configuration)
+2. You may need to `eb init --profile your_profile` if you have multiple
+   AWS accounts
+
