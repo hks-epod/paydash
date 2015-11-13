@@ -50,9 +50,11 @@ exports.getData = {
                             muster.end_date = muster.End_date;
                             delete muster.End_date;
                             //  append days pending 
-                            var raw_delay= moment().startOf('day').subtract(val, 'd').toDate() - moment(muster.end_date, 'DD/MM/YYYY');
-                            console.log(raw_delay);
-                       
+                            var a = moment().startOf('day').subtract(val, 'd');
+                            var b = moment(muster.end_date, 'DD/MM/YYYY');
+                            muster.days_pending = a.diff(b, 'days');
+
+
                             return muster;
                         });
                     });
