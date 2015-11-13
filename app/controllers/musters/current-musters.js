@@ -24,6 +24,12 @@ exports.getData = {
             req(urls.musters_on_date, function(error, response, body) {
                 if (!error && response.statusCode === 200) {
                     var clean_musters = _.uniq(JSON.parse(body), 'muster_no');
+                    clean_musters.map(function(muster) {
+                        muster.start_date = muster.Start_date;
+                        delete muster.Start_date;
+                        return muster;
+                    });
+
                     var current_musters = {
                         records: clean_musters,
                         queryRecordCount: clean_musters.length,

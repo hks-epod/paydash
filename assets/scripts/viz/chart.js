@@ -91,6 +91,7 @@ exports.small = function(options, paydash) {
         linked: true,
         interpolate_tension: 1,
         y_label: 'Days to Complete Process',
-        area: options.area
+        area: options.area,
+        max_x : new Date() || undefined
     });
 };
