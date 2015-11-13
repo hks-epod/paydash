@@ -23,6 +23,7 @@ exports.large = function(options, paydash) {
         xax_format: d3.time.format('%e %b, %y'),
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
         missing_text: 'No data',
+        show_secondary_x_label : false,
         legend: options.labels,
         legend_target: options.legend_target,
         show_tooltips: false,
@@ -78,7 +79,7 @@ exports.small = function(options, paydash) {
         small_text: true,
         xax_count: 3,
         decimals: 0,
-        xax_format: d3.time.format('%d %b'),
+        xax_format: d3.time.format('%e %b, %y'),
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
         missing_text: 'No data',
         target: options.target,
@@ -92,6 +93,7 @@ exports.small = function(options, paydash) {
         interpolate_tension: 1,
         y_label: 'Days to Complete Process',
         area: options.area,
+        show_secondary_x_label : false,
         max_x : options.max_x || undefined,
         min_x : options.min_x || undefined
     });
