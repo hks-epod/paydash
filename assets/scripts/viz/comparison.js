@@ -3,6 +3,7 @@
 var d3 = require('d3');
 var chart = require('./chart');
 var parser = require('./parser');
+var $ = require('jquery');
 
 // Global state
 var panchayatDash = {
@@ -40,6 +41,7 @@ function chartTemplate(data) {
 
 // Panchayat sorting template
 function panchayatSortingTemplate(data) {
+
     d3.select('.panchayat_charts-container').selectAll('div').remove();
 
     if (panchayatDash.panchayatGroupBy === 'no') {
@@ -52,7 +54,6 @@ function panchayatSortingTemplate(data) {
             .html(function(d, index) {
                 var htmlString = '<div class="u-block-divider"></div><h3>' + d.name + '</h3>' +
                     '<div class="pure-g">';
-
                 d.panchayats.forEach(function(panchayat, index) {
                     htmlString = htmlString +
                         '<div class="pure-u pure-u-24-24 pure-u-md-8-24">' +
@@ -115,19 +116,21 @@ function getMaxofPanchayats() {
 function drawPanchayatPerformance() {
     var limit = getMaxofPanchayats();
     panchayatDash.data.panchayats.forEach(function(panchayat, p_index) {
-        var p_step_lines = (panchayatDash.panchyat_compare_lines !== '') ? [panchayatDash.panchyat_compare_lines] : panchayatDash.stepCols;
-        var isCumu = (panchayatDash.panchyat_compare_lines === '') ? true : false;
-        var p_data = parser.lines(panchayat.data, panchayatDash.past_n_days, p_step_lines, isCumu);
-        chart.small({
-            data: p_data,
-            title: panchayat.panchayat_name,
-            target: '#p_' + panchayat.panchayat_code,
-            legend_target: '.p_' + panchayat.panchayat_code + '_legend',
-            labels: panchayatDash.labels,
-            max_y: limit.max_y,
-            min_x: limit.min_x,
-            max_x: limit.max_x,
-        }, panchayatDash);
+        if ($('#p_' + panchayat.panchayat_code).length !==0) {
+            var p_step_lines = (panchayatDash.panchyat_compare_lines !== '') ? [panchayatDash.panchyat_compare_lines] : panchayatDash.stepCols;
+            var isCumu = (panchayatDash.panchyat_compare_lines === '') ? true : false;
+            var p_data = parser.lines(panchayat.data, panchayatDash.past_n_days, p_step_lines, isCumu);
+            chart.small({
+                data: p_data,
+                title: panchayat.panchayat_name,
+                target: '#p_' + panchayat.panchayat_code,
+                legend_target: '.p_' + panchayat.panchayat_code + '_legend',
+                labels: panchayatDash.labels,
+                max_y: limit.max_y,
+                min_x: limit.min_x,
+                max_x: limit.max_x,
+            }, panchayatDash);
+        }
     });
 }
 
