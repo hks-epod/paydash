@@ -27,8 +27,8 @@ build/Release
 node_modules
 
 # Hackers League  Specific ignores
-/config/config.js
-.build/*
+#/config/config.js
+#.build/*
 test/artifacts/*
 
 
@@ -36,7 +36,8 @@ test/artifacts/*
 *.sublime-project
 *.sublime-workspace
 
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+#ebignore specific
+.git/*
+#ebignore specific - there is a known bug about this one
+node_modules/
+
