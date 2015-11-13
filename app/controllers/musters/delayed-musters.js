@@ -47,9 +47,12 @@ exports.getData = {
                                 muster.ta_name = urls.employees[muster.panchayat_code + 'TA '].name;
                                 muster.ta_mobile_no = urls.employees[muster.panchayat_code + 'TA '].mobile_no;
                             }
-
                             muster.end_date = muster.End_date;
                             delete muster.End_date;
+                            //  append days pending 
+                            var raw_delay= moment().startOf('day').subtract(val, 'd').toDate() - moment(muster.end_date, 'DD/MM/YYYY');
+                            console.log(raw_delay);
+                       
                             return muster;
                         });
                     });

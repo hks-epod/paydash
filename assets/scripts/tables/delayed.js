@@ -35,6 +35,6 @@ function dealyedTableInit() {
 }
 
 if (window.location.pathname === '/musters/delayed') {
-
+    console.log('executing');
     dealyedTableInit();
 }
