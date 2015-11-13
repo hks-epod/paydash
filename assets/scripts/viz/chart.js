@@ -92,6 +92,7 @@ exports.small = function(options, paydash) {
         interpolate_tension: 1,
         y_label: 'Days to Complete Process',
         area: options.area,
-        max_x : new Date() || undefined
+        max_x : options.max_x || undefined,
+        min_x : options.min_x || undefined
     });
 };
