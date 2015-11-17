@@ -146,7 +146,6 @@ exports.getData = {
                         lookup['grs'][d.panchayat_code] = false;
                     }
                 });
-                console.log(lookup)
                 return lookup;
             }
 
