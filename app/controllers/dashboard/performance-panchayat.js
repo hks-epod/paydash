@@ -32,6 +32,7 @@ exports.getData = {
 
             var panchayatResponse = flatten(rows[1]);
             var employeeResponse = flatten(rows[2]);
+            var mapping = genMapping({'ta':flatten(rows[3]),'grs':flatten(rows[4])});
 
             // process panchayat data
             final_dict.panchayats = d3.nest()
@@ -42,6 +43,8 @@ exports.getData = {
                     return {
                         'panchayat_code': v[0].panchayat_code,
                         'panchayat_name': v[0].panchayat_name,
+                        'mapped_ta': mapping['ta'][v[0].panchayat_code],
+                        'mapped_grs': mapping['grs'][v[0].panchayat_code],
                         'data': v.map(function(d) {
                             return [
                                 d.date.getFullYear() + '' + padNum(d.date.getMonth() + 1) + '' + padNum(d.date.getDate()),
@@ -118,6 +121,32 @@ exports.getData = {
                     array.push(obj[i]);
                 }
                 return array;
+            }
+
+            function genMapping(obj) { // generate the lookup object to determine if a panchayat has been mapped
+                var lookup = {
+                    'ta':{},
+                    'grs':{}
+                };
+                var ta = obj['ta'];
+                var grs = obj['grs'];
+                ta.forEach(function(d) {
+                    if ('task_assign' === 'TA') {
+                        lookup['ta'][d.panchayat_code] = true;
+                    }
+                    else if ('task_assign' === null) {
+                        lookup['ta'][d.panchayat_code] = false;
+                    }
+                });
+                grs.forEach(function(d) {
+                    if ('task_assign' === 'GRS') {
+                        lookup['grs'][d.panchayat_code] = true;
+                    }
+                    else if ('task_assign' === null) {
+                        lookup['grs'][d.panchayat_code] = false;
+                    }
+                });
+                return lookup;
             }
 
             reply(final_dict);
