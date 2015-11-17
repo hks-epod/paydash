@@ -131,21 +131,22 @@ exports.getData = {
                 var ta = obj['ta'];
                 var grs = obj['grs'];
                 ta.forEach(function(d) {
-                    if ('task_assign' === 'TA') {
+                    if (d.task_assign === 'TA') {
                         lookup['ta'][d.panchayat_code] = true;
                     }
-                    else if ('task_assign' === null) {
+                    else if (d.task_assign === null) {
                         lookup['ta'][d.panchayat_code] = false;
                     }
                 });
                 grs.forEach(function(d) {
-                    if ('task_assign' === 'GRS') {
+                    if (d.task_assign === 'GRS') {
                         lookup['grs'][d.panchayat_code] = true;
                     }
-                    else if ('task_assign' === null) {
+                    else if (d.task_assign === null) {
                         lookup['grs'][d.panchayat_code] = false;
                     }
                 });
+                console.log(lookup)
                 return lookup;
             }
 
