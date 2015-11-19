@@ -69,6 +69,10 @@ exports.postForm = {
         }).then(function(user) {
             if (user) {
                 request.auth.session.set(user);
+                if (user.isActive){
+                    request.session.flash('info', 'Please check your profile details');
+                    return reply.redirect('/me/settings/profile');
+                }
                 return reply.redirect('/dashboard/block');
             } else {
                 // User not fond in database

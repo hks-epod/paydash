@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
         // work_email: DataTypes.STRING,
         // work_years: DataTypes.STRING,
         // time_on_nrega: DataTypes.STRING,
-
+        // isActive: Boolean
     }, {
         classMethods: {
             associate: function(models) {
