@@ -7,8 +7,7 @@ exports.register = function(plugin, options, next) {
         var Controllers = {
             settings: {
                 profile: require('../controllers/users/settings-profile'),
-                account: require('../controllers/users/settings-account'),
-                notifications: require('../controllers/users/settings-notifications'),
+                account: require('../controllers/users/settings-account')
             }
         };
 
@@ -37,12 +36,6 @@ exports.register = function(plugin, options, next) {
                 method: 'POST',
                 path: '/me/settings/account/change-password',
                 config: Controllers.settings.account.postChangePassword
-            },
-            // Settings - Show notifications form
-            {
-                method: 'GET',
-                path: '/me/settings/notifications',
-                config: Controllers.settings.notifications.showNotificationForm
             }
         ]);
 
