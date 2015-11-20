@@ -69,11 +69,20 @@ exports.postForm = {
         }).then(function(user) {
             if (user) {
                 request.auth.session.set(user);
-                if (user.isActive){
+                console.log(user.isActive);
+                if (!user.isActive) {
                     request.session.flash('info', 'Please check your profile details');
-                    return reply.redirect('/me/settings/profile');
+
+                    // TODO: Save isActive to true
+                    user.update({
+                        isActive: true
+                    }).then(function() {
+                        return reply.redirect('/me/settings/profile');
+                    });
+                } else {
+                    return reply.redirect('/dashboard/block');
                 }
-                return reply.redirect('/dashboard/block');
+
             } else {
                 // User not fond in database
                 request.session.flash('error', 'Invalid username or password');
