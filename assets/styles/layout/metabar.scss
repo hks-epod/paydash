@@ -82,3 +82,11 @@ body {
 .metabar-nav-right .avatar:focus {
   border: solid 1px rgba($color-foreground, .3);
 }
+
+.menu-block-selection{
+  padding-top:11px;
+  
+}
+.menu-block-selection select{
+  margin-bottom: 0;
+}
