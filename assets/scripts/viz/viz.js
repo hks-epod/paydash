@@ -72,7 +72,7 @@ function blockInit() {
             drawBlockComparison(1);
         });
 }
-if (window.location.pathname === '/dashboard/block?block_id='+read_cookie('block_id')) {
+if (window.location.pathname === '/dashboard/block') {
     blockInit();
 }
 
