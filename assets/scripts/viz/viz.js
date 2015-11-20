@@ -3,6 +3,7 @@
 var d3 = require('d3');
 var chart = require('./chart');
 var parser = require('./parser');
+var read_cookie = require('../components/read_cookie');
 
 // Global state
 var paydash = {
@@ -61,7 +62,7 @@ function drawBlockComparison(val) {
 
 // Load JSON
 function blockInit() {
-    d3.json('/dashboard/block/data')
+    d3.json('/dashboard/block/data?selected_block_id=' + read_cookie('selected_block_id'))
         .on('progress', function() {
             console.info('progress', d3.event.loaded);
         })
@@ -71,7 +72,7 @@ function blockInit() {
             drawBlockComparison(1);
         });
 }
-if (window.location.pathname === '/dashboard/block') {
+if (window.location.pathname === '/dashboard/block?block_id='+read_cookie('block_id')) {
     blockInit();
 }
 

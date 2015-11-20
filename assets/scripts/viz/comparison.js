@@ -4,6 +4,7 @@ var d3 = require('d3');
 var chart = require('./chart');
 var parser = require('./parser');
 var $ = require('jquery');
+var read_cookie = require('../components/read_cookie');
 
 // Global state
 var panchayatDash = {
@@ -116,7 +117,7 @@ function getMaxofPanchayats() {
 function drawPanchayatPerformance() {
     var limit = getMaxofPanchayats();
     panchayatDash.data.panchayats.forEach(function(panchayat, p_index) {
-        if ($('#p_' + panchayat.panchayat_code).length !==0) {
+        if ($('#p_' + panchayat.panchayat_code).length !== 0) {
             var p_step_lines = (panchayatDash.panchyat_compare_lines !== '') ? [panchayatDash.panchyat_compare_lines] : panchayatDash.stepCols;
             var isCumu = (panchayatDash.panchyat_compare_lines === '') ? true : false;
             var p_data = parser.lines(panchayat.data, panchayatDash.past_n_days, p_step_lines, isCumu);
@@ -137,7 +138,7 @@ function drawPanchayatPerformance() {
 
 // Load JSON
 function panchayatInit() {
-    d3.json('/dashboard/panchayat/data')
+    d3.json('/dashboard/panchayat/data?selected_block_id=' + read_cookie('selected_block_id'))
         .on('progress', function() {
             console.info('progress', d3.event.loaded);
         })

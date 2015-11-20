@@ -1,20 +1,14 @@
 'use strict';
 var $ = require('jquery');
 
-//  Setup cookie for block selection
+var read_cookie = require('./read_cookie');
 
-function read_cookie(key) {
-    var result;
-    return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? (result[1]) : null;
-}
-
-var block_id = read_cookie('block_id');
-
-$('#block_selector option[value="' + block_id + '"]').attr('selected', 'selected');
+var selected_block_id = read_cookie('selected_block_id');
+$('#block_selector option[value="' + selected_block_id + '"]').attr('selected', 'selected');
 
 
-
+//  Set cookie on change 
 $('#block_selector').on('change', function(ele) {
-    document.cookie = 'block_id=' + ele.target.value;
+    document.cookie = 'selected_block_id=' + ele.target.value;
     location.reload();
 });
