@@ -9,7 +9,7 @@ var $ = require('jquery');
 var panchayatDash = {
     past_n_days: '',
     panchyat_compare_lines: '',
-    panchayatGroupBy: 'TA ',
+    panchayatGroupBy: 'TA',
     labels: [
         'Muster roll closure to muster roll entry',
         'Muster roll entry to wage list generation',
