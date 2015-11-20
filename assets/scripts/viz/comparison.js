@@ -67,6 +67,32 @@ function panchayatSortingTemplate(data) {
                 htmlString = htmlString + '</div>';
                 return htmlString;
             });
+
+        d3.select('.panchayat_charts_unmapped-container')
+            .append('div')
+            .classed('heading', true)
+            .html(function(d, index) {
+                var htmlString = '<div class="u-block-divider"></div><h3>Unmapped Panchayats</h3>' +
+                    '<div class="pure-g">';
+                
+                panchayatDash.data.panchayats.forEach(function(panchayat, index) {
+                    if (!panchayat['mapped' + panchayatDash.panchayatGroupBy.toLowerCase()]) {
+
+                        htmlString = htmlString +
+                            '<div class="pure-u pure-u-24-24 pure-u-md-8-24">' +
+                            '<div class="chart-holder small_chart">' +
+                            '<div id="p_' + panchayat.panchayat_code + '"></div>' +
+                            '<div class="p_' + panchayat.panchayat_code + '_legend"></div>' +
+                            '</div>' +
+                            '</div>';
+                    }
+
+                });
+                htmlString = htmlString + '</div>';
+                return htmlString;
+            });
+
+
     }
 }
 
