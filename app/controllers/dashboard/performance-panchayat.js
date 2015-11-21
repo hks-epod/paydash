@@ -32,7 +32,26 @@ exports.getData = {
 
             var panchayatResponse = flatten(rows[1]);
             var employeeResponse = flatten(rows[2]);
-            var mapping = genMapping({'ta':flatten(rows[3]),'grs':flatten(rows[4])});
+
+            var empMapping = {
+                'TA': nestEmpMapping(rows[3]),
+                'GRS': nestEmpMapping(rows[4])
+            }
+            
+            var employeeStats = {
+                'past30': {
+                    'TA': nestEmpStats(rows[5]),
+                    'GRS': nestEmpStats(rows[6])
+                },
+                'past60': {
+                    'TA': nestEmpStats(rows[7]),
+                    'GRS': nestEmpStats(rows[8])
+                },
+                'all': {
+                    'TA': nestEmpStats(rows[9]),
+                    'GRS': nestEmpStats(rows[10])
+                }
+            };
 
             // process panchayat data
             final_dict.panchayats = d3.nest()
@@ -43,8 +62,8 @@ exports.getData = {
                     return {
                         'panchayat_code': v[0].panchayat_code,
                         'panchayat_name': v[0].panchayat_name,
-                        'mapped_ta': mapping['ta'][v[0].panchayat_code],
-                        'mapped_grs': mapping['grs'][v[0].panchayat_code],
+                        'mapped_ta': empMapping['TA'][v[0].panchayat_code],
+                        'mapped_grs': empMapping['GRS'][v[0].panchayat_code],
                         'data': v.map(function(d) {
                             return [
                                 d.date.getFullYear() + '' + padNum(d.date.getMonth() + 1) + '' + padNum(d.date.getDate()),
@@ -87,6 +106,12 @@ exports.getData = {
                                 'staff_id': w[0].staff_id,
                                 'name': w[0].name,
                                 'mobile': w[0].mobile_no,
+                                'step1_avg_30':employeeStats['past30'][w[0].task_assign][w[0].staff_id]['step1_avg'],
+                                'tot_trans_30':employeeStats['past30'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
+                                'step1_avg_60':employeeStats['past60'][w[0].task_assign][w[0].staff_id]['step1_avg'],
+                                'tot_trans_60':employeeStats['past60'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
+                                'step1_avg_all':employeeStats['all'][w[0].task_assign][w[0].staff_id]['step1_avg'],
+                                'tot_trans_all':employeeStats['all'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
                                 'panchayats': w.map(function(d) {
                                     return {
                                         'panchayat_code': d.map_location,
@@ -128,33 +153,44 @@ exports.getData = {
                     'ta':{},
                     'grs':{}
                 };
-                var ta = obj['ta'];
-                var grs = obj['grs'];
-                ta.forEach(function(d) {
-                    if (d.task_assign === 'TA') {
-                        lookup['ta'][d.panchayat_code] = true;
-                    }
-                    else if (d.task_assign === null) {
-                        lookup['ta'][d.panchayat_code] = false;
-                    }
+                obj['ta'].forEach(function(d) {
+                    lookup['ta'][d.panchayat_code] = (d.task_assign === 'TA' ? true : false);
                 });
-                grs.forEach(function(d) {
-                    if (d.task_assign === 'GRS') {
-                        lookup['grs'][d.panchayat_code] = true;
-                    }
-                    else if (d.task_assign === null) {
-                        lookup['grs'][d.panchayat_code] = false;
-                    }
+                obj['grs'].forEach(function(d) {
+                    lookup['grs'][d.panchayat_code] = (d.task_assign === 'GRS' ? true : false);
                 });
                 return lookup;
+            }
+
+            function nestEmpMapping(obj) {
+                return d3.nest()
+                    .key(function(d) {
+                        return d.panchayat_code;
+                    })
+                    .rollup(function(v) {
+                        return v[0].task_assign === null ? false : true;
+                    })
+                    .map(flatten(obj));
+            }
+
+            function nestEmpStats(obj) {
+                return d3.nest()
+                    .key(function(d) {
+                        return d.staff_id;
+                    })
+                    .rollup(function(v) {
+                        return {
+                            'step1_avg':v[0].step1_avg,
+                            'total_transactions':v[0].total_transactions
+                        }
+                    })
+                    .map(flatten(obj));
             }
 
             reply(final_dict);
         });
 
-
         // reply(dummy.blockData);
-
 
     }
 };
