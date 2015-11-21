@@ -52,6 +52,26 @@
   .menu-block-selection select {
     width: 60%;
   }
+  .legend.block_legend span,
+  .legend.comparison_legend span {
+    font-size: 12px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    width: 100%;
+  }
+  .block_chart_holder {
+    overflow-x: scroll;
+  }
+  #block_performance,
+  #block_comparison {
+    width: 900px;
+  }
+  .selectors {
+    font-size: 12px;
+  }
+  .button.button--pc {
+    font-size: 12px;
+  }
 }
 .menu-wrapper.active {
   display: block;
