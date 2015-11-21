@@ -72,6 +72,18 @@
   .button.button--pc {
     font-size: 12px;
   }
+  .paydash-controls button {
+    padding: 5px;
+    font-size: 10px;
+    height: auto;
+    line-height: 14px
+  }
+  .legend.panchayat_legend span {
+    width: 100%;
+    padding-bottom: 0;
+    margin-bottom: 2px;
+    font-size: 12px;
+  }
 }
 .menu-wrapper.active {
   display: block;
