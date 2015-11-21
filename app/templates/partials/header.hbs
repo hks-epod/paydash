@@ -1,6 +1,9 @@
 <header class="metabar">
   <div class="container-fluid">
     <a href="/" class="brand">Paydash</a>
+    <button id="top-ham" class="hamburger">
+      <span class="pe-7s-menu"></span>
+    </button>
     {{#if credentials}}
       <div class="metabar-nav-right u-pull-right">
         <div class="dropdown">
@@ -14,18 +17,20 @@
           </div>
         </div>
       </div>
-      <div class="menu-block-selection u-pull-right">
-        <select name="block_selector" id="block_selector">
-          <option value="Gunor">Gunor</option>
-          <option value="BlockY">BlockY</option>
-          <option value="BlkkjkjkockY">lklkl</option>
-        </select>
-      </div>
-      <div class="menu menu--pointing">
-        <a class="menu-item" href="/dashboard/block">Block Performance</a>
-        <a class="menu-item" href="/dashboard/panchayat">Panchayat Performance</a>
-        <a class="menu-item" href="/musters/current">Current Musters</a>
-        <a class="menu-item" href="/musters/delayed">Delayed Musters</a>
+      <div class="menu-wrapper">
+        <div class="menu-block-selection u-pull-right">
+          <select name="block_selector" id="block_selector">
+            <option value="Gunor">Gunor</option>
+            <option value="BlockY">BlockY</option>
+            <option value="BlkkjkjkockY">lklkl</option>
+          </select>
+        </div>
+        <div class="menu menu--pointing">
+          <a class="menu-item" href="/dashboard/block">Block Performance</a>
+          <a class="menu-item" href="/dashboard/panchayat">Panchayat Performance</a>
+          <a class="menu-item" href="/musters/current">Current Musters</a>
+          <a class="menu-item" href="/musters/delayed">Delayed Musters</a>
+        </div>
       </div>
     {{else}}
       <div class="metabar-nav-right u-pull-right">
