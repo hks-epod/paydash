@@ -25,3 +25,7 @@ exports.apiHelper = function(BLOCK_CODE) {
     return "SELECT short_name, state_code FROM short_codes a WHERE a.state_code in (SELECT b.state_code FROM blocks b WHERE b.block_code ='" + BLOCK_CODE + "');" +
     "SELECT name, task_assign, mobile_no, map_location, mapped_panchayat_name FROM employees WHERE task_assign IN ('TA','GRS') AND block_code ='" + BLOCK_CODE + "';";
 };
+
+exports.userBlocks = function(USER_ID) {
+    return "SELECT block_code FROM user_blocks WHERE id = " + USER_ID + ");";
+};
