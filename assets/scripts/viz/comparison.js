@@ -53,7 +53,13 @@ function panchayatSortingTemplate(data) {
             .enter().append('div')
             .classed('heading', true)
             .html(function(d, index) {
+                console.log(panchayatDash);
                 var htmlString = '<div class="u-block-divider"></div><h3>' + d.name + '</h3>' +
+                    '<div class="employee-stats">'+
+                    'Mobile no.' + d.mobile + 
+                    'Step 1 average: '+ d['step1_avg_'+ panchayatDash.past_n_days] +
+                    'Step 1 total transactions: '+ d['tot_trans'+ panchayatDash.past_n_days] +
+                    '</div>' +
                     '<div class="pure-g">';
                 d.panchayats.forEach(function(panchayat, index) {
                     htmlString = htmlString +
