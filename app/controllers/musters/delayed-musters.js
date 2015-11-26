@@ -43,12 +43,10 @@ exports.getData = {
                                 muster.grs_name = urls.employees[muster.panchayat_code + 'GRS'].name;
                                 muster.grs_mobile_no = urls.employees[muster.panchayat_code + 'GRS'].mobile_no;
                             }
-                            if (urls.employees[muster.panchayat_code + 'TA ']) {
-                                muster.ta_name = urls.employees[muster.panchayat_code + 'TA '].name;
-                                muster.ta_mobile_no = urls.employees[muster.panchayat_code + 'TA '].mobile_no;
+                            if (urls.employees[muster.panchayat_code + 'TA']) {
+                                muster.ta_name = urls.employees[muster.panchayat_code + 'TA'].name;
+                                muster.ta_mobile_no = urls.employees[muster.panchayat_code + 'TA'].mobile_no;
                             }
-                            muster.end_date = muster.End_date;
-                            delete muster.End_date;
                             //  append days pending 
                             var a = moment().startOf('day').subtract(val, 'd');
                             var b = moment(muster.end_date, 'DD/MM/YYYY');

@@ -2,7 +2,8 @@
 
 module.exports = function(sequelize, DataTypes) {
     var user_blocks = sequelize.define('user_blocks', {
-        block_code: DataTypes.STRING
+        block_code: DataTypes.STRING,
+        block_name: DataTypes.STRING
     }, {
         classMethods: {
             associate: function(models) {
