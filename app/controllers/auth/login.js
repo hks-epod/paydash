@@ -60,16 +60,18 @@ exports.postForm = {
         if (request.auth.isAuthenticated) {
             return reply.redirect('/dashboard/block');
         }
+        var db = request.server.plugins.sequelize.db;
         var User = request.server.plugins.sequelize.db.User;
         User.findOne({
             where: {
                 username: request.payload.username,
                 password: crypto.createHash('md5').update(request.payload.password).digest('hex')
-            }
+            },
+            include: [db.user_blocks]
         }).then(function(user) {
+
             if (user) {
                 request.auth.session.set(user);
-                console.log(user.isActive);
                 if (!user.isActive) {
                     request.session.flash('info', 'Please check your profile details');
 

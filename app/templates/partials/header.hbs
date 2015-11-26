@@ -20,9 +20,9 @@
       <div class="menu-wrapper">
         <div class="menu-block-selection u-pull-right">
           <select name="block_selector" id="block_selector">
-            <option value="Gunor">Gunor</option>
-            <option value="BlockY">BlockY</option>
-            <option value="BlkkjkjkockY">lklkl</option>
+            {{#each credentials.user_blocks}}
+              <option value="{{this.block_code}}">{{this.block_code}}</option>
+            {{/each}}
           </select>
         </div>
         <div class="menu menu--pointing">
