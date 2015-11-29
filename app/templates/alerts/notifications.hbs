@@ -1,1 +1,15 @@
-Notifications
+<div class="container u-spacing-page-top">
+  <h2>Unread Notifications</h2>
+  <ul>
+    {{#each notifications.unread}}
+      <li class="message message--success notification">{{this.msg}}</li>
+    {{/each}}
+  </ul>
+  <h2>Read Notifications</h2>
+  <ul>
+    {{#each notifications.read}}
+      <li class="message message--info notification">{{this.msg}}</li>
+    {{/each}}
+  </ul>
+</div>
+{{> footer}}
