@@ -1,0 +1,12 @@
+<div class="container u-spacing-page-top">
+  <div class="menu menu--pointing">
+    <a class="menu-item" href="/notifications/unread">Unread Notifications</a>
+    <a class="menu-item" href="/notifications/read">Read Notifications</a>
+  </div>
+  <ul>
+    {{#each notifications}}
+      <li class="message message--info notification">{{this.msg}}</li>
+    {{/each}}
+  </ul>
+</div>
+{{> footer}}

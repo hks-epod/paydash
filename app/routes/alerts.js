@@ -16,8 +16,14 @@ exports.register = function(plugin, options, next) {
             // Show Notifications
             {
                 method: 'GET',
-                path: '/notifications',
-                config: Controllers.alerts.notifications.showNotifications
+                path: '/notifications/read',
+                config: Controllers.alerts.notifications.showReadNotifications
+            },
+            // Show Notifications
+            {
+                method: 'GET',
+                path: '/notifications/unread',
+                config: Controllers.alerts.notifications.showUnreadNotifications
             }
         ]);
 
