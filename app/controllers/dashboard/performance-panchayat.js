@@ -20,7 +20,7 @@ exports.getData = {
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-        var block_code = '1709003';
+        var block_code = request.query.selected_block_id;
         var queryString = queries.panchayatPerformance(block_code);
 
         sequelize.query(queryString, {

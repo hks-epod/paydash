@@ -17,7 +17,7 @@ exports.getData = {
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-        var block_code = '1709003';
+        var block_code = request.query.selected_block_id;
         var queryString = queries.apiHelper(block_code);
 
         musters_urls(sequelize, queryString, block_code, function(urls) {
