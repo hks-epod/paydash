@@ -176,6 +176,7 @@ function panchayatInit() {
         })
         .get(function(error, data) {
             panchayatDash.data = data;
+            d3.select('#block_name').text(panchayatDash.data.block_name);
             panchayatSortingTemplate(panchayatDash.data.employees[panchayatDash.panchayatGroupBy]);
             drawPanchayatPerformance();
         });

@@ -68,6 +68,7 @@ function blockInit() {
         })
         .get(function(error, data) {
             paydash.data = data;
+            d3.select('#block_name').text(paydash.data.block_name);
             drawBlockPerformance();
             drawBlockComparison(1);
         });
