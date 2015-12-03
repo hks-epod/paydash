@@ -40,12 +40,19 @@ exports.getData = {
                         }).map(function(muster) {
 
                             if (urls.employees[muster.panchayat_code + 'GRS']) {
-                                muster.grs_name = urls.employees[muster.panchayat_code + 'GRS'].name;
-                                muster.grs_mobile_no = urls.employees[muster.panchayat_code + 'GRS'].mobile_no;
+                                muster.grs_name = urls.employees[muster.panchayat_code + 'GRS'].name || 'Unmapped';
+                                muster.grs_mobile_no = urls.employees[muster.panchayat_code + 'GRS'].mobile_no || 'Unmapped';
+                            } else {
+                                muster.grs_name = 'Unmapped';
+                                muster.grs_mobile_no = 'Unmapped';
                             }
+
                             if (urls.employees[muster.panchayat_code + 'TA']) {
                                 muster.ta_name = urls.employees[muster.panchayat_code + 'TA'].name;
                                 muster.ta_mobile_no = urls.employees[muster.panchayat_code + 'TA'].mobile_no;
+                            } else {
+                                muster.ta_name = 'Unmapped';
+                                muster.ta_mobile_no = 'Unmapped';
                             }
                             //  append days pending 
                             var a = moment().startOf('day').subtract(val, 'd');

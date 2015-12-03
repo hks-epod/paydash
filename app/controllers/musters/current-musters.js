@@ -27,6 +27,13 @@ exports.getData = {
                     clean_musters.map(function(muster) {
                         muster.start_date = muster.Start_date;
                         delete muster.Start_date;
+                        if (urls.employees[muster.panchayat_code + 'GRS']) {
+                            muster.grs_name = urls.employees[muster.panchayat_code + 'GRS'].name || 'Unmapped';
+                            muster.grs_mobile_no = urls.employees[muster.panchayat_code + 'GRS'].mobile_no || 'Unmapped';
+                        } else {
+                            muster.grs_name = 'Unmapped';
+                            muster.grs_mobile_no = 'Unmapped';
+                        }
                         return muster;
                     });
 
