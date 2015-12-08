@@ -23,7 +23,7 @@ exports.large = function(options, paydash) {
         xax_format: d3.time.format('%e %b, %y'),
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
         missing_text: 'No data',
-        show_secondary_x_label : false,
+        show_secondary_x_label: false,
         legend: options.labels,
         legend_target: options.legend_target,
         show_tooltips: false,
@@ -38,10 +38,10 @@ exports.large = function(options, paydash) {
             if (!d.values) {
                 d.values = [d];
             }
-            if(options.data.length){
-                for(i=1; i<=options.data.length;i++){
+            if (options.data.length) {
+                for (i = 1; i <= options.data.length; i++) {
                     var l_span = d3.select(options.legend_target + ' .mg-line' + i + '-legend-color');
-                    l_span.text(' '); 
+                    l_span.text(' ');
                     l_span.text('— ' + paydash[options.legend_labels][i - 1]);
                 }
             }
@@ -49,7 +49,9 @@ exports.large = function(options, paydash) {
                 var prefix = d3.formatPrefix(val.value);
                 var l_span = d3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
-                l_span.text('— ' + paydash[options.legend_labels][val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
+                // console.log(d.values[index-1]);
+                var no_days = d.values[index - 1] ? prefix.scale(val.value - d.values[index - 1].value).toFixed(0) : prefix.scale(val.value).toFixed(0);
+                l_span.text('— ' + paydash[options.legend_labels][val.line_id - 1] + ' : ' + no_days);
                 var format = d3.time.format('%b %d, %Y');
                 d3.select(options.target + '_total_trans').text(format(val.date) + ': ' + val.total_trans);
             });
@@ -94,8 +96,8 @@ exports.small = function(options, paydash) {
         interpolate_tension: 1,
         y_label: 'Days to Complete Process',
         area: options.area,
-        show_secondary_x_label : false,
-        max_x : options.max_x || undefined,
-        min_x : options.min_x || undefined
+        show_secondary_x_label: false,
+        max_x: options.max_x || undefined,
+        min_x: options.min_x || undefined
     });
 };
