@@ -93,8 +93,7 @@ exports.getData = {
             var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'];
             final_dict.block_name = blockName;
             final_dict.config = {
-                'headers': headers,
-                'mandated_days': {}
+                'headers': headers
             };
 
             function padNum(num) {
