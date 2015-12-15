@@ -4,8 +4,16 @@
     <a class="menu-item" href="/notifications/read">Read Notifications</a>
   </div>
   <ul>
+    <ul>
     {{#each notifications}}
-      <li class="message message--success notification">{{this.msg}}</li>
+      <li class="message message--success notification">
+      <ul class="pointed-list">
+        {{#each this}}
+        <li>{{msg}}</li>
+        {{/each}}
+      </ul>
+      </li>
     {{/each}}
+  </ul>
 </div>
 {{> footer}}

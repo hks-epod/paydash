@@ -5,7 +5,8 @@ module.exports = function(sequelize, DataTypes) {
         msg: DataTypes.STRING,
         block_code: DataTypes.STRING,
         notification_type: DataTypes.INTEGER,
-        viewed: DataTypes.BOOLEAN
+        viewed: DataTypes.BOOLEAN,
+        batch_id: DataTypes.INTEGER
     }, {
         timestamps: true,
         underscored: true,
@@ -15,7 +16,8 @@ module.exports = function(sequelize, DataTypes) {
                 // associations can be defined here
                 notifications.belongsTo(models.User, {
                     onDelete: 'CASCADE',
-                    foreignKey: 'user_id'
+                    foreignKey: 'user_id',
+
                 });
             }
         }

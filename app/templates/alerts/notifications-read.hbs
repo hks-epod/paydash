@@ -5,7 +5,13 @@
   </div>
   <ul>
     {{#each notifications}}
-      <li class="message message--info notification">{{this.msg}}</li>
+      <li class="message message--info notification">
+      <ul class="pointed-list">
+        {{#each this}}
+        <li>{{msg}}</li>
+        {{/each}}
+      </ul>
+      </li>
     {{/each}}
   </ul>
 </div>
