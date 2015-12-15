@@ -53,12 +53,19 @@ function panchayatSortingTemplate(data) {
             .enter().append('div')
             .classed('heading', true)
             .html(function(d, index) {
-                console.log(panchayatDash);
+                var p_past_n_days;
+                if (panchayatDash.past_n_days === ''){
+                    p_past_n_days = 'all';
+                }else {
+                    p_past_n_days = panchayatDash.past_n_days;
+                }
                 var htmlString = '<div class="u-block-divider"></div><h3>' + d.name + '</h3>' +
                     '<div class="employee-stats">'+
-                    'Mobile no.' + d.mobile + 
-                    'Step 1 average: '+ d['step1_avg_'+ panchayatDash.past_n_days] +
-                    'Step 1 total transactions: '+ d['tot_trans'+ panchayatDash.past_n_days] +
+                    '<ul>'+
+                    '<li> Mobile no.' + d.mobile + '</li>'+
+                    '<li>Step 1 average: <span id="p_stat_step_avg">'+ d['step1_avg_'+ p_past_n_days] + '</span></li>'+
+                    '<li>Step 1 total transactions: <span id="p_stat_tot_trans"> '+ d['tot_trans_'+ p_past_n_days] + '</span></li>'+
+                    '</ul>'+
                     '</div>' +
                     '<div class="pure-g">';
                 d.panchayats.forEach(function(panchayat, index) {
