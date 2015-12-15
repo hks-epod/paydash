@@ -54,18 +54,18 @@ function panchayatSortingTemplate(data) {
             .classed('heading', true)
             .html(function(d, index) {
                 var p_past_n_days;
-                if (panchayatDash.past_n_days === ''){
+                if (panchayatDash.past_n_days === '') {
                     p_past_n_days = 'all';
-                }else {
+                } else {
                     p_past_n_days = panchayatDash.past_n_days;
                 }
                 var htmlString = '<div class="u-block-divider"></div><h3>' + d.name + '</h3>' +
-                    '<div class="employee-stats">'+
-                    '<ul>'+
-                    '<li> Mobile no.' + d.mobile + '</li>'+
-                    '<li>Step 1 average: <span id="p_stat_step_avg">'+ d['step1_avg_'+ p_past_n_days] + '</span></li>'+
-                    '<li>Step 1 total transactions: <span id="p_stat_tot_trans"> '+ d['tot_trans_'+ p_past_n_days] + '</span></li>'+
-                    '</ul>'+
+                    '<div class="employee-stats">' +
+                    '<ul>' +
+                    '<li> Mobile no.' + d.mobile + '</li>' +
+                    '<li>Step 1 average: <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></li>' +
+                    '<li>Step 1 total transactions: <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></li>' +
+                    '</ul>' +
                     '</div>' +
                     '<div class="pure-g">';
                 d.panchayats.forEach(function(panchayat, index) {
@@ -87,7 +87,7 @@ function panchayatSortingTemplate(data) {
             .html(function(d, index) {
                 var htmlString = '<div class="u-block-divider"></div><h3>Unmapped Panchayats</h3>' +
                     '<div class="pure-g">';
-                
+
                 panchayatDash.data.panchayats.forEach(function(panchayat, index) {
                     if (!panchayat['mapped' + panchayatDash.panchayatGroupBy.toLowerCase()]) {
 
@@ -197,6 +197,19 @@ if (window.location.pathname === '/dashboard/panchayat') {
 d3.selectAll('#p_modify-time-period-controls').on('change', function() {
     panchayatDash.past_n_days = d3.event.target.value;
     drawPanchayatPerformance();
+
+    // Update employee stats based on time controls
+    var p_past_n_days;
+    if (panchayatDash.past_n_days === '') {
+        p_past_n_days = 'all';
+    } else {
+        p_past_n_days = panchayatDash.past_n_days -1;
+    }
+    panchayatDash.data.employees[panchayatDash.panchayatGroupBy].forEach(function(d) {
+        d3.select('#p_stat_step_avg' + d.mobile).text(d['step1_avg_' + p_past_n_days] || '');
+        d3.select('#p_stat_tot_trans' + d.mobile).text(d['tot_trans_' + p_past_n_days] || '');
+    });
+
 });
 
 // Panchayat group by control
