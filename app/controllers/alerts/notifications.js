@@ -14,7 +14,7 @@ exports.showUnreadNotifications = {
 
         notifications.findAll({
             where: {
-                UserId: '1',
+                user_id: '1',
                 viewed: 0
             }
         }).then(function(unread) {
@@ -24,7 +24,7 @@ exports.showUnreadNotifications = {
                 viewed: 1
             }, {
                 where: {
-                    UserId: '1',
+                    user_id: '1',
                     viewed: 0
                 }
             });
@@ -49,7 +49,7 @@ exports.showReadNotifications = {
 
         notifications.findAll({
             where: {
-                UserId: '1',
+                user_id: '1',
                 viewed: 1
             }
         }).then(function(read) {

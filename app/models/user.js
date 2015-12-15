@@ -27,6 +27,9 @@ module.exports = function(sequelize, DataTypes) {
         time_on_nrega: DataTypes.STRING,
         isActive: DataTypes.BOOLEAN
     }, {
+        tableName: 'users',
+        timestamps: true,
+        underscored : true,
         classMethods: {
             associate: function(models) {
                 // associations can be defined here

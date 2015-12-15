@@ -7,12 +7,15 @@ module.exports = function(sequelize, DataTypes) {
         notification_type: DataTypes.INTEGER,
         viewed: DataTypes.BOOLEAN
     }, {
+        timestamps: true,
+        underscored: true,
         classMethods: {
+            
             associate: function(models) {
                 // associations can be defined here
                 notifications.belongsTo(models.User, {
                     onDelete: 'CASCADE',
-                    foreignKey: 'UserId'
+                    foreignKey: 'user_id'
                 });
             }
         }
