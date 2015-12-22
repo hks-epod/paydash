@@ -37,12 +37,7 @@ exports.getData = {
                         return muster;
                     });
 
-                    var current_musters = {
-                        records: clean_musters,
-                        queryRecordCount: clean_musters.length,
-                        totalRecordCount: clean_musters.length
-                    };
-                    reply(current_musters);
+                    reply(clean_musters);
                 }
             });
         });
