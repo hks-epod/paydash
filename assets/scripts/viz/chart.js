@@ -114,10 +114,6 @@ exports.large_indi = function(options, paydash) {
         full_width: true,
         decimals: 0,
         target: options.target,
-        baselines: [{
-            value: 15,
-            label: 'Days permitted'
-        }],
         xax_count: 15,
         xax_format: d3.time.format('%e %b, %y'),
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
