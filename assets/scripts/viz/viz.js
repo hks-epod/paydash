@@ -48,7 +48,7 @@ function drawBlockComparison(val) {
         }
     });
 
-    chart.large({
+    chart.large_indi({
         data: c_data,
         title: paydash.labels[val - 1],
         target: '#block_comparison',
