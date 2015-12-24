@@ -46,11 +46,11 @@ exports.large = function(options, paydash) {
                 }
             }
             d.values.forEach(function(val, index) {
-                var prefix = d3.formatPrefix(val.value);
+                // var prefix = d3.formatPrefix(val.value);
                 var l_span = d3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
-                // console.log(d.values[index-1]);
-                var no_days = d.values[index - 1] ? prefix.scale(val.value - d.values[index - 1].value).toFixed(0) : prefix.scale(val.value).toFixed(0);
+                var no_days = d.values[index - 1] ? (val.value - d.values[index - 1].value).toFixed(0) : (val.value).toFixed(0);
+
                 l_span.text('— ' + paydash[options.legend_labels][val.line_id - 1] + ' : ' + no_days);
                 var format = d3.time.format('%b %d, %Y');
                 d3.select(options.target + '_total_trans').text(format(val.date) + ': ' + val.total_trans);
