@@ -35,6 +35,6 @@ exports.register = function(plugin, options, next) {
 };
 
 exports.register.attributes = {
-    name: 'dashboard_routes',
+    name: 'monitor_routes',
     version: require('../../package.json').version
 };
