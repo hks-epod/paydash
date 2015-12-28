@@ -7,7 +7,9 @@
   ga('create', 'UA-xxxxxxxxxxxx', 'auto');
 
   //  Guide to USER IDs https://www.optimizesmart.com/complete-guide-cross-device-tracking-user-id-google-analytics/
-  ga(‘set’, ‘&uid’, {{credentials.id}}); // Set the user ID using
+  {{#if credentials.id}}
+    ga(‘set’, ‘&uid’, {{credentials.id}}); // Set the user ID using
+  {{/if}}
   ga('send', 'pageview');
 
 
