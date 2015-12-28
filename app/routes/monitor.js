@@ -20,17 +20,29 @@ exports.register = function(plugin, options, next) {
                 path: '/monitor/user',
                 config: Controllers.monitor.user.showPage
             },
-            // User monitororing data
+            // User monitoring data
             {
                 method: 'GET',
                 path: '/monitor/user/data',
                 config: Controllers.monitor.user.getData
             },
-            // Panchayat Dashboard
+            // Server monitoring
             {
                 method: 'GET',
                 path: '/monitor/server',
                 config: Controllers.monitor.server.showPage
+            },
+            // Analysis monitoring
+            {
+                method: 'GET',
+                path: '/monitor/analysis',
+                config: Controllers.monitor.analysis.showPage
+            },
+            // Analysis monitoring data api
+            {
+                method: 'GET',
+                path: '/monitor/analysis/data',
+                config: Controllers.monitor.analysis.getData
             }
         ]);
 

@@ -6,3 +6,13 @@ exports.showPage = {
         return reply.view('monitor/analysis');
     }
 };
+
+exports.getData = {
+    handler: function(request, reply) {
+   
+      var User = request.server.plugins.sequelize.db.User;
+      // Analysis api code here.
+
+
+    }
+};
