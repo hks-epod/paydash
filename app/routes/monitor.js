@@ -20,6 +20,12 @@ exports.register = function(plugin, options, next) {
                 path: '/monitor/user',
                 config: Controllers.monitor.user.showPage
             },
+            // User monitororing data
+            {
+                method: 'GET',
+                path: '/monitor/user/data',
+                config: Controllers.monitor.user.getData
+            },
             // Panchayat Dashboard
             {
                 method: 'GET',
