@@ -8,7 +8,7 @@ Let's take a tour of the app.
 
 ### Assets
 
-The [assets](assets) directory contains all the frontend stuff: JavaScript, stylesheets, images, fonts, robots.txt, favicon.ico, etc. The [web pack](tasks/webpack.js) [gulp process](gulpfile.js) watches this directory for file changes, and outputs everything to the [.build](.build) directory, which is [ignored by git](.gitignore) to prevent 
+The [assets](assets) directory contains all the frontend stuff: JavaScript, stylesheets, images, fonts, robots.txt, favicon.ico, etc. The [web pack](tasks/webpack.js) [gulp process](gulpfile.js) watches this directory for file changes, and outputs everything to the [.build](.build) directory, which is [ignored by git](.gitignore) to prevent automated version control noise.
 
 - Web pack [assets/scripts/index.js](assets/scripts/index.js)
 
@@ -39,7 +39,11 @@ Every controller in the application is defined in [app/controllers](app/controll
 We're using semi-colons and comma-last. No rhyme or reason; and some of the hapi [code convention guidelines](http://hapijs.com/styleguide).
 
 ## Running the server locally
-To run the server locally you should have `node`, `npm`, `mongodb` installed. You need to have copy of config file in `config/config.js` as well as GA key file in `config/keys/gakey.json`
+
+ - Install  `node`, `npm`, `mongodb`
+ - Ask an admin for a copy of `config.js` and place it in /config folder.
+ - For running monitoring service ask admin for copy of Google analytics service account key file and place it in `config/keys/`
+ - Run these commands
 
 ```sh
 
