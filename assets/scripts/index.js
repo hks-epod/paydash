@@ -1,11 +1,18 @@
 var $ = require('jquery');
 
-// require('./components/metricsgraphics');
-require('./components/block_selection');
+//  Load components
 require('./components/dropdown');
+require('./components/block_selection');
 require('./components/active-link');
-require('./viz/viz');
-require('./viz/comparison');
-require('./tables/current');
-require('./tables/delayed');
+
+// Include Performance Dashboards scripts
+require('./performance/block');
+require('./performance/panchayat');
+
+// Include Muster Dashboards scripts
+require('./musters/current');
+require('./musters/delayed');
+
+// Include Monitor Dashboards scripts
+require('./monitor/user');
 

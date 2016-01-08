@@ -1,10 +1,10 @@
 'use strict';
 
 var d3 = require('d3');
-var chart = require('./chart');
-var parser = require('./parser');
 var $ = require('jquery');
-var read_cookie = require('../components/read_cookie');
+var chart = require('../charts/chart');
+var parser = require('../helpers/parser');
+var read_cookie = require('../helpers/read_cookie');
 
 // Global state
 var panchayatDash = {

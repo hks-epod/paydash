@@ -1,8 +1,8 @@
 'use strict';
 
-var dynatable = require('../components/dynatable');
 var $ = require('jquery');
-var read_cookie = require('../components/read_cookie');
+var dynatable = require('../components/dynatable');
+var read_cookie = require('../helpers/read_cookie');
 
 var tim = [2, 5, 6, 7, 8];
 

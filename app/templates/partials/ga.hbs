@@ -4,12 +4,11 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  
-
+  //  Send credentials for user tracking
   {{#if credentials.id}}
-    ga('create', 'UA-xxxxxxxxxxxx', 'auto',{'userId': '{{credentials.id}}'});
+    ga('create', 'UA-54269439-4', 'auto',{'userId': '{{credentials.id}}'});
   {{else}}
-    ga('create', 'UA-xxxxxxxxxxxx', 'auto');
+    ga('create', 'UA-54269439-4', 'auto');
   {{/if}}
 
   ga('send', 'pageview');

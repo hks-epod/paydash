@@ -3,7 +3,9 @@ var d3 = require('d3');
 
 exports.showPage = {
     handler: function(request, reply) {
-        return reply.view('monitor/user');
+        return reply.view('monitor/user', null, {
+            layout: 'monitor'
+        });
     }
 };
 
@@ -23,7 +25,7 @@ exports.getData = {
                 'ids': 'ga:73657543',
                 'metrics': 'ga:users,ga:sessionsPerUser,ga:pageviews,ga:sessions,ga:avgSessionDuration',
                 'dimensions': 'ga:date',
-                'start-date': '2015-01-01',
+                'start-date': '2013-08-01',
                 'end-date': '2015-03-09'
             }, function(err, response) {
                 console.log(response);

@@ -1,7 +1,7 @@
 'use strict';
-var $ = require('jquery');
 
-var read_cookie = require('./read_cookie');
+var $ = require('jquery');
+var read_cookie = require('../helpers/read_cookie');
 
 var selected_block_id = read_cookie('selected_block_id');
 $('#block_selector option[value="' + selected_block_id + '"]').attr('selected', 'selected');

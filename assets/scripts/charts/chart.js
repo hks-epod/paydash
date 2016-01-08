@@ -118,7 +118,7 @@ exports.large_indi = function(options, paydash) {
         xax_format: d3.time.format('%e %b, %y'),
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
         missing_text: 'No data',
-        show_secondary_x_label : false,
+        show_secondary_x_label: false,
         legend: options.labels,
         legend_target: options.legend_target,
         show_tooltips: false,
@@ -133,10 +133,10 @@ exports.large_indi = function(options, paydash) {
             if (!d.values) {
                 d.values = [d];
             }
-            if(options.data.length){
-                for(i=1; i<=options.data.length;i++){
+            if (options.data.length) {
+                for (i = 1; i <= options.data.length; i++) {
                     var l_span = d3.select(options.legend_target + ' .mg-line' + i + '-legend-color');
-                    l_span.text(' '); 
+                    l_span.text(' ');
                     l_span.text('— ' + paydash[options.legend_labels][i - 1]);
                 }
             }
@@ -166,26 +166,21 @@ exports.ga_chart = function(options) {
     MG.data_graphic({
         title: '',
         data: options.data,
-        width: 600,
-        height: 500,
+        // width: 600,
         left: 100,
         full_width: true,
-        decimals: 0,
         target: options.target,
-        xax_count: 15,
-        // xax_format: d3.time.format('%e %b, %y'),
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
         missing_text: 'No data',
         show_secondary_x_label: false,
         legend: options.labels,
         legend_target: options.legend_target,
         show_tooltips: false,
-        aggregate_rollover: true,
+        // aggregate_rollover: true,
         show_year_markers: true,
         transition_on_update: false,
-        interplate: 'log',
         interpolate_tension: 1,
-        area: options.area
-        // y_label: ''
+        area: options.area,
+        y_accessor: 'value'
     });
 };

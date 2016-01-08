@@ -1,13 +1,10 @@
 'use strict';
 
-var dynatable = require('../components/dynatable');
 var $ = require('jquery');
-var read_cookie = require('../components/read_cookie');
-
-
+var dynatable = require('../components/dynatable');
+var read_cookie = require('../helpers/read_cookie');
 
 function currentTableInit() {
-
     $.ajax({
         url: '/musters/delayed/data?selected_block_id=' + read_cookie('selected_block_id'),
         success: function(data) {
@@ -26,17 +23,10 @@ function currentTableInit() {
                     search: false,
                 }
             });
-
-
         }
     });
-
-
-
-
-    
 }
+
 if (window.location.pathname === '/musters/current') {
     currentTableInit();
 }
-
