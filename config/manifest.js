@@ -34,12 +34,13 @@ var manifest = {
                 isSecure: Config.get('/yarCookie/ssl')
             }
         },
-        crumb: {
+        'good':Config.get('/good'),
+        'crumb': {
             autoGenerate: true
         },
-        inert: {},
-        vision: {},
-        visionary: {
+        'inert': {},
+        'vision': {},
+        'visionary': {
             engines: {
                 hbs: 'handlebars'
             },
