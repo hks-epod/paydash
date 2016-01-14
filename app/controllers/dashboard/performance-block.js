@@ -17,7 +17,6 @@ exports.getData = {
         var block_code = request.query.selected_block_id;
         var queryString = queries.blockPerformance(block_code);
 
-        console.log(queryString)
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
