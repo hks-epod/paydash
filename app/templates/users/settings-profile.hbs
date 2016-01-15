@@ -31,7 +31,7 @@
             <label for="lastName">If yes, how many years ?</label>
             <input class="u-full-width" id="sas_years" name="sas_years" value="{{user.sas_years}}" type="text" placeholder="Please enter no. of years">
             <label for="lastName">Member of IAS?</label>
-            <select class="u-full-width" name="ias" value="{{user.ias}}" id="ias">
+            <select class="u-full-width" name="ias" value="{{user.ias}}" id="sas">
               <option value="yes">Yes</option>
               <option value="no">no</option>
             </select>
@@ -40,7 +40,7 @@
             <label for="title">Primary post</label>
             <input class="u-full-width" id="title" name="title" value="{{user.title}}" type="text" placeholder="Please enter your primary post">
             <label for="region_type">Region Type</label>
-            <select class="u-full-width" name="ias" value="{{user.region_type}}" id="ias">
+            <select class="u-full-width" name="region_type" value="{{user.region_type}}" id="ias">
               <option value="state">State</option>
               <option value="district">District</option>
               <option value="block">Block</option>

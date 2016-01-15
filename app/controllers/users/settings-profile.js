@@ -5,7 +5,6 @@ var Joi = require('joi');
 exports.showEditProfile = {
     description: 'Show Edit profile settings',
     handler: function(request, reply) {
-        console.log(request.auth.credentials);
         var ctx = {
             user: request.auth.credentials
         };
@@ -18,67 +17,56 @@ exports.postEditProfile = {
     description: 'Post Edit profile settings',
     validate: {
         payload: {
-            firstName: Joi.string().min(2).max(20).required(),
-            lastName: Joi.string().min(2).max(20).required(),
-            role: Joi.string().min(2).max(100).required(),
-            gender: Joi.string().min(2).max(100).required(),
-            dob: Joi.string().min(2).max(100).required(),
-            mobile: Joi.string().min(2).max(100).required(),
-            email: Joi.string().min(2).max(100).required(),
-            sas: Joi.string().min(2).max(100).required(),
-            sas_years: Joi.string().min(2).max(100).required(),
-            ias: Joi.string().min(2).max(100).required(),
-            ias_years: Joi.string().min(2).max(100).required(),
-            title: Joi.string().min(2).max(100).required(),
-            region_type: Joi.string().min(2).max(100).required(),
-            region_name: Joi.string().min(2).max(100).required(),
-            work_email: Joi.string().min(2).max(100).required(),
-            work_years: Joi.string().min(2).max(100).required(),
-            time_on_nrega: Joi.string().min(2).max(100).required()
+            firstname: Joi.string().min(2).max(20).required(),
+            lastname: Joi.string().min(2).max(20).required(),
+            gender: Joi.string().max(100).required(),
+            dob: Joi.string().max(100).allow(''),
+            mobile: Joi.string().max(100).allow(''),
+            email: Joi.string().max(100).allow(''),
+            sas: Joi.string().allow(''),
+            sas_years: Joi.string().max(100).allow(''),
+            ias: Joi.string().allow(''),
+            ias_years: Joi.string().max(100).allow(''),
+            title: Joi.string().max(100).allow(''),
+            region_type: Joi.string().max(100).allow(''),
+            region_name: Joi.string().max(100).allow(''),
+            work_email: Joi.string().max(100).allow(''),
+            work_years: Joi.string().max(100).allow(''),
+            time_on_nrega: Joi.string().max(100).allow('')
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
+            console.log(error);
             request.session.flash('error', 'Bad request');
             return reply.redirect('/me/settings/profile');
         }
     },
     handler: function(request, reply) {
 
-        var id = request.auth.credentials._id.toString();
+        var id = request.auth.credentials.id.toString();
         // TODO : Move it to the joi validations
         request.payload.updated = Date.now();
-        var update = {
-            $set: request.payload
-        };
-        var options = {
-            new: true
-        };
-
         var User = request.server.plugins.sequelize.db.User;
-        // User.findOne({
-        //     where: {
-        //         id: id
-        //     }
-        // }).on('success', function(project) {
-        //     if (project) { // if the record exists in the db
-        //         project.updateAttributes(request.payload).success(function() {
+        User.findOne({
+            where: {
+                id: id
+            }
+        }).then(function(user) {
+            if (user) { // if the record exists in the db
+                console.log(request.payload);
+                user.update(request.payload).then(function() {
+                    console.log('sdsdsd');
+                    request.auth.session.clear();
+                    request.auth.session.set(user);
+                    request.session.flash('success', 'Profile successfully saved');
+                    return reply.redirect('/me/settings/profile');
 
-        //         });
-        //     }
-        // });
+                });
 
-        // User.findByIdAndUpdate(id, update, options, function(err, user) {
-        //     if (err) {
-        //         request.session.flash('error', 'An internal server error occurred');
-        //         return reply.redirect('/me/settings/profile');
-        //     }
-        //     // Reset the session
-        //     request.auth.session.clear();
-        //     request.auth.session.set(user);
-        //     request.session.flash('success', 'Profile successfully saved');
-        //     return reply.redirect('/me/settings/profile');
-        // });
-
-
+            } else {
+                request.session.flash('error', 'An internal server error occurred');
+                return reply.redirect('/me/settings/profile');
+            }
+        });
     }
 };
