@@ -1,6 +1,7 @@
 'use strict';
 
 var Joi = require('joi');
+var crypto = require('crypto');
 
 exports.showEditAccount = {
     description: 'Show Edit account settings',
@@ -28,7 +29,7 @@ exports.postChangePassword = {
         failAction: function(request, reply, source, error) {
             // Boom bad request
             request.session.flash('error', 'Bad request');
-            return reply.redirect('/signup');
+            return reply.redirect('/signin');
         }
     },
     handler: function(request, reply) {
@@ -38,30 +39,26 @@ exports.postChangePassword = {
             return reply.redirect('/me/settings/account');
         }
         var User = request.server.plugins.sequelize.db.User;
-        // User.findByCredentials(request.auth.credentials.username, request.payload.oldPassword, function(err, user, msg) {
-        //     if (err) {
-        //         request.session.flash('error', 'An internal server error occurred');
-        //         return reply.redirect('/me/settings/account');
-        //     }
-        //     if (user) {
-        //         user.password = request.payload.newPassword;
-        //         user.save(function(err) {
-        //             if (err) {
-        //                 request.session.flash('error', 'An internal server error occurred');
-        //                 return reply.redirect('/me/settings/account');
-        //             }
-        //             request.session.flash('success', 'Password changed successfully. Please login with new password');
-        //             request.auth.session.clear();
-        //             return reply.redirect('/login');
-        //         });
-        //     } else {
-        //         // User not fond in database
-        //         request.session.flash('error', 'Old password is incorrect');
-        //         return reply.redirect('/me/settings/account');
-        //     }
-        // });
 
-
-
+        User.findOne({
+            where: {
+                username: request.auth.credentials.username,
+                password: crypto.createHash('md5').update(request.payload.oldPassword).digest('hex')
+            }
+        }).then(function(user) {
+            if (user) {
+                user.update({
+                    password: crypto.createHash('md5').update(request.payload.newPassword).digest('hex')
+                }).then(function() {
+                    request.session.flash('success', 'Password changed successfully. Please login with new password');
+                    request.auth.session.clear();
+                    return reply.redirect('/login');
+                });
+            } else {
+                // User not fond in database
+                request.session.flash('error', 'Old password is incorrect');
+                return reply.redirect('/me/settings/account');
+            }
+        });
     }
 };
