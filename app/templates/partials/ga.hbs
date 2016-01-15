@@ -6,8 +6,9 @@
 
   //  Send credentials for user tracking
   {{#if credentials.id}}
-    ga('create', 'UA-54269439-4', 'auto', {'userId': '{{credentials.id}}'});
+    ga('create', 'UA-54269439-4', 'auto');
     ga('set', 'userId', {{credentials.id}}); // Set the user ID using signed-in user_id.
+    ga('set', 'dimension1', {{credentials.id}});
   {{else}}
     ga('create', 'UA-54269439-4', 'auto');
   {{/if}}
