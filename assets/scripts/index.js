@@ -15,4 +15,5 @@ require('./musters/delayed');
 
 // Include Monitor Dashboards scripts
 require('./monitor/user');
+require('./monitor/server');
 
