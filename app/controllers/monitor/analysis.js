@@ -15,6 +15,87 @@ exports.getData = {
       var User = request.server.plugins.sequelize.db.User;
       // Analysis api code here.
 
+      // Full payment duration
+      {
+      	'treatment': {
+      		'series': [
+
+      		]
+      	}
+
+      	'control': {
+      		'series': [
+
+      		]
+      	}
+      	'summary': {
+      		'treatmentMean':,
+      		'controlMean':,
+      		'pValue':,
+      	}	
+      }
+
+      // Stepwise payment duration
+      {
+      	'treatment': {
+      		'series': [
+
+      		]
+      	}
+
+      	'control': {
+      		'series': [
+
+      		]
+      	}
+      	'summary': {
+      		'treatmentMean':,
+      		'controlMean':,
+      		'pValue':,
+      	}	
+      }
+
+      // Person-days
+      {
+      	'treatment': {
+      		'series': [
+
+      		]
+      	}
+
+      	'control': {
+      		'series': [
+
+      		]
+      	}
+      	'summary': {
+      		'treatmentMean':,
+      		'controlMean':,
+      		'pValue':,
+      	}	
+      }
+      
+      // Expenditures
+      {
+      	'treatment': {
+      		'series': [
+
+      		]
+      	}
+
+      	'control': {
+      		'series': [
+
+      		]
+      	}
+      	'summary': {
+      		'treatmentMean':,
+      		'controlMean':,
+      		'pValue':,
+      	}	
+      }
+
+
 
     }
 };
