@@ -2,12 +2,13 @@
 
 var d3 = require('d3');
 var chart = require('../charts/chart');
-var parser = require('../parsers/server_stats_parser');
+var stat_parser = require('../parsers/server_stats_parser');
+var load_parser = require('../parsers/ga_page_load_parser');
 
 var serverMonitor = {};
 
 function loadLineCharts() {
-    var cpu_usage_data = parser.lines(serverMonitor.data, 'cpu');
+    var cpu_usage_data = stat_parser.lines(serverMonitor.data, 'cpu');
     chart.ga_chart({
         data: cpu_usage_data,
         title: 'CPU Usages',
@@ -18,7 +19,7 @@ function loadLineCharts() {
         area: true
     });
 
-    var mem_usage_data = parser.lines(serverMonitor.data, 'mem_used');
+    var mem_usage_data = stat_parser.lines(serverMonitor.data, 'mem_used');
     chart.ga_chart({
         data: mem_usage_data,
         title: 'Memory Usages',
@@ -29,7 +30,7 @@ function loadLineCharts() {
         area: true
     });
 
-    var heap_usage_data = parser.lines(serverMonitor.data, 'heap_used');
+    var heap_usage_data = stat_parser.lines(serverMonitor.data, 'heap_used');
     chart.ga_chart({
         data: heap_usage_data,
         title: 'Heap Usages',
@@ -50,8 +51,31 @@ function serverMonInit() {
         })
         .get(function(error, data) {
             serverMonitor.data = data;
-            console.log('sdsdsdsd');
             loadLineCharts();
+        });
+    d3.json('/monitor/server/pageloaddata')
+        .on('progress', function() {
+            console.info('progress', d3.event.loaded);
+        })
+        .get(function(error, data) {
+            var page_timing_data = load_parser.lines(data.rows);
+            var labels = [];
+            var page_timing_lines = [];
+            for (var page in page_timing_data) {
+                labels.push(page);
+                page_timing_lines.push(page_timing_data[page]);
+            }
+            chart.ga_chart({
+                data: page_timing_lines,
+                title: 'Page Timings',
+                target: '#page_load_chart',
+                legend_target: '.block_legend',
+                labels: labels,
+                legend_labels: 'labels',
+                area: true
+            });
+
+
         });
 }
 

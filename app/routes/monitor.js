@@ -38,6 +38,12 @@ exports.register = function(plugin, options, next) {
                 path: '/monitor/server/data',
                 config: Controllers.monitor.server.getData
             },
+            // Server monitoring
+            {
+                method: 'GET',
+                path: '/monitor/server/pageloaddata',
+                config: Controllers.monitor.server.getPageLoadData
+            },
             // Analysis monitoring
             {
                 method: 'GET',

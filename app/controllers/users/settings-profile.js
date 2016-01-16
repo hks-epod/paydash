@@ -44,7 +44,6 @@ exports.postEditProfile = {
     handler: function(request, reply) {
 
         var id = request.auth.credentials.id.toString();
-        // TODO : Move it to the joi validations
         request.payload.updated = Date.now();
         var User = request.server.plugins.sequelize.db.User;
         User.findOne({
@@ -53,7 +52,6 @@ exports.postEditProfile = {
             }
         }).then(function(user) {
             if (user) { // if the record exists in the db
-                console.log(request.payload);
                 user.update(request.payload).then(function() {
                     console.log('sdsdsd');
                     request.auth.session.clear();

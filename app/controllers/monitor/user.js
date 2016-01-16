@@ -14,7 +14,6 @@ exports.getData = {
 
         var analytics = request.server.plugins.ga.analytics;
         var jwtClient = request.server.plugins.ga.jwtClient;
-        console.log(jwtClient);
         jwtClient.authorize(function(err, tokens) {
             if (err) {
                 return;
