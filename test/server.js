@@ -8,18 +8,13 @@ var Composer = require('../index');
 
 // Test shortcuts
 var lab = exports.lab = Lab.script();
-var describe = lab.experiment;
-var expect = Code.expect;
-var it = lab.test;
 
-it('starts server and returns hapi server object', function(done) {
+lab.test('starts server and returns hapi server object', function(done) {
 
     Composer(function(err, server) {
-
-        expect(err).to.not.exist();
-        expect(server).to.exist();
+        Code.expect(err).to.not.exist();
+        Code.expect(server).to.exist();
         server.stop(done);
-
     });
 
 });

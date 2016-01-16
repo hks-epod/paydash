@@ -4,7 +4,7 @@
   "description": "Workers Payment Dashboard",
   "main": "index.js",
   "scripts": {
-    "test": "node node_modules/lab/bin/lab -a code -t 100",
+    "test": "node node_modules/lab/bin/lab -a code -t 90",
     "start": "gulp"
   },
   "repository": {
