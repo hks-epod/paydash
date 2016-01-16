@@ -18,7 +18,7 @@ Note: For a detailed list of toolsets used in paydash, please refer to [package.
 ## Application Structure
 
 Let's take a tour of the app.
-``
+```
 |-- app
 |   |-- controllers    // Controllers are organised by module names
 |   |   |-- <module_name> // Each controller defines config and handler for that route.
@@ -53,7 +53,8 @@ Let's take a tour of the app.
 |-- index.js  // Application starting point
 |-- package.js  // Package configuration file
 |-- server.js  // Main server file
-``
+```
+
 ## Code
 
 We're using semi-colons and comma-last. No rhyme or reason; and some of the hapi [code convention guidelines](http://hapijs.com/styleguide).
