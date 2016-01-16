@@ -1,7 +1,6 @@
 'use strict';
 
 // Load modules
-var Hapi = require('hapi');
 var Code = require('code');
 var Lab = require('lab');
 var Composer = require('../index');
