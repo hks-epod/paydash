@@ -12,13 +12,14 @@ Gulp.task('webpack', function() {
     var config = {
         entry: {
             vendor: ['jquery', 'd3'],
-            app: './assets/scripts/index.js'
+            app: './assets/scripts/index.js',
+            mdash :'./assets/scripts/mdash.js'
         },
         watch: true,
         cache: true,
         output: {
             path: '.build/js/',
-            filename: 'bundle.js'
+            filename: '[name].bundle.js'
         },
         module: {
             loaders: [{
