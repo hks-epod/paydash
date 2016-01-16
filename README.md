@@ -1,6 +1,6 @@
 ## Paydash
-
-Workers Payment Dashboard
+<img align="right" height="250" src="assets/images/charts.png">
+> Workers Payment Dashboard for MGNREGA
 
 ## Application Structure
 
