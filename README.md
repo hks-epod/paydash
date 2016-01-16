@@ -1,7 +1,7 @@
 ## Paydash
 <img align="right" height="150" src="assets/images/charts.png">
 
-> Paydash is the workers payment dashboard for Mahatma Gandhi National Rural Employment Guarantee Act(MGNREGA), an Indian labour law and social security measure that aims to guarantee the 'right to work'. Aim of paydash is to empower officers with relatime payment monitoring tool and reduce payment delays. 
+> Paydash is the workers payment dashboard for Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA), an Indian labour law and social security measure that aims to guarantee the 'right to work'. Aim of paydash is to empower officers with relatime payment monitoring tool and reduce payment delays. 
 
 ## Technology
 
@@ -11,7 +11,7 @@
 - **SASS** - CSS preprocessor 
 - **D3** - Data visualization library
 - **Gulp** - Javascript tasks automation
-- **WebPack** - Assets pipeline
+- **WebPack** - Asset pipeline
 
 Note: For a detailed list of toolsets used in paydash, please refer to [package.json](package.json). 
 
@@ -57,22 +57,43 @@ Let's take a tour of the app.
 
 ## Code
 
-We're using semi-colons and comma-last. No rhyme or reason; and some of the hapi [code convention guidelines](http://hapijs.com/styleguide).
+We're using semi-colons and comma-last. No rhyme or reason; and some of the hapi [code convention guidelines](http://hapijs.com/styleguide). All client side js code is also in commonJS pattern packes using webpack. Also please check out `.editorconfig`, `.jsbeautifyrc`, `.jshintrc` for some other code conventions used.
 
 ## Running the server locally
 
- - Install  `node`, `npm`, `mongodb`
- - Ask an admin for a copy of `config.js` and place it in /config folder.
- - For running monitoring service ask admin for copy of Google analytics service account key file and place it in `config/keys/`
+ - Install  `node`, `npm`
+ - Place a copy of `config.js` in `/config` folder.
+ - Monitoring services will require Google analytics service account key file placed in `config/keys/`
  - Run these commands
 
 ```sh
+# Install deps
+$ npm install
 
-# install deps
-npm install
+# Run the hapi server
+$ npm start
 
-# run the hapi server
-gulp
+# > paydash@1.0.0 start /Users/ravisuhag/Batcave/Workspace/Harvard/Dev/paydash
+# > gulp
+# 
+# [16:48:55] Using gulpfile ~/Batcave/Workspace/Harvard/Dev/paydash/gulpfile.js
+# [16:48:55] Starting 'fonts'...
+# [16:48:56] Starting 'images'...
+# [16:48:56] Starting 'misc'...
+# [16:48:56] Starting 'styles'...
+# [16:48:56] Finished 'styles' after 5.49 ms
+# [16:48:56] Starting 'webpack'...
+# [16:48:56] Finished 'webpack' after 73 ms
+# [16:48:56] Starting 'lint'...
+# [16:48:56] Starting 'nodemon'...
+# [16:48:56] Finished 'nodemon' after 1.99 ms
+# [16:48:56] [nodemon] v1.4.1
+# [16:48:56] [nodemon] to restart at any time, enter `rs`
+# [16:48:56] [nodemon] watching: *.*
+# [16:48:56] [nodemon] starting `node server.js`
+# [16:48:57] Finished 'images' after 1.98 s
+# [16:48:57] Finished 'misc' after 1.98 s
+# Server is listening on 8000
 
 ```
 The server should be running at [localhost:8000](https://localhost:8000).
@@ -80,25 +101,3 @@ The server should be running at [localhost:8000](https://localhost:8000).
 ## Contributers
 
 [See the awesome people!](https://github.com/hks-epod/paydash/graphs/contributors)
-
-#### License
-
-The MIT License (MIT)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software is furnished to do so,
-subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
-FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
-IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
-CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-

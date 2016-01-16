@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node node_modules/lab/bin/lab -a code -t 100",
-    "start": "node server.js"
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
