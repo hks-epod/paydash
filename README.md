@@ -1,9 +1,11 @@
 ## Paydash
 <img align="right" height="150" src="assets/images/charts.png">
 
-> Paydash is a monitoring tool for block officials overseeing MGNREGA, India's employment guarantee programme for rural households. Beneficiaries under MGNREGA are supposed to be paid within 15 days of working, but the average worker waited 53 days to receive payment in 2014-2015, undermining MGNREGA's effectiveness as a social safety net. Paydash aims to reduce delays in beneficiary payments by providing government officials with detailed information on delays -- breaking out performance on payment sub-processes down to the panchayat level and connecting poor performance with the responsible government employee. In addition to diagnostics, Paydash is action-oriented, providing access to pending documents and the contact information of the responsible employee. Paydash aims to empower government officials with better information while introducing more accountability into the payments process, with the ultimate goal of helping MGNREGA workers receive their rightful payments.
+> Paydash is a monitoring tool for block officials overseeing MGNREGA, India's employment guarantee programme for rural households. Beneficiaries under MGNREGA are supposed to be paid within 15 days of working, but the average worker waited 53 days to receive payment in 2014-2015, undermining MGNREGA's effectiveness as a social safety net.
 
-Paydash is a joint initiative of the Ministry of Rural Development, the National Informatics Centre, and Evidence for Policy Design at Harvard Kennedy School.
+> Paydash aims to reduce delays in beneficiary payments by providing government officials with detailed information on delays -- breaking out performance on payment sub-processes down to the panchayat level and connecting poor performance with the responsible government employee. In addition to diagnostics, Paydash is action-oriented, providing access to pending documents and the contact information of the responsible employee. Paydash aims to empower government officials with better information while introducing more accountability into the payments process, with the ultimate goal of helping MGNREGA workers receive their rightful payments.
+
+> Paydash is a joint initiative of the Ministry of Rural Development, the National Informatics Centre, and Evidence for Policy Design at Harvard Kennedy School.
 
 ## Technology
 
