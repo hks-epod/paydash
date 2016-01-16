@@ -10,14 +10,14 @@
 ## Technology
 
 - **Hapi** - Server side framework
-- **Handlebar** - HTML temnplating engine
+- **Handlebar** - HTML templating engine
 - **Sequelize** - MYSQL database ORM
 - **SASS** - CSS preprocessor 
 - **D3** - Data visualization library
 - **Gulp** - Javascript tasks automation
 - **WebPack** - Asset pipeline
 
-Note: For a detailed list of toolsets used in paydash, please refer to [package.json](package.json). 
+Note: For a detailed list of the toolsets used in paydash, please refer to [package.json](package.json). 
 
 ## Application Structure
 
@@ -33,22 +33,22 @@ Let's take a tour of the app.
 |   |-- routes             // All app routes are defined here
 |   |   |-- <route_plugin> // Route module is a hapi plugin and can be toggled from config/manifest.js
 |   |
-|   `-- templates          // All server rendered handlebar templates, partials and helpers
+|   `-- templates          // All server-rendered handlebar templates, partials and helpers
 |       |-- <module_name>  // Templates are organised by module names.
 |   
 |-- assets                 // Contains all static resources 
 |   |-- fonts              // Fonts used in application
 |   |-- images             // Images used in application
 |   |-- misc               // Misc resources used in application
-|   |-- scripts            // Client javscripts files which are tehn packed by webpack
-|   |-- styles             // All SASS styelsheets
+|   |-- scripts            // Client javscripts files which are then packed by webpack
+|   |-- styles             // All SASS stylesheets
 |   |   |-- <module_name>  // Styles are organised by module names. 
 |   
 |-- config                 // Contains all app configurations 
 |   |   |-- keys           // GA and other application keys are stored here. (gitignored).
 |   |-- assets.js          // Assets configuration file 
-|   |-- config.js          // Application configuratiin file which store all passwords etc. (gitignore). 
-|   |-- manifest.js        // App manifest file listing all plugins and laod order. 
+|   |-- config.js          // Application configuration file which stores all passwords etc. (gitignore). 
+|   |-- manifest.js        // App manifest file listing all plugins and load order. 
 |   
 |-- lib                    // Core application lib/plugins 
 |-- tasks                  // Contains all gulp tasks 
@@ -62,7 +62,7 @@ Let's take a tour of the app.
 
 ## Code
 
-We're using semi-colons and comma-last. No rhyme or reason; and some of the hapi [code convention guidelines](http://hapijs.com/styleguide). All client side js code is also in commonJS pattern packes using webpack. Also please check out `.editorconfig`, `.jsbeautifyrc`, `.jshintrc` for some other code conventions used.
+We're using semi-colons and comma-last. No rhyme or reason; and some of the hapi [code convention guidelines](http://hapijs.com/styleguide). All client-side js code is also in commonJS pattern packs using webpack. Check out `.editorconfig`, `.jsbeautifyrc`, `.jshintrc` for additional code conventions used.
 
 ## Running the server locally
 
