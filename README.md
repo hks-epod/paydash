@@ -99,6 +99,22 @@ $ npm start
 ```
 The server should be running at [localhost:8000](https://localhost:8000).
 
+## Running tests
+Lab is part of the hapi.js toolset and what we use to write all of our tests.
+
+```
+$ npm test
+# > paydash@1.0.0 test /Users/ravisuhag/Batcave/Workspace/Harvard/Dev/paydash
+# > node node_modules/lab/bin/lab -a code -t 100
+
+# ..............
+
+# 6 tests complete
+# Test duration: 1628 ms
+# No global variable leaks detected
+# Coverage: 100.00%
+```
+
 ## Contributers
 
 [See the awesome people!](https://github.com/hks-epod/paydash/graphs/contributors)
