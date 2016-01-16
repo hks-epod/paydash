@@ -19,7 +19,8 @@ Note: For a detailed list of toolsets used in paydash, please refer to [package.
 
 Let's take a tour of the app.
 ```
-|-- app
+|
+| -- app
 |   |-- controllers        // Controllers are organised by module names
 |   |   |-- <module_name>  // Each controller defines config and handler for that route.
 |   |
