@@ -26,7 +26,7 @@ Let's take a tour of the app.
 |   |-- helpers  // Helper functions used across application
 |   |-- models   // All sequelize models are defined here
 |   |-- routes  // All app routes are defined here
-|   |   |-- <route_plugin>  // Each route module is a hapi plugin and can be toogled from config/manifest.js file.
+|   |   |-- <route_plugin>  // Route module is a hapi plugin and can be toggled from config/manifest.js
 |   |
 |   `-- templates  // All server rendered handlebar templates, partials and helpers
 |       |-- <module_name> // Templates are organised by module names.
@@ -40,9 +40,9 @@ Let's take a tour of the app.
 |   |   |-- <module_name> // Styles are organised by module names. 
 |   
 |-- config // Contains all app configurations 
-|   |   |-- keys // GA and other application keys are stored here. This folder is gitignored for security concerns.
+|   |   |-- keys // GA and other application keys are stored here. (gitignored).
 |   |-- assets.js  // Assets configuration file 
-|   |-- config.js  // Application configuratiin file which store all passwords etc. This file is gitignored. 
+|   |-- config.js  // Application configuratiin file which store all passwords etc. (gitignore). 
 |   |-- manifest.js  // App manifest file listing all plugins and laod order. 
 |   
 |-- lib    // Core application lib/plugins 
