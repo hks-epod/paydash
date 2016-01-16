@@ -1,6 +1,19 @@
 ## Paydash
 <img align="right" height="200" src="assets/images/charts.png">
+
 > Paydash is the workers payment dashboard for Mahatma Gandhi National Rural Employment Guarantee Act(MGNREGA), an Indian labour law and social security measure that aims to guarantee the 'right to work'. Aim of paydash is to empower officers with relatime payment monitoring tool and reduce payment delays. 
+
+### Technology
+
+- Hapi - Server side framework
+- Handlebar - HTML temnplating engine
+- Sequelize - MYSQL database ORM
+- SASS - CSS preprocessor 
+- D3 - Data visualization library
+- Gulp - Javascript tasks automation
+- WebPack - Assets pipeline
+
+Note: For a detailed list of toolset used in paydash, please refer to [package configuration file](package.json). 
 
 ## Application Structure
 
