@@ -20,39 +20,39 @@ Note: For a detailed list of toolsets used in paydash, please refer to [package.
 Let's take a tour of the app.
 ```
 |-- app
-|   |-- controllers    // Controllers are organised by module names
-|   |   |-- <module_name> // Each controller defines config and handler for that route.
+|   |-- controllers        // Controllers are organised by module names
+|   |   |-- <module_name>  // Each controller defines config and handler for that route.
 |   |
-|   |-- helpers  // Helper functions used across application
-|   |-- models   // All sequelize models are defined here
-|   |-- routes  // All app routes are defined here
-|   |   |-- <route_plugin>  // Route module is a hapi plugin and can be toggled from config/manifest.js
+|   |-- helpers            // Helper functions used across application
+|   |-- models             // All sequelize models are defined here
+|   |-- routes             // All app routes are defined here
+|   |   |-- <route_plugin> // Route module is a hapi plugin and can be toggled from config/manifest.js
 |   |
-|   `-- templates  // All server rendered handlebar templates, partials and helpers
-|       |-- <module_name> // Templates are organised by module names.
+|   `-- templates          // All server rendered handlebar templates, partials and helpers
+|       |-- <module_name>  // Templates are organised by module names.
 |   
-|-- assets // Contains all static resources 
-|   |-- fonts    // Fonts used in application
-|   |-- images   // Images used in application
-|   |-- misc     // Misc resources used in application
-|   |-- scripts  // Client javscripts files which are tehn packed by webpack
-|   |-- styles   // All SASS styelsheets
-|   |   |-- <module_name> // Styles are organised by module names. 
+|-- assets                 // Contains all static resources 
+|   |-- fonts              // Fonts used in application
+|   |-- images             // Images used in application
+|   |-- misc               // Misc resources used in application
+|   |-- scripts            // Client javscripts files which are tehn packed by webpack
+|   |-- styles             // All SASS styelsheets
+|   |   |-- <module_name>  // Styles are organised by module names. 
 |   
-|-- config // Contains all app configurations 
-|   |   |-- keys // GA and other application keys are stored here. (gitignored).
-|   |-- assets.js  // Assets configuration file 
-|   |-- config.js  // Application configuratiin file which store all passwords etc. (gitignore). 
-|   |-- manifest.js  // App manifest file listing all plugins and laod order. 
+|-- config                 // Contains all app configurations 
+|   |   |-- keys           // GA and other application keys are stored here. (gitignored).
+|   |-- assets.js          // Assets configuration file 
+|   |-- config.js          // Application configuratiin file which store all passwords etc. (gitignore). 
+|   |-- manifest.js        // App manifest file listing all plugins and laod order. 
 |   
-|-- lib    // Core application lib/plugins 
-|-- tasks  // Contains all gulp tasks 
-|-- tests  // Code tests
+|-- lib                    // Core application lib/plugins 
+|-- tasks                  // Contains all gulp tasks 
+|-- tests                  // Code tests
 |
-|-- gulpfile.js // Gulp entry file 
-|-- index.js  // Application starting point
-|-- package.js  // Package configuration file
-|-- server.js  // Main server file
+|-- gulpfile.js            // Gulp entry file 
+|-- index.js               // Application starting point
+|-- package.js             // Package configuration file
+|-- server.js              // Main server file
 ```
 
 ## Code
@@ -70,7 +70,7 @@ We're using semi-colons and comma-last. No rhyme or reason; and some of the hapi
 # Install deps
 $ npm install
 
-# Run the hapi server
+# Run the node server
 $ npm start
 
 # > paydash@1.0.0 start /Users/ravisuhag/Batcave/Workspace/Harvard/Dev/paydash
