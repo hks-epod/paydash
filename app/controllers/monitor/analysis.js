@@ -11,89 +11,89 @@ exports.showPage = {
 
 exports.getData = {
     handler: function(request, reply) {
-   
-      var User = request.server.plugins.sequelize.db.User;
-      // Analysis api code here.
 
-      // Full payment duration
-      {
-      	'treatment': {
-      		'series': [
+        var User = request.server.plugins.sequelize.db.User;
+        // Analysis api code here.
 
-      		]
-      	}
+        // Full payment duration
+        // {
+        //     'treatment': {
+        //         'series': [
 
-      	'control': {
-      		'series': [
+        //         ]
+        //     }
 
-      		]
-      	}
-      	'summary': {
-      		'treatmentMean':,
-      		'controlMean':,
-      		'pValue':,
-      	}	
-      }
+        //     'control': {
+        //         'series': [
 
-      // Stepwise payment duration
-      {
-      	'treatment': {
-      		'series': [
+        //         ]
+        //     }
+        //     'summary': {
+        //         'treatmentMean': ,
+        //         'controlMean': ,
+        //         'pValue': ,
+        //     }
+        // }
 
-      		]
-      	}
+        // // Stepwise payment duration
+        // {
+        //     'treatment': {
+        //         'series': [
 
-      	'control': {
-      		'series': [
+        //         ]
+        //     }
 
-      		]
-      	}
-      	'summary': {
-      		'treatmentMean':,
-      		'controlMean':,
-      		'pValue':,
-      	}	
-      }
+        //     'control': {
+        //         'series': [
 
-      // Person-days
-      {
-      	'treatment': {
-      		'series': [
+        //         ]
+        //     }
+        //     'summary': {
+        //         'treatmentMean': ,
+        //         'controlMean': ,
+        //         'pValue': ,
+        //     }
+        // }
 
-      		]
-      	}
+        // // Person-days
+        // {
+        //     'treatment': {
+        //         'series': [
 
-      	'control': {
-      		'series': [
+        //         ]
+        //     }
 
-      		]
-      	}
-      	'summary': {
-      		'treatmentMean':,
-      		'controlMean':,
-      		'pValue':,
-      	}	
-      }
-      
-      // Expenditures
-      {
-      	'treatment': {
-      		'series': [
+        //     'control': {
+        //         'series': [
 
-      		]
-      	}
+        //         ]
+        //     }
+        //     'summary': {
+        //         'treatmentMean': ,
+        //         'controlMean': ,
+        //         'pValue': ,
+        //     }
+        // }
 
-      	'control': {
-      		'series': [
+        // // Expenditures
+        // {
+        //     'treatment': {
+        //         'series': [
 
-      		]
-      	}
-      	'summary': {
-      		'treatmentMean':,
-      		'controlMean':,
-      		'pValue':,
-      	}	
-      }
+        //         ]
+        //     }
+
+        //     'control': {
+        //         'series': [
+
+        //         ]
+        //     }
+        //     'summary': {
+        //         'treatmentMean': ,
+        //         'controlMean': ,
+        //         'pValue': ,
+        //     }
+        // }
 
 
 
