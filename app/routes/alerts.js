@@ -2,7 +2,6 @@
 
 exports.register = function(plugin, options, next) {
     plugin.dependency('auth', function(plugin, next) {
-
         var Controllers = {
             alerts: {
                 notifications: require('../controllers/alerts/notifications')
