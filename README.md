@@ -78,10 +78,10 @@ $ npm install
 # Run the node server
 $ npm start
 
-# > paydash@1.0.0 start /Users/ravisuhag/Batcave/Workspace/Harvard/Dev/paydash
+# > paydash@1.0.0 start /Users/ravisuhag/Batcave/Workspace/hks-epod/Dev/paydash
 # > gulp
 # 
-# [16:48:55] Using gulpfile ~/Batcave/Workspace/Harvard/Dev/paydash/gulpfile.js
+# [16:48:55] Using gulpfile ~/Batcave/Workspace/hks-epod/Dev/paydash/gulpfile.js
 # [16:48:55] Starting 'fonts'...
 # [16:48:56] Starting 'images'...
 # [16:48:56] Starting 'misc'...
@@ -108,13 +108,13 @@ Lab is part of the hapi.js toolset and what we use to write all of our tests.
 
 ```
 $ npm test
-# > paydash@1.0.0 test /Users/ravisuhag/Batcave/Workspace/Harvard/Dev/paydash
+# > paydash@1.0.0 test /Users/ravisuhag/Batcave/Workspace/hks-epod/Dev/paydash
 # > node node_modules/lab/bin/lab -a code -t 100
 
 # ..............
 
 # 6 tests complete
-# Test duration: 1628 ms
+# Test duration: 1370 ms
 # No global variable leaks detected
 # Coverage: 100.00%
 ```
