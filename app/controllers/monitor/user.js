@@ -21,11 +21,11 @@ exports.getData = {
             console.log('authenticated');
             analytics.data.ga.get({
                 auth: jwtClient,
-                'ids': 'ga:73657543',
+                'ids': 'ga:114514109',
                 'metrics': 'ga:users,ga:sessionsPerUser,ga:pageviews,ga:sessions,ga:avgSessionDuration',
                 'dimensions': 'ga:date',
-                'start-date': '2013-08-01',
-                'end-date': '2015-03-09'
+                'start-date': '2015-12-18',
+                'end-date': '2016-01-17'
             }, function(err, response) {
                 console.log(response);
                 reply(response);
