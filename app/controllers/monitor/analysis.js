@@ -20,7 +20,7 @@ exports.getData = {
         'mrc_mre': 'Step 1: Muster roll closure to muster roll entry', 
         'mre_wlg': 'Step 2: Muster roll entry to wage list generation', 
         'wlg_wls': 'Step 3: Wage list generation to wage list signature', 
-        'wls_fto' 'Step 4: Wage list signature to FTO generation', 
+        'wls_fto' :'Step 4: Wage list signature to FTO generation', 
         'fto_firstsign': 'Step 5: FTO generation to FTO first signature', 
         'firstsign_secondsign': 'Step 6: FTO first signature to FTO second signature',  
         'secondsign_processed': 'Step 7: FTO second signature to bank confirmation', 
