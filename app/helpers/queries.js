@@ -29,3 +29,9 @@ exports.apiHelper = function(BLOCK_CODE) {
 exports.userBlocks = function(USER_ID) {
     return "SELECT block_code FROM user_blocks WHERE id = " + USER_ID + ");";
 };
+
+exports.outcomes = function(){
+    return "SELECT outcome, label FROM outcomes;" +
+    "SELECT date, mean, upper, outcome, lower, treatment FROM estimates_series;" +
+    "SELECT * FROM estimates_summary;" ;
+};
