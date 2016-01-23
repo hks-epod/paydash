@@ -33,5 +33,7 @@ exports.userBlocks = function(USER_ID) {
 exports.outcomes = function(){
     return "SELECT outcome, label FROM outcomes;" +
     "SELECT date, mean, upper, outcome, lower, treatment FROM estimates_series;" +
-    "SELECT * FROM estimates_summary;" ;
+    "SELECT * FROM estimates_summary;" +
+    "SELECT date, mean, upper, outcome, lower, arm FROM estimates_series_arms;" + // arm === (1,2,3)
+    "SELECT t1_mean, t2_mean, t3_mean, p_val, outcome FROM estimates_summary_arms;";
 };
