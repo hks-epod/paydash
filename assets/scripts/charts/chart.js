@@ -184,3 +184,18 @@ exports.ga_chart = function(options) {
         y_accessor: 'value'
     });
 };
+
+exports.outcome_chart = function(options) {
+
+    MG.data_graphic({
+        title: '',
+        data: options.data,
+        full_width: true,
+        height: 250,
+        left: 100,
+        area: false,
+        target: options.target,
+        show_confidence_band: ['lower', 'upper'],
+        // x_extended_ticks: true
+    });
+};

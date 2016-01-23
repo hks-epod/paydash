@@ -13,7 +13,6 @@ require('./performance/panchayat');
 require('./musters/current');
 require('./musters/delayed');
 
-// Include Monitor Dashboards scripts
-require('./monitor/user');
+
 
 

@@ -32,11 +32,14 @@ exports.getData = {
                     control: []
                 };
                 result.label = outcomes[index].label;
+                result.name = outcomes[index].outcome;
                 for (var treatment_index in treatments) {
+                    treatments[treatment_index].value = treatments[treatment_index].mean;
                     if (treatments[treatment_index].outcome === outcomes[index].outcome && treatments[treatment_index].treatment === 1) {
                         result.treatment.push(treatments[treatment_index]);
                     }
                     if (treatments[treatment_index].outcome === outcomes[index].outcome && treatments[treatment_index].treatment === 0) {
+
                         result.control.push(treatments[treatment_index]);
                     }
                 }
