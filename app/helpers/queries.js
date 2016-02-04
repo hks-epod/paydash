@@ -37,3 +37,11 @@ exports.outcomes = function(){
     "SELECT date, mean, upper, outcome, lower, arm FROM estimates_series_arms;" + // arm === (1,2,3)
     "SELECT t1_mean, t2_mean, t3_mean, p_val, outcome FROM estimates_summary_arms;";
 };
+
+exports.current_musters = function(BLOCK_CODE){
+    return "SELECT msr_no, work_name, work_code, start_date, end_date, panchayat_name FROM current_musters WHERE block_code = '"+BLOCK_CODE+"';";    
+};
+
+exports.delayed_musters = function(BLOCK_CODE){
+    return "SELECT step, msr_no, work_name, work_code, start_date, end_date, panchayat_name FROM delayed_musters WHERE block_code = '"+ BLOCK_CODE + "';";
+};

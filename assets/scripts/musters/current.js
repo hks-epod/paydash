@@ -6,7 +6,7 @@ var read_cookie = require('../helpers/read_cookie');
 
 function currentTableInit() {
     $.ajax({
-        url: '/musters/delayed/data?selected_block_id=' + read_cookie('selected_block_id'),
+        url: '/musters/current/data?selected_block_id=' + read_cookie('selected_block_id'),
         success: function(data) {
             $('#loading_message').hide();
 

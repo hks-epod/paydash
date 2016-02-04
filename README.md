@@ -44,10 +44,10 @@ Let's take a tour of the app.
 |   |-- styles             // All SASS stylesheets
 |   |   |-- <module_name>  // Styles are organised by module names. 
 |   
-|-- config                 // Contains all app configurations 
+|-- config                 // Contains all app configurations
 |   |   |-- keys           // GA and other application keys are stored here. (gitignored).
-|   |-- assets.js          // Assets configuration file 
-|   |-- config.js          // Application configuration file which stores all passwords etc. (gitignore). 
+|   |-- assets.js          // Assets configuration file
+|   |-- config.js          // Application configuration file which stores all passwords etc. (gitignore).
 |   |-- manifest.js        // App manifest file listing all plugins and load order. 
 |   
 |-- lib                    // Core application lib/plugins 
