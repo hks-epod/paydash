@@ -24,12 +24,17 @@
   "homepage": "https://github.com/hks-epod/paydash#readme",
   "dependencies": {
     "bell": "^5.3.0",
+    "bistre": "^1.0.1",
     "boom": "^2.8.0",
     "confidence": "^1.2.0",
     "crumb": "^4.0.3",
     "d3": "^3.5.6",
     "glob": "^5.0.14",
     "glue": "^2.2.0",
+    "good": "^6.4.0",
+    "good-file": "^5.1.1",
+    "googleapis": "^2.1.7",
+    "gulp-util": "^3.0.7",
     "handlebars": "^3.0.3",
     "hapi": "^9.0.3",
     "hapi-auth-cookie": "^3.1.0",
@@ -37,6 +42,7 @@
     "hoek": "^2.x.x",
     "inert": "^3.0.1",
     "joi": "^6.6.1",
+    "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "metrics-graphics": "^2.6.0",
     "moment": "^2.10.6",
@@ -45,10 +51,7 @@
     "sequelize": "^3.12.2",
     "vision": "^3.0.0",
     "visionary": "^3.0.1",
-    "yar": "^4.2.0",
-    "bistre": "^1.0.1",
-    "gulp-util": "^3.0.7",
-    "jquery": "^2.1.4"  
+    "yar": "^4.2.0"
  },
   "devDependencies": {
     "code": "^1.5.0",
