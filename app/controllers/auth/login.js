@@ -20,7 +20,7 @@ exports.showForm = {
         }
     },
     handler: function(request, reply) {
-        
+
         if (request.auth.isAuthenticated) {
             return reply.redirect('/dashboard/block');
         }
@@ -67,7 +67,7 @@ exports.postForm = {
                 username: request.payload.username,
                 password: crypto.createHash('md5').update(request.payload.password).digest('hex')
             },
-            include: [db.user_blocks]
+            include: [db.user_regions]
         }).then(function(user) {
 
             if (user) {
