@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-    var notifications = sequelize.define('notifications', {
+    var feedbacks = sequelize.define('feedbacks', {
         msg: DataTypes.STRING,
         region_code: DataTypes.STRING
     }, {
@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
             
             associate: function(models) {
                 // associations can be defined here
-                notifications.belongsTo(models.User, {
+                feedbacks.belongsTo(models.User, {
                     onDelete: 'CASCADE',
                     foreignKey: 'user_id',
 
@@ -19,5 +19,5 @@ module.exports = function(sequelize, DataTypes) {
             }
         }
     });
-    return notifications;
+    return feedbacks;
 };
