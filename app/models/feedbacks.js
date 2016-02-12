@@ -3,10 +3,7 @@
 module.exports = function(sequelize, DataTypes) {
     var notifications = sequelize.define('notifications', {
         msg: DataTypes.STRING,
-        region_code: DataTypes.STRING,
-        notification_type: DataTypes.INTEGER,
-        viewed: DataTypes.BOOLEAN,
-        batch_id: DataTypes.INTEGER
+        region_code: DataTypes.STRING
     }, {
         timestamps: true,
         underscored: true,
