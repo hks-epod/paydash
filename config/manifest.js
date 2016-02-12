@@ -34,7 +34,7 @@ var manifest = {
                 isSecure: Config.get('/yarCookie/ssl')
             }
         },
-        'good':Config.get('/good'),
+        'good': Config.get('/good'),
         'crumb': {
             autoGenerate: true
         },
@@ -55,7 +55,7 @@ var manifest = {
         './app/routes/core': {},
         './app/routes/auth': {},
         './app/routes/users': {},
-        './app/routes/dashboard': {},
+        './app/routes/performance': {},
         './app/routes/musters': {},
         './app/routes/alerts': {}
     }

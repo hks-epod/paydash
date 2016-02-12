@@ -5,9 +5,9 @@ exports.register = function(plugin, options, next) {
     plugin.dependency('auth', function(plugin, next) {
 
         var Controllers = {
-            dashboard: {
-                block: require('../controllers/dashboard/performance-block'),
-                panchayat: require('../controllers/dashboard/performance-panchayat')
+            performance: {
+                overview: require('../controllers/performance/overview'),
+                discrete: require('../controllers/performance/overview')
             }
         };
 
@@ -16,26 +16,26 @@ exports.register = function(plugin, options, next) {
             // Block Dashoard
             {
                 method: 'GET',
-                path: '/dashboard/block',
-                config: Controllers.dashboard.block.showPage
+                path: '/performance/overview',
+                config: Controllers.performance.overview.showPage
             },
             // Block Dashoard
             {
                 method: 'GET',
-                path: '/dashboard/block/data',
-                config: Controllers.dashboard.block.getData
+                path: '/performance/overview/data',
+                config: Controllers.performance.overview.getData
             },
             // Panchayat Dashboard
             {
                 method: 'GET',
-                path: '/dashboard/panchayat',
-                config: Controllers.dashboard.panchayat.showPage
+                path: '/performance/discrete',
+                config: Controllers.performance.discrete.showPage
             },
             // Block Dashoard
             {
                 method: 'GET',
-                path: '/dashboard/panchayat/data',
-                config: Controllers.dashboard.panchayat.getData
+                path: '/performance/discrete/data',
+                config: Controllers.performance.discrete.getData
             },
         ]);
 
@@ -46,6 +46,6 @@ exports.register = function(plugin, options, next) {
 };
 
 exports.register.attributes = {
-    name: 'dashboard_routes',
+    name: 'performance_routes',
     version: require('../../package.json').version
 };
