@@ -2,8 +2,8 @@
 
 module.exports = function(sequelize, DataTypes) {
     var user_blocks = sequelize.define('user_blocks', {
-        block_code: DataTypes.STRING,
-        block_name: DataTypes.STRING
+        region_code: DataTypes.STRING,
+        region_name: DataTypes.STRING
     }, {
         timestamps: true,
         underscored: true,
