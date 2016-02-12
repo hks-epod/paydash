@@ -52,14 +52,12 @@ var manifest = {
         },
         './lib/sequelize': Config.get('/sequelize'),
         './lib/auth': Config.get('/authCookie'),
-        './lib/ga': {},
         './app/routes/core': {},
         './app/routes/auth': {},
         './app/routes/users': {},
         './app/routes/dashboard': {},
         './app/routes/musters': {},
-        './app/routes/alerts': {},
-        './app/routes/monitor': {}
+        './app/routes/alerts': {}
     }
 };
 
