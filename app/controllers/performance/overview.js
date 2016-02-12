@@ -1,8 +1,7 @@
 'use strict';
-var d3 = require('d3');
 
+var d3 = require('d3');
 var queries = require('../../helpers/queries');
-var dummy = require('../../helpers/dummy');
 
 exports.showPage = {
     handler: function(request, reply) {
@@ -14,10 +13,9 @@ exports.getData = {
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-        var region_code = request.query.selected_block_id; // Ravi: update the region code location here
-        var role = 'block'; // Ravi: update the role location here
-
-        var queryString = queries.blockPerformance(region_code,role); // Ravi: update the blockPerformance function name here
+        var region_code = request.query.region_code;
+        var role = request.auth.credentials.role;
+        var queryString = queries.overviewPerformance(region_code, role);
 
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
@@ -72,7 +70,7 @@ exports.getData = {
 
             final_dict.region_name = districtName;
 
-            if (rows.length===3) {
+            if (rows.length === 3) {
                 // process block data
                 var blockResponse = flatten(rows[2]);
                 var blockName = blockResponse[0].block_name;
@@ -94,9 +92,7 @@ exports.getData = {
                         ];
                     })
                 };
-
                 final_dict.region_name = blockName;
-
             }
 
 
@@ -109,21 +105,19 @@ exports.getData = {
                 var str = num.toString();
                 return str.length === 1 ? '0' + str : str;
             }
+
             function flatten(obj) { // flatten but maintain the sort where obj key == array index
                 var array = [];
                 var len = Object.keys(obj).length;
-                for (var i=0; i<len; i++) {
+                for (var i = 0; i < len; i++) {
                     array.push(obj[i]);
                 }
                 return array;
             }
-            
+
             reply(final_dict);
         });
-        
 
-        // reply(dummy.blockData); 
-        
 
     }
 };

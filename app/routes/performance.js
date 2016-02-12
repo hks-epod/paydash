@@ -7,32 +7,28 @@ exports.register = function(plugin, options, next) {
         var Controllers = {
             performance: {
                 overview: require('../controllers/performance/overview'),
-                discrete: require('../controllers/performance/overview')
+                discrete: require('../controllers/performance/discrete')
             }
         };
 
         plugin.route([
 
-            // Block Dashoard
+            // Overview Performance 
             {
                 method: 'GET',
                 path: '/performance/overview',
                 config: Controllers.performance.overview.showPage
-            },
-            // Block Dashoard
-            {
+            }, {
                 method: 'GET',
                 path: '/performance/overview/data',
                 config: Controllers.performance.overview.getData
             },
-            // Panchayat Dashboard
+            // Discrete Performance  
             {
                 method: 'GET',
                 path: '/performance/discrete',
                 config: Controllers.performance.discrete.showPage
-            },
-            // Block Dashoard
-            {
+            }, {
                 method: 'GET',
                 path: '/performance/discrete/data',
                 config: Controllers.performance.discrete.getData

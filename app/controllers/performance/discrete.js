@@ -2,16 +2,13 @@
 
 var d3 = require('d3');
 var queries = require('../../helpers/queries');
-var dummy = require('../../helpers/dummy');
 
 exports.showPage = {
     auth: {
         strategy: 'standard'
     },
     handler: function(request, reply) {
-
-        return reply.view('dashboard/panchayat');
-
+        return reply.view('performance/discrete');
     }
 };
 
@@ -22,8 +19,8 @@ exports.getData = {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var region_code = request.query.selected_block_id; // Ravi: update the region code location here
         var role = 'block'; // Ravi: update the role location here
-        
-        var queryString = queries.panchayatPerformance(block_code,role); // Ravi: update the name of this function
+
+        var queryString = queries.panchayatPerformance(block_code, role); // Ravi: update the name of this function
 
 
         sequelize.query(queryString, {
@@ -34,7 +31,7 @@ exports.getData = {
             var regionName = rows[0][0].region_name;
 
             var childrenResponse = flatten(rows[1]);
-            
+
             // process children data
             final_dict.children = d3.nest()
                 .key(function(d) {
@@ -77,7 +74,7 @@ exports.getData = {
                 'headers': headers,
             };
 
-            if (rows.length>2) { // role==='block'
+            if (rows.length > 2) { // role==='block'
 
                 var employeeResponse = flatten(rows[2]);
 
@@ -85,7 +82,7 @@ exports.getData = {
                     'TA': nestEmpMapping(rows[3]),
                     'GRS': nestEmpMapping(rows[4])
                 }
-                
+
                 var employeeStats = {
                     'past30': {
                         'TA': nestEmpStats(rows[5]),
@@ -154,12 +151,12 @@ exports.getData = {
                                     'staff_id': w[0].staff_id,
                                     'name': w[0].name,
                                     'mobile': w[0].mobile_no,
-                                    'step1_avg_30':employeeStats['past30'][w[0].task_assign][w[0].staff_id]['step1_avg'],
-                                    'tot_trans_30':employeeStats['past30'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
-                                    'step1_avg_60':employeeStats['past60'][w[0].task_assign][w[0].staff_id]['step1_avg'],
-                                    'tot_trans_60':employeeStats['past60'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
-                                    'step1_avg_all':employeeStats['all'][w[0].task_assign][w[0].staff_id]['step1_avg'],
-                                    'tot_trans_all':employeeStats['all'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
+                                    'step1_avg_30': employeeStats['past30'][w[0].task_assign][w[0].staff_id]['step1_avg'],
+                                    'tot_trans_30': employeeStats['past30'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
+                                    'step1_avg_60': employeeStats['past60'][w[0].task_assign][w[0].staff_id]['step1_avg'],
+                                    'tot_trans_60': employeeStats['past60'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
+                                    'step1_avg_all': employeeStats['all'][w[0].task_assign][w[0].staff_id]['step1_avg'],
+                                    'tot_trans_all': employeeStats['all'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
                                     'panchayats': w.map(function(d) {
                                         return {
                                             'region_code': d.map_location,
@@ -185,7 +182,7 @@ exports.getData = {
             function flatten(obj) { // flatten but maintain the sort where obj key == array index
                 var array = [];
                 var len = Object.keys(obj).length;
-                for (var i=0; i<len; i++) {
+                for (var i = 0; i < len; i++) {
                     array.push(obj[i]);
                 }
                 return array;
@@ -209,8 +206,8 @@ exports.getData = {
                     })
                     .rollup(function(v) {
                         return {
-                            'step1_avg':v[0].step1_avg,
-                            'total_transactions':v[0].total_transactions
+                            'step1_avg': v[0].step1_avg,
+                            'total_transactions': v[0].total_transactions
                         }
                     })
                     .map(flatten(obj));
