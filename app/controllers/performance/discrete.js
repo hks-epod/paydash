@@ -2,6 +2,7 @@
 
 var d3 = require('d3');
 var queries = require('../../helpers/queries');
+var utils = require('../../helpers/utils');
 
 exports.showPage = {
     auth: {
@@ -17,11 +18,9 @@ exports.getData = {
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-        var region_code = request.query.selected_block_id; // Ravi: update the region code location here
-        var role = 'block'; // Ravi: update the role location here
-
-        var queryString = queries.panchayatPerformance(block_code, role); // Ravi: update the name of this function
-
+        var region_code = request.query.region_code;
+        var role = request.auth.credentials.role;
+        var queryString = queries.discretePerformance(region_code, role);
 
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
@@ -30,7 +29,7 @@ exports.getData = {
             var final_dict = {};
             var regionName = rows[0][0].region_name;
 
-            var childrenResponse = flatten(rows[1]);
+            var childrenResponse = utils.flatten(rows[1]);
 
             // process children data
             final_dict.children = d3.nest()
@@ -43,7 +42,7 @@ exports.getData = {
                         'region_name': v[0].region_name,
                         'data': v.map(function(d) {
                             return [
-                                d.date.getFullYear() + '' + padNum(d.date.getMonth() + 1) + '' + padNum(d.date.getDate()),
+                                d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
                                 d.mrc_mre,
                                 d.mre_wlg,
                                 d.wlg_wls,
@@ -76,25 +75,25 @@ exports.getData = {
 
             if (rows.length > 2) { // role==='block'
 
-                var employeeResponse = flatten(rows[2]);
+                var employeeResponse = utils.flatten(rows[2]);
 
                 var empMapping = {
-                    'TA': nestEmpMapping(rows[3]),
-                    'GRS': nestEmpMapping(rows[4])
-                }
+                    'TA': utils.nestEmpMapping(rows[3]),
+                    'GRS': utils.nestEmpMapping(rows[4])
+                };
 
                 var employeeStats = {
                     'past30': {
-                        'TA': nestEmpStats(rows[5]),
-                        'GRS': nestEmpStats(rows[6])
+                        'TA': utils.nestEmpStats(rows[5]),
+                        'GRS': utils.nestEmpStats(rows[6])
                     },
                     'past60': {
-                        'TA': nestEmpStats(rows[7]),
-                        'GRS': nestEmpStats(rows[8])
+                        'TA': utils.nestEmpStats(rows[7]),
+                        'GRS': utils.nestEmpStats(rows[8])
                     },
                     'all': {
-                        'TA': nestEmpStats(rows[9]),
-                        'GRS': nestEmpStats(rows[10])
+                        'TA': utils.nestEmpStats(rows[9]),
+                        'GRS': utils.nestEmpStats(rows[10])
                     }
                 };
 
@@ -107,11 +106,11 @@ exports.getData = {
                         return {
                             'region_code': v[0].region_code,
                             'region_name': v[0].region_name,
-                            'mapped_ta': empMapping['TA'][v[0].region_code],
-                            'mapped_grs': empMapping['GRS'][v[0].region_code],
+                            'mapped_ta': empMapping.TA[v[0].region_code],
+                            'mapped_grs': empMapping.GRS[v[0].region_code],
                             'data': v.map(function(d) {
                                 return [
-                                    d.date.getFullYear() + '' + padNum(d.date.getMonth() + 1) + '' + padNum(d.date.getDate()),
+                                    d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
                                     d.mrc_mre,
                                     d.mre_wlg,
                                     d.wlg_wls,
@@ -151,12 +150,12 @@ exports.getData = {
                                     'staff_id': w[0].staff_id,
                                     'name': w[0].name,
                                     'mobile': w[0].mobile_no,
-                                    'step1_avg_30': employeeStats['past30'][w[0].task_assign][w[0].staff_id]['step1_avg'],
-                                    'tot_trans_30': employeeStats['past30'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
-                                    'step1_avg_60': employeeStats['past60'][w[0].task_assign][w[0].staff_id]['step1_avg'],
-                                    'tot_trans_60': employeeStats['past60'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
-                                    'step1_avg_all': employeeStats['all'][w[0].task_assign][w[0].staff_id]['step1_avg'],
-                                    'tot_trans_all': employeeStats['all'][w[0].task_assign][w[0].staff_id]['total_transactions'] || 0,
+                                    'step1_avg_30': employeeStats.past30[w[0].task_assign][w[0].staff_id].step1_avg,
+                                    'tot_trans_30': employeeStats.past30[w[0].task_assign][w[0].staff_id].total_transactions || 0,
+                                    'step1_avg_60': employeeStats.past60[w[0].task_assign][w[0].staff_id].step1_avg,
+                                    'tot_trans_60': employeeStats.past60[w[0].task_assign][w[0].staff_id].total_transactions || 0,
+                                    'step1_avg_all': employeeStats.all[w[0].task_assign][w[0].staff_id].step1_avg,
+                                    'tot_trans_all': employeeStats.all[w[0].task_assign][w[0].staff_id].total_transactions || 0,
                                     'panchayats': w.map(function(d) {
                                         return {
                                             'region_code': d.map_location,
@@ -174,49 +173,8 @@ exports.getData = {
                     .map(employeeResponse);
             }
 
-            function padNum(num) {
-                var str = num.toString();
-                return str.length === 1 ? '0' + str : str;
-            }
-
-            function flatten(obj) { // flatten but maintain the sort where obj key == array index
-                var array = [];
-                var len = Object.keys(obj).length;
-                for (var i = 0; i < len; i++) {
-                    array.push(obj[i]);
-                }
-                return array;
-            }
-
-            function nestEmpMapping(obj) {
-                return d3.nest()
-                    .key(function(d) {
-                        return d.region_code;
-                    })
-                    .rollup(function(v) {
-                        return v[0].task_assign === null ? false : true;
-                    })
-                    .map(flatten(obj));
-            }
-
-            function nestEmpStats(obj) {
-                return d3.nest()
-                    .key(function(d) {
-                        return d.staff_id;
-                    })
-                    .rollup(function(v) {
-                        return {
-                            'step1_avg': v[0].step1_avg,
-                            'total_transactions': v[0].total_transactions
-                        }
-                    })
-                    .map(flatten(obj));
-            }
-
             reply(final_dict);
         });
-
-        // reply(dummy.blockData);
 
     }
 };

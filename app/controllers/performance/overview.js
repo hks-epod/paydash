@@ -2,10 +2,11 @@
 
 var d3 = require('d3');
 var queries = require('../../helpers/queries');
+var utils = require('../../helpers/utils');
 
 exports.showPage = {
     handler: function(request, reply) {
-        return reply.view('dashboard/block');
+        return reply.view('performance/overview');
     }
 };
 
@@ -24,7 +25,7 @@ exports.getData = {
             var final_dict = {};
 
             // process state data
-            var stateResponse = flatten(rows[0]);
+            var stateResponse = utils.flatten(rows[0]);
             var stateName = stateResponse[0].state_name;
             var stateCode = stateResponse[0].state_code;
 
@@ -33,7 +34,7 @@ exports.getData = {
                 'state_name': stateName,
                 'data': stateResponse.map(function(d) {
                     return [
-                        d.date.getFullYear() + '' + padNum(d.date.getMonth() + 1) + '' + padNum(d.date.getDate()),
+                        d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
                         d.mrc_mre,
                         d.mre_wlg,
                         d.wlg_wls,
@@ -47,7 +48,7 @@ exports.getData = {
             };
 
             // process district data
-            var districtResponse = flatten(rows[1]);
+            var districtResponse = utils.flatten(rows[1]);
             var districtName = districtResponse[0].district_name;
             var districtCode = districtResponse[0].district_code;
             final_dict.district = {
@@ -55,7 +56,7 @@ exports.getData = {
                 'district_name': districtName,
                 'data': districtResponse.map(function(d) {
                     return [
-                        d.date.getFullYear() + '' + padNum(d.date.getMonth() + 1) + '' + padNum(d.date.getDate()),
+                        d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
                         d.mrc_mre,
                         d.mre_wlg,
                         d.wlg_wls,
@@ -72,7 +73,7 @@ exports.getData = {
 
             if (rows.length === 3) {
                 // process block data
-                var blockResponse = flatten(rows[2]);
+                var blockResponse = utils.flatten(rows[2]);
                 var blockName = blockResponse[0].block_name;
                 var blockCode = blockResponse[0].block_code;
                 final_dict.block = {
@@ -80,7 +81,7 @@ exports.getData = {
                     'block_name': blockName,
                     'data': blockResponse.map(function(d) {
                         return [
-                            d.date.getFullYear() + '' + padNum(d.date.getMonth() + 1) + '' + padNum(d.date.getDate()),
+                            d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
@@ -95,29 +96,12 @@ exports.getData = {
                 final_dict.region_name = blockName;
             }
 
-
             var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'];
             final_dict.config = {
                 'headers': headers
             };
 
-            function padNum(num) {
-                var str = num.toString();
-                return str.length === 1 ? '0' + str : str;
-            }
-
-            function flatten(obj) { // flatten but maintain the sort where obj key == array index
-                var array = [];
-                var len = Object.keys(obj).length;
-                for (var i = 0; i < len; i++) {
-                    array.push(obj[i]);
-                }
-                return array;
-            }
-
             reply(final_dict);
         });
-
-
     }
 };
