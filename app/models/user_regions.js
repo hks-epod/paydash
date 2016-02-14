@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-    var user_blocks = sequelize.define('user_blocks', {
+    var user_blocks = sequelize.define('user_regions', {
         region_code: DataTypes.STRING,
         region_name: DataTypes.STRING
     }, {
