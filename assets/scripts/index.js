@@ -1,18 +1,17 @@
-var $ = require('jquery');
+'use strict';
 
-//  Load components
+//  Load Components
 require('./components/dropdown');
-require('./components/block_selection');
+require('./components/region');
 require('./components/active-link');
 
-// Include Performance Dashboards scripts
-require('./performance/block');
-require('./performance/panchayat');
-
-// Include Muster Dashboards scripts
-require('./musters/current');
-require('./musters/delayed');
 
 
 
+// // Include Performance Dashboards scripts
+// require('./performance/block');
+// require('./performance/panchayat');
 
+// // Include Muster Dashboards scripts
+// require('./musters/current');
+// require('./musters/delayed');

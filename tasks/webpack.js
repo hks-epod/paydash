@@ -13,7 +13,7 @@ Gulp.task('webpack', function() {
         entry: {
             vendor: ['jquery', 'd3'],
             app: './assets/scripts/index.js',
-            mdash :'./assets/scripts/mdash.js'
+            mdash: './assets/scripts/monitor.js'
         },
         watch: true,
         cache: true,

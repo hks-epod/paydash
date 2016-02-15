@@ -69,7 +69,7 @@ exports.postForm = {
             },
             include: [db.user_regions]
         }).then(function(user) {
-
+            console.log(user);
             if (user) {
                 request.auth.session.set(user);
                 if (!user.isActive) {
