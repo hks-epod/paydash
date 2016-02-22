@@ -6,12 +6,17 @@ var Cookie = require('../lib/cookie');
 
 // Load JSON
 exports.init = function() {
-
     var internals = {};
 
-    D3.json('/performance/overview/data?region_id=' + Cookie.read('region_id'))
+    D3.json('/performance/overview/data?region_code=' + Cookie.read('active_region'))
         .on('progress', function() {
             console.info('progress', D3.event.loaded);
         })
-        .get(function(error, data) {});
+        .get(function(error, data) {
+            D3.select('#loading').remove();
+            internals.data = data;
+            // d3.select('#block_name').text(paydash.data.block_name);
+            // drawBlockPerformance();
+            // drawBlockComparison(1);
+        });
 };

@@ -10,6 +10,7 @@ require('./components/active-link');
 
 
 if (window.location.pathname === '/performance/overview') {
+    console.log('working');
     OverviewPerformance.init();
 }
 
