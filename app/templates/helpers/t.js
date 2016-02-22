@@ -5,13 +5,15 @@ var locales = {
     en_US: require('../../locales/en_US/index')
 };
 
-module.exports = function t(path) {
-    // US English is currently the only support langauge.
-    // Refactor this when we start supporting more languages.
+module.exports = function t(path, credentials) {
+
     var lang = 'en_US';
-    var criteria = {
-        role: 'district'
-    };
+    var criteria = {};
+
+    if (credentials) {
+        criteria.role = credentials.role;
+    }
+
     var store = new Confidence.Store(locales[lang]);
     return store.get(path, criteria);
 };
