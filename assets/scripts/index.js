@@ -1,16 +1,17 @@
 'use strict';
 
+var OverviewPerformance = require('./performance/overview');
+var DiscreatePerformance = require('./performance/discrete');
+
 //  Load Components
 require('./components/dropdown');
 require('./components/region');
 require('./components/active-link');
 
 
-
-
-// // Include Performance Dashboards scripts
-// require('./performance/block');
-// require('./performance/panchayat');
+if (window.location.pathname === '/performance/overview') {
+    OverviewPerformance.init();
+}
 
 // // Include Muster Dashboards scripts
 // require('./musters/current');
