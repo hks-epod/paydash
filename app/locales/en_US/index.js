@@ -1,15 +1,17 @@
 'use strict';
 
-exports.messages = {
-    not_found: {
-        title: 'Page not found'
+module.exports = {
+    $meta: 'english traslation file',
+    navigation: {
+        overview: {
+            $filter: 'role',
+            district: 'District Performance',
+            block: 'Block Performance',
+            $default: 'Overview Performance'
+        }
     },
-    loading: 'Please wait, data is loading'
-};
-
-exports.errors = {
-    generic: {
-        title: 'Sorry',
-        subtitle: 'Something went wrong'
+    messages: {
+        loading: 'Please wait, data is loading',
+        not_found: 'Page does not exist'
     }
 };
