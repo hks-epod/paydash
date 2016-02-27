@@ -3,6 +3,7 @@
 var D3 = require('d3');
 var Cookie = require('../lib/cookie');
 var Parser = require('../lib/parser');
+var Chart = require('../lib/chart');
 
 
 // Load JSON
@@ -34,16 +35,26 @@ exports.init = function() {
             D3.select('#loading').remove();
             D3.select('#dashboard').classed('u-hidden', false);
             D3.select('#region_name').text(data.region_name);
-
             internals.data = data;
-
-            var b_data = Parser.lines({
-                data: internals.data.block.data,
-                past_n_days: internals.past_n_days,
-                col: internals.stepCols,
-                isCumulative: true
-            });
-            console.log(b_data);
+            drawBlockPerformance();
 
         });
+
+    function drawBlockPerformance() {
+        var b_data = Parser.lines({
+            data: internals.data.block.data,
+            past_n_days: internals.past_n_days,
+            col: internals.stepCols,
+            isCumulative: true
+        });
+        Chart.flash({
+            data: b_data,
+            title: 'Region Performance',
+            target: '#region_performance',
+            legend_target: '.region_legend',
+            labels: internals.labels,
+            legend_labels: 'labels',
+            area: true
+        }, internals);
+    }
 };
