@@ -14,8 +14,9 @@ exports.init = function() {
         })
         .get(function(error, data) {
             D3.select('#loading').remove();
+            D3.select('#dashboard').classed('u-hidden', false);
             internals.data = data;
-            // d3.select('#block_name').text(paydash.data.block_name);
+            D3.select('#region_name').text(data.region_name);
             // drawBlockPerformance();
             // drawBlockComparison(1);
         });

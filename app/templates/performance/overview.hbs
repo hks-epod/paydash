@@ -1,5 +1,16 @@
 <div class="container-fluid u-spacing-page-top">
   <div id="loading" class="loading">{{t "/messages/loading"}}</div>
+  <div id="dashboard" class="dashboard u-hidden">
+    <div class="u-textSize--large">
+      {{t "/performance/overview/title"}}
+      <span id="region_name"></span>
+      <select id="modify-time-period-controls" class="button button--bp" name="">
+        <option value="">past all days</option>
+        <option value="61">past 60 days</option>
+        <option value="31">past 30 days</option>
+      </select>
+      </div>
+  </div>
 </div>
 
 

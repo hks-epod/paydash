@@ -5,7 +5,7 @@ var DiscreatePerformance = require('./performance/discrete');
 
 //  Load Components
 require('./components/dropdown');
-// require('./components/region');
+require('./components/region');
 require('./components/active-link');
 
 
