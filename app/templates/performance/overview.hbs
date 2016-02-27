@@ -1,30 +1,36 @@
 <div class="container-fluid u-spacing-page-top">
   <div id="loading" class="loading">{{t "/messages/loading"}}</div>
   <div id="dashboard" class="dashboard u-hidden">
+    {{!-- Meta information  --}}
     <div class="u-textSize--large">
       {{t "/performance/overview/title"}}
-      <span id="region_name"></span>
+      <span id="region_name"></span>. 
+      {{t "/performance/overview/timeSelector"}}
       <select id="modify-time-period-controls" class="button button--bp" name="">
         <option value="">past all days</option>
         <option value="61">past 60 days</option>
         <option value="31">past 30 days</option>
       </select>
+    </div>
+    {{!-- Meta information  --}}
+    <div class="pure-g">
+      <div class="pure-u-24-24">
+        <div class="chart-holder">
+          <div class="block_chart_holder">
+            <div id="block_performance"></div>
+          </div>
+          <div class="legend block_legend"></div>
+          <div class="u-textSize--largest">
+            Total transactions on <span id="block_performance_total_trans"></span>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
 
 
 {{!-- <div class="container-fluid u-spacing-page-top dashboard">
-  <div class="u-textSize--large">
-    You are looking at 
-    <span id="block_name"></span>
-    block's performance for
-    <select id="modify-time-period-controls" class="button button--bp" name="">
-      <option value="">past all days</option>
-      <option value="61">past 60 days</option>
-      <option value="31">past 30 days</option>
-    </select>
-  </div>
   <div class="pure-g">    <div class="pure-u-24-24">
       <div class="chart-holder">
         <div class="block_chart_holder">
@@ -35,6 +41,7 @@
       </div>
     </div>
   </div>
+
   <div class="u-block-divider"></div>
   <div class="u-textSize--largest">Performance Comparison</div>
   <div class="selectors pure-g">

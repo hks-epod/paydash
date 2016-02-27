@@ -27,7 +27,8 @@ module.exports = {
                 district: 'You are looking at payment processing time in',
                 block: 'You are looking at payment processing time in',
                 $default: 'You are looking at payment processing time in'
-            }
+            },
+            timeSelector: 'Please select time period'
         }
     }
 };
