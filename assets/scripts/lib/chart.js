@@ -66,3 +66,63 @@ exports.flash = function(options, paydash) {
         }
     });
 };
+
+exports.singular = function(options, paydash) {
+
+    MG.data_graphic({
+        // title: options.title,
+        title: '',
+        data: options.data,
+        width: 600,
+        height: 500,
+        left: 100,
+        full_width: true,
+        decimals: 0,
+        target: options.target,
+        xax_count: 15,
+        xax_format: D3.time.format('%e %b, %y'),
+        chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
+        missing_text: 'No data',
+        show_secondary_x_label: false,
+        legend: options.labels,
+        legend_target: options.legend_target,
+        show_tooltips: false,
+        aggregate_rollover: true,
+        show_year_markers: true,
+        transition_on_update: false,
+        interplate: 'linear',
+        interpolate_tension: 1,
+        area: options.area,
+        y_label: 'Days to Complete Process',
+        mouseover: function(d, i) {
+            if (!d.values) {
+                d.values = [d];
+            }
+            if (options.data.length) {
+                for (i = 1; i <= options.data.length; i++) {
+                    var l_span = D3.select(options.legend_target + ' .mg-line' + i + '-legend-color');
+                    l_span.text(' ');
+                    l_span.text('— ' + paydash[options.legend_labels][i - 1]);
+                }
+            }
+            d.values.forEach(function(val, index) {
+                var prefix = D3.formatPrefix(val.value);
+                var l_span = D3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
+                l_span.text(' ');
+                l_span.text('— ' + paydash[options.legend_labels][val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
+                var format = D3.time.format('%b %d, %Y');
+                D3.select(options.target + '_total_trans').text(format(val.date) + ': ' + val.total_trans);
+            });
+        },
+        mouseout: function(d, i) {
+            if (!d.values) {
+                d.values = [d];
+            }
+            d.values.forEach(function(val, index) {
+                var l_span = D3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
+                l_span.text(' ');
+                l_span.text('— ' + paydash[options.legend_labels][val.line_id - 1]);
+            });
+        }
+    });
+};

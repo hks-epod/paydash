@@ -1,4 +1,5 @@
 'use strict';
+var $ = require('jquery');
 
 var OverviewPerformance = require('./performance/overview');
 var DiscreatePerformance = require('./performance/discrete');

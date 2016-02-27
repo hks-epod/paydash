@@ -45,25 +45,25 @@
     padding-left: 0 !important;
     display: block
   }
-  .menu-block-selection {
+  .menu-region-selection {
     float: none !important;
     margin-bottom: 20px;
   }
-  .menu-block-selection select {
+  .menu-region-selection select {
     width: 60%;
   }
-  .legend.block_legend span,
+  .legend.region_legend span,
   .legend.comparison_legend span {
     font-size: 12px;
     margin-bottom: 0px;
     padding-bottom: 0px;
     width: 100%;
   }
-  .block_chart_holder {
+  .region_chart_holder {
     overflow-x: scroll;
   }
-  #block_performance,
-  #block_comparison {
+  #region_performance,
+  #region_comparison {
     width: 900px;
   }
   .selectors {
