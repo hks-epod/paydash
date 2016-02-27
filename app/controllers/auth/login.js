@@ -69,20 +69,17 @@ exports.postForm = {
             },
             include: [db.user_regions]
         }).then(function(user) {
-            console.log(user);
             if (user) {
                 request.auth.session.set(user);
                 if (!user.isActive) {
                     request.session.flash('info', 'Please check your profile details');
-
-                    // TODO: Save isActive to true
                     user.update({
                         isActive: true
                     }).then(function() {
                         return reply.redirect('/me/settings/profile');
                     });
                 } else {
-                    return reply.redirect('/dashboard/block');
+                    return reply.redirect('/performance/overview');
                 }
 
             } else {

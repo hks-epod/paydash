@@ -5,12 +5,11 @@ var DiscreatePerformance = require('./performance/discrete');
 
 //  Load Components
 require('./components/dropdown');
-require('./components/region');
+// require('./components/region');
 require('./components/active-link');
 
 
 if (window.location.pathname === '/performance/overview') {
-    console.log('working');
     OverviewPerformance.init();
 }
 

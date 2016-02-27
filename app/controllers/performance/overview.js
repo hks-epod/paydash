@@ -21,7 +21,7 @@ exports.getData = {
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
-
+            console.log(rows);
             var final_dict = {};
 
             // process state data
