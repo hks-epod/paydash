@@ -13,7 +13,7 @@
         </select>
     </div>
     <p>{{t "/performance/overview/graphExplanation"}}</p>
-    {{!-- Meta information  --}}
+    {{!-- Overview  --}}
     <div class="pure-g">
       <div class="pure-u-24-24">
         <div class="chart-holder">
@@ -27,66 +27,53 @@
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-
-{{!-- <div class="container-fluid u-spacing-page-top dashboard">
-  <div class="pure-g">    <div class="pure-u-24-24">
-      <div class="chart-holder">
-        <div class="block_chart_holder">
-          <div id="block_performance"></div>
-        </div>
-        <div class="legend block_legend"></div>
-        <div class="u-textSize--largest">Total transactions on <span id="block_performance_total_trans"></span></div>
+    <div class="u-block-divider"></div>
+    <div class="u-textSize--largest">Performance Comparison</div>
+    <div class="selectors pure-g">
+      <div class="pure-u pure-u-24-24 pure-u-md-7-24">
+        <select class="button button--pc" name="" id="modify-step-controls">
+          <option value="1">{{t "/payment_steps/1"}}</option>
+          <option value="2">{{t "/payment_steps/2"}}</option>
+          <option value="3">{{t "/payment_steps/3"}}</option>
+          <option value="4">{{t "/payment_steps/4"}}</option>
+          <option value="5">{{t "/payment_steps/5"}}</option>
+          <option value="6">{{t "/payment_steps/6"}}</option>
+          <option value="7">{{t "/payment_steps/7"}}</option>
+        </select>
+      </div>
+       <div class="pure-u pure-u-24-24 pure-u-md-3-24">
+        <label for="option-one" class="pure-checkbox">
+          Block Mean
+          <input class="blockSelector" id="option-one" type="checkbox" value="block" checked>
+        </label>
+      </div>
+      <div class="pure-u pure-u-24-24 pure-u-md-3-24">
+        <label for="option-two" class="pure-checkbox ">
+          District Mean
+          <input class="blockSelector" id="option-two" type="checkbox" value="district" checked>
+        </label>
+      </div>
+      <div class="pure-u pure-u-24-24 pure-u-md-3-24">
+        <label for="option-three" class="pure-checkbox">
+          State Mean
+          <input class="blockSelector" id="option-three" type="checkbox" value="state" checked>
+        </label>
       </div>
     </div>
-  </div>
-
-  <div class="u-block-divider"></div>
-  <div class="u-textSize--largest">Performance Comparison</div>
-  <div class="selectors pure-g">
-    <div class="pure-u pure-u-24-24 pure-u-md-7-24">
-      <select class="button button--pc" name="" id="modify-step-controls">
-        <option value="1">Muster roll closure to muster roll entry</option>
-        <option value="2">Muster roll entry to wage list generation</option>
-        <option value="3">FTO generation to first signature</option>
-        <option value="4">Wage list generation to wage list sign</option>
-        <option value="5">Wage list sign to FTO generation</option>
-        <option value="6">First signature to second signature</option>
-        <option value="7">Second signature to processed by bank</option>
-      </select>
-    </div>
-    <div class="pure-u pure-u-24-24 pure-u-md-3-24">
-      <label for="option-one" class="pure-checkbox">
-        Block Mean
-        <input class="blockSelector" id="option-one" type="checkbox" value="block" checked>
-      </label>
-    </div>
-    <div class="pure-u pure-u-24-24 pure-u-md-3-24">
-      <label for="option-two" class="pure-checkbox ">
-        District Mean
-        <input class="blockSelector" id="option-two" type="checkbox" value="district" checked>
-      </label>
-    </div>
-    <div class="pure-u pure-u-24-24 pure-u-md-3-24">
-      <label for="option-three" class="pure-checkbox">
-        State Mean
-        <input class="blockSelector" id="option-three" type="checkbox" value="state" checked>
-      </label>
-    </div>
-  </div>
-  <div class="pure-g">
-    <div class="pure-u-24-24">
-      <div class="chart-holder">
-        <div class="block_chart_holder">
-          <div id="block_comparison"></div>
+   {{!-- Comparison chart --}}
+    <div class="pure-g">
+      <div class="pure-u-24-24">
+        <div class="chart-holder">
+          <div class="block_chart_holder">
+            <div id="block_comparison"></div>
+          </div>
+          <div class="legend comparison_legend"></div>
+          <div class="u-textSize--largest">Total transactions on <span id="block_comparison_total_trans"></span></div>
         </div>
-        <div class="legend comparison_legend"></div>
-        <div class="u-textSize--largest">Total transactions on <span id="block_comparison_total_trans"></span></div>
       </div>
     </div>
+
+
   </div>
 </div>
 {{> footer}}
- --}}
