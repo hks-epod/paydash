@@ -86,6 +86,14 @@
 .button.button--bp option {
   color: #000;
 }
+// Discrete 
+#region_charts-container h3{
+  font-size: 3rem
+}
+#region_charts-container li {
+  display:  inline-block;
+  min-width: 30%
+}
 
 //  Spinner
 @-moz-keyframes spinner-loader {

@@ -33,12 +33,12 @@ exports.sortedDiscrete = function(data, internals) {
             } else {
                 p_past_n_days = internals.past_n_days;
             }
-            var htmlString = '<div class="u-block-divider"></div><h3>' + d.name + '</h3>' +
+            var htmlString = '<div class="u-region-divider"></div><h3>' + d.name + '</h3>' +
                 '<div class="employee-stats">' +
                 '<ul>' +
-                '<li> Mobile no.' + d.mobile + '</li>' +
-                '<li>Step 1 average: <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></li>' +
-                '<li>Step 1 total transactions: <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></li>' +
+                '<li> Mobile no : ' + d.mobile + '</li>' +
+                '<li>Step 1 average : <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></li>' +
+                '<li>Step 1 total transactions : <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></li>' +
                 '</ul>' +
                 '</div>' +
                 '<div class="pure-g">';
