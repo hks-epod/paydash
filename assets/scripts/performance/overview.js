@@ -5,6 +5,26 @@ var Cookie = require('../lib/cookie');
 var Parser = require('../lib/parser');
 var Chart = require('../lib/chart');
 
+
+
+function loadTemplate(internals) {
+    if (internals.role === 'block') {
+        internals.stepwise_compare_lines = ['block', 'state', 'district'];
+    }
+    var template = '';
+    internals.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
+        template = template +
+            '<div class="pure-u pure-u-24-24 pure-u-md-3-24">' +
+            '<label for="option-' + index + 1 + '" class="pure-checkbox" style="text-transform: capitalize">' +
+            stepwise_compare_line + ' mean  ' + ' <input class="regionSelector" id="option-' + index + 1 + '" type="checkbox" value="' + stepwise_compare_line + '" checked>' +
+            '</label>' +
+            '</div>';
+    });
+    return template;
+}
+
+
+
 function drawRegionComparison(val, internals) {
     var c_data = [];
     internals.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
@@ -48,6 +68,33 @@ function drawRegionPerformance(internals) {
     }, internals);
 }
 
+function bindEvents(internals) {
+    // Time period Selection
+    D3.selectAll('#modify-time-period-controls').on('change', function() {
+        internals.past_n_days = D3.event.target.value;
+        drawRegionPerformance(internals);
+        drawRegionComparison(1, internals);
+    });
+
+
+    //Stepwise charts step selection
+    D3.selectAll('.regionSelector').on('click', function() {
+        internals.stepwise_compare_lines = [];
+        D3.selectAll('.regionSelector').each(function() {
+            if (this.checked === true) {
+                internals.stepwise_compare_lines.push(this.value);
+            }
+        });
+        drawRegionComparison(1, internals);
+    });
+
+    // Step Selection
+    D3.selectAll('#modify-step-controls').on('change', function() {
+        internals.stepwise_compare_step = D3.event.target.value;
+        drawRegionComparison(internals.stepwise_compare_step, internals);
+    });
+}
+
 // Load JSON
 exports.init = function() {
     var internals = {
@@ -77,35 +124,14 @@ exports.init = function() {
             D3.select('#region_name').text(data.region_name);
             internals.data = data;
             internals.role = data.config.role;
+            D3.select('#compareRegion').html(loadTemplate(internals));
             drawRegionPerformance(internals);
             drawRegionComparison(1, internals);
+            bindEvents(internals);
 
         });
 
-    // Time period Selection
-    D3.selectAll('#modify-time-period-controls').on('change', function() {
-        internals.past_n_days = D3.event.target.value;
-        drawRegionPerformance(internals);
-        drawRegionComparison(1, internals);
-    });
 
-
-    //Stepwise charts step selection
-    D3.selectAll('.regionSelector').on('click', function() {
-        internals.stepwise_compare_lines = [];
-        D3.selectAll('.regionSelector').each(function() {
-            if (this.checked === true) {
-                internals.stepwise_compare_lines.push(this.value);
-            }
-        });
-        drawRegionComparison(1, internals);
-    });
-
-    // Step Selection
-    D3.selectAll('#modify-step-controls').on('change', function() {
-        internals.stepwise_compare_step = D3.event.target.value;
-        drawRegionComparison(internals.stepwise_compare_step, internals);
-    });
 
 
 };
