@@ -32,7 +32,7 @@ function drawRegionComparison(val, internals) {
 
 function drawRegionPerformance(internals) {
     var b_data = Parser.lines({
-        data: internals.data.block.data,
+        data: internals.data[internals.role].data,
         past_n_days: internals.past_n_days,
         col: internals.stepCols,
         isCumulative: true
@@ -53,9 +53,7 @@ exports.init = function() {
     var internals = {
         past_n_days: '',
         stepwise_compare_step: 1,
-        stepwise_compare_lines: ['block', 'state', 'district'],
-        panchyat_compare_lines: '',
-        panchayatGroupBy: 'Sub-Engineer',
+        stepwise_compare_lines: ['state', 'district'],
         labels: [
             'Muster roll closure to muster roll entry',
             'Muster roll entry to wage list generation',
@@ -78,6 +76,7 @@ exports.init = function() {
             D3.select('#dashboard').classed('u-hidden', false);
             D3.select('#region_name').text(data.region_name);
             internals.data = data;
+            internals.role = data.config.role;
             drawRegionPerformance(internals);
             drawRegionComparison(1, internals);
 
