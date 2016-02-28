@@ -2,6 +2,7 @@
 
 var D3 = require('d3');
 var Cookie = require('../lib/cookie');
+var Template = require('../lib/template');
 
 
 // Load JSON
@@ -18,6 +19,11 @@ exports.init = function() {
             D3.select('#region_name').text(data.region_name);
             internals.data = data;
             internals.role = data.config.role;
+
+            if (internals.role === 'district') {
+                Template.discrete(internals.data.discrete);
+            }
+
 
         });
 };

@@ -32,7 +32,7 @@ exports.getData = {
             var childrenResponse = utils.flatten(rows[1]);
 
             // process children data
-            final_dict.children = d3.nest()
+            final_dict.discrete = d3.nest()
                 .key(function(d) {
                     return d.region_code;
                 })
@@ -71,6 +71,7 @@ exports.getData = {
             final_dict.region_name = regionName;
             final_dict.config = {
                 'headers': headers,
+                'role': request.auth.credentials.role
             };
 
             if (rows.length > 2) { // role==='block'
@@ -98,7 +99,7 @@ exports.getData = {
                 };
 
                 // process children data
-                final_dict.children = d3.nest()
+                final_dict.discrete = d3.nest()
                     .key(function(d) {
                         return d.region_code;
                     })

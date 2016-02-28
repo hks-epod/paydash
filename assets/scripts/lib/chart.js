@@ -126,3 +126,35 @@ exports.singular = function(options, paydash) {
         }
     });
 };
+
+exports.small = function(options) {
+    MG.data_graphic({
+        title: options.title,
+        data: options.data,
+        width: 295,
+        height: 300,
+        right: 10,
+        left: 90,
+        small_text: true,
+        xax_count: 3,
+        decimals: 0,
+        xax_format: D3.time.format('%e %b, %y'),
+        chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
+        missing_text: 'No data',
+        target: options.target,
+        legend: options.labels,
+        legend_target: options.legend_target,
+        full_width: true,
+        aggregate_rollover: true,
+        transition_on_update: false,
+        max_y: options.max_y || undefined,
+        interplate: 'linear',
+        linked: true,
+        interpolate_tension: 1,
+        y_label: 'Days to Complete Process',
+        area: options.area,
+        show_secondary_x_label: false,
+        max_x: options.max_x || undefined,
+        min_x: options.min_x || undefined
+    });
+};
