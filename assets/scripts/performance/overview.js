@@ -128,10 +128,5 @@ exports.init = function() {
             drawRegionPerformance(internals);
             drawRegionComparison(1, internals);
             bindEvents(internals);
-
         });
-
-
-
-
 };
