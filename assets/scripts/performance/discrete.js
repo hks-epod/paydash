@@ -68,8 +68,10 @@ exports.init = function() {
 
             if (internals.role === 'district') {
                 Template.discrete(internals.data.discrete);
-                drawPanchayatPerformance(internals);
+            } else if (internals.role === 'block') {
+                Template.sortedDiscrete(internals.data.employees[internals.groupBy], internals);
             }
+            drawPanchayatPerformance(internals);
 
 
         });
