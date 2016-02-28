@@ -7,16 +7,17 @@ var Cookie = require('../lib/cookie');
 // Load JSON
 exports.init = function() {
     var internals = {};
-    D3.json('/performance/overview/data?region_id=' + Cookie.read('region_id'))
+    D3.json('/performance/discrete/data?region_code=' + Cookie.read('active_region'))
         .on('progress', function() {
             console.info('progress', D3.event.loaded);
         })
         .get(function(error, data) {
+            // Set Canvas 
             D3.select('#loading').remove();
-            console.log('kjkjkjkjk');
+            D3.select('#dashboard').classed('u-hidden', false);
+            D3.select('#region_name').text(data.region_name);
             internals.data = data;
-            // d3.select('#block_name').text(paydash.data.block_name);
-            // drawBlockPerformance();
-            // drawBlockComparison(1);
+            internals.role = data.config.role;
+
         });
 };

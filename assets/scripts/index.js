@@ -5,10 +5,13 @@ require('./components/region');
 require('./components/active-link');
 
 var OverviewPerformance = require('./performance/overview');
-// var DiscreatePerformance = require('./performance/discrete');
+var DiscretePerformance = require('./performance/discrete');
 
 if (window.location.pathname === '/performance/overview') {
     OverviewPerformance.init();
+}
+if (window.location.pathname === '/performance/discrete') {
+    DiscretePerformance.init();
 }
 
 // // Include Muster Dashboards scripts
