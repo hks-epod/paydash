@@ -75,4 +75,29 @@ exports.init = function() {
 
 
         });
+
+    // Time period Selection
+    D3.selectAll('#modify-time-period-controls').on('change', function() {
+        internals.past_n_days = D3.event.target.value;
+        drawPanchayatPerformance(internals);
+
+        // Update employee stats based on time controls
+        if (internals.role === 'block') {
+            var p_past_n_days;
+            if (internals.past_n_days === '') {
+                p_past_n_days = 'all';
+            } else {
+                p_past_n_days = internals.past_n_days - 1;
+            }
+            internals.data.employees[internals.groupBy].forEach(function(d) {
+                D3.select('#p_stat_step_avg' + d.mobile).text(d['step1_avg_' + p_past_n_days] || '');
+                D3.select('#p_stat_tot_trans' + d.mobile).text(d['tot_trans_' + p_past_n_days] || '');
+            });
+        }
+
+
+    });
+
+
+
 };
