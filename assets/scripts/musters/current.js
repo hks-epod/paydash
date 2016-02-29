@@ -1,7 +1,7 @@
 'use strict';
 
 var $ = require('jquery');
-var dynatable = require('../vendors/dynatable');
+var dynatable = require('../vendor/dynatable');
 var Cookie = require('../lib/cookie');
 
 exports.init = function() {
