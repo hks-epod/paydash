@@ -80,3 +80,14 @@ exports.sortedDiscrete = function(data, internals) {
             return headingHtml + htmlString + '</div>';
         });
 };
+
+exports.discreteGroupBy = function() {
+    var string = '<div class="panchayat-sort">' +
+        '<div id="discrete-groupby-controls" class="paydash-controls">' +
+        '<button class="button" data-groupby="no">No Grouping</button>' +
+        '<button class="button selected" data-groupby="TA">Group by TA</button>' +
+        '<button class="button" data-groupby="GRS">Group by Gram Rozgar Sahayak</button>' +
+        '</div>' +
+        '</div>';
+    D3.select('#panchayat_selectors').html(string);
+};

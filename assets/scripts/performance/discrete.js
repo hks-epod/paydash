@@ -69,6 +69,17 @@ exports.init = function() {
             if (internals.role === 'district') {
                 Template.discrete(internals.data.discrete);
             } else if (internals.role === 'block') {
+                Template.discreteGroupBy();
+                //  Bind event for groupby
+                // Panchayat group by control
+                D3.selectAll('#discrete-groupby-controls button').on('click', function() {
+                    var target = D3.select(D3.event.target); // Define target
+                    D3.selectAll('#discrete-groupby-controls button').classed('selected', false); // change button state
+                    target.classed('selected', true);
+                    internals.groupBy = target.attr('data-groupby');
+                    Template.sortedDiscrete(internals.data.employees[internals.groupBy], internals);
+                    drawPanchayatPerformance(internals);
+                });
                 Template.sortedDiscrete(internals.data.employees[internals.groupBy], internals);
             }
             drawPanchayatPerformance(internals);
@@ -94,9 +105,9 @@ exports.init = function() {
                 D3.select('#p_stat_tot_trans' + d.mobile).text(d['tot_trans_' + p_past_n_days] || '');
             });
         }
-
-
     });
+
+
 
 
 
