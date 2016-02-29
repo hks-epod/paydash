@@ -17,8 +17,8 @@ exports.getData = {
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-        var block_code = request.query.selected_block_id;
-        var queryString = queries.delayed_musters(block_code);
+        var active_region = request.query.active_region;
+        var queryString = queries.delayed_musters(active_region);
 
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
@@ -26,7 +26,7 @@ exports.getData = {
             reply(data);
         });
 
-        // musters_urls(sequelize, queryString, block_code, function(urls) {
+        // musters_urls(sequelize, queryString, active_region, function(urls) {
 
         //     urls.employees = _.mapKeys(urls.employees, function(value, key) {
         //         return value.map_location + value.task_assign;
