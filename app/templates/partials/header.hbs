@@ -30,8 +30,10 @@
         <div class="menu menu--pointing">
           <a class="menu-item" href="/performance/overview">{{t "/navigation/overview" credentials}}</a>
           <a class="menu-item" href="/performance/discrete">{{t "/navigation/discrete" credentials}}</a>
-          <a class="menu-item" href="/musters/current">Current Musters</a>
-          <a class="menu-item" href="/musters/delayed">Delayed Musters</a>
+          {{#compare credentials.role '===' 'block'}}
+            <a class="menu-item" href="/musters/current">Current Musters</a>
+            <a class="menu-item" href="/musters/delayed">Delayed Musters</a>
+          {{/compare}}
         </div>
       </div>
     {{else}}

@@ -23,3 +23,4 @@ module.exports = function(a, operator, b, opts) {
     }
 
 };
+
