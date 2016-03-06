@@ -7,7 +7,7 @@ exports.register = function(plugin, options, next) {
         var Controllers = {
             api: {
                 login: require('../controllers/api/login'),
-                // logout: require('../controllers/api/logout')
+                logout: require('../controllers/api/logout')
             }
         };
 
@@ -18,6 +18,10 @@ exports.register = function(plugin, options, next) {
                 method: 'POST',
                 path: '/api/login',
                 config: Controllers.api.login.postForm
+            }, {
+                method: '*',
+                path: '/api/logout',
+                config: Controllers.api.logout.postForm
             }
         ]);
 
