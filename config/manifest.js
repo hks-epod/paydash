@@ -23,6 +23,9 @@ var manifest = {
     connections: [{
         port: Config.get('/port/web'),
         labels: ['web']
+    }, {
+        port: Config.get('/port/api'),
+        labels: ['api']
     }],
     plugins: {
         'hapi-context-credentials': {},
@@ -35,9 +38,10 @@ var manifest = {
             }
         },
         'good': Config.get('/good'),
-        'crumb': {
-            autoGenerate: true
-        },
+        'crumb': [{
+            select: ['web'],
+            options: { autoGenerate: true, }
+        }],
         'inert': {},
         'vision': {},
         'visionary': {
@@ -52,12 +56,27 @@ var manifest = {
         },
         './lib/sequelize': Config.get('/sequelize'),
         './lib/auth': Config.get('/authCookie'),
-        './app/routes/core': {},
-        './app/routes/auth': {},
-        './app/routes/users': {},
-        './app/routes/performance': {},
-        './app/routes/musters': {},
-        './app/routes/alerts': {}
+        './app/routes/core': [{
+            select: ['web']
+        }],
+        './app/routes/auth': [{
+            select: ['web']
+        }],
+        './app/routes/users': [{
+            select: ['web']
+        }],
+        './app/routes/performance': [{
+            select: ['web']
+        }],
+        './app/routes/musters': [{
+            select: ['web']
+        }],
+        './app/routes/alerts': [{
+            select: ['web']
+        }],
+        './app/routes/api': {
+            select: ['api']
+        }
     }
 };
 
