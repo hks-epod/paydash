@@ -1,18 +1,25 @@
-var $ = require('jquery');
+'use strict';
 
-//  Load components
 require('./components/dropdown');
-require('./components/block_selection');
+require('./components/region');
 require('./components/active-link');
 
-// Include Performance Dashboards scripts
-require('./performance/block');
-require('./performance/panchayat');
+var OverviewPerformance = require('./performance/overview');
+var DiscretePerformance = require('./performance/discrete');
+var currentMusters = require('./musters/current');
+var delayedMusters = require('./musters/delayed');
 
-// Include Muster Dashboards scripts
-require('./musters/current');
-require('./musters/delayed');
+if (window.location.pathname === '/performance/overview') {
+    OverviewPerformance.init();
+}
+if (window.location.pathname === '/performance/discrete') {
+    DiscretePerformance.init();
+}
 
+if (window.location.pathname === '/musters/current') {
+    currentMusters.init();
+}
 
-
-
+if (window.location.pathname === '/musters/dealyed') {
+    delayedMusters.init();
+}

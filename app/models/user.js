@@ -29,11 +29,11 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: 'users',
         timestamps: true,
-        underscored : true,
+        underscored: true,
         classMethods: {
             associate: function(models) {
                 // associations can be defined here
-                User.hasMany(models.user_blocks);
+                User.hasMany(models.user_regions);
                 User.hasMany(models.notifications);
             }
         }

@@ -1,12 +1,12 @@
 'use strict';
 
 var $ = require('jquery');
-var dynatable = require('../components/dynatable');
-var read_cookie = require('../helpers/read_cookie');
+var dynatable = require('../vendor/dynatable');
+var Cookie = require('../lib/cookie');
 
-function currentTableInit() {
+exports.init = function() {
     $.ajax({
-        url: '/musters/current/data?selected_block_id=' + read_cookie('selected_block_id'),
+        url: '/musters/current/data?active_region=' + Cookie.read('active_region'),
         success: function(data) {
             $('#loading_message').hide();
 
@@ -25,8 +25,4 @@ function currentTableInit() {
             });
         }
     });
-}
-
-if (window.location.pathname === '/musters/current') {
-    currentTableInit();
-}
+};

@@ -25,12 +25,19 @@
     fill: #5c5c5c;
 }
 
+text.mg-barplot-group-label {
+    font-weight:900;
+}
+
 .mg-barplot rect.mg-bar {
     shape-rendering: auto;
+}
+
+.mg-barplot rect.mg-bar.default-bar {
     fill: #b6b6fc;
 }
 
-.mg-barplot rect.mg-bar.active {
+.mg-barplot rect.mg-bar.default-active {
     fill: #9e9efc;
 }
 
@@ -41,6 +48,13 @@
 .mg-barplot .mg-bar-baseline {
     stroke: #5b5b5b;
     stroke-width: 2;
+}
+
+.mg-bar-target-element {
+    font-size:11px;
+    padding-left:5px;
+    padding-right:5px;
+    font-weight:300;
 }
 
 .mg-baselines line {
@@ -73,7 +87,7 @@
 }
 
 .mg-points circle {
-    opacity: 0.85;
+    opacity: 0.65;
 }
 
 .mg-popover {
@@ -137,6 +151,10 @@
     opacity: 0.7;
     shape-rendering: auto;
     stroke: #ccc;
+}
+
+tspan.hist-symbol {
+    fill: #9e9efc;
 }
 
 .mg-histogram .mg-bar rect {
@@ -243,7 +261,7 @@
 
 .mg-markers text {
     fill: black;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     opacity: 0.6;
 }
 
@@ -292,6 +310,11 @@ path.mg-main-line {
 circle.mg-points-mono {
     fill: #0000ff;
     stroke: #0000ff;
+}
+
+tspan.mg-points-mono {
+    fill: #0000ff;
+    stroke: #0000ff; 
 }
 
 /* a selected point in a scatterplot */

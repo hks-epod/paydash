@@ -20,7 +20,7 @@ exports.showForm = {
         }
     },
     handler: function(request, reply) {
-        
+
         if (request.auth.isAuthenticated) {
             return reply.redirect('/dashboard/block');
         }
@@ -67,22 +67,19 @@ exports.postForm = {
                 username: request.payload.username,
                 password: crypto.createHash('md5').update(request.payload.password).digest('hex')
             },
-            include: [db.user_blocks]
+            include: [db.user_regions]
         }).then(function(user) {
-
             if (user) {
                 request.auth.session.set(user);
                 if (!user.isActive) {
                     request.session.flash('info', 'Please check your profile details');
-
-                    // TODO: Save isActive to true
                     user.update({
                         isActive: true
                     }).then(function() {
                         return reply.redirect('/me/settings/profile');
                     });
                 } else {
-                    return reply.redirect('/dashboard/block');
+                    return reply.redirect('/performance/overview');
                 }
 
             } else {

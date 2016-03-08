@@ -1,15 +1,15 @@
 'use strict';
 
 var $ = require('jquery');
-var dynatable = require('../components/dynatable');
-var read_cookie = require('../helpers/read_cookie');
+var dynatable = require('../vendor/dynatable');
+var Cookie = require('../lib/cookie');
 
 var tim = [2, 5, 6, 7, 8];
 
-function dealyedTableInit() {
+exports.init = function() {
 
     $.ajax({
-        url: '/musters/delayed/data?selected_block_id=' + read_cookie('selected_block_id'),
+        url: '/musters/delayed/data?active_region=' + Cookie.read('active_region'),
         success: function(data) {
             $('#loading_message').hide();
             tim.forEach(function(val, index) {
@@ -33,9 +33,4 @@ function dealyedTableInit() {
         }
     });
 
-}
-
-if (window.location.pathname === '/musters/delayed') {
-    console.log('executing');
-    dealyedTableInit();
-}
+};

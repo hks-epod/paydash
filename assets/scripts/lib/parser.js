@@ -20,19 +20,33 @@ function parseDate(string) {
 //  col - which all coulmns/lines to return in resultsed data 
 //  isCumulative - if resulted data columns are cumulative or not
 
-exports.lines = function(data, past_n_days, col, isCumulative) {
-    if (past_n_days !== '') {
+// exports.lines = function(data, past_n_days, col, isCumulative) {
+exports.lines = function(options) {
+
+    var defaults = {
+        past_n_days: '',
+        col: [1, 2, 3, 4, 5, 6, 7],
+        isCumulative: true
+    };
+    if (!options) options = {};
+    for (var key in defaults) {
+        if (!options.hasOwnProperty(key)) {
+            options[key] = defaults[key];
+        }
+    }
+
+    if (options.past_n_days !== '') {
         var past_n_date = new Date();
-        past_n_date.setDate(past_n_date.getDate() - past_n_days);
+        past_n_date.setDate(past_n_date.getDate() - options.past_n_days);
     }
     var result = [];
-    data.forEach(function(tSmry, index) {
+    options.data.forEach(function(tSmry, index) {
         if (!past_n_date || parseDate(tSmry[0]) >= past_n_date) {
-            col.forEach(function(val, index) {
+            options.col.forEach(function(val, index) {
                 var obj = {
                     date: parseDate(tSmry[0]),
                 };
-                obj.value = (isCumulative && result[index - 1]) ? tSmry[val] + result[index - 1][result[index - 1].length - 1].value : tSmry[val];
+                obj.value = (options.isCumulative && result[index - 1]) ? tSmry[val] + result[index - 1][result[index - 1].length - 1].value : tSmry[val];
                 obj.total_trans = tSmry[8];
                 result[index] = result[index] || [];
                 result[index].push(obj);

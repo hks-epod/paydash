@@ -2,7 +2,7 @@
 
 
 //  Setup cookie for block selection
-module.exports = function(key) {
+exports.read = function(key) {
     var result;
     return (result = new RegExp('(?:^|; )' + encodeURIComponent(key) + '=([^;]*)').exec(document.cookie)) ? (result[1]) : null;
 };

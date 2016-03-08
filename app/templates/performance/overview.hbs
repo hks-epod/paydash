@@ -1,0 +1,64 @@
+<div class="container-fluid u-spacing-page-top">
+  <div id="loading" class="loading">{{t "/messages/loading"}}</div>
+  <div id="dashboard" class="dashboard u-hidden">
+    {{!-- Meta information  --}}
+    <div class="u-textSize--largest">
+      {{t "/performance/overview/title"}}
+      <span id="region_name"></span>.  
+      {{t "/performance/overview/timeSelector"}}
+        <select id="modify-time-period-controls" class="button button--bp" name="">
+          <option value="">past all days</option>
+          <option value="61">past 60 days</option>
+          <option value="31">past 30 days</option>
+        </select>
+    </div>
+    <p>{{t "/performance/overview/graphExplanation"}}</p>
+    {{!-- Overview  --}}
+    <div class="pure-g">
+      <div class="pure-u-24-24">
+        <div class="chart-holder">
+          <div class="region_chart_holder">
+            <div id="region_performance"></div>
+          </div>
+          <div class="legend region_legend"></div>
+          <div class="u-textSize--largest">
+            Total transactions on <span id="region_performance_total_trans"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="u-region-divider"></div>
+    <div class="u-textSize--largest">Performance Comparison</div>
+    <div class="selectors pure-g">
+      <div class="pure-u pure-u-24-24 pure-u-md-7-24">
+        <select class="button button--pc" name="" id="modify-step-controls">
+          <option value="1">{{t "/payment_steps/1"}}</option>
+          <option value="2">{{t "/payment_steps/2"}}</option>
+          <option value="3">{{t "/payment_steps/3"}}</option>
+          <option value="4">{{t "/payment_steps/4"}}</option>
+          <option value="5">{{t "/payment_steps/5"}}</option>
+          <option value="6">{{t "/payment_steps/6"}}</option>
+          <option value="7">{{t "/payment_steps/7"}}</option>
+        </select>
+      </div>
+      <div class="pure-u pure-u-24-24 pure-u-md-17-24">
+        <div id="compareRegion" class="pure-g"></div>
+      </div>
+    </div>
+   {{!-- Comparison chart --}}
+    <div class="pure-g">
+      <div class="pure-u-24-24">
+        <div class="chart-holder">
+          <div class="region_chart_holder">
+            <div id="region_comparison"></div>
+          </div>
+          <div class="legend comparison_legend"></div>
+          <div class="u-textSize--largest">Total transactions on <span id="region_comparison_total_trans"></span></div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+{{> footer}}

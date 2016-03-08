@@ -30,6 +30,7 @@ config/keys
 /config/config.js
 .build/*
 test/artifacts/*
+assets/scripts/temp
 
 
 #Sublime project files 

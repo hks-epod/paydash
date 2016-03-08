@@ -20,18 +20,20 @@
         </div>
       </div>
       <div class="menu-wrapper">
-        <div class="menu-block-selection u-pull-right">
-          <select name="block_selector" id="block_selector">
-            {{#each credentials.user_blocks}}
-              <option value="{{this.block_code}}">{{this.block_name}}</option>
+        <div class="menu-region-selection u-pull-right">
+          <select name="region_selector" id="region_selector">
+            {{#each credentials.user_regions}}
+              <option value="{{this.region_code}}">{{this.region_name}}</option>
             {{/each}}
           </select>
         </div>
         <div class="menu menu--pointing">
-          <a class="menu-item" href="/dashboard/block">Block Performance</a>
-          <a class="menu-item" href="/dashboard/panchayat">Panchayat Performance</a>
-          <a class="menu-item" href="/musters/current">Current Musters</a>
-          <a class="menu-item" href="/musters/delayed">Delayed Musters</a>
+          <a class="menu-item" href="/performance/overview">{{t "/navigation/overview" credentials}}</a>
+          <a class="menu-item" href="/performance/discrete">{{t "/navigation/discrete" credentials}}</a>
+          {{#compare credentials.role '===' 'block'}}
+            <a class="menu-item" href="/musters/current">Current Musters</a>
+            <a class="menu-item" href="/musters/delayed">Delayed Musters</a>
+          {{/compare}}
         </div>
       </div>
     {{else}}
