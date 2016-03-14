@@ -7,7 +7,8 @@ exports.register = function(plugin, options, next) {
         var Controllers = {
             api: {
                 login: require('../controllers/api/login'),
-                logout: require('../controllers/api/logout')
+                logout: require('../controllers/api/logout'),
+                cards: require('../controllers/api/cards')
             }
         };
 
@@ -22,6 +23,10 @@ exports.register = function(plugin, options, next) {
                 method: '*',
                 path: '/api/logout',
                 config: Controllers.api.logout.postForm
+            }, {
+                method: 'GET',
+                path: '/api/cards',
+                config: Controllers.api.cards.getData
             }
         ]);
 
