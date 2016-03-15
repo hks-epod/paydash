@@ -6,7 +6,7 @@
 > Paydash aims to reduce delays in beneficiary payments by providing government officials with detailed information on delays -- breaking out performance on payment sub-processes down to the panchayat level and connecting poor performance with the responsible government employee. In addition to diagnostics, Paydash is action-oriented, providing access to pending documents and the contact information of the responsible employee. Paydash aims to empower government officials with better information while introducing more accountability into the payments process, with the ultimate goal of helping MGNREGA workers receive their rightful payments.
 
 > Paydash is a joint initiative of the Ministry of Rural Development, the National Informatics Centre, and Evidence for Policy Design at Harvard Kennedy School.
-
+<img src="https://github.com/hks-epod/mgnrega-case/blob/master/images/paydash_wide.png" alt="">
 ## Technology
 
 - **Hapi** - Server side framework
