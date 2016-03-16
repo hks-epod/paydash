@@ -51,3 +51,7 @@ exports.current_musters = function(BLOCK_CODE) {
 exports.delayed_musters = function(BLOCK_CODE) {
     return "SELECT step, msr_no, work_name, work_code, start_date, end_date, panchayat_name FROM delayed_musters WHERE block_code = '" + BLOCK_CODE + "';";
 };
+
+exports.cards = function(BLOCK_CODE) {
+    return "SELECT a.current_total, b.delayed_total, c.time_to_payment FROM (SELECT count(*) AS current_total, 1 AS merge FROM current_musters WHERE block_code = '" + BLOCK_CODE + "') a LEFT JOIN (SELECT count(*) AS delayed_total, 1 AS merge FROM delayed_musters WHERE block_code = '" + BLOCK_CODE + "') b ON a.merge = b.merge LEFT JOIN (SELECT ROUND(SUM(mrc_processed_mean * total_transactions) / SUM(total_transactions),1) AS time_to_payment, 1 AS merge FROM block_delays_duration WHERE block_code = '" + BLOCK_CODE + "' AND gender = 'both' AND bank_type = 'all' AND date_type = 'processed_date') c ON b.merge = c.merge;";
+}
