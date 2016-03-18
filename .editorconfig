@@ -4,11 +4,14 @@
 root = true
 
 # Unix-style newlines with a newline ending every file
+
 [**]
 end_of_line = lf
 insert_final_newline = true
 
+
 # Standard at: https://github.com/felixge/node-style-guide 
+
 [**.js, **.json]
 trim_trailing_whitespace = true
 indent_style = tab
@@ -21,8 +24,8 @@ spaces_in_brackets = false
 tab_size= 4
 
 
-
 # No standard.  Please document a standard if different from .js
+
 [**.md]
 indent_style = tab
 
