@@ -23,9 +23,9 @@ exports.getData = {
 	            var delayed_total = overview[0].delayed_total;
 	            var days_to_payment = overview[0].days_to_payment;
 
-	            var cards = utils.flatten(rows[1]);
+	            var cards_response = utils.flatten(rows[1]);
 
-	            var cards_dict = d3.nest()
+	            var cards = d3.nest()
 	                .key(function(d) {
 	                    return d.staff_id;
 	                })
@@ -36,7 +36,7 @@ exports.getData = {
 	                        'mobile':v[0].mobile_no,
 		        			'current_total':v[0].current_total,
 		        			'delayed_total':v[0].delayed_total,
-	                        'delayed_musters': v.map(function(d) {
+	                        'delayed_musters': v.filter(function(d) { return d.type==='delayed_musters'; }).map(function(d) {
 	                            return [
 	                                {
 	                                	'msr_no':d.msr_no,
@@ -47,7 +47,7 @@ exports.getData = {
 	                            	}
 	                            ];
 	                        }),
-	                       	'current_musters': v.map(function(d) {
+	                       	'current_musters': v.filter(function(d) { return d.type==='current_musters'; }).map(function(d) {
 	                            return [
 	                                {
 	                                	'msr_no':d.msr_no,
@@ -60,7 +60,7 @@ exports.getData = {
 	                        })
 	                    };
 	                })
-	                .entries(cards)
+	                .entries(cards_response)
 	                .map(function(d) {
 	                    return d.values;
 	                });
@@ -70,36 +70,9 @@ exports.getData = {
 		        		'current_total':current_total,
 		        		'delayed_total':delayed_total,
 		        		'days_to_payment':days_to_payment,
-		        		'cards_total':15
+		        		'cards_total': cards.length
 		        	},
-		        	'cards': [
-		        		{
-		        			'name':'Aditya Kumar',
-		        			'designation':'TA',
-		        			'mobile':'9871723511',
-		        			'current_total':5,
-		        			'delayed_total':5,
-		        			'avg_step':10.2,
-		        			'delayed_musters': [
-		        				{
-		        					'msr_no':'12345567780',
-		        					'panchayat_name':'Rampur',
-		        					'work_name':'Bhothali - Taar Nali Nirman',
-		        					'closure_date':'10 March 2016'
-		        				}
-		        			],
-		        			'current_musters': [
-		        				{
-		        					'msr_no':'12345567780',
-		        					'panchayat_name':'Rampur',
-		        					'work_name':'Bhothali - Taar Nali Nirman',
-		        					'closure_date':'10 March 2016'
-		        				}
-		        			]
-		        		}
-
-		        	]
-
+		        	'cards': cards
 		        };
 
 	            reply(data);
