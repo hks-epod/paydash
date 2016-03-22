@@ -9,7 +9,9 @@ exports.getData = {
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-        // var region_code = request.query.region_code;
+
+        var user_id = request.auth.credentials._id;
+
         var region_code = '1709003';
         var queryString = queries.cards(region_code);
 
