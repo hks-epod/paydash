@@ -10,9 +10,9 @@ exports.getData = {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
 
-        var user_id = request.auth.credentials.id;
+        var userId = request.auth.credentials.id;
 
-        var queryString = queries.cards(user_id);
+        var queryString = queries.cards(userId);
 
         // API CODE
 		sequelize.query(queryString, {
@@ -35,6 +35,7 @@ exports.getData = {
 	                        'name': v[0].name,
 	                        'designation': v[0].task_assign,
 	                        'mobile':v[0].mobile_no,
+	                        'block_name',v[0].block_name,
 		        			'current_total':v[0].current_total,
 		        			'delayed_total':v[0].delayed_total,
 	                        'delayed_musters': v.filter(function(d) { return d.type==='delayed_musters'; }).map(function(d) {
