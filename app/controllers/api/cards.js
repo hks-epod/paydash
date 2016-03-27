@@ -19,13 +19,22 @@ exports.getData = {
 		        type: sequelize.QueryTypes.SELECT
 		    }).then(function(rows) {
 		            
-	            var overview = utils.flatten(rows[0]);
-	            var current_total = overview[0].current_total;
-	            var delayed_total = overview[0].delayed_total;
-	            var days_to_payment = overview[0].days_to_payment;
+	            var overviewResponse = utils.flatten(rows[0]);
 
-	            var cards_response = utils.flatten(rows[1]);
+	            var cardsResponse = utils.flatten(rows[1]);
 
+	            var blockResponse = utils.flatten(rows[2]);
+
+	            var panchayatResponse = utils.flatten(rows[3]);
+
+	            var notificationsResponse = utils.flatten(rows[4]);
+
+	            // Parse the overview response
+	           	var current_total = overviewResponse[0].current_total;
+	            var delayed_total = overviewResponse[0].delayed_total;
+	            var days_to_payment = overviewResponse[0].days_to_payment;
+
+	            // Nest the cards response and include the overview stats
 	            var cards = d3.nest()
 	                .key(function(d) {
 	                    return d.staff_id;
@@ -35,7 +44,7 @@ exports.getData = {
 	                        'name': v[0].name,
 	                        'designation': v[0].task_assign,
 	                        'mobile':v[0].mobile_no,
-	                        'block_name',v[0].block_name,
+	                        'block_name':v[0].block_name,
 		        			'current_total':v[0].current_total,
 		        			'delayed_total':v[0].delayed_total,
 	                        'delayed_musters': v.filter(function(d) { return d.type==='delayed_musters'; }).map(function(d) {
@@ -62,10 +71,87 @@ exports.getData = {
 	                        })
 	                    };
 	                })
-	                .entries(cards_response)
+	                .entries(cardsResponse)
 	                .map(function(d) {
 	                    return d.values;
 	                });
+
+
+	            // Nest the block response
+	            var blockPerformance = d3.nest()
+	                .key(function(d) {
+	                    return d.block_code;
+	                })
+	                .rollup(function(v) {
+	                    return {
+	                        'block_code': v[0].block_code,
+	                        'block_name': v[0].block_name,
+	                        'data': v.map(function(d) {
+	                            return [
+	                                d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
+	                                d.mrc_mre,
+	                                d.mre_wlg,
+	                                d.wlg_wls,
+	                                d.wls_fto,
+	                                d.fto_sn1,
+	                                d.sn1_sn2,
+	                                d.sn2_prc,
+	                                d.tot_trn
+	                            ];
+	                        })
+	                    };
+	                })
+	                .entries(blockResponse)
+	                .map(function(d) {
+	                    return d.values;
+	                })
+	                .sort(function(a, b) {
+	                    var aTarget = a.data[a.data.length - 1];
+	                    var bTarget = b.data[b.data.length - 1];
+	                    var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
+	                    var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
+	                    return bSum - aSum;
+	                });
+
+
+	            // Nest the panchayat response
+	            var panchayatPerformance = d3.nest()
+	                .key(function(d) {
+	                    return d.panchayat_code;
+	                })
+	                .rollup(function(v) {
+	                    return {
+	                    	'block_code': v[0].block_code,
+	                        'panchayat_code': v[0].panchayat_code,
+	                        'panchayat_name': v[0].panchayat_name,
+	                        'data': v.map(function(d) {
+	                            return [
+	                                d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
+	                                d.mrc_mre,
+	                                d.mre_wlg,
+	                                d.wlg_wls,
+	                                d.wls_fto,
+	                                d.fto_sn1,
+	                                d.sn1_sn2,
+	                                d.sn2_prc,
+	                                d.tot_trn
+	                            ];
+	                        })
+	                    };
+	                })
+	                .entries(panchayatResponse)
+	                .map(function(d) {
+	                    return d.values;
+	                })
+	                .sort(function(a, b) {
+	                    var aTarget = a.data[a.data.length - 1];
+	                    var bTarget = b.data[b.data.length - 1];
+	                    var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
+	                    var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
+	                    return bSum - aSum;
+	                });
+
+            	var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'];
 
 	            var data = {
 		        	'overview': {
@@ -74,7 +160,13 @@ exports.getData = {
 		        		'days_to_payment':days_to_payment,
 		        		'cards_total': cards.length
 		        	},
-		        	'cards': cards
+		        	'cards': cards,
+		        	'block_performance': blockPerformance,
+		        	'panchayat_performance': panchayatPerformance,
+		        	'notifications': ,
+		        	'config': {
+		        		'headers': headers
+		        	}
 		        };
 
 	            reply(data);
