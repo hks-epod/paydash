@@ -163,7 +163,7 @@ exports.getData = {
 		        	'cards': cards,
 		        	'block_performance': blockPerformance,
 		        	'panchayat_performance': panchayatPerformance,
-		        	'notifications': ,
+		        	'notifications': notificationsResponse,
 		        	'config': {
 		        		'headers': headers
 		        	}
