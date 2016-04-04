@@ -20,6 +20,6 @@ if (window.location.pathname === '/musters/current') {
     currentMusters.init();
 }
 
-if (window.location.pathname === '/musters/dealyed') {
+if (window.location.pathname === '/musters/delayed') {
     delayedMusters.init();
 }
