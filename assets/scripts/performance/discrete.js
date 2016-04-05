@@ -70,14 +70,19 @@ exports.init = function() {
                 Template.discrete(internals.data.discrete);
             } else if (internals.role === 'block') {
                 Template.discreteGroupBy();
+
                 //  Bind event for groupby
-                // Panchayat group by control
                 D3.selectAll('#discrete-groupby-controls button').on('click', function() {
                     var target = D3.select(D3.event.target); // Define target
                     D3.selectAll('#discrete-groupby-controls button').classed('selected', false); // change button state
                     target.classed('selected', true);
                     internals.groupBy = target.attr('data-groupby');
-                    Template.sortedDiscrete(internals.data.employees[internals.groupBy], internals);
+                    if(internals.groupBy === 'no'){
+                        console.log(internals.groupBy);
+                        Template.discrete(internals.data.discrete);
+                    }else{
+                        Template.sortedDiscrete(internals.data.employees[internals.groupBy], internals);    
+                    }
                     drawPanchayatPerformance(internals);
                 });
                 Template.sortedDiscrete(internals.data.employees[internals.groupBy], internals);

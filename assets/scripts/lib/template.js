@@ -4,7 +4,7 @@ var D3 = require('d3');
 var Chart = require('./chart');
 
 exports.discrete = function(data) {
-    D3.select('.region_charts-container').selectAll('div').remove();
+    D3.select('#region_charts-container').selectAll('div').remove();
     D3.select('#region_charts-container')
         .append('div')
         .classed(' pure-g', true)
