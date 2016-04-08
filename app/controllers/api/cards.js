@@ -6,6 +6,11 @@ var utils = require('../../helpers/utils');
 
 
 exports.getData = {
+	plugins: {
+        'crumb': {
+            skip: true
+        }
+    },
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;

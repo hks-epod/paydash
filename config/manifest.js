@@ -23,9 +23,6 @@ var manifest = {
     connections: [{
         port: Config.get('/port/web'),
         labels: ['web']
-    }, {
-        port: Config.get('/port/api'),
-        labels: ['api']
     }],
     plugins: {
         'hapi-context-credentials': {},
@@ -40,9 +37,12 @@ var manifest = {
         'good': Config.get('/good'),
         'crumb': [{
             select: ['web'],
-            options: { autoGenerate: true, skip:function(request, reply){
-                // console.log(request);
-            }}
+            options: {
+                autoGenerate: true,
+                skip: function(request, reply){
+                    return true
+                }
+            }
         }],
         'inert': {},
         'vision': {},
@@ -77,7 +77,7 @@ var manifest = {
             select: ['web']
         }],
         './app/routes/api': {
-            select: ['api']
+            select: ['web']
         }
     }
 };
