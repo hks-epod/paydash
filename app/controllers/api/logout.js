@@ -8,6 +8,7 @@ exports.postForm = {
     },
     handler: function(request, reply) {
         request.auth.session.clear();
+        console.log('sdsd');
         return reply(Boom.create(200, 'Successfully logged out'));
     }
 };
