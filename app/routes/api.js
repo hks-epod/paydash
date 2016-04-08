@@ -8,7 +8,8 @@ exports.register = function(plugin, options, next) {
             api: {
                 login: require('../controllers/api/login'),
                 logout: require('../controllers/api/logout'),
-                cards: require('../controllers/api/cards')
+                cards: require('../controllers/api/cards'),
+                profile: require('../controllers/api/profile')
             }
         };
 
@@ -19,6 +20,10 @@ exports.register = function(plugin, options, next) {
                 method: 'POST',
                 path: '/api/login',
                 config: Controllers.api.login.postForm
+            },{
+                method: 'POST',
+                path: '/api/profile',
+                config: Controllers.api.profile.postEditProfile
             }, {
                 method: '*',
                 path: '/api/logout',

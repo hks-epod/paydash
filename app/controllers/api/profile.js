@@ -2,16 +2,6 @@
 
 var Joi = require('joi');
 
-exports.showEditProfile = {
-    description: 'Show Edit profile settings',
-    handler: function(request, reply) {
-        var ctx = {
-            user: request.auth.credentials
-        };
-        reply.view('users/settings-profile', ctx);
-
-    }
-};
 
 exports.postEditProfile = {
     description: 'Post Edit profile settings',
