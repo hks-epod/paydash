@@ -19,6 +19,7 @@ exports.getData = {
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
         }).then(function(data) {
+            console.log(data)
             reply(data);
         });
     }
