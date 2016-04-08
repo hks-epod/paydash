@@ -29,7 +29,7 @@ function drawRegionComparison(val, internals) {
     var c_data = [];
     internals.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
         var line_data = Parser.lines({
-            data: internals.data[stepwise_compare_line].data,
+            data: internals.data.monthwise[stepwise_compare_line].data,
             past_n_days: internals.past_n_days,
             col: [val],
             isCumulative: false
@@ -52,7 +52,7 @@ function drawRegionComparison(val, internals) {
 
 function drawRegionPerformance(internals) {
     var b_data = Parser.lines({
-        data: internals.data[internals.role].data,
+        data: internals.data.datewise[internals.role].data,
         past_n_days: internals.past_n_days,
         col: internals.stepCols,
         isCumulative: true

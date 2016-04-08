@@ -40,7 +40,9 @@ var manifest = {
         'good': Config.get('/good'),
         'crumb': [{
             select: ['web'],
-            options: { autoGenerate: true, }
+            options: { autoGenerate: true, skip:function(request, reply){
+                // console.log(request);
+            }}
         }],
         'inert': {},
         'vision': {},
