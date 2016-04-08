@@ -23,3 +23,7 @@ if (window.location.pathname === '/musters/current') {
 if (window.location.pathname === '/musters/delayed') {
     delayedMusters.init();
 }
+
+if (window.location.pathname === '/logout') {
+    document.cookie = 'active_region=; expires='+ new Date();
+}

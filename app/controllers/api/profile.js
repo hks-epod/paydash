@@ -55,14 +55,12 @@ exports.postEditProfile = {
                 user.update(request.payload).then(function() {
                     request.auth.session.clear();
                     request.auth.session.set(user);
-                    request.session.flash('success', 'Profile successfully saved');
-                    return reply.redirect('/me/settings/profile');
+                    return reply(user);
 
                 });
 
             } else {
-                request.session.flash('error', 'An internal server error occurred');
-                return reply.redirect('/me/settings/profile');
+                return reply(Boom.badImplementation('An internal server error occurred'));
             }
         });
     }
