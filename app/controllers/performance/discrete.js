@@ -98,6 +98,8 @@ exports.getData = {
                     }
                 };
 
+                var mappingResponse = utils.flatten(rows[11]);
+
                 // process children data
                 final_dict.discrete = d3.nest()
                     .key(function(d) {
@@ -172,6 +174,12 @@ exports.getData = {
 
                     })
                     .map(employeeResponse);
+
+                final_dict.mapping = {
+                    'total_panchayat_count': mappingResponse[0].total_panchayat_count,
+                    'grs_panchayat_count': mappingResponse[0].grs_panchayat_count,
+                    'ta_panchayat_count': mappingResponse[0].ta_panchayat_count
+                };
             }
 
             reply(final_dict);
