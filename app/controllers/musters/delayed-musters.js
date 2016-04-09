@@ -2,7 +2,6 @@
 var d3 = require('d3');
 
 var queries = require('../../helpers/queries');
-var musters_urls = require('../../helpers/musters');
 var req = require('request');
 var _ = require('lodash');
 var moment = require('moment');
