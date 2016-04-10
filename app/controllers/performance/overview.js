@@ -1,8 +1,6 @@
 'use strict';
 
-var D3 = require('d3');
 var Queries = require('../../helpers/queries');
-var Utils = require('../../helpers/utils');
 var OverviewParser = require('../../helpers/overview_parser');
 
 exports.showPage = {
