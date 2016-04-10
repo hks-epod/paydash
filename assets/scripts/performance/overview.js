@@ -11,15 +11,6 @@ exports.init = function() {
         past_n_days: '',
         stepwise_compare_step: 1,
         stepwise_compare_lines: ['state', 'district'],
-        labels: [
-            'Muster roll closure to muster roll entry',
-            'Muster roll entry to wage list generation',
-            'Wage list generation to wage list signing',
-            'Wage list signing to FTO generation',
-            'FTO generation to first signature',
-            'First signature to second signature',
-            'Second signature to processed by bank',
-        ],
         stepCols: [1, 2, 3, 4, 5, 6, 7]
     };
 
@@ -55,7 +46,7 @@ function drawRegionPerformance(internals) {
         target: '#region_performance',
         legend_target: '.region_legend',
         labels: internals.data.config.labels,
-        legend_labels: 'labels',
+        legend_labels: 'data.config.labels',
         area: true
     }, internals);
 }
@@ -67,9 +58,9 @@ function loadTemplate(internals) {
     var template = '';
     internals.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
         template = template +
-            '<div class="pure-u pure-u-24-24 pure-u-md-3-24">' +
+            '<div>' +
             '<label for="option-' + index + 1 + '" class="pure-checkbox" style="text-transform: capitalize">' +
-            stepwise_compare_line + ' mean  ' + ' <input class="regionSelector" id="option-' + index + 1 + '" type="checkbox" value="' + stepwise_compare_line + '" checked>' +
+            '<input class="regionSelector" id="option-' + index + 1 + '" type="checkbox" value="' + stepwise_compare_line + '" checked> '+ stepwise_compare_line + ' mean  '  +
             '</label>' +
             '</div>';
     });
@@ -94,10 +85,9 @@ function drawRegionComparison(val, internals) {
 
     Chart.singular({
         data: c_data,
-        title: internals.labels[val - 1],
         target: '#region_comparison',
         legend_target: '.comparison_legend',
-        labels: internals.labels,
+        labels: internals.stepwise_compare_lines,
         legend_labels: 'stepwise_compare_lines',
         area: false,
     }, internals);
