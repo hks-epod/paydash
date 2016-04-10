@@ -5,7 +5,60 @@ var Cookie = require('../lib/cookie');
 var Parser = require('../lib/parser');
 var Chart = require('../lib/chart');
 
+// Load JSON
+exports.init = function() {
+    var internals = {
+        past_n_days: '',
+        stepwise_compare_step: 1,
+        stepwise_compare_lines: ['state', 'district'],
+        labels: [
+            'Muster roll closure to muster roll entry',
+            'Muster roll entry to wage list generation',
+            'Wage list generation to wage list signing',
+            'Wage list signing to FTO generation',
+            'FTO generation to first signature',
+            'First signature to second signature',
+            'Second signature to processed by bank',
+        ],
+        stepCols: [1, 2, 3, 4, 5, 6, 7]
+    };
 
+    D3.json('/performance/overview/data?region_code=' + Cookie.read('active_region'))
+        .on('progress', function() {
+            console.info('progress', D3.event.loaded);
+        })
+        .get(function(error, data) {
+
+            // Set Canvas 
+            D3.select('#loader').remove();
+            D3.select('#dashboard').classed('u-hidden', false);
+
+            D3.select('#region-name').text(data.region_name);
+            internals.data = data;
+            D3.select('#compareRegion').html(loadTemplate(internals));
+            drawRegionPerformance(internals);
+            drawRegionComparison(1, internals);
+            bindEvents(internals);
+        });
+};
+
+function drawRegionPerformance(internals) {
+    var b_data = Parser.lines({
+        data: internals.data.datewise[internals.data.config.role].data,
+        past_n_days: internals.past_n_days,
+        col: internals.stepCols,
+        isCumulative: true
+    });
+    Chart.flash({
+        data: b_data,
+        title: 'Region Performance',
+        target: '#region_performance',
+        legend_target: '.region_legend',
+        labels: internals.data.config.labels,
+        legend_labels: 'labels',
+        area: true
+    }, internals);
+}
 
 function loadTemplate(internals) {
     if (internals.role === 'block') {
@@ -50,23 +103,7 @@ function drawRegionComparison(val, internals) {
     }, internals);
 }
 
-function drawRegionPerformance(internals) {
-    var b_data = Parser.lines({
-        data: internals.data.datewise[internals.role].data,
-        past_n_days: internals.past_n_days,
-        col: internals.stepCols,
-        isCumulative: true
-    });
-    Chart.flash({
-        data: b_data,
-        title: 'Region Performance',
-        target: '#region_performance',
-        legend_target: '.region_legend',
-        labels: internals.labels,
-        legend_labels: 'labels',
-        area: true
-    }, internals);
-}
+
 
 function bindEvents(internals) {
     // Time period Selection
@@ -94,39 +131,3 @@ function bindEvents(internals) {
         drawRegionComparison(internals.stepwise_compare_step, internals);
     });
 }
-
-// Load JSON
-exports.init = function() {
-    var internals = {
-        past_n_days: '',
-        stepwise_compare_step: 1,
-        stepwise_compare_lines: ['state', 'district'],
-        labels: [
-            'Muster roll closure to muster roll entry',
-            'Muster roll entry to wage list generation',
-            'Wage list generation to wage list signing',
-            'Wage list signing to FTO generation',
-            'FTO generation to first signature',
-            'First signature to second signature',
-            'Second signature to processed by bank',
-        ],
-        stepCols: [1, 2, 3, 4, 5, 6, 7]
-    };
-
-    D3.json('/performance/overview/data?region_code=' + Cookie.read('active_region'))
-        .on('progress', function() {
-            console.info('progress', D3.event.loaded);
-        })
-        .get(function(error, data) {
-            // Set Canvas 
-            D3.select('#loading').remove();
-            D3.select('#dashboard').classed('u-hidden', false);
-            D3.select('#region_name').text(data.region_name);
-            internals.data = data;
-            internals.role = data.config.role;
-            D3.select('#compareRegion').html(loadTemplate(internals));
-            drawRegionPerformance(internals);
-            drawRegionComparison(1, internals);
-            bindEvents(internals);
-        });
-};
