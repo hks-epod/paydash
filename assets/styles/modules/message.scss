@@ -5,7 +5,6 @@
   background: rgba($color-grey, .05);
   padding: .9rem 1.5rem;
   line-height: 1.4285em;
-  color: $color-grey-base;
   border-radius: $borderRadius-base;
   box-shadow: 0 0 0 1px rgba($color-grey, 0.3) inset, 0 0 0 0 transparent;
 }
@@ -35,6 +34,11 @@
 .message ul,
 .message ul li:last-child {
   margin-bottom: 0;
+}
+.message ul li{
+  color: inherit;
+  letter-spacing: .1em;
+  line-height: 1.6em
 }
 
 
