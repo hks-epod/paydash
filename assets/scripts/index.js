@@ -9,9 +9,9 @@ var DiscretePerformance = require('./performance/discrete');
 var currentMusters = require('./musters/current');
 var delayedMusters = require('./musters/delayed');
 
-// if (window.location.pathname === '/performance/overview') {
-//     OverviewPerformance.init();
-// }
+if (window.location.pathname === '/performance/overview') {
+    OverviewPerformance.init();
+}
 if (window.location.pathname === '/performance/discrete') {
     DiscretePerformance.init();
 }

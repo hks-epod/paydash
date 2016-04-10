@@ -1,8 +1,57 @@
 <div class="container-fluid u-spacing-page-top">
-  <div id="loader-overlay" class="loader-overlay">
+  {{!-- Loader --}}
+  <div id="loader" class="loader-overlay">
     <div class="loader">Loading...</div>
     <div class="loader-text ">{{t "/messages/loading"}}</div>
   </div>
-</div>
+  {{!-- Dashboard --}}
+  <div id="dashboard" class="dashboard u-hidden">
+    <div class="subnav">
+      <span id="region-name" class="subnav-name"></span>
+      <select class="u-pull-right" id="modify-time-period-controls" name="">
+        <option value="">Past all days</option>
+        <option value="61">Past 60 days</option>
+        <option value="31">Past 30 days</option>
+      </select>
+    </div>
+    {{!-- Overview --}}
+    <div class="pure-g">
+      <div class="pure-u-6-24">
+        <h2 class="u-mt-larger">BLOCK PERFORMANCE</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="legend region_legend"></div>
+        <div>Total transactions on <span id="region_performance_total_trans"></span></div>
+      </div>
+      <div class="pure-u-18-24">
+        <div id="region_performance"></div>
+      </div>
+    </div>
+    {{!-- Performance Comparison --}}
+    <div class="u-region-divider"></div>
+    <div class="pure-g">
+      <div class="pure-u-6-24">
+        <h2 class="u-mt-larger">PERFORMANCE COMPARISON</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        
+        <select class="button button--pc" name="" id="modify-step-controls">
+          <option value="1">{{t "/payment_steps/1"}}</option>
+          <option value="2">{{t "/payment_steps/2"}}</option>
+          <option value="3">{{t "/payment_steps/3"}}</option>
+          <option value="4">{{t "/payment_steps/4"}}</option>
+          <option value="5">{{t "/payment_steps/5"}}</option>
+          <option value="6">{{t "/payment_steps/6"}}</option>
+          <option value="7">{{t "/payment_steps/7"}}</option>
+        </select>
+        <div id="compareRegion" class="pure-g"></div>
 
-{{> footer}}
+
+
+        <div class="legend comparison_legend"></div>
+        <div>Total transactions on <span id="region_comparison_total_trans"></span></div>
+      </div>
+      <div class="pure-u-18-24">
+        <div id="region_comparison"></div>
+      </div>
+    </div>
+  </div>
+  {{> footer}}

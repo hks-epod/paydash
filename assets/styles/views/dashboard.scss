@@ -1,11 +1,11 @@
 .subnav{
-  margin-bottom: 30px;
-  padding: 10px 0 30px;
+  padding: 10px 0 20px;
+  border-bottom: dashed 1px $color-grey-lighter;
+  margin-bottom: 20px;
 }
 .subnav .subnav-name {
     font-size: 40px;
     text-transform: capitalize !important;
-    font-style: italic;
     letter-spacing: .3em
 }
 .legend {
@@ -13,9 +13,17 @@
 }
 .legend span {
   display: block;
-  font-size: .8em;
+  font-size: .9em;
   margin-bottom: 5px;
 }
+.dashboard .button--pc,
+.dashboard .button--pc:hover,
+.dashboard .button--pc:focus {
+  font-size: 1rem;
+  text-transform: none;
+  width: auto;
+}
+
 
 
 // 
@@ -67,10 +75,7 @@
 // .mg-histogram .axis text {
 //   font-size: 1.3rem;
 // }
-// .u-region-divider {
-//   margin: 60px 0;
-//   border-bottom: dashed 1px $color-grey-lighter;
-// }
+
 // .selectors {
 //   margin: 30px 0;
 //   padding: 6px 15px;
