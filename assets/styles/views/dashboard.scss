@@ -23,7 +23,10 @@
   text-transform: none;
   width: auto;
 }
-
+.footer {
+  padding: 15px 0;
+  border-top: solid 1px $color-grey-dim
+}
 
 
 // 
@@ -96,10 +99,7 @@
 // .u-mg-line3-color {
 //   color: #f57070;
 // }
-// .footer {
-//   padding: 15px 0;
-//   border-top: solid 1px $color-grey-dim
-// }
+
 // .pp-sidebar {
 //   position: fixed
 // }
