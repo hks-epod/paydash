@@ -145,6 +145,7 @@ exports.small = function(options) {
         legend_target: options.legend_target,
         full_width: true,
         aggregate_rollover: true,
+        x_extended_ticks: true,
         transition_on_update: false,
         max_y: options.max_y || undefined,
         interplate: 'linear',

@@ -22,13 +22,15 @@
         <li id="mapping-msg-2 u-hidden">Your block has unmapped panchayats for the <strong>TA</strong> designation. As a result, we can't show you the performance of all the TA's in your block. Please visit the MGNREGA portal at nrega.nic.in to complete your TA mapping.</li>
       </ul>
     </div>
-    {{!-- Overview --}}
+    {{!-- Charts --}}
     <div class="pure-g">
-      <div class="pure-u-6-24">
-      </div>
-      <div class="pure-u-18-24">
+      <div class="pure-u-24-24">
+        <div class="legend region_legend"></div>
       </div>
     </div>
+    <div id="region_charts-container"></div>
+    <div class="region_charts_unmapped-container"></div>
+
   </div>
 </div>
 {{> footer}}
