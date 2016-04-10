@@ -1,29 +1,29 @@
 <div class="container-fluid u-spacing-page-top">
-  <div id="loading" class="loading">{{t "/messages/loading"}}</div>
+  {{!-- Loader --}}
+  <div id="loader" class="loader-overlay">
+    <div class="loader">Loading...</div>
+    <div class="loader-text ">{{t "/messages/loading"}}</div>
+  </div>
+  {{!-- Dashboard --}}
   <div id="dashboard" class="dashboard u-hidden">
-    {{!-- Meta information  --}}
-    <div class="u-textSize--largest">
-      {{t "/performance/overview/title"}}
-      <span id="region_name"></span>.  
-      {{t "/performance/overview/timeSelector"}}
-        <select id="modify-time-period-controls" class="button button--bp" name="">
-          <option value="">past all days</option>
-          <option value="61">past 60 days</option>
-          <option value="31">past 30 days</option>
-        </select>
+    <div class="subnav">
+      <span id="region-name" class="subnav-name"></span>
+      <select class="u-pull-right" id="modify-time-period-controls" name="">
+        <option value="">Past all days</option>
+        <option value="61">Past 60 days</option>
+        <option value="31">Past 30 days</option>
+      </select>
     </div>
-    <p>{{t "/performance/overview/graphExplanation"}}</p>
-  </div>
-  <p id="mapping-msg-1" class="message message--warning u-hidden">Your block has unmapped panchayats for the <strong>GRS</strong> designation. As a result, we can't show you the performance of all the GRS's in your block. Please visit the MGNREGA portal at nrega.nic.in to complete your GRS mapping.</p>
-  <p id="mapping-msg-2" class="message message--warning u-hidden">Your block has unmapped panchayats for the <strong>TA</strong> designation. As a result, we can't show you the performance of all the TA's in your block. Please visit the MGNREGA portal at nrega.nic.in to complete your TA mapping.</p>
-  <div id="panchayat_selectors" class="panchayat_selectors"></div>
-  {{!-- Charts --}}
-  <div class="pure-g">
-    <div class="pure-u-24-24">
-      <div class="legend region_legend"></div>
+    {{!-- Mapping message --}}
+    <p id="mapping-msg-1" class="message u-hidden">Your block has unmapped panchayats for the <strong>GRS</strong> designation. As a result, we can't show you the performance of all the GRS's in your block. Please visit the MGNREGA portal at nrega.nic.in to complete your GRS mapping.</p>
+    <p id="mapping-msg-2" class="message u-hidden">Your block has unmapped panchayats for the <strong>TA</strong> designation. As a result, we can't show you the performance of all the TA's in your block. Please visit the MGNREGA portal at nrega.nic.in to complete your TA mapping.</p>
+    {{!-- Overview --}}
+    <div class="pure-g">
+      <div class="pure-u-6-24">
+      </div>
+      <div class="pure-u-18-24">
+      </div>
     </div>
   </div>
-  <div id="region_charts-container"></div>
-  <div class="region_charts_unmapped-container"></div>
 </div>
 {{> footer}}

@@ -8,45 +8,6 @@ var Parser = require('../lib/parser');
 var Chart = require('../lib/chart');
 var Util = require('../lib/util');
 
-//  Specific Charts
-function drawPanchayatPerformance(internals) {
-    var limit = Util.discreteLimits(internals);
-    internals.data.discrete.forEach(function(region, p_index) {
-        if ($('#d_' + region.region_code).length !== 0) {
-            var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
-            var isCumu = (internals.discrete_compare_lines === '') ? true : false;
-            var d_data = Parser.lines({
-                data: region.data,
-                past_n_days: internals.past_n_days,
-                col: d_step_lines,
-                isCumulative: isCumu
-            });
-            Chart.small({
-                data: d_data,
-                title: region.region_name,
-                target: '#d_' + region.region_code,
-                legend_target: '.region_legend',
-                labels: internals.labels,
-                max_y: limit.max_y,
-                min_x: limit.min_x,
-                max_x: limit.max_x,
-            });
-        }
-    });
-}
-
-// Mapping message 
-function loadMappingMessage(mapping) {
-    if (mapping.grs_panchayat_count < mapping.total_panchayat_count) {
-        D3.select('#mapping-msg-1').classed('u-hidden', false);
-    }
-    if (mapping.grs_panchayat_count < mapping.total_panchayat_count) {
-        D3.select('#mapping-msg-2').classed('u-hidden', false);
-    }
-
-}
-
-
 // Load JSON
 exports.init = function() {
     var internals = {
@@ -70,9 +31,9 @@ exports.init = function() {
         })
         .get(function(error, data) {
             // Set Canvas 
-            D3.select('#loading').remove();
+            D3.select('#loader').remove();
             D3.select('#dashboard').classed('u-hidden', false);
-            D3.select('#region_name').text(data.region_name);
+            D3.select('#region-name').text(data.region_name);
             internals.data = data;
             internals.role = data.config.role;
 
@@ -124,9 +85,43 @@ exports.init = function() {
             });
         }
     });
-
-
-
-
-
 };
+
+
+//  Specific Charts
+function drawPanchayatPerformance(internals) {
+    var limit = Util.discreteLimits(internals);
+    internals.data.discrete.forEach(function(region, p_index) {
+        if ($('#d_' + region.region_code).length !== 0) {
+            var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
+            var isCumu = (internals.discrete_compare_lines === '') ? true : false;
+            var d_data = Parser.lines({
+                data: region.data,
+                past_n_days: internals.past_n_days,
+                col: d_step_lines,
+                isCumulative: isCumu
+            });
+            Chart.small({
+                data: d_data,
+                title: region.region_name,
+                target: '#d_' + region.region_code,
+                legend_target: '.region_legend',
+                labels: internals.labels,
+                max_y: limit.max_y,
+                min_x: limit.min_x,
+                max_x: limit.max_x,
+            });
+        }
+    });
+}
+
+// Mapping message 
+function loadMappingMessage(mapping) {
+    if (mapping.grs_panchayat_count < mapping.total_panchayat_count) {
+        D3.select('#mapping-msg-1').classed('u-hidden', false);
+    }
+    if (mapping.grs_panchayat_count < mapping.total_panchayat_count) {
+        D3.select('#mapping-msg-2').classed('u-hidden', false);
+    }
+
+}
