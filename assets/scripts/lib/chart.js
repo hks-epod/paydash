@@ -3,7 +3,7 @@
 var D3 = require('d3');
 var MG = require('./metricsgraphics');
 
-exports.flash = function(options, paydash) {
+exports.flash = function(options) {
     MG.data_graphic({
         title: '',
         data: options.data,
@@ -40,14 +40,14 @@ exports.flash = function(options, paydash) {
                 for (i = 1; i <= options.data.length; i++) {
                     var l_span = D3.select(options.legend_target + ' .mg-line' + i + '-legend-color');
                     l_span.text(' ');
-                    l_span.text('— ' + paydash.data.config.labels[i - 1]);
+                    l_span.text('— ' + options.labels[i - 1]);
                 }
             }
             d.values.forEach(function(val, index) {
                 var l_span = D3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
                 var no_days = d.values[index - 1] ? (val.value - d.values[index - 1].value).toFixed(0) : (val.value).toFixed(0);
-                l_span.text('— ' + paydash.data.config.labels[val.line_id - 1] + ' : ' + no_days);
+                l_span.text('— ' + options.labels[val.line_id - 1] + ' : ' + no_days);
                 var format = D3.time.format('%b %d, %Y');
                 D3.select(options.target + '_total_trans').text(format(val.date) + ': ' + val.total_trans);
             });
@@ -59,7 +59,7 @@ exports.flash = function(options, paydash) {
             d.values.forEach(function(val, index) {
                 var l_span = D3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
-                l_span.text('— ' + paydash[options.legend_labels][index]);
+                l_span.text('— ' + options.labels[index]);
             });
         }
     });

@@ -48,7 +48,7 @@ function drawRegionPerformance(internals) {
         labels: internals.data.config.labels,
         legend_labels: 'data.config.labels',
         area: true
-    }, internals);
+    });
 }
 
 function loadTemplate(internals) {
