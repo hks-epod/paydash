@@ -15,13 +15,23 @@
   display: block;
   font-size: .9em;
   margin-bottom: 5px;
+  text-transform: capitalize
 }
 .dashboard .button--pc,
 .dashboard .button--pc:hover,
 .dashboard .button--pc:focus {
   font-size: 1rem;
   text-transform: none;
-  width: auto;
+  width: 100%;
+}
+.group-selector{
+  padding: 14px 10px 10px;
+  border-radius: 3px;
+  border: solid 1px $color-grey-lightest;
+}
+.group-selector label input[type="checkbox"]{
+  margin-top: -3px;
+  margin-right: 6px;
 }
 .footer {
   padding: 15px 0;
