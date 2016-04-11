@@ -24,6 +24,6 @@ if (window.location.pathname === '/musters/delayed') {
     delayedMusters.init();
 }
 
-if (window.location.pathname === '/logout') {
-    document.cookie = 'active_region=; expires='+ new Date();
+if (window.location.pathname === '/login') {
+    document.cookie = 'active_region=;Path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
