@@ -1,9 +1,6 @@
 <div class="container-fluid u-spacing-page-top">
   {{!-- Loader --}}
-  <div id="loader" class="loader-overlay">
-    <div class="loader">Loading...</div>
-    <div class="loader-text ">{{t "/messages/loading"}}</div>
-  </div>
+  {{> loader}}
   {{!-- Dashboard --}}
   <div id="dashboard" class="dashboard u-hidden">
     <div class="subnav">
@@ -50,6 +47,7 @@
         <div id="region_comparison"></div>
       </div>
     </div>
+    {{> footer}}
   </div>
 </div>
-  {{> footer}}
+  

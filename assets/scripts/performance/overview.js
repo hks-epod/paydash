@@ -10,7 +10,7 @@ exports.init = function() {
     var internals = {
         past_n_days: '',
         stepwise_compare_step: 1,
-        stepwise_compare_lines: ['state', 'district'],
+        stepwise_compare_lines: ['state', 'district', 'block'],
         stepCols: [1, 2, 3, 4, 5, 6, 7]
     };
 
