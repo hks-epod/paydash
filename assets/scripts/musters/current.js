@@ -8,9 +8,10 @@ exports.init = function() {
     $.ajax({
         url: '/musters/current/data?active_region=' + Cookie.read('active_region'),
         success: function(data) {
-            $('#loading_message').hide();
+            $('#loader').hide();
+            $('.table-holder').removeClass('u-hidden');
 
-            $('#my-final-table').dynatable({
+            $('#current-musters').dynatable({
                 dataset: {
                     records: data
                 },
