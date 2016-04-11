@@ -31,11 +31,19 @@ module.exports = {
     },
     performance: {
         overview: {
-            title: {
-                $filter: 'role',
-                district: 'You are looking at payment processing time in',
-                block: 'You are looking at payment processing time in',
-                $default: 'You are looking at payment processing time in'
+            performance_chart: {
+                title: {
+                    $filter: 'role',
+                    district: 'District Performance',
+                    block: 'Block Performance',
+                    $default: 'Overview Performance'
+                },
+                description: {
+                    $filter: 'role',
+                    district: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                    block: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                    $default: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                }
             }
         }
     }
