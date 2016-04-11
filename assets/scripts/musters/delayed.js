@@ -11,7 +11,10 @@ exports.init = function() {
     $.ajax({
         url: '/musters/delayed/data?active_region=' + Cookie.read('active_region'),
         success: function(data) {
-            $('#loading_message').hide();
+
+            $('#loader').hide();
+            $('.table-holder').removeClass('u-hidden');
+            
             tim.forEach(function(val, index) {
 
                 $('#delayed-table-' + val).dynatable({
