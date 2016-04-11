@@ -1,9 +1,7 @@
 'use strict';
-var d3 = require('d3');
 
-var queries = require('../../helpers/queries');
-var req = require('request');
-var _ = require('lodash');
+var Queries = require('../../helpers/queries');
+
 
 exports.showPage = {
     handler: function(request, reply) {
