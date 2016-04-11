@@ -36,7 +36,19 @@
   padding: 15px 0;
   border-top: solid 1px $color-grey-dim
 }
-
+.paydash-controls{
+  margin-right: 13px;
+}
+.paydash-controls .button{
+  padding: 0 6px;
+  border-radius:0;
+}
+.paydash-controls .button:first-child{
+  border-radius: 4px 0 0 4px;
+}
+.paydash-controls .button:last-child{
+  border-radius: 0 4px 4px 0;
+}
 
 // 
 // 

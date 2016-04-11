@@ -14,15 +14,6 @@ exports.init = function() {
         past_n_days: '',
         discrete_compare_lines: '',
         groupBy: 'TA',
-        labels: [
-            'Muster roll closure to muster roll entry',
-            'Muster roll entry to wage list generation',
-            'Wage list generation to wage list sign',
-            'Wage list sign to FTO generation',
-            'FTO generation to first signature',
-            'First signature to second signature',
-            'Second signature to processed by bank',
-        ],
         stepCols: [1, 2, 3, 4, 5, 6, 7]
     };
     D3.json('/performance/discrete/data?region_code=' + Cookie.read('active_region'))
@@ -34,6 +25,7 @@ exports.init = function() {
             D3.select('#loader').remove();
             D3.select('#dashboard').classed('u-hidden', false);
             D3.select('#region-name').text(data.region_name);
+
             internals.data = data;
             internals.role = data.config.role;
 
@@ -52,7 +44,6 @@ exports.init = function() {
                     target.classed('selected', true);
                     internals.groupBy = target.attr('data-groupby');
                     if (internals.groupBy === 'no') {
-                        console.log(internals.groupBy);
                         Template.discrete(internals.data.discrete);
                     } else {
                         Template.sortedDiscrete(internals.data.employees[internals.groupBy], internals);
@@ -106,7 +97,7 @@ function drawPanchayatPerformance(internals) {
                 title: region.region_name,
                 target: '#d_' + region.region_code,
                 legend_target: '.region_legend',
-                labels: internals.labels,
+                labels: internals.data.config.labels,
                 max_y: limit.max_y,
                 min_x: limit.min_x,
                 max_x: limit.max_x,

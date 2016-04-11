@@ -13,9 +13,8 @@ exports.discrete = function(data) {
         .enter().append('div')
         .classed(' pure-u pure-u-8-24', true)
         .html(function(d, index) {
-            return '<div class="chart-holder small_chart">' +
+            return '<div class="small-chart-holder">' +
                 '<div id="d_' + d.region_code + '"></div>' +
-                '<div class="d_' + d.region_code + '_legend"></div>' +
                 '</div>';
         });
 };

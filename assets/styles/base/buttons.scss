@@ -57,3 +57,6 @@ $button--letterSpacing: $letterSpacing-normal;
   border-color: $color-error-dark;
   background-color: $color-error-dark;
 }
+.button.selected {
+  background-color: $color-grey-lighter
+}
