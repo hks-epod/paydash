@@ -32,12 +32,13 @@ exports.sortedDiscrete = function(data, internals) {
             } else {
                 p_past_n_days = internals.past_n_days;
             }
-            var htmlString = '<div class="u-region-divider"></div><h3>' + d.name + '</h3>' +
-                '<div class="employee-stats">' +
+            var htmlString = 
+                '<div class="employee-stats message">' +
+                '<h1>' + d.name + '</h1>' +
                 '<ul>' +
-                '<li> Mobile no : ' + d.mobile + '</li>' +
-                '<li>Step 1 average : <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></li>' +
-                '<li>Step 1 total transactions : <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></li>' +
+                '<li> Mobile no: ' + d.mobile + '</li>' +
+                '<li>Step 1 average: <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></li>' +
+                '<li>Step 1 total transactions: <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></li>' +
                 '</ul>' +
                 '</div>' +
                 '<div class="pure-g">';
@@ -82,7 +83,7 @@ exports.sortedDiscrete = function(data, internals) {
 
 exports.discreteGroupBy = function() {
     var string = '<div class="panchayat-sort">' +
-        '<div id="discrete-groupby-controls" class="paydash-controls">' +
+        '<div id="discrete-groupby-controls" class="button-group">' +
         '<button class="button" data-groupby="no">No Grouping</button>' +
         '<button class="button selected" data-groupby="TA">Group by TA</button>' +
         '<button class="button" data-groupby="GRS">Group by GRS</button>' +

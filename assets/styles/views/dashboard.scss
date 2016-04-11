@@ -1,7 +1,7 @@
-.subnav{
-  padding: 10px 0 20px;
-  border-bottom: dashed 1px $color-grey-lighter;
-  margin-bottom: 20px;
+.subnav {
+    padding: 10px 0 20px;
+    border-bottom: dashed 1px $color-grey-lighter;
+    margin-bottom: 20px;
 }
 .subnav .subnav-name {
     font-size: 40px;
@@ -9,54 +9,57 @@
     letter-spacing: .3em
 }
 .legend {
-  margin-top: 40px;
+    margin-top: 40px;
 }
 .legend span {
-  display: block;
-  font-size: .9em;
-  margin-bottom: 5px;
+    display: block;
+    font-size: .9em;
+    margin-bottom: 5px;
 }
 .dashboard .button--pc,
 .dashboard .button--pc:hover,
 .dashboard .button--pc:focus {
-  font-size: 1rem;
-  text-transform: none;
-  width: 100%;
+    font-size: 1rem;
+    text-transform: none;
+    width: 100%;
 }
-.group-selector{
-  padding: 14px 10px 10px;
-  border-radius: 3px;
-  border: solid 1px $color-grey-lightest;
+.group-selector {
+    padding: 14px 10px 10px;
+    border-radius: 3px;
+    border: solid 1px $color-grey-lightest;
 }
-.group-selector label input[type="checkbox"]{
-  margin-top: -3px;
-  margin-right: 6px;
+.group-selector label input[type="checkbox"] {
+    margin-top: -3px;
+    margin-right: 6px;
 }
 .footer {
-  padding: 15px 0;
-  border-top: solid 1px $color-grey-dim
+    padding: 15px 0;
+    border-top: solid 1px $color-grey-dim
 }
-.paydash-controls{
-  margin-right: 13px;
+.small_chart {
+    margin-bottom: 20px;
 }
-.paydash-controls .button{
-  padding: 0 6px;
-  border-radius:0;
+.employee-stats {
+    padding: 25px 15px;
+    margin-top: 50px;
+    background-color: rgba(255, 255, 255, 0.00);
+    border: dashed 1px $color-grey-lighter;
+    box-shadow: none;
+    margin-bottom: 35px;
 }
-.paydash-controls .button:first-child{
-  border-radius: 4px 0 0 4px;
+.employee-stats li {
+    display: inline-block;
+    margin-right: 15px;
+    width: 30%;
+    margin-bottom: 0;
+    margin-top: 5px;
 }
-.paydash-controls .button:last-child{
-  border-radius: 0 4px 4px 0;
-}
-
 // 
 // 
 // 
 // 
 // 
 // 
-
 // .dashboard .button--bp,
 // .dashboard .button--bp:hover,
 // .dashboard .button--bp:focus {
@@ -99,7 +102,6 @@
 // .mg-histogram .axis text {
 //   font-size: 1.3rem;
 // }
-
 // .selectors {
 //   margin: 30px 0;
 //   padding: 6px 15px;
@@ -120,7 +122,6 @@
 // .u-mg-line3-color {
 //   color: #f57070;
 // }
-
 // .pp-sidebar {
 //   position: fixed
 // }
