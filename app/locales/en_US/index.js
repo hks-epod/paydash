@@ -31,12 +31,26 @@ module.exports = {
     },
     performance: {
         overview: {
-            performance_chart: {
+            chart_a: {
                 title: {
                     $filter: 'role',
                     district: 'District Performance',
                     block: 'Block Performance',
                     $default: 'Overview Performance'
+                },
+                description: {
+                    $filter: 'role',
+                    district: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                    block: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
+                    $default: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                }
+            },
+            chart_b: {
+                title: {
+                    $filter: 'role',
+                    district: 'Performance Comparison',
+                    block: 'Performance Comparison',
+                    $default: 'Performance Comparison'
                 },
                 description: {
                     $filter: 'role',

@@ -1,7 +1,5 @@
 <div class="container-fluid u-spacing-page-top">
-  {{!-- Loader --}}
   {{> loader}}
-  {{!-- Dashboard --}}
   <div id="dashboard" class="dashboard u-hidden">
     <div class="subnav">
       <span id="region-name" class="subnav-name"></span>
@@ -14,8 +12,8 @@
     {{!-- Overview --}}
     <div class="pure-g">
       <div class="pure-u-6-24">
-        <h2 class="u-mt-larger">BLOCK PERFORMANCE</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h2 class="u-mt-larger">{{t "/performance/overview/chart_a/title"}}</h2>
+        <p>{{t "/performance/overview/chart_a/description"}}</p>
         <div class="legend region_legend"></div>
         <div>Total transactions on <span id="region_performance_total_trans"></span></div>
       </div>
@@ -27,9 +25,8 @@
     <div class="u-region-divider"></div>
     <div class="pure-g">
       <div class="pure-u-6-24">
-        <h2 class="u-mt-larger">PERFORMANCE COMPARISON</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
+        <h2 class="u-mt-larger">{{t "/performance/overview/chart_b/title"}}</h2>
+        <p>{{t "/performance/overview/chart_b/title/description"}}</p>
         <select class="button button--pc" name="" id="modify-step-controls">
           <option value="1">{{t "/payment_steps/1"}}</option>
           <option value="2">{{t "/payment_steps/2"}}</option>
@@ -50,4 +47,3 @@
     {{> footer}}
   </div>
 </div>
-  
