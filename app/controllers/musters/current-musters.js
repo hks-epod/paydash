@@ -1,7 +1,8 @@
 'use strict';
 
 var Queries = require('../../helpers/queries');
-
+var utils = require('../../helpers/utils');
+var req = require('request');
 
 exports.showPage = {
     handler: function(request, reply) {
@@ -18,8 +19,30 @@ exports.getData = {
 
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
-        }).then(function(data) {
-            reply(data);
+        }).then(function(rows) {
+
+            var mustersResponse = utils.flatten(rows[0]);
+            var mappingResponse = utils.flatten(rows[1]);
+            
+            var final_dict = {
+                'musters': mustersResponse.map(function(d) {
+                    return {
+                        'msr_no':d.msr_no,
+                        'work_name':d.work_name,
+                        'panchayat_name':d.panchayat_name,
+                        'closure_date':d.end_date,
+                        'name':d.name,
+                        'mobile_no':d.mobile_no
+                    };
+                }),
+                'mapping': {
+                    'total_panchayat_count': mappingResponse[0].total_panchayat_count,
+                    'grs_panchayat_count': mappingResponse[0].grs_panchayat_count,
+                }
+
+            };
+
+            reply(final_dict);
         });
     }
 };
