@@ -30,9 +30,8 @@ exports.getData = {
                         'msr_no':d.msr_no,
                         'work_name':d.work_name,
                         'panchayat_name':d.panchayat_name,
-                        'closure_date':d.end_date,
                         'name':d.name,
-                        'mobile_no':d.mobile_no
+                        'mobile':d.mobile_no
                     };
                 }),
                 'mapping': {

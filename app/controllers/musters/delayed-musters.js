@@ -33,7 +33,7 @@ exports.getData = {
                             'closure_date':d.end_date,
                             'days_pending':d.days_pending,
                             'name':d.name,
-                            'mobile_no':d.mobile_no
+                            'mobile':d.mobile_no
                         };
                     }),
                     'ds_t5': mustersResponse.filter(function(d) { return d.step==='ds_t5'; }).map(function(d) {
@@ -44,7 +44,7 @@ exports.getData = {
                             'closure_date':d.end_date,
                             'days_pending':d.days_pending,
                             'name':d.name,
-                            'mobile_no':d.mobile_no
+                            'mobile':d.mobile_no
                         };
                     }),
                     'ds_t6': mustersResponse.filter(function(d) { return d.step==='ds_t6'; }).map(function(d) {
