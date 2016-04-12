@@ -19,7 +19,7 @@ exports.init = function() {
 
                 $('#delayed-table-' + val).dynatable({
                     dataset: {
-                        records: data['ds_t' + val]
+                        records: data.musters['ds_t' + val]
                     },
                     table: {
                         defaultColumnIdStyle: 'underscore'
