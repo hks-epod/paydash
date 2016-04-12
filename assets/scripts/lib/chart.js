@@ -56,6 +56,7 @@ exports.flash = function(options) {
             if (!d.values) {
                 d.values = [d];
             }
+            D3.select(options.target + '_total_trans').text('');
             d.values.forEach(function(val, index) {
                 var l_span = D3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
@@ -117,6 +118,7 @@ exports.singular = function(options, paydash) {
             if (!d.values) {
                 d.values = [d];
             }
+            D3.select(options.target + '_total_trans').text('');
             d.values.forEach(function(val, index) {
                 var l_span = D3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
