@@ -10,7 +10,7 @@ exports.init = function() {
     var internals = {
         past_n_days: '',
         stepwise_compare_step: 1,
-        stepwise_compare_lines: ['district','state'],
+        stepwise_compare_lines: ['district', 'state'],
         stepCols: [1, 2, 3, 4, 5, 6, 7]
     };
 
@@ -53,14 +53,15 @@ function drawRegionPerformance(internals) {
 
 function loadTemplate(internals) {
     if (internals.data.config.role === 'block') {
-        internals.stepwise_compare_lines = ['block', 'district','state'];
+        internals.stepwise_compare_lines = ['block', 'district', 'state'];
     }
     var template = '';
     internals.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
         template = template +
             '<div>' +
             '<label for="option-' + index + 1 + '" class="pure-checkbox" style="text-transform: capitalize">' +
-            '<input class="regionSelector" id="option-' + index + 1 + '" type="checkbox" value="' + stepwise_compare_line + '" checked> '+ stepwise_compare_line + ' mean  '  +
+            '<input class="regionSelector" id="option-' + index + 1 + '" type="checkbox" value="' + stepwise_compare_line + '" checked> ' + 
+            internals.data.monthwise[stepwise_compare_line][stepwise_compare_line + '_name'].toLowerCase() + ' '+ stepwise_compare_line + ' average  ' +
             '</label>' +
             '</div>';
     });

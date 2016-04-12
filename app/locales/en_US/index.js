@@ -43,9 +43,6 @@ module.exports = {
                     district: 'Average number of days to complete each step of the payment process in your district.',
                     block: 'Average number of days to complete each step of the payment process in your block.',
                     $default: 'Average number of days to complete each step of the payment process in your region.'
-                },
-                tooltip: {
-                    block: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
                 }
             },
             chart_b: {
@@ -61,7 +58,8 @@ module.exports = {
                     block: 'Compare your performance with averages for your district and state.',
                     $default: 'Compare your performance with averages for other regions.'
                 }
-            }
+            },
+            tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
         }
     }
 };
