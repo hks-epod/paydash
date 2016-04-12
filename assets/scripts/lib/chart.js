@@ -66,7 +66,7 @@ exports.flash = function(options) {
     });
 };
 
-exports.singular = function(options, paydash) {
+exports.singular = function(options) {
 
     MG.data_graphic({
         // title: options.title,
@@ -89,7 +89,7 @@ exports.singular = function(options, paydash) {
         show_tooltips: false,
         aggregate_rollover: true,
         show_year_markers: true,
-        transition_on_update: true,
+        // transition_on_update: true,
         interplate: 'linear',
         interpolate_tension: 1,
         area: options.area,
@@ -102,14 +102,14 @@ exports.singular = function(options, paydash) {
                 for (i = 1; i <= options.data.length; i++) {
                     var l_span = D3.select(options.legend_target + ' .mg-line' + i + '-legend-color');
                     l_span.text(' ');
-                    l_span.text('— ' + paydash[options.legend_labels][i - 1]);
+                    l_span.text('— ' + options.labels[i - 1]);
                 }
             }
             d.values.forEach(function(val, index) {
                 var prefix = D3.formatPrefix(val.value);
                 var l_span = D3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
-                l_span.text('— ' + paydash[options.legend_labels][val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
+                l_span.text('— ' + options.labels[val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
                 var format = D3.time.format('%b %d, %Y');
                 D3.select(options.target + '_total_trans').text(format(val.date) + ': ' + val.total_trans);
             });
@@ -122,7 +122,7 @@ exports.singular = function(options, paydash) {
             d.values.forEach(function(val, index) {
                 var l_span = D3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
-                l_span.text('— ' + paydash[options.legend_labels][val.line_id - 1]);
+                l_span.text('— ' + options.labels[val.line_id - 1]);
             });
         }
     });

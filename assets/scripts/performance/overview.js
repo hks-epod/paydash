@@ -10,7 +10,6 @@ exports.init = function() {
     var internals = {
         past_n_days: '',
         stepwise_compare_step: 1,
-        stepwise_compare_lines: ['district', 'state'],
         stepCols: [1, 2, 3, 4, 5, 6, 7]
     };
 
@@ -46,22 +45,19 @@ function drawRegionPerformance(internals) {
         target: '#region_performance',
         legend_target: '.region_legend',
         labels: internals.data.config.labels,
-        legend_labels: 'data.config.labels',
         area: true
     });
 }
 
 function loadTemplate(internals) {
-    if (internals.data.config.role === 'block') {
-        internals.stepwise_compare_lines = ['block', 'district', 'state'];
-    }
     var template = '';
-    internals.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
+    internals.active_compare_lines = internals.data.config.comparison_lines;
+    internals.data.config.comparison_lines.forEach(function(comparison_line, index) {
         template = template +
             '<div>' +
             '<label for="option-' + index + 1 + '" class="pure-checkbox" style="text-transform: capitalize">' +
-            '<input class="regionSelector" id="option-' + index + 1 + '" type="checkbox" value="' + stepwise_compare_line + '" checked> ' + 
-            internals.data.monthwise[stepwise_compare_line][stepwise_compare_line + '_name'].toLowerCase() + ' '+ stepwise_compare_line + ' average  ' +
+            '<input class="regionSelector" id="option-' + index + 1 + '" type="checkbox" value="' + comparison_line + '" checked> ' +
+            internals.data.monthwise[comparison_line][comparison_line + '_name'].toLowerCase() + ' ' + comparison_line + ' average  ' +
             '</label>' +
             '</div>';
     });
@@ -72,48 +68,48 @@ function loadTemplate(internals) {
 
 function drawRegionComparison(val, internals) {
     var c_data = [];
-    internals.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
-        var line_data = Parser.lines({
-            data: internals.data.monthwise[stepwise_compare_line].data,
+
+    internals.active_compare_lines.forEach(function(comparison_line, index) {
+
+        line_data = Parser.lines({
+            data: internals.data.monthwise[comparison_line].data,
             past_n_days: internals.past_n_days,
             col: [val],
             isCumulative: false
         });
+
         if (line_data[0]) {
             c_data.push(line_data[0]); // Workaround to append region data
         }
-    });
 
+    });
     Chart.singular({
         data: c_data,
         target: '#region_comparison',
         legend_target: '.comparison_legend',
-        labels: internals.stepwise_compare_lines,
-        legend_labels: 'stepwise_compare_lines',
+        labels: internals.active_compare_lines,
         area: false,
-    }, internals);
+    });
 }
-
-
 
 function bindEvents(internals) {
     // Time period Selection
     D3.selectAll('#modify-time-period-controls').on('change', function() {
         internals.past_n_days = D3.event.target.value;
         drawRegionPerformance(internals);
-        drawRegionComparison(1, internals);
+        drawRegionComparison(internals.stepwise_compare_step, internals);
     });
 
 
     //Stepwise charts step selection
     D3.selectAll('.regionSelector').on('click', function() {
-        internals.stepwise_compare_lines = [];
+        internals.active_compare_lines = [];
         D3.selectAll('.regionSelector').each(function() {
             if (this.checked === true) {
-                internals.stepwise_compare_lines.push(this.value);
+                internals.active_compare_lines.push(this.value);
             }
         });
-        drawRegionComparison(1, internals);
+        drawRegionComparison(internals.stepwise_compare_step, internals);
     });
 
     // Step Selection
