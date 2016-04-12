@@ -42,7 +42,6 @@ exports.getData = {
                 ],
             };
 
-            console.log(final_dict)
             reply(final_dict);
         });
 
