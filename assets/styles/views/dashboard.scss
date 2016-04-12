@@ -58,54 +58,23 @@
     margin-bottom: 0;
     margin-top: 5px;
 }
-// 
-// 
-// 
-// 
-// 
-// 
-// .dashboard .button--bp,
-// .dashboard .button--bp:hover,
-// .dashboard .button--bp:focus {
-//   font-size: 2rem;
-//   color: rgba($color-foreground, 1);
-//   border: 0;
-//   text-transform: none;
-//   font-weight: inherit;
-//   width: auto;
-//   margin-bottom: 0;
-// }
-// .dashboard .button--pc,
-// .dashboard .button--pc:hover,
-// .dashboard .button--pc:focus {
-//   font-size: 1.4rem;
-//   color: rgba($color-foreground, 1);
-//   border: 0;
-//   text-transform: none;
-//   font-weight: inherit;
-//   width: auto;
-//   margin-bottom: 0;
-// }
-// .legend {
-//   margin-top: 20px;
-// }
-// .legend span {
-//   display: inline-block;
-//   width: 33%;
-//   margin-bottom: 15px;
-// }
-// .mg-x-axis .label,
-// .mg-y-axis .label,
-// .mg-axis .label {
-//   font-size: 1.3rem;
-//   text-transform: uppercase;
-//   font-weight: 400;
-// }
-// .mg-x-axis text,
-// .mg-y-axis text,
-// .mg-histogram .axis text {
-//   font-size: 1.3rem;
-// }
+.mg-x-axis .label,
+.mg-y-axis .label,
+.mg-axis .label {
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+.mg-x-axis text,
+.mg-y-axis text,
+.mg-histogram .axis text {
+  font-size: 1.3rem;
+}
+.mg-baselines line {
+  stroke: #ddd
+}
+.mg-baselines text {
+  font-size: 1.9rem
+}
 // .selectors {
 //   margin: 30px 0;
 //   padding: 6px 15px;
@@ -134,12 +103,7 @@
 // }
 // // 
 // // 
-// .mg-baselines line {
-//   stroke: #ddd
-// }
-// .mg-baselines text {
-//   font-size: 1.9rem
-// }
+
 // .button.button--bp option {
 //   color: #000;
 // }

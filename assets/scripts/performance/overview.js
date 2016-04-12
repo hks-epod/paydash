@@ -71,7 +71,7 @@ function drawRegionComparison(val, internals) {
 
     internals.active_compare_lines.forEach(function(comparison_line, index) {
 
-        line_data = Parser.lines({
+        var line_data = Parser.lines({
             data: internals.data.monthwise[comparison_line].data,
             past_n_days: internals.past_n_days,
             col: [val],
