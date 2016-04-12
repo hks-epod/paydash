@@ -68,7 +68,9 @@ module.exports = {
                 district: 'The performance of your blocks on average days to complete each step of the payment process.',
                 $default :'The performance of your regions on average days to complete each step of the payment process.'
             },
-            tooltip: 'The charts below show the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed. Your worst performing panchayats are shown first.'
+            tooltip: 'The charts below show the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed. Your worst performing panchayats are shown first.',
+            ta_message: 'Your block has unmapped panchayats for the <strong>TA</strong> designation. As a result, we can\'t show you the performance of all the TA\'s in your block. Please visit the MGNREGA portal at nrega.nic.in to complete your TA mapping.',
+            grs_message: 'Your block has unmapped panchayats for the <strong>GRS</strong> designation. As a result, we can\'t show you the performance of all the GRS\'s in your block. Please visit the MGNREGA portal at nrega.nic.in to complete your GRS mapping.'
         }
     }
 };

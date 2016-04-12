@@ -3,6 +3,7 @@
 var $ = require('jquery');
 var dynatable = require('../vendor/dynatable');
 var Cookie = require('../lib/cookie');
+var Util = require('../lib/util');
 
 var tim = [2, 5, 6, 7, 8];
 
@@ -14,6 +15,8 @@ exports.init = function() {
 
             $('#loader').hide();
             $('.table-holder').removeClass('u-hidden');
+
+            Util.loadMappingMessage(data.mapping);
             
             tim.forEach(function(val, index) {
 

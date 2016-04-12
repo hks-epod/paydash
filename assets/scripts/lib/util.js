@@ -1,5 +1,7 @@
 'use strict';
 
+var D3 = require('d3');
+
 //  Parse the "20140412" string to date object
 function parseDate(string) {
     var y = string.substring(0, 4);
@@ -38,4 +40,13 @@ exports.discreteLimits = function(internals) {
         });
     });
     return limit;
+};
+
+exports.loadMappingMessage = function(mapping) {
+    if (mapping.grs_panchayat_count < mapping.total_panchayat_count) {
+        D3.select('#mapping-msg-1').classed('u-hidden', false);
+    }
+    if (mapping.grs_panchayat_count < mapping.total_panchayat_count) {
+        D3.select('#mapping-msg-2').classed('u-hidden', false);
+    }
 };

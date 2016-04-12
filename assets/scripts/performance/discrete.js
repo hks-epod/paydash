@@ -33,7 +33,7 @@ exports.init = function() {
                 Template.discrete(internals.data.discrete);
             } else if (internals.role === 'block') {
 
-                loadMappingMessage(internals.data.mapping);
+                Util.loadMappingMessage(internals.data.mapping);
 
                 Template.discreteGroupBy();
 
@@ -106,13 +106,4 @@ function drawPanchayatPerformance(internals) {
     });
 }
 
-// Mapping message 
-function loadMappingMessage(mapping) {
-    if (mapping.grs_panchayat_count < mapping.total_panchayat_count) {
-        D3.select('#mapping-msg-1').classed('u-hidden', false);
-    }
-    if (mapping.grs_panchayat_count < mapping.total_panchayat_count) {
-        D3.select('#mapping-msg-2').classed('u-hidden', false);
-    }
 
-}

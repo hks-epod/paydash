@@ -2,6 +2,12 @@
   {{>loader}}
   <div class="table-holder u-hidden">
     <h1>Musters Closing Today</h1>
+    {{!-- Mapping message --}}
+    <div class="message message--warning">
+      <ul class="pointed-list">
+        <li id="mapping-msg-1 u-hidden">{{t "/performance/discrete/grs_message" credentials}}</li>
+      </ul>
+    </div>
     <table class="u-full-width muster_table " id="current-musters">
       <thead>
         <th>Msr No</th>

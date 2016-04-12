@@ -3,6 +3,7 @@
 var $ = require('jquery');
 var dynatable = require('../vendor/dynatable');
 var Cookie = require('../lib/cookie');
+var Util = require('../lib/util');
 
 exports.init = function() {
     $.ajax({
@@ -10,6 +11,8 @@ exports.init = function() {
         success: function(data) {
             $('#loader').hide();
             $('.table-holder').removeClass('u-hidden');
+
+            Util.loadMappingMessage(data.mapping);
 
             $('#current-musters').dynatable({
                 dataset: {
