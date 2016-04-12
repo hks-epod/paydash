@@ -27,6 +27,7 @@ exports.block = function(rows) {
                 d.fto_sn1,
                 d.sn1_sn2,
                 d.sn2_prc,
+                d.mrc_prc,
                 d.tot_trn
             ];
         })
@@ -49,6 +50,7 @@ exports.block = function(rows) {
                 d.fto_sn1,
                 d.sn1_sn2,
                 d.sn2_prc,
+                d.mrc_prc,
                 d.tot_trn
             ];
         })
@@ -71,6 +73,7 @@ exports.block = function(rows) {
                 d.fto_sn1,
                 d.sn1_sn2,
                 d.sn2_prc,
+                d.mrc_prc,
                 d.tot_trn
             ];
         })
@@ -123,6 +126,7 @@ exports.district = function(rows) {
                 d.fto_sn1,
                 d.sn1_sn2,
                 d.sn2_prc,
+                d.mrc_prc,
                 d.tot_trn
             ];
         })
@@ -132,7 +136,7 @@ exports.district = function(rows) {
     var districtResponse = Utils.flatten(rows[1]);
     var districtName = districtResponse[0].district_name;
     var districtCode = districtResponse[0].district_code;
-    final_dict.top.district = {
+    final_dict.monthwise.district = {
         'district_code': districtCode,
         'district_name': districtName,
         'data': districtResponse.map(function(d) {
@@ -145,6 +149,7 @@ exports.district = function(rows) {
                 d.fto_sn1,
                 d.sn1_sn2,
                 d.sn2_prc,
+                d.mrc_prc,
                 d.tot_trn
             ];
         })
@@ -154,7 +159,7 @@ exports.district = function(rows) {
     var districtResponse = Utils.flatten(rows[2]);
     var districtName = districtResponse[0].district_name;
     var districtCode = districtResponse[0].district_code;
-    final_dict.top.district = {
+    final_dict.datewise.district = {
         'district_code': districtCode,
         'district_name': districtName,
         'data': districtResponse.map(function(d) {
