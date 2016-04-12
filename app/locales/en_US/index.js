@@ -23,9 +23,9 @@ module.exports = {
     payment_steps: {
         '1': 'Muster roll closure to muster roll entry',
         '2': 'Muster roll entry to wage list generation',
-        '3': 'FTO generation to first signature',
-        '4': 'Wage list generation to wage list sign',
-        '5': 'Wage list sign to FTO generation',
+        '3': 'Wage list generation to wage list sign',
+        '4': 'Wage list sign to FTO generation',
+        '5': 'FTO generation to first signature',
         '6': 'First signature to second signature',
         '7': 'Second signature to processed by bank'
     },
