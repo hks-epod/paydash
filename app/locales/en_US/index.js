@@ -60,6 +60,10 @@ module.exports = {
                 }
             },
             tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
+        },
+        discrete:{
+            subtitle: 'The performance of your panchayats on average days to complete each step of the payment process.',
+            tooltip: 'The charts below show the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed. Your worst performing panchayats are shown first.'
         }
     }
 };
