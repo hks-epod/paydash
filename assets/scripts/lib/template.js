@@ -36,9 +36,9 @@ exports.sortedDiscrete = function(data, internals) {
                 '<div class="employee-stats message">' +
                 '<h1>' + d.name + '</h1>' +
                 '<ul>' +
-                '<li> Mobile no: ' + d.mobile + '</li>' +
-                '<li>Step 1 average: <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></li>' +
-                '<li>Step 1 total transactions: <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></li>' +
+                '<li> Mobile: ' + d.mobile + '</li>' +
+                '<li>Average days from muster roll closure to entry: <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></li>' +
+                '<li>Total transactions: <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></li>' +
                 '</ul>' +
                 '</div>' +
                 '<div class="pure-g">';
