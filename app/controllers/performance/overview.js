@@ -43,6 +43,7 @@ exports.getData = {
                     'First signature to second signature',
                     'Second signature to processed by bank',
                 ],
+                comparison_lines: role === 'block' ? ['block', 'district', 'state'] : ['district', state]
             };
 
             reply(final_dict);
