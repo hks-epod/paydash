@@ -10,7 +10,7 @@ exports.init = function() {
     var internals = {
         past_n_days: '',
         stepwise_compare_step: 1,
-        stepwise_compare_lines: ['state', 'district'],
+        stepwise_compare_lines: ['district','state'],
         stepCols: [1, 2, 3, 4, 5, 6, 7]
     };
 
@@ -53,7 +53,7 @@ function drawRegionPerformance(internals) {
 
 function loadTemplate(internals) {
     if (internals.data.config.role === 'block') {
-        internals.stepwise_compare_lines = ['block', 'state', 'district'];
+        internals.stepwise_compare_lines = ['block', 'district','state'];
     }
     var template = '';
     internals.stepwise_compare_lines.forEach(function(stepwise_compare_line, index) {
