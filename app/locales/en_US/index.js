@@ -62,9 +62,8 @@ module.exports = {
             tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
         },
         discrete:{
-
             subtitle: {
-                $filter: role,
+                $filter: 'role',
                 block: 'The performance of your panchayats on average days to complete each step of the payment process.',
                 district: 'The performance of your blocks on average days to complete each step of the payment process.',
                 $default :'The performance of your regions on average days to complete each step of the payment process.'
