@@ -35,28 +35,31 @@ module.exports = {
                 title: {
                     $filter: 'role',
                     district: 'District Performance',
-                    block: 'Block Performance',
+                    block: 'Your Block\'s Performance',
                     $default: 'Overview Performance'
                 },
                 description: {
                     $filter: 'role',
-                    district: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                    block: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                    $default: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                    district: 'Average number of days to complete each step of the payment process in your district.',
+                    block: 'Average number of days to complete each step of the payment process in your block.',
+                    $default: 'Average number of days to complete each step of the payment process in your region.'
+                },
+                tooltip: {
+                    block: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
                 }
             },
             chart_b: {
                 title: {
                     $filter: 'role',
-                    district: 'Performance Comparison',
-                    block: 'Performance Comparison',
-                    $default: 'Performance Comparison'
+                    district: 'Benchmarking Your Performance',
+                    block: 'Benchmarking Your Performance',
+                    $default: 'Benchmarking Your Performance'
                 },
                 description: {
                     $filter: 'role',
-                    district: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                    block: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-                    $default: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
+                    district: 'Compare your performance with averages for your state.',
+                    block: 'Compare your performance with averages for your district and state.',
+                    $default: 'Compare your performance with averages for other regions.'
                 }
             }
         }
