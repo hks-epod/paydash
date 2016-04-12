@@ -17,8 +17,8 @@ module.exports = {
         }
     },
     messages: {
-        loading: 'Loading graph data',
-        not_found: 'Page does not exist'
+        loading: 'Loading data...',
+        not_found: 'Page not found. Please contact the Paydash team if you need assistance.'
     },
     payment_steps: {
         '1': 'Muster roll closure to muster roll entry',
