@@ -28,9 +28,9 @@ exports.getData = {
                 'musters': mustersResponse.map(function(d) {
                     return {
                         'msr_no':d.msr_no,
-                        'work_name':d.work_name,
-                        'panchayat_name':d.panchayat_name,
-                        'name':d.name,
+                        'work':d.work_name,
+                        'panchayat':d.panchayat_name,
+                        'grs':d.name,
                         'mobile':d.mobile_no
                     };
                 }),

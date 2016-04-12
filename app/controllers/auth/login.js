@@ -22,7 +22,7 @@ exports.showForm = {
     handler: function(request, reply) {
 
         if (request.auth.isAuthenticated) {
-            return reply.redirect('/dashboard/block');
+            return reply.redirect('/performance/overview');
         }
         reply.view('auth/login');
 
@@ -58,7 +58,7 @@ exports.postForm = {
     },
     handler: function(request, reply) {
         if (request.auth.isAuthenticated) {
-            return reply.redirect('/dashboard/block');
+            return reply.redirect('/performance/overview');
         }
         var db = request.server.plugins.sequelize.db;
         var User = request.server.plugins.sequelize.db.User;

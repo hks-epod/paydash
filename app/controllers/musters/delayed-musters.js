@@ -28,50 +28,50 @@ exports.getData = {
                     'ds_t2': mustersResponse.filter(function(d) { return d.step==='ds_t2'; }).map(function(d) {
                         return {
                             'msr_no':d.msr_no,
-                            'work_name':d.work_name,
-                            'panchayat_name':d.panchayat_name,
+                            'work':d.work_name,
+                            'panchayat':d.panchayat_name,
                             'closure_date':d.end_date,
                             'days_pending':d.days_pending,
-                            'name':d.name,
+                            'grs_name':d.name,
                             'mobile':d.mobile_no
                         };
                     }),
                     'ds_t5': mustersResponse.filter(function(d) { return d.step==='ds_t5'; }).map(function(d) {
                         return {
                             'msr_no':d.msr_no,
-                            'work_name':d.work_name,
-                            'panchayat_name':d.panchayat_name,
+                            'work':d.work_name,
+                            'panchayat':d.panchayat_name,
                             'closure_date':d.end_date,
-                            'days_pending':d.days_pending,
-                            'name':d.name,
+                            'days_delayed':d.days_pending,
+                            'ta_name':d.name,
                             'mobile':d.mobile_no
                         };
                     }),
                     'ds_t6': mustersResponse.filter(function(d) { return d.step==='ds_t6'; }).map(function(d) {
                         return {
                             'msr_no':d.msr_no,
-                            'work_name':d.work_name,
-                            'panchayat_name':d.panchayat_name,
+                            'work':d.work_name,
+                            'panchayat':d.panchayat_name,
                             'closure_date':d.end_date,
-                            'days_pending':d.days_pending
+                            'days_delayed':d.days_pending
                         };
                     }),
                     'ds_t7': mustersResponse.filter(function(d) { return d.step==='ds_t7'; }).map(function(d) {
                         return {
                             'msr_no':d.msr_no,
-                            'work_name':d.work_name,
-                            'panchayat_name':d.panchayat_name,
+                            'work':d.work_name,
+                            'panchayat':d.panchayat_name,
                             'closure_date':d.end_date,
-                            'days_pending':d.days_pending
+                            'days_delayed':d.days_pending
                         };
                     }),
                     'ds_t8': mustersResponse.filter(function(d) { return d.step==='ds_t8'; }).map(function(d) {
                         return {
                             'msr_no':d.msr_no,
-                            'work_name':d.work_name,
-                            'panchayat_name':d.panchayat_name,
+                            'work':d.work_name,
+                            'panchayat':d.panchayat_name,
                             'closure_date':d.end_date,
-                            'days_pending':d.days_pending
+                            'days_delayed':d.days_pending
                         };
                     })
 

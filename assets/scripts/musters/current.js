@@ -13,7 +13,7 @@ exports.init = function() {
 
             $('#current-musters').dynatable({
                 dataset: {
-                    records: data
+                    records: data.musters
                 },
                 table: {
                     defaultColumnIdStyle: 'underscore'
