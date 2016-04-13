@@ -38,6 +38,7 @@ exports.getData = {
 	           	var current_total = overviewResponse[0].current_total;
 	            var delayed_total = overviewResponse[0].delayed_total;
 	            var days_to_payment = overviewResponse[0].days_to_payment;
+	            var total_transactions = overviewResponse[0].total_transactions;
 
 	            // Nest the cards response and include the overview stats
 	            var cards = d3.nest()
@@ -163,6 +164,7 @@ exports.getData = {
 		        		'current_total':current_total,
 		        		'delayed_total':delayed_total,
 		        		'days_to_payment':days_to_payment,
+		        		'total_transactions':total_transactions,
 		        		'cards_total': cards.length
 		        	},
 		        	'cards': cards,
