@@ -27,7 +27,6 @@ exports.block = function(rows) {
                 d.fto_sn1,
                 d.sn1_sn2,
                 d.sn2_prc,
-                d.mrc_prc,
                 d.tot_trn
             ];
         })
@@ -50,7 +49,6 @@ exports.block = function(rows) {
                 d.fto_sn1,
                 d.sn1_sn2,
                 d.sn2_prc,
-                d.mrc_prc,
                 d.tot_trn
             ];
         })
@@ -73,7 +71,6 @@ exports.block = function(rows) {
                 d.fto_sn1,
                 d.sn1_sn2,
                 d.sn2_prc,
-                d.mrc_prc,
                 d.tot_trn
             ];
         })
@@ -126,7 +123,6 @@ exports.district = function(rows) {
                 d.fto_sn1,
                 d.sn1_sn2,
                 d.sn2_prc,
-                d.mrc_prc,
                 d.tot_trn
             ];
         })
@@ -149,7 +145,6 @@ exports.district = function(rows) {
                 d.fto_sn1,
                 d.sn1_sn2,
                 d.sn2_prc,
-                d.mrc_prc,
                 d.tot_trn
             ];
         })

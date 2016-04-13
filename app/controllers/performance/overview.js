@@ -33,7 +33,7 @@ exports.getData = {
 
             final_dict.config = {
                 role: role,
-                headers: ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc', 'tot_trn'],
+                headers: ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
                 labels: [
                     'Muster roll closure to muster roll entry',
                     'Muster roll entry to wage list generation',
@@ -41,8 +41,7 @@ exports.getData = {
                     'Wage list signing to FTO generation',
                     'FTO generation to first signature',
                     'First signature to second signature',
-                    'Second signature to processed by bank',
-                    'Muster roll closure to processed by bank (full process)'
+                    'Second signature to processed by bank'
                 ],
                 comparison_lines: role === 'block' ? ['block', 'district', 'state'] : ['district', 'state']
             };
