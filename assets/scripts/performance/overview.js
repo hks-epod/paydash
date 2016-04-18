@@ -64,6 +64,14 @@ function loadTemplate(internals) {
     return template;
 }
 
+function comparisonLabels(internals) {
+    var labels = [];
+    internals.data.config.comparison_lines.forEach(function(comparison_line, index) {
+        labels.push(internals.data.monthwise[comparison_line][comparison_line + '_name'].toLowerCase() + ' ' + comparison_line + ' average  ');
+    });
+    return labels;
+};
+
 
 
 function drawRegionComparison(val, internals) {
@@ -87,7 +95,7 @@ function drawRegionComparison(val, internals) {
         data: c_data,
         target: '#region_comparison',
         legend_target: '.comparison_legend',
-        labels: internals.active_compare_lines,
+        labels: comparisonLabels(internals),
         area: false,
     });
 }
