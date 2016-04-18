@@ -14,11 +14,6 @@
         <option value="31">Past 30 days</option>
       </select>
       <div id="panchayat_selectors" class="panchayat_selectors u-pull-right"></div>
-     <div class="u-cf"></div>
-      <div>
-        {{t "/performance/discrete/subtitle" credentials}}
-        <span style="cursor:help" title="{{t "/performance/discrete/tooltip" credentials}}" class="pe-7s-info"></span>
-      </div>
     </div>
     {{!-- Mapping message --}}
     <div class="message message--warning">
@@ -26,6 +21,12 @@
         <li id="mapping-msg-1 u-hidden">{{t "/performance/discrete/grs_message" credentials}}</li>
         <li id="mapping-msg-2 u-hidden">{{t "/performance/discrete/ta_message" credentials}}</li>
       </ul>
+    </div>
+    <div class="u-region-divider"></div>
+    <h1>Performance of Your Panchayats</h1>
+    <div>
+      {{t "/performance/discrete/subtitle" credentials}}
+      <span style="cursor:help" title="{{t "/performance/discrete/tooltip" credentials}}" class="pe-7s-info"></span>
     </div>
     {{!-- Charts --}}
     <div class="pure-g">
