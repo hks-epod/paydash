@@ -25,15 +25,15 @@
             <input class="u-full-width" id="email" name="email" value="{{user.email}}" type="text" placeholder="Please enter your email id">
             <label for="lastName">Member of state administrative service?</label>
             <select class="u-full-width" name="sas" value="{{user.sas}}" id="sas">
-              <option value="yes">Yes</option>
-              <option value="no">no</option>
+              <option value="1" selected="{{user.sas}}">Yes</option>
+              <option value="0" selected="{{user.sas}}">No</option>
             </select>
             <label for="lastName">If yes, how many years ?</label>
             <input class="u-full-width" id="sas_years" name="sas_years" value="{{user.sas_years}}" type="text" placeholder="Please enter no. of years">
             <label for="lastName">Member of IAS?</label>
             <select class="u-full-width" name="ias" value="{{user.ias}}" id="sas">
-              <option value="yes">Yes</option>
-              <option value="no">no</option>
+              <option value="1" selected="{{user.ias}}">Yes</option>
+              <option value="0" selected="{{user.ias}}">No</option>
             </select>
             <label for="lastName">If yes, how many years ?</label>
             <input class="u-full-width" id="ias_years" name="ias_years" value="{{user.ias_years}}" type="text" placeholder="Please enter no. of years">
@@ -47,9 +47,7 @@
               <option value="gp">GP</option>
             </select>
             <label for="region_type">Region Name</label>
-            <select class="u-full-width" name="region_name" value="{{user.region_name}}" id="region_name">
-              <option value="name">name</option>
-            </select>
+            <input class="u-full-width" id="title" name="region_name" value="{{user.region_name}}" type="text" placeholder="Please enter your region name">
             <label for="email">Work email</label>
             <input class="u-full-width" id="work_email" value="{{user.work_email}}" name="work_email" type="text" placeholder="Please enter your work email">
             <label for="email">Work years</label>
