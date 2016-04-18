@@ -55,9 +55,9 @@ function loadTemplate(internals) {
     internals.data.config.comparison_lines.forEach(function(comparison_line, index) {
         template = template +
             '<div>' +
-            '<label for="option-' + index + 1 + '" class="pure-checkbox" style="text-transform: capitalize">' +
+            '<label for="option-' + index + 1 + '" class="pure-checkbox">' +
             '<input class="regionSelector" id="option-' + index + 1 + '" type="checkbox" value="' + comparison_line + '" checked> ' +
-            internals.data.monthwise[comparison_line][comparison_line + '_name'].toLowerCase() + ' ' + comparison_line + ' average  ' +
+            internals.data.monthwise[comparison_line][comparison_line + '_name'] + ' ' + comparison_line + ' average  ' +
             '</label>' +
             '</div>';
     });
@@ -67,7 +67,7 @@ function loadTemplate(internals) {
 function comparisonLabels(internals) {
     var labels = [];
     internals.data.config.comparison_lines.forEach(function(comparison_line, index) {
-        labels.push(internals.data.monthwise[comparison_line][comparison_line + '_name'].toLowerCase() + ' ' + comparison_line + ' average  ');
+        labels.push(internals.data.monthwise[comparison_line][comparison_line + '_name'] + ' ' + comparison_line + ' average  ');
     });
     return labels;
 };
