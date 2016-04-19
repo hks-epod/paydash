@@ -10,6 +10,18 @@ function parseDate(string) {
     return new Date(y, m, d);
 }
 
+exports.overviewLimits = function(internals) {
+    if (internals.past_n_days !== '') {
+        var past_n_date = new Date();
+        past_n_date.setDate(past_n_date.getDate() - internals.past_n_days);
+    }
+    var limit = {
+        max_x: new Date(),
+        min_x: past_n_date || null
+    };
+    return limit;
+};
+
 
 exports.discreteLimits = function(internals) {
     if (internals.past_n_days !== '') {

@@ -4,6 +4,7 @@ var D3 = require('d3');
 var Cookie = require('../lib/cookie');
 var Parser = require('../lib/parser');
 var Chart = require('../lib/chart');
+var Util = require('../lib/util');
 
 // Load JSON
 exports.init = function() {
@@ -45,7 +46,8 @@ function drawRegionPerformance(internals) {
         target: '#region_performance',
         legend_target: '.region_legend',
         labels: internals.data.config.labels,
-        area: true
+        area: true,
+        min_x: Util.overviewLimits(internals).min_x
     });
 }
 
@@ -91,12 +93,14 @@ function drawRegionComparison(val, internals) {
         }
 
     });
+
     Chart.singular({
         data: c_data,
         target: '#region_comparison',
         legend_target: '.comparison_legend',
         labels: comparisonLabels(internals),
         area: false,
+        min_x: Util.overviewLimits(internals).min_x
     });
 }
 

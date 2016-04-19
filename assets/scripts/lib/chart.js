@@ -22,6 +22,8 @@ exports.flash = function(options) {
             value: 15,
             label: 'Statutory Limit'
         }],
+        max_x : new Date() || null,
+        min_x: options.min_x || null,
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
         missing_text: 'No data',
         legend: options.labels,
@@ -79,6 +81,8 @@ exports.singular = function(options) {
         decimals: 0,
         target: options.target,
         xax_count: 15,
+        max_x : new Date() || null,
+        min_x: options.min_x || null,
         xax_format: D3.time.format('%e %b, %y'),
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
         missing_text: 'No data',
