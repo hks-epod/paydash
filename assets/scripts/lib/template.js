@@ -81,13 +81,3 @@ exports.sortedDiscrete = function(data, internals) {
         });
 };
 
-exports.discreteGroupBy = function() {
-    var string = '<div class="panchayat-sort">' +
-        '<div id="discrete-groupby-controls" class="button-group">' +
-        '<button class="button" data-groupby="no">No Grouping</button>' +
-        '<button class="button selected" data-groupby="TA">Group by TA</button>' +
-        '<button class="button" data-groupby="GRS">Group by GRS</button>' +
-        '</div>' +
-        '</div>';
-    D3.select('#panchayat_selectors').html(string);
-};

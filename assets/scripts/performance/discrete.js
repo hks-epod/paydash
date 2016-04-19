@@ -35,7 +35,7 @@ exports.init = function() {
 
                 Util.loadMappingMessage(internals.data.mapping);
 
-                Template.discreteGroupBy();
+                D3.select('#panchayat_selectors').classed('u-hidden', false);
 
                 //  Bind event for groupby
                 D3.selectAll('#discrete-groupby-controls button').on('click', function() {

@@ -13,7 +13,15 @@
         <option value="61">Past 60 days</option>
         <option value="31">Past 30 days</option>
       </select>
-      <div id="panchayat_selectors" class="panchayat_selectors u-pull-right"></div>
+      <div id="panchayat_selectors" class="panchayat_selectors u-pull-right u-hidden">
+        <div class="panchayat-sort">
+          <div id="discrete-groupby-controls" class="button-group">
+            <button class="button" data-groupby="no">{{t "/performance/discrete/grouping_selectors/no" credentials}}</button>
+            <button class="button selected" data-groupby="TA">{{t "/performance/discrete/grouping_selectors/ta" credentials}}</button>
+            <button class="button" data-groupby="GRS">{{t "/performance/discrete/grouping_selectors/grs" credentials}}</button>
+          </div>
+        </div>
+      </div>
     </div>
     {{!-- Mapping message --}}
     <div class="message message--warning">
