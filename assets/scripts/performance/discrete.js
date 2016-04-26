@@ -82,6 +82,7 @@ exports.init = function() {
 //  Specific Charts
 function drawPanchayatPerformance(internals) {
     var limit = Util.discreteLimits(internals);
+    console.log(limit);
     internals.data.discrete.forEach(function(region, p_index) {
         if ($('#d_' + region.region_code).length !== 0) {
             var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
