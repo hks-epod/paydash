@@ -172,7 +172,18 @@ exports.getData = {
 		        	'panchayat_performance': panchayatPerformance,
 		        	'notifications': notificationsResponse,
 		        	'config': {
-		        		'headers': headers
+		        		'headers': headers,
+		        		labels: [
+		        			'Date',
+		        		    'Muster roll closure to muster roll entry',
+		        		    'Muster roll entry to wage list generation',
+		        		    'Wage list generation to wage list signing',
+		        		    'Wage list signing to FTO generation',
+		        		    'FTO generation to first signature',
+		        		    'First signature to second signature',
+		        		    'Second signature to processed by bank',
+		        		    'Total Transactions'
+		        		],
 		        	}
 		        };
 
