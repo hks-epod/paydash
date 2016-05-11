@@ -60,7 +60,8 @@ exports.getData = {
 	                                	'panchayat_name':d.panchayat_name,
 	                                	'work_name':d.work_name,
 	                                	'work_code':d.work_code,
-	                                	'closure_date':d.end_date
+	                                	'closure_date':d.end_date,
+	                                	'days_pending':d.days_pending
 	                            	}
 	                            ];
 	                        }),
