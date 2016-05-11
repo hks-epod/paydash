@@ -26,7 +26,7 @@ exports.getData = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-            var final_dict = DiscreteParser.all(rows);
+            var final_dict = DiscreteParser.all(rows,role);
 
             final_dict.config = {
                 'headers': ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],

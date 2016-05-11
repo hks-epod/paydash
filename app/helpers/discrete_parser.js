@@ -3,7 +3,7 @@
 var Utils = require('./utils');
 var D3 = require('d3');
 
-exports.all = function(rows) {
+exports.all = function(rows,role) {
     var final_dict = {};
     var regionName = rows[0][0].region_name;
     
@@ -50,7 +50,7 @@ exports.all = function(rows) {
 
 
 
-    if (rows.length > 2) { // role==='block'
+    if (role==='block') {
 
         var employeeResponse = Utils.flatten(rows[2]);
 
