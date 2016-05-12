@@ -86,7 +86,7 @@ exports.getData = {
                     'Second signature to processed by bank',
                 ],
             };
-
+            console.log(final_dict);
             reply(final_dict);
         });
 
