@@ -2,6 +2,7 @@
 
 var Queries = require('../../helpers/queries');
 var DiscreteParser = require('../../helpers/discrete_parser');
+var Utils = require('../../helpers/utils');
 
 
 exports.showPage = {
@@ -25,8 +26,6 @@ exports.getData = {
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
-
-            // var final_dict = DiscreteParser.all(rows,role);
 
             var final_dict = {};
             var regionName = rows[0][0].region_name;
