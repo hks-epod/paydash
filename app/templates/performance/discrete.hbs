@@ -1,50 +1,37 @@
-<div class="container-fluid u-spacing-page-top">
-  {{!-- Loader --}}
+{{!-- Loader --}}
   <div id="loader" class="loader-overlay">
     <div class="loader">Loading...</div>
     <div class="loader-text ">{{t "/messages/loading"}}</div>
   </div>
-  {{!-- Dashboard --}}
-  <div id="dashboard" class="dashboard u-hidden">
-    <div class="subnav">
-      <span id="region-name" class="subnav-name"></span>
-      <select class="u-pull-right" id="modify-time-period-controls" name="">
-        <option value="">All available dates</option>
-        <option value="61">Past 60 days</option>
-        <option value="31">Past 30 days</option>
-      </select>
-      <div id="panchayat_selectors" class="panchayat_selectors u-pull-right u-hidden">
-        <div class="panchayat-sort">
-          <div id="discrete-groupby-controls" class="button-group">
-            <button class="button" data-groupby="no">{{t "/performance/discrete/grouping_selectors/no" credentials}}</button>
-            <button class="button selected" data-groupby="TA">{{t "/performance/discrete/grouping_selectors/ta" credentials}}</button>
-            <button class="button" data-groupby="GRS">{{t "/performance/discrete/grouping_selectors/grs" credentials}}</button>
-          </div>
+
+
+{{!-- Coloumn layout --}}
+<div id="dashboard" class="dashboard container-fluid u-spacing-page-top u-hidden">
+  <div class="subnav">
+    <span id="region-name" class="subnav-name"></span>
+    <select class="u-pull-right" id="modify-time-period-controls" name="">
+      <option value="">All available dates</option>
+      <option value="61">Past 60 days</option>
+      <option value="31">Past 30 days</option>
+    </select>
+    <div id="panchayat_selectors" class="panchayat_selectors u-pull-right u-hidden">
+      <div class="panchayat-sort">
+        <div id="discrete-groupby-controls" class="button-group">
+          <button class="button" data-groupby="no">{{t "/performance/discrete/grouping_selectors/no" credentials}}</button>
+          <button class="button selected" data-groupby="TA">{{t "/performance/discrete/grouping_selectors/ta" credentials}}</button>
+          <button class="button" data-groupby="GRS">{{t "/performance/discrete/grouping_selectors/grs" credentials}}</button>
         </div>
       </div>
     </div>
-    {{!-- Mapping message --}}
-    <div class="message message--warning">
-      <ul class="pointed-list">
-        <li id="mapping-msg-1 u-hidden">{{t "/performance/discrete/grs_message" credentials}}</li>
-        <li id="mapping-msg-2 u-hidden">{{t "/performance/discrete/ta_message" credentials}}</li>
-      </ul>
+  </div>
+  <div class="pure-g">
+    <div class="pure-u-6-24 sidebar">
+      <div id="grouping_container"></div>
     </div>
-    <div class="u-region-divider"></div>
-    <h1>{{t "/performance/discrete/sub_heading" credentials}}</h1>
-    <div>
-      {{t "/performance/discrete/subtitle" credentials}}
-      <span style="cursor:help" title="{{t "/performance/discrete/tooltip" credentials}}" class="pe-7s-info"></span>
+    <div class="pure-u-18-24 offset-sm-1-4">
+      kjkjlklk
     </div>
-    {{!-- Charts --}}
-    <div class="pure-g">
-      <div class="pure-u-24-24">
-        <div class="legend region_legend legend-discrete"></div>
-      </div>
-    </div>
-    <div id="region_charts-container"></div>
-    <div class="region_charts_unmapped-container"></div>
-    {{> footer}}
   </div>
 </div>
+
 

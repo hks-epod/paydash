@@ -3,19 +3,48 @@
 var D3 = require('d3');
 var Chart = require('./chart');
 
-exports.discrete = function(data) {
-    D3.select('#region_charts-container').selectAll('div').remove();
-    D3.select('#region_charts-container')
-        .append('div')
-        .classed(' pure-g', true)
+exports.grouping = function(data, internals) {
+    D3.select('#grouping_container').selectAll('div').remove();
+    D3.select('#grouping_container')
         .selectAll('div')
         .data(data)
         .enter().append('div')
-        .classed(' pure-u pure-u-8-24', true)
+        .classed('group', true)
         .html(function(d, index) {
-            return '<div class="small-chart-holder">' +
-                '<div id="d_' + d.region_code + '"></div>' +
-                '</div>';
+            var p_past_n_days;
+            if (internals.past_n_days === '') {
+                p_past_n_days = 'all';
+            } else {
+                p_past_n_days = internals.past_n_days;
+            }
+            var htmlString =
+                '<div class="head js-group-head">' +
+                '<span class="u-pull-right">' + d.mobile + '</span>' +
+                '<h4>' + d.name + '</h4>' +
+                '<div>Avg. days from muster roll closure to entry : <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></div>' +
+                '<div>Total transactions : <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></div>' +
+                '</div>' +
+                '<div class="subgroup">';
+            d.panchayats.forEach(function(region, index) {
+                htmlString = htmlString +
+                    '<div id="' + region.region_code + '" class="js-group-entity">' + region.region_name + '</div>';
+            });
+            htmlString = htmlString + '</div>';
+
+            return htmlString;
+        });
+}
+
+
+exports.discrete = function(data) {
+    D3.select('#grouping_container').selectAll('div').remove();
+    D3.select('#grouping_container')
+        .selectAll('div')
+        .data(data)
+        .enter().append('div')
+        .classed('subgroup', true)
+        .html(function(d, index) {
+            return '<div id="' + d.region_code + '" class="js-group-entity">' + d.region_name + '</div>';
         });
 };
 
@@ -32,7 +61,7 @@ exports.sortedDiscrete = function(data, internals) {
             } else {
                 p_past_n_days = internals.past_n_days;
             }
-            var htmlString = 
+            var htmlString =
                 '<div class="employee-stats message">' +
                 '<h1>' + d.name + '</h1>' +
                 '<ul>' +
@@ -80,4 +109,3 @@ exports.sortedDiscrete = function(data, internals) {
             return headingHtml + htmlString + '</div>';
         });
 };
-

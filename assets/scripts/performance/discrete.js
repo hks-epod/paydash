@@ -44,15 +44,18 @@ exports.init = function() {
                     target.classed('selected', true);
                     internals.groupBy = target.attr('data-groupby');
                     if (internals.groupBy === 'no') {
+
                         Template.discrete(internals.data.discrete);
                     } else {
-                        Template.sortedDiscrete(internals.data.employees[internals.groupBy], internals);
+                        Template.grouping(internals.data.employees[internals.groupBy], internals);
                     }
-                    drawPanchayatPerformance(internals);
+                    // drawPanchayatPerformance(internals);
                 });
-                Template.sortedDiscrete(internals.data.employees[internals.groupBy], internals);
+                
+                Template.grouping(internals.data.employees[internals.groupBy], internals);
+
             }
-            drawPanchayatPerformance(internals);
+            // drawPanchayatPerformance(internals);
 
 
         });
@@ -60,7 +63,8 @@ exports.init = function() {
     // Time period Selection
     D3.selectAll('#modify-time-period-controls').on('change', function() {
         internals.past_n_days = D3.event.target.value;
-        drawPanchayatPerformance(internals);
+        // TODO
+        // drawPanchayatPerformance(internals);
 
         // Update employee stats based on time controls
         if (internals.role === 'block') {
@@ -80,31 +84,31 @@ exports.init = function() {
 
 
 //  Specific Charts
-function drawPanchayatPerformance(internals) {
-    var limit = Util.discreteLimits(internals);
-    console.log(limit);
-    internals.data.discrete.forEach(function(region, p_index) {
-        if ($('#d_' + region.region_code).length !== 0) {
-            var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
-            var isCumu = (internals.discrete_compare_lines === '') ? true : false;
-            var d_data = Parser.lines({
-                data: region.data,
-                past_n_days: internals.past_n_days,
-                col: d_step_lines,
-                isCumulative: isCumu
-            });
-            Chart.small({
-                data: d_data,
-                title: region.region_name,
-                target: '#d_' + region.region_code,
-                legend_target: '.region_legend',
-                labels: internals.data.config.labels,
-                max_y: limit.max_y,
-                min_x: limit.min_x,
-                max_x: limit.max_x,
-            });
-        }
-    });
-}
+// function drawPanchayatPerformance(internals) {
+//     var limit = Util.discreteLimits(internals);
+//     console.log(limit);
+//     internals.data.discrete.forEach(function(region, p_index) {
+//         if ($('#d_' + region.region_code).length !== 0) {
+//             var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
+//             var isCumu = (internals.discrete_compare_lines === '') ? true : false;
+//             var d_data = Parser.lines({
+//                 data: region.data,
+//                 past_n_days: internals.past_n_days,
+//                 col: d_step_lines,
+//                 isCumulative: isCumu
+//             });
+//             Chart.small({
+//                 data: d_data,
+//                 title: region.region_name,
+//                 target: '#d_' + region.region_code,
+//                 legend_target: '.region_legend',
+//                 labels: internals.data.config.labels,
+//                 max_y: limit.max_y,
+//                 min_x: limit.min_x,
+//                 max_x: limit.max_x,
+//             });
+//         }
+//     });
+// }
 
 

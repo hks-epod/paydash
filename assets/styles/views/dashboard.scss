@@ -3,23 +3,28 @@
     border-bottom: dashed 1px $color-grey-lighter;
     margin-bottom: 20px;
 }
+
 .subnav .subnav-name {
     font-size: 40px;
     text-transform: capitalize !important;
     letter-spacing: .3em
 }
+
 .legend {
     margin-top: 40px;
 }
+
 .legend span {
     display: block;
     font-size: .9em;
     margin-bottom: 5px;
 }
-.legend-discrete span{
-  width: 33%;
-  display: inline-block;
+
+.legend-discrete span {
+    width: 33%;
+    display: inline-block;
 }
+
 .dashboard .button--pc,
 .dashboard .button--pc:hover,
 .dashboard .button--pc:focus {
@@ -27,30 +32,36 @@
     text-transform: none;
     width: 100%;
 }
+
 .group-selector {
     padding: 14px 10px 10px;
     border-radius: 3px;
     border: solid 1px $color-grey-lightest;
 }
+
 .group-selector label input[type="checkbox"] {
     margin-top: -3px;
     margin-right: 6px;
 }
+
 .footer {
     padding: 15px 0;
     border-top: solid 1px $color-grey-dim
 }
+
 .small_chart {
     margin-bottom: 20px;
 }
+
 .employee-stats {
-    padding: 25px 15px;
-    margin-top: 50px;
+    // padding: 25px 15px;
     background-color: rgba(255, 255, 255, 0.00);
-    border: dashed 1px $color-grey-lighter;
+    border-top: solid 1px $color-grey-lightest;
     box-shadow: none;
-    margin-bottom: 35px;
+    border-radius: 0;
+    font-size: 1em
 }
+
 .employee-stats li {
     display: inline-block;
     margin-right: 15px;
@@ -58,60 +69,69 @@
     margin-bottom: 0;
     margin-top: 5px;
 }
+
 .mg-x-axis .label,
 .mg-y-axis .label,
 .mg-axis .label {
-  font-size: 1.3rem;
-  font-weight: 300;
+    font-size: 1.3rem;
+    font-weight: 300;
 }
+
 .mg-x-axis text,
 .mg-y-axis text,
 .mg-histogram .axis text {
-  font-size: 1.3rem;
+    font-size: 1.3rem;
 }
-.mg-baselines line {
-  stroke: #ddd
-}
-.mg-baselines text {
-  font-size: 1.9rem
-}
-// .selectors {
-//   margin: 30px 0;
-//   padding: 6px 15px;
-//   border: dotted 1px #6a8093;
-// }
-// .selectors .pure-checkbox,
-// .selectors input {
-//   cursor: pointer;
-//   margin-top: 8px;
-//   margin-bottom: 0;
-// }
-// .u-mg-line1-color {
-//   color: #ffd300;
-// }
-// .u-mg-line2-color {
-//   color: #18ff00;
-// }
-// .u-mg-line3-color {
-//   color: #f57070;
-// }
-// .pp-sidebar {
-//   position: fixed
-// }
-// .paydash-controls .button.selected {
-//   background-color: $color-grey-lighter
-// }
-// // 
-// // 
 
-// .button.button--bp option {
-//   color: #000;
-// }
-// // Discrete 
-// #region_charts-container h3{
-//   font-size: 3rem
-// }
-// #region_charts-container li {
-//   display:  inline-block;
-//   min-width: 30%
-// }
+.mg-baselines line {
+    stroke: #ddd
+}
+
+.mg-baselines text {
+    font-size: 1.9rem
+}
+
+// 
+// 
+.sidebar {
+    position: fixed;
+    top: 184px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border-right: solid 1px $color-grey-lightest;
+}
+
+.offset-sm-1-4 {
+    margin-left: 25%;
+    *margin-left: 24.995%;
+}
+
+.sidebar .group .head {
+    border-top: solid 1px $color-grey-lightest;
+    border-bottom: solid 1px $color-grey-lightest;
+    background-color :rgba(0,0,0,.07);
+    padding: 15px 10px;
+    margin-bottom: 0;
+    display: block;
+    font-size: .8em;
+    line-height: 2em;
+}
+.sidebar .group .head h4{
+    color : $color-accent;
+    font-size:1.5em;
+    margin-bottom: 4px;
+}
+.sidebar .subgroup{
+    padding: 10px 40px 10px 40px ;
+}
+.sidebar .subgroup div{
+    padding: 10px 0;
+    border-bottom: solid 1px $color-grey-dim
+}
+.js-group-head, .js-group-entity {
+    cursor: pointer
+}
