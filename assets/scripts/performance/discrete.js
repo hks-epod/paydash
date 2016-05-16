@@ -61,12 +61,9 @@ exports.init = function() {
                 D3.selectAll('.js-group-entity').classed('selected', false); // change button state
                 target.classed('selected', true);
                 internals.active_chart_index = target.attr('data-index');
-                console.log(internals.active_chart_index);
                 drawDiscreteChart(internals, internals.active_chart_index);
             });
 
-            // TODO : Remove from here
-            drawDiscreteChart(internals, 0);
         });
 
     // Time period Selection
@@ -92,8 +89,6 @@ exports.init = function() {
     });
 };
 
-
-
 function drawDiscreteChart(internals, p_index) {
 
     var region = internals.data.discrete[p_index];
@@ -105,11 +100,13 @@ function drawDiscreteChart(internals, p_index) {
         col: d_step_lines,
         isCumulative: isCumu
     });
-    Chart.small({
+    Chart.flash({
         data: d_data,
         title: region.region_name,
         target: '#d_chart',
         legend_target: '.region_legend',
-        labels: internals.data.config.labels
+        area: true,
+        labels: internals.data.config.labels,
+        min_x: Util.overviewLimits(internals).min_x
     });
 }
