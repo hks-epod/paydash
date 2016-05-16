@@ -49,22 +49,20 @@ exports.init = function() {
                     } else {
                         Template.grouping(internals.data.employees[internals.groupBy], internals);
                     }
-                    // drawPanchayatPerformance(internals);
                 });
-                
+
                 Template.grouping(internals.data.employees[internals.groupBy], internals);
-
             }
-            // drawPanchayatPerformance(internals);
-
-
+            // TODO : Remove from here
+            drawDiscreteChart(internals, 0);
         });
 
     // Time period Selection
     D3.selectAll('#modify-time-period-controls').on('change', function() {
         internals.past_n_days = D3.event.target.value;
-        // TODO
-        // drawPanchayatPerformance(internals);
+
+        // TODO : Make index dynamic
+        drawDiscreteChart(internals, 0);
 
         // Update employee stats based on time controls
         if (internals.role === 'block') {
@@ -83,32 +81,24 @@ exports.init = function() {
 };
 
 
-//  Specific Charts
-// function drawPanchayatPerformance(internals) {
-//     var limit = Util.discreteLimits(internals);
-//     console.log(limit);
-//     internals.data.discrete.forEach(function(region, p_index) {
-//         if ($('#d_' + region.region_code).length !== 0) {
-//             var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
-//             var isCumu = (internals.discrete_compare_lines === '') ? true : false;
-//             var d_data = Parser.lines({
-//                 data: region.data,
-//                 past_n_days: internals.past_n_days,
-//                 col: d_step_lines,
-//                 isCumulative: isCumu
-//             });
-//             Chart.small({
-//                 data: d_data,
-//                 title: region.region_name,
-//                 target: '#d_' + region.region_code,
-//                 legend_target: '.region_legend',
-//                 labels: internals.data.config.labels,
-//                 max_y: limit.max_y,
-//                 min_x: limit.min_x,
-//                 max_x: limit.max_x,
-//             });
-//         }
-//     });
-// }
+function drawDiscreteChart(internals, p_index) {
 
 
+    var region = internals.data.discrete[p_index];
+
+    var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
+    var isCumu = (internals.discrete_compare_lines === '') ? true : false;
+    var d_data = Parser.lines({
+        data: region.data,
+        past_n_days: internals.past_n_days,
+        col: d_step_lines,
+        isCumulative: isCumu
+    });
+    Chart.small({
+        data: d_data,
+        title: region.region_name,
+        target: '#d_chart',
+        legend_target: '.region_legend',
+        labels: internals.data.config.labels
+    });
+}
