@@ -44,7 +44,7 @@ exports.discrete = function(data) {
         .enter().append('div')
         .classed('subgroup', true)
         .html(function(d, index) {
-            return '<div id="' + d.region_code + '" class="js-group-entity">' + d.region_name + '</div>';
+            return '<div data-code="' + d.region_code + '" class="js-group-entity">' + d.region_name + '</div>';
         });
 };
 

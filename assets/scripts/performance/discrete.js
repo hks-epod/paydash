@@ -44,24 +44,17 @@ exports.init = function() {
                     target.classed('selected', true);
                     internals.groupBy = target.attr('data-groupby');
                     if (internals.groupBy === 'no') {
-
                         Template.discrete(internals.data.discrete);
                     } else {
                         Template.grouping(internals.data.employees[internals.groupBy], internals);
                     }
+                    chartloadBind(internals);
                 });
 
                 Template.grouping(internals.data.employees[internals.groupBy], internals);
             }
 
-            // Bind event for discrete chart
-            D3.selectAll('.js-group-entity').on('click', function() {
-                var target = D3.select(D3.event.target); // Define target
-                D3.selectAll('.js-group-entity').classed('selected', false); // change button state
-                target.classed('selected', true);
-                internals.active_chart_index = Util.indexBykey(internals.data.discrete, 'region_code', target.attr('data-code'));
-                drawDiscreteChart(internals, internals.active_chart_index);
-            });
+            chartloadBind(internals);
 
         });
 
@@ -86,6 +79,18 @@ exports.init = function() {
         }
     });
 };
+
+function chartloadBind(internals){
+    // Bind event for discrete chart
+    D3.selectAll('.js-group-entity').on('click', function() {
+        var target = D3.select(D3.event.target); // Define target
+        D3.selectAll('.js-group-entity').classed('selected', false); // change button state
+        target.classed('selected', true);
+        internals.active_chart_index = Util.indexBykey(internals.data.discrete, 'region_code', target.attr('data-code'));
+        drawDiscreteChart(internals, internals.active_chart_index);
+    });
+}
+
 
 function drawDiscreteChart(internals, p_index) {
 
