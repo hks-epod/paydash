@@ -53,6 +53,18 @@ exports.init = function() {
 
                 Template.grouping(internals.data.employees[internals.groupBy], internals);
             }
+
+            // Bind event for discrete chart
+            D3.selectAll('.js-group-entity').on('click', function() {
+                console.log('sdsdsds');
+                var target = D3.select(D3.event.target); // Define target
+                D3.selectAll('.js-group-entity').classed('selected', false); // change button state
+                target.classed('selected', true);
+                internals.active_chart_index = target.attr('data-index');
+                console.log(internals.active_chart_index);
+                drawDiscreteChart(internals, internals.active_chart_index);
+            });
+
             // TODO : Remove from here
             drawDiscreteChart(internals, 0);
         });
@@ -81,11 +93,10 @@ exports.init = function() {
 };
 
 
+
 function drawDiscreteChart(internals, p_index) {
 
-
     var region = internals.data.discrete[p_index];
-
     var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
     var isCumu = (internals.discrete_compare_lines === '') ? true : false;
     var d_data = Parser.lines({
