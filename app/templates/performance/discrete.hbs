@@ -9,6 +9,11 @@
 <div id="dashboard" class="dashboard container-fluid u-hidden">
   <div class="subnav subnav-fixed">
     <span id="region-name" class="subnav-name"></span>
+    <select class="u-pull-right" id="modify-time-period-controls" name="">
+      <option value="">All available dates</option>
+      <option value="61">Past 60 days</option>
+      <option value="31">Past 30 days</option>
+    </select>
     <div id="panchayat_selectors" class="panchayat_selectors u-pull-right u-hidden">
       <div class="panchayat-sort">
         <div id="discrete-groupby-controls" class="button-group">
@@ -18,11 +23,7 @@
         </div>
       </div>
     </div>
-    <select class="u-pull-right" id="modify-time-period-controls" name="">
-      <option value="">All available dates</option>
-      <option value="61">Past 60 days</option>
-      <option value="31">Past 30 days</option>
-    </select>
+    
   </div>
 
   <div class="pure-g">

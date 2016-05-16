@@ -10,6 +10,16 @@ function parseDate(string) {
     return new Date(y, m, d);
 }
 
+exports.indexBykey = function(arr, key, value) {
+    var ind;
+    arr.forEach(function(entity, index) {
+        if (entity[key] === value) {
+            ind = index;
+        }
+    });
+    return ind;
+};
+
 exports.overviewLimits = function(internals) {
     if (internals.past_n_days !== '') {
         var past_n_date = new Date();

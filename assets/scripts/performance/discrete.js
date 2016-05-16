@@ -56,11 +56,10 @@ exports.init = function() {
 
             // Bind event for discrete chart
             D3.selectAll('.js-group-entity').on('click', function() {
-                console.log('sdsdsds');
                 var target = D3.select(D3.event.target); // Define target
                 D3.selectAll('.js-group-entity').classed('selected', false); // change button state
                 target.classed('selected', true);
-                internals.active_chart_index = target.attr('data-index');
+                internals.active_chart_index = Util.indexBykey(internals.data.discrete, 'region_code', target.attr('data-code'));
                 drawDiscreteChart(internals, internals.active_chart_index);
             });
 
@@ -70,8 +69,7 @@ exports.init = function() {
     D3.selectAll('#modify-time-period-controls').on('change', function() {
         internals.past_n_days = D3.event.target.value;
 
-        // TODO : Make index dynamic
-        drawDiscreteChart(internals, 0);
+        drawDiscreteChart(internals, internals.active_chart_index);
 
         // Update employee stats based on time controls
         if (internals.role === 'block') {
