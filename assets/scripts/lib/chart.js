@@ -5,14 +5,14 @@ var MG = require('./metricsgraphics');
 
 exports.flash = function(options) {
     MG.data_graphic({
-        title: '',
+        title: options.title || '',
         data: options.data,
         target: options.target,
         width: 600,
         height: 500,
         left: 100,
         full_width: true,
-        transition_on_update: false,
+        // transition_on_update: true,
         show_secondary_x_label: false,
         x_extended_ticks: true,
         xax_count: 5,
