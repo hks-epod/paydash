@@ -49,6 +49,13 @@ exports.init = function() {
                         Template.grouping(internals.data.employees[internals.groupBy], internals);
                     }
                     chartloadBind(internals);
+                    Chart.flash({
+                        data: [],
+                        target: '#d_chart',
+                        legend_target: '.region_legend',
+                        area: true,
+                        labels: internals.data.config.labels
+                    });
                 });
 
                 Template.grouping(internals.data.employees[internals.groupBy], internals);
@@ -80,7 +87,7 @@ exports.init = function() {
     });
 };
 
-function chartloadBind(internals){
+function chartloadBind(internals) {
     // Bind event for discrete chart
     D3.selectAll('.js-group-entity').on('click', function() {
         var target = D3.select(D3.event.target); // Define target
