@@ -19,7 +19,8 @@ exports.postEditProfile = {
         payload: {
             mobile: Joi.string().max(100).allow(''),
             email: Joi.string().max(100).allow(''),
-            work_email: Joi.string().max(100).allow('')
+            work_email: Joi.string().max(100).allow(''),
+            lang: Joi.string().max(100)
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request

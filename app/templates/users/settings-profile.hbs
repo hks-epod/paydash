@@ -13,8 +13,13 @@
             <label for="dob">Mobile</label>
             <input class="u-full-width" id="mobile" name="mobile" type="text" value="{{mobile}}" placeholder="Please enter your mobile no">
             <label for="email">Personal email</label>
-            <input class="u-full-width" id="email" name="email" value="{{email}}" type="text" placeholder="Please enter your email id">
-            
+            <input class="u-full-width" id="email" name="email" value="{{email}}" type="text" placeholder="Please enter your email id"> 
+            <select class="u-full-width" name="lang" value="{{lang}}" id="lang">
+              {{#select lang}}
+              <option value="en_US">English</option>
+              <option value="hi">Hindi</option>
+              {{/select}}
+            </select>    
           {{/with}}
           {{> form_security}}
           <input type="submit" value="save" class=" button button--primary">
