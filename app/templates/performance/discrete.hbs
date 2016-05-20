@@ -23,6 +23,13 @@
 
   <div class="pure-g">
     <div class="pure-u-6-24 sidebar">
+      {{!-- Mapping message --}}
+      <div class="message message--warning">
+        <ul class="pointed-list">
+          <li id="mapping-msg-1" class="u-hidden">{{t "/performance/discrete/grs_message" credentials}}</li>
+          <li id="mapping-msg-2" class="u-hidden">{{t "/performance/discrete/ta_message" credentials}}</li>
+        </ul>
+      </div>
       <div id="grouping_container"></div>
     </div>
     <div class="pure-u-18-24 main">
@@ -36,14 +43,6 @@
         <div class="message message--info">{{t "/performance/discrete/panchayat_chart_placeholder" credentials}}</div>
       </div>
       <div class="legend region_legend legend-discrete"></div>
-      <div class="u-region-divider"></div>
-      {{!-- Mapping message --}}
-      <div class="message message--warning">
-        <ul class="pointed-list">
-          <li id="mapping-msg-1 u-hsidden">{{t "/performance/discrete/grs_message" credentials}}</li>
-          <li id="mapping-msg-2 u-hidden">{{t "/performance/discrete/ta_message" credentials}}</li>
-        </ul>
-      </div>
     </div>
   </div>
 </div>
