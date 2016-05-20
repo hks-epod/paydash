@@ -25,7 +25,8 @@ module.exports = function(sequelize, DataTypes) {
         work_email: DataTypes.STRING,
         work_years: DataTypes.STRING,
         time_on_nrega: DataTypes.STRING,
-        isActive: DataTypes.BOOLEAN
+        isActive: DataTypes.BOOLEAN,
+        lang: DataTypes.STRING
     }, {
         tableName: 'users',
         timestamps: true,
