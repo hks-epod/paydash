@@ -5,7 +5,7 @@ var MG = require('./metricsgraphics');
 
 exports.flash = function(options) {
     MG.data_graphic({
-        title: options.title || '',
+        title: '',
         data: options.data,
         target: options.target,
         width: 600,
