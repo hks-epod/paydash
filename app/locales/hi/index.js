@@ -14,7 +14,9 @@ module.exports = {
             district: 'प्रखंड/जनपद प्रदर्शन',
             block: 'पंचायत प्रदर्शन',
             $default: 'अलहदा प्रदर्शन'
-        }
+        },
+        current: 'वर्तमान मस्टर्स',
+        delayed: 'विलंबित मस्टर्स'
     },
     messages: {
         loading: 'डेटा लोड हो रहा है...',

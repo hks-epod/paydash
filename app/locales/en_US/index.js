@@ -14,7 +14,9 @@ module.exports = {
             district: 'Block Performance',
             block: 'Panchayat Performance',
             $default: 'Discrete Performance'
-        }
+        },
+        current: 'Current musters',
+        delayed: 'Delayed musters'
     },
     messages: {
         loading: 'Loading data...',
