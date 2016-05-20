@@ -37,12 +37,15 @@
         <span style="cursor:help" title="{{t "/performance/discrete/tooltip" credentials}}" class="pe-7s-info"></span>
       </div>
       <div id="d_chart"></div>
+      <div id="d_chart_placeholder">
+        <div class="message message--info">Select a panchayat at left to view its payment performance</div>
+      </div>
       <div class="legend region_legend legend-discrete"></div>
       <div class="u-region-divider"></div>
       {{!-- Mapping message --}}
       <div class="message message--warning">
         <ul class="pointed-list">
-          <li id="mapping-msg-1 u-hidden">{{t "/performance/discrete/grs_message" credentials}}</li>
+          <li id="mapping-msg-1 u-hsidden">{{t "/performance/discrete/grs_message" credentials}}</li>
           <li id="mapping-msg-2 u-hidden">{{t "/performance/discrete/ta_message" credentials}}</li>
         </ul>
       </div>

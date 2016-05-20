@@ -49,13 +49,10 @@ exports.init = function() {
                         Template.grouping(internals.data.employees[internals.groupBy], internals);
                     }
                     chartloadBind(internals);
-                    Chart.flash({
-                        data: [],
-                        target: '#d_chart',
-                        legend_target: '.region_legend',
-                        area: true,
-                        labels: internals.data.config.labels
-                    });
+                    // Delete chart here
+                    D3.select('#d_chart_placeholder').classed('u-hidden', false);
+                    D3.select('.legend-discrete').html('');
+                    D3.select('#d_chart').html('');
                 });
 
                 Template.grouping(internals.data.employees[internals.groupBy], internals);
@@ -110,6 +107,7 @@ function drawDiscreteChart(internals, p_index) {
         col: d_step_lines,
         isCumulative: isCumu
     });
+    D3.select('#d_chart_placeholder').classed('u-hidden', true);
     Chart.flash({
         data: d_data,
         title: region.region_name,
