@@ -17,22 +17,9 @@ exports.postEditProfile = {
     description: 'Post Edit profile settings',
     validate: {
         payload: {
-            firstname: Joi.string().min(2).max(20).required(),
-            lastname: Joi.string().min(2).max(20).required(),
-            gender: Joi.string().max(100).required(),
-            dob: Joi.string().max(100).allow(''),
             mobile: Joi.string().max(100).allow(''),
             email: Joi.string().max(100).allow(''),
-            sas: Joi.string().allow(''),
-            sas_years: Joi.string().max(100).allow(''),
-            ias: Joi.string().allow(''),
-            ias_years: Joi.string().max(100).allow(''),
-            title: Joi.string().max(100).allow(''),
-            region_type: Joi.string().max(100).allow(''),
-            region_name: Joi.string().max(100).allow(''),
-            work_email: Joi.string().max(100).allow(''),
-            work_years: Joi.string().max(100).allow(''),
-            time_on_nrega: Joi.string().max(100).allow('')
+            work_email: Joi.string().max(100).allow('')
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request

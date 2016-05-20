@@ -9,11 +9,11 @@
         <form data-tab="profile" method="post" action="">
           {{#with user}}
             <label for="email">Work email</label>
-            <input class="u-full-width" id="work_email" value="{{user.work_email}}" name="work_email" type="text" placeholder="Please enter your work email">
+            <input class="u-full-width" id="work_email" value="{{work_email}}" name="work_email" type="text" placeholder="Please enter your work email">
             <label for="dob">Mobile</label>
-            <input class="u-full-width" id="mobile" name="mobile" type="text" value="{{user.mobile}}" placeholder="Please enter your mobile no">
+            <input class="u-full-width" id="mobile" name="mobile" type="text" value="{{mobile}}" placeholder="Please enter your mobile no">
             <label for="email">Personal email</label>
-            <input class="u-full-width" id="email" name="email" value="{{user.email}}" type="text" placeholder="Please enter your email id">
+            <input class="u-full-width" id="email" name="email" value="{{email}}" type="text" placeholder="Please enter your email id">
             
           {{/with}}
           {{> form_security}}
