@@ -42,7 +42,7 @@ exports.getData = {
                             'work':d.work_name,
                             'panchayat':d.panchayat_name,
                             'closure_date':d.end_date,
-                            'days_delayed':d.days_pending,
+                            'days_pending':d.days_pending,
                             'ta_name':d.name,
                             'mobile':d.mobile_no
                         };
@@ -53,7 +53,7 @@ exports.getData = {
                             'work':d.work_name,
                             'panchayat':d.panchayat_name,
                             'closure_date':d.end_date,
-                            'days_delayed':d.days_pending
+                            'days_pending':d.days_pending
                         };
                     }),
                     'ds_t7': mustersResponse.filter(function(d) { return d.step==='ds_t7'; }).map(function(d) {
@@ -62,7 +62,7 @@ exports.getData = {
                             'work':d.work_name,
                             'panchayat':d.panchayat_name,
                             'closure_date':d.end_date,
-                            'days_delayed':d.days_pending
+                            'days_pending':d.days_pending
                         };
                     }),
                     'ds_t8': mustersResponse.filter(function(d) { return d.step==='ds_t8'; }).map(function(d) {
@@ -71,7 +71,7 @@ exports.getData = {
                             'work':d.work_name,
                             'panchayat':d.panchayat_name,
                             'closure_date':d.end_date,
-                            'days_delayed':d.days_pending
+                            'days_pending':d.days_pending
                         };
                     })
 
