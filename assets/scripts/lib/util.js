@@ -80,3 +80,14 @@ exports.loadMappingMessage = function(mapping) {
         D3.select('#mapping-msg-2').classed('u-hidden', false);
     }
 };
+
+exports.loadMappingMessageGrouping = function(mapping, grouping) {
+    D3.select('#mapping-msg-1').classed('u-hidden', true);
+    D3.select('#mapping-msg-2').classed('u-hidden', true);
+    if (mapping.grs_panchayat_count < mapping.total_panchayat_count && grouping === 'TA') {
+        D3.select('#mapping-msg-1').classed('u-hidden', false);
+    }
+    if (mapping.ta_panchayat_count < mapping.total_panchayat_count && grouping === 'GRS') {
+        D3.select('#mapping-msg-2').classed('u-hidden', false);
+    }
+};

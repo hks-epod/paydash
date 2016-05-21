@@ -82,7 +82,7 @@ module.exports = {
             sub_heading:  'आपकी पंचायतों का प्रदर्शन',
             subtitle: {
                 $filter: 'role',
-                block: 'आपकी पंचायतों में मज़दूरी भुगतान की प्रक्रिया के हर एक पड़ाव में लगा औसत समय',
+                block: 'आपकी पंचायत में मज़दूरी भुगतान की प्रक्रिया के हर एक पड़ाव में लगा औसत समय',
                 district: 'The performance of your blocks on average days to complete each step of the payment process.',
                 $default :'अपने क्षेत्रों में मज़दूरी भुगतान की प्रक्रिया के हर एक पड़ाव में लगा औसत समय'
             },

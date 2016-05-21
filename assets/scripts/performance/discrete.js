@@ -33,7 +33,7 @@ exports.init = function() {
                 Template.discrete(internals.data.discrete);
             } else if (internals.role === 'block') {
 
-                Util.loadMappingMessage(internals.data.mapping);
+                Util.loadMappingMessageGrouping(internals.data.mapping, internals.groupBy);
 
                 D3.select('#panchayat_selectors').classed('u-hidden', false);
 
@@ -50,6 +50,7 @@ exports.init = function() {
                     }
                     chartloadBind(internals);
                     // Delete chart here
+                    Util.loadMappingMessageGrouping(internals.data.mapping, internals.groupBy);
                     D3.select('#d_chart_placeholder').classed('u-hidden', false);
                     D3.select('.legend-discrete').html('');
                     D3.select('#d_chart').html('');

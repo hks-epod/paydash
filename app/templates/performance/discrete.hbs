@@ -5,9 +5,9 @@
   <div class="subnav subnav-fixed">
     <span id="region-name" class="subnav-name"></span>
     <select class="u-pull-right" id="modify-time-period-controls" name="">
-      <option value="">{{t "time_selector/1" credentials}}</option>
-      <option value="61">{{t "time_selector/2" credentials}}</option>
-      <option value="31">{{t "time_selector/3" credentials}}</option>
+      <option value="">{{t "/time_selector/1" credentials}}</option>
+      <option value="61">{{t "/time_selector/2" credentials}}</option>
+      <option value="31">{{t "/time_selector/3" credentials}}</option>
     </select>
     <div id="panchayat_selectors" class="panchayat_selectors u-pull-right u-hidden">
       <div class="panchayat-sort">
@@ -24,11 +24,11 @@
   <div class="pure-g">
     <div class="pure-u-6-24 sidebar">
       {{!-- Mapping message --}}
-      <div class="message message--warning">
-        <ul class="pointed-list">
-          <li id="mapping-msg-1" class="u-hidden">{{t "/performance/discrete/grs_message" credentials}}</li>
-          <li id="mapping-msg-2" class="u-hidden">{{t "/performance/discrete/ta_message" credentials}}</li>
-        </ul>
+      <div id="mapping-msg-1" class="u-hidden message message--warning">
+          {{t "/performance/discrete/grs_message" credentials}}
+      </div>
+      <div id="mapping-msg-2" class="u-hidden message message--warning">
+          {{t "/performance/discrete/ta_message" credentials}}
       </div>
       <div id="grouping_container"></div>
     </div>

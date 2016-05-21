@@ -22,7 +22,7 @@ module.exports = {
         loading: 'Loading data...',
         not_found: 'Page not found. Please contact the Paydash team if you need assistance.'
     },
-    time_selector :{
+    time_selector: {
         '1': 'All available dates',
         '2': 'Past 60 days',
         '3': 'Past 30 days'
@@ -45,7 +45,7 @@ module.exports = {
         'First signature to second signature',
         'Second signature to processed by bank'
     ],
-    total_trans :"Total transactions on",
+    total_trans: "Total transactions on",
     performance: {
         overview: {
             chart_a: {
@@ -79,10 +79,10 @@ module.exports = {
             tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
         },
         discrete: {
-            sub_heading: 'Performance of Your Panchayats',
+            sub_heading: 'Performance of',
             subtitle: {
                 $filter: 'role',
-                block: 'The performance of your panchayats on average days to complete each step of the payment process.',
+                block: 'The performance of your panchayat on average days to complete each step of the payment process.',
                 district: 'The performance of your blocks on average days to complete each step of the payment process.',
                 $default: 'The performance of your regions on average days to complete each step of the payment process.'
             },
