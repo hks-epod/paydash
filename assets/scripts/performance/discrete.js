@@ -119,6 +119,7 @@ function drawDiscreteChart(internals, p_index) {
         legend_target: '.region_legend',
         area: true,
         labels: internals.data.config.labels,
-        min_x: Util.overviewLimits(internals).min_x
+        min_x: Util.overviewLimits(internals).min_x,
+        y_axis_label : internals.data.config.y_axis_label
     });
 }
