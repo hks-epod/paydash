@@ -33,7 +33,7 @@ exports.flash = function(options) {
         interplate: 'linear',
         interpolate_tension: .98,
         area: options.area,
-        y_label: 'Days to Complete Process',
+        y_label:  options.y_axis_label,
         mouseover: function(d, i) {
             if (!d.values) {
                 d.values = [d];
@@ -97,7 +97,7 @@ exports.singular = function(options) {
         interplate: 'linear',
         interpolate_tension: 1,
         area: options.area,
-        y_label: 'Days to Complete Process',
+        y_label:  options.y_axis_label,
         mouseover: function(d, i) {
             if (!d.values) {
                 d.values = [d];

@@ -157,7 +157,8 @@ exports.block = function(rows, role, credentials) {
     final_dict.config = {
         'headers': ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
         'role': role,
-        labels: Translate('/payment_steps_labels', credentials)
+        labels: Translate('/payment_steps_labels', credentials),
+        y_axis_labels : Translate('/y_axis_labels', credentials)
     };
 
     return final_dict;
@@ -214,6 +215,7 @@ exports.district = function(rows, role, credentials){
         'headers': ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
         'role': role,
         labels: Translate('/payment_steps_labels', credentials),
+        y_axis_labels : Translate('/y_axis_labels', credentials)
     };
     return final_dict;
 }

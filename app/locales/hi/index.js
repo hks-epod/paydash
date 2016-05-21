@@ -50,6 +50,7 @@ module.exports = {
         'district': 'ज़िला औसत',
         'block': 'प्रखंड/जनपद औसत'
     },
+    y_axis_labels: 'प्रक्रिया पूरी करने में लगे दिन',
     total_trans :"कुल लेनदेन",
     performance: {
         overview: {

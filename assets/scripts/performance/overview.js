@@ -47,7 +47,8 @@ function drawRegionPerformance(internals) {
         legend_target: '.region_legend',
         labels: internals.data.config.labels,
         area: true,
-        min_x: Util.overviewLimits(internals).min_x
+        min_x: Util.overviewLimits(internals).min_x,
+        y_axis_label : internals.data.config.y_axis_label
     });
 }
 
@@ -100,7 +101,8 @@ function drawRegionComparison(val, internals) {
         legend_target: '.comparison_legend',
         labels: comparisonLabels(internals),
         area: false,
-        min_x: Util.overviewLimits(internals).min_x
+        min_x: Util.overviewLimits(internals).min_x,
+        y_axis_label : internals.data.config.y_axis_label
     });
 }
 

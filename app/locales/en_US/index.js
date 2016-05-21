@@ -50,6 +50,7 @@ module.exports = {
         'district': 'district average',
         'block': 'block average'
     },
+    y_axis_labels: 'Days to complete process',
     total_trans: "Total transactions on",
     performance: {
         overview: {
