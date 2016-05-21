@@ -93,6 +93,8 @@ function chartloadBind(internals) {
         target.classed('selected', true);
         internals.active_chart_index = Util.indexBykey(internals.data.discrete, 'region_code', target.attr('data-code'));
         drawDiscreteChart(internals, internals.active_chart_index);
+        D3.select('#heading_region_name').html(target.attr('data-name'));
+        
     });
 }
 

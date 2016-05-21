@@ -27,7 +27,7 @@ exports.grouping = function(data, internals) {
                 '<div class="subgroup">';
             d.panchayats.forEach(function(region, index) {
                 htmlString = htmlString +
-                    '<div data-code="' + region.region_code + '" class="js-group-entity">' + region.region_name + '</div>';
+                    '<div data-name="' + region.region_name + '" data-code="' + region.region_code + '" class="js-group-entity">' + region.region_name + '</div>';
             });
             htmlString = htmlString + '</div>';
 
