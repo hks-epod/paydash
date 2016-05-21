@@ -31,6 +31,15 @@ module.exports = {
         '6': 'First signature to second signature',
         '7': 'Second signature to processed by bank'
     },
+    payment_steps_labels: [
+        'Muster roll closure to muster roll entry',
+        'Muster roll entry to wage list generation',
+        'Wage list generation to wage list sign',
+        'Wage list sign to FTO generation',
+        'FTO generation to first signature',
+        'First signature to second signature',
+        'Second signature to processed by bank'
+    ],
     performance: {
         overview: {
             chart_a: {
@@ -63,13 +72,13 @@ module.exports = {
             },
             tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
         },
-        discrete:{
-            sub_heading:  'Performance of Your Panchayats',
+        discrete: {
+            sub_heading: 'Performance of Your Panchayats',
             subtitle: {
                 $filter: 'role',
                 block: 'The performance of your panchayats on average days to complete each step of the payment process.',
                 district: 'The performance of your blocks on average days to complete each step of the payment process.',
-                $default :'The performance of your regions on average days to complete each step of the payment process.'
+                $default: 'The performance of your regions on average days to complete each step of the payment process.'
             },
             tooltip: 'The charts below show the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed. Your worst performing panchayats are shown first.',
             ta_message: 'Your block has unmapped panchayats for the TA designation. As a result, we can\'t show you the performance of all the TA\'s in your block. Please visit the MGNREGA portal at nrega.nic.in to complete your TA mapping.',
@@ -77,7 +86,7 @@ module.exports = {
             panchayat_chart_placeholder: 'Select a panchayat at left to view its payment performance',
             grouping_selectors: {
                 no: 'No Grouping',
-                ta:'Group by TA',
+                ta: 'Group by TA',
                 grs: 'Group by GRS'
             }
         }
