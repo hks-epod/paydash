@@ -26,9 +26,9 @@ exports.getData = {
         }).then(function(rows) {
 
             if (role === 'block') {
-                var final_dict = DiscreteParser.block(rows, role);
+                var final_dict = DiscreteParser.block(rows, role, request.auth.credentials);
             } else if (role === 'district') {
-                var final_dict = DiscreteParser.district(rows, role);
+                var final_dict = DiscreteParser.district(rows, role, request.auth.credentials);
             }
 
             reply(final_dict);

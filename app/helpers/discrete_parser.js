@@ -2,8 +2,9 @@
 
 var Utils = require('./utils');
 var D3 = require('d3');
+var Translate = require('../templates/helpers/t');
 
-exports.block = function(rows, role) {
+exports.block = function(rows, role, credentials) {
     var final_dict = {};
     var regionName = rows[0][0].region_name;
 
@@ -156,21 +157,13 @@ exports.block = function(rows, role) {
     final_dict.config = {
         'headers': ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
         'role': role,
-        labels: [
-            'Muster roll closure to muster roll entry',
-            'Muster roll entry to wage list generation',
-            'Wage list generation to wage list signing',
-            'Wage list signing to FTO generation',
-            'FTO generation to first signature',
-            'First signature to second signature',
-            'Second signature to processed by bank',
-        ],
+        labels: Translate('/payment_steps_labels', credentials),
     };
 
     return final_dict;
 }
 
-exports.district = function(rows, role){
+exports.district = function(rows, role, credentials){
 
     var final_dict = {};
     var regionName = rows[0][0].region_name;
@@ -220,15 +213,7 @@ exports.district = function(rows, role){
     final_dict.config = {
         'headers': ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
         'role': role,
-        labels: [
-            'Muster roll closure to muster roll entry',
-            'Muster roll entry to wage list generation',
-            'Wage list generation to wage list signing',
-            'Wage list signing to FTO generation',
-            'FTO generation to first signature',
-            'First signature to second signature',
-            'Second signature to processed by bank',
-        ],
+        labels: Translate('/payment_steps_labels', credentials),
     };
     return final_dict;
 }
