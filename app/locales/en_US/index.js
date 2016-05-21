@@ -22,6 +22,11 @@ module.exports = {
         loading: 'Loading data...',
         not_found: 'Page not found. Please contact the Paydash team if you need assistance.'
     },
+    time_selector :{
+        '1': 'All available dates',
+        '2': 'Past 60 days',
+        '3': 'Past 30 days'
+    },
     payment_steps: {
         '1': 'Muster roll closure to muster roll entry',
         '2': 'Muster roll entry to wage list generation',
@@ -40,6 +45,7 @@ module.exports = {
         'First signature to second signature',
         'Second signature to processed by bank'
     ],
+    total_trans :"Total transactions on",
     performance: {
         overview: {
             chart_a: {

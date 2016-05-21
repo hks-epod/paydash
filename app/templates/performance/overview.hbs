@@ -4,9 +4,9 @@
     <div class="subnav">
       <span id="region-name" class="subnav-name"></span>
       <select class="u-pull-right" id="modify-time-period-controls" name="">
-        <option value="">All available dates</option>
-        <option value="61">Past 60 days</option>
-        <option value="31">Past 30 days</option>
+        <option value="">{{t "time_selector/1" credentials}}</option>
+        <option value="61">{{t "time_selector/2" credentials}}</option>
+        <option value="31">{{t "time_selector/3" credentials}}</option>
       </select>
     </div>
     {{!-- Overview --}}
@@ -19,7 +19,7 @@
         </p>
 
         <div class="legend region_legend"></div>
-        <div>Total transactions on <span id="region_performance_total_trans"></span></div>
+        <div>{{t "/total_trans" credentials}} <span id="region_performance_total_trans"></span></div>
       </div>
       <div class="pure-u-18-24">
         <div id="region_performance"></div>
@@ -45,7 +45,7 @@
         </select>
         <div id="compareRegion" class="group-selector"></div>
         <div class="legend comparison_legend"></div>
-        <div>Total transactions on <span id="region_comparison_total_trans"></span></div>
+        <div>{{t "/total_trans" credentials}} <span id="region_comparison_total_trans"></span></div>
       </div>
       <div class="pure-u-18-24">
         <div id="region_comparison"></div>
