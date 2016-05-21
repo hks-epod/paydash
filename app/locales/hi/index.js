@@ -45,6 +45,11 @@ module.exports = {
         'पहले हस्ताक्षर से दूसरे हस्ताक्षर का समय',
         'दूसरे हस्ताक्षर से बैंक की कारवाई के समापन का समय'
     ],
+    compare_chart_labels:{
+        'state': 'राज्य औसत',
+        'district': 'ज़िला औसत',
+        'block': 'प्रखंड/जनपद औसत'
+    },
     total_trans :"कुल लेनदेन",
     performance: {
         overview: {

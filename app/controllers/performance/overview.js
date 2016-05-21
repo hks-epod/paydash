@@ -36,6 +36,7 @@ exports.getData = {
                 role: role,
                 headers: ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
                 labels: Translate('/payment_steps_labels', request.auth.credentials),
+                compare_chart_labels: Translate('/compare_chart_labels', request.auth.credentials),
                 comparison_lines: role === 'block' ? ['block', 'district', 'state'] : ['district', 'state']
             };
 

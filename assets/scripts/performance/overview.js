@@ -59,7 +59,7 @@ function loadTemplate(internals) {
             '<div>' +
             '<label for="option-' + index + 1 + '" class="pure-checkbox">' +
             '<input class="regionSelector" id="option-' + index + 1 + '" type="checkbox" value="' + comparison_line + '" checked> ' +
-            internals.data.monthwise[comparison_line][comparison_line + '_name'] + ' ' + comparison_line + ' average  ' +
+            internals.data.monthwise[comparison_line][comparison_line + '_name'] + ' ' + internals.data.config.compare_chart_labels[comparison_line] +
             '</label>' +
             '</div>';
     });

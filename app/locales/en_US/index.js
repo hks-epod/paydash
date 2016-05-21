@@ -45,6 +45,11 @@ module.exports = {
         'First signature to second signature',
         'Second signature to processed by bank'
     ],
+    compare_chart_labels:{
+        'state': 'state average',
+        'district': 'district average',
+        'block': 'block average'
+    },
     total_trans: "Total transactions on",
     performance: {
         overview: {
