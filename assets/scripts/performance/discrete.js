@@ -54,6 +54,7 @@ exports.init = function() {
                     D3.select('#d_chart_placeholder').classed('u-hidden', false);
                     D3.select('.legend-discrete').html('');
                     D3.select('#d_chart').html('');
+                    D3.select('#heading_region_name').html('');
                 });
 
                 Template.grouping(internals.data.employees[internals.groupBy], internals);

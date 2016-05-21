@@ -1,7 +1,7 @@
 <div class="container-fluid u-spacing-page-top">
   {{>loader}}
   <div class="table-holder u-hidden">
-    <h1>Delayed Musters</h1>
+    <h1> {{t "/musters/delayed/title" credentials}}</h1>
     {{!-- Mapping message --}}
     <div class="message message--warning">
       <ul class="pointed-list">
@@ -10,7 +10,7 @@
       </ul>
     </div>
     <div class="u-region-divider"></div>
-    <h1>Attendance not filled (T+2)</h1>
+    <h1>{{t "/musters/delayed/t_2" credentials}}</h1>
     <table class="u-full-width muster_table" id="delayed-table-2">
       <thead>
        <th>Msr No</th>
@@ -25,7 +25,7 @@
       </tbody>
     </table>
     <div class="u-region-divider"></div>
-    <h1>Measurement book not filled (T+5)</h1>
+    <h1> {{t "/musters/delayed/t_5" credentials}} </h1>
     <table class="u-full-width muster_table" id="delayed-table-5">
       <thead>
         <th>Msr No</th>
@@ -40,7 +40,7 @@
       </tbody>
     </table>
     <div class="u-region-divider"></div>
-    <h1>Wagelist not sent (T+6)</h1>
+    <h1>{{t "/musters/delayed/t_6" credentials}} </h1>
     <table class="u-full-width muster_table" id="delayed-table-6">
       <thead>
         <th>Msr No</th>
@@ -53,7 +53,7 @@
       </tbody>
     </table>
     <div class="u-region-divider"></div>
-    <h1>Pending for FTO first signature (T+7)</h1>
+    <h1>{{t "/musters/delayed/t_7" credentials}}</h1>
     <table class="u-full-width muster_table" id="delayed-table-7">
       <thead>
         <th>Msr No</th>
@@ -66,7 +66,7 @@
       </tbody>
     </table>
     <div class="u-region-divider"></div>
-    <h1>Pending for FTO second signature (T+8)</h1>
+    <h1>{{t "/musters/delayed/t_8" credentials}}</h1>
     <table class="u-full-width muster_table" id="delayed-table-8">
       <thead>
         <th>Msr No</th>

@@ -79,9 +79,9 @@ module.exports = {
             tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
         },
         discrete: {
-            sub_heading: { 
-                1: 'Performance of', 
-                '2': 'panchayat' 
+            sub_heading: {
+                1: 'Performance of',
+                '2': 'panchayat'
             },
             subtitle: {
                 $filter: 'role',
@@ -98,6 +98,19 @@ module.exports = {
                 ta: 'Group by TA',
                 grs: 'Group by GRS'
             }
+        }
+    },
+    musters: {
+        current: {
+            title: 'Musters Closing Today'
+        },
+        delayed:{
+            title : 'Delayed Musters',
+            t_2 : 'Attendance not filled (T+2)',
+            t_5: 'Measurement book not filled (T+5)',
+            t_6 : 'Wagelist not sent (T+6)',
+            t_7 :'Pending for FTO first signature (T+7)',
+            T_8 :'Pending for FTO second signature (T+8)'
         }
     }
 };
