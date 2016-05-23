@@ -196,7 +196,12 @@ exports.district = function(rows, role, credentials){
                         d.tot_trn
                     ];
                 }),
-                'panchayats': panchayatResponse.filter(function(d) { return d.block_code === v[0].region_code; })
+                'panchayats': panchayatResponse.filter(function(d) { return d.block_code === v[0].region_code; }).map(function(d) {
+                    return {
+                        'panchayat_code': d.panchayat_code,
+                        'panchayat_name': d.panchayat_name
+                    };
+                })
             };
         })
         .entries(blockResponse)
@@ -217,5 +222,7 @@ exports.district = function(rows, role, credentials){
         labels: Translate('/payment_steps_labels', credentials),
         y_axis_labels : Translate('/y_axis_labels', credentials)
     };
+    // console.log(JSON.stringify(final_dict, null, 4));
+    // console.log('connection : %j', final_dict);
     return final_dict;
 }
