@@ -114,7 +114,7 @@ exports.singular = function(options) {
                 var l_span = D3.select(options.legend_target + ' .mg-line' + val.line_id + '-legend-color');
                 l_span.text(' ');
                 l_span.text('— ' + options.labels[val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
-                var format = D3.time.format('%d, %Y');
+                var format = D3.time.format('%b, %Y');
                 D3.select(options.target + '_total_trans').text(format(val.date) + ': ' + val.total_trans);
             });
         },
