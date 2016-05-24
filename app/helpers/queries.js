@@ -54,7 +54,7 @@ exports.outcomes = function() {
 };
 
 exports.current_musters = function(BLOCK_CODE) {
-    return "SELECT IFNULL(a.name,'Unmapped') AS name, IFNULL(a.mobile_no,'Unmapped') AS mobile_no, b.msr_no, b.work_name, b.panchayat_name FROM (SELECT * FROM employees WHERE block_code='"+BLOCK_CODE+"' AND task_assign='GRS') a RIGHT JOIN (SELECT * FROM current_musters WHERE block_code='"+BLOCK_CODE+"') b ON a.map_location = b.panchayat_code;" +
+    return "SELECT IFNULL(a.name,'Unmapped') AS name, IFNULL(a.mobile_no,'Unmapped') AS mobile_no, b.msr_no, b.work_name, b.panchayat_name FROM (SELECT * FROM employees WHERE block_code='"+BLOCK_CODE+"' AND task_assign='GRS') a RIGHT JOIN (SELECT * FROM current_musters WHERE block_code='"+BLOCK_CODE+"') b ON a.map_location = b.panchayat_code ORDER BY name, panchayat_code, msr_no;" +
     "SELECT IFNULL(a.total_panchayat_count,0) AS total_panchayat_count, IFNULL(b.grs_panchayat_count,0) AS grs_panchayat_count FROM (SELECT block_code, count(*) AS total_panchayat_count FROM panchayats WHERE block_code = '" + BLOCK_CODE + "') a LEFT JOIN (SELECT block_code, count(*) AS grs_panchayat_count FROM employees WHERE task_assign = 'GRS' AND block_code = '" + BLOCK_CODE + "') b ON a.block_code = b.block_code;";
 };
 
