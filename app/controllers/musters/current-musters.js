@@ -40,7 +40,7 @@ exports.getData = {
                 }
 
             };
-
+            
             reply(final_dict);
         });
     }
