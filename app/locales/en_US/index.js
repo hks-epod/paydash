@@ -30,8 +30,8 @@ module.exports = {
     payment_steps: {
         '1': 'Muster roll closure to muster roll entry',
         '2': 'Muster roll entry to wage list generation',
-        '3': 'Wage list generation to wage list sign',
-        '4': 'Wage list sign to FTO generation',
+        '3': 'Wage list generation to wage list sent',
+        '4': 'Wage list sent to FTO generation',
         '5': 'FTO generation to first signature',
         '6': 'First signature to second signature',
         '7': 'Second signature to processed by bank'
@@ -39,8 +39,8 @@ module.exports = {
     payment_steps_labels: [
         'Muster roll closure to muster roll entry',
         'Muster roll entry to wage list generation',
-        'Wage list generation to wage list sign',
-        'Wage list sign to FTO generation',
+        'Wage list generation to wage list sent',
+        'Wage list sent to FTO generation',
         'FTO generation to first signature',
         'First signature to second signature',
         'Second signature to processed by bank'
