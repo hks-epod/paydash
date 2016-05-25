@@ -30,7 +30,9 @@ exports.init = function() {
             internals.role = data.config.role;
 
             if (internals.role === 'district') {
-                Template.discrete(internals.data.discrete);
+               
+               Template.groupedDistrict(internals.data.discrete, internals);
+
             } else if (internals.role === 'block') {
 
                 Util.loadMappingMessageGrouping(internals.data.mapping, internals.groupBy);
@@ -44,9 +46,9 @@ exports.init = function() {
                     target.classed('selected', true);
                     internals.groupBy = target.attr('data-groupby');
                     if (internals.groupBy === 'no') {
-                        Template.discrete(internals.data.discrete);
+                        Template.ungrouped(internals.data.discrete);
                     } else {
-                        Template.grouping(internals.data.employees[internals.groupBy], internals);
+                        Template.grouped(internals.data.employees[internals.groupBy], internals);
                     }
                     chartloadBind(internals);
                     // Delete chart here
