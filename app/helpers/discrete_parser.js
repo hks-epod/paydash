@@ -12,43 +12,6 @@ exports.block = function(rows, role, credentials) {
 
     var childrenResponse = Utils.flatten(rows[1]);
 
-    // process children data
-    final_dict.discrete = D3.nest()
-        .key(function(d) {
-            return d.region_code;
-        })
-        .rollup(function(v) {
-            return {
-                'region_code': v[0].region_code,
-                'region_name': v[0].region_name,
-                'data': v.map(function(d) {
-                    return [
-                        d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
-                        d.mrc_mre,
-                        d.mre_wlg,
-                        d.wlg_wls,
-                        d.wls_fto,
-                        d.fto_sn1,
-                        d.sn1_sn2,
-                        d.sn2_prc,
-                        d.tot_trn
-                    ];
-                })
-            };
-        })
-        .entries(childrenResponse)
-        .map(function(d) {
-            return d.values;
-        })
-        .sort(function(a, b) {
-            var aTarget = a.data[a.data.length - 1];
-            var bTarget = b.data[b.data.length - 1];
-            var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
-            var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
-            return bSum - aSum;
-        });
-
-
     var employeeResponse = Utils.flatten(rows[2]);
 
     var empMapping = {
