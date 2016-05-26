@@ -3,7 +3,7 @@
 //  Parse the "20140412" string to date object
 function parseDate(string) {
     var y = string.substring(0, 4);
-    var m = string.substring(4, 6);
+    var m = string.substring(4, 6) - 1;
     var d = string.substring(6, 8);
     return new Date(y, m, d);
 }
