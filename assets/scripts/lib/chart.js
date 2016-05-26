@@ -80,7 +80,7 @@ exports.singular = function(options) {
         full_width: true,
         decimals: 0,
         target: options.target,
-        xax_count: 15,
+        xax_count: 10,
         max_x : options.max_x || null,
         min_x: options.min_x || null,
         xax_format: D3.time.format('%b, %y'),
