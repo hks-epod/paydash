@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-    $meta: 'English translation file',
+    $meta: 'Hindi translation file',
     navigation: {
         overview: {
             $filter: 'role',

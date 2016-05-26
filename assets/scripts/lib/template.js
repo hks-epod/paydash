@@ -50,8 +50,8 @@ exports.groupedDistrict = function(data, internals){
                 p_past_n_days = internals.past_n_days;
             }
             var htmlString =
-                '<div class="head js-group-head">' +
-                '<h4>' + d.block_name + '</h4>' +
+                '<div class="head">' +
+                '<h4 class="js-group-head" data-code="' + d.block_code + '" data-name="'+ d.block_name+'" >' + d.block_name + '</h4>' +
                 '</div>' +
                 '<div class="subgroup">';
             d.panchayats.forEach(function(region, index) {

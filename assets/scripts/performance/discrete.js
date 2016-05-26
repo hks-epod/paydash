@@ -30,8 +30,9 @@ exports.init = function() {
             internals.role = data.config.role;
 
             if (internals.role === 'district') {
-               
-               Template.groupedDistrict(internals.data.discrete, internals);
+
+                Template.groupedDistrict(internals.data.discrete, internals);
+                districtChartBinding(internals);
 
             } else if (internals.role === 'block') {
 
@@ -50,7 +51,7 @@ exports.init = function() {
                     } else {
                         Template.grouped(internals.data.employees[internals.groupBy], internals);
                     }
-                    chartloadBind(internals);
+                    blockChartBinding(internals);
                     // Delete chart here
                     Util.loadMappingMessageGrouping(internals.data.mapping, internals.groupBy);
                     D3.select('#d_chart_placeholder').classed('u-hidden', false);
@@ -60,9 +61,8 @@ exports.init = function() {
                 });
 
                 Template.grouping(internals.data.employees[internals.groupBy], internals);
+                blockChartBinding(internals);
             }
-
-            chartloadBind(internals);
 
         });
 
@@ -88,7 +88,7 @@ exports.init = function() {
     });
 };
 
-function chartloadBind(internals) {
+function blockChartBinding(internals) {
     // Bind event for discrete chart
     D3.selectAll('.js-group-entity').on('click', function() {
         var target = D3.select(D3.event.target); // Define target
@@ -97,13 +97,26 @@ function chartloadBind(internals) {
         internals.active_chart_index = Util.indexBykey(internals.data.discrete, 'region_code', target.attr('data-code'));
         drawDiscreteChart(internals, internals.active_chart_index);
         D3.select('#heading_region_name').html(target.attr('data-name'));
-        
+
+    });
+}
+
+
+function districtChartBinding(internals) {
+    // Bind event for disctrict discrete chart
+    D3.selectAll('.js-group-head').on('click', function() {
+        var target = D3.select(D3.event.target); // Define target
+        D3.selectAll('.js-group-head').classed('selected', false); // change button state
+        target.classed('selected', true);
+        console.log(target.attr('data-code'));
+        internals.active_chart_index = Util.indexBykey(internals.data.discrete, 'block_code', target.attr('data-code'));
+        drawDiscreteChart(internals, internals.active_chart_index);
+        D3.select('#heading_region_name').html(target.attr('data-name'));
     });
 }
 
 
 function drawDiscreteChart(internals, p_index) {
-
     var region = internals.data.discrete[p_index];
     var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
     var isCumu = (internals.discrete_compare_lines === '') ? true : false;
@@ -122,6 +135,6 @@ function drawDiscreteChart(internals, p_index) {
         area: true,
         labels: internals.data.config.labels,
         min_x: Util.overviewLimits(internals).min_x,
-        y_axis_label : internals.data.config.y_axis_label
+        y_axis_label: internals.data.config.y_axis_label
     });
 }
