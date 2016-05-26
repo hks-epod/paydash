@@ -108,7 +108,6 @@ function districtChartBinding(internals) {
         var target = D3.select(D3.event.target); // Define target
         D3.selectAll('.js-group-head').classed('selected', false); // change button state
         target.classed('selected', true);
-        console.log(target.attr('data-code'));
         internals.active_chart_index = Util.indexBykey(internals.data.discrete, 'block_code', target.attr('data-code'));
         drawDiscreteChart(internals, internals.active_chart_index);
         D3.select('#heading_region_name').html(target.attr('data-name'));
