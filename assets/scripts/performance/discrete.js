@@ -112,6 +112,24 @@ function districtChartBinding(internals) {
         drawDiscreteChart(internals, internals.active_chart_index);
         D3.select('#heading_region_name').html(target.attr('data-name'));
     });
+
+    D3.selectAll('.js-group-entity').on('click', function() {
+
+        var target = D3.select(D3.event.target); // Define target
+        D3.selectAll('.js-group-entity').classed('selected', false); // change button state
+        target.classed('selected', true);
+        
+        D3.json('/performance/panchayat/data?panchayat_code=' + target.attr('data-code'))
+            .on('progress', function() {
+                console.info('progress', D3.event.loaded);
+            })
+            .get(function(error, data) {
+                console.log(data);
+                // internals.active_chart_index = Util.indexBykey(internals.data.discrete, 'block_code', target.attr('data-code'));
+                // drawDiscreteChart(internals, internals.active_chart_index);
+                D3.select('#heading_region_name').html(target.attr('data-name'));
+            });
+    });
 }
 
 

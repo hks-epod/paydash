@@ -19,7 +19,7 @@ module.exports = {
         delayed: 'विलंबित मस्टर्स'
     },
     messages: {
-        loading: 'डेटा लोड हो रहा है...',
+        loading: 'डाटा लोड हो रहा है...',
         not_found: 'पृष्ठ नहीं मिला। Paydash टीम से संपर्क करें.'
     },
     time_selector :{
@@ -51,7 +51,7 @@ module.exports = {
         'block': 'प्रखंड/जनपद औसत'
     },
     y_axis_labels: 'प्रक्रिया पूरी करने में लगे दिन',
-    total_trans :"कुल लेनदेन",
+    total_trans :"तिथि : कुल भुगतनों की संख्या-",
     performance: {
         overview: {
             chart_a: {

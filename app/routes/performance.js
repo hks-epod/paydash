@@ -7,7 +7,8 @@ exports.register = function(plugin, options, next) {
         var Controllers = {
             performance: {
                 overview: require('../controllers/performance/overview'),
-                discrete: require('../controllers/performance/discrete')
+                discrete: require('../controllers/performance/discrete'),
+                panchayat: require('../controllers/performance/panchayat')
             }
         };
 
@@ -33,6 +34,11 @@ exports.register = function(plugin, options, next) {
                 path: '/performance/discrete/data',
                 config: Controllers.performance.discrete.getData
             },
+            {
+                method: 'GET',
+                path: '/performance/panchayat/data',
+                config: Controllers.performance.panchayat.getData
+            }
         ]);
 
         next();

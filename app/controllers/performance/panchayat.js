@@ -1,23 +1,14 @@
 'use strict';
 
 var Queries = require('../../helpers/queries');
-
-
-exports.showPage = {
-    auth: {
-        strategy: 'standard'
-    },
-    handler: function(request, reply) {
-        return reply.view('performance/discrete');
-    }
-};
-
+var Utils = require('../../helpers/utils');
+var Translate = require('../../templates/helpers/t');
 
 exports.getData = {
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-        var region_code = '1701001001'; // this is the panchayat code we want to return data for!!
+        var region_code = request.query.panchayat_code;
         var queryString = Queries.panchayatPerformance(region_code);
 
         sequelize.query(queryString, {
@@ -49,17 +40,9 @@ exports.getData = {
 
             final_dict.config = {
                 'headers': ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
-                labels: [
-                    'Muster roll closure to muster roll entry',
-                    'Muster roll entry to wage list generation',
-                    'Wage list generation to wage list signing',
-                    'Wage list signing to FTO generation',
-                    'FTO generation to first signature',
-                    'First signature to second signature',
-                    'Second signature to processed by bank',
-                ],
+                labels: Translate('/payment_steps_labels', request.auth.credentials), 
+                y_axis_label : Translate('/y_axis_labels', request.auth.credentials),
             };
-            console.log(final_dict);
             reply(final_dict);
         });
 
