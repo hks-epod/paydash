@@ -118,21 +118,43 @@ function districtChartBinding(internals) {
         var target = D3.select(D3.event.target); // Define target
         D3.selectAll('.js-group-entity').classed('selected', false); // change button state
         target.classed('selected', true);
-        
+
         D3.json('/performance/panchayat/data?panchayat_code=' + target.attr('data-code'))
             .on('progress', function() {
                 console.info('progress', D3.event.loaded);
             })
             .get(function(error, data) {
-                console.log(data);
+
                 // internals.active_chart_index = Util.indexBykey(internals.data.discrete, 'block_code', target.attr('data-code'));
-                // drawDiscreteChart(internals, internals.active_chart_index);
+                drawPanchayatChart(internals, data.panchayat);
                 D3.select('#heading_region_name').html(target.attr('data-name'));
             });
     });
 }
 
 
+function drawPanchayatChart(internals, data) {
+    var region = data;
+    var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
+    var isCumu = (internals.discrete_compare_lines === '') ? true : false;
+    var d_data = Parser.lines({
+        data: region.data,
+        past_n_days: internals.past_n_days,
+        col: d_step_lines,
+        isCumulative: isCumu
+    });
+    D3.select('#d_chart_placeholder').classed('u-hidden', true);
+    Chart.flash({
+        data: d_data,
+        title: region.panchayat_name,
+        target: '#d_chart',
+        legend_target: '.region_legend',
+        area: true,
+        labels: internals.data.config.labels,
+        min_x: Util.overviewLimits(internals).min_x,
+        y_axis_label: internals.data.config.y_axis_label
+    });
+}
 function drawDiscreteChart(internals, p_index) {
     var region = internals.data.discrete[p_index];
     var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
