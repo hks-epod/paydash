@@ -18,6 +18,7 @@ module.exports = {
         current: 'Current musters',
         delayed: 'Delayed musters'
     },
+    browser_msg: 'The browser you are using is not supported. PayDash works best with Chrome, Firefox, or Internet Explorer 9+.',
     messages: {
         loading: 'Loading data...',
         not_found: 'Page not found. Please contact the Paydash team if you need assistance.'

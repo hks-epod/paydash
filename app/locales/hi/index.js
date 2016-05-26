@@ -18,6 +18,7 @@ module.exports = {
         current: 'वर्तमान मस्टर्स',
         delayed: 'विलंबित मस्टर्स'
     },
+    browser_msg: 'The browser you are using is not supported. PayDash works best with Chrome, Firefox, or Internet Explorer 9+.',
     messages: {
         loading: 'डाटा लोड हो रहा है...',
         not_found: 'पृष्ठ नहीं मिला। Paydash टीम से संपर्क करें.'
