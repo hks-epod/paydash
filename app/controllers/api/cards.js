@@ -48,6 +48,7 @@ exports.getData = {
 	                .rollup(function(v) {
 	                    return {
 	                        'name': v[0].name,
+	                        'staff_id': v[0].staff_id,
 	                        'designation': v[0].task_assign,
 	                        'mobile':v[0].mobile_no,
 	                        'block_name':v[0].block_name,
@@ -187,7 +188,7 @@ exports.getData = {
 		        		],
 		        	}
 		        };
-
+		        console.log(cards)
 	            reply(data);
 		    });
     }
