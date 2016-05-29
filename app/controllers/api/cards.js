@@ -188,7 +188,7 @@ exports.getData = {
 		        		],
 		        	}
 		        };
-		        console.log(cards)
+
 	            reply(data);
 		    });
     }
