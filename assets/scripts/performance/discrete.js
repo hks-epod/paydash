@@ -52,6 +52,7 @@ exports.init = function() {
                     D3.select('.legend-discrete').html('');
                     D3.select('#d_chart').html('');
                     D3.select('#heading_region_name').html('');
+                    D3.select('#d_chart_total').classed('u-hidden', true);
 
                     if (internals.groupBy === 'no') {
                         Template.ungrouped(internals.data.discrete);
@@ -148,6 +149,7 @@ function drawPanchayatChart(internals, data) {
         isCumulative: isCumu
     });
     D3.select('#d_chart_placeholder').classed('u-hidden', true);
+    D3.select('#d_chart_total').classed('u-hidden', false);
     Chart.flash({
         data: d_data,
         title: region.panchayat_name,
@@ -170,6 +172,7 @@ function drawDiscreteChart(internals, p_index) {
         isCumulative: isCumu
     });
     D3.select('#d_chart_placeholder').classed('u-hidden', true);
+    D3.select('#d_chart_total').classed('u-hidden', false);
     Chart.flash({
         data: d_data,
         title: region.region_name,
