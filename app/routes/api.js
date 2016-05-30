@@ -9,7 +9,8 @@ exports.register = function(plugin, options, next) {
                 login: require('../controllers/api/login'),
                 logout: require('../controllers/api/logout'),
                 cards: require('../controllers/api/cards'),
-                profile: require('../controllers/api/profile')
+                profile: require('../controllers/api/profile'),
+                translate: require('../controllers/api/translate')
             }
         };
 
@@ -32,6 +33,11 @@ exports.register = function(plugin, options, next) {
                 method: 'GET',
                 path: '/api/cards',
                 config: Controllers.api.cards.getData
+            },
+            {
+                method: 'GET',
+                path: '/api/translate',
+                config: Controllers.api.translate.getData
             }
         ]);
 

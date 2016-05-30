@@ -46,7 +46,7 @@ module.exports = {
         'First signature to second signature',
         'Second signature to processed by bank'
     ],
-    compare_chart_labels:{
+    compare_chart_labels: {
         'state': 'state average',
         'district': 'district average',
         'block': 'block average'
@@ -111,13 +111,39 @@ module.exports = {
         current: {
             title: 'Musters Closing Today'
         },
-        delayed:{
-            title : 'Delayed Musters',
-            t_2 : 'Attendance not filled (T+2)',
+        delayed: {
+            title: 'Delayed Musters',
+            t_2: 'Attendance not filled (T+2)',
             t_5: 'Measurement book not filled (T+5)',
-            t_6 : 'Wagelist not sent (T+6)',
-            t_7 :'Pending for FTO first signature (T+7)',
-            T_8 :'Pending for FTO second signature (T+8)'
+            t_6: 'Wagelist not sent (T+6)',
+            t_7: 'Pending for FTO first signature (T+7)',
+            T_8: 'Pending for FTO second signature (T+8)'
         }
+    },
+    app: {
+        musters_closing_today: 'Musters Closing Today',
+        delayed_musters: 'Delayed Musters',
+        total_transactions: 'transactions in last 3 months',
+        cards_need_attention: 'Cards require your attention',
+        view_cards: 'View Cards',
+        muster_details: 'Muster Details',
+        current_musters: 'Current Musters',
+        work_code: 'Work Code',
+        work_name: 'Work Name',
+        closure_date: 'Closure date',
+        days_to_complete_process: 'Days to Complete Process',
+        steps: {
+            1: 'MR Closure to MR Entry',
+            2: 'MR Entry to Wage List Generation',
+            3: 'Wage List Generation to Wage List Sent',
+            4: 'Wage List Sent to FTO Generation',
+            5: 'FTO Generation to 1st Sign',
+            6: '1st Sign to 2nd Sign',
+            7: '2nd Sign to Bank Processing',
+            all: 'All Steps',
+        },
+        panchayat: 'Panchayat',
+        block: 'Block',
+        logout: 'Log Out'
     }
 };
