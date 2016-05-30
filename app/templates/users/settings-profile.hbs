@@ -6,6 +6,9 @@
     <div class="pure-u pure-u-10-24">
       <div class="">
         <h5 class="heading--sub">Profile Settings</h5> {{> flash}}
+        <p>First Name : {{user.firstname}}</p>
+         <p>Last Name : {{user.lastname}}</p>
+
         <form data-tab="profile" method="post" action="">
           {{#with user}}
             <label for="email">Work email</label>
