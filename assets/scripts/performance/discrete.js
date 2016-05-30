@@ -46,21 +46,25 @@ exports.init = function() {
                     D3.selectAll('#discrete-groupby-controls button').classed('selected', false); // change button state
                     target.classed('selected', true);
                     internals.groupBy = target.attr('data-groupby');
+                    
+                    // Delete chart here
+                    D3.select('#d_chart_placeholder').classed('u-hidden', false);
+                    D3.select('.legend-discrete').html('');
+                    D3.select('#d_chart').html('');
+                    D3.select('#heading_region_name').html('');
+
                     if (internals.groupBy === 'no') {
                         Template.ungrouped(internals.data.discrete);
                     } else {
                         Template.grouped(internals.data.employees[internals.groupBy], internals);
                     }
                     blockChartBinding(internals);
-                    // Delete chart here
+                    
                     Util.loadMappingMessageGrouping(internals.data.mapping, internals.groupBy);
-                    D3.select('#d_chart_placeholder').classed('u-hidden', false);
-                    D3.select('.legend-discrete').html('');
-                    D3.select('#d_chart').html('');
-                    D3.select('#heading_region_name').html('');
+
                 });
 
-                Template.grouping(internals.data.employees[internals.groupBy], internals);
+                Template.grouped(internals.data.employees[internals.groupBy], internals);
                 blockChartBinding(internals);
             }
 
