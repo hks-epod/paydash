@@ -162,17 +162,31 @@ function drawPanchayatChart(internals, data) {
     });
 }
 function drawDiscreteChart(internals, p_index) {
+
     var region = internals.data.discrete[p_index];
     var d_step_lines = (internals.discrete_compare_lines !== '') ? [internals.discrete_compare_lines] : internals.stepCols;
-    var isCumu = (internals.discrete_compare_lines === '') ? true : false;
+    var isCumu = (internals.discrete_compare_lines === '') ? true : false; 
+    D3.select('#d_chart_placeholder').classed('u-hidden', true);
+    D3.select('#d_chart_total').classed('u-hidden', false);
+    // Quickfix;
+    if (!region){
+        Chart.flash({
+            data: [],
+            target: '#d_chart',
+            legend_target: '.region_legend',
+            area: true,
+            labels: internals.data.config.labels,
+            min_x: Util.overviewLimits(internals).min_x,
+            y_axis_label: internals.data.config.y_axis_label
+        });
+        return;
+    }
     var d_data = Parser.lines({
         data: region.data,
         past_n_days: internals.past_n_days,
         col: d_step_lines,
         isCumulative: isCumu
     });
-    D3.select('#d_chart_placeholder').classed('u-hidden', true);
-    D3.select('#d_chart_total').classed('u-hidden', false);
     Chart.flash({
         data: d_data,
         title: region.region_name,
