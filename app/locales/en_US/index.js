@@ -110,11 +110,11 @@ module.exports = {
         discrete: {
             sub_heading: {
                 1: 'Performance of',
-                '2': 'panchayats'
+                '2': 'panchayat'
             },
             subtitle: {
                 $filter: 'role',
-                block: 'The performance of your panchayats on average days to complete each step of the payment process.',
+                block: 'The performance of your panchayat on average days to complete each step of the payment process.',
                 district: 'The performance of your blocks on average days to complete each step of the payment process.',
                 $default: 'The performance of your regions on average days to complete each step of the payment process.'
             },
