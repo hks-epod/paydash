@@ -5,18 +5,19 @@
     </div>
     <div class="pure-u pure-u-10-24">
       <div class="">
-        <h5 class="heading--sub">Profile Settings</h5> {{> flash}}
-        <p>First Name : {{user.firstname}}</p>
-         <p>Last Name : {{user.lastname}}</p>
+        <h5 class="heading--sub">{{t "/profile/profile_settings" credentials}}</h5> {{> flash}}
+        <p>{{t "/profile/firstname" credentials}} : {{user.firstname}}</p>
+         <p>{{t "/profile/lastname" credentials}} : {{user.lastname}}</p>
 
         <form data-tab="profile" method="post" action="">
           {{#with user}}
-            <label for="email">Work email</label>
+            <label for="email">{{t "/profile/work_email" credentials}}</label>
             <input class="u-full-width" id="work_email" value="{{work_email}}" name="work_email" type="text" placeholder="Please enter your work email">
-            <label for="dob">Mobile</label>
+            <label for="dob">{{t "/profile/mobile" credentials}}</label>
             <input class="u-full-width" id="mobile" name="mobile" type="text" value="{{mobile}}" placeholder="Please enter your mobile no">
-            <label for="email">Personal email</label>
+            <label for="email">{{t "/profile/personal_email" credentials}}</label>
             <input class="u-full-width" id="email" name="email" value="{{email}}" type="text" placeholder="Please enter your email id"> 
+            <label for="lang">{{t "/profile/lang" credentials}}</label>
             <select class="u-full-width" name="lang" value="{{lang}}" id="lang">
               {{#select lang}}
               <option value="en_US">English</option>
@@ -25,7 +26,7 @@
             </select>    
           {{/with}}
           {{> form_security}}
-          <input type="submit" value="save" class=" button button--primary">
+          <input type="submit" value="{{t "/profile/save" credentials}}" class=" button button--primary">
         </form>
       </div>
     </div>

@@ -7,33 +7,20 @@
       <div class="">
         {{> flash}}
         <h5 class="heading--sub">Email Settings</h5>
-        <p>Your primary email address will be used for account-related notifications as well as any web-based operations.</p>
+        <p>{{t "/profile/primary_email_msg" credentials}}</p>
         <p>
-          Your primary email <b>{{credentials.email}} </b>is
-          {{#compare credentials.status '===' 'verified'}}
-            verfiied. <span class="pe-7s-check u-textColor--success u-textSize--large"></span>
-          {{/compare}}
-          {{#compare credentials.status '===' 'registered'}}
-            <span class="u-textColor--error">not verfiied.</span>
-            <br><a href="/send-verification-email">Send me confirmation email</a>
-          {{/compare}}
+          {{t "/profile/your_primary_email" credentials}} :  <b>{{credentials.email}} </b>
         </p>
-        {{!-- <form data-tab="profile" method="post" action="">
-          <label for="email"> email</label>
-          <input class="u-full-width" type="email" id="email" name="email" value="{{credentials.email}}
-       "> {{> form_security}}
-          <input type=" submit" value="update" class=" button button--primary">
-        </form> --}}
-        <h5 class="heading--sub">Change Password</h5>
+        <h5 class="heading--sub">{{t "/profile/change_pass" credentials}}</h5>
         <form data-tab="profile" method="post" action="/me/settings/account/change-password">
-          <label for="password">Old password</label>
+          <label for="password">{{t "/profile/old_pass" credentials}}</label>
           <input class="u-full-width" type="password" id="OldPassword" name="oldPassword" value="">
-          <label for="password">New password</label>
+          <label for="password">{{t "/profile/new_pass" credentials}}</label>
           <input class="u-full-width" type="password" id="newPassword" name="newPassword" value="">
-          <label for="verify">Verify new password</label>
+          <label for="verify">{{t "/profile/pass_confirm" credentials}}</label>
           <input class="u-full-width" type="password" id="verify" name="verify" value="" autocorrect="off" autocapitalize="off"> {{> form_security}}
-          <input type="submit" value="update" class=" button button--primary">
-          <a href="/forgot-password">I forgot my password</a>
+          <input type="submit" value="{{t "/profile/save" credentials}}" class=" button button--primary">
+          <a href="/forgot-password">{{t "/profile/forgot_pass" credentials}}</a>
         </form>
       </div>
     </div>
