@@ -22,6 +22,7 @@
       <div class="menu-wrapper">
         <div class="menu-region-selection u-pull-right">
           <select name="region_selector" id="region_selector">
+
             {{#each credentials.user_regions}}
               <option value="{{this.region_code}}">{{this.region_name}}</option>
             {{/each}}

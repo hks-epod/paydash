@@ -33,11 +33,13 @@ exports.postEditProfile = {
 
         var id = request.auth.credentials.id.toString();
         request.payload.updated = Date.now();
+        var db = request.server.plugins.sequelize.db;
         var User = request.server.plugins.sequelize.db.User;
         User.findOne({
             where: {
                 id: id
-            }
+            },
+            include: [db.user_regions]
         }).then(function(user) {
             if (user) { // if the record exists in the db
                 user.update(request.payload).then(function() {
