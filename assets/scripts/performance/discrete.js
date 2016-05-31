@@ -53,15 +53,16 @@ exports.init = function() {
                     D3.select('#d_chart').html('');
                     D3.select('#heading_region_name').html('');
                     D3.select('#d_chart_total').classed('u-hidden', true);
+                    Util.loadMappingMessageGrouping(internals.data.mapping, internals.groupBy);
 
                     if (internals.groupBy === 'no') {
                         Template.ungrouped(internals.data.discrete);
                     } else {
                         Template.grouped(internals.data.employees[internals.groupBy], internals);
-                    }
+                    }      
                     blockChartBinding(internals);
                     
-                    Util.loadMappingMessageGrouping(internals.data.mapping, internals.groupBy);
+                   
 
                 });
 
