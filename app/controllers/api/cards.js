@@ -39,7 +39,7 @@ exports.getData = {
 	            var delayed_total = overviewResponse[0].delayed_total;
 	            var days_to_payment = overviewResponse[0].time_to_payment;
 	            var total_transactions = overviewResponse[0].total_transactions;
-	            console.log(days_to_payment)
+
 	            // Nest the cards response and include the overview stats
 	            var cards = d3.nest()
 	                .key(function(d) {

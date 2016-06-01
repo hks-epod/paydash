@@ -115,7 +115,7 @@ module.exports = {
             subtitle: {
                 $filter: 'role',
                 block: 'The performance of your panchayat on average days to complete each step of the payment process.',
-                district: 'The performance of your blocks on average days to complete each step of the payment process.',
+                district: 'The performance of your block/panchayat on average days to complete each step of the payment process.',
                 $default: 'The performance of your regions on average days to complete each step of the payment process.'
             },
             tooltip: 'The charts below show the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed. Your worst performing panchayats are shown first.',
