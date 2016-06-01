@@ -35,7 +35,7 @@ exports.postEditProfile = {
 
         var id = request.auth.credentials.id.toString();
         request.payload.updated = Date.now();
-        var User = request.server.plugins.sequelize.db.User;
+        var User = request.server.plugins.sequelize.db.users;
         User.findOne({
             where: {
                 id: id
