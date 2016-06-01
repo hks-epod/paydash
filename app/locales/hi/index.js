@@ -173,7 +173,7 @@ module.exports = {
             musters_closing_today: 'आज बंद हो रहे मस्टर्स',
             delayed_musters: 'विलंबित मस्टर्स',
             total_transactions: 'पिछले 3 महीनों में कुल कितने भुगतान हुए',
-            days_to_payment: 'Days to payment in last 3 months',
+            days_to_payment: 'पिछले 3 महीनों में भुगतान के लिए दिन',
             cards_need_attention: 'कार्ड्स को आपके ध्यान की ज़रूरत है',
             view_cards: 'कार्ड्स देखें'
         },
@@ -186,7 +186,7 @@ module.exports = {
             work_code: 'कार्य कोड',
             work_name: 'कार्य नाम',
             closure_date: 'मस्टर रोल बंद होने की तिथि',
-            days_delayed: 'Days delayed'
+            days_delayed: 'विलंब(दिन)'
         },
         chart: {
             days_to_complete_process: 'प्रक्रिया पूरी करने में लगे दिन',
@@ -201,7 +201,7 @@ module.exports = {
                 all:'पूरी प्रक्रिया के सारे पड़ाव',
             },
             dates: {
-                all_dates: 'All dates',
+                all_dates: 'सभी तारीखें',
                 last_60: 'पिछले 60 दिन',
                 last_30: 'पिछले 30 दिन'
             },
