@@ -184,10 +184,10 @@ module.exports = {
                 block: 'प्रखंड/जनपद'
             },
             tooltip: {
-                date: 'Date',
-                days: 'Avg. days',
-                transactions: 'Transactions',
-                step: 'Step'
+                date: 'तारीख',
+                days: 'औसत दिन',
+                transactions: 'लेनदेन',
+                step: 'कदम'
             }
         },
         notifications: {
