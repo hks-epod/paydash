@@ -61,9 +61,6 @@ exports.init = function() {
                         Template.grouped(internals.data.employees[internals.groupBy], internals);
                     }      
                     blockChartBinding(internals);
-                    
-                   
-
                 });
 
                 Template.grouped(internals.data.employees[internals.groupBy], internals);
