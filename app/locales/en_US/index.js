@@ -43,8 +43,15 @@ module.exports = {
     notifications : {
         read : 'Read Notifications',
         unread : 'Unread Notifications',
-        message:{
-            1: 'sub text 1'
+        message: {
+            1: {
+                block: [' block made ',' payments to MGNREGA beneficiaries on ',' .'],
+                district: [' district made ',' payments to MGNREGA beneficiaries on ',' .']
+            },
+            2: {
+                main: ['The average time from muster roll closure to bank processing for these transactions was ',' days, ',' the mandated maximum of 15 days.'],
+                comparison: ['greater than','equal to','less than']
+            }
         } 
     },
     browser_msg: 'The browser you are using is not supported. PayDash works best with Chrome, Firefox, or Internet Explorer 9+.',
