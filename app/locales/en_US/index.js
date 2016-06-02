@@ -42,7 +42,10 @@ module.exports = {
     },
     notifications : {
         read : 'Read Notifications',
-        unread : 'Unread Notifications'
+        unread : 'Unread Notifications',
+        message:{
+            1: 'sub text 1'
+        } 
     },
     browser_msg: 'The browser you are using is not supported. PayDash works best with Chrome, Firefox, or Internet Explorer 9+.',
     messages: {

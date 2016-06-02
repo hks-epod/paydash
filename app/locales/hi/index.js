@@ -42,7 +42,10 @@ module.exports = {
     },
     notifications : {
         read : 'पठित संदेश',
-        unread : 'अपठित संदेश'
+        unread : 'अपठित संदेश',
+        message:{
+            1: 'संदेश 1'
+        } 
     },
     browser_msg: 'आपका browser इस वेबसाइट के लिए अनुकूल नहीं है. PayDash चलाने के लिए Chrome, Firefox या Internet Explorer 9 या ऊंचे संस्करण का उपयोग करें.',
     messages: {
