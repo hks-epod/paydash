@@ -182,6 +182,12 @@ module.exports = {
             regions: {
                 panchayat: 'पंचायत',
                 block: 'प्रखंड/जनपद'
+            },
+            tooltip: {
+                date: 'Date',
+                days: 'Avg. days',
+                transactions: 'Transactions',
+                step: 'Step'
             }
         },
         notifications: {

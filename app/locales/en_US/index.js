@@ -182,6 +182,12 @@ module.exports = {
             regions: {
                 panchayat: 'Panchayat',
                 block: 'Block',  
+            },
+            tooltip: {
+                date: 'Date',
+                days: 'Avg. days',
+                transactions: 'Transactions',
+                step: 'Step'
             }
         },
         notifications: {
