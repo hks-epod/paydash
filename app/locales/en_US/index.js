@@ -40,6 +40,10 @@ module.exports = {
         current: 'Current musters',
         delayed: 'Delayed musters'
     },
+    notifications : {
+        read : 'Read Notifications',
+        unread : 'Unread Notifications'
+    },
     browser_msg: 'The browser you are using is not supported. PayDash works best with Chrome, Firefox, or Internet Explorer 9+.',
     messages: {
         loading: 'Loading data...',

@@ -17,7 +17,6 @@ module.exports = function(sequelize, DataTypes) {
                 notifications.belongsTo(models.User, {
                     onDelete: 'CASCADE',
                     foreignKey: 'user_id',
-
                 });
             }
         }
