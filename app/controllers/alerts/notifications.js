@@ -12,10 +12,9 @@ exports.showUnreadNotifications = {
         var ctx = {
             notifications: null
         };
-
         notifications.findAll({
             where: {
-                user_id: '1',
+                user_id: request.auth.credentials.id,
                 viewed: 0
             }
         }).then(function(unread) {
@@ -49,7 +48,7 @@ exports.showReadNotifications = {
 
         notifications.findAll({
             where: {
-                user_id: '1',
+                user_id: request.auth.credentials.id,
                 viewed: 1
             }
         }).then(function(read) {
