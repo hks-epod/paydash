@@ -110,18 +110,18 @@ module.exports = {
         discrete: {
             sub_heading: {
                 1: 'Performance of',
-                '2': 'panchayat'
+                2: 'block/panchayat'
             },
             subtitle: {
                 $filter: 'role',
                 block: 'The performance of your panchayat on average days to complete each step of the payment process.',
-                district: 'The performance of your block/panchayat on average days to complete each step of the payment process.',
+                district: 'The performance of your blocks/panchayats on average days to complete each step of the payment process.',
                 $default: 'The performance of your regions on average days to complete each step of the payment process.'
             },
             tooltip: 'The charts below show the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed. Your worst performing panchayats are shown first.',
             ta_message: 'Your block has unmapped panchayats for the TA designation. As a result, we can\'t show you the performance of all the TA\'s in your block. Please visit the MGNREGA portal at nrega.nic.in to complete your TA mapping.',
             grs_message: 'Your block has unmapped panchayats for the GRS designation. As a result, we can\'t show you the performance of all the GRS\'s in your block. Please visit the MGNREGA portal at nrega.nic.in to complete your GRS mapping.',
-            panchayat_chart_placeholder: 'Select a panchayat at left to view its payment performance',
+            panchayat_chart_placeholder: 'Select a block or panchayat at left to view its payment performance',
             grouping_selectors: {
                 no: 'No Grouping',
                 ta: 'Group by TA',
