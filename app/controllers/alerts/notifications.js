@@ -18,6 +18,7 @@ exports.showUnreadNotifications = {
                 user_id: request.auth.credentials.id,
                 viewed: 0
             }
+
         }).then(function(unread) {
             
             // Build notification message here, if face problems here you can build them after grouping as well. 
@@ -25,7 +26,7 @@ exports.showUnreadNotifications = {
             // you can define as many chunks in locales file nested at notifications.message
 
             unread.forEach(function(n) {
-                n.dataValues.msg = generateMessage(n,request)
+                n.dataValues.msg = generateMessage(n,request);
             });
 
             // Group notifications by batch ID, 
@@ -70,7 +71,7 @@ exports.showReadNotifications = {
             // This gives chunk of text from loclaes file depending up which language is the selected by user. 
             // you can define as many chunks in locales file nested at notifications.message
             read.forEach(function(n) {
-                n.dataValues.msg = generateMessage(n,request)
+                n.dataValues.msg = generateMessage(n,request);
             });
 
             // Group notifications by batch ID
@@ -89,21 +90,22 @@ exports.showReadNotifications = {
 function generateMessage(n, request) {
     var msg = '';
 
-    console.log(n)
+    // console.log(n)
     if (n.dataValues.notification_type===1) {
         var region_name = n.dataValues.region_name;
         var total_transactions = n.dataValues.total_transactions;
         var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var batch_date = n.dataValues.batch_date.getDate() + ' ' + monthNames[n.dataValues.batch_date.getMonth()] + n.dataValues.batch_date.getFullYear();
+        var batch_date = n.dataValues.batch_date.getDate() + ' ' + monthNames[n.dataValues.batch_date.getMonth()] + ' ' + n.dataValues.batch_date.getFullYear();
 
-        if (role==='block') {
+        if (request.auth.credentials.role==='block') {
             var notification_sub_text = Translate('/notifications/message/1/block', request.auth.credentials);
         }
-        else if (role==='district') {
+        else if (request.auth.credentials.role==='district') {
             var notification_sub_text = Translate('/notifications/message/1/district', request.auth.credentials);
         }
 
-        if (request.auth.credentials.lang==='en') {
+        if (request.auth.credentials.lang==='en_US') {
+
             msg = region_name + notification_sub_text[0] + total_transactions + notification_sub_text[1] + batch_date + notification_sub_text[2];
         }
         else if (request.auth.credentials.lang==='hi') {
@@ -111,7 +113,7 @@ function generateMessage(n, request) {
         }
     }
 
-    if (notification_type===2) {
+    if (n.dataValues.notification_type===2) {
         var days_to_payment = n.dataValues.days_to_payment;
         var notification_sub_text = Translate('/notifications/message/2/main', request.auth.credentials);
         var comparison_array = Translate('/notifications/message/2/comparison', request.auth.credentials);
