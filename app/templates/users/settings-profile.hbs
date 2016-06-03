@@ -18,7 +18,7 @@
             <input class="u-full-width" id="email" name="email" value="{{user.email}}" type="text" placeholder="Please enter your email id"> 
             <label for="lang">{{t "/profile/lang" credentials}}</label>
             <select class="u-full-width" name="lang" value="{{user.lang}}" id="lang">
-              {{#select lang}}
+              {{#select user.lang}}
               <option value="en_US">English</option>
               <option value="hi">Hindi</option>
               {{/select}}
