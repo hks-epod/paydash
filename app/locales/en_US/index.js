@@ -45,6 +45,7 @@ module.exports = {
         unread : 'Unread Notifications',
         message: {
             1: {
+                $filter: 'role',
                 block: [' block made ',' payments to MGNREGA beneficiaries on ',' .'],
                 district: [' district made ',' payments to MGNREGA beneficiaries on ',' .']
             },

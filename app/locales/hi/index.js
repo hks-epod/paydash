@@ -45,6 +45,7 @@ module.exports = {
         unread : 'अपठित संदेश',
         message: {
             1: {
+                $filter: 'role',
                 block: [' प्रखंड/जनपद में ',' तारीख को ',' MGNREGA भुगतान हुए |'],
                 district: [' ज़िला में ',' तारीख को ',' MGNREGA भुगतान हुए |']
             },
