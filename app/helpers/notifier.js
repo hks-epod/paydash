@@ -11,7 +11,7 @@ exports.message = function(n, request) {
         var total_transactions = n.dataValues.total_transactions;
         var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var batch_date = n.dataValues.batch_date.getDate() + ' ' + monthNames[n.dataValues.batch_date.getMonth()] + ' ' + n.dataValues.batch_date.getFullYear();
-        var notification_sub_text = Translate('/notifications/message/1/block', request.auth.credentials);
+        var notification_sub_text = Translate('/notifications/message/1', request.auth.credentials);
 
         if (request.auth.credentials.lang === 'en_US') {
             msg = region_name + notification_sub_text[0] + total_transactions + notification_sub_text[1] + batch_date + notification_sub_text[2];
