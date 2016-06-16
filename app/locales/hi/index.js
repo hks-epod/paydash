@@ -89,7 +89,7 @@ module.exports = {
         'block': 'प्रखंड/जनपद औसत'
     },
     y_axis_labels: 'प्रक्रिया पूरी करने में लगे दिन',
-    total_trans :"तिथि : कुल भुगतनों की संख्या-",
+    total_trans :"तिथि : कुल भुगतानों की संख्या-",
     performance: {
         overview: {
             chart_a: {
