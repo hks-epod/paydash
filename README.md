@@ -108,7 +108,7 @@ The server should be running at [localhost:8000](https://localhost:8000).
 ## Running tests
 Lab is part of the hapi.js toolset and what we use to write all of our tests.
 
-```
+```sh
 $ npm test
 # > paydash@1.0.0 test /Users/ravisuhag/Batcave/Workspace/hks-epod/Dev/paydash
 # > node node_modules/lab/bin/lab -a code -t 100
