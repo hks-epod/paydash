@@ -154,7 +154,7 @@ module.exports = {
             t_5: 'Measurement book not filled (T+5)',
             t_6: 'Wagelist not sent (T+6)',
             t_7: 'Pending for FTO first signature (T+7)',
-            T_8: 'Pending for FTO second signature (T+8)'
+            t_8: 'Pending for FTO second signature (T+8)'
         }
     },
     app: {
