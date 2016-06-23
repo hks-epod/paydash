@@ -58,7 +58,7 @@ module.exports = {
     browser_msg: 'The browser you are using is not supported. PayDash works best with Chrome, Firefox, or Internet Explorer 9+.',
     messages: {
         loading: 'Loading data...',
-        not_found: 'Page not found. Please contact the Paydash team if you need assistance.'
+        not_found: 'Page not found. Please contact the PayDash team if you need assistance.'
     },
     time_selector: {
         '1': 'All available dates',
