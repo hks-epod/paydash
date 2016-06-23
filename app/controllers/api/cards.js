@@ -34,11 +34,15 @@ exports.getData = {
 
 	            var notificationsResponse = utils.flatten(rows[4]);
 
+	            var stateResponse = utils.flatten(rows[5]);
+
 	            // Parse the overview response
 	           	var current_total = overviewResponse[0].current_total;
 	            var delayed_total = overviewResponse[0].delayed_total;
 	            var days_to_payment = overviewResponse[0].time_to_payment;
 	            var total_transactions = overviewResponse[0].total_transactions;
+
+	            var state_code = stateResponse[0].state_code;
 
 	            // Nest the cards response and include the overview stats
 	            var cards = d3.nest()
@@ -49,7 +53,7 @@ exports.getData = {
 	                    return {
 	                        'name': v[0].name,
 	                        'staff_id': v[0].staff_id,
-	                        'designation': v[0].task_assign,
+	                        'designation': utils.getDesignation(v[0].task_assign,state_code),
 	                        'mobile':v[0].mobile_no,
 	                        'block_name':v[0].block_name,
 		        			'current_total':v[0].current_total,

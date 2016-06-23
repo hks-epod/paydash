@@ -41,3 +41,18 @@ exports.nestEmpStats = function(obj) {
         })
         .map(exports.flatten(obj));
 };
+
+exports.getDesignation = function(task_assign,state_code) {
+    var designationLookup = {
+        17:'SE',
+        33:'TA',
+        34:'JE'
+    };
+
+    if (task_assign === 'TA') {
+        return designationLookup[state_code];
+    } 
+    else {
+        return task_assign;
+    }
+}
