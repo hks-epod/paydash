@@ -183,9 +183,11 @@ exports.district = function(rows, role, credentials){
         'headers': ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
         'role': role,
         labels: Translate('/payment_steps_labels', credentials),
-        y_axis_label : Translate('/y_axis_labels', credentials)
+        y_axis_label : Translate('/y_axis_labels', credentials),
+        sidebar : {
+            avg_days : Translate('/performance/discrete/sidebar/avg_days', credentials),
+            total_trans : Translate('/performance/discrete/sidebar/avg_days', credentials),
+        }
     };
-    // console.log(JSON.stringify(final_dict, null, 4));
-    // console.log('connection : %j', final_dict);
     return final_dict;
 }

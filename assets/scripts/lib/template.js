@@ -21,8 +21,8 @@ exports.grouped = function(data, internals) {
                 '<div class="head js-group-head">' +
                 '<span class="u-pull-right">' + d.mobile + '</span>' +
                 '<h4>' + d.name + '</h4>' +
-                '<div>Avg. days from muster roll closure to entry : <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></div>' +
-                '<div>Total transactions : <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></div>' +
+                '<div>'+ internals.data.config.av_days + ' : <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></div>' +
+                '<div>'+  internals.data.config.total_trans +': <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></div>' +
                 '</div>' +
                 '<div class="subgroup">';
             d.panchayats.forEach(function(region, index) {

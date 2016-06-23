@@ -141,7 +141,11 @@ module.exports = {
                 no: 'No Grouping',
                 ta: 'Group by TA',
                 grs: 'Group by GRS'
-            }
+            },
+            sidebar : {
+                total_trans: 'Total Transactions',
+                avg_days: 'Avg. days from muster roll closure to entry'
+            } 
         }
     },
     musters: {
