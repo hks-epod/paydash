@@ -22,6 +22,7 @@ exports.flash = function(options) {
             value: 15,
             label: 'Statutory Limit'
         }],
+        point_size : 3.5,
         max_x : options.max_x || null,
         min_x: options.min_x || null,
         chart_type: options.data.length !== 0 ? 'line' : 'missing-data',
@@ -93,6 +94,7 @@ exports.singular = function(options) {
         show_tooltips: false,
         aggregate_rollover: true,
         show_year_markers: true,
+        point_size : 3.5,
         // transition_on_update: true,
         interplate: 'linear',
         interpolate_tension: 1,
@@ -150,6 +152,7 @@ exports.small = function(options) {
         legend: options.labels,
         legend_target: options.legend_target,
         full_width: true,
+        point_size : 3.5,
         aggregate_rollover: true,
         x_extended_ticks: true,
         transition_on_update: false,
