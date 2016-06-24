@@ -100,6 +100,7 @@ exports.singular = function(options) {
         interpolate_tension: 1,
         area: options.area,
         y_label:  options.y_axis_label,
+        show_rollover_text: false,
         mouseover: function(d, i) {
             if (!d.values) {
                 d.values = [d];
