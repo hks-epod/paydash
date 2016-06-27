@@ -21,8 +21,8 @@ exports.grouped = function(data, internals) {
                 '<div class="head js-group-head">' +
                 '<span class="u-pull-right">' + d.mobile + '</span>' +
                 '<h4>' + d.name + '</h4>' +
-                '<div>'+ internals.data.config.av_days + ' : <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></div>' +
-                '<div>'+  internals.data.config.total_trans +': <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></div>' +
+                '<div>' + internals.data.config.sidebar.avg_days + ' : <span id="p_stat_step_avg' + d.mobile + '">' + d['step1_avg_' + p_past_n_days] + '</span></div>' +
+                '<div>' + internals.data.config.sidebar.total_trans + ': <span id="p_stat_tot_trans' + d.mobile + '"> ' + d['tot_trans_' + p_past_n_days] + '</span></div>' +
                 '</div>' +
                 '<div class="subgroup">';
             d.panchayats.forEach(function(region, index) {
@@ -35,7 +35,7 @@ exports.grouped = function(data, internals) {
         });
 }
 
-exports.groupedDistrict = function(data, internals){
+exports.groupedDistrict = function(data, internals) {
     D3.select('#grouping_container').selectAll('div').remove();
     D3.select('#grouping_container')
         .selectAll('div')
@@ -51,7 +51,7 @@ exports.groupedDistrict = function(data, internals){
             }
             var htmlString =
                 '<div class="head">' +
-                '<h4 class="js-group-head" data-code="' + d.block_code + '" data-name="'+ d.block_name+'" >' + d.block_name + '</h4>' +
+                '<h4 class="js-group-head" data-code="' + d.block_code + '" data-name="' + d.block_name + '" >' + d.block_name + '</h4>' +
                 '</div>' +
                 '<div class="subgroup">';
             d.panchayats.forEach(function(region, index) {

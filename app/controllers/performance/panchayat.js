@@ -40,8 +40,12 @@ exports.getData = {
 
             final_dict.config = {
                 'headers': ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
-                labels: Translate('/payment_steps_labels', request.auth.credentials), 
-                y_axis_label : Translate('/y_axis_labels', request.auth.credentials),
+                labels: Translate('/payment_steps_labels', request.auth.credentials),
+                y_axis_label: Translate('/y_axis_labels', request.auth.credentials),
+                sidebar: {
+                    avg_days: Translate('/performance/discrete/sidebar/avg_days', credentials),
+                    total_trans: Translate('/performance/discrete/sidebar/total_trans', credentials),
+                }
             };
             reply(final_dict);
         });

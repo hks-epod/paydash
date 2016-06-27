@@ -120,18 +120,22 @@ exports.block = function(rows, role, credentials) {
     final_dict.config = {
         'headers': ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
         'role': role,
-        labels: Translate('/payment_steps_labels', credentials),
-        y_axis_labels : Translate('/y_axis_labels', credentials)
+        'labels': Translate('/payment_steps_labels', credentials),
+        'y_axis_labels': Translate('/y_axis_labels', credentials),
+        'sidebar': {
+            avg_days: Translate('/performance/discrete/sidebar/avg_days', credentials),
+            total_trans: Translate('/performance/discrete/sidebar/total_trans', credentials),
+        }
     };
 
     return final_dict;
 }
 
-exports.district = function(rows, role, credentials){
+exports.district = function(rows, role, credentials) {
 
     var final_dict = {};
     var regionName = rows[0][0].region_name;
-    
+
     final_dict.region_name = regionName;
 
     var blockResponse = Utils.flatten(rows[1]);
@@ -159,7 +163,9 @@ exports.district = function(rows, role, credentials){
                         d.tot_trn
                     ];
                 }),
-                'panchayats': panchayatResponse.filter(function(d) { return d.block_code === v[0].region_code; }).map(function(d) {
+                'panchayats': panchayatResponse.filter(function(d) {
+                    return d.block_code === v[0].region_code;
+                }).map(function(d) {
                     return {
                         'panchayat_code': d.panchayat_code,
                         'panchayat_name': d.panchayat_name
@@ -182,11 +188,11 @@ exports.district = function(rows, role, credentials){
     final_dict.config = {
         'headers': ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
         'role': role,
-        labels: Translate('/payment_steps_labels', credentials),
-        y_axis_label : Translate('/y_axis_labels', credentials),
-        sidebar : {
-            avg_days : Translate('/performance/discrete/sidebar/avg_days', credentials),
-            total_trans : Translate('/performance/discrete/sidebar/avg_days', credentials),
+        'labels': Translate('/payment_steps_labels', credentials),
+        'y_axis_label': Translate('/y_axis_labels', credentials),
+        'sidebar': {
+            avg_days: Translate('/performance/discrete/sidebar/avg_days', credentials),
+            total_trans: Translate('/performance/discrete/sidebar/total_trans', credentials),
         }
     };
     return final_dict;
