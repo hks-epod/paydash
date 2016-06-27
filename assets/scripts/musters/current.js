@@ -16,7 +16,8 @@ exports.init = function() {
 
             $('#current-musters').dynatable({
                 dataset: {
-                    records: data.musters
+                    records: data.musters,
+                    sorts: { msr_no: 1 }
                 },
                 table: {
                     defaultColumnIdStyle: 'underscore'

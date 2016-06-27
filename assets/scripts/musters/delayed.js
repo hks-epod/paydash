@@ -16,13 +16,15 @@ exports.init = function() {
             $('#loader').hide();
             $('.table-holder').removeClass('u-hidden');
 
+
             Util.loadMappingMessage(data.mapping);
-            
+
             tim.forEach(function(val, index) {
 
                 $('#delayed-table-' + val).dynatable({
                     dataset: {
-                        records: data.musters['ds_t' + val]
+                        records: data.musters['ds_t' + val],
+                        sorts: { msr_no: 1 }
                     },
                     table: {
                         defaultColumnIdStyle: 'underscore'
