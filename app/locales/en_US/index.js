@@ -211,8 +211,8 @@ module.exports = {
         },
         notifications: {
             notifications: 'Notifications',
-            read: 'Read notifications',
-            unread: 'Unread notifications'
+            read: 'Read',
+            unread: 'Unread'
         },
         profile: {
             firstname: 'First Name',

@@ -215,8 +215,8 @@ module.exports = {
         },
         notifications: {
             notifications: 'संदेश',
-            read: 'पठित संदेश',
-            unread: 'अपठित संदेश'
+            read: 'पठित',
+            unread: 'अपठित'
         },
         profile: {
             firstname: 'मूल नाम',
