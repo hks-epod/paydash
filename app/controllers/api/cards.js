@@ -36,6 +36,8 @@ exports.getData = {
 
 	            var stateResponse = utils.flatten(rows[5]);
 
+	            var contactResponse = utils.flatten(rows[6]);
+
 	            // Parse the overview response
 	           	var current_total = overviewResponse[0].current_total;
 	            var delayed_total = overviewResponse[0].delayed_total;
@@ -190,6 +192,11 @@ exports.getData = {
 		        		    'Second signature to processed by bank',
 		        		    'Total Transactions'
 		        		],
+		        	},
+		        	'contact': {
+		        		'phone': contactResponse[0].phone,
+		        		'email': contactResponse[0].email,
+		        		'subject': contactResponse[0].subject
 		        	}
 		        };
 
