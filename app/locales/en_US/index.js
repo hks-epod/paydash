@@ -235,6 +235,22 @@ module.exports = {
             new_pass: 'New password',
             pass_confirm: 'Verify new password',
             forgot_pass: 'I forgot my password'
+        },
+        messages: {
+            login: {
+                connectivity: 'Unable to log in to PayDash. Please try again when your device has internet connectivity.',
+                credentials: 'Incorrect username/password combination. Please contact the PayDash team if this issue persists.',
+                general: 'Unable to log in to PayDash. Please contact the PayDash team if this issue persists.'
+            },
+            logout: {
+                connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
+                warning: {
+                    'message':'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
+                    'logout': 'Log out',
+                    'cancel': 'Cancel'
+                },
+                general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.'
+            }
         }
     }
 };

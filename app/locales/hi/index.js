@@ -239,6 +239,22 @@ module.exports = {
             new_pass: 'नया पासवर्ड ',
             pass_confirm:'नये पासवर्ड को सत्यापित करें',
             forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया'
+        },
+        messages: {
+            login: {
+                connectivity: 'हमे खेद है कि आप log in करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें |',
+                credentials: 'ऐसा व्यतीत होता है कि आपने ग़लत username या password भरा है | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें |',
+                general: 'हमे खेद है कि आप log in करने में विफल रहे | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें |'
+            },
+            logout: {
+                connectivity: 'हमे खेद है कि आप log out करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें |',
+                warning: {
+                    'message':'क्या आप सचमुच Log Out करना चाहते हैं? PayDash का offline mode तभी तक उपलब्ध रहेगा जब तक आप logged in हैं |',
+                    'logout': 'Log out',
+                    'cancel': 'Cancel'
+                },
+                general: 'हमे खेद है कि आप log out करने में विफल रहे | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें |'
+            }
         }
     }
 };
