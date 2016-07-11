@@ -49,7 +49,8 @@ exports.getData = {
 	            // Nest the cards response and include the overview stats
 	            var cards = d3.nest()
 	                .key(function(d) {
-	                    return d.staff_id;
+	                	var key = d.staff_id + d.block_code;
+	                    return key;
 	                })
 	                .rollup(function(v) {
 	                    return {
