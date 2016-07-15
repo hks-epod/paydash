@@ -26,9 +26,7 @@ exports.postEditProfile = {
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            console.log(error);
-            request.session.flash('error', 'Bad request');
-            return reply.redirect('/me/settings/profile');
+            return reply.reply(Boom.badRequest(error));
         }
     },
     handler: function(request, reply) {
@@ -46,7 +44,6 @@ exports.postEditProfile = {
                     request.auth.session.clear();
                     request.auth.session.set(user);
                     return reply(user);
-
                 });
 
             } else {
