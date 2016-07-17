@@ -27,8 +27,6 @@
     "node": ">=4.0.0"
   },
   "dependencies": {
-    "bell": "^7.9.3",
-    "bistre": "^1.0.1",
     "boom": "^3.2.2",
     "confidence": "^3.0.1",
     "crumb": "^6.0.2",
