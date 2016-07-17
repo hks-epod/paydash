@@ -1,8 +1,6 @@
 'use strict';
 var Gulp = require('gulp');
 var Nodemon = require('gulp-nodemon');
-var bistre = require('bistre');
-
 Gulp.task('nodemon', function() {
 
     var nodeArgs = [];

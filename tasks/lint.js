@@ -1,12 +1,13 @@
 'use strict';
 
-var Gulp = require('gulp');
-var jshint = require('gulp-jshint');
+const Gulp = require('gulp');
+const Eslint = require('gulp-eslint');
 
-var paths = require('../config/assets');
+const Paths = require('../config/assets');
 
 Gulp.task('lint', function() {
-    return Gulp.src(paths.get('/lint'))
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+    return Gulp.src(Paths.get('/lint'))
+        .pipe(Eslint())
+        .pipe(Eslint.format())
+        .pipe(Eslint.failAfterError());
 });
