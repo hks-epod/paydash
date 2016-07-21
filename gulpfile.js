@@ -1,7 +1,5 @@
-'use strict';
-
-const Gulp = require('gulp');
-const RequireDir = require('require-dir');
+import Gulp from 'gulp';
+import RequireDir from 'require-dir';
 
 // Load Tasks
 
