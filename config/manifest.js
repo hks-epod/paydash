@@ -52,13 +52,6 @@ internals.manifest = {
                 }
             }
         },
-        // Hapi cookie jar
-        {
-            plugin: {
-                register: 'yar',
-                options: Config.get('/yarCookie')
-            }
-        },
         // Logging 
         {
             plugin: {

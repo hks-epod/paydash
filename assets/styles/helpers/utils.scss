@@ -49,5 +49,5 @@
 .container:after,
 .pure-g:after,
 .u-cf {
-  @extend .clearfix
+  @extend %clearfix
 }

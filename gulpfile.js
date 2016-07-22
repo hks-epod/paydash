@@ -1,13 +1,14 @@
-import Gulp from 'gulp';
-import RequireDir from 'require-dir';
+'use strict';
 
-// Load Tasks
+const Gulp = require('gulp');
+const RequireDir = require('require-dir');
+
+// Load tasks
 
 RequireDir('./tasks');
 
 
-//  Build task definition 
-
+//  Build task definitions
 Gulp.task('dev-build', ['fonts', 'images', 'misc', 'styles', 'webpack', 'lint']);
 Gulp.task('prod-build', ['dev-build', 'rev']);
 
