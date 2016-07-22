@@ -2,8 +2,6 @@
 
 exports.register = function(plugin, options, next) {
 
-    plugin.dependency('auth', function(plugin, next) {
-
         var Controllers = {
             musters: {
                 current: require('../controllers/musters/current-musters'),
@@ -38,9 +36,6 @@ exports.register = function(plugin, options, next) {
                 config: Controllers.musters.delayed.getData
             },
         ]);
-
-        next();
-    });
 
     next();
 };

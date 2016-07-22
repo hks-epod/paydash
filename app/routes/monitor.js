@@ -2,8 +2,6 @@
 
 exports.register = function(plugin, options, next) {
 
-    plugin.dependency('auth', function(plugin, next) {
-
         var Controllers = {
             monitor: {
                 user: require('../controllers/monitor/user'),
@@ -57,9 +55,6 @@ exports.register = function(plugin, options, next) {
                 config: Controllers.monitor.analysis.getData
             }
         ]);
-
-        next();
-    });
 
     next();
 };

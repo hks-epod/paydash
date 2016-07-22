@@ -2,8 +2,6 @@
 
 exports.register = function(plugin, options, next) {
 
-    plugin.dependency('auth', function(plugin, next) {
-
         var Controllers = {
             settings: {
                 profile: require('../controllers/users/settings-profile'),
@@ -38,9 +36,6 @@ exports.register = function(plugin, options, next) {
                 config: Controllers.settings.account.postChangePassword
             }
         ]);
-
-        next();
-    });
 
     next();
 };

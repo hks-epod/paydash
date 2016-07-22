@@ -2,8 +2,6 @@
 
 exports.register = function(plugin, options, next) {
 
-    plugin.dependency('auth', function(plugin, next) {
-
         var Controllers = {
             performance: {
                 overview: require('../controllers/performance/overview'),
@@ -40,9 +38,6 @@ exports.register = function(plugin, options, next) {
                 config: Controllers.performance.panchayat.getData
             }
         ]);
-
-        next();
-    });
 
     next();
 };
