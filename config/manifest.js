@@ -32,33 +32,12 @@ internals.manifest = {
         {
             plugin: 'hapi-context-credentials'
         },
+
         // Cookie authentication
         {
             plugin: 'hapi-auth-cookie'
         },
-        // Flash Plugin
-        {
-            plugin: {
-                register: './lib/flash'
-            }
-        },
-        // Hapi cookie jar
-        {
-            plugin: {
-                register: 'yar',
-                options: {
-                    password: Config.get('/yarCookie/password'),
-                    isSecure: Config.get('/yarCookie/ssl')
-                }
-            }
-        },
-        // Logging 
-        {
-            plugin: {
-                register: 'good',
-                options: Config.get('/good')
-            }
-        },
+
         // Crumb 
         {
             plugin: {
@@ -72,6 +51,28 @@ internals.manifest = {
                 }
             }
         },
+
+        // Flash Plugin
+        {
+            plugin: {
+                register: './lib/flash'
+            }
+        },
+
+        // Hapi cookie jar
+        {
+            plugin: {
+                register: 'yar',
+                options: {
+                    storeBlank: false,
+                    cookieOptions: {
+                        password: Config.get('/yarCookie/password'),
+                        isSecure: Config.get('/yarCookie/ssl')
+                    }
+                }
+            }
+        },
+
         // Static file and directory handlers
         {
             plugin: 'inert'
@@ -81,6 +82,7 @@ internals.manifest = {
         {
             plugin: 'vision'
         },
+
         // Views loader 
         {
             plugin: {
@@ -97,6 +99,7 @@ internals.manifest = {
                 }
             }
         },
+
         // Sequelize
         {
             plugin: {
@@ -104,6 +107,7 @@ internals.manifest = {
                 options: Config.get('/sequelize')
             }
         },
+
         // Auth
         {
             plugin: {
@@ -111,30 +115,37 @@ internals.manifest = {
                 options: Config.get('/authCookie')
             }
         },
+
         //  Core routes
         {
             plugin: './app/routes/core.js'
         },
+
         //  Auth routes
         {
             plugin: './app/routes/auth.js'
         },
+
         //  Users routes
         {
             plugin: './app/routes/users.js'
         },
+
         //  Performance routes
         {
             plugin: './app/routes/performance.js'
         },
+
         //  Musters routes
         {
             plugin: './app/routes/musters.js'
         },
+
         //  Alerts routes
         {
             plugin: './app/routes/alerts.js'
         },
+
         //  Alerts routes
         {
             plugin: './app/routes/api.js'

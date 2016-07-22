@@ -3,11 +3,12 @@
 const Composer = require('./index');
 const Hoek = require('hoek');
 
-Composer((err, server) => {
+Composer(function(err, server) {
 
     Hoek.assert(!err, err);
-    server.start(() => {
-        console.log(`Server started @ ${server.info.uri}`);
+    server.start(function() {
+        console.log('Server started @ ' + server.info.uri);
     });
     
 });
+

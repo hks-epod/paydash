@@ -1,12 +1,8 @@
 'use strict';
 
-var Boom = require('boom');
-var Joi = require('joi');
-var crypto = require('crypto');
-
-var lockoutInterval = 60; // seconds
-var maxAttemptsBeforeLockout = 5;
-
+const Boom = require('boom');
+const Joi = require('joi');
+const Crypto = require('crypto');
 
 exports.showForm = {
     description: 'Returns the login page',
@@ -52,7 +48,7 @@ exports.postForm = {
         },
         failAction: function(request, reply, source, error) {
             // Username, passowrd minimum validation failed
-            request.session.flash('error', 'Invalid username or password');
+            request.yar.flash('error', 'Invalid username or password');
             return reply.redirect('/login');
         },
     },
@@ -65,14 +61,14 @@ exports.postForm = {
         User.findOne({
             where: {
                 username: request.payload.username,
-                password: crypto.createHash('md5').update(request.payload.password).digest('hex')
+                password: Crypto.createHash('md5').update(request.payload.password).digest('hex')
             },
             include: [db.user_regions]
         }).then(function(user) {
             if (user) {
-                request.auth.session.set(user);
+                request.cookieAuth.set(user);
                 if (!user.isActive) {
-                    request.session.flash('info', 'Please check your profile details');
+                    request.yar.flash('info', 'Please check your profile details');
                     user.update({
                         isActive: true
                     }).then(function() {
@@ -84,7 +80,7 @@ exports.postForm = {
 
             } else {
                 // User not fond in database
-                request.session.flash('error', 'Invalid username or password');
+                request.yar.flash('error', 'Invalid username or password');
                 return reply.redirect('/login');
             }
         });
