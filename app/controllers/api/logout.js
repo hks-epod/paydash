@@ -7,7 +7,7 @@ exports.postForm = {
         strategy: 'standard'
     },
     handler: function(request, reply) {
-        request.auth.session.clear();
+       request.cookieAuth.clear();
 
         return reply({
             "statusCode": 200,

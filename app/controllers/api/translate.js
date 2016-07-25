@@ -16,7 +16,7 @@ exports.getData = {
         var res = {
             en_US: Translate('/app', { lang: 'en_US' }),
             hi: Translate('/app', { lang: 'hi' })
-        }
+        };
 
         reply(res);
 

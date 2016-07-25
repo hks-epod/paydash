@@ -40,7 +40,7 @@ exports.postForm = {
             }
         }).then(function(user) {
             if (user) {
-                request.auth.session.set(user);
+                request.cookieAuth.set(user);
                 delete user.password;
                 return reply(user);
             } else {

@@ -123,7 +123,8 @@ internals.manifest = {
                 options: {
                     validVersions: [1, 2],
                     defaultVersion: 1,
-                    vendorName: 'paydroid'
+                    vendorName: 'paydroid',
+                    basePath: '/api/'
                 }
             }
         },
