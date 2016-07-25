@@ -116,6 +116,18 @@ internals.manifest = {
             }
         },
 
+        // Versioning
+        {
+            plugin: {
+                register: './lib/versioning',
+                options: {
+                    validVersions: [1, 2],
+                    defaultVersion: 1,
+                    vendorName: 'paydroid'
+                }
+            }
+        },
+
         //  Core routes
         {
             plugin: './app/routes/core.js'
@@ -146,7 +158,7 @@ internals.manifest = {
             plugin: './app/routes/alerts.js'
         },
 
-        //  Alerts routes
+        //  Api routes
         {
             plugin: './app/routes/api.js'
         }
