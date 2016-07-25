@@ -47,6 +47,7 @@
     "jquery": "^3.1.0",
     "lab": "^10.9.0",
     "lodash": "^4.13.1",
+    "media-type": "^0.3.0",
     "metrics-graphics": "^2.9.0",
     "moment": "^2.14.1",
     "mysql": "^2.11.1",
