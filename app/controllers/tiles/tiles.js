@@ -89,7 +89,6 @@ exports.getData = {
                     'current_total':current_total,
                     'delayed_total':delayed_total,
                     'days_to_payment':days_to_payment,
-                    'total_transactions':total_transactions,
                     'tiles_total': tiles.length
                 },
                 'tiles': tiles,
