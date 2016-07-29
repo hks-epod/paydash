@@ -16,7 +16,7 @@ exports.getData = {
         var userId = request.auth.credentials.id;
         var role = request.auth.credentials.role;
         var version = request.pre.apiVersion;
-
+        version = 2;
         var queryString = queries.cards(userId,role,version);
 
         // API CODE

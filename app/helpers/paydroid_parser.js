@@ -542,6 +542,7 @@ exports.v2 = function(rows, role) {
                 'cards_total': cards.length
             },
             'cards': cards,
+            'district_performance': districtPerformance,
             'block_performance': blockPerformance,
             'panchayat_performance': panchayatPerformance,
             'config': {
