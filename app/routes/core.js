@@ -2,7 +2,7 @@
 
 exports.register = function(plugin, options, next) {
 
-    var Controllers = {
+    const Controllers = {
         core: {
             pages: require('../controllers/core/pages'),
             fallback: require('../controllers/core/fallback'),

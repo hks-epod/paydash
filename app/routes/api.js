@@ -2,7 +2,7 @@
 
 exports.register = function(plugin, options, next) {
 
-    var Controllers = {
+    const Controllers = {
         api: {
             login: require('../controllers/api/login'),
             logout: require('../controllers/api/logout'),

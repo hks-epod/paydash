@@ -2,7 +2,7 @@
 
 exports.register = function(plugin, options, next) {
 
-    var Controllers = {
+    const Controllers = {
         musters: {
             cards: require('../controllers/musters/cards')
         }
