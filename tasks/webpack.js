@@ -9,6 +9,9 @@ var ProvidePlugin = Webpack.ProvidePlugin;
 
 Gulp.task('webpack', function() {
 
+
+    var production = process.env.NODE_ENV === 'production';
+    
     var config = {
         entry: {
             vendor: ['jquery', 'd3'],
@@ -23,10 +26,12 @@ Gulp.task('webpack', function() {
         },
         module: {
             loaders: [{
-                test: /\.jsx$/,
-                loader: 'babel'
+                test: /\.jsx?$/,
+                loader: 'babel',
+                exclude: /(node_modules|bower_components)/
             }]
         },
+        debug: !production,
         devtool: 'source-map',
         plugins: [
             new UglifyJsPlugin({

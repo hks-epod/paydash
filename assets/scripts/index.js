@@ -6,8 +6,6 @@ require('./components/active-link');
 
 var OverviewPerformance = require('./performance/overview');
 var DiscretePerformance = require('./performance/discrete');
-var currentMusters = require('./musters/current');
-var delayedMusters = require('./musters/delayed');
 
 if (window.location.pathname === '/performance/overview') {
     OverviewPerformance.init();
@@ -17,11 +15,8 @@ if (window.location.pathname === '/performance/discrete') {
 }
 
 if (window.location.pathname === '/musters/current') {
-    currentMusters.init();
-}
 
-if (window.location.pathname === '/musters/delayed') {
-    delayedMusters.init();
+    require('./components/cards.jsx');
 }
 
 if (window.location.pathname === '/login') {
