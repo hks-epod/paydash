@@ -3,6 +3,8 @@
 var Queries = require('../../helpers/queries');
 var OverviewParser = require('../../helpers/overview_parser');
 var Translate = require('../../templates/helpers/t');
+var utils = require('../../helpers/utils');
+var d3 = require(d3);
 
 exports.showPage = {
     handler: function(request, reply) {
@@ -81,7 +83,7 @@ exports.getData = {
             }
 
             if (role === 'district') {
-
+                // 
             }
 
             var final_dict = {
