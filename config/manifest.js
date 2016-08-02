@@ -154,11 +154,6 @@ internals.manifest = {
             plugin: './app/routes/musters.js'
         },
 
-        //  Alerts routes
-        {
-            plugin: './app/routes/alerts.js'
-        },
-
         //  Api routes
         {
             plugin: './app/routes/api.js'

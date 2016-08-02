@@ -1,7 +1,7 @@
 'use strict';
 
-var queries = require('../../helpers/queries');
-var parser = require('../../helpers/paydroid_parser');
+var Queries = require('../../helpers/queries');
+var Parser = require('../../helpers/paydroid_parser');
 
 exports.getData = {
     plugins: {
@@ -17,7 +17,7 @@ exports.getData = {
         var role = request.auth.credentials.role;
         var version = request.pre.apiVersion;
 
-        var queryString = queries.cards(userId,role,version);
+        var queryString = Queries.cards(userId, role, version);
 
         // API CODE
         sequelize.query(queryString, {
@@ -26,11 +26,11 @@ exports.getData = {
 
         	if (version===1) {
 
-        		var data = parser.v1(rows);
+        		var data = Parser.v1(rows);
 
         	} else if (version===2) {
 
-        		var data = parser.v2(rows,role);
+        		var data = Parser.v2(rows,role);
 
         	}
 

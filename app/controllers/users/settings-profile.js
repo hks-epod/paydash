@@ -1,6 +1,6 @@
 'use strict';
 
-var Joi = require('joi');
+const Joi = require('joi');
 
 exports.showEditProfile = {
     description: 'Show Edit profile settings',

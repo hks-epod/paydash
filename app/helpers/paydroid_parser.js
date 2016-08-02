@@ -1,7 +1,7 @@
 'use strict';
 
 var d3 = require('d3');
-var utils = require('./utils');
+const Utils = require('./utils');
 
 exports.v1 = function(rows) {
 
@@ -36,7 +36,7 @@ exports.v1 = function(rows) {
             return {
                 'name': v[0].name,
                 'staff_id': v[0].staff_id,
-                'designation': utils.getDesignation(v[0].task_assign, state_code),
+                'designation': Utils.getDesignation(v[0].task_assign, state_code),
                 'mobile': v[0].mobile_no,
                 'block_name': v[0].block_name,
                 'current_total': v[0].current_total,
@@ -82,7 +82,7 @@ exports.v1 = function(rows) {
                 'block_name': v[0].block_name,
                 'data': v.map(function(d) {
                     return [
-                        d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
+                        d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
                         d.mrc_mre,
                         d.mre_wlg,
                         d.wlg_wls,
@@ -120,7 +120,7 @@ exports.v1 = function(rows) {
                 'panchayat_name': v[0].panchayat_name,
                 'data': v.map(function(d) {
                     return [
-                        d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
+                        d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
                         d.mrc_mre,
                         d.mre_wlg,
                         d.wlg_wls,
@@ -181,7 +181,9 @@ exports.v1 = function(rows) {
     };
 
     return data;
-}
+
+};
+
 
 exports.v2 = function(rows, role) {
 
@@ -216,7 +218,7 @@ exports.v2 = function(rows, role) {
                 return {
                     'name': v[0].name,
                     'staff_id': v[0].staff_id,
-                    'designation': utils.getDesignation(v[0].task_assign, state_code),
+                    'designation': Utils.getDesignation(v[0].task_assign, state_code),
                     'mobile': v[0].mobile_no,
                     'block_name': v[0].block_name,
                     'current_total': v[0].current_total,
@@ -263,7 +265,7 @@ exports.v2 = function(rows, role) {
                     'block_name': v[0].block_name,
                     'data': v.map(function(d) {
                         return [
-                            d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
+                            d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
@@ -301,7 +303,7 @@ exports.v2 = function(rows, role) {
                     'panchayat_name': v[0].panchayat_name,
                     'data': v.map(function(d) {
                         return [
-                            d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
+                            d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
@@ -431,7 +433,7 @@ exports.v2 = function(rows, role) {
                     'district_name': v[0].block_name,
                     'data': v.map(function(d) {
                         return [
-                            d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
+                            d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
@@ -468,7 +470,7 @@ exports.v2 = function(rows, role) {
                     'block_name': v[0].block_name,
                     'data': v.map(function(d) {
                         return [
-                            d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
+                            d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
@@ -507,7 +509,7 @@ exports.v2 = function(rows, role) {
                     'panchayat_name': v[0].panchayat_name,
                     'data': v.map(function(d) {
                         return [
-                            d.date.getFullYear() + '' + utils.padNum(d.date.getMonth() + 1) + '' + utils.padNum(d.date.getDate()),
+                            d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
@@ -580,4 +582,5 @@ exports.v2 = function(rows, role) {
     }
 
     return data;
-}
+
+};

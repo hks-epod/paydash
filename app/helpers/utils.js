@@ -1,6 +1,6 @@
 'use strict';
 
-var d3 = require('d3');
+const D3 = require('d3');
 
 exports.padNum = function(num) {
     var str = num.toString();
@@ -18,7 +18,7 @@ exports.flatten = function(obj) {
 };
 
 exports.nestEmpMapping = function(obj) {
-    return d3.nest()
+    return D3.nest()
         .key(function(d) {
             return d.region_code;
         })
@@ -29,7 +29,7 @@ exports.nestEmpMapping = function(obj) {
 };
 
 exports.nestEmpStats = function(obj) {
-    return d3.nest()
+    return D3.nest()
         .key(function(d) {
             return d.staff_id;
         })
@@ -42,17 +42,16 @@ exports.nestEmpStats = function(obj) {
         .map(exports.flatten(obj));
 };
 
-exports.getDesignation = function(task_assign,state_code) {
+exports.getDesignation = function(task_assign, state_code) {
     var designationLookup = {
-        17:'SE',
-        33:'TA',
-        34:'JE'
+        17: 'SE',
+        33: 'TA',
+        34: 'JE'
     };
 
     if (task_assign === 'TA') {
         return designationLookup[state_code];
-    } 
-    else {
+    } else {
         return task_assign;
     }
-}
+};

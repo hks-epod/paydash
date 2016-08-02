@@ -1,7 +1,7 @@
 'use strict';
 
-var Joi = require('joi');
-var crypto = require('crypto');
+const Joi = require('joi');
+const Crypto = require('crypto');
 
 exports.showEditAccount = {
     description: 'Show Edit account settings',
@@ -43,12 +43,12 @@ exports.postChangePassword = {
         User.findOne({
             where: {
                 username: request.auth.credentials.username,
-                password: crypto.createHash('md5').update(request.payload.oldPassword).digest('hex')
+                password: Crypto.createHash('md5').update(request.payload.oldPassword).digest('hex')
             }
         }).then(function(user) {
             if (user) {
                 user.update({
-                    password: crypto.createHash('md5').update(request.payload.newPassword).digest('hex')
+                    password: Crypto.createHash('md5').update(request.payload.newPassword).digest('hex')
                 }).then(function() {
                     request.session.flash('success', 'Password changed successfully. Please login with new password');
                     request.auth.session.clear();
