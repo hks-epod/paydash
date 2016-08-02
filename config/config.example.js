@@ -1,15 +1,19 @@
 'use strict';
-var Confidence = require('confidence');
+
+const Confidence = require('confidence');
 
 // Confidence criteria 
-var criteria = {
-    env: process.env.NODE_ENV
+let internals = {
+    criteria: {
+        env: process.env.NODE_ENV
+    }
 };
 
 //  Confidence document object
-var config = {
-    $meta: 'paydash app configuration file',
-    projectName: 'paydash',
+
+internals.config = {
+    $meta: 'Paydash app configuration file',
+    projectName: 'Paydash',
     port: {
         web: {
             $filter: 'env',
@@ -21,7 +25,7 @@ var config = {
     baseUrl: {
         $filter: 'env',
         $meta: 'values should not end in "/"',
-        production: 'https://example.yourdomain.com',
+        production: 'https://paydash.in',
         $default: 'http://127.0.0.1:8000'
     },
     sequelize: {
@@ -30,7 +34,7 @@ var config = {
             database: 'db_name',
             username: 'username',
             password: 'password',
-            host: 'db_host_address',
+            host: 'host.name',
             dialect: 'mysql',
             pool: {
                 max: 5,
@@ -39,10 +43,10 @@ var config = {
             }
         },
         test: {
-            database: 'paydash',
+            database: 'db_name',
             username: 'username',
             password: 'password',
-            host: 'localhost',
+            host: 'host.name',
             dialect: 'mysql',
             pool: {
                 max: 5,
@@ -51,10 +55,10 @@ var config = {
             }
         },
         $default: {
-            database: 'paydash',
-            username: 'root',
-            password: '',
-            host: 'localhost',
+            database: 'db_name',
+            username: 'username',
+            password: 'password',
+            host: 'host.name',
             dialect: 'mysql',
             pool: {
                 max: 5,
@@ -64,37 +68,21 @@ var config = {
         }
     },
     yarCookie: {
-        password: 'your_cookie_secret',
+        password: 'cookiepasswordhere',
         ssl: false
     },
     authCookie: {
-        cookieSecret: 'your_auth_cookie_secret',
+        cookieSecret: 'cookiesecrethere',
         cookieName: 'Basic-auth'
-    },
-    good: {
-        opsInterval: 1000,
-        reporters: [{
-            reporter: 'good-file',
-            events: {
-                ops: '*'
-            },
-            config: {
-                path: 'logs/ops/',
-                rotate: 'daily',
-                prefix: 'payops'
-            }
-        }, {
-            reporter: 'good-file',
-            events: {
-                error: '*'
-            },
-            config: 'logs/error.json'
-        }]
     }
 };
 
-var store = new Confidence.Store(config);
+internals.store = new Confidence.Store(internals.config);
 
 exports.get = function(key) {
-    return store.get(key, criteria);
+    return internals.store.get(key, internals.criteria);
+};
+
+exports.meta = function(key) {
+    return internals.store.meta(key, internals.criteria);
 };
