@@ -8,8 +8,7 @@ exports.register = function(plugin, options, next) {
             logout: require('../controllers/api/logout'),
             cards: require('../controllers/api/cards'),
             profile: require('../controllers/api/profile'),
-            translate: require('../controllers/api/translate'),
-            notifications: require('../controllers/api/notifications')
+            translate: require('../controllers/api/translate')
         }
     };
 
@@ -36,14 +35,6 @@ exports.register = function(plugin, options, next) {
             method: 'GET',
             path: '/api/translate',
             config: Controllers.api.translate.getData
-        }, {
-            method: 'GET',
-            path: '/api/notifications/unread',
-            config: Controllers.api.notifications.showUnreadNotifications
-        }, {
-            method: 'GET',
-            path: '/api/notifications/read',
-            config: Controllers.api.notifications.showReadNotifications
         }
     ]);
 
