@@ -1,14 +1,14 @@
 'use strict';
 
-var Utils = require('./utils');
+const Utils = require('./utils');
 
 
 exports.block = function(rows) {
 
 
-}
+};
 
 exports.district = function(rows) {
 
 
-}
+};
