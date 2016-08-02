@@ -22,14 +22,13 @@ exports.getData = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-            var final_dict;
 
             if (role === 'block') {
-                final_dict = OverviewParser.block(rows);
+                var final_dict = OverviewParser.block(rows);
             }
 
             if (role === 'district') {
-                final_dict = OverviewParser.district(rows);
+                var final_dict = OverviewParser.district(rows);
             }
 
             final_dict.config = {

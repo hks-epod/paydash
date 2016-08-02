@@ -98,7 +98,13 @@ exports.block = function(rows) {
         })
     };
 
+    // Process list of panchayat names and codes
+    var panchayatResponse = Utils.flatten(rows[4]);
+    final_dict.panchayats = panchayatResponse;
+
     final_dict.region_name = blockName;
+
+
     return final_dict;
 }
 
