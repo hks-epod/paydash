@@ -8,7 +8,7 @@ var d3 = require(d3);
 
 exports.showPage = {
     handler: function(request, reply) {
-        // return reply.view('performance/overview');
+        return reply.view('musters/cards');
     }
 };
 
