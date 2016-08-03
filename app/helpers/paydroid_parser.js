@@ -1,34 +1,34 @@
 'use strict';
 
-var d3 = require('d3');
+const D3 = require('D3');
 const Utils = require('./utils');
 
 exports.v1 = function(rows) {
 
-    var overviewResponse = d3.values(rows[0]);
+    var overviewResponse = D3.values(rows[0]);
 
-    var cardsResponse = d3.values(rows[1]);
+    var cardsResponse = D3.values(rows[1]);
 
-    var blockResponse = d3.values(rows[2]);
+    var blockResponse = D3.values(rows[2]);
 
-    var panchayatResponse = d3.values(rows[3]);
+    var panchayatResponse = D3.values(rows[3]);
 
-    var notificationsResponse = d3.values(rows[4]);
+    var notificationsResponse = D3.values(rows[4]);
 
-    var stateResponse = d3.values(rows[5]);
+    var stateResponse = D3.values(rows[5]);
 
-    var contactResponse = d3.values(rows[6]);
+    var contactResponse = D3.values(rows[6]);
 
     // Parse the overview response
     var current_total = overviewResponse[0].current_total;
     var delayed_total = overviewResponse[0].delayed_total;
-    var days_to_payment = overviewResponse[0].time_to_payment;
+    var days_to_payment = overviewResponse[0].days_to_payment;
     var total_transactions = overviewResponse[0].total_transactions;
 
     var state_code = stateResponse[0].state_code;
 
     // Nest the cards response and include the overview stats
-    var cards = d3.nest()
+    var cards = D3.nest()
         .key(function(d) {
             return d.staff_id;
         })
@@ -72,7 +72,7 @@ exports.v1 = function(rows) {
         });
 
     // Nest the block response
-    var blockPerformance = d3.nest()
+    var blockPerformance = D3.nest()
         .key(function(d) {
             return d.block_code;
         })
@@ -109,7 +109,7 @@ exports.v1 = function(rows) {
 
 
     // Nest the panchayat response
-    var panchayatPerformance = d3.nest()
+    var panchayatPerformance = D3.nest()
         .key(function(d) {
             return d.panchayat_code;
         })
@@ -189,27 +189,27 @@ exports.v2 = function(rows, role) {
 
     function parse_block(rows) {
         
-        var overviewResponse = d3.values(rows[0]);
+        var overviewResponse = D3.values(rows[0]);
 
-        var cardsResponse = d3.values(rows[1]);
+        var cardsResponse = D3.values(rows[1]);
 
-        var blockResponse = d3.values(rows[2]);
+        var blockResponse = D3.values(rows[2]);
 
-        var panchayatResponse = d3.values(rows[3]);
+        var panchayatResponse = D3.values(rows[3]);
 
-        var stateResponse = d3.values(rows[4]);
+        var stateResponse = D3.values(rows[4]);
 
-        var contactResponse = d3.values(rows[5]);
+        var contactResponse = D3.values(rows[5]);
 
         // Parse the overview response
         var current_total = overviewResponse[0].current_total;
         var delayed_total = overviewResponse[0].delayed_total;
-        var days_to_payment = overviewResponse[0].time_to_payment;
+        var days_to_payment = overviewResponse[0].days_to_payment;
 
         var state_code = stateResponse[0].state_code;
 
         // Nest the cards response and include the overview stats
-        var cards = d3.nest()
+        var cards = D3.nest()
             .key(function(d) {
                 var key = d.staff_id + d.block_code;
                 return key;
@@ -255,7 +255,7 @@ exports.v2 = function(rows, role) {
 
 
         // Nest the block response
-        var blockPerformance = d3.nest()
+        var blockPerformance = D3.nest()
             .key(function(d) {
                 return d.block_code;
             })
@@ -292,7 +292,7 @@ exports.v2 = function(rows, role) {
 
 
         // Nest the panchayat response
-        var panchayatPerformance = d3.nest()
+        var panchayatPerformance = D3.nest()
             .key(function(d) {
                 return d.panchayat_code;
             })
@@ -366,29 +366,29 @@ exports.v2 = function(rows, role) {
 
     function parse_district(rows) {
 
-        var overviewResponse = d3.values(rows[0]);
+        var overviewResponse = D3.values(rows[0]);
 
-        var cardsResponse = d3.values(rows[1]);
+        var cardsResponse = D3.values(rows[1]);
 
-        var districtResponse = d3.values(rows[2]);
+        var districtResponse = D3.values(rows[2]);
 
-        var blockResponse = d3.values(rows[3]);
+        var blockResponse = D3.values(rows[3]);
 
-        var panchayatResponse = d3.values(rows[4]);
+        var panchayatResponse = D3.values(rows[4]);
 
-        var stateResponse = d3.values(rows[5]);
+        var stateResponse = D3.values(rows[5]);
 
-        var contactResponse = d3.values(rows[6]);
+        var contactResponse = D3.values(rows[6]);
 
         // Parse the overview response
         var current_total = overviewResponse[0].current_total;
         var delayed_total = overviewResponse[0].delayed_total;
-        var days_to_payment = overviewResponse[0].time_to_payment;
+        var days_to_payment = overviewResponse[0].days_to_payment;
 
         var state_code = stateResponse[0].state_code;
 
         // Nest the cards response and include the overview stats
-        var cards = d3.nest()
+        var cards = D3.nest()
             .key(function(d) {
                 return d.block_code;
             })
@@ -423,7 +423,7 @@ exports.v2 = function(rows, role) {
             });
 
         // Nest the district response
-        var districtPerformance = d3.nest()
+        var districtPerformance = D3.nest()
             .key(function(d) {
                 return d.district_code;
             })
@@ -460,7 +460,7 @@ exports.v2 = function(rows, role) {
 
 
         // Nest the block response
-        var blockPerformance = d3.nest()
+        var blockPerformance = D3.nest()
             .key(function(d) {
                 return d.block_code;
             })
@@ -497,7 +497,7 @@ exports.v2 = function(rows, role) {
 
 
         // Nest the panchayat response
-        var panchayatPerformance = d3.nest()
+        var panchayatPerformance = D3.nest()
             .key(function(d) {
                 return d.panchayat_code;
             })

@@ -1,7 +1,7 @@
 'use strict';
 
-var Queries = require('../../helpers/queries');
-var Parser = require('../../helpers/paydroid_parser');
+const Queries = require('../../helpers/queries');
+const Parser = require('../../helpers/paydroid_parser');
 
 exports.getData = {
     plugins: {
@@ -17,7 +17,7 @@ exports.getData = {
         var role = request.auth.credentials.role;
         var version = request.pre.apiVersion;
 
-        var queryString = Queries.cards(userId, role, version);
+        var queryString = Queries.paydroid(userId, role, version);
 
         // API CODE
         sequelize.query(queryString, {
