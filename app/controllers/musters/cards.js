@@ -35,8 +35,9 @@ exports.getData = {
                 // Nest the cards response
                 var cards = D3.nest()
                     .key(function(d) {
-                        return d.block_code;
+                        return d.block_name;
                     })
+                    .sortKeys(D3.descending)
                     .key(function(d) {
                         return d.staff_id;
                     })
@@ -44,9 +45,8 @@ exports.getData = {
                         return {
                             'name': v[0].name,
                             'staff_id': v[0].staff_id,
-                            'designation': Utils.getDesignation(v[0].task_assign, state_code),
+                            'designation': v[0].task_assign,
                             'mobile': v[0].mobile_no,
-                            'block_name': v[0].block_name,
                             'current_total': v[0].current_total,
                             'delayed_total': v[0].delayed_total,
                             'delayed_musters': v.filter(function(d) {
@@ -74,15 +74,12 @@ exports.getData = {
                             })
                         };
                     })
-                    .entries(cardsResponse)
+                    .entries(data)
                     .map(function(d) {
-                        return { 
-                            'block_code': d.key, 
-                            'cards': d.value.value
+                        return {
+                            'block_name': d.key,
+                            'cards': d.values.map(function(e) { return e.values; })
                         };
-                    })
-                    .map(function(d) {
-                        return d.value;
                     });
 
                 var data = {
