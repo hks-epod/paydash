@@ -22,13 +22,14 @@ exports.getData = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-
             if (role === 'block') {
-                var data = PerformanceParser.block(rows);
-            }
 
-            if (role === 'district') {
+                var data = PerformanceParser.block(rows);
+
+            } else if (role === 'district') {
+
                 var data = PerformanceParser.district(rows);
+
             }
 
             data.config = {
@@ -40,7 +41,7 @@ exports.getData = {
                 comparison_lines: role === 'block' ? ['block', 'district', 'state'] : ['district', 'state']
             };
 
-            reply(final_dict);
+            reply(data);
         });
     }
 };
