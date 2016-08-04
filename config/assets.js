@@ -30,7 +30,7 @@ internals.paths = {
     ]
 };
 
-internals.store = new Confidence.Store(internals.config);
+internals.store = new Confidence.Store(internals.paths);
 
 exports.get = function(key) {
     return internals.store.get(key, internals.criteria);
