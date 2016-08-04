@@ -35,9 +35,8 @@ exports.getData = {
                 // Nest the cards response
                 var cards = D3.nest()
                     .key(function(d) {
-                        return d.block_name;
+                        return d.block_code + d.block_name;
                     })
-                    .sortKeys(D3.descending)
                     .key(function(d) {
                         return d.staff_id;
                     })
@@ -77,8 +76,11 @@ exports.getData = {
                     .entries(data)
                     .map(function(d) {
                         return {
-                            'block_name': d.key,
-                            'cards': d.values.map(function(e) { return e.values; })
+                            'block_code': d.key.substr(0,7),
+                            'block_name': d.key.substr(7,),
+                            'cards': d.values.map(function(e) { 
+                                return e.values; 
+                            })
                         };
                     });
 
