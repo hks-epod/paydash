@@ -1,6 +1,6 @@
 'use strict';
 
-var Utils = require('./utils');
+const Utils = require('./utils');
 const D3 = require('D3');
 
 exports.block = function(rows) {
@@ -72,6 +72,55 @@ exports.block = function(rows) {
 
 exports.district = function(rows) {
 
+    var cardsResponse = D3.values(rows[0]);
 
+    // Nest the cards response
+    var cards = D3.nest()
+        .key(function(d) {
+            return d.district_code + d.district_name
+        })
+        .key(function(d) {
+            return d.block_code;
+        })
+        .rollup(function(v) {
+            return {
+                'officers': v.map(function(d) {
+                    return {
+                        name: d.id == null ? 'No Data' : d.firstname + ' ' + d.lastname,
+                        designation: d.designation,
+                        mobile: d.mobile
+                    };
+                }),
+                'block_code': v[0].block_code,
+                'block_name': v[0].block_name,
+                'current_total': v[0].current_total,
+                'delayed_total': v[0].delayed_total,
+                't2_total': v[0].t2_total,
+                't2_avg': v[0].t2_avg,
+                't5_total': v[0].t5_total,
+                't5_avg': v[0].t5_avg,
+                't6_total': v[0].t6_total,
+                't6_avg': v[0].t6_avg,
+                't7_total': v[0].t7_total,
+                't7_avg': v[0].t7_avg,
+                't8_total': v[0].t8_total,
+                't8_avg': v[0].t8_avg
+            };
+        })
+        .entries(cardsResponse)
+        .map(function(d) {
+            return {
+                'district_code': d.key.substr(0,4),
+                'district_name': d.key.substr(4,),
+                'data': d.values.map(function(e) { 
+                    return e.values;
+                })
+            };
+        });
+
+    var data = {
+        'cards': cards
+    };
+    
     return data;
 }

@@ -3,8 +3,6 @@
 const Queries = require('../../helpers/queries');
 const CardsParser = require('../../helpers/cards_parser');
 const Translate = require('../../templates/helpers/t');
-const Utils = require('../../helpers/utils');
-const D3 = require('d3');
 
 exports.showPage = {
     handler: function(request, reply) {
@@ -26,16 +24,16 @@ exports.getData = {
 
             if (role === 'block') {
 
-                var data = CardsParser(rows);
+                var data = CardsParser.block(rows);
 
             } else if (role === 'district') {
                 
-                 
+                var data = CardsParser.district(rows);
 
             }
 
-
             reply(data);
+
         });
     }
 };
