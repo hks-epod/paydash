@@ -82,13 +82,6 @@ exports.block = function(rows) {
         .entries(blockResponse)
         .map(function(d) {
             return d.value;
-        })
-        .sort(function(a, b) {
-            var aTarget = a.data[a.data.length - 1];
-            var bTarget = b.data[b.data.length - 1];
-            var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
-            var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
-            return bSum - aSum;
         });
 
 
