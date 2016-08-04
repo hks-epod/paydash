@@ -3,7 +3,7 @@
 exports.register = function(plugin, options, next) {
 
     const Controllers = {
-        performance: require('../controllers/performance/performance')
+        overview: require('../controllers/overview/overview')
     };
 
     plugin.route([
@@ -11,12 +11,12 @@ exports.register = function(plugin, options, next) {
         // Performance 
         {
             method: 'GET',
-            path: '/performance',
-            config: Controllers.performance.showPage
+            path: '/overview',
+            config: Controllers.overview.showPage
         }, {
             method: 'GET',
-            path: '/performance/data',
-            config: Controllers.performance.getData
+            path: '/overview/data',
+            config: Controllers.overview.getData
         }
     ]);
 
@@ -24,6 +24,6 @@ exports.register = function(plugin, options, next) {
 };
 
 exports.register.attributes = {
-    name: 'performance_routes',
+    name: 'overview_routes',
     version: require('../../package.json').version
 };

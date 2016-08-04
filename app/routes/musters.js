@@ -3,9 +3,7 @@
 exports.register = function(plugin, options, next) {
 
     const Controllers = {
-        musters: {
-            cards: require('../controllers/musters/cards')
-        }
+        musters: require('../controllers/musters/musters')
     };
 
     plugin.route([
@@ -13,15 +11,15 @@ exports.register = function(plugin, options, next) {
         //  Muster cards
         {
             method: 'GET',
-            path: '/musters/cards',
-            config: Controllers.musters.cards.showPage
+            path: '/musters',
+            config: Controllers.musters.showPage
         },
 
         // Muster cards data
         {
             method: 'GET',
-            path: '/musters/cards/data',
-            config: Controllers.musters.cards.getData
+            path: '/musters/data',
+            config: Controllers.musters.getData
         },
     ]);
 
