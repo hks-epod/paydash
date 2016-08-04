@@ -1,12 +1,12 @@
 'use strict';
 
 const Queries = require('../../helpers/queries');
-const CardsParser = require('../../helpers/cards_parser');
+const MustersParser = require('../../helpers/musters_parser');
 const Translate = require('../../templates/helpers/t');
 
 exports.showPage = {
     handler: function(request, reply) {
-        return reply.view('musters/cards');
+        return reply.view('musters/musters');
     }
 };
 
@@ -24,11 +24,11 @@ exports.getData = {
 
             if (role === 'block') {
 
-                var data = CardsParser.block(rows);
+                var data = MustersParser.block(rows);
 
             } else if (role === 'district') {
                 
-                var data = CardsParser.district(rows);
+                var data = MustersParser.district(rows);
 
             }
 
