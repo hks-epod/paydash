@@ -1,12 +1,12 @@
 'use strict';
 
-var Queries = require('../../helpers/queries');
-var OverviewParser = require('../../helpers/overview_parser');
-var Translate = require('../../templates/helpers/t');
+const Queries = require('../../helpers/queries');
+const PerformanceParser = require('../../helpers/performance_parser');
+const Translate = require('../../templates/helpers/t');
 
 exports.showPage = {
     handler: function(request, reply) {
-        return reply.view('performance/overview');
+        return reply.view('performance/performance');
     }
 };
 
@@ -14,9 +14,9 @@ exports.getData = {
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-        var region_code = request.query.region_code;
+        var userId = request.auth.credentials.id;
         var role = request.auth.credentials.role;
-        var queryString = Queries.overviewPerformance(region_code, role);
+        var queryString = Queries.performance(userId, role);
 
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
@@ -24,14 +24,14 @@ exports.getData = {
 
 
             if (role === 'block') {
-                var final_dict = OverviewParser.block(rows);
+                var data = PerformanceParser.block(rows);
             }
 
             if (role === 'district') {
-                var final_dict = OverviewParser.district(rows);
+                var data = PerformanceParser.district(rows);
             }
 
-            final_dict.config = {
+            data.config = {
                 role: role,
                 headers: ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
                 labels: Translate('/payment_steps_labels', request.auth.credentials), 
