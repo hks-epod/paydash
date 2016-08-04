@@ -22,7 +22,6 @@ exports.block = function(rows) {
         .rollup(function(v) {
             return {
                 'name': v[0].name,
-                'staff_id': v[0].staff_id,
                 'designation': Utils.getDesignation(v[0].task_assign, stateCode),
                 'mobile': v[0].mobile_no,
                 'current_total': v[0].current_total,
@@ -52,13 +51,13 @@ exports.block = function(rows) {
                 })
             };
         })
-        .entries(data)
+        .entries(cardsResponse)
         .map(function(d) {
             return {
                 'block_code': d.key.substr(0,7),
                 'block_name': d.key.substr(7),
                 'cards': d.values.map(function(e) { 
-                    return e.values; 
+                    return e.value; 
                 })
             };
         });
@@ -72,7 +71,7 @@ exports.block = function(rows) {
 
 exports.district = function(rows) {
 
-    var cardsResponse = D3.values(rows[0]);
+    var cardsResponse = rows;
 
     // Nest the cards response
     var cards = D3.nest()
@@ -113,7 +112,7 @@ exports.district = function(rows) {
                 'district_code': d.key.substr(0,4),
                 'district_name': d.key.substr(4),
                 'data': d.values.map(function(e) { 
-                    return e.values;
+                    return e.value;
                 })
             };
         });

@@ -27,7 +27,7 @@ exports.getData = {
                 var data = MustersParser.block(rows);
 
             } else if (role === 'district') {
-                
+
                 var data = MustersParser.district(rows);
 
             }
