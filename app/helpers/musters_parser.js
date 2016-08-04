@@ -56,7 +56,7 @@ exports.block = function(rows) {
         .map(function(d) {
             return {
                 'block_code': d.key.substr(0,7),
-                'block_name': d.key.substr(7,),
+                'block_name': d.key.substr(7),
                 'cards': d.values.map(function(e) { 
                     return e.values; 
                 })
@@ -111,7 +111,7 @@ exports.district = function(rows) {
         .map(function(d) {
             return {
                 'district_code': d.key.substr(0,4),
-                'district_name': d.key.substr(4,),
+                'district_name': d.key.substr(4),
                 'data': d.values.map(function(e) { 
                     return e.values;
                 })
