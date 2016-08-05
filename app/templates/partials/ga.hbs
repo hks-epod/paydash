@@ -9,8 +9,6 @@
     ga('create', 'UA-54269439-4', 'auto');
     ga('set', 'userId', {{credentials.id}}); // Set the user ID using signed-in user_id.
     ga('set', 'dimension1', {{credentials.id}});
-
-    ga('set', 'dimension2', '170002'); // Set user block as dimension
   {{else}}
     ga('create', 'UA-54269439-4', 'auto');
   {{/if}}
