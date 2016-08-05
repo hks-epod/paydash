@@ -3,7 +3,7 @@
 
 $metabar-height: 60px;
 $brand-padding: 10px 54px 2px 0;
-$metabar-menu-padding: 29px 15px 18px;
+$metabar-menu-padding: 25px 15px 22px;
 $metabar-nav-right-spacing: $metabar-height*20/100;
 
 /* Core
@@ -25,10 +25,15 @@ body {
     @extend %clearfix;
 }
 .metabar .brand {
-    display: inline-block;
-    float: left;
-    margin-top: -3px;
-    height: $metabar-height;
+  letter-spacing: 0.35em;
+  font-size: 15px;
+  color: #00bff3;
+  text-transform: uppercase;
+  padding: 16px 40px 15px 20px;
+  font-weight: 500;
+  display: inline-block;
+  float: left;
+  font-size: 1.7rem;
 }
 .metabar .brand img {
     max-height: 100%;
