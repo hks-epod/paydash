@@ -32,11 +32,9 @@ exports.getData = {
 
 	            var panchayatResponse = utils.flatten(rows[3]);
 
-	            var notificationsResponse = utils.flatten(rows[4]);
+	            var stateResponse = utils.flatten(rows[4]);
 
-	            var stateResponse = utils.flatten(rows[5]);
-
-	            var contactResponse = utils.flatten(rows[6]);
+	            var contactResponse = utils.flatten(rows[5]);
 
 	            // Parse the overview response
 	           	var current_total = overviewResponse[0].current_total;
@@ -179,7 +177,7 @@ exports.getData = {
 		        	'cards': cards,
 		        	'block_performance': blockPerformance,
 		        	'panchayat_performance': panchayatPerformance,
-		        	'notifications': notificationsResponse,
+		        	'notifications': [],
 		        	'config': {
 		        		'headers': headers,
 		        		labels: [
