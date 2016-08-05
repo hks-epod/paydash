@@ -15,8 +15,7 @@ Gulp.task('webpack', function() {
     var config = {
         entry: {
             vendor: ['jquery', 'd3'],
-            app: './assets/scripts/index.js',
-            mdash: './assets/scripts/monitor.js'
+            app: './assets/scripts/index.js'
         },
         watch: true,
         cache: true,
@@ -38,12 +37,6 @@ Gulp.task('webpack', function() {
                 compress: {
                     warnings: false
                 }
-            }),
-            new ProvidePlugin({
-                $: 'jquery',
-                jQuery: 'jquery',
-                'window.jQuery': 'jquery',
-                'root.jQuery': 'jquery'
             }),
             new CommonsChunkPlugin({
                 name: 'vendor',
