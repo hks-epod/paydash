@@ -144,6 +144,11 @@ internals.manifest = {
             plugin: './app/routes/users.js'
         },
 
+        //  Overview routes
+        {
+            plugin: './app/routes/overview.js'
+        },
+
         //  Performance routes
         {
             plugin: './app/routes/performance.js'

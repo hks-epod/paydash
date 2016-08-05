@@ -13,7 +13,10 @@ exports.register = function(plugin, options, next) {
             method: 'GET',
             path: '/performance',
             config: Controllers.performance.showPage
-        }, {
+        }, 
+
+        // Performance data
+        {
             method: 'GET',
             path: '/performance/data',
             config: Controllers.performance.getData

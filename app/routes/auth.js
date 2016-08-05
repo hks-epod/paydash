@@ -11,7 +11,7 @@ exports.register = function(plugin, options, next) {
 
     plugin.route([
 
-        // auth Routes
+        // Auth Routes
         {
             method: 'GET',
             path: '/login',

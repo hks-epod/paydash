@@ -8,12 +8,15 @@ exports.register = function(plugin, options, next) {
 
     plugin.route([
 
-        // Performance 
+        // Overview 
         {
             method: 'GET',
             path: '/overview',
             config: Controllers.overview.showPage
-        }, {
+        },
+
+        // Overview data
+        {
             method: 'GET',
             path: '/overview/data',
             config: Controllers.overview.getData
