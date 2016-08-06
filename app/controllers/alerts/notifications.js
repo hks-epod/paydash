@@ -38,7 +38,7 @@ exports.showUnreadNotifications = {
         //         }
         //     });
             reply.view('alerts/notifications-unread', ctx);
-        });
+        // });
 
     }
 };
@@ -69,7 +69,7 @@ exports.showReadNotifications = {
         //     });
 
             reply.view('alerts/notifications-read', ctx);
-        });
+        // });
 
     }
 };
