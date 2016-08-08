@@ -18,7 +18,7 @@ exports.showForm = {
     handler: function(request, reply) {
 
         if (request.auth.isAuthenticated) {
-            return reply.redirect('/performance/overview');
+            return reply.redirect('/overview');
         }
         reply.view('auth/login');
 
