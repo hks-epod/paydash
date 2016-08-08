@@ -54,7 +54,7 @@ exports.postForm = {
     },
     handler: function(request, reply) {
         if (request.auth.isAuthenticated) {
-            return reply.redirect('/performance/overview');
+            return reply.redirect('/overview');
         }
         var db = request.server.plugins.sequelize.db;
         var User = request.server.plugins.sequelize.db.User;
@@ -75,7 +75,7 @@ exports.postForm = {
                         return reply.redirect('/me/settings/profile');
                     });
                 } else {
-                    return reply.redirect('/performance/overview');
+                    return reply.redirect('/overview');
                 }
 
             } else {
