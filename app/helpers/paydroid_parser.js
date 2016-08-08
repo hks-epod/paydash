@@ -201,6 +201,8 @@ exports.v2 = function(rows, role) {
 
         var contactResponse = D3.values(rows[5]);
 
+        var versionResponse = D3.values(rows[6]);
+
         // Parse the overview response
         var current_total = overviewResponse[0].current_total;
         var delayed_total = overviewResponse[0].delayed_total;
@@ -358,7 +360,8 @@ exports.v2 = function(rows, role) {
                 'phone': contactResponse[0].phone,
                 'email': contactResponse[0].email,
                 'subject': contactResponse[0].subject
-            }
+            },
+            'version': versionResponse[0].version
         };
 
         return data;
@@ -374,11 +377,11 @@ exports.v2 = function(rows, role) {
 
         var blockResponse = D3.values(rows[3]);
 
-        var panchayatResponse = D3.values(rows[4]);
+        var stateResponse = D3.values(rows[4]);
 
-        var stateResponse = D3.values(rows[5]);
+        var contactResponse = D3.values(rows[5]);
 
-        var contactResponse = D3.values(rows[6]);
+        var versionResponse = D3.values(rows[6]);
 
         // Parse the overview response
         var current_total = overviewResponse[0].current_total;
@@ -495,45 +498,6 @@ exports.v2 = function(rows, role) {
                 return bSum - aSum;
             });
 
-
-        // Nest the panchayat response
-        var panchayatPerformance = D3.nest()
-            .key(function(d) {
-                return d.panchayat_code;
-            })
-            .rollup(function(v) {
-                return {
-                    'district_code': v[0].district_code,
-                    'block_code': v[0].block_code,
-                    'panchayat_code': v[0].panchayat_code,
-                    'panchayat_name': v[0].panchayat_name,
-                    'data': v.map(function(d) {
-                        return [
-                            d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
-                            d.mrc_mre,
-                            d.mre_wlg,
-                            d.wlg_wls,
-                            d.wls_fto,
-                            d.fto_sn1,
-                            d.sn1_sn2,
-                            d.sn2_prc,
-                            d.tot_trn
-                        ];
-                    })
-                };
-            })
-            .entries(panchayatResponse)
-            .map(function(d) {
-                return d.value;
-            })
-            .sort(function(a, b) {
-                var aTarget = a.data[a.data.length - 1];
-                var bTarget = b.data[b.data.length - 1];
-                var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
-                var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
-                return bSum - aSum;
-            });
-
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'];
 
         var data = {
@@ -546,7 +510,6 @@ exports.v2 = function(rows, role) {
             'cards': cards,
             'district_performance': districtPerformance,
             'block_performance': blockPerformance,
-            'panchayat_performance': panchayatPerformance,
             'config': {
                 'headers': headers,
                 labels: [
@@ -565,7 +528,8 @@ exports.v2 = function(rows, role) {
                 'phone': contactResponse[0].phone,
                 'email': contactResponse[0].email,
                 'subject': contactResponse[0].subject
-            }
+            },
+            'version': versionResponse[0].version
         };
 
         return data;
