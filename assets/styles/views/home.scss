@@ -22,14 +22,8 @@
 .main-home{
   padding:80px 50px;
 }
-.logo {
-  border: solid 1px #ddd;
-  margin-top: 30px;
-  display: inline-block;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  background: url('/images/logo.png') center;
-  background-size: cover
+.logo img{
+  height: 180px;
+  width: auto
 }
 
