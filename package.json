@@ -6,11 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node node_modules/lab/bin/lab",
-<<<<<<< ffefd838d81f42794a5b7b56bb7f14ac8f61962a
     "start": "node server.js"
-=======
-    "gulp": "gulp"
->>>>>>> Update ebextension config
   },
   "repository": {
     "type": "git",
