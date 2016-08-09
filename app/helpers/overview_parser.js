@@ -1,6 +1,6 @@
 'use strict';
 
-const D3 = require('D3');
+const D3 = require('d3');
 
 exports.parser = function(rows) {
 

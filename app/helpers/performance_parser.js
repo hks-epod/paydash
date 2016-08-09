@@ -1,7 +1,7 @@
 'use strict';
 
 const Utils = require('./utils');
-const D3 = require('D3');
+const D3 = require('d3');
 
 exports.block = function(rows) {
 
