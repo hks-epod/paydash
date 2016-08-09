@@ -199,12 +199,12 @@ module.exports = {
             },
             dates: {
                 all_dates: 'सभी तारीखें',
-                last_60: 'पिछले 60 दिन',
-                last_30: 'पिछले 30 दिन'
+                past_3_months: 'पिछले 3 महीने'
             },
             regions: {
                 panchayat: 'पंचायत',
-                block: 'प्रखंड/जनपद'
+                block: 'प्रखंड/जनपद',
+                district: 'ज़िला'
             },
             tooltip: {
                 date: 'तारीख',
