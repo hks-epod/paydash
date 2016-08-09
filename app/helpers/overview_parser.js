@@ -11,7 +11,6 @@ exports.parser = function(rows) {
             return d.region_code;
         })
         .rollup(function(v) {
-            console.log(v)
             return {
                 'region_code': v[0].region_code,
                 'region_name': v[0].region_name,
