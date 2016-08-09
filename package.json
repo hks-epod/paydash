@@ -6,6 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node node_modules/lab/bin/lab",
+    "preinstall": "npm install -g gulp",
     "start": "gulp"
   },
   "repository": {
