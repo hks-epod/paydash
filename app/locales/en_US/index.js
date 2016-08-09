@@ -195,12 +195,12 @@ module.exports = {
             },
             dates: {
                 all_dates: 'All dates',
-                last_60: 'Last 60 days',
-                last_30: 'Last 30 days'
+                past_3_months: 'Past 3 months'
             },
             regions: {
                 panchayat: 'Panchayat',
-                block: 'Block',  
+                block: 'Block',
+                district: 'District'
             },
             tooltip: {
                 date: 'Date',
