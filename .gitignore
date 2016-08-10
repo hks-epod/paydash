@@ -28,6 +28,7 @@ node_modules
 # Project Specific ignores
 config/keys
 /config/config.js
+/config/config.v1.js
 .build/*
 test/artifacts/*
 assets/scripts/temp
@@ -43,3 +44,5 @@ assets/scripts/temp
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+.DS_Store
