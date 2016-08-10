@@ -275,6 +275,7 @@ exports.v2 = function(rows, role) {
                             d.fto_sn1,
                             d.sn1_sn2,
                             d.sn2_prc,
+                            d.mrc_prc,
                             d.tot_trn
                         ];
                     })
@@ -283,13 +284,6 @@ exports.v2 = function(rows, role) {
             .entries(blockResponse)
             .map(function(d) {
                 return d.value;
-            })
-            .sort(function(a, b) {
-                var aTarget = a.data[a.data.length - 1];
-                var bTarget = b.data[b.data.length - 1];
-                var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
-                var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
-                return bSum - aSum;
             });
 
 
@@ -313,6 +307,7 @@ exports.v2 = function(rows, role) {
                             d.fto_sn1,
                             d.sn1_sn2,
                             d.sn2_prc,
+                            d.mrc_prc,
                             d.tot_trn
                         ];
                     })
@@ -321,16 +316,9 @@ exports.v2 = function(rows, role) {
             .entries(panchayatResponse)
             .map(function(d) {
                 return d.value;
-            })
-            .sort(function(a, b) {
-                var aTarget = a.data[a.data.length - 1];
-                var bTarget = b.data[b.data.length - 1];
-                var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
-                var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
-                return bSum - aSum;
             });
 
-        var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'];
+        var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
 
         var data = {
             'overview': {
@@ -444,6 +432,7 @@ exports.v2 = function(rows, role) {
                             d.fto_sn1,
                             d.sn1_sn2,
                             d.sn2_prc,
+                            d.mrc_prc,
                             d.tot_trn
                         ];
                     })
@@ -452,13 +441,6 @@ exports.v2 = function(rows, role) {
             .entries(districtResponse)
             .map(function(d) {
                 return d.value;
-            })
-            .sort(function(a, b) {
-                var aTarget = a.data[a.data.length - 1];
-                var bTarget = b.data[b.data.length - 1];
-                var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
-                var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
-                return bSum - aSum;
             });
 
 
@@ -481,6 +463,7 @@ exports.v2 = function(rows, role) {
                             d.fto_sn1,
                             d.sn1_sn2,
                             d.sn2_prc,
+                            d.mrc_mre,
                             d.tot_trn
                         ];
                     })
@@ -489,16 +472,9 @@ exports.v2 = function(rows, role) {
             .entries(blockResponse)
             .map(function(d) {
                 return d.value;
-            })
-            .sort(function(a, b) {
-                var aTarget = a.data[a.data.length - 1];
-                var bTarget = b.data[b.data.length - 1];
-                var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
-                var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
-                return bSum - aSum;
             });
 
-        var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'];
+        var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
 
         var data = {
             'overview': {
