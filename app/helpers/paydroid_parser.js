@@ -350,6 +350,26 @@ exports.v2 = function(rows, role) {
                 'email': contactResponse[0].email,
                 'subject': contactResponse[0].subject
             },
+            'colors': {
+                'default': [
+                    '#ffd300',
+                    '#18ff00',
+                    '#f57070',
+                    '#f8b128',
+                    '#f7f7f7',
+                    '#F22613',
+                    '#FDE3A7'
+                ],
+                'colorblind': [
+                    '#ffd300',
+                    '#18ff00',
+                    '#f57070',
+                    '#f8b128',
+                    '#f7f7f7',
+                    '#F22613',
+                    '#FDE3A7'
+                ]
+            },
             'version': versionResponse[0].version
         };
 
@@ -506,6 +526,26 @@ exports.v2 = function(rows, role) {
                 'phone': contactResponse[0].phone,
                 'email': contactResponse[0].email,
                 'subject': contactResponse[0].subject
+            },
+            'colors': {
+                'default': [
+                    '#ffd300',
+                    '#18ff00',
+                    '#f57070',
+                    '#f8b128',
+                    '#f7f7f7',
+                    '#F22613',
+                    '#FDE3A7'
+                ],
+                'colorblind': [
+                    '#ffd300',
+                    '#18ff00',
+                    '#f57070',
+                    '#f8b128',
+                    '#f7f7f7',
+                    '#F22613',
+                    '#FDE3A7'
+                ]
             },
             'version': versionResponse[0].version
         };
