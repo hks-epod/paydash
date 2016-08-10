@@ -358,7 +358,8 @@ exports.v2 = function(rows, role) {
                     '#f8b128',
                     '#f7f7f7',
                     '#F22613',
-                    '#FDE3A7'
+                    '#FDE3A7',
+                    '#f57070'
                 ],
                 'colorblind': [
                     '#ffd300',
@@ -367,7 +368,8 @@ exports.v2 = function(rows, role) {
                     '#f8b128',
                     '#f7f7f7',
                     '#F22613',
-                    '#FDE3A7'
+                    '#FDE3A7',
+                    '#f57070'
                 ]
             },
             'version': versionResponse[0].version
@@ -535,7 +537,8 @@ exports.v2 = function(rows, role) {
                     '#f8b128',
                     '#f7f7f7',
                     '#F22613',
-                    '#FDE3A7'
+                    '#FDE3A7',
+                    '#f57070'
                 ],
                 'colorblind': [
                     '#ffd300',
@@ -544,7 +547,8 @@ exports.v2 = function(rows, role) {
                     '#f8b128',
                     '#f7f7f7',
                     '#F22613',
-                    '#FDE3A7'
+                    '#FDE3A7',
+                    '#f57070'
                 ]
             },
             'version': versionResponse[0].version
