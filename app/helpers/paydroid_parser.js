@@ -341,6 +341,7 @@ exports.v2 = function(rows, role) {
                     'FTO generation to first signature',
                     'First signature to second signature',
                     'Second signature to processed by bank',
+                    'Total Length of Process',
                     'Total Transactions'
                 ],
             },
@@ -497,6 +498,7 @@ exports.v2 = function(rows, role) {
                     'FTO generation to first signature',
                     'First signature to second signature',
                     'Second signature to processed by bank',
+                    'Total Length of Process',
                     'Total Transactions'
                 ],
             },

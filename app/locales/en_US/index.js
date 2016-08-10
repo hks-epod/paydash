@@ -191,7 +191,8 @@ module.exports = {
                 5: 'FTO Generation to 1st Sign',
                 6: '1st Sign to 2nd Sign',
                 7: '2nd Sign to Bank Processing',
-                all: 'All steps'
+                total: 'Total Length of Process',
+                all: 'All Steps'
             },
             dates: {
                 all_dates: 'All dates',
