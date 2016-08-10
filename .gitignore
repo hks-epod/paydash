@@ -28,7 +28,7 @@ node_modules
 # Project Specific ignores
 config/keys
 /config/config.js
-/config/config_v1.js
+/config/config.v1.js
 .build/*
 test/artifacts/*
 assets/scripts/temp
