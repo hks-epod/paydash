@@ -419,6 +419,7 @@ exports.v2 = function(rows, role) {
                     'block_name': v[0].block_name,
                     'current_total': v[0].current_total,
                     'delayed_total': v[0].delayed_total,
+                    'days_to_payment': v[0].days_to_payment,
                     't2_total': v[0].t2_total,
                     't2_avg': v[0].t2_avg,
                     't5_total': v[0].t5_total,
