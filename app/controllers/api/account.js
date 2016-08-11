@@ -1,7 +1,8 @@
 'use strict';
 
-var Joi = require('joi');
-var Boom = require('boom');
+const Joi = require('joi');
+const Boom = require('boom');
+const Crypto = require('crypto');
 
 exports.postChangePassword = {
     description: 'Password change api',
