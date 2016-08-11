@@ -410,7 +410,7 @@ exports.v2 = function(rows, role) {
                 return {
                     'officers': v.map(function(d) {
                         return {
-                            officer_id: d.id
+                            officer_id: d.id,
                             name: d.id == null ? 'No Data' : d.firstname + ' ' + d.lastname,
                             designation: d.designation,
                             mobile: d.mobile
