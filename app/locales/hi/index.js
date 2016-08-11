@@ -255,7 +255,11 @@ module.exports = {
                     'cancel': 'Cancel'
                 },
                 general: 'हमे खेद है कि आप log out करने में विफल रहे | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें |'
-            }
+            },
+            password_success: 'Password changed successfully. Please login with new password.',
+            password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
+            password_new_nomatch: 'New password does not match.',
+            password_tooshort: 'Your new password must be at least 6 characters long.'
         }
     }
 };
