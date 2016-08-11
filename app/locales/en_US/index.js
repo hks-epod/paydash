@@ -251,7 +251,11 @@ module.exports = {
                     'cancel': 'Cancel'
                 },
                 general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.'
-            }
+            },
+            password_success: 'Password changed successfully. Please login with new password.',
+            password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
+            password_new_nomatch: 'New password does not match.',
+            password_tooshort: 'Your new password must be at least 6 characters long.'
         }
     }
 };
