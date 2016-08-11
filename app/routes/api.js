@@ -6,6 +6,7 @@ exports.register = function(plugin, options, next) {
         api: {
             login: require('../controllers/api/login'),
             logout: require('../controllers/api/logout'),
+            account: require('../controllers/api/account'),
             cards: require('../controllers/api/cards'),
             profile: require('../controllers/api/profile'),
             translate: require('../controllers/api/translate')
@@ -27,6 +28,10 @@ exports.register = function(plugin, options, next) {
             method: '*',
             path: '/api/logout',
             config: Controllers.api.logout.postForm
+        },{
+            method: '*',
+            path: '/api/password-change',
+            config: Controllers.api.account.postChangePassword
         }, {
             method: 'GET',
             path: '/api/cards',
