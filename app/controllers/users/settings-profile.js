@@ -24,7 +24,6 @@ exports.postEditProfile = {
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            console.log(error);
             request.session.flash('error', 'Bad request');
             return reply.redirect('/me/settings/profile');
         }
