@@ -214,11 +214,6 @@ module.exports = {
                 step: 'कदम'
             }
         },
-        notifications: {
-            notifications: 'संदेश',
-            read: 'पठित',
-            unread: 'अपठित'
-        },
         profile: {
             firstname: 'मूल नाम',
             lastname: 'उपनाम',

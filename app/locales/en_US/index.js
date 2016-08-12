@@ -210,11 +210,6 @@ module.exports = {
                 step: 'Step'
             }
         },
-        notifications: {
-            notifications: 'Notifications',
-            read: 'Read',
-            unread: 'Unread'
-        },
         profile: {
             firstname: 'First Name',
             lastname: 'Last Name',
