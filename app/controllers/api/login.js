@@ -4,9 +4,6 @@ var Boom = require('boom');
 var Joi = require('joi');
 var crypto = require('crypto');
 
-var lockoutInterval = 60; // seconds
-var maxAttemptsBeforeLockout = 5;
-
 exports.postForm = {
     description: 'Post to the login page',
     auth: {
