@@ -29,7 +29,7 @@ exports.register = function(plugin, options, next) {
             path: '/api/logout',
             config: Controllers.api.logout.postForm
         },{
-            method: '*',
+            method: 'POST',
             path: '/api/password-change',
             config: Controllers.api.account.postChangePassword
         }, {

@@ -42,8 +42,8 @@ exports.postEditProfile = {
         }).then(function(user) {
             if (user) { // if the record exists in the db
                 user.update(request.payload).then(function() {
-                    request.auth.session.clear();
-                    request.auth.session.set(user);
+                    request.cookieAuth.clear();
+                    request.cookieAuth.set(user);
                     return reply(user);
                 });
 

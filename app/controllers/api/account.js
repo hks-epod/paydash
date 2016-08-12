@@ -14,13 +14,13 @@ exports.postChangePassword = {
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            return reply.reply(Boom.badRequest(error));
+            return reply(Boom.badRequest(error));
         }
     },
     handler: function(request, reply) {
 
         if (request.payload.newPassword !== request.payload.verify) {
-            return reply.reply(Boom.badRequest('New password does not match'));
+            return reply(Boom.badRequest('New password does not match'));
         }
         var User = request.server.plugins.sequelize.db.User;
 
@@ -34,12 +34,12 @@ exports.postChangePassword = {
                 user.update({
                     password: Crypto.createHash('md5').update(request.payload.newPassword).digest('hex')
                 }).then(function() {
-                    request.auth.session.clear();
+                    request.cookieAuth.clear();
                     return reply('Password changed successfully. Please login with new password');
                 });
             } else {
                 // User not fond in database
-                return reply.reply(Boom.badRequest('Old password is incorrect'));
+                return reply(Boom.badRequest('Old password is incorrect'));
             }
         });
     }

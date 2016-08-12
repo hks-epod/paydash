@@ -51,7 +51,7 @@ exports.postChangePassword = {
                     password: Crypto.createHash('md5').update(request.payload.newPassword).digest('hex')
                 }).then(function() {
                     request.session.flash('success', 'Password changed successfully. Please login with new password');
-                    request.auth.session.clear();
+                    request.cookieAuth.clear();
                     return reply.redirect('/login');
                 });
             } else {
