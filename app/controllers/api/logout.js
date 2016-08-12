@@ -4,10 +4,20 @@ var Boom = require('boom');
 
 exports.postForm = {
     auth: {
+        mode: 'try',
         strategy: 'standard'
     },
+    plugins: {
+        'crumb': {
+            skip: true
+        },
+        'hapi-auth-cookie': {
+            redirectTo: false
+        }
+    },
     handler: function(request, reply) {
-       request.cookieAuth.clear();
+
+        request.cookieAuth.clear();
 
         return reply({
             "statusCode": 200,

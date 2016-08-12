@@ -18,7 +18,23 @@ exports.postEditProfile = {
             return reply.reply(Boom.badRequest(error));
         }
     },
+    auth: {
+        mode: 'try',
+        strategy: 'standard'
+    },
+    plugins: {
+        'crumb': {
+            skip: true
+        },
+        'hapi-auth-cookie': {
+            redirectTo: false
+        }
+    },
     handler: function(request, reply) {
+
+        if (!request.auth.isAuthenticated) {
+            return Boom.forbidden('You are not logged in');
+        }
 
         var id = request.auth.credentials.id.toString();
         request.payload.updated_at = Date.now();

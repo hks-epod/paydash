@@ -17,7 +17,20 @@ exports.postChangePassword = {
             return reply(Boom.badRequest(error));
         }
     },
+    auth: {
+        mode: 'try',
+        strategy: 'standard'
+    },
+    plugins: {
+        'hapi-auth-cookie': {
+            redirectTo: false
+        }
+    },
     handler: function(request, reply) {
+
+        if (!request.auth.isAuthenticated) {
+            return Boom.forbidden('You are not logged in');
+        }
 
         if (request.payload.newPassword !== request.payload.verify) {
             return reply(Boom.badRequest('New password does not match'));

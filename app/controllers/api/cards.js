@@ -2,14 +2,26 @@
 
 const Queries = require('../../helpers/queries');
 const Parser = require('../../helpers/paydroid_parser');
+const Boom = require('boom');
 
 exports.getData = {
+    auth: {
+        mode: 'try',
+        strategy: 'standard'
+    },
     plugins: {
         'crumb': {
             skip: true
+        },
+        'hapi-auth-cookie': {
+            redirectTo: false
         }
     },
     handler: function(request, reply) {
+
+        if (!request.auth.isAuthenticated) {
+            return Boom.forbidden('You are not logged in');
+        }
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
 
@@ -24,18 +36,16 @@ exports.getData = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-        	if (version===1) {
+            var data;
 
-        		var data = Parser.v1(rows);
+            if (version === 1) {
+                data = Parser.v1(rows);
+            } else if (version === 2) {
+                data = Parser.v2(rows, role);
+            }
 
-        	} else if (version===2) {
+            reply(data);
 
-        		var data = Parser.v2(rows,role);
-
-        	}
-
-        	reply(data);
-            
         });
     }
 };
