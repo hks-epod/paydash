@@ -12,17 +12,14 @@ exports.getData = {
         strategy: 'standard'
     },
     plugins: {
-        'crumb': {
-            skip: true
-        },
         'hapi-auth-cookie': {
             redirectTo: false
         }
     },
     handler: function(request, reply) {
 
-        if (!request.auth.isAuthenticated) {
-            return Boom.forbidden('You are not logged in');
+        if(!request.auth.isAuthenticated) {
+            return reply(Boom.forbidden('You are not logged in'));
         }
 
         var res = {

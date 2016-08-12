@@ -8,9 +8,6 @@ exports.postForm = {
         strategy: 'standard'
     },
     plugins: {
-        'crumb': {
-            skip: true
-        },
         'hapi-auth-cookie': {
             redirectTo: false
         }

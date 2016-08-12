@@ -10,9 +10,6 @@ exports.getData = {
         strategy: 'standard'
     },
     plugins: {
-        'crumb': {
-            skip: true
-        },
         'hapi-auth-cookie': {
             redirectTo: false
         }
