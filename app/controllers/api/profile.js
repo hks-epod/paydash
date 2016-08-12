@@ -8,17 +8,10 @@ exports.postEditProfile = {
     description: 'Post Edit profile settings',
     validate: {
         payload: {
-            firstname: Joi.string().min(2).max(20).required(),
-            lastname: Joi.string().min(2).max(20).required(),
-            middlename: Joi.string().min(2).max(20).required(),
-            dob: Joi.string().max(100).allow(''),
             mobile: Joi.string().max(100).allow(''),
             email: Joi.string().max(100).allow(''),
-            title: Joi.string().max(100).allow(''),
             work_email: Joi.string().max(100).allow(''),
-            lang: Joi.string().min(1).max(10),
-            designation: Joi.string().max(100).allow(''),
-            phone_alternate: Joi.string().max(100).allow('')
+            lang: Joi.string().min(1).max(10)
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
