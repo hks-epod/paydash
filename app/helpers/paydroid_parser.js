@@ -267,7 +267,7 @@ exports.v2 = function(rows, role) {
                     'block_name': v[0].block_name,
                     'data': v.map(function(d) {
                         return [
-                            d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
+                            d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
@@ -299,7 +299,7 @@ exports.v2 = function(rows, role) {
                     'panchayat_name': v[0].panchayat_name,
                     'data': v.map(function(d) {
                         return [
-                            d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
+                            d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
@@ -445,11 +445,12 @@ exports.v2 = function(rows, role) {
             })
             .rollup(function(v) {
                 return {
-                    'district_code': v[0].block_code,
-                    'district_name': v[0].block_name,
+                    'district_code': v[0].district_code,
+                    'district_name': v[0].district_name,
+                    'block_code': v[0].block_code
                     'data': v.map(function(d) {
                         return [
-                            d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
+                            d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
@@ -480,7 +481,7 @@ exports.v2 = function(rows, role) {
                     'block_name': v[0].block_name,
                     'data': v.map(function(d) {
                         return [
-                            d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
+                            d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
