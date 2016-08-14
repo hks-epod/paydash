@@ -447,7 +447,7 @@ exports.v2 = function(rows, role) {
                 return {
                     'district_code': v[0].district_code,
                     'district_name': v[0].district_name,
-                    'block_code': v[0].block_code
+                    'block_code': v[0].block_code,
                     'data': v.map(function(d) {
                         return [
                             d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
