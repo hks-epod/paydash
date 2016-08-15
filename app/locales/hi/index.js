@@ -15,7 +15,7 @@ module.exports = {
         logout: 'लौग आउट',
         profile_settings: 'आपकी प्रोफ़ाइल सेट्टिंग्स',
         email_settings: 'E-Mail सेट्टिंग्स',
-        primary_email_msg: 'आपके अकाउंट से संबंधित संदेशों और इंटरनेट-संबंधित प्रक्रियाओं के लिए आपके मुख्य e-mail ID का उपयोग किया जाएगा.',
+        primary_email_msg: 'आपके अकाउंट से संबंधित संदेशों और इंटरनेट-संबंधित प्रक्रियाओं के लिए आपके मुख्य e-mail ID का उपयोग किया जाएगा|',
         save: 'अद्यतन (update)',
         your_primary_email: 'आपका मुख्य e-mail ID',
         change_pass: 'पासवर्ड बदलें',
@@ -46,16 +46,16 @@ module.exports = {
         message: {
             1: {
                 $filter: 'role',
-                block: [' प्रखंड/जनपद में ',' तारीख को ',' MGNREGA भुगतान हुए |'],
-                district: [' ज़िला में ',' तारीख को ',' MGNREGA भुगतान हुए |']
+                block: [' प्रखंड/जनपद में ',' तारीख को ',' MGNREGA भुगतान हुए|'],
+                district: [' ज़िला में ',' तारीख को ',' MGNREGA भुगतान हुए|']
             },
             2: {
-                main: ['औसतन, मस्टर रोल बंद होने से बैंक की कारवाई के समापन के बीच ',' दिन लगे, जो की सरकार द्वारा नियमित 15-दिन की सीमा ',' है |'],
+                main: ['औसतन, मस्टर रोल बंद होने से बैंक की कारवाई के समापन के बीच ',' दिन लगे, जो की सरकार द्वारा नियमित 15-दिन की सीमा ',' है|'],
                 comparison: ['से ज़्यादा','के बराबर','से कम']
             }
         }
     },
-    browser_msg: 'आपका browser इस वेबसाइट के लिए अनुकूल नहीं है. PayDash चलाने के लिए Chrome, Firefox या Internet Explorer 9 या ऊंचे संस्करण का उपयोग करें.',
+    browser_msg: 'आपका browser इस वेबसाइट के लिए अनुकूल नहीं है. PayDash चलाने के लिए Chrome, Firefox या Internet Explorer 9 या ऊंचे संस्करण का उपयोग करें|',
     messages: {
         loading: 'डाटा लोड हो रहा है...',
         not_found: 'पृष्ठ नहीं मिला। Paydash टीम से संपर्क करें.'
@@ -138,7 +138,7 @@ module.exports = {
                 $default :'अपने क्षेत्रों में मज़दूरी भुगतान की प्रक्रिया के हर एक पड़ाव में लगा औसत समय'
             },
             tooltip: 'यह ग्राफ़ MGNREGA मज़दूरी भुगतान में लगा औसत समय दिखाता है| वर्णित तिथियों पर हुए भुगतान में लगे समय को 7 पड़ावों में बाटा गया है| इसलिए, केवल पूरे हुए भुगतान का डाटा दिखाया जा रहा है|',
-            ta_message: 'आपके प्रखंड/जनपद में कुछ TAs/SEs/JEs और उनकी पंचायतों के नाम MGNREGA वेबसाइट पर अपडेट नहीं किए गये हैं| इस के परिणाम स्वरूप, हम आपको आपके प्रखंड/जनपद के सभी TAs/SEs/JEs  के प्रदर्शन की जानकारी नहीं दे सकते| यह जानकारी पाने के लिए कृपया nrega.nic.in पर सभी TAs/SEs/JEs  और उनकी पंचायतों के नाम भरें|',
+            ta_message: 'आपके प्रखंड/जनपद में कुछ TAs/SEs/JEs और उनकी पंचायतों के नाम MGNREGA वेबसाइट पर अपडेट नहीं किए गये हैं| इस के परिणाम स्वरूप, हम आपको आपके प्रखंड/जनपद के सभी TAs/SEs/JEs के प्रदर्शन की जानकारी नहीं दे सकते| यह जानकारी पाने के लिए कृपया nrega.nic.in पर सभी TAs/SEs/JEs  और उनकी पंचायतों के नाम भरें|',
             grs_message: 'आपके प्रखंड/जनपद में कुछ GRSs और उनकी पंचायतों के नाम MGNREGA वेबसाइट पर अपडेट नहीं किए गये हैं| इस के परिणाम स्वरूप, हम आपको आपके प्रखंड/जनपद के सभी GRSs के प्रदर्शन की जानकारी नहीं दे सकते| यह जानकारी पाने के लिए कृपया nrega.nic.in पर सभी GRSs और उनकी पंचायतों के नाम भरें|',
             panchayat_chart_placeholder: 'भुगतान के प्रदर्शन को देखने के लिए एक पंचायत या प्रखंड/जनपद का चयन करें ',
             grouping_selectors: {
@@ -195,7 +195,7 @@ module.exports = {
                 5:'FTO बनाने से पहले हस्ताक्षर का समय',
                 6:'पहले हस्ताक्षर से दूसरे हस्ताक्षर का समय',
                 7:'दूसरे हस्ताक्षर से बैंक की कारवाई के समापन का समय',
-                total:'Total Length of Process',
+                total:'पूरी प्रक्रिया में लगा समय',
                 all:'पूरी प्रक्रिया के सारे पड़ाव',
             },
             dates: {
@@ -227,7 +227,7 @@ module.exports = {
             logout: 'लौग आउट',
             profile_settings: 'आपकी प्रोफ़ाइल सेट्टिंग्स',
             email_settings: 'E-Mail सेट्टिंग्स',
-            primary_email_msg: 'आपके अकाउंट से संबंधित संदेशों और इंटरनेट-संबंधित प्रक्रियाओं के लिए आपके मुख्य e-mail ID का उपयोग किया जाएगा.',
+            primary_email_msg: 'आपके अकाउंट से संबंधित संदेशों और इंटरनेट-संबंधित प्रक्रियाओं के लिए आपके मुख्य e-mail ID का उपयोग किया जाएगा|',
             save: 'अद्यतन (update)',
             your_primary_email: 'आपका मुख्य e-mail ID',
             change_pass: 'पासवर्ड बदलें',
@@ -238,31 +238,31 @@ module.exports = {
         },
         messages: {
             login: {
-                connectivity: 'हमे खेद है कि आप log in करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें |',
-                credentials: 'ऐसा व्यतीत होता है कि आपने ग़लत username या password भरा है | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें |',
-                general: 'हमे खेद है कि आप log in करने में विफल रहे | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें |'
+                connectivity: 'हमे खेद है कि आप log in करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
+                credentials: 'ऐसा व्यतीत होता है कि आपने ग़लत username या password भरा है | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
+                general: 'हमे खेद है कि आप log in करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|'
             },
             logout: {
-                connectivity: 'हमे खेद है कि आप log out करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें |',
+                connectivity: 'हमे खेद है कि आप log out करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
                 warning: {
-                    'message':'क्या आप सचमुच Log Out करना चाहते हैं? PayDash का offline mode तभी तक उपलब्ध रहेगा जब तक आप logged in हैं |',
+                    'message':'क्या आप सचमुच Log Out करना चाहते हैं? PayDash का offline mode तभी तक उपलब्ध रहेगा जब तक आप logged in हैं|',
                     'logout': 'Log out',
                     'cancel': 'Cancel'
                 },
-                general: 'हमे खेद है कि आप log out करने में विफल रहे | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें |'
+                general: 'हमे खेद है कि आप log out करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|'
             },
-            password_success: 'Password changed successfully. Please login with new password.',
-            password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
-            password_new_nomatch: 'New password does not match.',
-            password_tooshort: 'Your new password must be at least 6 characters long.'
+            password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है| कृपया नये पासवर्ड का उपयोग कर लॉग इन करें|',
+            password_wrong_old: 'पुराना पासवर्ड ग़लत है| सहयता के लिए PayDash दल से संपर्क करें|',
+            password_new_nomatch: 'नया पासवर्ड मेल नही ख़ाता|',
+            password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|'
         },
         whatsapp: {
             block: {
-                'overview':'Muster Roll Details for {name}\n\n{current_total} musters closing today\n{delayed_total} delayed musters\n\n',
-                'current':'MUSTERS CLOSING TODAY\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n\n',
-                'delayed':'DELAYED MUSTERS\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n_Days delayed_\n{days_pending}\n\n'
+                'overview':'{name} के लिए मस्टर रोल विवरण\n\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\n',
+                'current':'आज बंद हो रहे मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{mr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n\n',
+                'delayed':'विलंबित मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{mr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n_विलंब(दिन)_\n{days_pending}\n\n'
             },
-            district: 'MGNREGA Payment Delay Performance for {name}\n\n_Block_\n{block_name}\n\n{days_to_payment} days to complete payment\n{current_total} musters closing today\n{delayed_total} delayed musters\n\nMUSTERS DELAYED AT DIFFERENT STEPS\n\n*Attendance not filled (T+2)*\n_Total_\n{t2_total}\n_Avg. days pending_\n{t2_avg}\n\n*Measurement book not filled (T+5)*\n_Total_\n{t5_total}\n_Avg. days pending_\n{t5_avg}\n\n*Wagelist not sent (T+6)*\n_Total_\n{t6_total}\n_Avg. days pending_\n{t6_avg}\n\n*Pending for FTO first signature (T+7)*\n_Total_\n{t7_total}\n_Avg. days pending_\n{t7_avg}\n\n*Pending for FTO second signature (T+8)*\n_Total_\n{t8_total}\n_Avg. days pending_\n{t8_avg}\n'    
+            district: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_प्रखंड/जनपद_\n{block_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n'    
         }
     }
 };
