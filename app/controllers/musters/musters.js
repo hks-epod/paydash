@@ -12,7 +12,7 @@ exports.showPage = {
 
 exports.getData = {
     handler: function(request, reply) {
-
+        console.log('sdsdsd');
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var userId = request.auth.credentials.id;
         var role = request.auth.credentials.role;
@@ -21,18 +21,18 @@ exports.getData = {
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
-
+            var data;
             if (role === 'block') {
 
-                var data = MustersParser.block(rows);
+                data = MustersParser.block(rows);
 
             } else if (role === 'district') {
 
-                var data = MustersParser.district(rows);
+                data = MustersParser.district(rows);
 
             }
 
-            reply(data);
+            return reply(data);
 
         });
     }
