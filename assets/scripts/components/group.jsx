@@ -5,9 +5,7 @@ import Card from './card.jsx';
 
 const Group =  React.createClass({
 
-
     filterCards: function(event){
-
         var updatedList = this.props.data.cards;
         updatedList = updatedList.filter(function(item){
             return item.name.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
@@ -18,11 +16,10 @@ const Group =  React.createClass({
         return {
            cards: []
          };
-      },
-      componentWillMount: function(){
+    },
+    componentWillMount: function(){
         this.setState({cards: this.props.data.cards});
-      },
-
+    },
     render: function(){
         return (
             <div>

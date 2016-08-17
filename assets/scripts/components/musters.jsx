@@ -36,7 +36,7 @@ const Cards = React.createClass({
                         return <Group key={data.block_code}  data={data}></Group>;
                     })
                 }
-            </div>
+            </div>      
         );
     }
 });
