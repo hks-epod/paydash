@@ -1,66 +1,54 @@
 'use strict';
 
 import React from 'react';
-import Card from './card.jsx';
-import D3 from 'd3';
+import Group from './group.jsx';
+
+const D3= require('d3'); 
 
 const Cards = React.createClass({
-  loadCommentsFromServer: function() {
 
-      D3.json(function(err, data){
-        
-      });
+    fetchCards: function() {
 
-      // $.ajax({
-      //   url: this.props.url,
-      //   dataType: 'json',
-      //   cache: false,
-      //   success: function(data) {
-      //     this.setState({data: data});
-      //   }.bind(this),
-      //   error: function(xhr, status, err) {
-      //     console.error(this.props.url, status, err.toString());
-      //   }.bind(this)
-      // });
+        var _this = this;
+        D3.json(_this.props.url)
+            .on('load', function(json) { 
+                _this.setState({musters: json.cards});
+            })
+            .on('error', function(error) { 
+                console.error(_this.props.url, status, error.toString());
+            })
+            .get();
     },
-  render: function(){
-    return (
-      <div className="filter-list">
-      <Card items={this.state.items}/>
-      </div>
-    );
-  }
+
+    filterCards: function(event){
+
+        var updatedList = this.state.initialItems;
+        updatedList = updatedList.filter(function(item){
+            return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+        });
+        this.setState({musters: updatedList});
+    },
+    
+    getInitialState: function() {
+        return {
+            musters: []
+        };
+    },
+    componentDidMount: function() {
+        this.fetchCards();
+    },
+    render: function(){
+        return (
+            <div className="filter-list">
+                <input type="text" placeholder="Search" onChange={this.filterCards}/>
+                {
+                    this.state.musters.map(function(data, i) {
+                        return <Group key={data.block_code}  data={data}></Group>;
+                    })
+                }
+            </div>
+        );
+    }
 });
-
-
-// const Cards = React.createClass({
-//   filterList: function(event){
-//     var updatedList = this.state.initialItems;
-//     updatedList = updatedList.filter(function(item){
-//       return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
-//     });
-//     this.setState({items: updatedList});
-//   },
-//   getInitialState: function(){
-//      return {
-//        initialItems: [
-//          'one',
-//          'two'
-//        ],
-//        items: []
-//      };
-//   },
-//   componentWillMount: function(){
-//     this.setState({items: this.state.initialItems});
-//   },
-//   render: function(){
-//     return (
-//       <div className="filter-list">
-//         <input type="text" placeholder="Search" onChange={this.filterList}/>
-//       <List items={this.state.items}/>
-//       </div>
-//     );
-//   }
-// });
 
 export default Cards;

@@ -12,7 +12,6 @@ exports.showPage = {
 
 exports.getData = {
     handler: function(request, reply) {
-        console.log('sdsdsd');
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var userId = request.auth.credentials.id;
         var role = request.auth.credentials.role;

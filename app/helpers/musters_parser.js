@@ -118,7 +118,7 @@ exports.district = function(rows) {
         });
 
     var data = {
-        'cards': cards
+        'musters': cards
     };
     
     return data;
