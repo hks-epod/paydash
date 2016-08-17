@@ -5,15 +5,19 @@ a {
     color: $color-accent;
     text-decoration: none;
 }
+
 a:hover {
     color: darken($color-accent, 10%);
 }
 
+
 /* Headings
 ------------------------------------------------- */
-h1{
+
+h1 {
     font-weight: normal
 }
+
 h2,
 h3,
 h4,
@@ -23,9 +27,28 @@ h6 {
     font-weight: lighter;
     margin-bottom: $spacing-small;
 }
-table{
-    width: 100%
+
+
+/* Tables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #E1E1E1;
 }
+
+th:first-child,
+td:first-child {
+    padding-left: 0;
+}
+
+th:last-child,
+td:last-child {
+    padding-right: 0;
+}
+
 
 /* Code
 ------------------------------------------------- */
@@ -39,6 +62,7 @@ code {
     border: 1px solid #E1E1E1;
     border-radius: 4px;
 }
+
 pre > code {
     display: block;
     padding: 1rem 1.5rem;

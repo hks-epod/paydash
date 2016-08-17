@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Modal from './modal.jsx';
+import Table from './table.jsx';
 
 const Card =  React.createClass({
  
@@ -35,21 +36,7 @@ const Card =  React.createClass({
                     </div>
                     <button className="button button--primary" onClick={this.toggleModal}>Muster details</button>
                     <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>  
-                        <table className="muster-table">  
-                        {
-                            this.props.data.delayed_musters.map(function(data, i) {
-                                return (
-                                    <tr key={i}>
-                                        {
-                                            Object.keys(data).map(function(key, i) {
-                                                return <td key={i}>{data[key]}</td>;
-                                            })
-                                        }
-                                    </tr>
-                                );
-                            })
-                        }   
-                        </table>     
+                        <Table data={this.props.data.delayed_musters}></Table>
                     </Modal>
                 </div>
             </div>
