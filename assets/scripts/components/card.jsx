@@ -8,6 +8,7 @@ const Card =  React.createClass({
         <div className="pure-u pure-u-6-24">
             <div className="card">
                 <div className="card-head">{this.props.data.name}</div>
+                <div className="card-deisgnation">{this.props.data.designation}</div>
             </div>
         </div>
     ); 
