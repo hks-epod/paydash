@@ -27,15 +27,16 @@ const Group =  React.createClass({
         return (
             <div>
                 <div className="group-head">
-                    <input className="u-pull-right" type="text" placeholder="Search" onChange={this.filterCards}/>
+                    <input className="search-bar u-pull-right" type="text" placeholder="Search" onChange={this.filterCards}/>
                     <h1 className="u-inline-block">{this.props.data.block_name}</h1>
                 </div>
-                
+                <div className="pure-g">
                 {
                     this.state.cards.map(function(data, i) {
                         return <Card key={i}  data={data}></Card>;
                     })
                 }  
+                </div>
             </div>
         ); 
     }

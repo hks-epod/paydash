@@ -1,0 +1,27 @@
+.group-head {
+    padding: 40px 0;
+}
+
+.group-head h1 {
+    margin: 0;
+}
+
+.group-head .search-bar {
+    margin-top: 8px
+}
+.card {
+    min-height: 300px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.09);
+    border-radius: 4px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center
+}
+.card-head{
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1em;
+    margin-top: 10px;
+    letter-spacing: .1em
+}

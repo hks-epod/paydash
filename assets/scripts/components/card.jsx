@@ -5,8 +5,10 @@ import React from 'react';
 const Card =  React.createClass({
   render: function(){
     return (
-        <div>
-            {this.props.data.name}
+        <div className="pure-u pure-u-6-24">
+            <div className="card">
+                <div className="card-head">{this.props.data.name}</div>
+            </div>
         </div>
     ); 
   }
