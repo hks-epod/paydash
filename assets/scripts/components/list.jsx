@@ -20,15 +20,6 @@ const Cards = React.createClass({
             .get();
     },
 
-    filterCards: function(event){
-
-        var updatedList = this.state.initialItems;
-        updatedList = updatedList.filter(function(item){
-            return item.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
-        });
-        this.setState({musters: updatedList});
-    },
-    
     getInitialState: function() {
         return {
             musters: []
@@ -39,8 +30,7 @@ const Cards = React.createClass({
     },
     render: function(){
         return (
-            <div className="filter-list">
-                <input type="text" placeholder="Search" onChange={this.filterCards}/>
+            <div className="muster-list"> 
                 {
                     this.state.musters.map(function(data, i) {
                         return <Group key={data.block_code}  data={data}></Group>;

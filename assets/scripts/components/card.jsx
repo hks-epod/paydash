@@ -6,7 +6,7 @@ const Card =  React.createClass({
   render: function(){
     return (
         <div>
-            heelo
+            {this.props.data.name}
         </div>
     ); 
   }
