@@ -2,6 +2,6 @@
 
 import React from 'react';
 import {render} from 'react-dom';
-import List from './components/list.jsx';
+import Musters from './components/musters.jsx';
 
-render( <List url='/musters/data'/> , document.getElementById('list'));
+render( <Musters url='/musters/data'/> , document.getElementById('musters'));
