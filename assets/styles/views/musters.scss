@@ -18,19 +18,22 @@
     padding: 20px;
     text-align: center
 }
+.card-top{
+    min-height: 100px;
+}
 .card-head{
     text-transform: uppercase;
     font-weight: 400;
     font-size: 1.2em;
     margin: 10px 0 0;
-    letter-spacing: .1em
+    letter-spacing: .1em;
 }
 .card-designation{
     color: $color-grey-lighter;
     font-size: $fontSize-small;
 }
 .card-numbers{
-    margin: 30px 0;
+    margin: 30px 0 40px;
 }
 .card-number-sub{
     font-size: $fontSize-smaller;
