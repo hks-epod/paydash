@@ -21,11 +21,18 @@
 .card-head{
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 1em;
-    margin-top: 10px;
+    font-size: 1.2em;
+    margin: 10px 0 0;
     letter-spacing: .1em
 }
-.card-deisgnation{
+.card-designation{
     color: $color-grey-lighter;
-    font-size: $fontSize-small
+    font-size: $fontSize-small;
+}
+.card-numbers{
+    margin: 30px 0;
+}
+.card-number-sub{
+    font-size: $fontSize-smaller;
+    color: $color-grey-light;
 }
