@@ -16,7 +16,7 @@ const Modal = React.createClass({
       
         return (
             <div className="modal-wrapper" style={styles.modal}>
-                <span onClick={this.props.onClose}>close</span>
+                <span className="" onClick={this.props.onClose}>X</span>
                 <div className="modal-item container">
                     { this.props.children }
                 </div>
