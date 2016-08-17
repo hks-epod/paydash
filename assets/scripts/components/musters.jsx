@@ -25,7 +25,7 @@ const Cards = React.createClass({
             musters: []
         };
     },
-    componentDidMount: function() {
+    componentWillMount: function() {
         this.fetchCards();
     },
     render: function(){

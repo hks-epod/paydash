@@ -9,12 +9,11 @@ const Table = React.createClass({
             <table className="muster-table">
                 <thead>
                     <tr>
-                        <th>1</th>
-                        <th>2</th>
-                        <th>3</th>
-                        <th>4</th>
-                        <th>5</th>
-                        <th>6</th>
+                    {
+                        this.props.data.length > 0 && Object.keys(this.props.data[0]).map(function(key){
+                            return <th key={key}>{key}</th>;
+                        })
+                    }
                     </tr>
                 </thead>  
                 <tbody>
