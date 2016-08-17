@@ -34,7 +34,29 @@ const Card =  React.createClass({
                         </div>
                     </div>
                     <button className="button button--primary" onClick={this.toggleModal}>Muster details</button>
-                    <Modal bg="#222" show={ this.state.modalOpen } onClose={this.toggleModal}>          
+                    <Modal bg="#222" show={ this.state.modalOpen } onClose={this.toggleModal}>  
+                        <table>  
+                           { /*<tr>
+                                {
+                                    Object.keys(this.props.data.delayed_musters[0]).map(function(key, i) {
+                                        return <td key={i}>{key}</td>;
+                                    })
+                                }
+                            </tr>*/}
+                        {
+                            this.props.data.delayed_musters.map(function(data, i) {
+                                return (
+                                    <tr key={i}>
+                                        {
+                                            Object.keys(data).map(function(key, i) {
+                                                return <td key={i}>{data[key]}</td>;
+                                            })
+                                        }
+                                    </tr>
+                                );
+                            })
+                        }   
+                        </table>     
                     </Modal>
                 </div>
             </div>
