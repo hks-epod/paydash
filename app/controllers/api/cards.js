@@ -17,7 +17,7 @@ exports.getData = {
     handler: function(request, reply) {
 
         if (!request.auth.isAuthenticated) {
-            return Boom.forbidden('You are not logged in');
+            return reply(Boom.forbidden('You are not logged in'));
         }
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
