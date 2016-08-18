@@ -36,7 +36,8 @@ const Card =  React.createClass({
                     </div>
                     <button className="button button--primary" onClick={this.toggleModal}>Muster details</button>
                     <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>  
-                        <Table data={this.props.data.delayed_musters}></Table>
+                        <Table title="DELAYED MUSTERS" data={this.props.data.delayed_musters}></Table>
+                        <Table title="CURRENT MUSTERS" data={this.props.data.current_musters}></Table>
                     </Modal>
                 </div>
             </div>
