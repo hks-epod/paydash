@@ -192,7 +192,7 @@ module.exports = {
                 show_blocks: 'SHOW BLOCKS',
                 days_to_payment: 'पिछले 3 महीनों में भुगतान के लिए दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
-                delayed_musters: 'विलंबित मस्टर्स',
+                delayed_musters: 'विलंबित मस्टर्स'
             },
             cards: {
                 days_to_payment: 'पिछले 3 महीनों में भुगतान के लिए दिन',
@@ -207,7 +207,7 @@ module.exports = {
                 t_7: 'FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)',
                 t_8: 'FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)'
             }
-        }
+        },
         chart: {
             days_to_complete_process: 'प्रक्रिया पूरी करने में लगे दिन',
             steps: {

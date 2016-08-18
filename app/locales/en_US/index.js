@@ -188,7 +188,7 @@ module.exports = {
                 show_blocks: 'SHOW BLOCKS',
                 days_to_payment: 'Days to payment in last 3 months',
                 musters_closing_today: 'Musters closing today',
-                delayed_musters: 'Delayed musters',
+                delayed_musters: 'Delayed musters'
             },
             cards: {
                 days_to_payment: 'Days to payment in last 3 months',
@@ -203,7 +203,7 @@ module.exports = {
                 t_7: 'Pending for FTO first signature (T+7)',
                 t_8: 'Pending for FTO second signature (T+8)'
             }
-        }
+        },
         chart: {
             days_to_complete_process: 'Days to complete process',
             steps: {
