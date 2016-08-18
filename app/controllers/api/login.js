@@ -19,7 +19,7 @@ exports.postForm = {
         payload: { // payload for POST, query for GET
             username: Joi.string().min(3).max(20),
             password: Joi.string().min(6).max(20),
-            google_Account: Joi.string().min(6).max(60).optional()
+            google_account: Joi.string().min(6).max(60).optional()
         },
         failAction: function(request, reply, source, error) {
             // Username, passowrd minimum validation failed
