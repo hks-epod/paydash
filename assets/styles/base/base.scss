@@ -16,6 +16,7 @@ body {
     font-size: 1.5em; //Should be in sync with $fontSize-base
     line-height: 1.6;
     color: rgba($color-foreground, 1);
+    background-color: $color-background;
     font-weight: $fontWeight-thin;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;

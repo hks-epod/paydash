@@ -9,14 +9,12 @@ const Modal = React.createClass({
 
         const styles = {
             modal: {
-                display : (this.props.show) ? null : 'none', 
-                backgroundColor : 'rgba(255, 255, 255, 0.8)',       
+                display : (this.props.show) ? null : 'none'   
             }
         };
       
         return (
             <div className="modal-wrapper" style={styles.modal}>
-                
                 <div className="modal-item container">
                     <span className="u-pull-right pe-7s-close-circle modal-close" onClick={this.props.onClose}></span>
                     { this.props.children }

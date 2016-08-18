@@ -1,19 +1,20 @@
 .modal-wrapper{
     position: fixed;
-    top: 60px;
+    top: 62px;
     left: 0;
     height: 100%;
     width: 100%;
-    z-index: 1000
+    z-index: 1000;
+    padding-top:60px;
+    background-color: rgba($color-background, .95);
 }
 .modal-item {
-    background: #fff;
+    background: $color-background;
     padding: 30px;  
-    box-shadow: 0 1px 4px rgba(0,0,0,.04);
-    border: 1px solid rgba(0,0,0,.09);
+    box-shadow: 0 1px 4px rgba($color-foreground,.04);
+    border: 1px solid rgba($color-foreground,.09);
     border-radius: 4px;
     max-height: 80%;
-    margin-top: 10px;
     overflow-y: scroll
 }
 .muster-table{

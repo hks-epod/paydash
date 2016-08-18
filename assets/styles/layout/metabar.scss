@@ -16,18 +16,18 @@ body {
     font-size: $fontSize-base;
     position: fixed;
     z-index: 999;
-    background-color: #fff;
+    background-color: $color-background;
     top: 0;
     left: 0;
     width: 100%;
     min-height: $metabar-height;
-    box-shadow: 0 0 1px rgba(0, 0, 0, .15);
+    box-shadow: 0 0 1px  rgba($color-foreground, .15);
     @extend %clearfix;
 }
 .metabar .brand {
   letter-spacing: 0.35em;
   font-size: 15px;
-  color: #00bff3;
+  color: $color-accent;
   text-transform: uppercase;
   padding: 16px 40px 15px 20px;
   font-weight: 500;
