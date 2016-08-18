@@ -166,6 +166,7 @@ module.exports = {
         }
     },
     app: {
+        paydash: 'पे-डॅश',
         overview: {
             musters_closing_today: 'आज बंद हो रहे मस्टर्स',
             delayed_musters: 'विलंबित मस्टर्स',
@@ -185,6 +186,28 @@ module.exports = {
             closure_date: 'मस्टर रोल बंद होने की तिथि',
             days_delayed: 'विलंब(दिन)'
         },
+        district: {
+            overview: {
+                view_your_blocks: 'अपने जनपदों/प्रखंडों का प्रदर्शन देखें',
+                show_blocks: 'SHOW BLOCKS',
+                days_to_payment: 'पिछले 3 महीनों में भुगतान के लिए दिन',
+                musters_closing_today: 'आज बंद हो रहे मस्टर्स',
+                delayed_musters: 'विलंबित मस्टर्स',
+            },
+            cards: {
+                days_to_payment: 'पिछले 3 महीनों में भुगतान के लिए दिन',
+                musters_closing_today: 'आज बंद हो रहे मस्टर्स',
+                delayed_musters: 'विलंबित मस्टर्स',
+                musters_diff_steps: 'विभिन्न पड़ावों पर विलंबित मस्टर रोल',
+                avg_days_pending: 'औसत विलंब',
+                total: 'कुल मस्टर रोल',
+                t_2: 'अटेंडेन्स नहीं भरी गयी (T+2)',
+                t_5: 'MB नहीं भरी गयी (T+5)',
+                t_6: 'वेज लिस्ट नहीं भेजी गयी (T+6)',
+                t_7: 'FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)',
+                t_8: 'FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)'
+            }
+        }
         chart: {
             days_to_complete_process: 'प्रक्रिया पूरी करने में लगे दिन',
             steps: {

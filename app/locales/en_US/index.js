@@ -162,6 +162,7 @@ module.exports = {
         }
     },
     app: {
+        paydash: 'PayDash',
         overview: {
             musters_closing_today: 'Musters closing today',
             delayed_musters: 'Delayed musters',
@@ -181,6 +182,28 @@ module.exports = {
             closure_date: 'Closure date',
             days_delayed: 'Days delayed'
         },
+        district: {
+            overview: {
+                view_your_blocks: 'View your blocks\' performance',
+                show_blocks: 'SHOW BLOCKS',
+                days_to_payment: 'Days to payment in last 3 months',
+                musters_closing_today: 'Musters closing today',
+                delayed_musters: 'Delayed musters',
+            },
+            cards: {
+                days_to_payment: 'Days to payment in last 3 months',
+                musters_closing_today: 'Musters closing today',
+                delayed_musters: 'Delayed musters',
+                musters_diff_steps: 'Musters delayed at different steps',
+                avg_days_pending: 'Avg. days pending',
+                total: 'Total',
+                t_2: 'Attendance not filled (T+2)',
+                t_5: 'Measurement book not filled (T+5)',
+                t_6: 'Wagelist not sent (T+6)',
+                t_7: 'Pending for FTO first signature (T+7)',
+                t_8: 'Pending for FTO second signature (T+8)'
+            }
+        }
         chart: {
             days_to_complete_process: 'Days to complete process',
             steps: {
