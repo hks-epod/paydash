@@ -1,18 +1,17 @@
 'use strict';
 
 import React from 'react';
-import Group from './group.jsx';
 
 const D3= require('d3'); 
 
-const Cards = React.createClass({
+const Overview = React.createClass({
 
-    fetchCards: function() {
+    fetchData: function() {
 
         var _this = this;
         D3.json(_this.props.url)
             .on('load', function(json) { 
-                _this.setState({musters: json.cards});
+                _this.setState({overview: json});
             })
             .on('error', function(error) { 
                 console.error(_this.props.url, status, error.toString());
@@ -22,23 +21,19 @@ const Cards = React.createClass({
 
     getInitialState: function() {
         return {
-            musters: []
+            overview: []
         };
     },
     componentWillMount: function() {
-        this.fetchCards();
+        this.fetchData();
     },
     render: function(){
         return (
-            <div className="muster-list"> 
-                {
-                    this.state.musters.map(function(data, i) {
-                        return <Group key={data.block_code}  data={data}></Group>;
-                    })
-                }
+            <div> 
+             
             </div>      
         );
     }
 });
 
-export default Cards;
+export default Overview;
