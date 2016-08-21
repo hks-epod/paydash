@@ -63,7 +63,7 @@ exports.block = function(rows) {
         });
 
     var data = {
-        'cards': cards
+        'musters': cards
     };
 
     return data;
