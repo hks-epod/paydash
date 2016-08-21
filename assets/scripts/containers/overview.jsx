@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import Tile from '../components/tile.jsx';
 
 const D3= require('d3'); 
 
@@ -29,9 +30,13 @@ const Overview = React.createClass({
     },
     render: function(){
         return (
-            <div className=""> 
-            
-            </div>      
+            <div className="overview-wrapper">
+                {
+                    this.state.overview.map(function(data, i) {
+                        return <Tile key={data.region_code}  data={data}></Tile>;
+                    })
+                }
+            </div>     
         );
     }
 });
