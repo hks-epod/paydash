@@ -117,11 +117,12 @@ exports.block = function(rows) {
         })
         .entries(panchayatResponse)
         .map(function(d) {
+            console.log(d)
             return {
                 'block_code': d.key.substr(0, 7),
                 'block_name': d.key.substr(7),
                 'data': d.values.map(function(e) {
-                    return e.values;
+                    return e.value;
                 })
             };
         });
