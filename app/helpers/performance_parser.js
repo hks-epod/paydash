@@ -87,7 +87,7 @@ exports.block = function(rows) {
 
     // Process list of panchayat names and codes
     var panchayatResponse = D3.values(rows[3]);
-    
+
     // Nest the panchayat response
     var panchayatPerformance = D3.nest()
         .key(function(d) {
@@ -118,23 +118,25 @@ exports.block = function(rows) {
         .entries(panchayatResponse)
         .map(function(d) {
             return {
-                'block_code': d.key.substr(0,7),
+                'block_code': d.key.substr(0, 7),
                 'block_name': d.key.substr(7),
-                'data': d.values.map(function(e) { 
+                'data': d.values.map(function(e) {
                     return e.values;
                 })
             };
         });
 
     var data = {
-        'state_performance': statePerformance,
-        'district_performance': districtPerformance,
-        'block_performance': blockPerformance,
-        'panchayat_performance': panchayatPerformance
-    }
+        performance: {
+            'state': statePerformance,
+            'district': districtPerformance,
+            'block': blockPerformance,
+            'panchayat': panchayatPerformance
+        }
+    };
 
     return data;
-}
+};
 
 exports.district = function(rows) {
 
@@ -196,7 +198,7 @@ exports.district = function(rows) {
 
     // Process list of block names and codes
     var blockResponse = D3.values(rows[2]);
-    
+
     // Nest the block response
     var blockPerformance = D3.nest()
         .key(function(d) {
@@ -227,19 +229,21 @@ exports.district = function(rows) {
         .entries(blockResponse)
         .map(function(d) {
             return {
-                'district_code': d.key.substr(0,4),
+                'district_code': d.key.substr(0, 4),
                 'district_name': d.key.substr(4),
-                'data': d.values.map(function(e) { 
+                'data': d.values.map(function(e) {
                     return e.values;
                 })
             };
         });
 
     var data = {
-        'state_performance': statePerformance,
-        'district_performance': districtPerformance,
-        'block_performance': blockPerformance
-    }
+        performance: {
+            'state': statePerformance,
+            'district': districtPerformance,
+            'block': blockPerformance
+        }
+    };
 
     return data;
-}
+};
