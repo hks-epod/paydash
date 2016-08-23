@@ -1,8 +1,8 @@
 'use strict';
 
-exports.list = function(performance, config) {
+exports.list = function(performance, role) {
     var regions = [];
-    if (config.role === 'block') {
+    if (role === 'block') {
 
         performance['panchayat'].forEach(function(block){
             regions.push({

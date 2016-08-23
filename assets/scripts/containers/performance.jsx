@@ -1,11 +1,9 @@
 'use strict';
 
 import React from 'react';
-import Select from 'react-select';
-
+import Subnav from '../components/subnav.jsx';
 
 const D3= require('d3'); 
-const Regions = require('../lib/region');
 
 const Overview = React.createClass({
 
@@ -16,7 +14,7 @@ const Overview = React.createClass({
                 _this.setState({
                     config: json.config,
                     performance: json.performance,
-                    isLoadingExternally : false,
+                    isFetching : false,
                 });
             })
             .on('error', function(error) { 
@@ -28,36 +26,17 @@ const Overview = React.createClass({
         return {
             performance: {},
             config: {},
-            isLoadingExternally : true,
+            isFetching : true,
         };
     },
     componentWillMount: function() {
         this.fetchData();
     },
-    renderOption: function(option) {
-        return <span className={ option.class }>{option.label}</span>;
-    },
-    renderValue: function(option) {
-        return <strong className={ option.class }>{option.label}</strong>;
-    },
-    setValue (value) {
-        this.setState({ value });
-        console.log('Support level selected:', value.label);
-    },
     render: function(){
         
-        var list = Regions.list(this.state.performance, this.state.config);
         return (
             <div className="performance-wrapper">
-              <Select 
-                name="region_selector" 
-                options={list} 
-                optionRenderer={this.renderOption}
-                onChange={this.setValue}
-                isLoading={this.state.isLoadingExternally}
-                autosize = {true}
-                value={this.state.value}
-                valueRenderer={this.renderValue} />
+              <Subnav role={this.state.config.role} performance={this.state.performance}/>
             </div>     
         );
     }

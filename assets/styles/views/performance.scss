@@ -2,3 +2,20 @@
     color: $color-grey-darkest;
     font-weight: bold;
 }
+.region-selector{
+    min-width: 200px;
+    margin-right: 10px;
+}
+.Select-input {
+    height: 36px;
+}
+.subnav {
+    padding: 10px 0 20px;
+    border-bottom: dashed 1px $color-grey-lighter;
+    margin-bottom: 20px;
+}
+.subnav .subnav-name {
+    font-size: 40px;
+    text-transform: capitalize !important;
+    letter-spacing: .3em
+}
