@@ -33,6 +33,7 @@ const Subnav =  React.createClass({
                     name="region_selector" 
                     placeholder ="Select..."
                     options={list} 
+                    clearable= {false}
                     optionRenderer={this.renderOption}
                     onChange={this.setValue}
                     autosize = {true}

@@ -19,3 +19,17 @@
     text-transform: capitalize !important;
     letter-spacing: .3em
 }
+.legend {
+    margin-top: 40px;
+}
+
+.legend span {
+    display: block;
+    font-size: .9em;
+    margin-bottom: 5px;
+}
+
+.legend-discrete span {
+    width: 33%;
+    display: inline-block;
+}

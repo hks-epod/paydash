@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Subnav from '../components/subnav.jsx';
+import PerformanceChart from '../components/performance-chart.jsx';
 
 const D3= require('d3'); 
 
@@ -27,6 +28,7 @@ const Overview = React.createClass({
             performance: {},
             config: {},
             isFetching : true,
+            active_region: null
         };
     },
     componentWillMount: function() {
@@ -37,6 +39,7 @@ const Overview = React.createClass({
         return (
             <div className="performance-wrapper">
               <Subnav role={this.state.config.role} performance={this.state.performance}/>
+              <PerformanceChart/>
             </div>     
         );
     }
