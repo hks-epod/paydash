@@ -35,23 +35,26 @@ const Overview = React.createClass({
     renderOption: function(option) {
         return <span className={ option.class }>{option.label}</span>;
     },
+    renderValue: function(option) {
+        return <strong className={ option.class }>{option.label}</strong>;
+    },
+    setValue (value) {
+        this.setState({ value });
+        console.log('Support level selected:', value.label);
+    },
     render: function(){
         
         var list = Regions.list(this.state.performance, this.state.config);
 
-        console.log(list);
-        function logChange(val) {
-            console.log('Selected: ' + val);
-        }
-
         return (
             <div className="performance-wrapper">
               <Select 
-                placeholder="Select a region"
-                name="form-field-name" 
+                name="region_selector" 
                 options={list} 
                 optionRenderer={this.renderOption}
-                onChange={logChange}/>  
+                onChange={this.setValue}
+                value={this.state.value}
+                valueRenderer={this.renderValue} />
             </div>     
         );
     }
