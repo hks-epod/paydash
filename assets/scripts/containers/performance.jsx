@@ -3,7 +3,9 @@
 import React from 'react';
 import Select from 'react-select';
 
+
 const D3= require('d3'); 
+const Regions = require('../lib/region');
 
 const Overview = React.createClass({
 
@@ -30,19 +32,26 @@ const Overview = React.createClass({
     componentWillMount: function() {
         this.fetchData();
     },
+    renderOption: function(option) {
+        return <span className={ option.class }>{option.label}</span>;
+    },
     render: function(){
-        var options = [
-            { value: 'one', label: 'One' },
-            { value: 'two', label: 'Two' }
-        ];
+        
+        var list = Regions.list(this.state.performance, this.state.config);
 
+        console.log(list);
         function logChange(val) {
             console.log('Selected: ' + val);
         }
 
         return (
             <div className="performance-wrapper">
-              <Select name="form-field-name" value="one" options={options} onChange={logChange}/>  
+              <Select 
+                placeholder="Select a region"
+                name="form-field-name" 
+                options={list} 
+                optionRenderer={this.renderOption}
+                onChange={logChange}/>  
             </div>     
         );
     }
