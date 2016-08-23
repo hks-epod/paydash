@@ -8,12 +8,12 @@ const D3= require('d3');
 const Overview = React.createClass({
 
     fetchData: function() {
-
         var _this = this;
         D3.json(_this.props.url)
             .on('load', function(json) { 
                 _this.setState({
-                    config: json.config
+                    config: json.config,
+                    performance: json.performance
                 });
             })
             .on('error', function(error) { 
@@ -21,10 +21,10 @@ const Overview = React.createClass({
             })
             .get();
     },
-
     getInitialState: function() {
         return {
-            performance: []
+            performance: {},
+            config: {}
         };
     },
     componentWillMount: function() {
