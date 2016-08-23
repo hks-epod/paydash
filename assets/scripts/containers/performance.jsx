@@ -15,7 +15,8 @@ const Overview = React.createClass({
             .on('load', function(json) { 
                 _this.setState({
                     config: json.config,
-                    performance: json.performance
+                    performance: json.performance,
+                    isLoadingExternally : false,
                 });
             })
             .on('error', function(error) { 
@@ -26,7 +27,8 @@ const Overview = React.createClass({
     getInitialState: function() {
         return {
             performance: {},
-            config: {}
+            config: {},
+            isLoadingExternally : true,
         };
     },
     componentWillMount: function() {
@@ -45,7 +47,6 @@ const Overview = React.createClass({
     render: function(){
         
         var list = Regions.list(this.state.performance, this.state.config);
-
         return (
             <div className="performance-wrapper">
               <Select 
@@ -53,6 +54,8 @@ const Overview = React.createClass({
                 options={list} 
                 optionRenderer={this.renderOption}
                 onChange={this.setValue}
+                isLoading={this.state.isLoadingExternally}
+                autosize = {true}
                 value={this.state.value}
                 valueRenderer={this.renderValue} />
             </div>     
