@@ -57,7 +57,7 @@ exports.block = function(rows) {
                 'block_code': d.key.substr(0,7),
                 'block_name': d.key.substr(7),
                 'cards': d.values.map(function(e) { 
-                    return e.value; 
+                    return e.values; 
                 })
             };
         });
@@ -112,7 +112,7 @@ exports.district = function(rows) {
                 'district_code': d.key.substr(0,4),
                 'district_name': d.key.substr(4),
                 'data': d.values.map(function(e) { 
-                    return e.value;
+                    return e.values;
                 })
             };
         });

@@ -81,7 +81,7 @@ exports.block = function(rows) {
         })
         .entries(blockResponse)
         .map(function(d) {
-            return d.value;
+            return d.values;
         });
 
 
@@ -121,7 +121,7 @@ exports.block = function(rows) {
                 'block_code': d.key.substr(0, 7),
                 'block_name': d.key.substr(7),
                 'data': d.values.map(function(e) {
-                    return e.value;
+                    return e.values;
                 })
             };
         });
@@ -192,7 +192,7 @@ exports.district = function(rows) {
         })
         .entries(districtResponse)
         .map(function(d) {
-            return d.value;
+            return d.values;
         });
 
 
@@ -232,7 +232,7 @@ exports.district = function(rows) {
                 'district_code': d.key.substr(0, 4),
                 'district_name': d.key.substr(4),
                 'data': d.values.map(function(e) {
-                    return e.value;
+                    return e.values;
                 })
             };
         });

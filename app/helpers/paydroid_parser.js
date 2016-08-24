@@ -68,7 +68,7 @@ exports.v1 = function(rows) {
         })
         .entries(cardsResponse)
         .map(function(d) {
-            return d.value;
+            return d.values;
         });
 
     // Nest the block response
@@ -97,7 +97,7 @@ exports.v1 = function(rows) {
         })
         .entries(blockResponse)
         .map(function(d) {
-            return d.value;
+            return d.values;
         })
         .sort(function(a, b) {
             var aTarget = a.data[a.data.length - 1];
@@ -135,7 +135,7 @@ exports.v1 = function(rows) {
         })
         .entries(panchayatResponse)
         .map(function(d) {
-            return d.value;
+            return d.values;
         })
         .sort(function(a, b) {
             var aTarget = a.data[a.data.length - 1];
@@ -252,7 +252,7 @@ exports.v2 = function(rows, role) {
             })
             .entries(cardsResponse)
             .map(function(d) {
-                return d.value;
+                return d.values;
             });
 
 
@@ -283,7 +283,7 @@ exports.v2 = function(rows, role) {
             })
             .entries(blockResponse)
             .map(function(d) {
-                return d.value;
+                return d.values;
             });
 
 
@@ -315,7 +315,7 @@ exports.v2 = function(rows, role) {
             })
             .entries(panchayatResponse)
             .map(function(d) {
-                return d.value;
+                return d.values;
             });
 
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
@@ -435,7 +435,7 @@ exports.v2 = function(rows, role) {
             })
             .entries(cardsResponse)
             .map(function(d) {
-                return d.value;
+                return d.values;
             });
 
         // Nest the district response
@@ -466,7 +466,7 @@ exports.v2 = function(rows, role) {
             })
             .entries(districtResponse)
             .map(function(d) {
-                return d.value;
+                return d.values;
             });
 
 
@@ -497,7 +497,7 @@ exports.v2 = function(rows, role) {
             })
             .entries(blockResponse)
             .map(function(d) {
-                return d.value;
+                return d.values;
             });
 
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
