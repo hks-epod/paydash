@@ -23,7 +23,6 @@ exports.getData = {
         }
 
         var version = request.pre.apiVersion;
-        console.log(version);
         var res = {
             en_US: Translate('/app', { lang: 'en_US' }, version),
             hi: Translate('/app', { lang: 'hi' }, version)
