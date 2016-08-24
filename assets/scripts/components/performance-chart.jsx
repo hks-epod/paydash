@@ -46,7 +46,7 @@ const PerformanceChart =  React.createClass({
                 show_secondary_x_label: false,
                 x_extended_ticks: true,
                 xax_count: 5,
-                // xax_format: D3.time.format('%e %b, %y'),
+                xax_format: D3.time.format('%e %b, %y'),
                 decimals: 0,
                 baselines: [{
                     value: 15,
