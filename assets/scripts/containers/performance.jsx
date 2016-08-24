@@ -28,11 +28,13 @@ const Overview = React.createClass({
             performance: {},
             config: {},
             isFetching : true,
-            active_region: null 
+            activeRegion: null 
         };
     },
     setActiveRegion: function(value){
-        console.log(value);
+        this.setState({
+            activeRegion : value
+        });
     },
     componentWillMount: function() {
         this.fetchData();
@@ -42,7 +44,7 @@ const Overview = React.createClass({
         return (
             <div className="performance-wrapper">
               <Subnav onRegionChange={this.setActiveRegion} role={this.state.config.role} performance={this.state.performance}/>
-              {/*<PerformanceChart/>*/}
+              <PerformanceChart activeRegion={this.state.activeRegion} performance={this.state.performance} config={this.state.config}/>
             </div>     
         );
     }

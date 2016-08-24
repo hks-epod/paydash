@@ -14,7 +14,7 @@ module.exports = {
     handler: function(request, reply) {
 
         request.cookieAuth.clear();
-        request.session.flash('success', 'Logged out successfully');
+        request.yar.flash('success', 'Logged out successfully');
         return reply.redirect('/login');
 
     }
