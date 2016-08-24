@@ -162,27 +162,110 @@ module.exports = {
         }
     },
     app: {
-        paydash: 'PayDash',
-        overview: {
-            musters_closing_today: 'Musters closing today',
-            delayed_musters: 'Delayed musters',
-            total_transactions: 'Transactions in last 3 months',
-            days_to_payment: 'Avg. days to payment in last 3 months',
-            cards_need_attention: 'cards require your attention',
-            view_cards: 'VIEW CARDS'
-        },
-        cards: {
-            musters_closing_today: 'Musters closing today',
-            delayed_musters_1: 'Delayed musters',
-            muster_details: 'Muster details',
-            current_musters: 'CURRENT MUSTERS',
-            delayed_musters_2: 'DELAYED MUSTERS',
-            work_code: 'Work code',
-            work_name: 'Work name',
-            closure_date: 'Closure date',
-            days_delayed: 'Days delayed'
+        $filter: 'role',
+        block: {
+            paydash: 'PayDash',
+            overview: {
+                musters_closing_today: 'Musters closing today',
+                delayed_musters: 'Delayed musters',
+                total_transactions: 'Transactions in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months',
+                cards_need_attention: 'cards require your attention',
+                view_cards: 'VIEW CARDS'
+            },
+            cards: {
+                musters_closing_today: 'Musters closing today',
+                delayed_musters_1: 'Delayed musters',
+                muster_details: 'Muster details',
+                current_musters: 'CURRENT MUSTERS',
+                delayed_musters_2: 'DELAYED MUSTERS',
+                work_code: 'Work code',
+                work_name: 'Work name',
+                closure_date: 'Closure date',
+                days_delayed: 'Days delayed'
+            },
+            chart: {
+                days_to_complete_process: 'Days to complete process',
+                steps: {
+                    1: 'MR Closure to MR Entry',
+                    2: 'MR Entry to Wage List Generation',
+                    3: 'Wage List Generation to Wage List Sent',
+                    4: 'Wage List Sent to FTO Generation',
+                    5: 'FTO Generation to 1st Sign',
+                    6: '1st Sign to 2nd Sign',
+                    7: '2nd Sign to Bank Processing',
+                    total: 'Total time for payment (overall)',
+                    all: 'Total time for payment (step-wise)'
+                },
+                dates: {
+                    all_dates: 'All dates',
+                    past_3_months: 'Past 3 months'
+                },
+                regions: {
+                    panchayat: 'Panchayat',
+                    block: 'Block'
+                },
+                tooltip: {
+                    date: 'Date',
+                    days: 'Avg. days',
+                    transactions: 'Transactions',
+                    step: 'Step'
+                }
+            },
+            profile: {
+                firstname: 'First Name',
+                lastname: 'Last Name',
+                profile: 'Profile',
+                account: 'Account',
+                work_email: 'Work Email',
+                mobile: 'Mobile',
+                personal_email: 'Personal Email',
+                lang: 'Language',
+                colorblind: 'Use Colorblind-Safe Theme',
+                settings: 'Settings',
+                logout: 'Logout',
+                profile_settings: 'Profile Settings',
+                email_settings: 'Email Settings',
+                primary_email_msg: 'Your primary email address will be used for account-related notifications as well as any web-based operations.',
+                save: 'Update',
+                your_primary_email: 'Your primary email',
+                change_pass: 'Change password',
+                old_pass: 'Old password',
+                new_pass: 'New password',
+                pass_confirm: 'Verify new password',
+                forgot_pass: 'I forgot my password'
+            },
+            search: 'Search for TA/GRS...',
+            messages: {
+                login: {
+                    connectivity: 'Unable to log in to PayDash. Please try again when your device has internet connectivity.',
+                    credentials: 'Incorrect username/password combination. Please contact the PayDash team if this issue persists.',
+                    general: 'Unable to log in to PayDash. Please contact the PayDash team if this issue persists.'
+                },
+                logout: {
+                    connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
+                    warning: {
+                        'message':'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
+                        'logout': 'Log out',
+                        'cancel': 'Cancel'
+                    },
+                    general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.'
+                },
+                password_success: 'Password changed successfully. Please login with new password.',
+                password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
+                password_new_nomatch: 'New password does not match.',
+                password_tooshort: 'Your new password must be at least 6 characters long.'
+            },
+            whatsapp: {
+                block: {
+                    'overview':'Muster Roll Details for {name}\n\n{current_total} musters closing today\n{delayed_total} delayed musters\n\n',
+                    'current':'MUSTERS CLOSING TODAY\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n\n',
+                    'delayed':'DELAYED MUSTERS\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n_Days delayed_\n{days_pending}\n\n'
+                }
+            }
         },
         district: {
+            paydash: 'PayDash',
             overview: {
                 view_your_blocks: 'View your blocks\' performance',
                 show_blocks: 'SHOW BLOCKS',
@@ -202,88 +285,82 @@ module.exports = {
                 t_6: 'Wagelist not sent (T+6)',
                 t_7: 'Pending for FTO first signature (T+7)',
                 t_8: 'Pending for FTO second signature (T+8)'
-            }
-        },
-        chart: {
-            days_to_complete_process: 'Days to complete process',
-            steps: {
-                1: 'MR Closure to MR Entry',
-                2: 'MR Entry to Wage List Generation',
-                3: 'Wage List Generation to Wage List Sent',
-                4: 'Wage List Sent to FTO Generation',
-                5: 'FTO Generation to 1st Sign',
-                6: '1st Sign to 2nd Sign',
-                7: '2nd Sign to Bank Processing',
-                total: 'Total time for payment (overall)',
-                all: 'Total time for payment (step-wise)'
             },
-            dates: {
-                all_dates: 'All dates',
-                past_3_months: 'Past 3 months'
-            },
-            regions: {
-                panchayat: 'Panchayat',
-                block: 'Block',
-                district: 'District'
-            },
-            tooltip: {
-                date: 'Date',
-                days: 'Avg. days',
-                transactions: 'Transactions',
-                step: 'Step'
-            }
-        },
-        profile: {
-            firstname: 'First Name',
-            lastname: 'Last Name',
-            profile: 'Profile',
-            account: 'Account',
-            work_email: 'Work Email',
-            mobile: 'Mobile',
-            personal_email: 'Personal Email',
-            lang: 'Language',
-            colorblind: 'Use Colorblind-Safe Theme',
-            settings: 'Settings',
-            logout: 'Logout',
-            profile_settings: 'Profile Settings',
-            email_settings: 'Email Settings',
-            primary_email_msg: 'Your primary email address will be used for account-related notifications as well as any web-based operations.',
-            save: 'Update',
-            your_primary_email: 'Your primary email',
-            change_pass: 'Change password',
-            old_pass: 'Old password',
-            new_pass: 'New password',
-            pass_confirm: 'Verify new password',
-            forgot_pass: 'I forgot my password'
-        },
-        search: 'Search for TA/GRS...',
-        messages: {
-            login: {
-                connectivity: 'Unable to log in to PayDash. Please try again when your device has internet connectivity.',
-                credentials: 'Incorrect username/password combination. Please contact the PayDash team if this issue persists.',
-                general: 'Unable to log in to PayDash. Please contact the PayDash team if this issue persists.'
-            },
-            logout: {
-                connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
-                warning: {
-                    'message':'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
-                    'logout': 'Log out',
-                    'cancel': 'Cancel'
+            chart: {
+                days_to_complete_process: 'Days to complete process',
+                steps: {
+                    1: 'MR Closure to MR Entry',
+                    2: 'MR Entry to Wage List Generation',
+                    3: 'Wage List Generation to Wage List Sent',
+                    4: 'Wage List Sent to FTO Generation',
+                    5: 'FTO Generation to 1st Sign',
+                    6: '1st Sign to 2nd Sign',
+                    7: '2nd Sign to Bank Processing',
+                    total: 'Total time for payment (overall)',
+                    all: 'Total time for payment (step-wise)'
                 },
-                general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.'
+                dates: {
+                    all_dates: 'All dates',
+                    past_3_months: 'Past 3 months'
+                },
+                regions: {
+                    block: 'Block',
+                    district: 'District'
+                },
+                tooltip: {
+                    date: 'Date',
+                    days: 'Avg. days',
+                    transactions: 'Transactions',
+                    step: 'Step'
+                }
             },
-            password_success: 'Password changed successfully. Please login with new password.',
-            password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
-            password_new_nomatch: 'New password does not match.',
-            password_tooshort: 'Your new password must be at least 6 characters long.'
-        },
-        whatsapp: {
-            block: {
-                'overview':'Muster Roll Details for {name}\n\n{current_total} musters closing today\n{delayed_total} delayed musters\n\n',
-                'current':'MUSTERS CLOSING TODAY\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n\n',
-                'delayed':'DELAYED MUSTERS\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n_Days delayed_\n{days_pending}\n\n'
+            profile: {
+                firstname: 'First Name',
+                lastname: 'Last Name',
+                profile: 'Profile',
+                account: 'Account',
+                work_email: 'Work Email',
+                mobile: 'Mobile',
+                personal_email: 'Personal Email',
+                lang: 'Language',
+                colorblind: 'Use Colorblind-Safe Theme',
+                settings: 'Settings',
+                logout: 'Logout',
+                profile_settings: 'Profile Settings',
+                email_settings: 'Email Settings',
+                primary_email_msg: 'Your primary email address will be used for account-related notifications as well as any web-based operations.',
+                save: 'Update',
+                your_primary_email: 'Your primary email',
+                change_pass: 'Change password',
+                old_pass: 'Old password',
+                new_pass: 'New password',
+                pass_confirm: 'Verify new password',
+                forgot_pass: 'I forgot my password'
             },
-            district: 'MGNREGA Payment Delay Performance for {name}\n\n_Block_\n{block_name}\n\n{days_to_payment} days to complete payment\n{current_total} musters closing today\n{delayed_total} delayed musters\n\nMUSTERS DELAYED AT DIFFERENT STEPS\n\n*Attendance not filled (T+2)*\n_Total_\n{t2_total}\n_Avg. days pending_\n{t2_avg}\n\n*Measurement book not filled (T+5)*\n_Total_\n{t5_total}\n_Avg. days pending_\n{t5_avg}\n\n*Wagelist not sent (T+6)*\n_Total_\n{t6_total}\n_Avg. days pending_\n{t6_avg}\n\n*Pending for FTO first signature (T+7)*\n_Total_\n{t7_total}\n_Avg. days pending_\n{t7_avg}\n\n*Pending for FTO second signature (T+8)*\n_Total_\n{t8_total}\n_Avg. days pending_\n{t8_avg}\n'    
+            search: 'Search for Block or Officer Name...',
+            messages: {
+                login: {
+                    connectivity: 'Unable to log in to PayDash. Please try again when your device has internet connectivity.',
+                    credentials: 'Incorrect username/password combination. Please contact the PayDash team if this issue persists.',
+                    general: 'Unable to log in to PayDash. Please contact the PayDash team if this issue persists.'
+                },
+                logout: {
+                    connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
+                    warning: {
+                        'message':'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
+                        'logout': 'Log out',
+                        'cancel': 'Cancel'
+                    },
+                    general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.'
+                },
+                password_success: 'Password changed successfully. Please login with new password.',
+                password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
+                password_new_nomatch: 'New password does not match.',
+                password_tooshort: 'Your new password must be at least 6 characters long.'
+            },
+            whatsapp: {
+                district: 'MGNREGA Payment Delay Performance for {name}\n\n_Block_\n{block_name}\n\n{days_to_payment} days to complete payment\n{current_total} musters closing today\n{delayed_total} delayed musters\n\nMUSTERS DELAYED AT DIFFERENT STEPS\n\n*Attendance not filled (T+2)*\n_Total_\n{t2_total}\n_Avg. days pending_\n{t2_avg}\n\n*Measurement book not filled (T+5)*\n_Total_\n{t5_total}\n_Avg. days pending_\n{t5_avg}\n\n*Wagelist not sent (T+6)*\n_Total_\n{t6_total}\n_Avg. days pending_\n{t6_avg}\n\n*Pending for FTO first signature (T+7)*\n_Total_\n{t7_total}\n_Avg. days pending_\n{t7_avg}\n\n*Pending for FTO second signature (T+8)*\n_Total_\n{t8_total}\n_Avg. days pending_\n{t8_avg}\n'    
+            }
         }
     }
 };
