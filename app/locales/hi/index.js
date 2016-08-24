@@ -171,7 +171,7 @@ module.exports = {
             musters_closing_today: 'आज बंद हो रहे मस्टर्स',
             delayed_musters: 'विलंबित मस्टर्स',
             total_transactions: 'पिछले 3 महीनों में कुल कितने भुगतान हुए',
-            days_to_payment: 'पिछले 3 महीनों में भुगतान के लिए दिन',
+            days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
             cards_need_attention: 'कार्ड्स को आपके ध्यान की ज़रूरत है',
             view_cards: 'कार्ड्स देखें'
         },
@@ -190,12 +190,12 @@ module.exports = {
             overview: {
                 view_your_blocks: 'अपने जनपदों/प्रखंडों का प्रदर्शन देखें',
                 show_blocks: 'SHOW BLOCKS',
-                days_to_payment: 'पिछले 3 महीनों में भुगतान के लिए दिन',
+                days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स'
             },
             cards: {
-                days_to_payment: 'पिछले 3 महीनों में भुगतान के लिए दिन',
+                days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
                 musters_diff_steps: 'विभिन्न पड़ावों पर विलंबित मस्टर रोल',
@@ -218,8 +218,8 @@ module.exports = {
                 5:'FTO बनाने से पहले हस्ताक्षर का समय',
                 6:'पहले हस्ताक्षर से दूसरे हस्ताक्षर का समय',
                 7:'दूसरे हस्ताक्षर से बैंक की कारवाई के समापन का समय',
-                total:'पूरी प्रक्रिया में लगा समय',
-                all:'पूरी प्रक्रिया के सारे पड़ाव',
+                total:'भुगतान प्रक्रिया पूरी करने में लगे दिन (बिना विभाजन के)',
+                all:'भुगतान प्रक्रिया पूरी करने में लगे दिन (पड़ावों में विभाजित)',
             },
             dates: {
                 all_dates: 'सभी तारीखें',
@@ -259,6 +259,7 @@ module.exports = {
             pass_confirm:'नये पासवर्ड को सत्यापित करें',
             forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया'
         },
+        search: 'Search for TA/GRS...',
         messages: {
             login: {
                 connectivity: 'हमे खेद है कि आप log in करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',

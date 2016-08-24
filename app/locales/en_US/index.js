@@ -167,14 +167,14 @@ module.exports = {
             musters_closing_today: 'Musters closing today',
             delayed_musters: 'Delayed musters',
             total_transactions: 'Transactions in last 3 months',
-            days_to_payment: 'Days to payment in last 3 months',
+            days_to_payment: 'Avg. days to payment in last 3 months',
             cards_need_attention: 'cards require your attention',
             view_cards: 'VIEW CARDS'
         },
         cards: {
-            musters_closing_today: 'musters closing today',
-            delayed_musters_1: 'delayed musters',
-            muster_details: 'MUSTER DETAILS',
+            musters_closing_today: 'Musters closing today',
+            delayed_musters_1: 'Delayed musters',
+            muster_details: 'Muster details',
             current_musters: 'CURRENT MUSTERS',
             delayed_musters_2: 'DELAYED MUSTERS',
             work_code: 'Work code',
@@ -186,12 +186,12 @@ module.exports = {
             overview: {
                 view_your_blocks: 'View your blocks\' performance',
                 show_blocks: 'SHOW BLOCKS',
-                days_to_payment: 'Days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters'
             },
             cards: {
-                days_to_payment: 'Days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
                 musters_diff_steps: 'Musters delayed at different steps',
@@ -214,8 +214,8 @@ module.exports = {
                 5: 'FTO Generation to 1st Sign',
                 6: '1st Sign to 2nd Sign',
                 7: '2nd Sign to Bank Processing',
-                total: 'Total Length of Process',
-                all: 'All Steps'
+                total: 'Total time for payment (overall)',
+                all: 'Total time for payment (step-wise)'
             },
             dates: {
                 all_dates: 'All dates',
@@ -255,6 +255,7 @@ module.exports = {
             pass_confirm: 'Verify new password',
             forgot_pass: 'I forgot my password'
         },
+        search: 'Search for TA/GRS...',
         messages: {
             login: {
                 connectivity: 'Unable to log in to PayDash. Please try again when your device has internet connectivity.',
