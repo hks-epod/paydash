@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import MG from 'metrics-graphics';
+import MG from '../lib/mg';
 
 const D3 = require('d3');
 const Parser = require('../lib/parser');
