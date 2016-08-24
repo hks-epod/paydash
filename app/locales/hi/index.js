@@ -246,6 +246,7 @@ module.exports = {
             mobile: 'मोबाइल नंबर',
             personal_email: 'निजी e-mail',
             lang : 'भाषा',
+            colorblind: 'Use Colorblind-Safe Theme',
             settings: 'सेट्टिंग्स',
             logout: 'लौग आउट',
             profile_settings: 'आपकी प्रोफ़ाइल सेट्टिंग्स',

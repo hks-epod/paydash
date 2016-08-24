@@ -242,6 +242,7 @@ module.exports = {
             mobile: 'Mobile',
             personal_email: 'Personal Email',
             lang: 'Language',
+            colorblind: 'Use Colorblind-Safe Theme',
             settings: 'Settings',
             logout: 'Logout',
             profile_settings: 'Profile Settings',
