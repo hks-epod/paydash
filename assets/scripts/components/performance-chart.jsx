@@ -3,21 +3,44 @@
 import React from 'react';
 import MG from 'metrics-graphics';
 
+const D3 = require('d3');
+
 const PerformanceChart =  React.createClass({
 
     componentDidMount() {
 
         MG.data_graphic({
-            title: 'Missing Data',
-            description: 'This is an example of a graphic whose data is currently missing. Weve also set the error option, which appends an error icon to the title and logs an error to the browsers console.',
-            error: 'This data is blocked by Lorem Ipsum. Get your **** together, Ipsum.',
-            chart_type: 'missing-data',
-            missing_text: 'This is an example of a missing chart',
-            target: this.elem,
-            width: 600,
-            height: 200,
-            tooltip:false
-        });
+                title: '',
+                target: this.elem,
+                left: 100,
+                width: 600,
+                height: 500,
+                full_width: true,
+                data: this.props.data,
+                chart_type: this.props.data.length !== 0 ? 'line' : 'missing-data',
+                missing_text: 'No data',
+                transition_on_update: true,
+                aggregate_rollover: true,
+                show_tooltips: false,
+                interplate: 'linear',
+                interpolate_tension: .98,
+                area: true,
+                show_secondary_x_label: false,
+                x_extended_ticks: true,
+                xax_count: 5,
+                xax_format: D3.time.format('%e %b, %y'),
+                decimals: 0,
+                baselines: [{
+                    value: 15,
+                    label: 'Statutory Limit'
+                }],
+                point_size : 3.5,
+                max_x : this.props.options.max_x || null,
+                min_x: this.props.options.min_x || null,    
+                legend: this.props.options.labels,
+                legend_target: this.props.options.legend_target,  
+                y_label:  this.props.options.y_axis_label,
+            });
     },
     render: function(){
         return (
