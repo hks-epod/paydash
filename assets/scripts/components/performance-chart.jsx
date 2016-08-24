@@ -53,9 +53,9 @@ const PerformanceChart =  React.createClass({
                     label: 'Statutory Limit'
                 }],
                 point_size : 3.5,  
-                // legend: this.props.options.labels,
-                // legend_target: this.props.options.legend_target,  
-                // y_label:  this.props.options.y_axis_label,
+                legend: this.props.config.labels,
+                legend_target: this.props.config.legend_target,  
+                y_label:  this.props.config.y_axis_label,
             });
     },
     componentDidMount: function() {
