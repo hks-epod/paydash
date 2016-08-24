@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         middlename : DataTypes.STRING,
         google_account: DataTypes.STRING,
         type :  DataTypes.STRING,
-        
+        colorblind: DataTypes.BOOLEAN 
     }, {
         tableName: 'users',
         timestamps: true,
