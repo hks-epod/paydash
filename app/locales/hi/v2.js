@@ -261,11 +261,9 @@ module.exports = {
                 password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|'
             },
             whatsapp: {
-                block: {
-                    'overview':'{name} के लिए मस्टर रोल विवरण\n\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\n',
-                    'current':'आज बंद हो रहे मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{mr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n\n',
-                    'delayed':'विलंबित मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{mr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n_विलंब(दिन)_\n{days_pending}\n\n'
-                }
+                overview:'{name} के लिए मस्टर रोल विवरण\n\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\n',
+                current:'आज बंद हो रहे मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{mr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n\n',
+                delayed:'विलंबित मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{mr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n_विलंब(दिन)_\n{days_pending}\n\n'
             }
         },
         district: {
@@ -362,9 +360,7 @@ module.exports = {
                 password_new_nomatch: 'नया पासवर्ड मेल नही ख़ाता|',
                 password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|'
             },
-            whatsapp: {
-                district: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_प्रखंड/जनपद_\n{block_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n'    
-            }
+            whatsapp: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_प्रखंड/जनपद_\n{block_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n'
         }
     }
 };
