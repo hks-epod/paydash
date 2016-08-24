@@ -21,7 +21,7 @@ exports.parser = function(rows) {
         })
         .entries(overviewResponse)
         .map(function(d) {
-            return d.value;
+            return d.values;
         });
 
     var data = {
