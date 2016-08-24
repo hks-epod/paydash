@@ -19,7 +19,7 @@ module.exports = function t(path, credentials, version) {
     var ver;
 
     if (version) {
-        ver = version;
+        ver = 'v' + version;
     } else {
         ver = 'v1';
     }

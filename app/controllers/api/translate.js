@@ -18,13 +18,15 @@ exports.getData = {
     },
     handler: function(request, reply) {
 
-        if(!request.auth.isAuthenticated) {
+        if (!request.auth.isAuthenticated) {
             return reply(Boom.forbidden('You are not logged in'));
         }
 
+        var version = request.pre.apiVersion;
+        console.log(version);
         var res = {
-            en_US: Translate('/app', { lang: 'en_US' }),
-            hi: Translate('/app', { lang: 'hi' })
+            en_US: Translate('/app', { lang: 'en_US' }, version),
+            hi: Translate('/app', { lang: 'hi' }, version)
         };
 
         reply(res);
