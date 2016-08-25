@@ -204,9 +204,23 @@ exports.v2 = function(rows, role) {
         var versionResponse = D3.values(rows[6]);
 
         // Parse the overview response
-        var current_total = overviewResponse[0].current_total;
-        var delayed_total = overviewResponse[0].delayed_total;
-        var days_to_payment = overviewResponse[0].days_to_payment;
+        var overview = D3.nest()
+            .key(function(d) {
+                return d.block_code;
+            })
+            .rollup(function(v) {
+                return {
+                    'block_code': v[0].block_code,
+                    'block_name': v[0].block_name,
+                    'current_total': v[0].current_total,
+                    'delayed_total': v[0].delayed_total,
+                    'days_to_payment': v[0].days_to_payment
+                }
+            })
+            .entries(overviewResponse)
+            .map(function(d) {
+                return d.values;
+            });
 
         var state_code = stateResponse[0].state_code;
 
@@ -321,12 +335,7 @@ exports.v2 = function(rows, role) {
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
 
         var data = {
-            'overview': {
-                'current_total': current_total,
-                'delayed_total': delayed_total,
-                'days_to_payment': days_to_payment,
-                'cards_total': cards.length
-            },
+            'overview': overview,
             'cards': cards,
             'block_performance': blockPerformance,
             'panchayat_performance': panchayatPerformance,
@@ -395,9 +404,23 @@ exports.v2 = function(rows, role) {
         var versionResponse = D3.values(rows[6]);
 
         // Parse the overview response
-        var current_total = overviewResponse[0].current_total;
-        var delayed_total = overviewResponse[0].delayed_total;
-        var days_to_payment = overviewResponse[0].days_to_payment;
+        var overview = D3.nest()
+            .key(function(d) {
+                return d.district_code;
+            })
+            .rollup(function(v) {
+                return {
+                    'district_code': v[0].district_code,
+                    'district_name': v[0].district_name,
+                    'current_total': v[0].current_total,
+                    'delayed_total': v[0].delayed_total,
+                    'days_to_payment': v[0].days_to_payment
+                }
+            })
+            .entries(overviewResponse)
+            .map(function(d) {
+                return d.values;
+            });
 
         var state_code = stateResponse[0].state_code;
 
