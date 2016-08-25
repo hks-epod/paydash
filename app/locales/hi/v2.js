@@ -223,12 +223,12 @@ module.exports = {
             user_dropdown: {
                 profile: 'प्रोफ़ाइल',
                 logout: 'लौग आउट'
-            }
+            },
             profile: {
                 profile: 'प्रोफ़ाइल',
                 edit: 'EDIT',
                 save:'SAVE',
-                updating:'UPDATING...'
+                updating:'UPDATING...',
                 firstname: 'मूल नाम',
                 lastname: 'उपनाम',
                 mobile: 'मोबाइल नंबर',
@@ -345,12 +345,12 @@ module.exports = {
             user_dropdown: {
                 profile: 'प्रोफ़ाइल',
                 logout: 'लौग आउट'
-            }
+            },
             profile: {
                 profile: 'प्रोफ़ाइल',
                 edit: 'EDIT',
                 save:'SAVE',
-                updating:'UPDATING...'
+                updating:'UPDATING...',
                 firstname: 'मूल नाम',
                 lastname: 'उपनाम',
                 mobile: 'मोबाइल नंबर',

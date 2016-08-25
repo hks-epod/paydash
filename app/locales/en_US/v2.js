@@ -219,12 +219,12 @@ module.exports = {
             user_dropdown: {
                 profile: 'Profile',
                 logout: 'Logout'
-            }
+            },
             profile: {
                 profile: 'Profile',
                 edit: 'EDIT',
                 save:'SAVE',
-                updating:'UPDATING...'
+                updating:'UPDATING...',
                 firstname: 'First Name',
                 lastname: 'Last Name',
                 mobile: 'Mobile',
@@ -269,7 +269,7 @@ module.exports = {
                 password_success: 'Password changed successfully. Please login with new password.',
                 password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
                 password_new_nomatch: 'New password does not match.',
-                password_tooshort: 'Your new password must be at least 6 characters long.'
+                password_tooshort: 'Your new password must be at least 6 characters long.',
                 password_empty: 'Password cannot be empty',
                 requesting_change: 'Requesting password change...'
             },
@@ -341,12 +341,12 @@ module.exports = {
             user_dropdown: {
                 profile: 'Profile',
                 logout: 'Logout'
-            }
+            },
             profile: {
                 profile: 'Profile',
                 edit: 'EDIT',
                 save:'SAVE',
-                updating:'UPDATING...'
+                updating:'UPDATING...',
                 firstname: 'First Name',
                 lastname: 'Last Name',
                 mobile: 'Mobile',
@@ -392,7 +392,7 @@ module.exports = {
                 password_success: 'Password changed successfully. Please login with new password.',
                 password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
                 password_new_nomatch: 'New password does not match.',
-                password_tooshort: 'Your new password must be at least 6 characters long.'
+                password_tooshort: 'Your new password must be at least 6 characters long.',
                 password_empty: 'Password cannot be empty',
                 requesting_change: 'Requesting password change...'
             },
