@@ -47,7 +47,7 @@ const PerformanceChart =  React.createClass({
                 show_secondary_x_label: false,
                 x_extended_ticks: true,
                 xax_count: 5,
-                xax_format: D3.time.format('%e %b, %y'),
+                xax_format: D3.time.format('%b %Y'),
                 decimals: 0,
                 baselines: [{
                     value: 15,
@@ -73,7 +73,7 @@ const PerformanceChart =  React.createClass({
                         l_span.text(' ');
                         var no_days = d.values[index - 1] ? (val.value - d.values[index - 1].value).toFixed(0) : (val.value).toFixed(0);
                         l_span.text('— ' + _this.props.config.labels[val.line_id - 1] + ' : ' + no_days);
-                        var format = D3.time.format('%b %d, %Y');
+                        var format = D3.time.format('%b %Y');
                         D3.select('#region_performance_total_trans').text(format(val.date) + ': ' + val.total_trans);
                     });
                 },
