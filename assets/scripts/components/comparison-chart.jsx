@@ -21,28 +21,30 @@ const ComparisonChart =  React.createClass({
         var _this = this;    
         var c_data = [];
         var legend_target = '.comparison_legend';
+        var labels = [];
 
         if(!_this.props.activeRegion) {
             return;
         }
 
-        var comparison_lines = ['state', 'district'];
+        var comparison_lines = _this.props.config.comparison_lines;
         comparison_lines.push(_this.props.activeRegion.region_type);
         
         comparison_lines.forEach(function(comparison_line, index) {
 
-            var data;
+            var region;
             if(_this.props.activeRegion.region_type === 'block' && comparison_line ==='block'){
-                data = _this.props.performance[_this.props.activeRegion.region_type][_this.props.activeRegion.block_index].data;
+                region = _this.props.performance[_this.props.activeRegion.region_type][_this.props.activeRegion.block_index];
             }
             else if(_this.props.activeRegion.region_type === 'panchayat' && comparison_line ==='panchayat'){
-                data = _this.props.performance[_this.props.activeRegion.region_type][_this.props.activeRegion.block_index].data[_this.props.activeRegion.panchayat_index].data;
+                region = _this.props.performance[_this.props.activeRegion.region_type][_this.props.activeRegion.block_index].data[_this.props.activeRegion.panchayat_index];
             }else {
-                data = _this.props.performance[comparison_line].data;
+                region = _this.props.performance[comparison_line];
             }
+            labels.push(region[comparison_line + '_name'] + ' ' + _this.props.config.compare_chart_labels[comparison_line]);
 
             var line_data = Parser.lines({
-                data: data,
+                data: region.data,
                 col: [1],
                 isCumulative: false
             });
@@ -69,7 +71,7 @@ const ComparisonChart =  React.createClass({
                 missing_text: 'No data',
                 show_secondary_x_label: false,
                 x_extended_ticks: true,
-                legend: comparison_lines,
+                legend: labels,
                 legend_target: '.comparison_legend',
                 show_tooltips: false,
                 aggregate_rollover: true,
@@ -89,14 +91,14 @@ const ComparisonChart =  React.createClass({
                         for (i = 1; i <= c_data.length; i++) {
                             var l_span = D3.select(legend_target + ' .mg-line' + i + '-legend-color');
                             l_span.text(' ');
-                            l_span.text('— ' + comparison_lines[i - 1]);
+                            l_span.text('— ' + labels[i - 1]);
                         }
                     }
                     d.values.forEach(function(val, index) {
                         var prefix = D3.formatPrefix(val.value);
                         var l_span = D3.select(legend_target + ' .mg-line' + val.line_id + '-legend-color');
                         l_span.text(' ');
-                        l_span.text('— ' + comparison_lines[val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
+                        l_span.text('— ' + labels[val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
                         var format = D3.time.format('%b, %Y');
                         D3.select('#region_comparison_total_trans').text(format(val.date) + ': ' + val.total_trans);
                     });
@@ -109,7 +111,7 @@ const ComparisonChart =  React.createClass({
                     d.values.forEach(function(val, index) {
                         var l_span = D3.select(legend_target + ' .mg-line' + val.line_id + '-legend-color');
                         l_span.text(' ');
-                        l_span.text('— ' + comparison_lines[val.line_id - 1]);
+                        l_span.text('— ' + labels[val.line_id - 1]);
                     });
                 }
             });

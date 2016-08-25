@@ -35,7 +35,7 @@ exports.getData = {
                 labels: Translate('/payment_steps_labels', request.auth.credentials),
                 y_axis_label: Translate('/y_axis_labels', request.auth.credentials),
                 compare_chart_labels: Translate('/compare_chart_labels', request.auth.credentials),
-                comparison_lines: role === 'block' ? ['block', 'district', 'state'] : ['district', 'state']
+                comparison_lines: role === 'block' ? ['district', 'state'] : ['state']
             };
 
             reply(data);

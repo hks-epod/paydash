@@ -86,7 +86,8 @@ module.exports = {
     compare_chart_labels: {
         'state': 'state average',
         'district': 'district average',
-        'block': 'block average'
+        'block': 'block average',
+        'panchayat': 'panchayat average'
     },
     y_axis_labels: 'Days to complete process',
     total_trans: "Total transactions on",
