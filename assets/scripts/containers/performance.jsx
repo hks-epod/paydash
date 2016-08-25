@@ -3,6 +3,7 @@
 import React from 'react';
 import Subnav from '../components/subnav.jsx';
 import PerformanceChart from '../components/performance-chart.jsx';
+import ComparisonChart from '../components/comparison-chart.jsx';
 
 const D3= require('d3'); 
 
@@ -45,6 +46,8 @@ const Overview = React.createClass({
             <div className="performance-wrapper">
               <Subnav onRegionChange={this.setActiveRegion} role={this.state.config.role} performance={this.state.performance}/>
               <PerformanceChart activeRegion={this.state.activeRegion} performance={this.state.performance} config={this.state.config}/>
+              <div className="u-region-divider"></div>
+              <ComparisonChart activeRegion={this.state.activeRegion} performance={this.state.performance} config={this.state.config}/>
             </div>     
         );
     }
