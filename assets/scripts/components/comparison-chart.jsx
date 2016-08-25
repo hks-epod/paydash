@@ -54,7 +54,11 @@ const ComparisonChart =  React.createClass({
                       <option value="6">1</option>
                       <option value="7">1</option>
                     </select>
-                    <div id="compareRegion" className="group-selector"></div>
+                    <div id="compareRegion" className="group-selector">
+                      <div><label for="option-01" class="pure-checkbox"><input className="regionSelector" id="option-01" type="checkbox" value="block" checked=""/> AMARPATAN block average</label></div>
+                      <div><label for="option-11" class="pure-checkbox"><input class="regionSelector" id="option-11" type="checkbox" value="district" checked=""/> SATNA district average</label></div>
+                      <div><label for="option-21" class="pure-checkbox"><input className="regionSelector" id="option-21" type="checkbox" value="state" checked=""/> MADHYA PRADESH state average</label></div>
+                    </div>
                     <div className="legend comparison_legend"></div>
                     <div>Total transactions on <span id="region_comparison_total_trans"></span></div>
                   </div>
