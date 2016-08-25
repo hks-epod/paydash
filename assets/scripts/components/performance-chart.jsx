@@ -54,7 +54,7 @@ const PerformanceChart =  React.createClass({
                 }],
                 point_size : 3.5,  
                 legend: this.props.config.labels,
-                legend_target: this.props.config.legend_target,  
+                legend_target: '.region_legend',  
                 y_label:  this.props.config.y_axis_label,
             });
     },
