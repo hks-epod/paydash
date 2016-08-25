@@ -5,67 +5,100 @@
   opacity: 1;
 }
 
+path.mg-main-line{
+  opacity: 1;
+  stroke-width: 1.7px;
+}
+
+path.mg-main-area{
+  opacity: 0.4
+}
+
+// Color Scheme
 .mg-area1-color {
-    fill: #FFCE56;
+    fill: #B276B2;
+    opacity: 1
 }
 .mg-line1-color {
-  stroke: #FFCE56;
+  stroke: #B276B2;
 }
 .mg-hover-line1-color {
-  stroke: #FFCE56;
+  stroke: #B276B2;
 }
 .mg-line1-legend-color {
-    color: #FFCE56;
+    color: #B276B2;
 }
 .mg-area2-color {
-    fill: #1E824C;
+    fill: #5DA5DA;
 }
 .mg-line2-color {
-  stroke: #1E824C;
+  stroke: #5DA5DA;
 }
 .mg-hover-line2-color {
-  stroke: #1E824C;
+  stroke: #5DA5DA;
 }
 .mg-line2-legend-color {
-    color: #1E824C;
+    color: #5DA5DA;
 }
 .mg-area3-color {
-    fill: #FF6384;
+    fill: #FAA43A;
 }
 .mg-line3-color {
-  stroke: #FF6384;
+  stroke: #FAA43A;
 }
 .mg-hover-line3-color {
-  stroke: #FF6384;
+  stroke: #FAA43A;
 }
 .mg-line3-legend-color {
-    color: #FF6384;
+    color: #FAA43A;
 }
 .mg-area4-color {
-    fill: #FF6384;
+    fill: #60BD68;
 }
 .mg-line4-color {
-  stroke: #FF6384;
+  stroke: #60BD68;
 }
 .mg-hover-line4-color {
-  stroke: #FF6384;
+  stroke: #60BD68;
 }
 .mg-line4-legend-color {
-    color: #FF6384;
+    color: #60BD68;
 }
-
-
+.mg-area5-color {
+    fill: #F17CB0;
+}
+.mg-line5-color {
+  stroke: #F17CB0;
+}
+.mg-hover-line5-color {
+  stroke: #F17CB0;
+}
+.mg-line5-legend-color {
+    color: #F17CB0;
+}
+.mg-area6-color {
+    fill: #B2912F;
+}
+.mg-line6-color {
+  stroke: #B2912F;
+}
+.mg-hover-line6-color {
+  stroke: #B2912F;
+}
+.mg-line6-legend-color {
+    color: #B2912F;
+}
 .mg-area7-color {
-    fill: #36A2EB;
+    fill: #F15854;
 }
 .mg-line7-color {
-  stroke: #36A2EB;
+  stroke: #F15854;
 }
 .mg-hover-line7-color {
-  stroke: #36A2EB;
+  stroke: #F15854;
 }
 .mg-line7-legend-color {
-    color: #36A2EB;
+    color: #F15854;
 }
 
 
