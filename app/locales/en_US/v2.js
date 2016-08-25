@@ -182,7 +182,11 @@ module.exports = {
                 work_code: 'Work code',
                 work_name: 'Work name',
                 closure_date: 'Closure date',
-                days_delayed: 'Days delayed'
+                days_delayed: 'Days delayed',
+                contact: {
+                    phone: 'Phone',
+                    whatsapp: 'WhatsApp'
+                }
             },
             chart: {
                 days_to_complete_process: 'Days to complete process',
@@ -212,30 +216,41 @@ module.exports = {
                     step: 'Step'
                 }
             },
+            user_dropdown: {
+                profile: 'Profile',
+                logout: 'Logout'
+            }
             profile: {
+                profile: 'Profile',
+                edit: 'EDIT',
+                save:'SAVE',
+                updating:'UPDATING...'
                 firstname: 'First Name',
                 lastname: 'Last Name',
-                profile: 'Profile',
-                account: 'Account',
-                work_email: 'Work Email',
                 mobile: 'Mobile',
                 personal_email: 'Personal Email',
-                lang: 'Language',
+                work_email: 'Work Email',
                 colorblind: 'Use Colorblind-Safe Theme',
-                settings: 'Settings',
-                logout: 'Logout',
-                profile_settings: 'Profile Settings',
-                email_settings: 'Email Settings',
-                primary_email_msg: 'Your primary email address will be used for account-related notifications as well as any web-based operations.',
-                save: 'Update',
-                your_primary_email: 'Your primary email',
+                lang: 'Language',
+                eng: 'English',
+                hindi: 'Hindi',
+                change_pass_button: 'CHANGE PASSWORD'
+            },
+            password: {
                 change_pass: 'Change password',
                 old_pass: 'Old password',
                 new_pass: 'New password',
                 pass_confirm: 'Verify new password',
-                forgot_pass: 'I forgot my password'
+                forgot_pass: 'I forgot my password',
+                change_pass_button: 'CHANGE PASSWORD',
             },
             search: 'Search for TA/GRS...',
+            sort: {
+                current_total: 'Current total',
+                delayed_total: 'Delayed total',
+                name: 'Name',
+                designation: 'Designation'
+            },
             messages: {
                 login: {
                     connectivity: 'Unable to log in to PayDash. Please try again when your device has internet connectivity.',
@@ -255,6 +270,13 @@ module.exports = {
                 password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
                 password_new_nomatch: 'New password does not match.',
                 password_tooshort: 'Your new password must be at least 6 characters long.'
+                password_empty: 'Password cannot be empty',
+                requesting_change: 'Requesting password change...'
+            },
+            contact: {
+                contact: 'Contact',
+                gmail: 'Gmail',
+                phone: 'Phone'
             },
             whatsapp: {
                 overview:'Muster Roll Details for {name}\n\n{current_total} musters closing today\n{delayed_total} delayed musters\n\n',
@@ -282,7 +304,11 @@ module.exports = {
                 t_5: 'Measurement book not filled (T+5)',
                 t_6: 'Wagelist not sent (T+6)',
                 t_7: 'Pending for FTO first signature (T+7)',
-                t_8: 'Pending for FTO second signature (T+8)'
+                t_8: 'Pending for FTO second signature (T+8)',
+                contact: {
+                    phone: 'Phone',
+                    whatsapp: 'WhatsApp'
+                }
             },
             chart: {
                 days_to_complete_process: 'Days to complete process',
@@ -312,30 +338,42 @@ module.exports = {
                     step: 'Step'
                 }
             },
+            user_dropdown: {
+                profile: 'Profile',
+                logout: 'Logout'
+            }
             profile: {
+                profile: 'Profile',
+                edit: 'EDIT',
+                save:'SAVE',
+                updating:'UPDATING...'
                 firstname: 'First Name',
                 lastname: 'Last Name',
-                profile: 'Profile',
-                account: 'Account',
-                work_email: 'Work Email',
                 mobile: 'Mobile',
                 personal_email: 'Personal Email',
-                lang: 'Language',
+                work_email: 'Work Email',
                 colorblind: 'Use Colorblind-Safe Theme',
-                settings: 'Settings',
-                logout: 'Logout',
-                profile_settings: 'Profile Settings',
-                email_settings: 'Email Settings',
-                primary_email_msg: 'Your primary email address will be used for account-related notifications as well as any web-based operations.',
-                save: 'Update',
-                your_primary_email: 'Your primary email',
+                lang: 'Language',
+                eng: 'English',
+                hindi: 'Hindi',
+                change_pass_button: 'CHANGE PASSWORD'
+            },
+            password: {
                 change_pass: 'Change password',
                 old_pass: 'Old password',
                 new_pass: 'New password',
                 pass_confirm: 'Verify new password',
-                forgot_pass: 'I forgot my password'
+                forgot_pass: 'I forgot my password',
+                change_pass_button: 'CHANGE PASSWORD',
             },
             search: 'Search for Block or Officer Name...',
+            sort: {
+                current_total: 'Current total',
+                delayed_total: 'Delayed total',
+                days_to_payment: 'Avg. days to payment',
+                block_name: 'Block name',
+                ceo_name: 'Block CEO name'
+            },
             messages: {
                 login: {
                     connectivity: 'Unable to log in to PayDash. Please try again when your device has internet connectivity.',
@@ -355,6 +393,13 @@ module.exports = {
                 password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
                 password_new_nomatch: 'New password does not match.',
                 password_tooshort: 'Your new password must be at least 6 characters long.'
+                password_empty: 'Password cannot be empty',
+                requesting_change: 'Requesting password change...'
+            },
+            contact: {
+                contact: 'Contact',
+                gmail: 'Gmail',
+                phone: 'Phone'
             },
             whatsapp: 'MGNREGA Payment Delay Performance for {name}\n\n_Block_\n{block_name}\n\n{days_to_payment} days to complete payment\n{current_total} musters closing today\n{delayed_total} delayed musters\n\nMUSTERS DELAYED AT DIFFERENT STEPS\n\n*Attendance not filled (T+2)*\n_Total_\n{t2_total}\n_Avg. days pending_\n{t2_avg}\n\n*Measurement book not filled (T+5)*\n_Total_\n{t5_total}\n_Avg. days pending_\n{t5_avg}\n\n*Wagelist not sent (T+6)*\n_Total_\n{t6_total}\n_Avg. days pending_\n{t6_avg}\n\n*Pending for FTO first signature (T+7)*\n_Total_\n{t7_total}\n_Avg. days pending_\n{t7_avg}\n\n*Pending for FTO second signature (T+8)*\n_Total_\n{t8_total}\n_Avg. days pending_\n{t8_avg}\n'
         }

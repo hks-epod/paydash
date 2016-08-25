@@ -186,7 +186,11 @@ module.exports = {
                 work_code: 'कार्य कोड',
                 work_name: 'कार्य नाम',
                 closure_date: 'मस्टर रोल बंद होने की तिथि',
-                days_delayed: 'विलंब(दिन)'
+                days_delayed: 'विलंब(दिन)',
+                contact: {
+                    phone: 'Phone',
+                    whatsapp: 'WhatsApp'
+                }
             },
             chart: {
                 days_to_complete_process: 'प्रक्रिया पूरी करने में लगे दिन',
@@ -216,30 +220,41 @@ module.exports = {
                     step: 'कदम'
                 }
             },
+            user_dropdown: {
+                profile: 'प्रोफ़ाइल',
+                logout: 'लौग आउट'
+            }
             profile: {
+                profile: 'प्रोफ़ाइल',
+                edit: 'EDIT',
+                save:'SAVE',
+                updating:'UPDATING...'
                 firstname: 'मूल नाम',
                 lastname: 'उपनाम',
-                profile: 'प्रोफ़ाइल',
-                account: 'अकाउंट',
-                work_email: 'औपचारिक e-mail',
                 mobile: 'मोबाइल नंबर',
                 personal_email: 'निजी e-mail',
-                lang : 'भाषा',
+                work_email: 'औपचारिक e-mail',
                 colorblind: 'Use Colorblind-Safe Theme',
-                settings: 'सेट्टिंग्स',
-                logout: 'लौग आउट',
-                profile_settings: 'आपकी प्रोफ़ाइल सेट्टिंग्स',
-                email_settings: 'E-Mail सेट्टिंग्स',
-                primary_email_msg: 'आपके अकाउंट से संबंधित संदेशों और इंटरनेट-संबंधित प्रक्रियाओं के लिए आपके मुख्य e-mail ID का उपयोग किया जाएगा|',
-                save: 'अद्यतन (update)',
-                your_primary_email: 'आपका मुख्य e-mail ID',
+                lang: 'भाषा',
+                eng: 'English',
+                hindi: 'Hindi',
+                change_pass_button: 'पासवर्ड बदलें'
+            },
+            password: {
                 change_pass: 'पासवर्ड बदलें',
-                old_pass: 'पुराना पासवर्ड ',
-                new_pass: 'नया पासवर्ड ',
-                pass_confirm:'नये पासवर्ड को सत्यापित करें',
-                forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया'
+                old_pass: 'पुराना पासवर्ड',
+                new_pass: 'नया पासवर्ड',
+                pass_confirm: 'नये पासवर्ड को सत्यापित करें',
+                forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया',
+                change_pass_button: 'पासवर्ड बदलें'
             },
             search: 'Search for TA/GRS...',
+            sort: {
+                current_total: 'Current total',
+                delayed_total: 'Delayed total',
+                name: 'Name',
+                designation: 'Designation'
+            },
             messages: {
                 login: {
                     connectivity: 'हमे खेद है कि आप log in करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
@@ -258,7 +273,14 @@ module.exports = {
                 password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है| कृपया नये पासवर्ड का उपयोग कर लॉग इन करें|',
                 password_wrong_old: 'पुराना पासवर्ड ग़लत है| सहयता के लिए PayDash दल से संपर्क करें|',
                 password_new_nomatch: 'नया पासवर्ड मेल नही ख़ाता|',
-                password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|'
+                password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|',
+                password_empty: 'Password cannot be empty',
+                requesting_change: 'Requesting password change...'
+            },
+            contact: {
+                contact: 'Contact',
+                gmail: 'Gmail',
+                phone: 'Phone'
             },
             whatsapp: {
                 overview:'{name} के लिए मस्टर रोल विवरण\n\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\n',
@@ -286,7 +308,11 @@ module.exports = {
                 t_5: 'MB नहीं भरी गयी (T+5)',
                 t_6: 'वेज लिस्ट नहीं भेजी गयी (T+6)',
                 t_7: 'FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)',
-                t_8: 'FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)'
+                t_8: 'FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)',
+                contact: {
+                    phone: 'Phone',
+                    whatsapp: 'WhatsApp'
+                }
             },
             chart: {
                 days_to_complete_process: 'प्रक्रिया पूरी करने में लगे दिन',
@@ -316,30 +342,42 @@ module.exports = {
                     step: 'कदम'
                 }
             },
+            user_dropdown: {
+                profile: 'प्रोफ़ाइल',
+                logout: 'लौग आउट'
+            }
             profile: {
+                profile: 'प्रोफ़ाइल',
+                edit: 'EDIT',
+                save:'SAVE',
+                updating:'UPDATING...'
                 firstname: 'मूल नाम',
                 lastname: 'उपनाम',
-                profile: 'प्रोफ़ाइल',
-                account: 'अकाउंट',
-                work_email: 'औपचारिक e-mail',
                 mobile: 'मोबाइल नंबर',
                 personal_email: 'निजी e-mail',
-                lang : 'भाषा',
+                work_email: 'औपचारिक e-mail',
                 colorblind: 'Use Colorblind-Safe Theme',
-                settings: 'सेट्टिंग्स',
-                logout: 'लौग आउट',
-                profile_settings: 'आपकी प्रोफ़ाइल सेट्टिंग्स',
-                email_settings: 'E-Mail सेट्टिंग्स',
-                primary_email_msg: 'आपके अकाउंट से संबंधित संदेशों और इंटरनेट-संबंधित प्रक्रियाओं के लिए आपके मुख्य e-mail ID का उपयोग किया जाएगा|',
-                save: 'अद्यतन (update)',
-                your_primary_email: 'आपका मुख्य e-mail ID',
+                lang: 'भाषा',
+                eng: 'English',
+                hindi: 'Hindi',
+                change_pass_button: 'पासवर्ड बदलें'
+            },
+            password: {
                 change_pass: 'पासवर्ड बदलें',
-                old_pass: 'पुराना पासवर्ड ',
-                new_pass: 'नया पासवर्ड ',
-                pass_confirm:'नये पासवर्ड को सत्यापित करें',
-                forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया'
+                old_pass: 'पुराना पासवर्ड',
+                new_pass: 'नया पासवर्ड',
+                pass_confirm: 'नये पासवर्ड को सत्यापित करें',
+                forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया',
+                change_pass_button: 'पासवर्ड बदलें'
             },
             search: 'Search for Block or Officer Name...',
+            sort: {
+                current_total: 'Current total',
+                delayed_total: 'Delayed total',
+                days_to_payment: 'Avg. days to payment',
+                block_name: 'Block name',
+                ceo_name: 'Block CEO name'
+            },
             messages: {
                 login: {
                     connectivity: 'हमे खेद है कि आप log in करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
@@ -358,7 +396,14 @@ module.exports = {
                 password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है| कृपया नये पासवर्ड का उपयोग कर लॉग इन करें|',
                 password_wrong_old: 'पुराना पासवर्ड ग़लत है| सहयता के लिए PayDash दल से संपर्क करें|',
                 password_new_nomatch: 'नया पासवर्ड मेल नही ख़ाता|',
-                password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|'
+                password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|',
+                password_empty: 'Password cannot be empty',
+                requesting_change: 'Requesting password change...'
+            },
+            contact: {
+                contact: 'Contact',
+                gmail: 'Gmail',
+                phone: 'Phone'
             },
             whatsapp: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_प्रखंड/जनपद_\n{block_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n'
         }
