@@ -20,7 +20,6 @@ const Subnav =  React.createClass({
     },
     setValue (value) {
         this.setState({ value });
-        console.log('Support level selected:', value.label);
         this.props.onRegionChange(value);
         // Load graph logic here
     },
