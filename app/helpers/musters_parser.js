@@ -6,9 +6,7 @@ const D3 = require('d3');
 exports.block = function(rows) {
     
     var cardsResponse = D3.values(rows[0]);
-
     var stateResponse = D3.values(rows[1]);
-
     var stateCode = stateResponse[0].state_code;
 
     // Nest the cards response
@@ -54,8 +52,9 @@ exports.block = function(rows) {
         .entries(cardsResponse)
         .map(function(d) {
             return {
-                'block_code': d.key.substr(0,7),
-                'block_name': d.key.substr(7),
+                'region_type': 'block',
+                'region_code': d.key.substr(0,7),
+                'region_name': d.key.substr(7),
                 'cards': d.values.map(function(e) { 
                     return e.values; 
                 })
@@ -67,7 +66,7 @@ exports.block = function(rows) {
     };
 
     return data;
-}
+};
 
 exports.district = function(rows) {
 
@@ -76,7 +75,7 @@ exports.district = function(rows) {
     // Nest the cards response
     var cards = D3.nest()
         .key(function(d) {
-            return d.district_code + d.district_name
+            return d.district_code + d.district_name;
         })
         .key(function(d) {
             return d.block_code;
@@ -85,7 +84,7 @@ exports.district = function(rows) {
             return {
                 'officers': v.map(function(d) {
                     return {
-                        name: d.id == null ? 'No Data' : d.firstname + ' ' + d.lastname,
+                        name: d.id === null ? 'No Data' : d.firstname + ' ' + d.lastname,
                         designation: d.designation,
                         mobile: d.mobile
                     };
@@ -109,8 +108,9 @@ exports.district = function(rows) {
         .entries(cardsResponse)
         .map(function(d) {
             return {
-                'district_code': d.key.substr(0,4),
-                'district_name': d.key.substr(4),
+                'region_type': 'district',
+                'region_code': d.key.substr(0,4),
+                'region_name': d.key.substr(4),
                 'data': d.values.map(function(e) { 
                     return e.values;
                 })
@@ -122,4 +122,4 @@ exports.district = function(rows) {
     };
     
     return data;
-}
+};

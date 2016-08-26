@@ -12,7 +12,9 @@ const Musters = React.createClass({
         var _this = this;
         D3.json(_this.props.url)
             .on('load', function(json) { 
-                _this.setState({musters: json.musters});
+                _this.setState({
+                    musters: json.musters
+                });
             })
             .on('error', function(error) { 
                 console.error(_this.props.url, status, error.toString());
