@@ -25,7 +25,7 @@ const Group =  React.createClass({
             <div>
                 <div className="group-head">
                     <input className="search-bar u-pull-right" type="text" placeholder="Search" onChange={this.filterCards}/>
-                    <h1 className="u-inline-block">{this.props.data.block_name}</h1>
+                    <h1 className="u-inline-block">{this.props.data.region_name}</h1>
                 </div>
                 <div className="pure-g">
                 {

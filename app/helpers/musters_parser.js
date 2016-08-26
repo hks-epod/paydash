@@ -111,7 +111,7 @@ exports.district = function(rows) {
                 'region_type': 'district',
                 'region_code': d.key.substr(0,4),
                 'region_name': d.key.substr(4),
-                'data': d.values.map(function(e) { 
+                'cards': d.values.map(function(e) { 
                     return e.values;
                 })
             };

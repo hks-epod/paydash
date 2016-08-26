@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Modal from './modal.jsx';
+import Modal from '../global/modal.jsx';
 import Table from './table.jsx';
 
 const Card =  React.createClass({

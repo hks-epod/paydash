@@ -3,7 +3,7 @@
 import React from 'react';
 import Select from 'react-select';
 
-const Regions = require('../lib/region');
+const Regions = require('../../lib/region');
 
 const Subnav =  React.createClass({
  

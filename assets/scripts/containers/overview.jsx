@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Tile from '../components/tile.jsx';
+import Tile from '../components/overview/tile.jsx';
 
 const D3= require('d3'); 
 

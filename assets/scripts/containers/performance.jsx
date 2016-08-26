@@ -1,9 +1,9 @@
 'use strict';
 
 import React from 'react';
-import Subnav from '../components/subnav.jsx';
-import PerformanceChart from '../components/performance-chart.jsx';
-import ComparisonChart from '../components/comparison-chart.jsx';
+import Subnav from '../components/performance/subnav.jsx';
+import OverviewChart from '../components/performance/overview-chart.jsx';
+import ComparisonChart from '../components/performance/comparison-chart.jsx';
 
 const D3= require('d3'); 
 
@@ -45,7 +45,7 @@ const Overview = React.createClass({
         return (
             <div className="performance-wrapper">
               <Subnav onRegionChange={this.setActiveRegion} role={this.state.config.role} performance={this.state.performance}/>
-              <PerformanceChart activeRegion={this.state.activeRegion} performance={this.state.performance} config={this.state.config}/>
+              <OverviewChart activeRegion={this.state.activeRegion} performance={this.state.performance} config={this.state.config}/>
               <div className="u-region-divider"></div>
               <ComparisonChart activeRegion={this.state.activeRegion} performance={this.state.performance} config={this.state.config}/>
             </div>     

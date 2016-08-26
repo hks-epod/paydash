@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import Group from '../components/group.jsx';
+import Group from '../components/musters/group.jsx';
 
 const D3= require('d3'); 
 

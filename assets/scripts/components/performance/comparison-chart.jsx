@@ -1,11 +1,11 @@
 'use strict';
 
 import React from 'react';
-import MG from '../lib/mg';
+import MG from '../../lib/mg';
 
 const D3 = require('d3');
-const Parser = require('../lib/parser');
-const Region = require('../lib/region');
+const Parser = require('../../lib/parser');
+const Region = require('../../lib/region');
 
 const ComparisonChart =  React.createClass({
 
