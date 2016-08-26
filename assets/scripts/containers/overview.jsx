@@ -12,7 +12,10 @@ const Overview = React.createClass({
         var _this = this;
         D3.json(_this.props.url)
             .on('load', function(json) { 
-                _this.setState({overview: json.overview});
+                _this.setState({
+                    overview: json.overview,
+                    translation: json.translation
+                });
             })
             .on('error', function(error) { 
                 console.error(_this.props.url, status, error.toString());
@@ -29,11 +32,12 @@ const Overview = React.createClass({
         this.fetchData();
     },
     render: function(){
+        var _this = this;
         return (
             <div className="overview-wrapper">
-                {
-                    this.state.overview.map(function(data, i) {
-                        return <Tile key={data.region_code}  data={data}></Tile>;
+                {  
+                    _this.state.overview.map(function(data, i) {
+                        return <Tile key={data.region_code}  data={data} translation={_this.state.translation}></Tile>;
                     })
                 }
             </div>     

@@ -17,7 +17,7 @@ exports.parser = function(rows) {
                 'current_total': v[0].current_total,
                 'delayed_total': v[0].delayed_total,
                 'days_to_payment': v[0].days_to_payment
-            }
+            };
         })
         .entries(overviewResponse)
         .map(function(d) {
