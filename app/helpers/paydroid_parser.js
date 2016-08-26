@@ -526,12 +526,7 @@ exports.v2 = function(rows, role) {
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
 
         var data = {
-            'overview': {
-                'current_total': current_total,
-                'delayed_total': delayed_total,
-                'days_to_payment': days_to_payment,
-                'cards_total': cards.length
-            },
+            'overview': overview,
             'cards': cards,
             'district_performance': districtPerformance,
             'block_performance': blockPerformance,
