@@ -131,12 +131,12 @@ const ComparisonChart =  React.createClass({
                     </p>
                     <select onChange={this.stepChange} className="button button--pc" name="" id="modify-step-controls">
                         <option value="1">1</option>
-                        <option value="2">1</option>
-                        <option value="3">1</option>
-                        <option value="4">1</option>
-                        <option value="5">1</option>
-                        <option value="6">1</option>
-                        <option value="7">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
                     </select>
                     <div id="compareRegion" className="group-selector">
                         <div><label htmlFor="option-01" className="pure-checkbox"><input className="regionSelector" id="option-01" type="checkbox" value="block" checked=""/> AMARPATAN block average</label></div>

@@ -17,13 +17,11 @@ module.exports = function t(path, credentials, version) {
     var lang = 'hi';
     var criteria = {};
     var ver;
-
     if (version) {
         ver = 'v' + version;
     } else {
         ver = 'v1';
     }
-
     if (credentials) {
         criteria.role = credentials.role;
         lang = credentials.lang;
