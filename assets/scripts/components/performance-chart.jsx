@@ -9,7 +9,7 @@ const Parser = require('../lib/parser');
 const PerformanceChart =  React.createClass({
 
     loadChart: function(){
-
+        
         var data;
         var _this = this;
         

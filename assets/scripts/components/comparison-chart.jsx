@@ -5,17 +5,15 @@ import MG from '../lib/mg';
 
 const D3 = require('d3');
 const Parser = require('../lib/parser');
+const Region = require('../lib/region');
 
 const ComparisonChart =  React.createClass({
 
-
-    // comparisonLabels : function(internals) {
-    //     var labels = [];
-    //     internals.active_compare_lines.forEach(function(comparison_line, index) {
-    //         labels.push(internals.data.monthwise[comparison_line][comparison_line + '_name'] + ' ' + internals.data.config.compare_chart_labels[comparison_line]);
-    //     });
-    //     return labels;
-    // },
+    getInitialState: function(){
+        return {
+           active_step: 1
+         };
+    },
     loadChart: function(){
 
         var _this = this;    
@@ -27,25 +25,19 @@ const ComparisonChart =  React.createClass({
             return;
         }
 
-        var comparison_lines = _this.props.config.comparison_lines;
+        var comparison_lines = _this.props.config.comparison_lines.slice(0);
         comparison_lines.push(_this.props.activeRegion.region_type);
-        
+
         comparison_lines.forEach(function(comparison_line, index) {
 
-            var region;
-            if(_this.props.activeRegion.region_type === 'block' && comparison_line ==='block'){
-                region = _this.props.performance[_this.props.activeRegion.region_type][_this.props.activeRegion.block_index];
-            }
-            else if(_this.props.activeRegion.region_type === 'panchayat' && comparison_line ==='panchayat'){
-                region = _this.props.performance[_this.props.activeRegion.region_type][_this.props.activeRegion.block_index].data[_this.props.activeRegion.panchayat_index];
-            }else {
-                region = _this.props.performance[comparison_line];
-            }
+            var region = Region.find(_this.props.activeRegion, _this.props.performance, comparison_line);
+
             labels.push(region[comparison_line + '_name'] + ' ' + _this.props.config.compare_chart_labels[comparison_line]);
+           
 
             var line_data = Parser.lines({
                 data: region.data,
-                col: [1],
+                col: [_this.state.active_step],
                 isCumulative: false
             });
             if (line_data[0]) {
@@ -54,7 +46,6 @@ const ComparisonChart =  React.createClass({
         });
 
         MG.data_graphic({
-                // title: options.title,
                 title: '',
                 target: _this.elem,
                 data: c_data,
@@ -118,7 +109,10 @@ const ComparisonChart =  React.createClass({
 
     },
     stepChange: function(event){
-        console.log(event.target.value);
+        this.setState({
+            active_step : event.target.value
+        });
+        this.loadChart();
     },
     componentDidMount: function() {
         this.loadChart();
