@@ -22,14 +22,12 @@ exports.getData = {
         }).then(function(rows) {
             var data;
             if (role === 'block') {
-
                 data = MustersParser.block(rows);
-
             } else if (role === 'district') {
-
                 data = MustersParser.district(rows);
-
             }
+
+            data.translation = Translate('/web/musters', request.auth.credentials, null);
 
             return reply(data);
 

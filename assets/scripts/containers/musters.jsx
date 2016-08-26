@@ -13,7 +13,8 @@ const Musters = React.createClass({
         D3.json(_this.props.url)
             .on('load', function(json) { 
                 _this.setState({
-                    musters: json.musters
+                    musters: json.musters,
+                    translation: json.translation
                 });
             })
             .on('error', function(error) { 
@@ -31,11 +32,12 @@ const Musters = React.createClass({
         this.fetchMusters();
     },
     render: function(){
+        var _this = this;
         return (
             <div className="muster-list"> 
                 {
-                    this.state.musters.map(function(data, i) {
-                        return <Group key={data.block_code}  data={data}></Group>;
+                    _this.state.musters.map(function(data, i) {
+                        return <Group key={data.region_code}  data={data} translation={_this.state.translation}></Group>;
                     })
                 }
             </div>      
