@@ -24,7 +24,6 @@ exports.getData = {
 
             var data = OverviewParser.parser(rows);
             data.translation = Translate('/web/overview', request.auth.credentials, null);
-
             reply(data);
         });
     }
