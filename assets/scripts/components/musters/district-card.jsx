@@ -20,9 +20,8 @@ const DistrictCard =  React.createClass({
             <div className="pure-u pure-u-6-24">
                 <div className="card">
                     <div className="card-top">
-                        <div className="card-head">{this.props.data.name}</div>
-                        <div className="card-designation">{this.props.data.designation}</div>
-                        <div className="card-designation">{this.props.data.mobile}</div>
+                        <div className="card-head">{this.props.data.block_name}</div>
+                        <div className="card-designation">{this.props.data.block_code}</div>
                     </div>
                     <div className="card-numbers pure-g">
                         <div className="pure-u pure-u-12-24 ">
@@ -34,11 +33,7 @@ const DistrictCard =  React.createClass({
                             <div>{this.props.data.delayed_total}</div>
                         </div>
                     </div>
-                    <button className="button button--primary" onClick={this.toggleModal}>Muster details</button>
-                    <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>  
-                        <Table title="DELAYED MUSTERS" data={this.props.data.delayed_musters}></Table>
-                        <Table title="CURRENT MUSTERS" data={this.props.data.current_musters}></Table>
-                    </Modal>
+                    <button className="button button--primary" onClick={this.toggleModal}>Officer details</button>
                 </div>
             </div>
         ); 

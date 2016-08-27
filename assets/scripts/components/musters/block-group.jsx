@@ -1,9 +1,9 @@
 'use strict';
 
 import React from 'react';
-import Card from './card.jsx';
+import BlockCard from './block-card.jsx';
 
-const Group =  React.createClass({
+const BlockGroup =  React.createClass({
 
     filterCards: function(event){
         var updatedList = this.props.data.cards;
@@ -22,6 +22,7 @@ const Group =  React.createClass({
     },
     render: function(){
         var _this = this;
+
         return (
             <div>
                 <div className="group-head">
@@ -31,12 +32,7 @@ const Group =  React.createClass({
                 <div className="pure-g">
                 {
                     this.state.cards.map(function(data, i) {
-                        if (_this.props.config.role === 'block') {
-                            return <BlockCard key={i}  data={data}></BlockCard>;
-                        } else if (_this.props.config.role === 'district') {
-                            return <DistrictCard key={i}  data={data}></DistrictCard>;
-                        }
-                        
+                        return <BlockCard key={i}  data={data}></BlockCard>;
                     })
                 }  
                 </div>
@@ -46,4 +42,4 @@ const Group =  React.createClass({
 });
 
 
-export default Group;
+export default BlockGroup;
