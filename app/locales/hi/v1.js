@@ -12,14 +12,14 @@ module.exports = {
         musters: {
             current: 'वर्तमान मस्टर्स',
             delayed: 'विलंबित मस्टर्स',
-            muster_details: 'MUSTER DETAILS',
+            muster_details: 'मस्टर्स की विस्तार से जानकारी',
             current_musters: 'विलंबित मस्टर्स',
             delayed_musters: 'विलंबित मस्टर्स',
             msr_no: 'MUSTER NO.',
             panchayat_name :'PANCHAYAT NAME',
-            work_name : 'WORK NAME',
-            work_code: 'WORK CODE',
-            closure_date: 'CLOSURE DATE',
+            work_name : 'कार्य नाम',
+            work_code: 'कार्य कोड',
+            closure_date: 'मस्टर रोल बंद होने की तिथि',
             days_pending: 'DAYS PENDING'
         }
     },
