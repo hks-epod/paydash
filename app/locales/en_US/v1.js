@@ -12,7 +12,15 @@ module.exports = {
         musters: {
             current: 'CURRENT',
             delayed: 'DELAYED',
-            muster_details: 'MUSTER DETAILS'
+            muster_details: 'MUSTER DETAILS',
+            current_musters: 'CURRENT MUSTERS',
+            delayed_musters: 'Delayed MUSTERS',
+            msr_no: 'MUSTER NO.',
+            panchayat_name :'PANCHAYAT NAME',
+            work_name : 'WORK NAME',
+            work_code: 'WORK CODE',
+            closure_date: 'CLOSURE DATE',
+            days_pending: 'DAYS PENDING'
         }
     },
     app: {
