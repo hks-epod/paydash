@@ -4,7 +4,7 @@ import React from 'react';
 import Modal from '../global/modal.jsx';
 import Table from './table.jsx';
 
-const Card =  React.createClass({
+const BlockCard =  React.createClass({
  
     toggleModal() {
         const state = this.state.modalOpen;
@@ -46,4 +46,4 @@ const Card =  React.createClass({
 });
 
 
-export default Card;
+export default BlockCard;

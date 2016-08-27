@@ -23,8 +23,14 @@ exports.getData = {
             var data;
             if (role === 'block') {
                 data = MustersParser.block(rows);
+                data.config ={
+                    role: 'block'
+                };
             } else if (role === 'district') {
                 data = MustersParser.district(rows);
+                data.config ={
+                    role: 'district'
+                };
             }
 
             data.translation = Translate('/web/musters', request.auth.credentials, null);

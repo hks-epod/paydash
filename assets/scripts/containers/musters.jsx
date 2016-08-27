@@ -14,7 +14,8 @@ const Musters = React.createClass({
             .on('load', function(json) { 
                 _this.setState({
                     musters: json.musters,
-                    translation: json.translation
+                    translation: json.translation,
+                    config: json.config
                 });
             })
             .on('error', function(error) { 
@@ -37,7 +38,7 @@ const Musters = React.createClass({
             <div className="muster-list"> 
                 {
                     _this.state.musters.map(function(data, i) {
-                        return <Group key={data.region_code}  data={data} translation={_this.state.translation}></Group>;
+                        return <Group key={data.region_code}  data={data} config={_this.state.config} translation={_this.state.translation}></Group>;
                     })
                 }
             </div>      

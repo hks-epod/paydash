@@ -21,6 +21,7 @@ const Group =  React.createClass({
         this.setState({cards: this.props.data.cards});
     },
     render: function(){
+        var _this = this;
         return (
             <div>
                 <div className="group-head">
@@ -30,7 +31,12 @@ const Group =  React.createClass({
                 <div className="pure-g">
                 {
                     this.state.cards.map(function(data, i) {
-                        return <Card key={i}  data={data}></Card>;
+                        if (_this.props.config.role === 'block') {
+                            return <BlockCard key={i}  data={data}></BlockCard>;
+                        } else if (_this.props.config.role === 'district') {
+                            return <DistrictCard key={i}  data={data}></DistrictCard>;
+                        }
+                        
                     })
                 }  
                 </div>
