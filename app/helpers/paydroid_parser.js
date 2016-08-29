@@ -185,9 +185,9 @@ exports.v1 = function(rows) {
 };
 
 
-exports.v2 = function(rows, role) {
+exports.v2 = function(rows, role, userId) {
 
-    function parse_block(rows) {
+    function parse_block(rows, userId) {
         
         var overviewResponse = D3.values(rows[0]);
 
@@ -332,6 +332,8 @@ exports.v2 = function(rows, role) {
                 return d.values;
             });
 
+        var subjectLine = contactResponse[0].subject + '[' + userId + ']';
+        
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
 
         var data = {
@@ -357,7 +359,7 @@ exports.v2 = function(rows, role) {
             'contact': {
                 'phone': contactResponse[0].phone,
                 'email': contactResponse[0].email,
-                'subject': contactResponse[0].subject
+                'subject': subjectLine
             },
             'colors': {
                 'default': [
@@ -387,7 +389,7 @@ exports.v2 = function(rows, role) {
         return data;
     }
 
-    function parse_district(rows) {
+    function parse_district(rows, userId) {
 
         var overviewResponse = D3.values(rows[0]);
 
@@ -523,6 +525,8 @@ exports.v2 = function(rows, role) {
                 return d.values;
             });
 
+        var subjectLine = contactResponse[0].subject + '[' + userId + ']';
+
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
 
         var data = {
@@ -548,7 +552,7 @@ exports.v2 = function(rows, role) {
             'contact': {
                 'phone': contactResponse[0].phone,
                 'email': contactResponse[0].email,
-                'subject': contactResponse[0].subject
+                'subject': subjectLine
             },
             'colors': {
                 'default': [
@@ -580,11 +584,11 @@ exports.v2 = function(rows, role) {
 
     if (role==='block') {
 
-        var data = parse_block(rows);
+        var data = parse_block(rows, userId);
 
     } else if (role==='district') {
 
-        var data = parse_district(rows);
+        var data = parse_district(rows, userId);
 
     }
 
