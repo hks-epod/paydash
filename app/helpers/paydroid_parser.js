@@ -185,9 +185,9 @@ exports.v1 = function(rows) {
 };
 
 
-exports.v2 = function(rows, role, userId) {
+exports.v2 = function(rows, role) {
 
-    function parse_block(rows, userId) {
+    function parse_block(rows) {
         
         var overviewResponse = D3.values(rows[0]);
 
@@ -202,6 +202,8 @@ exports.v2 = function(rows, role, userId) {
         var contactResponse = D3.values(rows[5]);
 
         var versionResponse = D3.values(rows[6]);
+
+        var regionsResponse = D3.values(rows[7]);
 
         // Parse the overview response
         var overview = D3.nest()
@@ -332,10 +334,10 @@ exports.v2 = function(rows, role, userId) {
                 return d.values;
             });
 
-        var subjectLine = contactResponse[0].subject + '[' + userId + ']';
-        
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
 
+        var subjectLine = Utils.buildSubject(contactResponse[0].subject, regionsResponse);
+        
         var data = {
             'overview': overview,
             'cards': cards,
@@ -389,7 +391,7 @@ exports.v2 = function(rows, role, userId) {
         return data;
     }
 
-    function parse_district(rows, userId) {
+    function parse_district(rows) {
 
         var overviewResponse = D3.values(rows[0]);
 
@@ -404,6 +406,8 @@ exports.v2 = function(rows, role, userId) {
         var contactResponse = D3.values(rows[5]);
 
         var versionResponse = D3.values(rows[6]);
+
+        var regionsResponse = D3.values(rows[7]);
 
         // Parse the overview response
         var overview = D3.nest()
@@ -525,7 +529,8 @@ exports.v2 = function(rows, role, userId) {
                 return d.values;
             });
 
-        var subjectLine = contactResponse[0].subject + '[' + userId + ']';
+
+        var subjectLine = Utils.buildSubject(contactResponse[0].subject, regionsResponse);
 
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
 
@@ -584,11 +589,11 @@ exports.v2 = function(rows, role, userId) {
 
     if (role==='block') {
 
-        var data = parse_block(rows, userId);
+        var data = parse_block(rows);
 
     } else if (role==='district') {
 
-        var data = parse_district(rows, userId);
+        var data = parse_district(rows);
 
     }
 

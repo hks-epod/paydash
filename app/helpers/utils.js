@@ -55,3 +55,15 @@ exports.getDesignation = function(task_assign, state_code) {
         return task_assign;
     }
 };
+
+exports.buildSubject = function(subjectStub, regionsResponse) {
+    var subjectLine = subjectStub + ' [';
+    for (var i=0; i<regionsResponse.length; i++) {
+        if (i>0) {
+            subjectLine += '/';
+        }
+        subjectLine += regionsResponse[i].region_name + ' (' + regionsResponse[i].region_code + ')';
+    }
+    subjectLine += ']';
+    return subjectLine;
+}
