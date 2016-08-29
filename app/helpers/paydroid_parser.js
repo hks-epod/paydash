@@ -232,7 +232,7 @@ exports.v2 = function(rows, role) {
             })
             .rollup(function(v) {
                 return {
-                    'name': v[0].name,
+                    'name': v[0].name.toUpperCase(),
                     'staff_id': v[0].staff_id,
                     'designation': Utils.getDesignation(v[0].task_assign, state_code),
                     'mobile': v[0].mobile_no,
@@ -434,7 +434,7 @@ exports.v2 = function(rows, role) {
                     'officers': v.map(function(d) {
                         return {
                             officer_id: d.id,
-                            name: d.id == null ? 'No Data' : d.firstname + ' ' + d.lastname,
+                            name: d.id == null ? 'No Data' : d.firstname.toUpperCase() + ' ' + d.lastname.toUpperCase(),
                             designation: d.designation,
                             mobile: d.mobile
                         };
