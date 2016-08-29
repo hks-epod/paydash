@@ -87,8 +87,8 @@ module.exports = {
             },
             search: 'Search for TA/GRS...',
             sort: {
-                current_total: 'Current total',
-                delayed_total: 'Delayed total',
+                current_total: 'आज बंद हो रहे मस्टर्स',
+                delayed_total: 'विलंबित मस्टर्स',
                 name: 'Name',
                 designation: 'Designation'
             },
@@ -107,10 +107,13 @@ module.exports = {
                     },
                     general: 'हमे खेद है कि आप log out करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|'
                 },
+                profile_success: 'Profile successfully updated.',
+                profile_error: 'Unable to update profile. Please contact the PayDash team if this problem persists.',
                 password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है| कृपया नये पासवर्ड का उपयोग कर लॉग इन करें|',
                 password_wrong_old: 'पुराना पासवर्ड ग़लत है| सहयता के लिए PayDash दल से संपर्क करें|',
                 password_new_nomatch: 'नया पासवर्ड मेल नही ख़ाता|',
                 password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|',
+                password_network_error: 'Unable to change password. Please try again when you have network connectivity.',
                 password_empty: 'Password cannot be empty',
                 requesting_change: 'Requesting password change...'
             },
@@ -209,9 +212,9 @@ module.exports = {
             },
             search: 'Search for Block or Officer Name...',
             sort: {
-                current_total: 'Current total',
+                current_total: 'आज बंद हो रहे मस्टर्स',
                 delayed_total: 'Delayed total',
-                days_to_payment: 'Avg. days to payment',
+                days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 block_name: 'Block name',
                 ceo_name: 'Block CEO name'
             },
@@ -230,10 +233,13 @@ module.exports = {
                     },
                     general: 'हमे खेद है कि आप log out करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|'
                 },
+                profile_success: 'Profile successfully updated.',
+                profile_error: 'Unable to update profile. Please contact the PayDash team if this problem persists.',
                 password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है| कृपया नये पासवर्ड का उपयोग कर लॉग इन करें|',
                 password_wrong_old: 'पुराना पासवर्ड ग़लत है| सहयता के लिए PayDash दल से संपर्क करें|',
                 password_new_nomatch: 'नया पासवर्ड मेल नही ख़ाता|',
                 password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|',
+                password_network_error: 'Unable to change password. Please try again when you have network connectivity.',
                 password_empty: 'Password cannot be empty',
                 requesting_change: 'Requesting password change...'
             },

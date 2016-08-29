@@ -87,8 +87,8 @@ module.exports = {
             },
             search: 'Search for TA/GRS...',
             sort: {
-                current_total: 'Current total',
-                delayed_total: 'Delayed total',
+                current_total: 'Musters closing today',
+                delayed_total: 'Delayed musters',
                 name: 'Name',
                 designation: 'Designation'
             },
@@ -107,10 +107,13 @@ module.exports = {
                     },
                     general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.'
                 },
+                profile_success: 'Profile successfully updated.',
+                profile_error: 'Unable to update profile. Please contact the PayDash team if this issue persists.',
                 password_success: 'Password changed successfully. Please login with new password.',
                 password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
                 password_new_nomatch: 'New password does not match.',
                 password_tooshort: 'Your new password must be at least 6 characters long.',
+                password_network_error: 'Unable to change password. Please try again when you have network connectivity.',
                 password_empty: 'Password cannot be empty',
                 requesting_change: 'Requesting password change...'
             },
@@ -209,9 +212,9 @@ module.exports = {
             },
             search: 'Search for Block or Officer Name...',
             sort: {
-                current_total: 'Current total',
-                delayed_total: 'Delayed total',
-                days_to_payment: 'Avg. days to payment',
+                current_total: 'Musters closing today',
+                delayed_total: 'Delayed musters',
+                days_to_payment: 'Avg. days to payment in last 3 months',
                 block_name: 'Block name',
                 ceo_name: 'Block CEO name'
             },
@@ -230,10 +233,13 @@ module.exports = {
                     },
                     general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.'
                 },
+                profile_success: 'Profile successfully updated.',
+                profile_error: 'Unable to update profile. Please contact the PayDash team if this issue persists.',
                 password_success: 'Password changed successfully. Please login with new password.',
                 password_wrong_old: 'Old password is incorrect. Please contact the PayDash team if you require assistance.',
                 password_new_nomatch: 'New password does not match.',
                 password_tooshort: 'Your new password must be at least 6 characters long.',
+                password_network_error: 'Unable to change password. Please try again when you have network connectivity.',
                 password_empty: 'Password cannot be empty',
                 requesting_change: 'Requesting password change...'
             },
