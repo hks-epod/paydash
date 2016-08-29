@@ -102,7 +102,7 @@ exports.district = function(rows) {
                 't7_total': v[0].t7_total,
                 't7_avg': v[0].t7_avg,
                 't8_total': v[0].t8_total,
-                't8_avg': v[0].t8_avg
+                't8_avg': v[0].t8_avgw
             };
         })
         .entries(cardsResponse)
