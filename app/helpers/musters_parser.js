@@ -57,6 +57,25 @@ exports.block = function(rows) {
                 'region_name': d.key.substr(7),
                 'cards': d.values.map(function(e) { 
                     return e.values; 
+                }).sort(function (a, b){
+                    var aActive = a.current_total + a.delayed_total > 0 ? 1 : 0;
+                    var bActive = b.current_total + b.delayed_total > 0 ? 1 : 0;
+                    var aUnmapped = a.name === 'Unmapped' ? 1 : 0;
+                    var bUnmapped = b.name === 'Unmapped' ? 1 : 0;
+
+                    // ORDER BY active DESC, unmapped, delayed_total DESC, current_total DESC, name;"
+
+                    if (aActive < bActive) return 1;
+                    if (aActive > bActive) return -1;
+                    if (aUnmapped < bUnmapped) return -1;
+                    if (aUnmapped > bUnmapped) return 1;
+                    if (a.delayed_total < b.delayed_total) return 1;
+                    if (a.delayed_total > b.delayed_total) return -1;
+                    if (a.current_total < b.current_total) return 1;
+                    if (a.current_total > b.current_total) return -1;
+                    if (a.name < b.name) return -1;
+                    if (a.name > b.name) return 1;
+                    return 0;
                 })
             };
         });
@@ -113,6 +132,10 @@ exports.district = function(rows) {
                 'region_name': d.key.substr(4),
                 'cards': d.values.map(function(e) { 
                     return e.values;
+                }).sort(function (a, b){
+                    if (a.block_name.toLowerCase() < b.block_name.toLowerCase()) return -1;
+                    if (a.block_name.toLowerCase() > b.block_name.toLowerCase()) return 1;
+                    return 0;
                 })
             };
         });

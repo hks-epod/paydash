@@ -445,6 +445,7 @@ exports.v2 = function(rows, role) {
                             mobile: d.mobile
                         };
                     }),
+                    'district_name': v[0].district_name,
                     'block_code': v[0].block_code,
                     'block_name': v[0].block_name,
                     'current_total': v[0].current_total,
@@ -465,6 +466,13 @@ exports.v2 = function(rows, role) {
             .entries(cardsResponse)
             .map(function(d) {
                 return d.values;
+            })
+            .sort(function (a, b){
+                if (a.district_name.toLowerCase() < b.district_name.toLowerCase()) return -1;
+                if (a.district_name.toLowerCase() > b.district_name.toLowerCase()) return 1;
+                if (a.block_name.toLowerCase() < b.block_name.toLowerCase()) return -1;
+                if (a.block_name.toLowerCase() > b.block_name.toLowerCase()) return 1;
+                return 0;
             });
 
         // Nest the district response
