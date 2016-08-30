@@ -459,11 +459,14 @@ exports.v2 = function(rows, role) {
                 return {
                     'officers': v.map(function(d) {
                         return {
-                            officer_id: d.id,
-                            name: d.id == null ? 'No Data' : d.firstname.toUpperCase() + ' ' + d.lastname.toUpperCase(),
+                            officer_id: d.block_code + '_' + d.designation_id,
+                            name: d.firstname == null && d.lastname == null ? 'No Data' : d.firstname.toUpperCase() + ' ' + d.lastname.toUpperCase(),
                             designation: d.designation,
+                            designation_id: d.designation_id,
                             mobile: d.mobile
                         };
+                    }).sort(function(a,b) {
+                        return a.designation_id - b.designation_id;
                     }),
                     'district_name': v[0].district_name,
                     'block_code': v[0].block_code,

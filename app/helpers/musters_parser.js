@@ -103,10 +103,14 @@ exports.district = function(rows) {
             return {
                 'officers': v.map(function(d) {
                     return {
-                        name: d.id === null ? 'No Data' : d.firstname + ' ' + d.lastname,
+                        officer_id: d.block_code + '_' + d.designation_id,
+                        name: d.firstname == null && d.lastname == null ? 'No Data' : d.firstname.toUpperCase() + ' ' + d.lastname.toUpperCase(),
                         designation: d.designation,
+                        designation_id: d.designation_id,
                         mobile: d.mobile
                     };
+                }).sort(function(a,b) {
+                    return a.designation_id - b.designation_id;
                 }),
                 'block_code': v[0].block_code,
                 'block_name': v[0].block_name,
