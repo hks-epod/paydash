@@ -269,6 +269,26 @@ exports.v2 = function(rows, role) {
             .entries(cardsResponse)
             .map(function(d) {
                 return d.values;
+            })
+            .sort(function (a, b){
+                var aActive = a.current_total + a.delayed_total > 0 ? 1 : 0;
+                var bActive = b.current_total + b.delayed_total > 0 ? 1 : 0;
+                var aUnmapped = a.name.toLowerCase() === 'unmapped' ? 1 : 0;
+                var bUnmapped = b.name.toLowerCase() === 'unmapped' ? 1 : 0;
+
+                // ORDER BY active DESC, unmapped, delayed_total DESC, current_total DESC, name;"
+
+                if (aActive < bActive) return 1;
+                if (aActive > bActive) return -1;
+                if (aUnmapped < bUnmapped) return -1;
+                if (aUnmapped > bUnmapped) return 1;
+                if (a.delayed_total < b.delayed_total) return 1;
+                if (a.delayed_total > b.delayed_total) return -1;
+                if (a.current_total < b.current_total) return 1;
+                if (a.current_total > b.current_total) return -1;
+                if (a.name < b.name) return -1;
+                if (a.name > b.name) return 1;
+                return 0;
             });
 
 
