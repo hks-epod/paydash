@@ -8,6 +8,7 @@ import Performance from './containers/performance.jsx';
 import ActiveLink from './lib/active-link';
 
 ActiveLink.init();
+require('./lib/dropdown');
 
 
 if (window.location.pathname === '/musters') {
