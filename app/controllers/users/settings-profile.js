@@ -42,15 +42,15 @@ exports.postEditProfile = {
         }).then(function(user) {
             if (user) { // if the record exists in the db
                 user.update(request.payload).then(function() {
-                    request.auth.session.clear();
-                    request.auth.session.set(user);
+                    request.cookieAuth.clear();
+                    request.cookieAuth.set(user);
                     request.session.flash('success', 'Profile successfully saved');
                     return reply.redirect('/me/settings/profile');
 
                 });
 
             } else {
-                request.session.flash('error', 'An internal server error occurred');
+                request.yar.flash('error', 'An internal server error occurred');
                 return reply.redirect('/me/settings/profile');
             }
         });
