@@ -13,7 +13,7 @@ module.exports = {
             current: 'CURRENT',
             delayed: 'DELAYED',
             muster_details: 'MUSTER DETAILS',
-            officer_details: 'OFFICER DETAILS',
+            officers: 'OFFICERS',
             current_musters: 'CURRENT MUSTERS',
             delayed_musters: 'Delayed MUSTERS',
             msr_no: 'MUSTER NO.',

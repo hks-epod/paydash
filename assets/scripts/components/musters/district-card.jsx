@@ -33,7 +33,7 @@ const DistrictCard =  React.createClass({
                             <div>{this.props.data.delayed_total}</div>
                         </div>
                     </div>
-                    <h4>OFFICERS</h4>
+                    <h4 className="card-officer-title">{this.props.translation.officers}</h4>
                     {
                         this.props.data.officers.map(function(officer, i) {
                             return (
@@ -47,7 +47,7 @@ const DistrictCard =  React.createClass({
                             );
                         })
                     }
-                    <button className="button button--primary" onClick={this.toggleModal}>{ this.props.translation.officer_details}</button>
+                    <button className="button button--primary" onClick={this.toggleModal}>{ this.props.translation.muster_details}</button>
                 </div>
             </div>
         ); 

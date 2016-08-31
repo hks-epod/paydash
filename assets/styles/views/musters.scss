@@ -41,10 +41,17 @@
 }
 .card-officer{
     text-align: left;
-    color: $color-grey-dark;
+    color: $color-grey-light;
     margin-bottom: 20px;
+}
+.card-officer-title{
+    text-align:left;
+    font-weight: 400;
 }
 .card-officer-sub{
     font-size: $fontSize-small;
-    color: $color-grey-light;
+    color: $color-grey-lighter;
+}
+.card .card-officer:last-child{
+    padding-botttom: 40px;
 }
