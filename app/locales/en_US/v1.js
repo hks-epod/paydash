@@ -3,6 +3,11 @@
 module.exports = {
     $meta: 'English translation file',
     web: {
+        navigation: {
+            overview: 'OVERVIEW',
+            musters: 'MUSTERS',
+            performance: 'PERFORMANCE'
+        },
         overview: {
             current: 'CURRENT',
             delayed: 'DELAYED',

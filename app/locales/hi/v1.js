@@ -3,6 +3,11 @@
 module.exports = {
     $meta: 'Hindi translation file',
     web: {
+        navigation: {
+            overview: 'अवलोकन',
+            musters: 'MUSTERS',
+            performance: 'प्रदर्शन'
+        },
         overview: {
             current: 'वर्तमान मस्टर्स',
             delayed: 'विलंबित मस्टर्स',

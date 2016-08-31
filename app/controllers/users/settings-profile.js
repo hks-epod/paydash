@@ -24,7 +24,7 @@ exports.postEditProfile = {
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            request.session.flash('error', 'Bad request');
+            request.yar.flash('error', 'Bad request');
             return reply.redirect('/me/settings/profile');
         }
     },
@@ -44,7 +44,7 @@ exports.postEditProfile = {
                 user.update(request.payload).then(function() {
                     request.cookieAuth.clear();
                     request.cookieAuth.set(user);
-                    request.session.flash('success', 'Profile successfully saved');
+                    request.yar.flash('success', 'Profile successfully saved');
                     return reply.redirect('/me/settings/profile');
 
                 });
