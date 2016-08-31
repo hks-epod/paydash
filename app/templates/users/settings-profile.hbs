@@ -5,18 +5,18 @@
     </div>
     <div class="pure-u pure-u-10-24">
       <div class="">
-        <h5 class="heading--sub">{{t "/profile/profile_settings" credentials}}</h5> {{> flash}}
-        <p>{{t "/profile/firstname" credentials}} : {{user.firstname}}</p>
-         <p>{{t "/profile/lastname" credentials}} : {{user.lastname}}</p>
+        <h5 class="heading--sub">{{t "/web/profile/profile_settings" credentials null}}</h5> {{> flash}}
+        <p>{{t "/web/profile/firstname" credentials null}} : {{user.firstname}}</p>
+         <p>{{t "/web/profile/lastname" credentials null}} : {{user.lastname}}</p>
 
         <form data-tab="profile" method="post" action="">
-            <label for="email">{{t "/profile/work_email" credentials}}</label>
+            <label for="email">{{t "/web/profile/work_email" credentials null}}</label>
             <input class="u-full-width" id="work_email" value="{{user.work_email}}" name="work_email" type="text" placeholder="Please enter your work email">
-            <label for="dob">{{t "/profile/mobile" credentials}}</label>
+            <label for="dob">{{t "/web/profile/mobile" credentials null}}</label>
             <input class="u-full-width" id="mobile" name="mobile" type="text" value="{{user.mobile}}" placeholder="Please enter your mobile no">
-            <label for="email">{{t "/profile/personal_email" credentials}}</label>
+            <label for="email">{{t "/web/profile/personal_email" credentials null}}</label>
             <input class="u-full-width" id="email" name="email" value="{{user.email}}" type="text" placeholder="Please enter your email id"> 
-            <label for="lang">{{t "/profile/lang" credentials}}</label>
+            <label for="lang">{{t "/web/profile/lang" credentials null}}</label>
             <select class="u-full-width" name="lang" value="{{user.lang}}" id="lang">
               {{#select user.lang}}
               <option value="en_US">English</option>
@@ -24,7 +24,7 @@
               {{/select}}
             </select>    
           {{> form_security}}
-          <input type="submit" value="{{t "/profile/save" credentials}}" class=" button button--primary">
+          <input type="submit" value="{{t "/web/profile/save" credentials null}}" class=" button button--primary">
         </form>
       </div>
     </div>

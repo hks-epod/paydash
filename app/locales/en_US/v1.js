@@ -22,7 +22,29 @@ module.exports = {
             work_code: 'WORK CODE',
             closure_date: 'CLOSURE DATE',
             days_pending: 'DAYS PENDING'
-        }
+        },
+        profile: {
+            firstname: 'First Name',
+            lastname: 'Last Name',
+            profile: 'Profile',
+            account: 'Account',
+            work_email: 'Work Email',
+            mobile: 'Mobile',
+            personal_email: 'Personal Email',
+            lang : 'Language',
+            settings: 'Settings',
+            logout: 'Logout',
+            profile_settings: 'Profile Settings',
+            email_settings: 'Email Settings',
+            primary_email_msg: 'Your primary email address will be used for account-related notifications as well as any web-based operations.',
+            save: 'Update',
+            your_primary_email: 'Your primary email',
+            change_pass: 'Change password',
+            old_pass: 'Old password',
+            new_pass: 'New password',
+            pass_confirm:'Verify new password',
+            forgot_pass: 'I forgot my password'
+            },
     },
     app: {
         overview: {

@@ -21,7 +21,29 @@ module.exports = {
             work_code: 'कार्य कोड',
             closure_date: 'मस्टर रोल बंद होने की तिथि',
             days_pending: 'DAYS PENDING'
-        }
+        },
+        profile: {
+            firstname: 'मूल नाम',
+            lastname: 'उपनाम',
+            profile: 'प्रोफ़ाइल',
+            account: 'अकाउंट',
+            work_email: 'औपचारिक e-mail',
+            mobile: 'मोबाइल नंबर',
+            personal_email: 'निजी e-mail',
+            lang : 'भाषा',
+            settings: 'सेट्टिंग्स',
+            logout: 'लौग आउट',
+            profile_settings: 'आपकी प्रोफ़ाइल सेट्टिंग्स',
+            email_settings: 'E-Mail सेट्टिंग्स',
+            primary_email_msg: 'आपके अकाउंट से संबंधित संदेशों और इंटरनेट-संबंधित प्रक्रियाओं के लिए आपके मुख्य e-mail ID का उपयोग किया जाएगा.',
+            save: 'अद्यतन (update)',
+            your_primary_email: 'आपका मुख्य e-mail ID',
+            change_pass: 'पासवर्ड बदलें',
+            old_pass: 'पुराना पासवर्ड ',
+            new_pass: 'नया पासवर्ड ',
+            pass_confirm:'नये पासवर्ड को सत्यापित करें',
+            forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया'
+            },
     },
     app: {
         overview: {
