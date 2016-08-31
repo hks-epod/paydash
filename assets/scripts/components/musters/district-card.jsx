@@ -47,7 +47,10 @@ const DistrictCard =  React.createClass({
                             );
                         })
                     }
-                    <button className="button button--primary" onClick={this.toggleModal}>{ this.props.translation.muster_details}</button>
+                    <button className="button button--primary" onClick={this.toggleModal}>{this.props.translation.muster_details}</button>
+                    <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>  
+                        
+                    </Modal>
                 </div>
             </div>
         ); 
