@@ -49,7 +49,39 @@ const DistrictCard =  React.createClass({
                     }
                     <button className="button button--primary" onClick={this.toggleModal}>{this.props.translation.muster_details}</button>
                     <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>  
-                        
+                        <h1 className="">MUISTER DETAILS</h1>
+                        <table className="table">
+                            <tr>
+                                <td>Step</td>
+                                <td>Total</td>
+                                <td>Average</td>
+                            </tr>
+                            <tr>
+                                <td>T+2</td>
+                                <td>{this.props.data.t2_total}</td>
+                                <td>{this.props.data.t2_avg}</td>
+                            </tr>
+                            <tr>
+                                <td>T+5</td>
+                                <td>{this.props.data.t5_total}</td>
+                                <td>{this.props.data.t5_avg}</td>
+                            </tr>
+                            <tr>
+                                <td>T+6</td>
+                                <td>{this.props.data.t6_total}</td>
+                                <td>{this.props.data.t6_avg}</td>
+                            </tr>
+                            <tr>
+                                <td>T+7</td>
+                                <td>{this.props.data.t7_total}</td>
+                                <td>{this.props.data.t7_avg}</td>
+                            </tr>
+                            <tr>
+                                <td>T+8</td>
+                                <td>{this.props.data.t8_total}</td>
+                                <td>{this.props.data.t8_avg}</td>
+                            </tr>
+                        </table>   
                     </Modal>
                 </div>
             </div>

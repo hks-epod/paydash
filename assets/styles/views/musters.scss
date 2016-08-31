@@ -42,7 +42,7 @@
 .card-officer{
     text-align: left;
     color: $color-grey-light;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 .card-officer-title{
     text-align:left;
@@ -54,4 +54,7 @@
 }
 .card .card-officer:last-child{
     padding-botttom: 40px;
+}
+.table{
+    width: 100%;
 }
