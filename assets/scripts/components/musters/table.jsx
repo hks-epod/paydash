@@ -5,22 +5,24 @@ import React from 'react';
 const Table = React.createClass({
 
     render: function(){
+
+        var _this = this;
         return (
             <div>
-                <h1 className="">{this.props.title}</h1>
+                <h1 className="">{_this.props.title}</h1>
                 <table className="muster-table">
                     <thead>
                         <tr>
                         {
-                            this.props.data.length > 0 && Object.keys(this.props.data[0]).map(function(key){
-                                return <th key={key}>{key}</th>;
+                            _this.props.data.length > 0 && Object.keys(_this.props.data[0]).map(function(key){
+                                return <th key={key}>{_this.props.translation[key]}</th>;
                             })
                         }
                         </tr>
                     </thead>  
                     <tbody>
                     {
-                        this.props.data.map(function(data, i) {
+                        _this.props.data.map(function(data, i) {
                             return (
                                 <tr key={i}>
                                     {

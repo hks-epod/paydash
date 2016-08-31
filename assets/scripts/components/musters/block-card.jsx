@@ -36,8 +36,8 @@ const BlockCard =  React.createClass({
                     </div>
                     <button className="button button--primary" onClick={this.toggleModal}>{this.props.translation.muster_details}</button>
                     <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>  
-                        <Table title="DELAYED MUSTERS" data={this.props.data.delayed_musters}></Table>
-                        <Table title="CURRENT MUSTERS" data={this.props.data.current_musters}></Table>
+                        <Table title={this.props.translation.delayed} data={this.props.data.delayed_musters} translation={this.props.translation}></Table>
+                        <Table title={this.props.translation.current} data={this.props.data.current_musters} translation={this.props.translation}></Table>
                     </Modal>
                 </div>
             </div>
