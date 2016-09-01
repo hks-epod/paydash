@@ -15,6 +15,7 @@ module.exports = {
                 view_cards: 'कार्ड्स देखें'
             },
             cards: {
+                cards: 'कार्ड्स',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters_1: 'विलंबित मस्टर्स',
                 muster_details: 'मस्टर्स की विस्तार से जानकारी',
@@ -42,6 +43,7 @@ module.exports = {
                     total:'भुगतान प्रक्रिया पूरी करने में लगे दिन (बिना विभाजन के)',
                     all:'भुगतान प्रक्रिया पूरी करने में लगे दिन (पड़ावों में विभाजित)',
                 },
+                statutory_limit: 'क़ानून द्वारा निर्धारित समया सीमा',
                 dates: {
                     all_dates: 'सभी तारीखें',
                     past_3_months: 'पिछले 3 महीने'
@@ -63,15 +65,15 @@ module.exports = {
             },
             profile: {
                 profile: 'प्रोफ़ाइल',
-                edit: 'EDIT',
-                save:'SAVE',
-                updating:'UPDATING...',
+                edit: 'प्रोफ़ाइल बदलें',
+                save:'प्रोफ़ाइल सेव करें',
+                updating:'अपडेट होने की प्रक्रिया जारी है...',
                 firstname: 'मूल नाम',
                 lastname: 'उपनाम',
                 mobile: 'मोबाइल नंबर',
                 personal_email: 'निजी e-mail',
                 work_email: 'औपचारिक e-mail',
-                colorblind: 'Use Colorblind-Safe Theme',
+                colorblind: 'वर्णांधता (color blindness) के लिए अनुकूल रंग प्रणाली का उपयोग करें',
                 lang: 'भाषा',
                 eng: 'English',
                 hindi: 'Hindi',
@@ -85,12 +87,12 @@ module.exports = {
                 forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया',
                 change_pass_button: 'पासवर्ड बदलें'
             },
-            search: 'Search for TA/GRS...',
+            search: 'उप यंत्री/ GRS का नाम खोजें',
             sort: {
                 current_total: 'आज बंद हो रहे मस्टर्स',
                 delayed_total: 'विलंबित मस्टर्स',
-                name: 'Name',
-                designation: 'Designation'
+                name: 'नाम',
+                designation: 'पद'
             },
             messages: {
                 login: {
@@ -105,20 +107,24 @@ module.exports = {
                         'logout': 'Log out',
                         'cancel': 'Cancel'
                     },
-                    general: 'हमे खेद है कि आप log out करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|'
+                    general: 'हमे खेद है कि आप log out करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
+                    logging_out: 'आप लोग आउट हो रहे हैं...'
                 },
-                profile_success: 'Profile successfully updated.',
-                profile_error: 'Unable to update profile. Please contact the PayDash team if this problem persists.',
+                profile_success: 'आपकी प्रोफ़ाइल सफलतापूर्वक अपडेट हो चुकी है',
+                profile_error: 'प्रोफ़ाइल अपडेट करने की प्रक्रिया असफल रही| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
                 password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है| कृपया नये पासवर्ड का उपयोग कर लॉग इन करें|',
                 password_wrong_old: 'पुराना पासवर्ड ग़लत है| सहयता के लिए PayDash दल से संपर्क करें|',
                 password_new_nomatch: 'नया पासवर्ड मेल नही ख़ाता|',
                 password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|',
-                password_network_error: 'Unable to change password. Please try again when you have network connectivity.',
-                password_empty: 'Password cannot be empty',
-                requesting_change: 'Requesting password change...'
+                password_network_error: 'पासवर्ड बदलने की प्रक्रिया असफल रही| कृपया नेटवर्क सशक्त होने पर दोबारा कोशिश करें|',
+                password_empty: 'पासवर्ड रिक्त नही रह सकता',
+                requesting_change: 'पासवर्ड बदलने की प्रक्रिया जारी है',
+                update_available: 'नया अपडेट उपलब्ध है',
+                update: 'अपडेट',
+                grant_permission: 'कृपया प्रक्रिया आगे बढ़ाने के लिए अनुमति दें'
             },
             contact: {
-                contact: 'Contact',
+                contact: 'संपर्क करें',
                 gmail: 'Gmail',
                 phone: 'Phone'
             },
@@ -138,6 +144,7 @@ module.exports = {
                 delayed_musters: 'विलंबित मस्टर्स'
             },
             cards: {
+                cards: 'कार्ड्स',
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
@@ -167,6 +174,7 @@ module.exports = {
                     total:'भुगतान प्रक्रिया पूरी करने में लगे दिन (बिना विभाजन के)',
                     all:'भुगतान प्रक्रिया पूरी करने में लगे दिन (पड़ावों में विभाजित)',
                 },
+                statutory_limit: 'क़ानून द्वारा निर्धारित समया सीमा',
                 dates: {
                     all_dates: 'सभी तारीखें',
                     past_3_months: 'पिछले 3 महीने'
@@ -188,15 +196,15 @@ module.exports = {
             },
             profile: {
                 profile: 'प्रोफ़ाइल',
-                edit: 'EDIT',
-                save:'SAVE',
-                updating:'UPDATING...',
+                edit: 'प्रोफ़ाइल बदलें',
+                save:'प्रोफ़ाइल सेव करें',
+                updating:'अपडेट होने की प्रक्रिया जारी है...',
                 firstname: 'मूल नाम',
                 lastname: 'उपनाम',
                 mobile: 'मोबाइल नंबर',
                 personal_email: 'निजी e-mail',
                 work_email: 'औपचारिक e-mail',
-                colorblind: 'Use Colorblind-Safe Theme',
+                colorblind: 'वर्णांधता (color blindness) के लिए अनुकूल रंग प्रणाली का उपयोग करें',
                 lang: 'भाषा',
                 eng: 'English',
                 hindi: 'Hindi',
@@ -210,13 +218,13 @@ module.exports = {
                 forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया',
                 change_pass_button: 'पासवर्ड बदलें'
             },
-            search: 'Search for Block or Officer Name...',
+            search: 'जनपद/प्रखंड या अफ़सर का नाम खोजें',
             sort: {
                 current_total: 'आज बंद हो रहे मस्टर्स',
-                delayed_total: 'Delayed total',
+                delayed_total: 'विलंबित मस्टर्स',
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
-                block_name: 'Block name',
-                ceo_name: 'Block CEO name'
+                block_name: 'जनपद/प्रखंड का नाम',
+                ceo_name: 'जनपद/प्रखंड CEO का नाम'
             },
             messages: {
                 login: {
@@ -231,20 +239,24 @@ module.exports = {
                         'logout': 'Log out',
                         'cancel': 'Cancel'
                     },
-                    general: 'हमे खेद है कि आप log out करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|'
+                    general: 'हमे खेद है कि आप log out करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
+                    logging_out: 'आप लोग आउट हो रहे हैं...'
                 },
-                profile_success: 'Profile successfully updated.',
-                profile_error: 'Unable to update profile. Please contact the PayDash team if this problem persists.',
+                profile_success: 'आपकी प्रोफ़ाइल सफलतापूर्वक अपडेट हो चुकी है',
+                profile_error: 'प्रोफ़ाइल अपडेट करने की प्रक्रिया असफल रही| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
                 password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है| कृपया नये पासवर्ड का उपयोग कर लॉग इन करें|',
                 password_wrong_old: 'पुराना पासवर्ड ग़लत है| सहयता के लिए PayDash दल से संपर्क करें|',
                 password_new_nomatch: 'नया पासवर्ड मेल नही ख़ाता|',
                 password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|',
-                password_network_error: 'Unable to change password. Please try again when you have network connectivity.',
-                password_empty: 'Password cannot be empty',
-                requesting_change: 'Requesting password change...'
+                password_network_error: 'पासवर्ड बदलने की प्रक्रिया असफल रही| कृपया नेटवर्क सशक्त होने पर दोबारा कोशिश करें|',
+                password_empty: 'पासवर्ड रिक्त नही रह सकता',
+                requesting_change: 'पासवर्ड बदलने की प्रक्रिया जारी है',
+                update_available: 'नया अपडेट उपलब्ध है',
+                update: 'अपडेट',
+                grant_permission: 'कृपया प्रक्रिया आगे बढ़ाने के लिए अनुमति दें'
             },
             contact: {
-                contact: 'Contact',
+                contact: 'संपर्क करें',
                 gmail: 'Gmail',
                 phone: 'Phone'
             },

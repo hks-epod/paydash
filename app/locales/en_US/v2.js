@@ -15,6 +15,7 @@ module.exports = {
                 view_cards: 'VIEW CARDS'
             },
             cards: {
+                cards: 'Cards',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters_1: 'Delayed musters',
                 muster_details: 'Muster details',
@@ -42,6 +43,7 @@ module.exports = {
                     total: 'Total time for payment (overall)',
                     all: 'Total time for payment (step-wise)'
                 },
+                statutory_limit: 'Statutory Limit',
                 dates: {
                     all_dates: 'All dates',
                     past_3_months: 'Past 3 months'
@@ -105,7 +107,8 @@ module.exports = {
                         'logout': 'Log out',
                         'cancel': 'Cancel'
                     },
-                    general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.'
+                    general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.',
+                    logging_out: 'Logging out...'
                 },
                 profile_success: 'Profile successfully updated.',
                 profile_error: 'Unable to update profile. Please contact the PayDash team if this issue persists.',
@@ -115,7 +118,10 @@ module.exports = {
                 password_tooshort: 'Your new password must be at least 6 characters long.',
                 password_network_error: 'Unable to change password. Please try again when you have network connectivity.',
                 password_empty: 'Password cannot be empty',
-                requesting_change: 'Requesting password change...'
+                requesting_change: 'Requesting password change...',
+                update_available: 'New Update Available',
+                update: 'Update',
+                grant_permission:'Please grant permission to proceed'
             },
             contact: {
                 contact: 'Contact',
@@ -138,6 +144,7 @@ module.exports = {
                 delayed_musters: 'Delayed musters'
             },
             cards: {
+                cards: 'Cards',
                 days_to_payment: 'Avg. days to payment in last 3 months',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
@@ -167,6 +174,7 @@ module.exports = {
                     total: 'Total time for payment (overall)',
                     all: 'Total time for payment (step-wise)'
                 },
+                statutory_limit: 'Statutory Limit',
                 dates: {
                     all_dates: 'All dates',
                     past_3_months: 'Past 3 months'
@@ -231,7 +239,8 @@ module.exports = {
                         'logout': 'Log out',
                         'cancel': 'Cancel'
                     },
-                    general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.'
+                    general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.',
+                    logging_out: 'Logging out...'
                 },
                 profile_success: 'Profile successfully updated.',
                 profile_error: 'Unable to update profile. Please contact the PayDash team if this issue persists.',
@@ -241,7 +250,10 @@ module.exports = {
                 password_tooshort: 'Your new password must be at least 6 characters long.',
                 password_network_error: 'Unable to change password. Please try again when you have network connectivity.',
                 password_empty: 'Password cannot be empty',
-                requesting_change: 'Requesting password change...'
+                requesting_change: 'Requesting password change...',
+                update_available: 'New Update Available',
+                update: 'Update',
+                grant_permission:'Please grant permission to proceed'
             },
             contact: {
                 contact: 'Contact',
