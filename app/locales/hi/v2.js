@@ -137,8 +137,8 @@ module.exports = {
         district: {
             paydash: 'पे-डॅश',
             overview: {
-                view_your_blocks: 'अपने जनपदों/प्रखंडों का प्रदर्शन देखें',
-                show_blocks: 'SHOW BLOCKS',
+                view_your_blocks: 'अपने ज़िले के {blocks_total} जनपदों का प्रदर्शन देखें',
+                show_blocks: 'जनपद देखें',
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स'

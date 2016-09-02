@@ -137,8 +137,8 @@ module.exports = {
         district: {
             paydash: 'PayDash',
             overview: {
-                view_your_blocks: 'View your blocks\' performance',
-                show_blocks: 'SHOW BLOCKS',
+                view_your_blocks: 'View your {blocks_total} blocks',
+                show_blocks: 'GO TO BLOCKS',
                 days_to_payment: 'Avg. days to payment in last 3 months',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters'
