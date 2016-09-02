@@ -234,7 +234,7 @@ exports.v2 = function(rows, role) {
             })
             .rollup(function(v) {
                 return {
-                    'name': v[0].name.toUpperCase(),
+                    'name': v[0].name,
                     'staff_id': v[0].staff_id,
                     'designation': Utils.getDesignation(v[0].task_assign, state_code),
                     'mobile': v[0].mobile_no,
@@ -609,7 +609,7 @@ exports.v2 = function(rows, role) {
                     '#F0E442',
                     '#D55E00',
                     '#CC79A7',
-                    '#E69F00'
+                    '#E69F00'e
                 ]
             },
             'version': versionResponse[0].version
