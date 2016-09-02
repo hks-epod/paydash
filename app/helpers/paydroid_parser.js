@@ -609,7 +609,7 @@ exports.v2 = function(rows, role) {
                     '#F0E442',
                     '#D55E00',
                     '#CC79A7',
-                    '#E69F00'e
+                    '#E69F00'
                 ]
             },
             'version': versionResponse[0].version
