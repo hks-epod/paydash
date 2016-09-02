@@ -598,7 +598,8 @@ exports.v2 = function(rows, role) {
                     '#60BD68',
                     '#FAA43A',
                     '#5DA5DA',
-                    '#B276B2'
+                    '#B276B2',
+                    '#F15854',
                 ],
                 'colorblind': [
                     '#E69F00',
@@ -607,7 +608,8 @@ exports.v2 = function(rows, role) {
                     '#000000',
                     '#F0E442',
                     '#D55E00',
-                    '#CC79A7'
+                    '#CC79A7',
+                    '#E69F00',
                 ]
             },
             'version': versionResponse[0].version
