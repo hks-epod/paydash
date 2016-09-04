@@ -11,8 +11,10 @@ const ComparisonChart =  React.createClass({
 
     getInitialState: function(){
         return {
-           active_step: 1
-         };
+           active_step: 1,
+           active_lines: [],
+           comparison_lines:[]
+        };
     },
     loadChart: function(){
 
@@ -25,15 +27,11 @@ const ComparisonChart =  React.createClass({
             return;
         }
 
-        var comparison_lines = _this.props.config.comparison_lines.slice(0);
-        comparison_lines.push(_this.props.activeRegion.region_type);
-
-        comparison_lines.forEach(function(comparison_line, index) {
+        _this.state.active_lines.forEach(function(comparison_line, index) {
 
             var region = Region.find(_this.props.activeRegion, _this.props.performance, comparison_line);
 
-            labels.push(region[comparison_line + '_name'] + ' ' + _this.props.config.compare_chart_labels[comparison_line]);
-           
+            labels.push(region[comparison_line + '_name'] + ' ' + _this.props.translation.comparison.labels[comparison_line]);
 
             var line_data = Parser.lines({
                 data: region.data,
@@ -114,37 +112,75 @@ const ComparisonChart =  React.createClass({
         });
         this.loadChart();
     },
+    lineChange: function(event){
+
+        var active_compare_lines = [];
+        D3.selectAll('.regionSelector').each(function() {
+            if (this.checked === true) {
+                active_compare_lines.push(this.value);
+            }
+        });
+        this.setState({
+            active_lines : active_compare_lines
+        });
+        this.loadChart();
+    },
     componentDidMount: function() {
         this.loadChart();
     },
     componentDidUpdate: function(){
         this.loadChart();
     },
+    componentWillReceiveProps: function(nextProps){
+
+        if(!nextProps.activeRegion) {
+            return;
+        }
+        var comparison_lines = nextProps.config.comparison_lines.slice(0);
+        comparison_lines.push(nextProps.activeRegion.region_type);
+        this.setState({
+            comparison_lines : comparison_lines,
+            active_lines : comparison_lines
+        });
+    },
     render: function(){
+        var _this = this;
         return (
             <div className="pure-g">
                 <div className="pure-u-6-24">
-                    <h2 className="u-mt-larger">Benchmarking Your Performance</h2>
+                    <h2 className="u-mt-larger">{this.props.translation && this.props.translation.comparison.title}</h2>
                     <p>
-                      Compare your performance with averages for your district and state. 
-                      <span title="help text" className="pe-7s-info"></span>
+                      {this.props.translation && this.props.translation.comparison.description}
+                      <span title={this.props.translation && this.props.translation.comparison.tooltip} className="pe-7s-info"></span>
                     </p>
                     <select onChange={this.stepChange} className="button button--pc" name="" id="modify-step-controls">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
+                        <option value="1">{this.props.translation && this.props.translation.overview.labels[0]}</option>
+                        <option value="2">{this.props.translation && this.props.translation.overview.labels[1]}</option>
+                        <option value="3">{this.props.translation && this.props.translation.overview.labels[2]}</option>
+                        <option value="4">{this.props.translation && this.props.translation.overview.labels[3]}</option>
+                        <option value="5">{this.props.translation && this.props.translation.overview.labels[4]}</option>
+                        <option value="6">{this.props.translation && this.props.translation.overview.labels[5]}</option>
+                        <option value="7">{this.props.translation && this.props.translation.overview.labels[6]}</option>
                     </select>
                     <div id="compareRegion" className="group-selector">
-                        <div><label htmlFor="option-01" className="pure-checkbox"><input className="regionSelector" id="option-01" type="checkbox" value="block" checked=""/> AMARPATAN block average</label></div>
-                        <div><label htmlFor="option-11" className="pure-checkbox"><input className="regionSelector" id="option-11" type="checkbox" value="district" checked=""/> SATNA district average</label></div>
-                        <div><label htmlFor="option-21" className="pure-checkbox"><input className="regionSelector" id="option-21" type="checkbox" value="state" checked=""/> MADHYA PRADESH state average</label></div>
+                        {
+                            this.state.comparison_lines.map(function(line, i) {
+
+                                var region = Region.find(_this.props.activeRegion, _this.props.performance, line);
+                                var label = region[line + '_name'] + ' ' + _this.props.translation.comparison.labels[line];
+                                var selected = _this.state.active_lines.indexOf(line) !== -1; 
+                                return (
+                                    <div key={line}>
+                                        <label htmlFor={'option-'+ line} className="pure-checkbox">
+                                            <input id={'option-' + line} className="regionSelector" onChange={_this.lineChange} type="checkbox" value={line} checked={selected}/> {label}
+                                        </label>
+                                    </div>
+                                );
+                            })
+                        }
                     </div>
                     <div className="legend comparison_legend"></div>
-                    <div>Total transactions on <span id="region_comparison_total_trans"></span></div>
+                    <div>{this.props.translation && this.props.translation.total_trans} <span id="region_comparison_total_trans"></span></div>
                 </div>
                 <div className="pure-u-18-24">
                     <div id="region_comparison" ref={el => {if (el){this.elem = el;}}}></div>

@@ -54,9 +54,9 @@ const OverviewChart =  React.createClass({
                     label: 'Statutory Limit'
                 }],
                 point_size : 3.5,  
-                legend: _this.props.config.labels,
+                legend: _this.props.translation.overview.labels,
                 legend_target: '.region_legend',  
-                y_label:  _this.props.config.y_axis_label,
+                y_label:  _this.props.translation.y_axis_label,
                 mouseover: function(d, i) {
                     if (!d.values) {
                         d.values = [d];
@@ -65,14 +65,14 @@ const OverviewChart =  React.createClass({
                         for (i = 1; i <= parsed_data.length; i++) {
                             var l_span = D3.select(legend_target + ' .mg-line' + i + '-legend-color');
                             l_span.text(' ');
-                            l_span.text('— ' + _this.props.config.labels[i - 1]);
+                            l_span.text('— ' + _this.props.translation.overview.labels[i - 1]);
                         }
                     }
                     d.values.forEach(function(val, index) {
                         var l_span = D3.select(legend_target + ' .mg-line' + val.line_id + '-legend-color');
                         l_span.text(' ');
                         var no_days = d.values[index - 1] ? (val.value - d.values[index - 1].value).toFixed(0) : (val.value).toFixed(0);
-                        l_span.text('— ' + _this.props.config.labels[val.line_id - 1] + ' : ' + no_days);
+                        l_span.text('— ' + _this.props.translation.overview.labels[val.line_id - 1] + ' : ' + no_days);
                         var format = D3.time.format('%b %Y');
                         D3.select('#region_performance_total_trans').text(format(val.date) + ': ' + val.total_trans);
                     });
@@ -85,7 +85,7 @@ const OverviewChart =  React.createClass({
                     d.values.forEach(function(val, index) {
                         var l_span = D3.select(legend_target + ' .mg-line' + val.line_id + '-legend-color');
                         l_span.text(' ');
-                        l_span.text('— ' + _this.props.config.labels[index]);
+                        l_span.text('— ' + _this.props.translation.overview.labels[index]);
                     });
                 }
         });
@@ -100,13 +100,13 @@ const OverviewChart =  React.createClass({
         return (
             <div className="pure-g">
                 <div className="pure-u-6-24">
-                    <h2 className="u-mt-larger">Your Block's Performance</h2>
+                    <h2 className="u-mt-larger">{this.props.translation && this.props.translation.overview.title}</h2>
                     <p>
-                        Average number of days to complete each step of the payment process in your block.
-                        <span title="Some help text" className="pe-7s-info"></span>
+                        {this.props.translation && this.props.translation.overview.description}
+                        <span title={this.props.translation && this.props.translation.overview.tooltip} className="pe-7s-info"></span>
                     </p>
                     <div className="legend region_legend"></div>
-                    <div>Total transactions on <span id="region_performance_total_trans"></span></div>
+                    <div>{this.props.translation && this.props.translation.total_trans} <span id="region_performance_total_trans"></span></div>
                 </div>
                 <div className="pure-u-18-24">
                     <div id="#region_performance" ref={el => {if (el){this.elem = el;}}}></div>

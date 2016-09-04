@@ -16,6 +16,7 @@ const Overview = React.createClass({
                 _this.setState({
                     config: json.config,
                     performance: json.performance,
+                    translation: json.translation,
                     isFetching : false,
                 });
             })
@@ -45,9 +46,17 @@ const Overview = React.createClass({
         return (
             <div className="performance-wrapper">
               <Subnav onRegionChange={this.setActiveRegion} role={this.state.config.role} performance={this.state.performance}/>
-              <OverviewChart activeRegion={this.state.activeRegion} performance={this.state.performance} config={this.state.config}/>
+              <OverviewChart 
+                activeRegion={this.state.activeRegion} 
+                performance={this.state.performance} 
+                config={this.state.config}
+                translation={this.state.translation}/>
               <div className="u-region-divider"></div>
-              <ComparisonChart activeRegion={this.state.activeRegion} performance={this.state.performance} config={this.state.config}/>
+              <ComparisonChart 
+                activeRegion={this.state.activeRegion} 
+                performance={this.state.performance} 
+                config={this.state.config}
+                translation={this.state.translation}/>
             </div>     
         );
     }

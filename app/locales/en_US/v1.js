@@ -22,11 +22,60 @@ module.exports = {
             current_musters: 'CURRENT MUSTERS',
             delayed_musters: 'Delayed MUSTERS',
             msr_no: 'MUSTER NO.',
-            panchayat_name :'PANCHAYAT NAME',
-            work_name : 'WORK NAME',
+            panchayat_name: 'PANCHAYAT NAME',
+            work_name: 'WORK NAME',
             work_code: 'WORK CODE',
             closure_date: 'CLOSURE DATE',
             days_pending: 'DAYS PENDING'
+        },
+        performance: {
+            overview: {
+                title: {
+                    $filter: 'role',
+                    district: 'District Performance',
+                    block: 'Your Block/Panchayat\'s Performance',
+                    $default: 'Overview Performance'
+                },
+                description: {
+                    $filter: 'role',
+                    district: 'Average number of days to complete each step of the payment process in your district.',
+                    block: 'Average number of days to complete each step of the payment process in your block.',
+                    $default: 'Average number of days to complete each step of the payment process in your region.'
+                },
+                labels: [
+                    'Muster roll closure to muster roll entry',
+                    'Muster roll entry to wage list generation',
+                    'Wage list generation to wage list sent',
+                    'Wage list sent to FTO generation',
+                    'FTO generation to first signature',
+                    'First signature to second signature',
+                    'Second signature to processed by bank'
+                ],
+                tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
+            },
+            comparison: {
+                title: {
+                    $filter: 'role',
+                    district: 'Benchmarking Your Performance',
+                    block: 'Benchmarking Your Performance',
+                    $default: 'Benchmarking Your Performance'
+                },
+                description: {
+                    $filter: 'role',
+                    district: 'Compare your performance with averages for your state.',
+                    block: 'Compare your performance with averages for your district and state.',
+                    $default: 'Compare your performance with averages for other regions.'
+                },
+                labels: {
+                    'state': 'state average',
+                    'district': 'district average',
+                    'block': 'block average',
+                    'panchayat': 'panchayat average',
+                },
+                tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
+            },
+            y_axis_label: 'Days to complete process',
+            total_trans: 'Total transactions on'
         },
         profile: {
             firstname: 'First Name',
@@ -36,7 +85,7 @@ module.exports = {
             work_email: 'Work Email',
             mobile: 'Mobile',
             personal_email: 'Personal Email',
-            lang : 'Language',
+            lang: 'Language',
             settings: 'Settings',
             logout: 'Logout',
             profile_settings: 'Profile Settings',
@@ -47,9 +96,9 @@ module.exports = {
             change_pass: 'Change password',
             old_pass: 'Old password',
             new_pass: 'New password',
-            pass_confirm:'Verify new password',
+            pass_confirm: 'Verify new password',
             forgot_pass: 'I forgot my password'
-            },
+        },
     },
     app: {
         overview: {

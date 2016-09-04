@@ -46,7 +46,8 @@
 .button--pc,
 .button--pc:hover,
 .button--pc:focus {
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-transform: none;
     width: 100%;
+    color: $color-grey-darkest
 }
