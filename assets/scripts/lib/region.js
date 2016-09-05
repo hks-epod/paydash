@@ -49,20 +49,29 @@ exports.list = function(performance, role) {
     return regions;
 };
 
-exports.find = function(activeRegion, performance, comparison_line) {
+exports.find = function(role, activeRegion, performance, comparison_line) {
     var region;
-    if (activeRegion.region_type === 'block' && comparison_line === 'block') {
-        return region = performance[activeRegion.region_type][activeRegion.block_index];
-    } else if (activeRegion.region_type === 'panchayat' && comparison_line === 'panchayat') {
-        return region = performance[activeRegion.region_type][activeRegion.block_index].data[activeRegion.panchayat_index];
-    } else {
-        return region = performance[comparison_line];
+    if (role === 'block') {
+        if (activeRegion.region_type === 'block' && comparison_line === 'block') {
+            return region = performance[activeRegion.region_type][activeRegion.block_index];
+        } else if (activeRegion.region_type === 'panchayat' && comparison_line === 'panchayat') {
+            return region = performance[activeRegion.region_type][activeRegion.block_index].data[activeRegion.panchayat_index];
+        } else {
+            return region = performance[comparison_line];
+        }
+    } else if (role === 'district') {
+        if (activeRegion.region_type === 'district' && comparison_line === 'district') {
+            return region = performance[activeRegion.region_type][activeRegion.district_index];
+        } else if (activeRegion.region_type === 'block' && comparison_line === 'block') {
+            return region = performance[activeRegion.region_type][activeRegion.block_index].data[activeRegion.block_index];
+        } else {
+            return region = performance[comparison_line];
+        }
     }
 };
 
 exports.overview_data = function(role, activeRegion, performance) {
     var data;
-
     if (role === 'block') {
         if (activeRegion && activeRegion.region_type === 'block') {
             data = performance[activeRegion.region_type][activeRegion.block_index].data;
@@ -72,7 +81,6 @@ exports.overview_data = function(role, activeRegion, performance) {
             return;
         }
     } else if (role === 'district') {
-        console.log(activeRegion);
         if (activeRegion && activeRegion.region_type === 'district') {
             data = performance[activeRegion.region_type][activeRegion.district_index].data;
         } else if (activeRegion && activeRegion.region_type === 'block') {

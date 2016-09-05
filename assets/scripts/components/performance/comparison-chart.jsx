@@ -29,7 +29,7 @@ const ComparisonChart =  React.createClass({
 
         _this.state.active_lines.forEach(function(comparison_line, index) {
 
-            var region = Region.find(_this.props.activeRegion, _this.props.performance, comparison_line);
+            var region = Region.find(_this.props.config.role, _this.props.activeRegion, _this.props.performance, comparison_line);
 
             labels.push(region[comparison_line + '_name'] + ' ' + _this.props.translation.comparison.labels[comparison_line]);
 
@@ -166,7 +166,7 @@ const ComparisonChart =  React.createClass({
                         {
                             this.state.comparison_lines.map(function(line, i) {
 
-                                var region = Region.find(_this.props.activeRegion, _this.props.performance, line);
+                                var region = Region.find(_this.props.config.role, _this.props.activeRegion, _this.props.performance, line);
                                 var label = region[line + '_name'] + ' ' + _this.props.translation.comparison.labels[line];
                                 var selected = _this.state.active_lines.indexOf(line) !== -1; 
                                 return (
