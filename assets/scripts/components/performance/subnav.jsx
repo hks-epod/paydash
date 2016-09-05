@@ -21,7 +21,6 @@ const Subnav =  React.createClass({
     setValue (value) {
         this.setState({ value });
         this.props.onRegionChange(value);
-        // Load graph logic here
     },
     render: function(){
         var list = Regions.list(this.props.performance, this.props.role);

@@ -25,6 +25,27 @@ exports.list = function(performance, role) {
         });
 
     }
+    if (role === 'district') {
+        performance['block'].forEach(function(district, district_index) {
+            regions.push({
+                value: district.district_code,
+                label: district.district_name,
+                region_type: 'district',
+                class: 'select_parent',
+                district_index: district_index
+            });
+            district.data.forEach(function(block, block_index) {
+                regions.push({
+                    value: block.block_code,
+                    label: block.block_name,
+                    region_type: 'block',
+                    class: 'select_child',
+                    block_index: block_index,
+                    district_index: district_index
+                });
+            });
+        });
+    }
     return regions;
 };
 
@@ -37,4 +58,28 @@ exports.find = function(activeRegion, performance, comparison_line) {
     } else {
         return region = performance[comparison_line];
     }
+};
+
+exports.overview_data = function(role, activeRegion, performance) {
+    var data;
+
+    if (role === 'block') {
+        if (activeRegion && activeRegion.region_type === 'block') {
+            data = performance[activeRegion.region_type][activeRegion.block_index].data;
+        } else if (activeRegion && activeRegion.region_type === 'panchayat') {
+            data = performance[activeRegion.region_type][activeRegion.block_index].data[activeRegion.panchayat_index].data;
+        } else {
+            return;
+        }
+    } else if (role === 'district') {
+        console.log(activeRegion);
+        if (activeRegion && activeRegion.region_type === 'district') {
+            data = performance[activeRegion.region_type][activeRegion.district_index].data;
+        } else if (activeRegion && activeRegion.region_type === 'block') {
+            data = performance[activeRegion.region_type][activeRegion.district_index].data[activeRegion.block_index].data;
+        } else {
+            return;
+        }
+    }
+    return data;
 };

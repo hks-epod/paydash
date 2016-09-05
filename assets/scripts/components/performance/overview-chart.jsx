@@ -5,20 +5,15 @@ import MG from '../../lib/mg';
 
 const D3 = require('d3');
 const Parser = require('../../lib/parser');
+const Region = require('../../lib/region');
 
 const OverviewChart =  React.createClass({
 
     loadChart: function(){
         
-        var data;
         var _this = this;
-        
-        if(_this.props.activeRegion && _this.props.activeRegion.region_type === 'block'){
-            data = _this.props.performance[_this.props.activeRegion.region_type][_this.props.activeRegion.block_index].data;
-        }
-        else if(_this.props.activeRegion && _this.props.activeRegion.region_type === 'panchayat'){
-            data = _this.props.performance[_this.props.activeRegion.region_type][_this.props.activeRegion.block_index].data[_this.props.activeRegion.panchayat_index].data;
-        }else {
+        var data = Region.overview_data(_this.props.config.role, _this.props.activeRegion, _this.props.performance); 
+        if(!data){
             return;
         }
         var legend_target = '.region_legend';
