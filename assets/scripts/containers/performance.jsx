@@ -4,6 +4,7 @@ import React from 'react';
 import Subnav from '../components/performance/subnav.jsx';
 import OverviewChart from '../components/performance/overview-chart.jsx';
 import ComparisonChart from '../components/performance/comparison-chart.jsx';
+import Loader from '../components/global/loader.jsx';
 
 const Regions = require('../lib/region');
 const D3= require('d3'); 
@@ -44,22 +45,27 @@ const Overview = React.createClass({
         this.fetchData();
     },
     render: function(){
-        
+        var divStyle = {
+          display: this.state.isFetching ? 'none' : 'block'
+        };
         return (
-            <div className="performance-wrapper">
-              <Subnav defaultRegion={this.state.activeRegion} onRegionChange={this.setActiveRegion} role={this.state.config.role} performance={this.state.performance}/>
-              <OverviewChart 
-                activeRegion={this.state.activeRegion} 
-                performance={this.state.performance} 
-                config={this.state.config}
-                translation={this.state.translation}/>
-              <div className="u-region-divider"></div>
-              <ComparisonChart 
-                activeRegion={this.state.activeRegion} 
-                performance={this.state.performance} 
-                config={this.state.config}
-                translation={this.state.translation}/>
-            </div>     
+            <div>
+                <Loader loading={this.state.isFetching}></Loader>
+                <div className="performance-wrapper" style={divStyle}>
+                  <Subnav defaultRegion={this.state.activeRegion} onRegionChange={this.setActiveRegion} role={this.state.config.role} performance={this.state.performance}/>
+                  <OverviewChart 
+                    activeRegion={this.state.activeRegion} 
+                    performance={this.state.performance} 
+                    config={this.state.config}
+                    translation={this.state.translation}/>
+                  <div className="u-region-divider"></div>
+                  <ComparisonChart 
+                    activeRegion={this.state.activeRegion} 
+                    performance={this.state.performance} 
+                    config={this.state.config}
+                    translation={this.state.translation}/>
+                </div>     
+            </div>
         );
     }
 });

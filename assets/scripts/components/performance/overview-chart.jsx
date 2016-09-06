@@ -7,6 +7,7 @@ const D3 = require('d3');
 const Parser = require('../../lib/parser');
 const Region = require('../../lib/region');
 
+
 const OverviewChart =  React.createClass({
 
     loadChart: function(){

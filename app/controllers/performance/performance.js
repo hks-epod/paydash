@@ -32,7 +32,7 @@ exports.getData = {
             data.config = {
                 role: role,
                 headers: ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'],
-                comparison_lines: role === 'block' ? ['district', 'state'] : ['state']
+                comparison_lines: role === 'block' ? ['state','district'] : ['state']
             };
 
             data.translation = Translate('/web/performance', request.auth.credentials, null);
