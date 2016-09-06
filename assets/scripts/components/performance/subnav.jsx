@@ -18,9 +18,12 @@ const Subnav =  React.createClass({
     renderValue: function(option) {
         return <span >{option.label}</span>;
     },
-    setValue (value) {
+    setValue: function(value) {
         this.setState({ value });
         this.props.onRegionChange(value);
+    },
+    componentWillReceiveProps : function(nextProps){
+        this.setState({ value: nextProps.defaultRegion });
     },
     render: function(){
         var list = Regions.list(this.props.performance, this.props.role);

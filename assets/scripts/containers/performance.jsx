@@ -5,6 +5,7 @@ import Subnav from '../components/performance/subnav.jsx';
 import OverviewChart from '../components/performance/overview-chart.jsx';
 import ComparisonChart from '../components/performance/comparison-chart.jsx';
 
+const Regions = require('../lib/region');
 const D3= require('d3'); 
 
 const Overview = React.createClass({
@@ -18,6 +19,7 @@ const Overview = React.createClass({
                     performance: json.performance,
                     translation: json.translation,
                     isFetching : false,
+                    activeRegion: Regions.list(json.performance, json.config.role)[0]
                 });
             })
             .on('error', function(error) { 
@@ -45,7 +47,7 @@ const Overview = React.createClass({
         
         return (
             <div className="performance-wrapper">
-              <Subnav onRegionChange={this.setActiveRegion} role={this.state.config.role} performance={this.state.performance}/>
+              <Subnav defaultRegion={this.state.activeRegion} onRegionChange={this.setActiveRegion} role={this.state.config.role} performance={this.state.performance}/>
               <OverviewChart 
                 activeRegion={this.state.activeRegion} 
                 performance={this.state.performance} 
