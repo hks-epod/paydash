@@ -2,6 +2,7 @@
 
 import React from 'react';
 import BlockCard from './block-card.jsx';
+import Sort from './sort.jsx';
 
 const BlockGroup =  React.createClass({
 
@@ -10,6 +11,22 @@ const BlockGroup =  React.createClass({
         updatedList = updatedList.filter(function(item){
             return item.name.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
         });
+        this.setState({cards: updatedList});
+    },
+    sortBy(field){
+        var updatedList = this.props.data.cards;
+    
+        updatedList.sort(function (a, b) {
+
+            if (a[field] > b[field]) {
+              return (typeof(a[field]) === 'number' ? -1 : 1);
+            }
+            if (a[field] < b[field]) {
+              return (typeof(a[field])=== 'number' ? 1 : -1);
+            }
+            return 0;
+        });
+
         this.setState({cards: updatedList});
     },
     getInitialState: function(){
@@ -21,12 +38,15 @@ const BlockGroup =  React.createClass({
         this.setState({cards: this.props.data.cards});
     },
     render: function(){
+
         var _this = this;
+        var sortList = ['name', 'designation', 'current_total', 'delayed_total'];
 
         return (
             <div>
                 <div className="group-head">
                     <input className="search-bar u-pull-right" type="text" placeholder="Search" onChange={this.filterCards}/>
+                    <Sort sortList={sortList} sortBy={_this.sortBy}></Sort>
                     <h1 className="u-inline-block">{this.props.data.region_name}</h1>
                 </div>
                 <div className="pure-g">
