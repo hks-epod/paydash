@@ -26,7 +26,13 @@ module.exports = {
             work_name: 'WORK NAME',
             work_code: 'WORK CODE',
             closure_date: 'CLOSURE DATE',
-            days_pending: 'DAYS PENDING'
+            days_pending: 'DAYS PENDING',
+            current_total: 'CURRENT TOTAL',
+            delayed_total: 'DELAYED TOTAL',
+            name: 'NAME',
+            designation: 'DESIGNATION',
+            block_name: 'BLOCK NAME',
+            days_to_payment: 'DAYS TO PAYMENT'
         },
         performance: {
             overview: {

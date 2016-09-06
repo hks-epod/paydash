@@ -46,7 +46,7 @@ const BlockGroup =  React.createClass({
             <div>
                 <div className="group-head">
                     <input className="search-bar u-pull-right" type="text" placeholder="Search" onChange={this.filterCards}/>
-                    <Sort sortList={sortList} sortBy={_this.sortBy}></Sort>
+                    <Sort sortList={sortList} sortBy={_this.sortBy} translation={_this.props.translation}></Sort>
                     <h1 className="u-inline-block">{this.props.data.region_name}</h1>
                 </div>
                 <div className="pure-g">

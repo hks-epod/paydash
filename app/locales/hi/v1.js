@@ -25,7 +25,13 @@ module.exports = {
             work_name: 'कार्य नाम',
             work_code: 'कार्य कोड',
             closure_date: 'मस्टर रोल बंद होने की तिथि',
-            days_pending: 'DAYS PENDING'
+            days_pending: 'DAYS PENDING',
+            current_total: 'वर्तमान मस्टर्स',
+            delayed_total: 'विलंबित मस्टर्स',
+            name: 'नाम',
+            designation: 'पदनाम',
+            block_name: 'प्रखंड नाम',
+            days_to_payment: 'भुगतान के दिन'
         },
         performance: {
             overview: {
