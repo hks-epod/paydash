@@ -63,15 +63,16 @@ const OverviewChart =  React.createClass({
                             l_span.text(' ');
                             l_span.text('— ' + _this.props.translation.overview.labels[i - 1]);
                         }
-                    }
+                    }  
+                    var format = D3.time.format('%b %Y'); 
                     d.values.forEach(function(val, index) {
                         var l_span = D3.select(legend_target + ' .mg-line' + val.line_id + '-legend-color');
                         l_span.text(' ');
                         var no_days = d.values[index - 1] ? (val.value - d.values[index - 1].value).toFixed(0) : (val.value).toFixed(0);
-                        l_span.text('— ' + _this.props.translation.overview.labels[val.line_id - 1] + ' : ' + no_days);
-                        var format = D3.time.format('%b %Y');
+                        l_span.text('— ' + _this.props.translation.overview.labels[val.line_id - 1] + ' : ' + no_days);     
                         D3.select('#region_performance_total_trans').text(format(val.date) + ': ' + val.total_trans);
                     });
+                    D3.select('.mg-active-datapoint tspan:first-child').text(format(d.values[0].date));
                 },
                 mouseout: function(d, i) {
                     if (!d.values) {
