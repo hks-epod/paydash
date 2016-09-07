@@ -107,7 +107,8 @@ module.exports = {
             old_pass: 'Old password',
             new_pass: 'New password',
             pass_confirm: 'Verify new password',
-            forgot_pass: 'I forgot my password'
+            forgot_pass: 'I forgot my password',
+            colorblind: 'Colorblind'
         },
     },
     app: {

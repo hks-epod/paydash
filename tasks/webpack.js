@@ -11,7 +11,7 @@ Gulp.task('webpack', function() {
 
 
     var production = process.env.NODE_ENV === 'production';
-    
+
     var config = {
         entry: {
             vendor: ['jquery', 'd3'],
@@ -31,8 +31,13 @@ Gulp.task('webpack', function() {
             }]
         },
         debug: !production,
-        devtool: 'source-map',
+        devtool: 'cheap-module-source-map',
         plugins: [
+            new Webpack.DefinePlugin({
+                'process.env': {
+                    'NODE_ENV': JSON.stringify('production')
+                }
+            }),
             new UglifyJsPlugin({
                 compress: {
                     warnings: false

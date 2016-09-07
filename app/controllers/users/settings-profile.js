@@ -20,7 +20,8 @@ exports.postEditProfile = {
             mobile: Joi.string().max(100).allow(''),
             email: Joi.string().max(100).allow(''),
             work_email: Joi.string().max(100).allow(''),
-            lang: Joi.string().max(100)
+            lang: Joi.string().max(100),
+            colorblind: Joi.string().max(100)
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request

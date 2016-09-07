@@ -5,7 +5,8 @@
     </div>
     <div class="pure-u pure-u-10-24">
       <div class="">
-        <h5 class="heading--sub">{{t "/web/profile/profile_settings" credentials null}}</h5> {{> flash}}
+        <h5 class="heading--sub">{{t "/web/profile/profile_settings" credentials null}}</h5> 
+        {{> flash}}
         <p>{{t "/web/profile/firstname" credentials null}} : {{user.firstname}}</p>
          <p>{{t "/web/profile/lastname" credentials null}} : {{user.lastname}}</p>
 
@@ -23,6 +24,13 @@
               <option value="hi">Hindi</option>
               {{/select}}
             </select>    
+            <label for="colorblind">{{t "/web/profile/colorblind" credentials null}}</label>
+            <select class="u-full-width" name="colorblind" value="{{user.colorblind}}" id="colorblind">
+              {{#select user.colorblind}}
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+              {{/select}}
+            </select>
           {{> form_security}}
           <input type="submit" value="{{t "/web/profile/save" credentials null}}" class=" button button--primary">
         </form>
