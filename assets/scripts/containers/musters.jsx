@@ -5,7 +5,7 @@ import BlockGroup from '../components/musters/block-group.jsx';
 import DistrictGroup from '../components/musters/district-group.jsx';
 import Loader from '../components/global/loader.jsx';
 
-const D3= require('d3'); 
+const D3 = require('d3'); 
 
 const Musters = React.createClass({
 
