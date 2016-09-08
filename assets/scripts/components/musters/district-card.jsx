@@ -17,6 +17,9 @@ const DistrictCard =  React.createClass({
     },
     render: function(){
         return (
+
+
+            
             <div className="pure-u pure-u-6-24">
                 <div className="card">
                     <div className="card-top">
