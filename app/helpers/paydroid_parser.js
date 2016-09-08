@@ -385,24 +385,24 @@ exports.v2 = function(rows, role) {
             },
             'colors': {
                 'default': [
-                    '#ffd300',
-                    '#18ff00',
-                    '#f57070',
-                    '#f8b128',
-                    '#f7f7f7',
-                    '#F22613',
-                    '#FDE3A7',
-                    '#f57070'
+                    '#F15854',
+                    '#B2912F',
+                    '#F17CB0',
+                    '#60BD68',
+                    '#FAA43A',
+                    '#5DA5DA',
+                    '#B276B2',
+                    '#97D19C'
                 ],
                 'colorblind': [
-                    '#ffd300',
-                    '#18ff00',
-                    '#f57070',
-                    '#f8b128',
-                    '#f7f7f7',
-                    '#F22613',
-                    '#FDE3A7',
-                    '#f57070'
+                    '#E69F00',
+                    '#56B4E9',
+                    '#009E73',
+                    '#000000',
+                    '#F0E442',
+                    '#D55E00',
+                    '#CC79A7',
+                    '#0072b2'
                 ]
             },
             'version': versionResponse[0].version
