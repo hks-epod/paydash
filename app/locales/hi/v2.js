@@ -130,8 +130,8 @@ module.exports = {
             },
             whatsapp: {
                 overview:'{name} के लिए मस्टर रोल विवरण\n\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\n',
-                current:'आज बंद हो रहे मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{mr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n\n',
-                delayed:'विलंबित मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{mr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n_विलंब(दिन)_\n{days_pending}\n\n'
+                current:'आज बंद हो रहे मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{msr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n\n',
+                delayed:'विलंबित मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{msr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n_विलंब(दिन)_\n{days_pending}\n\n'
             }
         },
         district: {
