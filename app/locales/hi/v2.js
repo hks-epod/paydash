@@ -98,7 +98,8 @@ module.exports = {
                 login: {
                     connectivity: 'हमे खेद है कि आप log in करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
                     credentials: 'ऐसा व्यतीत होता है कि आपने ग़लत username या password भरा है | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
-                    general: 'हमे खेद है कि आप log in करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|'
+                    general: 'हमे खेद है कि आप log in करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
+                    ga_account: 'The Google Account associated with this device does not match the Google Account associated with your PayDash account. Please contact the PayDash team if you require assistance.'
                 },
                 logout: {
                     connectivity: 'हमे खेद है कि आप log out करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
@@ -112,7 +113,7 @@ module.exports = {
                 },
                 profile_success: 'आपकी प्रोफ़ाइल सफलतापूर्वक अपडेट हो चुकी है',
                 profile_error: 'प्रोफ़ाइल अपडेट करने की प्रक्रिया असफल रही| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
-                password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है| कृपया नये पासवर्ड का उपयोग कर लॉग इन करें|',
+                password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है|',
                 password_wrong_old: 'पुराना पासवर्ड ग़लत है| सहयता के लिए PayDash दल से संपर्क करें|',
                 password_new_nomatch: 'नया पासवर्ड मेल नही ख़ाता|',
                 password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|',
@@ -230,7 +231,8 @@ module.exports = {
                 login: {
                     connectivity: 'हमे खेद है कि आप log in करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
                     credentials: 'ऐसा व्यतीत होता है कि आपने ग़लत username या password भरा है | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
-                    general: 'हमे खेद है कि आप log in करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|'
+                    general: 'हमे खेद है कि आप log in करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
+                    ga_account: 'The Google Account associated with this device does not match the Google Account associated with your PayDash account. Please contact the PayDash team if you require assistance.'
                 },
                 logout: {
                     connectivity: 'हमे खेद है कि आप log out करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
@@ -244,7 +246,7 @@ module.exports = {
                 },
                 profile_success: 'आपकी प्रोफ़ाइल सफलतापूर्वक अपडेट हो चुकी है',
                 profile_error: 'प्रोफ़ाइल अपडेट करने की प्रक्रिया असफल रही| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
-                password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है| कृपया नये पासवर्ड का उपयोग कर लॉग इन करें|',
+                password_success: 'पासवर्ड सफलतापूर्वक बदला जा चुका है|',
                 password_wrong_old: 'पुराना पासवर्ड ग़लत है| सहयता के लिए PayDash दल से संपर्क करें|',
                 password_new_nomatch: 'नया पासवर्ड मेल नही ख़ाता|',
                 password_tooshort: 'आपके नये पासवर्ड की लंबाई कम से कम 6 अक्षर होनी चाहिए|',
