@@ -52,7 +52,13 @@ exports.postForm = {
                 return reply(user);
 
             }
-            
+
+            // If gogole account info provided is not same as user's 
+            else if (user && user.google_account !== request.payload.google_account) {
+
+                return reply(Boom.badRequest('Google account does not match'));
+
+            }
             // If user does not have google account
             else if (user && !user.google_account) {
 
@@ -61,14 +67,6 @@ exports.postForm = {
                     delete user.password;
                     return reply(user);
                 });
-
-            // If gogole account info provided is not same as user's 
-            else if (user && user.google_account !== request.payload.google_account) {
-
-                return reply(Boom.badRequest('Google account does not match'));
-
-            }
-
 
             // User not fond in database
             } else {
