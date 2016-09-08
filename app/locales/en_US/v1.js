@@ -85,7 +85,7 @@ module.exports = {
                 tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
             },
             y_axis_label: 'Days to complete process',
-            total_trans: 'Total transactions on'
+            total_trans: 'Total transactions in'
         },
         profile: {
             firstname: 'First Name',
