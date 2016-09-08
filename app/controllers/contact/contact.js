@@ -24,7 +24,7 @@ exports.getData = {
                 'phone': contactResponse[0].phone,
                 'email': contactResponse[0].email,
                 'subject': subjectLine
-            }
+            };
 
             reply(data);
         });
