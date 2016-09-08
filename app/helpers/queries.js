@@ -30,6 +30,11 @@ exports.performance = function(USER_ID, ROLE) {
     }
 };
 
+exports.contact = function(USER_ID) {
+    return "SELECT * FROM contact;" + 
+    "SELECT * FROM user_regions WHERE user_id="+USER_ID+";";
+};
+
 exports.paydroid = function(USER_ID,ROLE,VERSION) {
     if (VERSION===1) {
         return "SELECT a.current_total, b.delayed_total, c.days_to_payment, c.total_transactions FROM (SELECT count(*) AS current_total, 1 AS merge FROM current_musters WHERE block_code IN (SELECT region_code FROM user_regions WHERE user_id='"+USER_ID+"')) a LEFT JOIN (SELECT count(*) AS delayed_total, 1 AS merge FROM delayed_musters WHERE block_code IN (SELECT region_code FROM user_regions WHERE user_id='"+USER_ID+"')) b ON a.merge = b.merge LEFT JOIN (SELECT IFNULL(ROUND(SUM(mrc_processed_mean * total_transactions) / SUM(total_transactions),1),'No Data') AS days_to_payment, IFNULL(SUM(total_transactions),0) AS total_transactions, 1 AS merge FROM block_delays_duration WHERE block_code IN (SELECT region_code FROM user_regions WHERE user_id='"+USER_ID+"') AND gender = 'both' AND bank_type = 'all' AND date_type = 'processed_date' and date>=DATE_SUB(now(), INTERVAL 3 MONTH)) c ON b.merge = c.merge;" +
