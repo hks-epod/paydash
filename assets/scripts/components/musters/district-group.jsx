@@ -7,6 +7,7 @@ import Sort from './sort.jsx';
 const BlockGroup =  React.createClass({
 
     filterCards: function(event){
+
         var updatedList = this.props.data.cards;
         updatedList = updatedList.filter(function(item){
     
@@ -27,8 +28,10 @@ const BlockGroup =  React.createClass({
         this.setState({cards: updatedList});
     },
     sortBy(field){
-        var updatedList = this.props.data.cards;
-    
+
+        // var updatedList = this.props.data.cards;
+        var updatedList = this.props.data.cards.slice(0);
+        
         updatedList.sort(function (a, b) {
 
             if (a[field] > b[field]) {
