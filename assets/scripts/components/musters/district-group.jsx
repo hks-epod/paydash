@@ -29,7 +29,6 @@ const BlockGroup =  React.createClass({
     },
     sortBy(field){
 
-        // var updatedList = this.props.data.cards;
         var updatedList = this.props.data.cards.slice(0);
         
         updatedList.sort(function (a, b) {
