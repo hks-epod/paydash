@@ -45,7 +45,7 @@ exports.postForm = {
                 return reply(user);
             }
 
-            // If user has google account info proceed or update google account info
+            // If user has correct google account info
             else if (user && user.google_account === request.payload.google_account) {
                 request.cookieAuth.set(user);
                 delete user.password;
@@ -53,12 +53,6 @@ exports.postForm = {
 
             }
 
-            // If gogole account info provided is not same as user's 
-            else if (user && user.google_account !== request.payload.google_account) {
-
-                return reply(Boom.badRequest('Google account does not match'));
-
-            }
             // If user does not have google account
             else if (user && !user.google_account) {
 
@@ -67,10 +61,20 @@ exports.postForm = {
                     delete user.password;
                     return reply(user);
                 });
+            }
+
+            // If gogole account info provided is not same as user's 
+            else if (user && user.google_account && (user.google_account !== request.payload.google_account)) {
+
+                return reply(Boom.badRequest('Google account does not match'));
+
+            }
+
+
 
             // User not fond in database
-            } else {
-                
+            else {
+
                 return reply(Boom.badRequest('Invalid username or password'));
             }
         });
