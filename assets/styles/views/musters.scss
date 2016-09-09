@@ -21,6 +21,9 @@
 .card-top{
     min-height: 100px;
 }
+.district-card-top{
+    min-height: 60px;
+}
 .card-head{
     text-transform: uppercase;
     font-weight: 400;
@@ -34,6 +37,9 @@
 }
 .card-numbers{
     margin: 30px 0 40px;
+}
+.district-card-numbers{
+    margin: 0px 0 20px;
 }
 .card-number-sub{
     font-size: $fontSize-smaller;

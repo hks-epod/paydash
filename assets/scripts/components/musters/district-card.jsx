@@ -22,11 +22,16 @@ const DistrictCard =  React.createClass({
             
             <div className="pure-u pure-u-6-24">
                 <div className="card">
-                    <div className="card-top">
+                    <div className="district-card-top">
                         <div className="card-head">{this.props.data.block_name}</div>
-                        <div className="card-designation">{this.props.data.block_code}</div>
                     </div>
-                    <div className="card-numbers pure-g">
+                    <div className="district-card-numbers pure-g">
+                        <div className="pure-u pure-u-24-24 ">
+                            <div className="card-number-sub">{this.props.translation.days_to_payment}</div>
+                            <div>{this.props.data.days_to_payment}</div>
+                        </div>
+                    </div>
+                    <div className="district-card-numbers pure-g">
                         <div className="pure-u pure-u-12-24 ">
                             <div className="card-number-sub">{this.props.translation.current}</div>
                             <div>{this.props.data.current_total}</div>

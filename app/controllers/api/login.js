@@ -69,9 +69,7 @@ exports.postForm = {
                 return reply(Boom.badRequest('Google account does not match'));
 
             }
-
-
-
+            
             // User not fond in database
             else {
 
