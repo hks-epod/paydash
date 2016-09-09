@@ -2,7 +2,7 @@
 
 const Queries = require('../../helpers/queries');
 const D3 = require('d3');
-const Utils = require('./utils');
+const Utils = require('../../helpers/utils');
 
 
 exports.getData = {

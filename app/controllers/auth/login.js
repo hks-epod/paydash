@@ -56,6 +56,7 @@ exports.postForm = {
         if (request.auth.isAuthenticated) {
             return reply.redirect('/overview');
         }
+            
         var db = request.server.plugins.sequelize.db;
         var User = request.server.plugins.sequelize.db.User;
         User.findOne({
