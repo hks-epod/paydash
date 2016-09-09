@@ -9,7 +9,20 @@ const BlockGroup =  React.createClass({
     filterCards: function(event){
         var updatedList = this.props.data.cards;
         updatedList = updatedList.filter(function(item){
-            return item.block_name.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
+    
+            var match = false;
+    
+            if(item.block_name.toLowerCase().search(event.target.value.toLowerCase()) !== -1){
+                match  = true;
+            }
+
+            item.officers.forEach(function(officer){
+                if(officer.name.toLowerCase().search(event.target.value.toLowerCase()) !== -1){
+                    match = true;
+                }
+            });
+
+            return match;
         });
         this.setState({cards: updatedList});
     },
