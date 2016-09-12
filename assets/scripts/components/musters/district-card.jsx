@@ -57,38 +57,38 @@ const DistrictCard =  React.createClass({
                     }
                     <button className="button button--primary" onClick={this.toggleModal}>{this.props.translation.muster_details}</button>
                     <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>  
-                        <h1 className="">MUISTER DETAILS</h1>
+                        <h1 className="">MUSTER DETAILS</h1>
                         <table className="table">
                             <thead>
                                 <tr>
                                     <td>Step</td>
-                                    <td>Total</td>
-                                    <td>Average</td>
+                                    <td>Total delayed musters</td>
+                                    <td>Average days delayed</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>T+2</td>
+                                    <td>Attendance not filled (T+2)</td>
                                     <td>{this.props.data.t2_total}</td>
                                     <td>{this.props.data.t2_avg}</td>
                                 </tr>
                                 <tr>
-                                    <td>T+5</td>
+                                    <td>Measurement book not filled (T+5)</td>
                                     <td>{this.props.data.t5_total}</td>
                                     <td>{this.props.data.t5_avg}</td>
                                 </tr>
                                 <tr>
-                                    <td>T+6</td>
+                                    <td>Wagelist not sent (T+6)</td>
                                     <td>{this.props.data.t6_total}</td>
                                     <td>{this.props.data.t6_avg}</td>
                                 </tr>
                                 <tr>
-                                    <td>T+7</td>
+                                    <td>Pending for FTO first signature (T+7)</td>
                                     <td>{this.props.data.t7_total}</td>
                                     <td>{this.props.data.t7_avg}</td>
                                 </tr>
                                 <tr>
-                                    <td>T+8</td>
+                                    <td>Pending for FTO second signature (T+8)</td>
                                     <td>{this.props.data.t8_total}</td>
                                     <td>{this.props.data.t8_avg}</td>
                                 </tr>
