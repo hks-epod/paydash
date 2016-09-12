@@ -99,7 +99,8 @@ module.exports = {
                     connectivity: 'हमे खेद है कि आप log in करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
                     credentials: 'ऐसा व्यतीत होता है कि आपने ग़लत username या password भरा है | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
                     general: 'हमे खेद है कि आप log in करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
-                    ga_account: 'इस मोबाइल/कंप्यूटर से जुड़ा Google अकाउंट आपके PayDash अकाउंट से जुड़े Google अकाउंट से अलग है| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|'
+                    ga_account: 'इस मोबाइल/कंप्यूटर से जुड़ा Google अकाउंट आपके PayDash अकाउंट से जुड़े Google अकाउंट से अलग है| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
+                    deactivated: 'Your account has been deactivated. Please contact the PayDash team if you require assistance.'
                 },
                 logout: {
                     connectivity: 'हमे खेद है कि आप log out करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
@@ -232,7 +233,8 @@ module.exports = {
                     connectivity: 'हमे खेद है कि आप log in करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',
                     credentials: 'ऐसा व्यतीत होता है कि आपने ग़लत username या password भरा है | यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
                     general: 'हमे खेद है कि आप log in करने में विफल रहे| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
-                    ga_account: 'इस मोबाइल/कंप्यूटर से जुड़ा Google अकाउंट आपके PayDash अकाउंट से जुड़े Google अकाउंट से अलग है| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|'
+                    ga_account: 'इस मोबाइल/कंप्यूटर से जुड़ा Google अकाउंट आपके PayDash अकाउंट से जुड़े Google अकाउंट से अलग है| यदि यह समस्या कायम रहती है तो PayDash दल से संपर्क करें|',
+                    deactivated: 'Your account has been deactivated. Please contact the PayDash team if you require assistance.'
                 },
                 logout: {
                     connectivity: 'हमे खेद है कि आप log out करने में विफल रहे| कृपया अपने फ़ोन/कंप्यूटर की internet connectivity को जाँच लें|',

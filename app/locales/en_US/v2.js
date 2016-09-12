@@ -99,7 +99,8 @@ module.exports = {
                     connectivity: 'Unable to log in to PayDash. Please try again when your device has internet connectivity.',
                     credentials: 'Incorrect username/password combination. Please contact the PayDash team if this issue persists.',
                     general: 'Unable to log in to PayDash. Please contact the PayDash team if this issue persists.',
-                    ga_account: 'The Google Account associated with this device does not match the Google Account associated with your PayDash account. Please contact the PayDash team if you require assistance.'
+                    ga_account: 'The Google Account associated with this device does not match the Google Account associated with your PayDash account. Please contact the PayDash team if you require assistance.',
+                    deactivated: 'Your account has been deactivated. Please contact the PayDash team if you require assistance.'
                 },
                 logout: {
                     connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
@@ -232,7 +233,8 @@ module.exports = {
                     connectivity: 'Unable to log in to PayDash. Please try again when your device has internet connectivity.',
                     credentials: 'Incorrect username/password combination. Please contact the PayDash team if this issue persists.',
                     general: 'Unable to log in to PayDash. Please contact the PayDash team if this issue persists.',
-                    ga_account: 'The Google Account associated with this device does not match the Google Account associated with your PayDash account. Please contact the PayDash team if you require assistance.'
+                    ga_account: 'The Google Account associated with this device does not match the Google Account associated with your PayDash account. Please contact the PayDash team if you require assistance.',
+                    deactivated: 'Your account has been deactivated. Please contact the PayDash team if you require assistance.'
                 },
                 logout: {
                     connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
