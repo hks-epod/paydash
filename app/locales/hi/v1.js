@@ -7,8 +7,8 @@ module.exports = {
             overview: 'अवलोकन',
             musters: {
                 $filter: 'role',
-                district: 'BLOCKS',
-                block: 'प्रखंड'
+                district: 'प्रखंड',
+                block: 'मस्टर्स'
             },
             performance: 'प्रदर्शन'
         },
