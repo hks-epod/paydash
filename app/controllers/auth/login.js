@@ -69,7 +69,7 @@ exports.postForm = {
             if (user) {
                 request.cookieAuth.set(user);
                 if(user.deactivated){
-                    request.yar.flash('error', 'Account is deactivated.');
+                    request.yar.flash('error', 'Your account has been deactivated. Please contact the PayDash team if you require assistance.');
                     return reply.redirect('/login');
                 }
                 if (!user.isActive) {
