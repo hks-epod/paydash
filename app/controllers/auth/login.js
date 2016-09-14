@@ -68,6 +68,10 @@ exports.postForm = {
         }).then(function(user) {
             if (user) {
                 request.cookieAuth.set(user);
+                if(user.deactivated){
+                    request.yar.flash('error', 'Account is deactivated.');
+                    return reply.redirect('/login');
+                }
                 if (!user.isActive) {
                     request.yar.flash('info', 'Please check your profile details');
                     user.update({

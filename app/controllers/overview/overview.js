@@ -6,7 +6,6 @@ const Translate = require('../../templates/helpers/t');
 
 exports.showPage = {
     handler: function(request, reply) {
-
         return reply.view('overview/overview');
     }
 };
