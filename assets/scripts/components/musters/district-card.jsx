@@ -41,7 +41,6 @@ const DistrictCard =  React.createClass({
                             <div>{this.props.data.delayed_total}</div>
                         </div>
                     </div>
-                    <h4 className="card-officer-title">{this.props.translation.officers}</h4>
                     {
                         this.props.data.officers.map(function(officer, i) {
                             return (

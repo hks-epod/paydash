@@ -5,7 +5,11 @@ module.exports = {
     web: {
         navigation: {
             overview: 'अवलोकन',
-            musters: 'मस्टर्स',
+            musters: {
+                $filter: 'role',
+                district: 'BLOCKS',
+                block: 'प्रखंड'
+            },
             performance: 'प्रदर्शन'
         },
         overview: {
