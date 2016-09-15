@@ -82,6 +82,12 @@ module.exports = {
                     'block': 'block average',
                     'panchayat': 'panchayat average',
                 },
+                total_trans: {
+                    'state': 'Total state transactions in',
+                    'district': 'Total district transactions in',
+                    'block': 'Total block transactions in',
+                    'panchayat': 'Total panchayat transactions in',
+                },
                 tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
             },
             y_axis_label: 'Days to complete process',

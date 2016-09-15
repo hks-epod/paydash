@@ -81,6 +81,12 @@ module.exports = {
                     'block': 'प्रखंड औसत',
                     'panchayat': 'जनपद औसत',
                 },
+                total_trans: {
+                    'state': 'Total state transactions in',
+                    'district': 'Total district transactions in',
+                    'block': 'Total block transactions in',
+                    'panchayat': 'Total panchayat transactions in',
+                },
                 tooltip: 'यह ग्राफ़ MGNREGA मज़दूरी भुगतान में लगा औसत समय दिखाता है| वर्णित तिथियों पर हुए भुगतान में लगे समय को 7 पड़ावों में बाटा गया है| इसलिए, केवल पूरे हुए भुगतान का डाटा दिखाया जा रहा है|',
             },
             y_axis_labels: 'प्रक्रिया पूरी करने में लगे दिन',
