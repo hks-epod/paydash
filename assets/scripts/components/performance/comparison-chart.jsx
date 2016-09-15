@@ -89,7 +89,7 @@ const ComparisonChart =  React.createClass({
                         l_span.text(' ');
                         l_span.text('— ' + labels[val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
                         var format = D3.time.format('%b %Y');
-                        D3.select('#region_comparison_total_trans').text(format(val.date) + ': ' + val.total_trans);
+                        D3.select('#region_comparison_total_trans').text( _this.props.translation.comparison.total_trans[_this.props.activeRegion.region_type] + ' '+ format(val.date) + ': ' + val.total_trans);
                     });
                 },
                 mouseout: function(d, i) {
@@ -180,7 +180,7 @@ const ComparisonChart =  React.createClass({
                         }
                     </div>
                     <div className="legend comparison_legend"></div>
-                    <div>{this.props.translation && this.props.translation.total_trans} <span id="region_comparison_total_trans"></span></div>
+                    <div><span id="region_comparison_total_trans"></span></div>
                 </div>
                 <div className="pure-u-18-24">
                     <div id="region_comparison" ref={el => {if (el){this.elem = el;}}}></div>
