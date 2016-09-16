@@ -25,8 +25,7 @@ exports.getData = {
                 'email': contactResponse[0].email,
                 'subject': subjectLine
             };
-
-            reply(data);
+            reply.view('contact/contact', {info: data});
         });
     }
 };

@@ -82,6 +82,9 @@ body {
     border: solid 1px rgba($color-foreground, .15);
     border-radius: 999em;
 }
+.metabar-nav-item{
+    display: inline-block;
+}
 .metabar-nav-right .avatar:hover,
 .metabar-nav-right .avatar:focus {
     border: solid 1px rgba($color-foreground, .3);
