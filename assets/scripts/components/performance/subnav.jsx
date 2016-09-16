@@ -21,6 +21,12 @@ const Subnav =  React.createClass({
     setValue: function(value) {
         this.setState({ value });
         this.props.onRegionChange(value);
+
+        ga('send', 'event', {
+            eventCategory: 'Performance region dropdown',
+            eventAction: 'Selected',
+            eventLabel: value.value
+        });
     },
     componentWillReceiveProps : function(nextProps){
         this.setState({ value: nextProps.defaultRegion });

@@ -9,6 +9,11 @@ const DistrictCard =  React.createClass({
     toggleModal() {
         const state = this.state.modalOpen;
         this.setState({ modalOpen: !state});
+        ga('send', 'event', {
+            eventCategory: 'District Muster detail',
+            eventAction: 'click',
+            eventLabel: this.props.data.block_code + '/' + this.props.key
+        });
     },
     getInitialState: function(){
         return {

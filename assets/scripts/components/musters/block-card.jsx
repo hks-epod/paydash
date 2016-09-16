@@ -9,6 +9,11 @@ const BlockCard =  React.createClass({
     toggleModal() {
         const state = this.state.modalOpen;
         this.setState({ modalOpen: !state});
+        ga('send', 'event', {
+            eventCategory: 'Block Muster detail',
+            eventAction: 'click',
+            eventLabel: this.props.data.staff_id + '/' + this.props.key
+        });
     },
     getInitialState: function(){
         return {
