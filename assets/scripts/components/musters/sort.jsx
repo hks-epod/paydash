@@ -7,8 +7,8 @@ const Sort = React.createClass({
         this.props.sortBy(event.target.value);
 
         ga('send', 'event', {
-            eventCategory: 'Card',
-            eventAction: 'click',
+            eventCategory: 'Sort Dropdown',
+            eventAction: 'selected',
             eventLabel: this.props.translation[event.target.value]
         });
     },
