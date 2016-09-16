@@ -5,6 +5,12 @@ import React from 'react';
 const Sort = React.createClass({
     sort(event){
         this.props.sortBy(event.target.value);
+
+        ga('send', 'event', {
+            eventCategory: 'Card',
+            eventAction: 'click',
+            eventLabel: this.props.translation[event.target.value]
+        });
     },
     render: function(){
         var _this = this;
