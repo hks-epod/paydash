@@ -110,6 +110,13 @@ const ComparisonChart =  React.createClass({
         this.setState({
             active_step : event.target.value
         });
+
+        ga('send', 'event', {
+            eventCategory: 'Benchmark chart step',
+            eventAction: 'Selected',
+            eventLabel:this.props.translation.overview.labels[event.target.value- 1] 
+        });
+
         this.loadChart();
     },
     lineChange: function(event){
@@ -123,6 +130,14 @@ const ComparisonChart =  React.createClass({
         this.setState({
             active_lines : active_compare_lines
         });
+        
+        // TO DO - Region check box selection
+        // ga('send', 'event', {
+        //     eventCategory: 'Benchmark chart step',
+        //     eventAction: 'Selected',
+        //     eventLabel: region code + toggle statsu 
+        // });
+
         this.loadChart();
     },
     componentDidMount: function() {
