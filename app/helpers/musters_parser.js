@@ -73,8 +73,8 @@ exports.block = function(rows) {
                     if (a.delayed_total > b.delayed_total) return -1;
                     if (a.current_total < b.current_total) return 1;
                     if (a.current_total > b.current_total) return -1;
-                    if (a.name.toLowerCase() < b.nametoLowerCase()) return -1;
-                    if (a.name.toLowerCase() > b.nametoLowerCase()) return 1;
+                    if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
                     return 0;
                 })
             };
