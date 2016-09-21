@@ -74,7 +74,7 @@ exports.block = function(rows) {
                     if (a.current_total < b.current_total) return 1;
                     if (a.current_total > b.current_total) return -1;
                     if (a.name.toLowerCase() < b.nametoLowerCase()) return -1;
-                    if (a.nametoLowerCase() > b.nametoLowerCase()) return 1;
+                    if (a.name.toLowerCase() > b.nametoLowerCase()) return 1;
                     return 0;
                 })
             };
