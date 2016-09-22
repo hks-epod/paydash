@@ -57,3 +57,8 @@
     font-size: 1.5rem;
     word-spacing: 5px;
 }
+.mg-x-axis text, .mg-y-axis text, .mg-histogram .axis text {
+    fill: black;
+    font-size: 1rem;
+    opacity: 1;
+}
