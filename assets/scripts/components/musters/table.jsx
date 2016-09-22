@@ -7,10 +7,10 @@ const Table = React.createClass({
     render: function(){
 
         var _this = this;
-        return (
-            <div>
-                <h1 className="">{_this.props.title}</h1>
-                <table className="muster-table">
+        var table;
+
+        if(_this.props.data.length>0){
+            table = (<table className="muster-table">
                     <thead>
                         <tr>
                         {
@@ -35,7 +35,15 @@ const Table = React.createClass({
                         })
                     }   
                     </tbody>
-                </table> 
+                </table>);
+        } else{
+            table = <p>There is no muster information available</p>;
+        }
+
+        return (
+            <div>
+                <h1 className="">{_this.props.title}</h1>
+                {table}
             </div>     
         );
     }
