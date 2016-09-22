@@ -11,7 +11,7 @@ path.mg-main-line{
 }
 
 path.mg-main-area{
-  opacity: 0.4
+  opacity: 0.15
 }
 
 // Color Scheme
@@ -99,4 +99,23 @@ path.mg-main-area{
 }
 .mg-line7-legend-color {
     color: #F15854;
+}
+
+// Axis 
+.mg-x-axis .label, 
+.mg-y-axis .label, 
+.mg-axis .label{
+    font-size: 1.5rem;
+    word-spacing: 5px;
+}
+.mg-x-axis text, .mg-y-axis text, .mg-histogram .axis text {
+    font-size: 1rem;
+    opacity: 1;
+}
+.mg-baselines{
+    z-index: 900
+}
+.mg-baselines text {
+    font-size: 1.7rem;
+    opacity: 1;
 }
