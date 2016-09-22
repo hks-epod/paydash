@@ -7,6 +7,7 @@ import Sort from './sort.jsx';
 const BlockGroup =  React.createClass({
 
     filterCards: function(event){
+
         var updatedList = this.props.data.cards;
         updatedList = updatedList.filter(function(item){
             return item.name.toLowerCase().search(event.target.value.toLowerCase()) !== -1;
@@ -14,19 +15,30 @@ const BlockGroup =  React.createClass({
         this.setState({cards: updatedList});
     },
     sortBy(field){
-        var updatedList = this.props.data.cards;
-    
+
+        var updatedList = this.props.data.cards.slice(0);
+
         updatedList.sort(function (a, b) {
+            if(typeof(a[field]) === 'number'){
 
-            if (a[field] > b[field]) {
-              return (typeof(a[field]) === 'number' ? -1 : 1);
+                if(a[field] > b[field]){
+                    return -1;
+                } else if (a[field] < b[field]){
+                    return 1;
+                } else{
+                    return 0;
+                }
+
+            } else if(typeof(a[field]) === 'string'){
+                if(a[field].toLowerCase() > b[field].toLowerCase()){
+                    return 1;
+                } else if (a[field].toLowerCase() < b[field].toLowerCase()){
+                    return -1;
+                } else{
+                    return 0;
+                }
             }
-            if (a[field] < b[field]) {
-              return (typeof(a[field])=== 'number' ? 1 : -1);
-            }
-            return 0;
         });
-
         this.setState({cards: updatedList});
     },
     getInitialState: function(){
