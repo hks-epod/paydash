@@ -28,14 +28,14 @@ exports.postChangePassword = {
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            request.session.flash('error', 'Bad request');
+            request.yar.flash('error', 'Bad request');
             return reply.redirect('/signin');
         }
     },
     handler: function(request, reply) {
 
         if (request.payload.newPassword !== request.payload.verify) {
-            request.session.flash('error', ' New Password does not match');
+            request.yar.flash('error', ' New Password does not match');
             return reply.redirect('/me/settings/account');
         }
         var User = request.server.plugins.sequelize.db.User;
@@ -50,13 +50,13 @@ exports.postChangePassword = {
                 user.update({
                     password: Crypto.createHash('md5').update(request.payload.newPassword).digest('hex')
                 }).then(function() {
-                    request.session.flash('success', 'Password changed successfully. Please login with new password');
+                    request.yar.flash('success', 'Password changed successfully. Please login with new password');
                     request.cookieAuth.clear();
                     return reply.redirect('/login');
                 });
             } else {
                 // User not fond in database
-                request.session.flash('error', 'Old password is incorrect');
+                request.yar.flash('error', 'Old password is incorrect');
                 return reply.redirect('/me/settings/account');
             }
         });
