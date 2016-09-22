@@ -32,14 +32,25 @@ const BlockGroup =  React.createClass({
         var updatedList = this.props.data.cards.slice(0);
         
         updatedList.sort(function (a, b) {
+            if(typeof(a[field]) === 'number'){
 
-            if (a[field] > b[field]) {
-              return (typeof(a[field]) === 'number' ? -1 : 1);
+                if(a[field] > b[field]){
+                    return -1;
+                } else if (a[field] < b[field]){
+                    return 1;
+                } else{
+                    return 0;
+                }
+
+            } else if(typeof(a[field]) === 'string'){
+                if(a[field].toLowerCase() > b[field].toLowerCase()){
+                    return 1;
+                } else if (a[field].toLowerCase() < b[field].toLowerCase()){
+                    return -1;
+                } else{
+                    return 0;
+                }
             }
-            if (a[field] < b[field]) {
-              return (typeof(a[field])=== 'number' ? 1 : -1);
-            }
-            return 0;
         });
 
         this.setState({cards: updatedList});
