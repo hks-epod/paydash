@@ -130,13 +130,12 @@ const ComparisonChart =  React.createClass({
         this.setState({
             active_lines : active_compare_lines
         });
-        
-        // TO DO - Region check box selection
-        // ga('send', 'event', {
-        //     eventCategory: 'Benchmark chart step',
-        //     eventAction: 'Selected',
-        //     eventLabel: region code + toggle statsu 
-        // });
+
+        ga('send', 'event', {
+            eventCategory: 'Benchmark chart step',
+            eventAction: 'Toggled' + event.target.checked ? 'ON': 'OFF',
+            eventLabel: event.target.dataset.region
+        });
 
         this.loadChart();
     },
@@ -187,7 +186,7 @@ const ComparisonChart =  React.createClass({
                                 return (
                                     <div key={line}>
                                         <label htmlFor={'option-'+ line} className="pure-checkbox">
-                                            <input id={'option-' + line} className="regionSelector" onChange={_this.lineChange} type="checkbox" value={line} checked={selected}/> {label}
+                                            <input id={'option-' + line} className="regionSelector" onChange={_this.lineChange} type="checkbox" value={line} data-region={region[line + '_code']} checked={selected}/> {label}
                                         </label>
                                     </div>
                                 );
