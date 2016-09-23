@@ -5,7 +5,9 @@ exports.register = function(plugin, options, next) {
     const Controllers = {
         auth: {
             login: require('../controllers/auth/login'),
-            logout: require('../controllers/auth/logout')
+            logout: require('../controllers/auth/logout'),
+            forgotPassword: require('../controllers/auth/password-forgot'),
+            resetPassword: require('../controllers/auth/password-reset')
         }
     };
 
@@ -24,6 +26,22 @@ exports.register = function(plugin, options, next) {
             method: '*',
             path: '/logout',
             config: Controllers.auth.logout
+        }, {
+            method: 'GET',
+            path: '/forgot-password',
+            config: Controllers.auth.forgotPassword.showRecoveryForm
+        }, {
+            method: 'POST',
+            path: '/forgot-password',
+            config: Controllers.auth.forgotPassword.postRecoveryForm
+        }, {
+            method: 'GET',
+            path: '/reset-password/{token}',
+            config: Controllers.auth.resetPassword.showResetForm
+        }, {
+            method: 'POST',
+            path: '/reset-password/{token}',
+            config: Controllers.auth.resetPassword.postResetForm
         }
     ]);
 

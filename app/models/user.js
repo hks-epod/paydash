@@ -24,7 +24,9 @@ module.exports = function(sequelize, DataTypes) {
         google_account: DataTypes.STRING,
         type :  DataTypes.STRING,
         colorblind: DataTypes.BOOLEAN,
-        deactivated: DataTypes.BOOLEAN
+        deactivated: DataTypes.BOOLEAN,
+        reset_password_token: DataTypes.STRING,
+        reset_password_expires: DataTypes.DATE
     }, {
         tableName: 'users',
         timestamps: true,

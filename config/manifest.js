@@ -129,6 +129,14 @@ internals.manifest = {
             }
         },
 
+        //  Mailer
+        {
+            plugin: {
+                register: './lib/mailer',
+                options: Config.get('/mailer')
+            }
+        },
+
         //  Core routes
         {
             plugin: './app/routes/core.js'
