@@ -70,7 +70,7 @@ exports.postRecoveryForm = {
                             subject: 'Password Reset - PayDash',
                             path: 'emails/forgot-password',
                             context: {
-                                name: user.firstname + user.lastname,
+                                name: user.firstname + ' ' + user.lastname,
                                 url: request.connection.info.protocol + '://' + request.info.host + '/reset-password/' + token
                             }
                         };
@@ -79,7 +79,7 @@ exports.postRecoveryForm = {
                         Mailer.sendMail(data, function(err, info) {
                             //  Email Sent 
                         });
-                        request.yar.flash('success', 'An email has sent to your registered email id with passowrd reset instructions');
+                        request.yar.flash('success', 'An email has sent to your registered email id with password reset instructions');
                         return reply.redirect('/forgot-password');
                     });
                 }  else {
