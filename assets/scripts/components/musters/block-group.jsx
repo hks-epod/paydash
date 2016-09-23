@@ -21,22 +21,20 @@ const BlockGroup =  React.createClass({
         updatedList.sort(function (a, b) {
             if(typeof(a[field]) === 'number'){
 
-                if(a[field] > b[field]){
-                    return -1;
-                } else if (a[field] < b[field]){
-                    return 1;
-                } else{
-                    return 0;
-                }
+                if (a[field] > b[field]) return -1;
+                if (a[field] < b[field]) return 1;
+                if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+                return 0;
 
             } else if(typeof(a[field]) === 'string'){
-                if(a[field].toLowerCase() > b[field].toLowerCase()){
-                    return 1;
-                } else if (a[field].toLowerCase() < b[field].toLowerCase()){
-                    return -1;
-                } else{
-                    return 0;
+                if (a[field].toLowerCase() > b[field].toLowerCase()) return 1;
+                if (a[field].toLowerCase() < b[field].toLowerCase()) return -1;
+                if (field!=='name') {
+                    if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                    if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
                 }
+                return 0;
             }
         });
         this.setState({cards: updatedList});
