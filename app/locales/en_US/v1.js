@@ -38,7 +38,8 @@ module.exports = {
             block_name: 'BLOCK NAME',
             days_to_payment: 'DAYS TO PAYMENT',
             no_muster_information: 'There is no muster information available',
-            sort_by: 'Sort By'
+            sort_by: 'Sort By',
+            search_placeholder: 'Search'
         },
         performance: {
             overview: {
