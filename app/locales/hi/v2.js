@@ -25,6 +25,12 @@ module.exports = {
                 work_name: 'कार्य नाम',
                 closure_date: 'मस्टर रोल बंद होने की तिथि',
                 days_delayed: 'विलंब(दिन)',
+                step: 'कदम',
+                ds_t2: 'अटेंडेन्स नहीं भरी गयी (T+2)',
+                ds_t5: 'MB नहीं भरी गयी (T+5)',
+                ds_t6: 'वेज लिस्ट नहीं भेजी गयी (T+6)',
+                ds_t7: 'FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)',
+                ds_t8: 'FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)',
                 contact: {
                     phone: 'Phone',
                     whatsapp: 'WhatsApp'

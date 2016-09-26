@@ -250,7 +250,8 @@ exports.v2 = function(rows, role) {
                             'work_name': d.work_name,
                             'work_code': d.work_code,
                             'closure_date': d.end_date,
-                            'days_pending': d.days_pending
+                            'days_pending': d.days_pending,
+                            'step': d.step
                         };
                     }),
                     'current_musters': v.filter(function(d) {

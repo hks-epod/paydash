@@ -25,6 +25,12 @@ module.exports = {
                 work_name: 'Work name',
                 closure_date: 'Closure date',
                 days_delayed: 'Days delayed',
+                step: 'Step',
+                ds_t2: 'Attendance not filled (T+2)',
+                ds_t5: 'Measurement book not filled (T+5)',
+                ds_t6: 'Wagelist not sent (T+6)',
+                ds_t7: 'Pending for FTO first signature (T+7)',
+                ds_t8: 'Pending for FTO second signature (T+8)',
                 contact: {
                     phone: 'Phone',
                     whatsapp: 'WhatsApp'
