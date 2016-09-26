@@ -70,7 +70,7 @@ const ComparisonChart =  React.createClass({
                 interplate: 'linear',
                 interpolate_tension: 1,
                 area: false,
-                y_label: _this.props.config.y_axis_label,
+                y_label:  _this.props.translation.y_axis_label,
                 show_rollover_text: false,
                 mouseover: function(d, i) {
                     if (!d.values) {
