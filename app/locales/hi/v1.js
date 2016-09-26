@@ -35,7 +35,8 @@ module.exports = {
             name: 'नाम',
             designation: 'पदनाम',
             block_name: 'प्रखंड नाम',
-            days_to_payment: 'भुगतान के दिन'
+            days_to_payment: 'भुगतान के दिन',
+            no_muster_information: 'इसमें कोई मस्टर जानकारी उपलब्ध है'
         },
         performance: {
             overview: {

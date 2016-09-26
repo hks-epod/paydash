@@ -37,7 +37,7 @@ const Table = React.createClass({
                     </tbody>
                 </table>);
         } else{
-            table = <p>There is no muster information available</p>;
+            table = <p>{_this.props.translation.no_muster_information}</p>;
         }
 
         return (
