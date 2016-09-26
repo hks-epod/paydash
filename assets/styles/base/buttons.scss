@@ -1,6 +1,9 @@
-// 
-// Button Config
-// 
+/* Copyright 2016 Paydash
+
+button.scss
+Button components configuration. 
+------------------------------------------------------------------------*/
+
 $button--height: $eleHeight-base;
 $button--padding: 0 30px;
 $button--color: $color-grey-light;
@@ -10,9 +13,10 @@ $button--borderColor: $color-grey-lightest;
 $button--borderColor-hover: $color-grey-lighter;
 $button--fontSize: $fontSize-small;
 $button--letterSpacing: $letterSpacing-normal;
-// 
-// Buttons
-//
+
+/* Buttons
+---------------------------------------------*/
+
 .button {
     font-size: $button--fontSize;
     font-weight: $fontWeight-thick;
@@ -56,21 +60,4 @@ $button--letterSpacing: $letterSpacing-normal;
 .button.button--error:focus {
     border-color: $color-error-dark;
     background-color: $color-error-dark;
-}
-.button.selected {
-    background-color: $color-grey-lightest
-}
-// Button group
-.button-group {
-    margin-right: 13px;
-}
-.button-group .button {
-    padding: 0 6px;
-    border-radius: 0;
-}
-.button-group .button:first-child {
-    border-radius: 4px 0 0 4px;
-}
-.button-group .button:last-child {
-    border-radius: 0 4px 4px 0;
 }

@@ -4,12 +4,11 @@ $menuItem--background: transparent;
 $menu--height: $eleHeight-base;
 $menuItem--padding: 0 30px;
 $menuItem--transition: opacity .1s ease;
-$menu--color: $color-grey-light;
-$menu--color-hover: $color-grey-dark;
-$menu--color-active: $color-accent;
+$menu--color: $color-grey;
+$menu--color-hover: $color-grey-darkest;
+$menu--color-active: $color-grey-darkest;
 $menu--borderColor: $color-grey-dim;
 $menu--borderColor-hover: $color-grey-lightest;
-// $menu--font-size: $text-sm;
 
 /* Default Menu
 ––––––––––––––––––––––––––––––––––––––––––––––––––*/

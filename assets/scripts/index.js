@@ -1,29 +1,24 @@
 'use strict';
 
-require('./components/dropdown');
-require('./components/region');
-require('./components/active-link');
+import React from 'react';
+import {render} from 'react-dom';
+import Musters from './containers/musters.jsx';
+import Overview from './containers/overview.jsx';
+import Performance from './containers/performance.jsx';
+import ActiveLink from './lib/active-link';
 
-var OverviewPerformance = require('./performance/overview');
-var DiscretePerformance = require('./performance/discrete');
-var currentMusters = require('./musters/current');
-var delayedMusters = require('./musters/delayed');
+ActiveLink.init();
+require('./lib/dropdown');
 
-if (window.location.pathname === '/performance/overview') {
-    OverviewPerformance.init();
-}
-if (window.location.pathname === '/performance/discrete') {
-    DiscretePerformance.init();
-}
 
-if (window.location.pathname === '/musters/current') {
-    currentMusters.init();
+if (window.location.pathname === '/musters') {
+    render( <Musters url='/musters/data'/> , document.getElementById('musters'));
 }
 
-if (window.location.pathname === '/musters/delayed') {
-    delayedMusters.init();
+if (window.location.pathname === '/overview') {
+    render( <Overview url='/overview/data'/> , document.getElementById('overview'));
 }
 
-if (window.location.pathname === '/login') {
-    document.cookie = 'active_region=;Path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+if (window.location.pathname === '/performance') {
+    render( <Performance url='/performance/data'/> , document.getElementById('performance'));
 }

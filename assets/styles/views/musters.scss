@@ -1,4 +1,70 @@
-.muster_table{
-  border: solid 1px $color-grey-dim;
-  padding: 20px;
+.group-head {
+    padding: 40px 0;
+}
+
+.group-head h1 {
+    margin: 0;
+}
+
+.group-head .search-bar {
+    margin-top: 4px
+}
+.card {
+    min-height: 300px;
+    box-shadow: 0 1px 4px rgba($color-foreground,.04);
+    border: 1px solid rgba($color-foreground,.09);
+    border-radius: 4px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center
+}
+.card-top{
+    min-height: 100px;
+}
+.district-card-top{
+    min-height: 60px;
+}
+.card-head{
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.2em;
+    margin: 10px 0 0;
+    letter-spacing: .1em;
+}
+.card-designation{
+    color: $color-grey-light;
+    font-size: $fontSize-small;
+}
+.card-numbers{
+    margin: 30px 0 40px;
+}
+.district-card-numbers{
+    margin: 0px 0 20px;
+}
+.card-number-sub{
+    font-size: $fontSize-smaller;
+    color: $color-grey-light;
+}
+.card-officer{
+    text-align: left;
+    color: $color-grey-light;
+    margin-bottom: 40px;
+}
+.card-officer-title{
+    text-align:left;
+    font-weight: 400;
+}
+.card-officer-sub{
+    font-size: $fontSize-small;
+    color: $color-grey-light;
+}
+.card .card-officer:last-child{
+    padding-botttom: 40px;
+}
+.table{
+    width: 100%;
+}
+.sort-bar {
+    margin-top: 4px;
+    margin-right: 10px;
 }

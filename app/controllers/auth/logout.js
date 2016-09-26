@@ -13,8 +13,8 @@ module.exports = {
     },
     handler: function(request, reply) {
 
-        request.auth.session.clear();
-        request.session.flash('success', 'Logged out successfully');
+        request.cookieAuth.clear();
+        request.yar.flash('success', 'Logged out successfully');
         return reply.redirect('/login');
 
     }

@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         underscored: true,
         classMethods: {
             associate: function(models) {
-                // associations can be defined here
+
                 user_blocks.belongsTo(models.User, {
                     onDelete: 'CASCADE',
                     foreignKey: 'user_id'

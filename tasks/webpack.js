@@ -1,54 +1,57 @@
 'use strict';
-var Gulp = require('gulp');
-var Gutil = require('gulp-util');
-var Webpack = require('webpack');
+const Gulp = require('gulp');
+const Gutil = require('gulp-util');
+const Webpack = require('webpack');
 
-var UglifyJsPlugin = Webpack.optimize.UglifyJsPlugin;
-var CommonsChunkPlugin = Webpack.optimize.CommonsChunkPlugin;
-var ProvidePlugin = Webpack.ProvidePlugin;
+var webpackConfig = {
+    entry: {
+        vendor: ['jquery', 'd3', 'react'],
+        app: './assets/scripts/index.js'
+    },
+    output: {
+        path: '.build/js/',
+        filename: '[name].bundle.js'
+    },
+    cache: true,
+    devtool: 'cheap-module-source-map',
+    module: {
+        loaders: [{
+            test: /\.jsx?$/,
+            loader: 'babel',
+            query: { compact: false },
+            exclude: /(node_modules|bower_components)/
+        }]
+    },
+    plugins: [
+        new Webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',
+            filename: 'vendor.js',
+            minChunks: Infinity,
+        })
+    ]
+};
 
-Gulp.task('webpack', function() {
+// Webpack production build
+Gulp.task('webpack:build', function() {
 
-    var config = {
-        entry: {
-            vendor: ['jquery', 'd3'],
-            app: './assets/scripts/index.js',
-            mdash: './assets/scripts/monitor.js'
-        },
-        watch: true,
-        cache: true,
-        output: {
-            path: '.build/js/',
-            filename: '[name].bundle.js'
-        },
-        module: {
-            loaders: [{
-                test: /\.jsx$/,
-                loader: 'babel'
-            }]
-        },
-        devtool: 'source-map',
-        plugins: [
-            new UglifyJsPlugin({
-                compress: {
-                    warnings: false
-                }
-            }),
-            new ProvidePlugin({
-                $: 'jquery',
-                jQuery: 'jquery',
-                'window.jQuery': 'jquery',
-                'root.jQuery': 'jquery'
-            }),
-            new CommonsChunkPlugin({
-                name: 'vendor',
-                filename: 'vendor.js',
-                minChunks: Infinity,
-            })
-        ]
-    };
+    var prodConfig = Object.create(webpackConfig);
 
-    Webpack(config, function(err, stats) {
+    prodConfig.plugins = prodConfig.plugins.concat(
+        new Webpack.DefinePlugin({
+            'process.env': {
+                // This has effect on the react lib size
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new Webpack.optimize.DedupePlugin(),
+        new Webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    );
+
+    Webpack(prodConfig, function(err, stats) {
 
         if (err) {
             throw new Gutil.PluginError('webpack', err);
@@ -57,6 +60,27 @@ Gulp.task('webpack', function() {
             colors: true
         }));
     });
+});
 
+
+// Set dev config for webpack
+var devConfig = Object.create(webpackConfig);
+devConfig.devtool = 'sourcemap';
+devConfig.debug = true;
+
+// Create a single instance of the compiler to allow caching
+var devCompiler = Webpack(devConfig);
+
+Gulp.task('webpack:dev-build', function() {
+
+    devCompiler.watch({}, function(err, stats) {
+        if (err) {
+            throw new Gutil.PluginError('webpack', err);
+        }
+        Gutil.log('[webpack:build-dev]', stats.toString({
+            colors: true,
+            chunks: false
+        }));
+    });
 
 });

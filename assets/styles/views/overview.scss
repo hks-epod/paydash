@@ -1,0 +1,30 @@
+.overview{
+    padding-top: 80px;
+}
+.overview-title{
+    font-size: 4em;
+    color: $color-accent
+}
+.overview-desc{
+    padding-top: 40px;
+    line-height: 1.8em;
+    color: $color-grey-darker;
+    letter-spacing: .07em
+}
+.overview-wrapper{
+    padding: 30px 70px;
+
+}
+.overview-card-title{
+    display: inline-block;
+    color: $color-grey-dark;
+    // border-bottom: solid 1px $color-grey-dim;
+    padding-bottom: 10px;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: .1em
+}
+.overview-card-details{
+    font-size: 2em;
+    padding: 10px 0 70px;
+}

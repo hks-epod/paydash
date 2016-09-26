@@ -1,7 +1,7 @@
 'use strict';
 
-var Joi = require('joi');
-var crypto = require('crypto');
+const Joi = require('joi');
+const Crypto = require('crypto');
 
 exports.showEditAccount = {
     description: 'Show Edit account settings',
@@ -28,14 +28,14 @@ exports.postChangePassword = {
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            request.session.flash('error', 'Bad request');
+            request.yar.flash('error', 'Bad request');
             return reply.redirect('/signin');
         }
     },
     handler: function(request, reply) {
 
         if (request.payload.newPassword !== request.payload.verify) {
-            request.session.flash('error', ' New Password does not match');
+            request.yar.flash('error', ' New Password does not match');
             return reply.redirect('/me/settings/account');
         }
         var User = request.server.plugins.sequelize.db.User;
@@ -43,20 +43,20 @@ exports.postChangePassword = {
         User.findOne({
             where: {
                 username: request.auth.credentials.username,
-                password: crypto.createHash('md5').update(request.payload.oldPassword).digest('hex')
+                password: Crypto.createHash('md5').update(request.payload.oldPassword).digest('hex')
             }
         }).then(function(user) {
             if (user) {
                 user.update({
-                    password: crypto.createHash('md5').update(request.payload.newPassword).digest('hex')
+                    password: Crypto.createHash('md5').update(request.payload.newPassword).digest('hex')
                 }).then(function() {
-                    request.session.flash('success', 'Password changed successfully. Please login with new password');
-                    request.auth.session.clear();
+                    request.yar.flash('success', 'Password changed successfully. Please login with new password');
+                    request.cookieAuth.clear();
                     return reply.redirect('/login');
                 });
             } else {
                 // User not fond in database
-                request.session.flash('error', 'Old password is incorrect');
+                request.yar.flash('error', 'Old password is incorrect');
                 return reply.redirect('/me/settings/account');
             }
         });

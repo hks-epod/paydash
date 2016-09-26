@@ -1,41 +1,24 @@
 <header class="metabar">
   <div class="container-fluid">
     <a href="/" class="brand">Paydash</a>
-    <button id="top-ham" class="hamburger">
-      <span class="pe-7s-menu"></span>
-    </button>
     {{#if credentials}}
       <div class="metabar-nav-right u-pull-right">
-        <a href="/notifications/unread" class="button avatar">
-          <span class="pe-7s-bell"></span>
-        </a>
-        <div class="dropdown metabar-item">
+        <a class="button avatar metabar-nav-item" href="/contact"><span class="pe-7s-chat"></span></a>
+        <div class="dropdown metabar-nav-item">
           <button class="button avatar" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span style="font-size:26px;margin-top:4px" class="pe-7s-user"></span>
+            <span class="pe-7s-users"></span>
           </button>
           <div class="dropdown-menu dropdown-menu-right dropdown-menu-pointing" aria-labelledby="dropdownMenu1">
-            <a class="dropdown-item" href="/me/settings/profile">{{t "/profile/settings" credentials}}</a>
-            <a class="dropdown-item" href="/logout">{{t "/profile/logout" credentials}}</a>
+            <a class="dropdown-item" href="/me/settings/profile">Settings</a>
+            <div class="divider"></div>
+            <a class="dropdown-item" href="/logout">Logout</a>
           </div>
         </div>
       </div>
-      <div class="menu-wrapper">
-        <div class="menu-region-selection u-pull-right">
-          <select name="region_selector" id="region_selector">
-
-            {{#each credentials.user_regions}}
-              <option value="{{this.region_code}}">{{this.region_name}}</option>
-            {{/each}}
-          </select>
-        </div>
-        <div class="menu menu--pointing">
-          <a class="menu-item" href="/performance/overview">{{t "/navigation/overview" credentials}}</a>
-          <a class="menu-item" href="/performance/discrete">{{t "/navigation/discrete" credentials}}</a>
-          {{#compare credentials.role '===' 'block'}}
-            <a class="menu-item" href="/musters/current">{{t "/navigation/current" credentials}}</a>
-            <a class="menu-item" href="/musters/delayed">{{t "/navigation/delayed" credentials}}</a>
-          {{/compare}}
-        </div>
+      <div class="menu menu--pointing">
+        <a class="menu-item" href="/overview">{{t "/web/navigation/overview" credentials null}}</a>
+        <a class="menu-item" href="/musters">{{t "/web/navigation/musters" credentials null}}</a>
+        <a class="menu-item" href="/performance">{{t "/web/navigation/performance" credentials null}}</a>
       </div>
     {{else}}
       <div class="metabar-nav-right u-pull-right">

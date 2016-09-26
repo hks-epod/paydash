@@ -2,45 +2,26 @@
 
 exports.register = function(plugin, options, next) {
 
-    plugin.dependency('auth', function(plugin, next) {
+    const Controllers = {
+        musters: require('../controllers/musters/musters')
+    };
 
-        var Controllers = {
-            musters: {
-                current: require('../controllers/musters/current-musters'),
-                delayed: require('../controllers/musters/delayed-musters')
-            }
-        };
+    plugin.route([
 
-        plugin.route([
+        //  Muster cards
+        {
+            method: 'GET',
+            path: '/musters',
+            config: Controllers.musters.showPage
+        },
 
-            // Block Dashoard
-            {
-                method: 'GET',
-                path: '/musters/current',
-                config: Controllers.musters.current.showPage
-            },
-            // Block Dashoard
-            {
-                method: 'GET',
-                path: '/musters/current/data',
-                config: Controllers.musters.current.getData
-            },
-            // Panchayat Dashboard
-            {
-                method: 'GET',
-                path: '/musters/delayed',
-                config: Controllers.musters.delayed.showPage
-            },
-            // Block Dashoard
-            {
-                method: 'GET',
-                path: '/musters/delayed/data',
-                config: Controllers.musters.delayed.getData
-            },
-        ]);
-
-        next();
-    });
+        // Muster cards data
+        {
+            method: 'GET',
+            path: '/musters/data',
+            config: Controllers.musters.getData
+        },
+    ]);
 
     next();
 };

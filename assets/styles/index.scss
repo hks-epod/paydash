@@ -1,49 +1,60 @@
-// 
-// Vendor
-// ------------------------------------------------------
-@import 'vendors/normalize';
-@import 'vendors/stroke/pe-icon-7-stroke';
-@import 'vendors/stroke/helper';
-@import 'vendors/mg/metricsgraphics';
-@import 'vendors/mg/mg-theme';
-@import 'vendors/dynatable';
-// 
-// Config
-// ------------------------------------------------------
-@import 'config/color';
-@import 'config/base';
-@import 'config/type';
-// 
-// Helpers
-// ------------------------------------------------------
+/* Copyright 2016 Paydash
+
+Bootstrap Styles
+------------------------------------------------------------------------*/
+
+@import 'vendor/normalize';
+@import 'vendor/stroke/pe-icon-7-stroke';
+@import 'vendor/stroke/helper';
+@import 'vendor/select/react-select';
+@import 'vendor/mg/metricsgraphics';
+
+/* Scales
+---------------------------------------------*/
+
+@import 'scales/base';
+@import 'scales/color';
+@import 'scales/type';
+
+/* utils
+---------------------------------------------*/
+
 @import 'helpers/placeholders';
 @import 'helpers/utils';
-// 
-// Base
-// ------------------------------------------------------
+
+/* Base styles
+---------------------------------------------*/
+
 @import 'base/base';
+@import 'base/grid';
+@import 'base/spacing';
+@import 'base/lists';
 @import 'base/buttons';
 @import 'base/forms';
-@import 'base/grid';
-@import 'base/spacing'; // Need optmization
-@import 'base/typography'; 
-@import 'base/lists';
-@import 'base/tables';
-// Layout
-// ------------------------------------------------------
-@import 'modules/menu';
+@import 'base/typography';
+
+
+/* Modules
+---------------------------------------------*/
+
 @import 'modules/dropdown';
+@import 'modules/menu';
 @import 'modules/message';
+@import 'modules/misc';
+@import 'modules/modal';
+@import 'modules/mg-theme';
 @import 'modules/loader';
-// 
-// Layout
-// ------------------------------------------------------
+
+/* Layouts
+---------------------------------------------*/
+
 @import 'layout/containers';
 @import 'layout/metabar';
-// 
-// Views
-// ------------------------------------------------------
+
+/* Views
+---------------------------------------------*/
+
 @import 'views/home';
-@import 'views/dashboard';
 @import 'views/musters';
-@import 'views/responsive';
+@import 'views/overview';
+@import 'views/performance';

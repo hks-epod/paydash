@@ -1,0 +1,54 @@
+.select_parent{
+    color: $color-grey-darkest;
+    font-weight: bold;
+}
+.region-selector{
+    min-width: 200px;
+    margin-right: 10px;
+}
+.Select-input {
+    height: 36px;
+}
+.subnav {
+    padding: 10px 0 20px;
+    border-bottom: dashed 1px $color-grey-lighter;
+    margin-bottom: 20px;
+}
+.subnav .subnav-name {
+    font-size: 40px;
+    text-transform: capitalize !important;
+    letter-spacing: .2em
+}
+.legend {
+    margin-top: 40px;
+}
+
+.legend span {
+    display: block;
+    font-size: .9em;
+    margin-bottom: 5px;
+}
+
+.legend-discrete span {
+    width: 33%;
+    display: inline-block;
+}
+.group-selector {
+    padding: 14px 10px 10px;
+    border-radius: 3px;
+    border: solid 1px $color-grey-lightest;
+}
+
+.group-selector label input[type="checkbox"] {
+    margin-top: -3px;
+    margin-right: 6px;
+}
+.button--pc,
+.button--pc:hover,
+.button--pc:focus {
+    font-size: 1.2rem;
+    text-transform: none;
+    width: 100%;
+    color: $color-grey-darkest
+}
+

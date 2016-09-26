@@ -20,15 +20,16 @@ function parseDate(string) {
 //  col - which all coulmns/lines to return in resultsed data 
 //  isCumulative - if resulted data columns are cumulative or not
 
-// exports.lines = function(data, past_n_days, col, isCumulative) {
 exports.lines = function(options) {
 
-    var defaults = {
+    const defaults = {
         past_n_days: '',
         col: [1, 2, 3, 4, 5, 6, 7],
         isCumulative: true
     };
-    if (!options) options = {};
+    if (!options) {
+        options = {};
+    }
     for (var key in defaults) {
         if (!options.hasOwnProperty(key)) {
             options[key] = defaults[key];

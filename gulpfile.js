@@ -1,14 +1,16 @@
 'use strict';
 
-var Gulp = require('gulp');
-var RequireDir = require('require-dir');
+const Gulp = require('gulp');
+const RequireDir = require('require-dir');
 
-// Load Tasks
+// Load tasks
+
 RequireDir('./tasks');
 
-//  Build task definition 
-Gulp.task('dev-build', ['fonts', 'images', 'misc', 'styles', 'webpack', 'lint']);
-Gulp.task('prod-build', ['dev-build', 'rev']);
+
+//  Build task definitions
+Gulp.task('dev-build', ['fonts', 'images', 'misc', 'styles', 'webpack:dev-build', 'lint']);
+Gulp.task('prod-build', ['fonts', 'images', 'misc', 'styles', 'webpack:build', 'lint']);
 
 Gulp.task('dev', ['dev-build', 'watch', 'nodemon']);
 Gulp.task('build', ['prod-build']);

@@ -1,12 +1,8 @@
 'use strict';
 
-var Boom = require('boom');
-var Joi = require('joi');
-var crypto = require('crypto');
-
-var lockoutInterval = 60; // seconds
-var maxAttemptsBeforeLockout = 5;
-
+const Boom = require('boom');
+const Joi = require('joi');
+const Crypto = require('crypto');
 
 exports.showForm = {
     description: 'Returns the login page',
@@ -22,7 +18,7 @@ exports.showForm = {
     handler: function(request, reply) {
 
         if (request.auth.isAuthenticated) {
-            return reply.redirect('/performance/overview');
+            return reply.redirect('/overview');
         }
         reply.view('auth/login');
 
@@ -52,39 +48,47 @@ exports.postForm = {
         },
         failAction: function(request, reply, source, error) {
             // Username, passowrd minimum validation failed
-            request.session.flash('error', 'Invalid username or password');
+            request.yar.flash('error', 'Invalid username or password');
             return reply.redirect('/login');
         },
     },
     handler: function(request, reply) {
         if (request.auth.isAuthenticated) {
-            return reply.redirect('/performance/overview');
+            return reply.redirect('/overview');
         }
+            
         var db = request.server.plugins.sequelize.db;
         var User = request.server.plugins.sequelize.db.User;
         User.findOne({
             where: {
                 username: request.payload.username,
-                password: crypto.createHash('md5').update(request.payload.password).digest('hex')
+                password: Crypto.createHash('md5').update(request.payload.password).digest('hex')
             },
             include: [db.user_regions]
         }).then(function(user) {
             if (user) {
-                request.auth.session.set(user);
+                
+                if(user.deactivated){
+                    request.yar.flash('error', 'Your account has been deactivated. Please contact the PayDash team if you require assistance.');
+                    return reply.redirect('/login');
+                }
+
+                request.cookieAuth.set(user);
+                
                 if (!user.isActive) {
-                    request.session.flash('info', 'Please check your profile details');
+                    request.yar.flash('info', 'Please check your profile details');
                     user.update({
                         isActive: true
                     }).then(function() {
                         return reply.redirect('/me/settings/profile');
                     });
                 } else {
-                    return reply.redirect('/performance/overview');
+                    return reply.redirect('/overview');
                 }
 
             } else {
                 // User not fond in database
-                request.session.flash('error', 'Invalid username or password');
+                request.yar.flash('error', 'Invalid username or password');
                 return reply.redirect('/login');
             }
         });

@@ -1,13 +1,17 @@
 'use strict';
-var Confidence = require('confidence');
+
+const Confidence = require('confidence');
 
 // Confidence criteria 
-var criteria = {
-    env: process.env.NODE_ENV
+let internals = {
+    criteria: {
+        env: process.env.NODE_ENV
+    }
 };
 
-//  Confidence document object for gulp tasks 
-var paths = {
+//  Confidence document object for gulp tasks
+ 
+internals.paths = {
     fonts: ['./assets/fonts/*'],
     styles: ['./assets/styles/**/*'],
     images: ['./assets/images/**/*'],
@@ -26,11 +30,12 @@ var paths = {
     ]
 };
 
-var store = new Confidence.Store(paths);
+internals.store = new Confidence.Store(internals.paths);
 
 exports.get = function(key) {
-    return store.get(key, criteria);
+    return internals.store.get(key, internals.criteria);
 };
+
 exports.meta = function(key) {
-    return store.meta(key, criteria);
+    return internals.store.meta(key, internals.criteria);
 };

@@ -1,6 +1,6 @@
 'use strict';
 
-var Joi = require('joi');
+const Joi = require('joi');
 
 exports.showEditProfile = {
     description: 'Show Edit profile settings',
@@ -20,12 +20,12 @@ exports.postEditProfile = {
             mobile: Joi.string().max(100).allow(''),
             email: Joi.string().max(100).allow(''),
             work_email: Joi.string().max(100).allow(''),
-            lang: Joi.string().max(100)
+            lang: Joi.string().max(100),
+            colorblind: Joi.string().max(100)
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            console.log(error);
-            request.session.flash('error', 'Bad request');
+            request.yar.flash('error', 'Bad request');
             return reply.redirect('/me/settings/profile');
         }
     },
@@ -43,15 +43,15 @@ exports.postEditProfile = {
         }).then(function(user) {
             if (user) { // if the record exists in the db
                 user.update(request.payload).then(function() {
-                    request.auth.session.clear();
-                    request.auth.session.set(user);
-                    request.session.flash('success', 'Profile successfully saved');
+                    request.cookieAuth.clear();
+                    request.cookieAuth.set(user);
+                    request.yar.flash('success', 'Profile successfully saved');
                     return reply.redirect('/me/settings/profile');
 
                 });
 
             } else {
-                request.session.flash('error', 'An internal server error occurred');
+                request.yar.flash('error', 'An internal server error occurred');
                 return reply.redirect('/me/settings/profile');
             }
         });

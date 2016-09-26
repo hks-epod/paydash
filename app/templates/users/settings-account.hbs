@@ -7,20 +7,19 @@
       <div class="">
         {{> flash}}
         <h5 class="heading--sub">Email Settings</h5>
-        <p>{{t "/profile/primary_email_msg" credentials}}</p>
+        <p>{{t "/web/profile/primary_email_msg" credentials null}}</p>
         <p>
-          {{t "/profile/your_primary_email" credentials}} :  <b>{{credentials.email}} </b>
+          {{t "/web/profile/your_primary_email" credentials null}} :  <b>{{credentials.email}} </b>
         </p>
-        <h5 class="heading--sub">{{t "/profile/change_pass" credentials}}</h5>
+        <h5 class="heading--sub">{{t "/web/profile/change_pass" credentials null}}</h5>
         <form data-tab="profile" method="post" action="/me/settings/account/change-password">
-          <label for="password">{{t "/profile/old_pass" credentials}}</label>
+          <label for="password">{{t "/web/profile/old_pass" credentials null}}</label>
           <input class="u-full-width" type="password" id="OldPassword" name="oldPassword" value="">
-          <label for="password">{{t "/profile/new_pass" credentials}}</label>
+          <label for="password">{{t "/web/profile/new_pass" credentials null}}</label>
           <input class="u-full-width" type="password" id="newPassword" name="newPassword" value="">
-          <label for="verify">{{t "/profile/pass_confirm" credentials}}</label>
+          <label for="verify">{{t "/web/profile/pass_confirm" credentials null}}</label>
           <input class="u-full-width" type="password" id="verify" name="verify" value="" autocorrect="off" autocapitalize="off"> {{> form_security}}
-          <input type="submit" value="{{t "/profile/save" credentials}}" class=" button button--primary">
-          <a href="/forgot-password">{{t "/profile/forgot_pass" credentials}}</a>
+          <input type="submit" value="{{t "/web/profile/save" credentials null}}" class=" button button--primary">
         </form>
       </div>
     </div>
