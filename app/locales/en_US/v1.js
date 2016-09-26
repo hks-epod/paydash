@@ -16,7 +16,15 @@ module.exports = {
             current: 'CURRENT',
             delayed: 'DELAYED',
             days_to_payment: 'DAYS TO PAYMENT',
-            description: 'Here\'s how your Block is doing on MGNREGA payment delays.'
+            welcome: {
+                1: 'Hello',
+                2: 'ji'
+            },
+            description: {
+                $filter : 'role',
+                block: 'Here\'s how your Block is doing on MGNREGA payment delays.',
+                district: 'Here\'s how your District is doing on MGNREGA payment delays.'
+            }
         },
         musters: {
             current: 'CURRENT',

@@ -16,8 +16,16 @@ module.exports = {
             current: 'वर्तमान मस्टर्स',
             delayed: 'विलंबित मस्टर्स',
             days_to_payment: 'भुगतान के लिए दिन',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-        },
+            welcome: {
+                1: 'नमस्कार',
+                2: 'जी'
+            },
+            description: {
+                $filter : 'role',
+                block: 'MGNREGA भुगतनों के सन्दर्भ में आपके जनपद के प्रदर्शन से जुड़ी जानकारी प्रस्तुत है|',
+                district: 'MGNREGA भुगतनों के सन्दर्भ में आपके ज़िले के प्रदर्शन से जुड़ी जानकारी प्रस्तुत है'
+            }
+         },
         musters: {
             current: 'वर्तमान मस्टर्स',
             delayed: 'विलंबित मस्टर्स',
