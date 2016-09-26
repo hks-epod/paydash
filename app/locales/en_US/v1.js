@@ -37,7 +37,8 @@ module.exports = {
             designation: 'DESIGNATION',
             block_name: 'BLOCK NAME',
             days_to_payment: 'DAYS TO PAYMENT',
-            no_muster_information: 'There is no muster information available'
+            no_muster_information: 'There is no muster information available',
+            sort_by: 'Sort By'
         },
         performance: {
             overview: {

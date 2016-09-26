@@ -16,7 +16,7 @@ const Sort = React.createClass({
         var _this = this;
         return (   
             <select onChange={this.sort} className="sort-bar button u-pull-right" defaultValue="0" name="" id="sort-controls">
-                <option value='0' disabled="true">Sort by</option>
+                <option value='0' disabled="true">{_this.props.translation.sort_by}</option>
                 {
                     _this.props.sortList.map(function(option, i){
                         return (<option key={i} value={option}>{_this.props.translation[option]}</option>);
