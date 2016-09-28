@@ -4,10 +4,10 @@ module.exports = {
     $meta: 'Hindi translation file',
     web: {
         navigation: {
-            overview: 'अवलोकन',
+            overview: 'संक्षेप',
             musters: {
                 $filter: 'role',
-                district: 'प्रखंड',
+                district: 'जनपद',
                 block: 'मस्टर्स'
             },
             performance: 'प्रदर्शन'
@@ -37,7 +37,7 @@ module.exports = {
             work_name: 'कार्य नाम',
             work_code: 'कार्य कोड',
             closure_date: 'मस्टर रोल बंद होने की तिथि',
-            days_pending: 'DAYS PENDING',
+            days_pending: 'कितने दिनो का विलंब',
             current_total: 'वर्तमान मस्टर्स',
             delayed_total: 'विलंबित मस्टर्स',
             name: 'नाम',
