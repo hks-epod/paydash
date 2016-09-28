@@ -30,7 +30,7 @@ module.exports = {
             current: 'वर्तमान मस्टर्स',
             delayed: 'विलंबित मस्टर्स',
             muster_details: 'मस्टर्स की विस्तार से जानकारी',
-            officers: 'OFFICERS',
+            officers: 'अधिकारि',
             delayed_musters: 'विलंबित मस्टर्स',
             msr_no: 'मस्टर क्रमांक',
             panchayat_name: 'पंचायत का नाम',
