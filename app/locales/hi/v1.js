@@ -124,7 +124,7 @@ module.exports = {
             new_pass: 'नया पासवर्ड ',
             pass_confirm: 'नये पासवर्ड को सत्यापित करें',
             forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया',
-            colorblind: 'रंग अंधा'
+            colorblind: 'कलर ब्लाइंड'
         },
     },
     app: {
