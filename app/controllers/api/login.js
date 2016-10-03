@@ -37,12 +37,12 @@ exports.postForm = {
                 password: crypto.createHash('md5').update(request.payload.password).digest('hex')
             }
         }).then(function(user) {
-
+            console.log(user);
             // If user account is deactivated
             if (user && user.deactivated) {
                 return reply(Boom.badRequest('User account deactivated'));
             }
-
+            
             // If user is test or pilot 
             else if (user && user.type === 'test' || user.type === 'pilot_one') {
                 request.cookieAuth.set(user);
