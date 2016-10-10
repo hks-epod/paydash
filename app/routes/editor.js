@@ -13,7 +13,7 @@ exports.register = function(plugin, options, next) {
         //  Muster cards
         {
             method: 'GET',
-            path: '/editor/summary',
+            path: '/editor/info',
             config: Controllers.editor.info.show
         }
     ]);

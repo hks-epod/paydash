@@ -21,11 +21,11 @@ module.exports = {
                 2: 'जी'
             },
             description: {
-                $filter : 'role',
+                $filter: 'role',
                 block: 'MGNREGA भुगतनों के सन्दर्भ में आपके जनपद के प्रदर्शन से जुड़ी जानकारी प्रस्तुत है|',
                 district: 'MGNREGA भुगतनों के सन्दर्भ में आपके ज़िले के प्रदर्शन से जुड़ी जानकारी प्रस्तुत है'
             }
-         },
+        },
         musters: {
             current: 'वर्तमान मस्टर्स',
             delayed: 'विलंबित मस्टर्स',
@@ -126,6 +126,18 @@ module.exports = {
             forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया',
             colorblind: 'कलर ब्लाइंड'
         },
+        editor: {
+            nav: {
+                t_2: 'T+2',
+                t_5: 'T+5',
+                t_6: 'T+6',
+                t_7: 'T+7',
+                t_8: 'T+8',
+            },
+            info: {
+                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, dolores nobis doloribus nemo iure amet numquam inventore doloremque sit? Cumque numquam dignissimos veniam nulla laboriosam! Expedita, id minima delectus repellendus.'
+            }
+        }
     },
     app: {
         overview: {

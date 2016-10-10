@@ -21,7 +21,7 @@ module.exports = {
                 2: 'ji'
             },
             description: {
-                $filter : 'role',
+                $filter: 'role',
                 block: 'Here\'s how your Block is doing on MGNREGA payment delays.',
                 district: 'Here\'s how your District is doing on MGNREGA payment delays.'
             }
@@ -127,6 +127,18 @@ module.exports = {
             forgot_pass: 'I forgot my password',
             colorblind: 'Colorblind'
         },
+        editor: {
+            nav: {
+                t_2: 'T+2',
+                t_5: 'T+5',
+                t_6: 'T+6',
+                t_7: 'T+7',
+                t_8: 'T+8',
+            },
+            info: {
+                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, dolores nobis doloribus nemo iure amet numquam inventore doloremque sit? Cumque numquam dignissimos veniam nulla laboriosam! Expedita, id minima delectus repellendus.'
+            }
+        }
     },
     app: {
         overview: {

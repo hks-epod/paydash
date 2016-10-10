@@ -2,7 +2,7 @@
 
 const Translate = require('../../templates/helpers/t');
 
-exports.getData = {
+exports.show = {
     handler: function(request, reply) {
 
         var info = Translate('/web/editor/info', request.auth.credentials, null);
