@@ -4,7 +4,7 @@ exports.register = function(plugin, options, next) {
 
     const Controllers = {
         editor: {
-            info : require('../controllers/editor/contact')
+            info : require('../controllers/editor/info')
         }
     };
 
