@@ -136,7 +136,7 @@ module.exports = {
                 t_8: 'T+8',
             },
             info: {
-                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, dolores nobis doloribus nemo iure amet numquam inventore doloremque sit? Cumque numquam dignissimos veniam nulla laboriosam! Expedita, id minima delectus repellendus.'
+                text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, dolores nobis doloribus nemo iure amet numquam inventore doloremque sit? Cumque numquam dignissimos veniam nulla laboriosam! Expedita, id minima delectus repellendus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, dolores nobis doloribus nemo iure amet numquam inventore doloremque sit? Cumque numquam dignissimos veniam nulla laboriosam! Expedita, id minima delectus repellendus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum, dolores nobis doloribus nemo iure amet numquam inventore doloremque sit? Cumque numquam dignissimos veniam nulla laboriosam! Expedita, id minima delectus repellendus.'
             }
         }
     },
