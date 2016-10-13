@@ -22,6 +22,12 @@ exports.register = function(plugin, options, next) {
             method: 'GET',
             path: '/editor/share',
             config: Controllers.editor.share.show
+        },
+        //  Share 
+        {
+            method: 'POST',
+            path: '/editor/share',
+            config: Controllers.editor.share.postShareForm
         }
     ]);
 

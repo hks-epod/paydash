@@ -13,7 +13,7 @@ exports.show = {
     }
 };
 
-exports.postRecoveryForm = {
+exports.postShareForm = {
     auth: {
         mode: 'try',
         strategy: 'standard'
@@ -36,16 +36,17 @@ exports.postRecoveryForm = {
     handler: function(request, reply) {
         //  Create user and send pass info
 
+        var tempPass = Math.random().toString(36).substr(2, 7);
         Crypto.randomBytes(8, function(err, buffer) {
 
             var newUser = {
                 email: request.payload.name_email.toLowerCase(),
-                password: Crypto.createHash('md5').update('123456').digest('hex')
+                password: Crypto.createHash('md5').update(tempPass).digest('hex')
             };
 
             var User = request.server.plugins.sequelize.db.User;
 
-            User.create(newUser).success(function(user) {
+            User.create(newUser).then(function(user) {
 
                 var data = {
                     from: 'epodindianrega@gmail.com',
@@ -53,8 +54,10 @@ exports.postRecoveryForm = {
                     subject: 'Invitation for data entry - PayDash',
                     path: 'emails/editor-share',
                     context: {
-                        name: request.auth.credentials.first_name + request.auth.credentials.last_name,
-                        url: request.connection.info.protocol + '://' + request.info.host + '/login'
+                        name: request.auth.credentials.firstname + request.auth.credentials.lastname,
+                        url: request.connection.info.protocol + '://' + request.info.host + '/login',
+                        username: user.email,
+                        password: tempPass
                     }
                 };
                 //  Send Email
