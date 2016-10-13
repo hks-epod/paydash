@@ -1,0 +1,13 @@
+<div class="container-narrow u-spacing-page-top">
+  <h4 class="text-logo u-text-center">Share data entry interface</h4>
+  <p class="u-text-center">To share data entry interface, enter an email address.</p>
+  <div class="form-narrow">
+    {{> flash}}
+    <form class="login-forms" method="post" action="">
+      <label for='name_email'>Email address</label>
+      <input class="u-full-width" type="text" id='name_email' name='name_email' autocorrect="off" autocapitalize="off" autofocus> 
+      {{> form_security}}
+      <input class="u-full-width button button--primary" type="submit" value="Submit">
+    </form>
+  </div>
+</div>
