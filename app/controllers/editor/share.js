@@ -37,10 +37,12 @@ exports.postShareForm = {
         //  Create user and send pass info
 
         var tempPass = Math.random().toString(36).substr(2, 7);
+        var tempUsername = Math.random().toString(36).substr(2, 4);
         Crypto.randomBytes(8, function(err, buffer) {
 
             var newUser = {
                 email: request.payload.name_email.toLowerCase(),
+                username: tempUsername,
                 password: Crypto.createHash('md5').update(tempPass).digest('hex')
             };
 
@@ -56,7 +58,7 @@ exports.postShareForm = {
                     context: {
                         name: request.auth.credentials.firstname + request.auth.credentials.lastname,
                         url: request.connection.info.protocol + '://' + request.info.host + '/login',
-                        username: user.email,
+                        username: tempUsername,
                         password: tempPass
                     }
                 };
