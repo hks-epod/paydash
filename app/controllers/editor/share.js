@@ -6,7 +6,6 @@ const Joi = require('joi');
 
 exports.show = {
     handler: function(request, reply) {
-
         var share = Translate('/web/editor/share', request.auth.credentials, null);
         reply.view('editor/share', { data: share });
 
@@ -47,7 +46,6 @@ exports.postShareForm = {
             };
 
             var User = request.server.plugins.sequelize.db.User;
-
             User.create(newUser).then(function(user) {
 
                 var data = {

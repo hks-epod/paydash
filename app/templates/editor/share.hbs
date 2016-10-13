@@ -6,6 +6,14 @@
     <form class="login-forms" method="post" action="">
       <label for='name_email'>Email address</label>
       <input class="u-full-width" type="text" id='name_email' name='name_email' autocorrect="off" autocapitalize="off" autofocus> 
+      
+      <label for='share_region'>Share a region</label>
+      <select class="u-full-width" name="share_region" value="" id="lang">
+      {{#each credentials.user_regions as | region |}}
+      <option value="{{region_code}}">{{region.region_name}}</option>
+      {{/each}}
+      </select> 
+
       {{> form_security}}
       <input class="u-full-width button button--primary" type="submit" value="Submit">
     </form>
