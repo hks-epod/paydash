@@ -33,7 +33,6 @@ exports.postShareForm = {
         }
     },
     handler: function(request, reply) {
-        //  Create user and send pass info
 
         var tempPass = Math.random().toString(36).substr(2, 7);
         var tempUsername = Math.random().toString(36).substr(2, 4);
@@ -63,14 +62,16 @@ exports.postShareForm = {
                 //  Send Email
                 var Mailer = request.server.plugins.mailer;
                 Mailer.sendMail(data, function(err, info) {
-                    //  Email Sent 
+                    console.log(err);
                 });
                 request.yar.flash('success', 'An email has sent to this email id with login instructions');
                 return reply.redirect('/editor/info');
 
+            }).catch(function(err) {
+                request.yar.flash('success', 'User with this email is already registered.');
+                return reply.redirect('/editor/info');
             });
 
-            
         });
 
     }
