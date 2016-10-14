@@ -13,7 +13,10 @@ module.exports = function(sequelize, DataTypes) {
         password: DataTypes.STRING,
         role: DataTypes.STRING,
         mobile: DataTypes.STRING,
-        email: DataTypes.STRING,
+        email: {
+            type: DataTypes.STRING,
+            unique: true,
+        },
         title: DataTypes.STRING,
         work_email: DataTypes.STRING,
         isActive: DataTypes.BOOLEAN,
