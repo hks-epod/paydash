@@ -5,7 +5,8 @@ exports.register = function(plugin, options, next) {
     const Controllers = {
         editor: {
             info : require('../controllers/editor/info'),
-            share : require('../controllers/editor/share')
+            share : require('../controllers/editor/share'),
+            editor : require('../controllers/editor/editor')
         }
     };
 
@@ -16,6 +17,12 @@ exports.register = function(plugin, options, next) {
             method: 'GET',
             path: '/editor/info',
             config: Controllers.editor.info.show
+        },
+        //  Editor data
+        {
+            method: 'GET',
+            path: '/editor/data',
+            config: Controllers.editor.editor.getData
         },
         //  Share 
         {

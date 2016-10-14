@@ -67,6 +67,11 @@ exports.paydroid = function(USER_ID,ROLE,VERSION) {
     }
 };
 
+exports.editor = function(BLOCK_CODE,STEP) {
+    return "SELECT a.panchayat_name, a.panchayat_code, b.staff_id, b.name, b.mobile_no, b.designation FROM (SELECT panchayat_code, panchayat_name FROM panchayats WHERE block_code='"+BLOCK_CODE+"') a LEFT JOIN (SELECT staff_id, name, designation, mobile_no, panchayat_code FROM employees_master WHERE block_code='"+BLOCK_CODE+"' AND step='"+STEP+"') b ON a.panchayat_code = b.panchayat_code;" +
+        "SELECT level, designation, alternative_designation FROM employee_configuration WHERE state_code IN (SELECT state_code from blocks WHERE block_code = '"+BLOCK_CODE+"') AND step='"+STEP+"';"
+}
+
 exports.outcomes = function() {
     return "SELECT outcome, label FROM outcomes;" +
         "SELECT date, mean, upper, outcome, lower, treatment FROM estimates_series;" +
