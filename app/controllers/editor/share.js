@@ -5,6 +5,9 @@ const Crypto = require('crypto');
 const Joi = require('joi');
 
 exports.show = {
+    auth: {
+      scope : 'block'
+    },
     handler: function(request, reply) {
         var share = Translate('/web/editor/share', request.auth.credentials, null);
         reply.view('editor/share', { data: share });
@@ -15,7 +18,8 @@ exports.show = {
 exports.postShareForm = {
     auth: {
         mode: 'try',
-        strategy: 'standard'
+        strategy: 'standard',
+        scope : 'block'
     },
     plugins: {
         'hapi-auth-cookie': {
