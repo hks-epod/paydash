@@ -13,6 +13,7 @@ exports.showPage = {
     }
 };
 
+
 exports.getData = {
     auth: {
       scope : ['block', 'editor']
