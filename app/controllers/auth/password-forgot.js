@@ -6,7 +6,8 @@ const Joi = require('joi');
 exports.showRecoveryForm = {
     auth: {
         mode: 'try',
-        strategy: 'standard'
+        strategy: 'standard',
+        scope: ['district', 'block', 'editor']
     },
     plugins: {
         'hapi-auth-cookie': {

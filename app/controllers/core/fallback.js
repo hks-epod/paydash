@@ -4,7 +4,8 @@ exports.notfound = {
     description: 'Fallback page for 404 error',
     auth: {
         mode: 'try',
-        strategy: 'standard'
+        strategy: 'standard',
+        scope: ['block', 'district', 'user']
     },
     plugins: {
         'hapi-auth-cookie': {

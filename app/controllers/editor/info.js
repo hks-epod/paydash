@@ -4,7 +4,7 @@ const Translate = require('../../templates/helpers/t');
 
 exports.show = {
     auth: {
-      scope : 'block'
+      scope : ['block', 'editor']
     },
     handler: function(request, reply) {
 

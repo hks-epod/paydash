@@ -4,6 +4,9 @@ const Joi = require('joi');
 
 exports.showEditProfile = {
     description: 'Show Edit profile settings',
+    auth: {
+      scope : ['block', 'editor', 'district']
+    },
     handler: function(request, reply) {
         var ctx = {
             user: request.auth.credentials
@@ -15,6 +18,9 @@ exports.showEditProfile = {
 
 exports.postEditProfile = {
     description: 'Post Edit profile settings',
+    auth: {
+      scope : ['block', 'editor', 'district']
+    },
     validate: {
         payload: {
             mobile: Joi.string().max(100).allow(''),

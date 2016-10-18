@@ -6,6 +6,9 @@ const Utils = require('../../helpers/utils');
 
 
 exports.getData = {
+    auth: {
+      scope : ['block', 'editor', 'district']
+    },
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;

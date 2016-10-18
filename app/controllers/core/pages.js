@@ -4,7 +4,8 @@ exports.home = {
     description: 'Returns the home page',
     auth: {
         mode: 'try',
-        strategy: 'standard'
+        strategy: 'standard',
+        scope: ['block', 'district', 'editor']
     },
     plugins: {
         'hapi-auth-cookie': {
@@ -12,7 +13,6 @@ exports.home = {
         }
     },
     handler: function(request, reply) {
-
         reply.view('homepage');
 
     }

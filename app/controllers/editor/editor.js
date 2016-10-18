@@ -4,8 +4,19 @@ const Queries = require('../../helpers/queries');
 const Translate = require('../../templates/helpers/t');
 const EditorParser = require('../../helpers/editor_parser');
 
+exports.showPage = {
+    auth: {
+      scope : ['block', 'editor']
+    },
+    handler: function(request, reply) {
+        return reply.view('editor/editor');
+    }
+};
 
 exports.getData = {
+    auth: {
+      scope : ['block', 'editor']
+    },
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;

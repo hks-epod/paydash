@@ -1,3 +1,12 @@
+<div class="editor__subtext">
+    MGNREGA <br>
+    Employee Data Entry
+</div> 
+<select class="editor__selector" name="share_region" value="" id="lang">
+    {{#each credentials.user_regions as | region |}}
+    <option value="{{region_code}}">{{region.region_name}}</option>
+    {{/each}}
+</select>
 <div class="menu menu--vertical menu--pointing-right menu--borderRight menu--width-noraml">
   <a class="menu-item" href="/editor/t_2">{{t "/web/editor/nav/t_2" credentials null}}</a>
   <a class="menu-item" href="/editor/t_6">{{t "/web/editor/nav/t_5" credentials null}}</a>

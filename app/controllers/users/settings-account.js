@@ -5,6 +5,9 @@ const Crypto = require('crypto');
 
 exports.showEditAccount = {
     description: 'Show Edit account settings',
+    auth: {
+      scope : ['block', 'editor', 'district']
+    },
     handler: function(request, reply) {
         reply.view('users/settings-account');
     }
@@ -13,6 +16,9 @@ exports.showEditAccount = {
 
 exports.postChangePassword = {
     description: 'Password change',
+    auth: {
+      scope : ['block', 'editor', 'district']
+    },
     plugins: {
         crumb: {
             key: 'crumb',

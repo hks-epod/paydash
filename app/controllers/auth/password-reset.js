@@ -6,7 +6,8 @@ var Joi = require('joi');
 exports.showResetForm = {
     auth: {
         mode: 'try',
-        strategy: 'standard'
+        strategy: 'standard',
+        scope: ['district', 'block', 'editor']
     },
     plugins: {
         'hapi-auth-cookie': {

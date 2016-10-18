@@ -5,6 +5,9 @@ const MustersParser = require('../../helpers/musters_parser');
 const Translate = require('../../templates/helpers/t');
 
 exports.showPage = {
+    auth: {
+      scope : ['block', 'editor', 'district']
+    },
     handler: function(request, reply) {
         return reply.view('musters/musters');
     }

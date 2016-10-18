@@ -6,7 +6,7 @@ const Joi = require('joi');
 
 exports.show = {
     auth: {
-      scope : 'block'
+      scope : ['block', 'editor']
     },
     handler: function(request, reply) {
         var share = Translate('/web/editor/share', request.auth.credentials, null);
