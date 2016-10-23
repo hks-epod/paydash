@@ -35,7 +35,37 @@ exports.register = function(plugin, options, next) {
             method: 'POST',
             path: '/editor/share',
             config: Controllers.editor.share.postShareForm
-        }
+        },
+         //  T + 2
+        {
+            method: 'GET',
+            path: '/editor/t2',
+            config: Controllers.editor.steps.showT2
+        },
+        //  T + 5
+        {
+            method: 'GET',
+            path: '/editor/t5',
+            config: Controllers.editor.steps.showT5
+        },
+        //  T + 6
+        {
+            method: 'GET',
+            path: '/editor/t6',
+            config: Controllers.editor.steps.showT6
+        },
+        //  T + 7
+        {
+            method: 'GET',
+            path: '/editor/t7',
+            config: Controllers.editor.steps.showT2
+        },
+        //  T + 8
+        {
+            method: 'POST',
+            path: '/editor/t8',
+            config: Controllers.editor.steps.showT8
+        },
     ]);
 
     next();

@@ -37,10 +37,10 @@ exports.getData = {
             // --> Set the dropdown default as blank and make them choose from the list
             // 
 
-            var data = EditorParser.parser(rows);
-
-            // data.translation = Translate('/editor/editor', request.auth.credentials, null);
-            reply(data);
+            reply({
+                editor :  EditorParser.parser(rows),
+                translation : Translate('/editor/editor', request.auth.credentials, null)
+            });
         });
     }
 };
