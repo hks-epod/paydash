@@ -90,5 +90,12 @@ $menu--borderColor-hover: $color-grey-lightest;
 .menu--width-noraml{
   width: 18rem;
 }
+.menu--width-wide{
+  width: 22rem;
+}
+.menu--width-wide .menu-item{
+  padding-left: 0;
+  padding-right: 0;
+}
 
 

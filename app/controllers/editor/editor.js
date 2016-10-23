@@ -23,7 +23,7 @@ exports.getData = {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
 
         var block_code = '3401001';
-        var step = 't6';
+        var step = request.query.step;
         var queryString = Queries.editor(block_code, step);
 
         sequelize.query(queryString, {

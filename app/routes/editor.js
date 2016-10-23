@@ -6,7 +6,8 @@ exports.register = function(plugin, options, next) {
         editor: {
             info : require('../controllers/editor/info'),
             share : require('../controllers/editor/share'),
-            editor : require('../controllers/editor/editor')
+            editor : require('../controllers/editor/editor'),
+            steps : require('../controllers/editor/steps')
         }
     };
 
@@ -62,7 +63,7 @@ exports.register = function(plugin, options, next) {
         },
         //  T + 8
         {
-            method: 'POST',
+            method: 'GET',
             path: '/editor/t8',
             config: Controllers.editor.steps.showT8
         },

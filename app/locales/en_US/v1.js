@@ -129,11 +129,11 @@ module.exports = {
         },
         editor: {
             nav: {
-                t_2: 'Attendance (T+2)',
-                t_5: 'Measurement book (T+5)',
-                t_6: 'Wagelist sending (T+6)',
-                t_7: 'FTO first signature (T+7)',
-                t_8: 'FTO second signature (T+8)',
+                t2: 'Attendance (T+2)',
+                t5: 'Measurement book (T+5)',
+                t6: 'Wagelist sending (T+6)',
+                t7: 'FTO first signature (T+7)',
+                t8: 'FTO second signature (T+8)',
             },
             info: {
                 text: ''
