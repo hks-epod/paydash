@@ -54,7 +54,7 @@ exports.postShareForm = {
                 var data = {
                     from: 'epodindianrega@gmail.com',
                     to: user.email,
-                    subject: 'Invitation for data entry - PayDash',
+                    subject: 'Invitation for Data Entry - PayDash',
                     path: 'emails/editor-share',
                     context: {
                         name: request.auth.credentials.firstname + request.auth.credentials.lastname,
@@ -68,11 +68,11 @@ exports.postShareForm = {
                 Mailer.sendMail(data, function(err, info) {
                     console.log(err);
                 });
-                request.yar.flash('success', 'An email has sent to this email id with login instructions');
+                request.yar.flash('success', 'An email has been sent to this email address with login instructions.');
                 return reply.redirect('/editor/info');
 
             }).catch(function(err) {
-                request.yar.flash('success', 'User with this email is already registered.');
+                request.yar.flash('success', 'A user with this email is already registered.');
                 return reply.redirect('/editor/info');
             });
 
