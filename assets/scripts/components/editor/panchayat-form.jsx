@@ -12,7 +12,7 @@ const Table = React.createClass({
         D3.xhr('/editor/data')
             .header('Content-Type', 'application/json')
             .post(
-                JSON.stringify({year: '2012', customer: 'type1'}),
+                JSON.stringify(this.state.data),
                 function(err, rawData){
                     _this.setState({
                         unsaved : rawData.response
@@ -26,13 +26,27 @@ const Table = React.createClass({
         this.setState({
             unsaved : 'You have unsaved changes'
         });
+
+        var updatedState = this.state.data;
+        updatedState[event.target.dataset.index][event.target.name] = event.target.value;
         
+        this.setState({
+            data : updatedState
+        });
+
+        console.log(this.state.data);
+
     },
 
     getInitialState: function() {
         return {
+            data : [],
             unsaved: ''
         };
+    },
+
+    componentWillMount: function(){
+        this.setState({data: this.props.data});
     },
 
     render: function(){
@@ -40,7 +54,7 @@ const Table = React.createClass({
         var _this = this;
         var table;
 
-        if(_this.props.data.length>0){
+        if(_this.state.data.length>0){
             table = (<table className="editor__table">
                     <thead>
                         <tr>
@@ -52,13 +66,13 @@ const Table = React.createClass({
                     </thead>  
                     <tbody>
                     {
-                        _this.props.data.map(function(data, i) {
+                        _this.state.data.map(function(data, i) {
                             return (
                                 <tr key={i}>
                                     <td >{data.panchayat_name}</td>
-                                    <td><input type="text" defaultValue={data.name || ''} onChange={_this.handleChange}/></td>
-                                    <td><input type="text" defaultValue={data.mobile_no || ''} onChange={_this.handleChange}/></td>
-                                    <td><input type="text" defaultValue={data.designation || ''} onChange={_this.handleChange}/></td>
+                                    <td><input type="text" name="name" data-index={i} defaultValue={data.name || ''} onChange={_this.handleChange}/></td>
+                                    <td><input type="text" name="mobile_no" data-index={i} defaultValue={data.mobile_no || ''} onChange={_this.handleChange}/></td>
+                                    <td><input type="text" name="designation" data-index={i} defaultValue={data.designation || ''} onChange={_this.handleChange}/></td>
                                 </tr>
                             );
                         })
