@@ -26,15 +26,13 @@ const Table = React.createClass({
         this.setState({
             unsaved : 'You have unsaved changes'
         });
-
+ 
         var updatedState = this.state.data;
         updatedState[event.target.dataset.index][event.target.name] = event.target.value;
         
         this.setState({
             data : updatedState
         });
-
-        console.log(this.state.data);
 
     },
 
