@@ -25,6 +25,12 @@ exports.register = function(plugin, options, next) {
             path: '/editor/data',
             config: Controllers.editor.editor.getData
         },
+        //  Editor data update
+        {
+            method: 'POST',
+            path: '/editor/data',
+            config: Controllers.editor.editor.updateData
+        },
         //  Share 
         {
             method: 'GET',

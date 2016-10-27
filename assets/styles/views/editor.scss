@@ -7,3 +7,19 @@
     width: 18rem;
     margin-bottom: 40px;
 }
+.editor__table{
+    width: 100%;
+}
+.editor__table td{
+    padding: 0;
+}
+.editor__table td input {
+    border: 0;
+    margin:0;
+    padding : 25px 5px;
+}
+.editor__table td input:focus {
+    border: 0;
+    margin:0;
+
+}

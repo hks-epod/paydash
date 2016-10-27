@@ -39,8 +39,22 @@ exports.getData = {
 
             reply({
                 editor :  EditorParser.parser(rows),
-                translation : Translate('/editor/editor', request.auth.credentials, null)
+                translation : Translate('/web/editor', request.auth.credentials, null)
             });
         });
+    }
+};
+
+exports.updateData = {
+    auth: {
+      scope : ['block', 'editor']
+    },
+    handler: function(request, reply) {
+
+        var sequelize = request.server.plugins.sequelize.db.sequelize;
+        var data = request.payload;
+
+        reply('Changes saved succesfully');
+
     }
 };

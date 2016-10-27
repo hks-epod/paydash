@@ -136,6 +136,14 @@ module.exports = {
             },
             info: {
                 text: ''
+            },
+            interface:{
+                staff_id: 'Staff Id',
+                name: 'Name',
+                mobile_no: 'Mobile No.',
+                panchayat_code: 'Panchayat Code',
+                panchayat_name : 'Panchayat Name',
+                designation: 'Designation'
             }
         }
     },
