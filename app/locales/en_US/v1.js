@@ -128,6 +128,7 @@ module.exports = {
             colorblind: 'Colorblind'
         },
         editor: {
+            title: 'MGNREGA Employee Data Entry',
             nav: {
                 t2: 'Attendance (T+2)',
                 t5: 'Measurement book (T+5)',
@@ -136,15 +137,33 @@ module.exports = {
                 t8: 'FTO second signature (T+8)',
             },
             info: {
-                text: ''
+                body: '<p>Respected {designation} of {block_name},</p><p>In order for PayDash to serve you better, we request you to kindly enter details of various MGNREGA employees in your Block in the following section. To serve PayDash\'s purpose of helping you manage the payment process better, we request you to update this section regularly.</p> <p>In the absence of regular updation, PayDash will not be able point to officials who are responsible for different steps in the payment process. Please read the following guidelines for using this system.</p> <ol> <li>You may use this system only through the web version of PayDash. Any data entered/edited will automatically reflect in the app version.</li> <li>Kindly update officials\' names and contact details as soon as there is any movement of officials for a certain position. Please click the "Fill Data" option to enter and/or edit employee data.</li> <li>This login is only available for the Block PO and Block CEO of your Block. Please do not share PayDash login details with anybody else.</li> <li>You may, however, invite a junior official to edit employee information, if you wish to. Kindly click the "Share this" option to do so. This will allow the official to only view the employee data entry system, but no other feature of PayDash.</li> <li>As mentioned above, because this login is being given to both the Block PO and Block CEO, we request you to coordinate before any of you makes any change because changes made by one official will also reflect in the other official\'s PayDash account.</li> <p>For any other information, please contact the EPoD India team.</p> </ul>',
+                share: 'Share this',
+                fill: 'Fill data'
             },
-            interface:{
-                staff_id: 'Staff Id',
-                name: 'Name',
-                mobile_no: 'Mobile No.',
-                panchayat_code: 'Panchayat Code',
-                panchayat_name : 'Panchayat Name',
-                designation: 'Designation'
+            editor: {
+                instruction: 'Please update the table below to reflect the current employees in your block reponsible for {step}.',
+                save: 'Save changes',
+                warning: 'Are you sure you want to leave the page? You have unsaved changes that will be lost.',
+                leave: 'Leave page',
+                stay: 'Stay on page',
+                success: 'Changes saved successfully',
+                error: 'There was an error saving your changes. Please contact the PayDash team if this problem persists.',
+                table:{
+                    name: 'Name',
+                    mobile_no: 'Mobile No.',
+                    panchayat_name : 'Panchayat',
+                    designation: 'Designation'
+                }
+            },
+            share: {
+                header: 'Share data entry interface',
+                instruction: 'To share data entry interface, enter an email address',
+                email: 'Email ID',
+                region: 'Share a region',
+                submit: 'Submit',
+                success: 'An email has been sent to this email address with login instructions.',
+                user_exists: 'A user with this email is already registered.'
             }
         }
     },
