@@ -30,9 +30,7 @@ const Table = React.createClass({
 
     handleChange(event) {
 
-        this.setState({
-            unsaved : 'You have unsaved changes'
-        });
+        this.props.updateSavedState();
  
         var updatedState = this.state.data;
         updatedState[event.target.dataset.index][event.target.name] = event.target.value;
@@ -45,8 +43,7 @@ const Table = React.createClass({
 
     getInitialState: function() {
         return {
-            data : [],
-            unsaved: ''
+            data : []
         };
     },
 
@@ -93,7 +90,6 @@ const Table = React.createClass({
                 <div className="editor__table__header u-cf u-spacing-page-top">
                     <h2 className="u-pull-left">{_this.props.translation.nav[_this.props.step]}</h2>
                     <button className="button button--primary u-pull-right" onClick={this.handleSubmit}>{this.props.translation.editor.save}</button>
-                    <h6 className="u-pull-right">{_this.state.unsaved}</h6>
                 </div>  
                 {table}
             </div>     

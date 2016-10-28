@@ -22,7 +22,7 @@ exports.getData = {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
 
-        var block_code = '3304006';
+        var block_code = request.query.block || request.auth.credentials.user_regions[0].region_code;
         var step = request.query.step;
         var queryString = Queries.editor(block_code, step);
 
@@ -39,7 +39,11 @@ exports.getData = {
 
             reply({
                 editor :  EditorParser.parser(rows),
-                translation : Translate('/web/editor', request.auth.credentials, null)
+                translation : Translate('/web/editor', request.auth.credentials, null),
+                user: {
+                    id : request.auth.credentials.id,
+                    regions : request.auth.credentials.user_regions
+                }
             });
         });
     }

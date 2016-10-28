@@ -15,7 +15,8 @@ const Overview = React.createClass({
             .on('load', function(json) { 
                 _this.setState({
                     editor: json.editor,
-                    translation: json.translation
+                    translation: json.translation,
+                    user: json.user
                 });
 
             })
@@ -26,10 +27,12 @@ const Overview = React.createClass({
     },
 
     updateSavedState: function(){
-
+        this.setState({
+            unsaved :true
+        });
     },
 
-    getInitialState: function() {
+    getInitialState: function(){
         return {
             editor:{
                 table:[]
@@ -37,7 +40,7 @@ const Overview = React.createClass({
             unsaved: false
         };
     },
-    componentWillMount: function() {
+    componentWillMount: function(){
         this.fetchData();
     },
     render: function(){
@@ -46,13 +49,13 @@ const Overview = React.createClass({
         var table, sidebar;
 
         if(_this.state.editor.level === 'panchayat'){
-            table = <PanchayatForm isSaved={_this.updateSavedState} step={_this.props.step} data={_this.state.editor.table} translation={_this.state.translation}></PanchayatForm>;
+            table = <PanchayatForm updateSavedState={_this.updateSavedState} step={_this.props.step} user={_this.state.user} data={_this.state.editor.table} translation={_this.state.translation}></PanchayatForm>;
         }
         if(_this.state.editor.level === 'block'){
-            table = <PanchayatForm isSaved={_this.updateSavedState} step={_this.props.step} data={_this.state.editor.table} translation={_this.state.translation}></PanchayatForm>;
+            table = <PanchayatForm updateSavedState={_this.updateSavedState} step={_this.props.step} user={_this.state.user} data={_this.state.editor.table} translation={_this.state.translation}></PanchayatForm>;
         }
         if(_this.state.translation){
-            sidebar = <Sidebar translation={_this.state.translation}></Sidebar>;
+            sidebar = <Sidebar unsaved={_this.state.unsaved} user={_this.state.user} translation={_this.state.translation}></Sidebar>;
         }
         return (
             <div className="pure-g">
