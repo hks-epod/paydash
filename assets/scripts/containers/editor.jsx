@@ -49,10 +49,10 @@ const Overview = React.createClass({
         var table, sidebar;
 
         if(_this.state.editor.level === 'panchayat'){
-            table = <PanchayatForm updateSavedState={_this.updateSavedState} step={_this.props.step} user={_this.state.user} data={_this.state.editor.table} translation={_this.state.translation}></PanchayatForm>;
+            table = <PanchayatForm updateSavedState={_this.updateSavedState} step={_this.props.step} user={_this.state.user} data={_this.state.editor} translation={_this.state.translation}></PanchayatForm>;
         }
         if(_this.state.editor.level === 'block'){
-            table = <PanchayatForm updateSavedState={_this.updateSavedState} step={_this.props.step} user={_this.state.user} data={_this.state.editor.table} translation={_this.state.translation}></PanchayatForm>;
+            table = <BlockForm updateSavedState={_this.updateSavedState} step={_this.props.step} user={_this.state.user} data={_this.state.editor} translation={_this.state.translation}></BlockForm>;
         }
         if(_this.state.translation){
             sidebar = <Sidebar unsaved={_this.state.unsaved} user={_this.state.user} translation={_this.state.translation}></Sidebar>;

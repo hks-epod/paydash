@@ -31,9 +31,8 @@ const Table = React.createClass({
     handleChange(event) {
 
         this.props.updateSavedState();
- 
         var updatedState = this.state.data;
-        updatedState[event.target.dataset.index][event.target.name] = event.target.value;
+        updatedState.table[event.target.dataset.index][event.target.name] = event.target.value;
         
         this.setState({
             data : updatedState
@@ -56,7 +55,7 @@ const Table = React.createClass({
         var _this = this;
         var table;
 
-        if(_this.state.data.length>0){
+        if(_this.state.data.table.length>0){
             table = (<table className="editor__table">
                     <thead>
                         <tr>
@@ -68,13 +67,22 @@ const Table = React.createClass({
                     </thead>  
                     <tbody>
                     {
-                        _this.state.data.map(function(data, i) {
+                        _this.state.data.table.map(function(data, i) {
                             return (
                                 <tr key={i}>
                                     <td >{data.panchayat_name}</td>
                                     <td><input type="text" name="name" data-index={i} defaultValue={data.name || ''} onChange={_this.handleChange}/></td>
                                     <td><input type="text" name="mobile_no" data-index={i} defaultValue={data.mobile_no || ''} onChange={_this.handleChange}/></td>
-                                    <td><input type="text" name="designation" data-index={i} defaultValue={data.designation || ''} onChange={_this.handleChange}/></td>
+                                    <td>
+                                        <select name="designation" defaultValue={data.designation || ''}  data-index={i} onChange={_this.handleChange}>
+                                            <option value="" disabled></option>
+                                            {
+                                              _this.state.data.designations.map(function(designation, index) {
+                                                return <option key={index} value={designation}>{designation}</option>;
+                                              })
+                                            }
+                                        </select>
+                                    </td>
                                 </tr>
                             );
                         })
