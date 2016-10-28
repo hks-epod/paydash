@@ -128,7 +128,7 @@ module.exports = {
             colorblind: 'Colorblind'
         },
         editor: {
-            title: 'MGNREGA <br>Employee Data Entry',
+            title: 'MGNREGA Employee Data Entry',
             nav: {
                 t2: 'Attendance (T+2)',
                 t5: 'Measurement book (T+5)',
