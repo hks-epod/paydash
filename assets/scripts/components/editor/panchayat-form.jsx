@@ -56,10 +56,10 @@ const Table = React.createClass({
             table = (<table className="editor__table">
                     <thead>
                         <tr>
-                            <th>{_this.props.translation.interface['panchayat_name']}</th>
-                            <th>{_this.props.translation.interface['name']}</th>
-                            <th>{_this.props.translation.interface['mobile_no']}</th>
-                            <th>{_this.props.translation.interface['designation']}</th>
+                            <th>{_this.props.translation.editor.table['panchayat_name']}</th>
+                            <th>{_this.props.translation.editor.table['name']}</th>
+                            <th>{_this.props.translation.editor.table['mobile_no']}</th>
+                            <th>{_this.props.translation.editor.table['designation']}</th>
                         </tr>
                     </thead>  
                     <tbody>
@@ -83,8 +83,11 @@ const Table = React.createClass({
 
         return (
             <div>
-                <button className="button button--primary u-pull-right" onClick={this.handleSubmit}>Save</button>
-                <span>{_this.state.unsaved}</span>
+                <div className="editor__table__header u-cf u-spacing-page-top">
+                    <h2 className="u-pull-left">{_this.props.title}</h2>
+                    <button className="button button--primary u-pull-right" onClick={this.handleSubmit}>Save</button>
+                    <h6 className="u-pull-right">{_this.state.unsaved}</h6>
+                </div>  
                 {table}
             </div>     
         );

@@ -3,47 +3,11 @@
 const Queries = require('../../helpers/queries');
 const Translate = require('../../templates/helpers/t');
 
-exports.showT2 = {
+exports.showStep = {
     auth: {
       scope : ['block', 'editor']
     },
     handler: function(request, reply) {
-        return reply.view('editor/t2');
-    }
-};
-
-exports.showT5 = {
-    auth: {
-      scope : ['block', 'editor']
-    },
-    handler: function(request, reply) {
-        return reply.view('editor/t5');
-    }
-};
-
-exports.showT6 = {
-    auth: {
-      scope : ['block', 'editor']
-    },
-    handler: function(request, reply) {
-        return reply.view('editor/t6');
-    }
-};
-
-exports.showT7 = {
-    auth: {
-      scope : ['block', 'editor']
-    },
-    handler: function(request, reply) {
-        return reply.view('editor/t7');
-    }
-};
-
-exports.showT8 = {
-    auth: {
-      scope : ['block', 'editor']
-    },
-    handler: function(request, reply) {
-        return reply.view('editor/t8');
+        return reply.view('editor/step');
     }
 };

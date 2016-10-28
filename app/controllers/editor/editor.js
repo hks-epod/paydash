@@ -69,7 +69,7 @@ exports.updateData = {
                 console.log(test);
             });
 
-        })
+        });
         // if block level
             // Does a record already exist for this block - step combination?
             // If yes

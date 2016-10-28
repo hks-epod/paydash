@@ -40,13 +40,13 @@ const Overview = React.createClass({
         var table;
 
         if(_this.state.editor.level === 'panchayat'){
-            table = <PanchayatForm data={_this.state.editor.table} translation={_this.state.translation}></PanchayatForm>;
+            table = <PanchayatForm title={_this.state.translation.nav[_this.props.step]} data={_this.state.editor.table} translation={_this.state.translation}></PanchayatForm>;
         }
         if(_this.state.editor.level === 'block'){
-            table = <PanchayatForm data={_this.state.editor.table} translation={_this.state.translation}></PanchayatForm>;
+            table = <PanchayatForm title={_this.state.translation.nav[_this.props.step]} data={_this.state.editor.table} translation={_this.state.translation}></PanchayatForm>;
         }
         return (
-            <div className="editor-wrapper">
+            <div className="editor__wrapper">
                 {table}
             </div>     
         );

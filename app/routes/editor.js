@@ -47,31 +47,31 @@ exports.register = function(plugin, options, next) {
         {
             method: 'GET',
             path: '/editor/t2',
-            config: Controllers.editor.steps.showT2
+            config: Controllers.editor.steps.showStep
         },
         //  T + 5
         {
             method: 'GET',
             path: '/editor/t5',
-            config: Controllers.editor.steps.showT5
+            config: Controllers.editor.steps.showStep
         },
         //  T + 6
         {
             method: 'GET',
             path: '/editor/t6',
-            config: Controllers.editor.steps.showT6
+            config: Controllers.editor.steps.showStep
         },
         //  T + 7
         {
             method: 'GET',
             path: '/editor/t7',
-            config: Controllers.editor.steps.showT2
+            config: Controllers.editor.steps.showStep
         },
         //  T + 8
         {
             method: 'GET',
             path: '/editor/t8',
-            config: Controllers.editor.steps.showT8
+            config: Controllers.editor.steps.showStep
         },
     ]);
 
