@@ -13,7 +13,7 @@ const Table = React.createClass({
         ga('send', 'event', {
             eventCategory: 'Editor Screen',
             eventAction: 'click',
-            eventLabel: _this.props.step
+            eventLabel: _this.props.step + '/' + _this.props.user.id
         });
 
         D3.xhr('/editor/data')
@@ -91,6 +91,7 @@ const Table = React.createClass({
                     <h2 className="u-pull-left">{_this.props.translation.nav[_this.props.step]}</h2>
                     <button className="button button--primary u-pull-right" onClick={this.handleSubmit}>{this.props.translation.editor.save}</button>
                 </div>  
+                <div>{_this.props.translation.editor.instruction} {_this.props.translation.nav[_this.props.step]}</div>
                 {table}
             </div>     
         );

@@ -8,23 +8,47 @@ const Table = React.createClass({
 
     handleSubmit(event) {
 
-        
-        console.log('form submit');
+        var _this = this;
 
+        ga('send', 'event', {
+            eventCategory: 'Editor Screen',
+            eventAction: 'click',
+            eventLabel: _this.props.step + '/' + _this.props.user.id
+        });
+
+        D3.xhr('/editor/data')
+            .header('Content-Type', 'application/json')
+            .post(
+                JSON.stringify(this.state.data),
+                function(err, rawData){
+                    _this.setState({
+                        unsaved : rawData.response
+                    });
+                }
+            );
     },
 
     handleChange(event) {
 
-        this.setState({
-            unsaved : 'You have unsaved changes'
-        });
+        this.props.updateSavedState();
+ 
+        var updatedState = this.state.data;
+        updatedState[event.target.dataset.index][event.target.name] = event.target.value;
         
+        this.setState({
+            data : updatedState
+        });
+
     },
 
     getInitialState: function() {
         return {
-            unsaved: ''
+            data : []
         };
+    },
+
+    componentWillMount: function(){
+        this.setState({data: this.props.data});
     },
 
     render: function(){
@@ -32,7 +56,7 @@ const Table = React.createClass({
         var _this = this;
         var table;
 
-        if(_this.props.data.length>0){
+        if(_this.state.data.length>0){
             table = (<table className="editor__table">
                     <thead>
                         <tr>
@@ -43,12 +67,12 @@ const Table = React.createClass({
                     </thead>  
                     <tbody>
                     {
-                        _this.props.data.map(function(data, i) {
+                        _this.state.data.map(function(data, i) {
                             return (
                                 <tr key={i}>
-                                    <td><input type="text" defaultValue={data.name || ''} onChange={this.handleChange}/></td>
-                                    <td><input type="text" defaultValue={data.mobile_no || ''} onChange={this.handleChange}/></td>
-                                    <td><input type="text" defaultValue={data.designation || ''} onChange={this.handleChange}/></td>
+                                    <td><input type="text" name="name" data-index={i} defaultValue={data.name || ''} onChange={_this.handleChange}/></td>
+                                    <td><input type="text" name="mobile_no" data-index={i} defaultValue={data.mobile_no || ''} onChange={_this.handleChange}/></td>
+                                    <td><input type="text" name="designation" data-index={i} defaultValue={data.designation || ''} onChange={_this.handleChange}/></td>
                                 </tr>
                             );
                         })
@@ -61,14 +85,27 @@ const Table = React.createClass({
 
         return (
             <div>
-                <form>
-                    {table}
-                    <p>{_this.state.unsaved}</p>
-                    <button onClick={this.handleSubmit}>Submit</button>
-                </form>
+                <div className="editor__table__header u-cf u-spacing-page-top">
+                    <h2 className="u-pull-left">{_this.props.translation.nav[_this.props.step]}</h2>
+                    <button className="button button--primary u-pull-right" onClick={this.handleSubmit}>{this.props.translation.editor.save}</button>
+                </div>  
+                <div>{_this.props.translation.editor.instruction} {_this.props.translation.nav[_this.props.step]}</div>
+                {table}
             </div>     
         );
     }
 });
 
 export default Table;
+
+
+
+
+
+
+
+
+
+
+
+

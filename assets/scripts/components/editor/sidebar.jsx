@@ -8,7 +8,14 @@ const Table = React.createClass({
 
       event.preventDefault();
       if(this.props.unsaved === true){
+        
         var action = confirm(this.props.translation.editor.warning);
+        
+        ga('send', 'event', {
+            eventCategory: 'Not Saved Message',
+            eventAction: 'View',
+            eventLabel: action
+        });
         if(action === true){
           window.location = event.target.href;
         }

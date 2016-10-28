@@ -142,7 +142,7 @@ module.exports = {
                 fill: 'Fill data'
             },
             editor: {
-                instruction: 'Please update the table below to reflect the current employees in your block reponsible for {step}.',
+                instruction: 'Please update the table below to reflect the current employees in your block responsible for ',
                 save: 'Save changes',
                 warning: 'Are you sure you want to leave the page? You have unsaved changes that will be lost.',
                 leave: 'Leave page',
