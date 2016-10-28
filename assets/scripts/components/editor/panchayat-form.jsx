@@ -9,6 +9,13 @@ const Table = React.createClass({
     handleSubmit(event) {
 
         var _this = this;
+
+        ga('send', 'event', {
+            eventCategory: 'Editor Screen',
+            eventAction: 'click',
+            eventLabel: _this.props.step
+        });
+
         D3.xhr('/editor/data')
             .header('Content-Type', 'application/json')
             .post(
@@ -84,7 +91,7 @@ const Table = React.createClass({
         return (
             <div>
                 <div className="editor__table__header u-cf u-spacing-page-top">
-                    <h2 className="u-pull-left">{_this.props.title}</h2>
+                    <h2 className="u-pull-left">{_this.state.translation.nav[_this.props.step]}</h2>
                     <button className="button button--primary u-pull-right" onClick={this.handleSubmit}>{this.props.translation.editor.save}</button>
                     <h6 className="u-pull-right">{_this.state.unsaved}</h6>
                 </div>  
