@@ -1,13 +1,12 @@
 <div class="container-narrow u-spacing-page-top">
-  <h4 class="text-logo u-text-center">Share data entry interface</h4>
-  <p class="u-text-center">To share data entry interface, enter an email address.</p>
+  <h4 class="text-logo u-text-center">{{t "/web/editor/share/header" credentials null}}</h4>
+  <p class="u-text-center">{{t "/web/editor/share/instruction" credentials null}}</p>
   <div class="form-narrow">
     {{> flash}}
     <form class="login-forms" method="post" action="">
-      <label for='name_email'>Email address</label>
+      <label for='name_email'>{{t "/web/editor/share/email" credentials null}}</label>
       <input class="u-full-width" type="text" id='name_email' name='name_email' autocorrect="off" autocapitalize="off" autofocus> 
-      
-      <label for='share_region'>Share a region</label>
+      <label for='share_region'>{{t "/web/editor/share/region" credentials null}}</label>
       <select class="u-full-width" name="share_region" value="" id="lang">
       {{#each credentials.user_regions as | region |}}
       <option value="{{region_code}}">{{region.region_name}}</option>
@@ -15,7 +14,7 @@
       </select> 
 
       {{> form_security}}
-      <input class="u-full-width button button--primary" type="submit" value="Submit">
+      <input class="u-full-width button button--primary" type="submit" value={{t "/web/editor/share/submit" credentials null}}>
     </form>
   </div>
 </div>

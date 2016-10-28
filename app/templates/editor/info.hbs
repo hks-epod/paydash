@@ -4,13 +4,13 @@
       {{> editor-nav}}
     </div>
     <div class="pure-u pure-u-19-24">
-      <h2>MGNREGA Employee Data Entry</h2>
+      <h2>{{t "/web/editor/title" credentials null}}</h2>
       <div class="">
-        {{{info.body}}}
+        {{{t "/web/editor/info/body" credentials null}}}
       </div>
       <br>
-      <a href="/editor/share" class="button button--primary">Share This</a>
-      <a href="/editor/t_2" class="button button--primary">Fill data</a>
+      <a href="/editor/share" class="button button--primary">{{t "/web/editor/info/share" credentials null}}</a>
+      <a href="/editor/t_2" class="button button--primary">{{t "/web/editor/info/fill" credentials null}}</a>
       {{> flash}}
     </div>
   </div>

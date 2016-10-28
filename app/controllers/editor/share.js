@@ -68,11 +68,11 @@ exports.postShareForm = {
                 Mailer.sendMail(data, function(err, info) {
                     console.log(err);
                 });
-                request.yar.flash('success', 'An email has been sent to this email address with login instructions.');
+                request.yar.flash('success', Translate('/web/editor/share/success', request.auth.credentials, null));
                 return reply.redirect('/editor/info');
 
             }).catch(function(err) {
-                request.yar.flash('success', 'A user with this email is already registered.');
+                request.yar.flash('success', Translate('/web/editor/share/user_exists', request.auth.credentials, null));
                 return reply.redirect('/editor/info');
             });
 
