@@ -72,6 +72,10 @@ exports.editor = function(BLOCK_CODE,STEP) {
         "SELECT level, designation, alternative_designation FROM employee_configuration WHERE state_code IN (SELECT state_code from blocks WHERE block_code = '"+BLOCK_CODE+"') AND step='"+STEP+"';"
 }
 
+exports.editor_info = function(BLOCK_CODE) {
+    return "SELECT * FROM officer_configuration WHERE state_code IN (SELECT state_code from blocks WHERE block_code = '"+BLOCK_CODE+"') ORDER BY designation_id;";
+}
+
 exports.outcomes = function() {
     return "SELECT outcome, label FROM outcomes;" +
         "SELECT date, mean, upper, outcome, lower, treatment FROM estimates_series;" +
