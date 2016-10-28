@@ -127,7 +127,7 @@ module.exports = {
             colorblind: 'कलर ब्लाइंड'
         },
         editor: {
-            title: 'MGNREGA अधिकारी जानकारी डाटा एंट्री सिस्टम',
+            title: 'MGNREGA <br>अधिकारी जानकारी डाटा एंट्री सिस्टम',
             nav: {
                 t2: 'हाज़री (T+2)',
                 t5: 'मूल्यांकन बुक/MB (T+5)',

@@ -85,7 +85,7 @@ const Table = React.createClass({
             <div>
                 <div className="editor__table__header u-cf u-spacing-page-top">
                     <h2 className="u-pull-left">{_this.props.title}</h2>
-                    <button className="button button--primary u-pull-right" onClick={this.handleSubmit}>Save</button>
+                    <button className="button button--primary u-pull-right" onClick={this.handleSubmit}>{this.props.translation.editor.save}</button>
                     <h6 className="u-pull-right">{_this.state.unsaved}</h6>
                 </div>  
                 {table}

@@ -4,13 +4,13 @@
       {{> editor-nav}}
     </div>
     <div class="pure-u pure-u-19-24">
-      <h2>{{t "/web/editor/title" credentials null}}</h2>
+      <h2>{{{t "/web/editor/title" credentials null}}}</h2>
       <div class="">
         {{{t "/web/editor/info/body" credentials null}}}
       </div>
       <br>
-      <a href="/editor/share" class="button button--primary">{{t "/web/editor/info/share" credentials null}}</a>
-      <a href="/editor/t2" class="button button--primary">{{t "/web/editor/info/fill" credentials null}}</a>
+      <a onclick="ga('send', 'event', {eventCategory: 'Info Screen',eventAction: 'click',eventLabel: 'Share Button'});" href="/editor/share" class="button button--primary">{{t "/web/editor/info/share" credentials null}}</a>
+      <a onclick="ga('send', 'event', {eventCategory: 'Info Screen',eventAction: 'click',eventLabel: 'Fill Data Button'});" href="/editor/t2" class="button button--primary">{{t "/web/editor/info/fill" credentials null}}</a>
       {{> flash}}
     </div>
   </div>
