@@ -35,10 +35,10 @@ exports.buildSubject = function(subjectStub, regionsResponse) {
 
 exports.getDesignationArray = function(designation,alternative_designation) {
     if (alternative_designation === null) {
-        return [designation.trim()];
+        return [designation.trim(),'Other'];
     }
     else {
-        return [designation].concat(alternative_designation.split(';')).map(function(x) { return x.trim(); });
+        return [designation].concat(alternative_designation.split(';').map(function(x) { return x.trim(); }),['Other']);
     }
 
 }

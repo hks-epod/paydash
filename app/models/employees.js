@@ -19,7 +19,8 @@ module.exports = function(sequelize, DataTypes) {
         panchayat_code: {
             type: DataTypes.STRING,
             unique: 'compositeIndex'
-        }
+        },
+        edited_by: DataTypes.INTEGER
 
     }, {
         tableName: 'employees_master',

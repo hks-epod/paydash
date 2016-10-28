@@ -55,36 +55,42 @@ exports.updateData = {
     handler: function(request, reply) {
 
         var block_code = '3304006';
+        var user_id = request.auth.credentials.id;
         var Employees = request.server.plugins.sequelize.db.Employees;
         var step = 't2';
-        var data = request.payload;
+        var level = request.payload.level;
+        var data = request.payload.table;
 
-        // data.forEach(function(d) {
-        //     Employees.upsert({
-        //         staff_id: '99_',
-        //         name: d.name,
-        //         mobile_no: d.mobile_no,
-        //         block_code: block_code,
-        //         panchayat_code: d.panchayat_code,
-        //         designation: 'TA',
-        //         step: step
-        //     }).then(function(test){ 
-        //         console.log(test);
-        //     });
+        data.forEach(function(d) {
 
-        // });
-        // if block level
-            // Does a record already exist for this block - step combination?
-            // If yes
-                // Is it updating an existing person's info?
-                // If yes
+            var panchayat_code = (level==='panchayat' ? d.panchayat_code : '0000000000');
 
-                // if no
-                    // Need to assign a new staff id and update the whole record
+            if ((d.name===null || d.name.trim()==='') && (d.mobile_no===null || d.mobile_no.trim()==='') && (d.designation===null || d.designation.trim()==='')) {
+                
+                Employees.destroy({
+                    where: {
+                        step: step,
+                        block_code: block_code,
+                        panchayat_code: panchayat_code,
+                    }
+                });
 
-            // If no
-                // Insert new record
-        // if panchayat level
+            } else {
+
+                Employees.upsert({
+                    staff_id: d.staff_id,
+                    name: d.name,
+                    mobile_no: d.mobile_no,
+                    block_code: block_code,
+                    panchayat_code: panchayat_code,
+                    designation: d.designation,
+                    step: step,
+                    edited_by: user_id
+                }); 
+            }
+
+
+        });
 
         reply('Changes saved succesfully');
 

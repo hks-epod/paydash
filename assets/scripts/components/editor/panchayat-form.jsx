@@ -75,7 +75,7 @@ const Table = React.createClass({
                                     <td><input type="text" name="mobile_no" data-index={i} defaultValue={data.mobile_no || ''} onChange={_this.handleChange}/></td>
                                     <td>
                                         <select name="designation" defaultValue={data.designation || ''}  data-index={i} onChange={_this.handleChange}>
-                                            <option value="" disabled></option>
+                                            <option value=""></option>
                                             {
                                               _this.state.data.designations.map(function(designation, index) {
                                                 return <option key={index} value={designation}>{designation}</option>;
