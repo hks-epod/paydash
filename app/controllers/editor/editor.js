@@ -36,7 +36,7 @@ exports.getData = {
             // How do we deal with designations of already-seeded users that are different from the approved list of designations?
             // --> Set the dropdown default as blank and make them choose from the list
             // 
-
+            console.log(EditorParser.parser(rows))
             reply({
                 editor :  EditorParser.parser(rows),
                 translation : Translate('/web/editor', request.auth.credentials, null),
@@ -56,24 +56,25 @@ exports.updateData = {
     handler: function(request, reply) {
 
         var block_code = '3304006';
+        console.log(request)
         var Employees = request.server.plugins.sequelize.db.Employees;
         var step = 't2';
         var data = request.payload;
 
-        data.forEach(function(d) {
-            Employees.upsert({
-                staff_id: '99_',
-                name: d.name,
-                mobile_no: d.mobile_no,
-                block_code: block_code,
-                panchayat_code: d.panchayat_code,
-                designation: 'TA',
-                step: step
-            }).then(function(test){ 
-                console.log(test);
-            });
+        // data.forEach(function(d) {
+        //     Employees.upsert({
+        //         staff_id: '99_',
+        //         name: d.name,
+        //         mobile_no: d.mobile_no,
+        //         block_code: block_code,
+        //         panchayat_code: d.panchayat_code,
+        //         designation: 'TA',
+        //         step: step
+        //     }).then(function(test){ 
+        //         console.log(test);
+        //     });
 
-        });
+        // });
         // if block level
             // Does a record already exist for this block - step combination?
             // If yes

@@ -56,23 +56,32 @@ const Table = React.createClass({
         var _this = this;
         var table;
 
-        if(_this.state.data.length>0){
+        if(_this.state.data.table.length>0){
             table = (<table className="editor__table">
                     <thead>
                         <tr>
-                            <th>{_this.props.translation.interface['name']}</th>
-                            <th>{_this.props.translation.interface['mobile_no']}</th>
-                            <th>{_this.props.translation.interface['designation']}</th>
+                            <th>{_this.props.translation.editor.table['name']}</th>
+                            <th>{_this.props.translation.editor.table['mobile_no']}</th>
+                            <th>{_this.props.translation.editor.table['designation']}</th>
                         </tr>
                     </thead>  
                     <tbody>
                     {
-                        _this.state.data.map(function(data, i) {
+                        _this.state.data.table.map(function(data, i) {
                             return (
                                 <tr key={i}>
                                     <td><input type="text" name="name" data-index={i} defaultValue={data.name || ''} onChange={_this.handleChange}/></td>
                                     <td><input type="text" name="mobile_no" data-index={i} defaultValue={data.mobile_no || ''} onChange={_this.handleChange}/></td>
-                                    <td><input type="text" name="designation" data-index={i} defaultValue={data.designation || ''} onChange={_this.handleChange}/></td>
+                                    <td>
+                                        <select name="designation" defaultValue={data.designation || ''}  data-index={i} onChange={_this.handleChange}>
+                                            <option value="" disabled></option>
+                                            {
+                                              _this.state.data.designations.map(function(designation, index) {
+                                                return <option key={index} value={designation}>{designation}</option>;
+                                              })
+                                            }
+                                        </select>
+                                    </td>
                                 </tr>
                             );
                         })
