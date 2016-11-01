@@ -9,9 +9,12 @@ const D3= require('d3');
 
 const Overview = React.createClass({
 
-    fetchData: function() {
+    fetchData: function(block_code) {
         var _this = this;
-        D3.json(_this.props.url + '?step=' + _this.props.step)
+
+        var block_code_url_string = block_code ? '&block_code=' + block_code : '';
+
+        D3.json(_this.props.url + '?step=' + _this.props.step + block_code_url_string)
             .on('load', function(json) { 
                 _this.setState({
                     editor: json.editor,
@@ -24,6 +27,10 @@ const Overview = React.createClass({
                 console.error(_this.props.url, status, error.toString());
             })
             .get();
+    },
+
+    blockSelection: function(event){
+
     },
 
     updateSavedState: function(){
@@ -55,7 +62,7 @@ const Overview = React.createClass({
             table = <BlockForm updateSavedState={_this.updateSavedState} step={_this.props.step} user={_this.state.user} data={_this.state.editor} translation={_this.state.translation}></BlockForm>;
         }
         if(_this.state.translation){
-            sidebar = <Sidebar unsaved={_this.state.unsaved} user={_this.state.user} translation={_this.state.translation}></Sidebar>;
+            sidebar = <Sidebar unsaved={_this.state.unsaved} user={_this.state.user} translation={_this.state.translation} fetchData={_this.fetchData}></Sidebar>;
         }
         return (
             <div className="pure-g">
