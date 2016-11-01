@@ -16,6 +16,7 @@ const Overview = React.createClass({
 
         D3.json(_this.props.url + '?step=' + _this.props.step + block_code_url_string)
             .on('load', function(json) { 
+                
                 _this.setState({
                     editor: json.editor,
                     translation: json.translation,
@@ -27,10 +28,6 @@ const Overview = React.createClass({
                 console.error(_this.props.url, status, error.toString());
             })
             .get();
-    },
-
-    blockSelection: function(event){
-
     },
 
     updateSavedState: function(){

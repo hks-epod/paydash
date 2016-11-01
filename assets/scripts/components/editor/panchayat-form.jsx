@@ -49,6 +49,9 @@ const Table = React.createClass({
     componentWillMount: function(){
         this.setState({data: this.props.data});
     },
+    componentWillReceiveProps: function(){
+        this.setState({data: this.props.data});
+    },
 
     render: function(){
 
