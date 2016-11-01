@@ -36,14 +36,16 @@ exports.getData = {
             // How do we deal with designations of already-seeded users that are different from the approved list of designations?
             // --> Set the dropdown default as blank and make them choose from the list
             // 
-            reply({
+            var final_result = {
                 editor :  EditorParser.parser(rows),
                 translation : Translate('/web/editor', request.auth.credentials, null),
                 user: {
                     id : request.auth.credentials.id,
                     regions : request.auth.credentials.user_regions
                 }
-            });
+            }; 
+            final_result.editor.block_code = block_code;
+            reply(final_result);
         });
     }
 };
