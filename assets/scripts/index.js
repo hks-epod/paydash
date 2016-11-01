@@ -8,7 +8,6 @@ import Performance from './containers/performance.jsx';
 import Editor from './containers/editor.jsx';
 import ActiveLink from './lib/active-link';
 
-ActiveLink.init();
 require('./lib/dropdown');
 
 
@@ -43,3 +42,5 @@ if (window.location.pathname === '/editor/t7') {
 if (window.location.pathname === '/editor/t8') {
     render( <Editor url='/editor/data' step='t8'/> , document.getElementById('editor'));
 }
+
+ActiveLink.init();

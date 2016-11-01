@@ -19,7 +19,11 @@ const Table = React.createClass({
         D3.xhr('/editor/data')
             .header('Content-Type', 'application/json')
             .post(
-                JSON.stringify(this.state.data),
+                JSON.stringify({
+                    block_code: _this.props.block_code,
+                    step: _this.props.step,
+                    data: this.state.data
+                }),
                 function(err, rawData){
                     _this.setState({
                         unsaved : rawData.response
@@ -35,14 +39,16 @@ const Table = React.createClass({
         updatedState.table[event.target.dataset.index][event.target.name] = event.target.value;
         
         this.setState({
-            data : updatedState
+            data : updatedState,
+            unsavedChanges: this.props.translation.editor.unsaved
         });
 
     },
 
     getInitialState: function() {
         return {
-            data : []
+            data : [],
+            unsavedChanges : ''
         };
     },
 
@@ -98,11 +104,13 @@ const Table = React.createClass({
 
         return (
             <div>
-                <div className="editor__table__header u-cf u-spacing-page-top">
-                    <h2 className="u-pull-left">{_this.props.translation.nav[_this.props.step]}</h2>
-                    <button className="button button--primary u-pull-right" onClick={this.handleSubmit}>{this.props.translation.editor.save}</button>
-                </div>  
+                <h2 className="u-spacing-page-top">{_this.props.translation.nav[_this.props.step]}</h2>
                 <div>{_this.props.translation.editor.instruction} {_this.props.translation.nav[_this.props.step]}</div>
+                <div className="editor__table__header u-cf u-spacing-page-top">
+                    <h5 className="u-pull-left">{_this.state.unsavedChanges}</h5>
+                    <button className="button button--primary u-pull-right" onClick={this.handleSubmit}>{this.props.translation.editor.save}</button>
+                </div> 
+
                 {table}
             </div>     
         );

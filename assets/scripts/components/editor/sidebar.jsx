@@ -44,7 +44,7 @@ const Table = React.createClass({
         var _this = this;
 
         return (
-            <div className="u-pos-fixed">
+            <div className="">
               <div className="editor__subtext">
                   {_this.props.translation.title}
               </div> 
