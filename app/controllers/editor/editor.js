@@ -22,7 +22,7 @@ exports.getData = {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
 
-        var block_code = request.query.block || request.auth.credentials.user_regions[0].region_code;
+        var block_code = request.query.block_code || request.auth.credentials.user_regions[0].region_code;
         var step = request.query.step;
         var queryString = Queries.editor(block_code, step);
 

@@ -1,18 +1,21 @@
 'use strict';
 
+const Queries = require('../../helpers/queries');
+const Translate = require('../../templates/helpers/t');
+
 exports.show = {
     auth: {
-      scope : ['block', 'editor']
+        scope: ['block', 'editor']
     },
     handler: function(request, reply) {
         reply.view('editor/info');
-        
+
     }
 };
 
 exports.getData = {
     auth: {
-      scope : ['block', 'editor']
+        scope: ['block', 'editor']
     },
     handler: function(request, reply) {
 
@@ -25,14 +28,14 @@ exports.getData = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-        	var officer_data = {
-        		block_officer1 :  rows[0].designation,
-        		block_officer2 :  rows[1].designation
-        	};
+            var officer_data = {
+                block_officer1: rows[0].designation,
+                block_officer2: rows[1].designation
+            };
 
             reply({
-                officer_data :  officer_data,
-                translation : Translate('/web/editor', request.auth.credentials, null)
+                officer_data: officer_data,
+                translation: Translate('/web/editor', request.auth.credentials, null)
             });
         });
     }
