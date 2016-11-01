@@ -56,28 +56,61 @@ exports.updateData = {
     },
     handler: function(request, reply) {
 
-        var block_code = '3304006';
+        var block_code = request.payload.block_code;
         var user_id = request.auth.credentials.id;
         var Employees = request.server.plugins.sequelize.db.Employees;
-        var step = 't2';
-        var level = request.payload.level;
-        var data = request.payload.table;
+        var EmployeesHistory = request.server.plugins.sequelize.db.EmployeesHistory;
+        var step = request.payload.step;
+        var level = request.payload.data.level;
+        var data = request.payload.data.table;
+
+        // If all the fillable fields (name, mobile_no, designation) are empty, we need to delete the record if it exists, recording the deletion manually in the history table. 
+            // we can't use triggers here because we need to record who made the deletion.
+        // If there is new information to put in the database, we do an upsert and let our insert/update triggers record the changes automatically in the history table.
+            // there is an edge case here: since the updated_by field starts out as null, update operations will occur on the master table the first time someone saves the interface table even for rows where no user changes were made.
+            // the same phenomenon will also occur if a different user comes in and saves the interface table
 
         data.forEach(function(d) {
 
             var panchayat_code = (level==='panchayat' ? d.panchayat_code : '0000000000');
 
-            if ((d.name===null || d.name.trim()==='') && (d.mobile_no===null || d.mobile_no.trim()==='') && (d.designation===null || d.designation.trim()==='')) {
+            if ((d.name===null || d.name.trim()==='') && (d.mobile_no===null || d.mobile_no.trim()==='') && (d.designation===null || d.designation.trim()==='')) { // check if fields are empty, in which case we want to delete the record if it exists
                 
-                Employees.destroy({
+
+                Employees.findOne({ // check if the record exists
                     where: {
                         step: step,
                         block_code: block_code,
-                        panchayat_code: panchayat_code,
+                        panchayat_code: panchayat_code
+                    }
+                })
+                .then(function(employee) {
+                    if (employee) { // the record exists, so we log it in the history table then delete the record in the master table
+                        EmployeesHistory.create({
+                            staff_id: employee.staff_id,
+                            name: employee.name,
+                            mobile_no: employee.mobile_no,
+                            block_code: block_code,
+                            panchayat_code: panchayat_code,
+                            designation: employee.designation,
+                            step: step,
+                            edited_by: user_id,
+                            edited_at: new Date(),
+                            action: 'delete'
+                        }).then(function() {
+                            Employees.destroy({
+                                where: {
+                                    step: step,
+                                    block_code: block_code,
+                                    panchayat_code: panchayat_code,
+                                }
+                            });
+                        });
                     }
                 });
 
-            } else {
+
+            } else { // we can insert or update in the database table. update will occur if a duplicate on the primary key is found (step, block_code, panchayat_code), otherwise an insert will occur. if the whole row is a duplicate nothing will happen, but the gotcha is the edited_by field may be different from the id of the current user, in which case an update will occur.
 
                 Employees.upsert({
                     staff_id: d.staff_id,
