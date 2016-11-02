@@ -25,7 +25,7 @@ const Table = React.createClass({
                 }),
                 function(err, rawData){
                     _this.setState({
-                        unsaved : rawData.response
+                        unsavedChanges : rawData.response
                     });
                 }
             );
