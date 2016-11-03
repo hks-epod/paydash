@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
 
     var Employees = sequelize.define('Employees', {
 
-        staff_id: DataTypes.STRING,
+        staff_id: DataTypes.INTEGER,
         name: DataTypes.STRING,
         designation: DataTypes.STRING,
         step: {
@@ -20,7 +20,8 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             primaryKey: true
         },
-        edited_by: DataTypes.INTEGER
+        edited_by: DataTypes.INTEGER,
+        to_delete: DataTypes.INTEGER
 
     }, {
         tableName: 'employees_master',
