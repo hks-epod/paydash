@@ -82,11 +82,13 @@ exports.updateData = {
                         to_delete: 1,
                         edited_by: user_id
                     },
-                    fields: ['to_delete',edited_by],
-                    where: {
-                        step: step,
-                        block_code: block_code,
-                        panchayat_code: panchayat_code
+                    {
+                        fields: ['to_delete','edited_by'],
+                        where: {
+                            step: step,
+                            block_code: block_code,
+                            panchayat_code: panchayat_code
+                        }
                     }
                 ).then(function(result) {
                     console.log(result)
