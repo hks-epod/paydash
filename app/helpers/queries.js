@@ -76,6 +76,10 @@ exports.editor_info = function(BLOCK_CODE) {
     return "SELECT * FROM officer_configuration WHERE state_code IN (SELECT state_code from blocks WHERE block_code = '"+BLOCK_CODE+"') ORDER BY designation_id;";
 }
 
+exports.editor_upsert = function(NAME,DESIGNATION,STEP,MOBILE_NO,BLOCK_CODE,PANCHAYAT_CODE,USER_ID) {
+    return "INSERT INTO employees_master SELECT MAX(staff_id) + 1,'"+NAME+"','"+DESIGNATION+"','"+STEP+"','"+MOBILE_NO+"','"+BLOCK_CODE+"','"+PANCHAYAT_CODE+"',"+USER_ID+" FROM employees_master ON DUPLICATE KEY UPDATE staff_id= IF(!(VALUES(name) <=> name AND VALUES(mobile_no) <=> mobile_no AND VALUES(designation) <=> designation), VALUES(staff_id), staff_id), edited_by=IF(!(VALUES(name) <=> name AND VALUES(mobile_no) <=> mobile_no AND VALUES(designation) <=> designation), VALUES(edited_by), edited_by), name=VALUES(name), designation=VALUES(designation), step=VALUES(step), mobile_no=VALUES(mobile_no), block_code=VALUES(block_code), panchayat_code=VALUES(panchayat_code);";
+}
+
 exports.outcomes = function() {
     return "SELECT outcome, label FROM outcomes;" +
         "SELECT date, mean, upper, outcome, lower, treatment FROM estimates_series;" +

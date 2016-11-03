@@ -112,18 +112,22 @@ exports.updateData = {
 
             } else { // we can insert or update in the database table. update will occur if a duplicate on the primary key is found (step, block_code, panchayat_code), otherwise an insert will occur. if the whole row is a duplicate nothing will happen, but the gotcha is the edited_by field may be different from the id of the current user, in which case an update will occur.
 
-                Employees.upsert({
-                    staff_id: d.staff_id,
-                    name: d.name,
-                    mobile_no: d.mobile_no,
-                    block_code: block_code,
-                    panchayat_code: panchayat_code,
-                    designation: d.designation,
-                    step: step,
-                    edited_by: user_id
-                }); 
-            }
+                // to do
+                // test and check logged result
 
+                // clean up the user-entered inputs
+                var name = (d.name.trim()==='' ? null : d.name.trim());
+                var mobile_no = (d.mobile_no.trim()==='' ? null : d.mobile_no.trim());
+                var designation = (d.designation.trim()==='' ? null : d.designation.trim());
+                
+                upsertString = Queries.editor_upsert(name,designation,step,mobile_no,block_code,panchayat_code,user_id);
+                sequelize.query(upsertString, {
+                    type: sequelize.QueryTypes.UPSERT
+                }).then(function(result) {
+                    console.log(result);
+                });
+
+            }
 
         });
 
