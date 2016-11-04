@@ -77,7 +77,7 @@ exports.editor_info = function(BLOCK_CODE) {
 }
 
 exports.editor_upsert = function(NAME,DESIGNATION,STEP,MOBILE_NO,BLOCK_CODE,PANCHAYAT_CODE,USER_ID) {
-    return "INSERT INTO employees_master SELECT MAX(staff_id) + 1,'"+NAME+"','"+DESIGNATION+"','"+STEP+"','"+MOBILE_NO+"','"+BLOCK_CODE+"','"+PANCHAYAT_CODE+"',"+USER_ID+",0 FROM employees_master ON DUPLICATE KEY UPDATE staff_id= IF(!(VALUES(name) <=> name AND VALUES(mobile_no) <=> mobile_no AND VALUES(designation) <=> designation), VALUES(staff_id), staff_id), edited_by=IF(!(VALUES(name) <=> name AND VALUES(mobile_no) <=> mobile_no AND VALUES(designation) <=> designation), VALUES(edited_by), edited_by), name=VALUES(name), designation=VALUES(designation), step=VALUES(step), mobile_no=VALUES(mobile_no), block_code=VALUES(block_code), panchayat_code=VALUES(panchayat_code),to_delete=VALUES(to_delete);";
+    return "INSERT INTO employees_master (staff_id,name,designation,step,mobile_no,block_code,panchayat_code,edited_by,to_delete) SELECT MAX(e.staff_id)+1,'"+NAME+"','"+DESIGNATION+"','"+STEP+"','"+MOBILE_NO+"','"+BLOCK_CODE+"','"+PANCHAYAT_CODE+"',"+USER_ID+",0 FROM employees_master AS e ON DUPLICATE KEY UPDATE staff_id= IF(!(VALUES(name) <=> name AND VALUES(mobile_no) <=> mobile_no AND VALUES(designation) <=> designation), VALUES(staff_id), staff_id), edited_by=IF(!(VALUES(name) <=> name AND VALUES(mobile_no) <=> mobile_no AND VALUES(designation) <=> designation), VALUES(edited_by), edited_by), name=VALUES(name), designation=VALUES(designation), mobile_no=VALUES(mobile_no), to_delete=VALUES(to_delete);";
 }
 
 exports.outcomes = function() {

@@ -56,9 +56,11 @@ exports.updateData = {
     },
     handler: function(request, reply) {
 
+        var sequelize = request.server.plugins.sequelize.db.sequelize;
+        var Employees = request.server.plugins.sequelize.db.Employees;
+
         var block_code = request.payload.block_code;
         var user_id = request.auth.credentials.id;
-        var Employees = request.server.plugins.sequelize.db.Employees;
         var step = request.payload.step;
         var level = request.payload.data.level;
         var data = request.payload.data.table;
@@ -68,17 +70,16 @@ exports.updateData = {
             var panchayat_code = (level==='panchayat' ? d.panchayat_code : '0000000000');
 
             // clean up the user-entered inputs
-            var name = (d.name.trim()==='' ? null : d.name.trim());
-            var mobile_no = (d.mobile_no.trim()==='' ? null : d.mobile_no.trim());
-            var designation = (d.designation.trim()==='' ? null : d.designation.trim());
+            var name = (d.name===null || d.name.trim()==='') ? null : d.name.trim();
+            var mobile_no = (d.mobile_no===null || d.mobile_no.trim()==='') ? null : d.mobile_no.trim();
+            var designation = (d.designation===null || d.designation.trim()==='') ? null : d.designation.trim();
 
             if (name===null && mobile_no===null && designation===null) { // check if fields are empty, in which case we want to delete the record if it exists
 
                 // Update the record to have the current user's id in the edited_by field and set the record to be deleted. 
                 // The update trigger will take care of inserting the record into the history table and deleting it from the master table.
                 
-                Employees.update(
-                    {
+                Employees.update({
                         to_delete: 1,
                         edited_by: user_id
                     },
@@ -91,7 +92,18 @@ exports.updateData = {
                         }
                     }
                 ).then(function(result) {
-                    console.log(result)
+                
+                    if (result[0]===1) {
+                        Employees.destroy({
+                            where: {
+                                step: step,
+                                block_code: block_code,
+                                panchayat_code: panchayat_code,
+                                to_delete: 1
+                            }
+                        });
+                    }
+
                 });
 
 
@@ -102,12 +114,9 @@ exports.updateData = {
                 // On insert or update assign a new staff id (manual auto increment)
                 // Inserting in the history table taken care of by insert/update triggers
                 
-                upsertString = Queries.editor_upsert(name,designation,step,mobile_no,block_code,panchayat_code,user_id);
-                sequelize.query(upsertString, {
-                    type: sequelize.QueryTypes.UPSERT
-                }).then(function(result) {
-                    console.log(result);
-                });
+                var upsertString = Queries.editor_upsert(name,designation,step,mobile_no,block_code,panchayat_code,user_id);
+
+                sequelize.query(upsertString);
 
             }
 
