@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
 
     var Employees = sequelize.define('Employees', {
 
-        staff_id: DataTypes.INTEGER,
+        staff_id: DataTypes.STRING,
         name: DataTypes.STRING,
         designation: DataTypes.STRING,
         step: {

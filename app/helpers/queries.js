@@ -76,8 +76,8 @@ exports.editor_info = function(BLOCK_CODE) {
     return "SELECT * FROM officer_configuration WHERE state_code IN (SELECT state_code from blocks WHERE block_code = '"+BLOCK_CODE+"') ORDER BY designation_id;";
 }
 
-exports.editor_upsert = function(NAME,DESIGNATION,STEP,MOBILE_NO,BLOCK_CODE,PANCHAYAT_CODE,USER_ID) {
-    return "INSERT INTO employees_master (staff_id,name,designation,step,mobile_no,block_code,panchayat_code,edited_by,to_delete) SELECT MAX(e.staff_id)+1,'"+NAME+"','"+DESIGNATION+"','"+STEP+"','"+MOBILE_NO+"','"+BLOCK_CODE+"','"+PANCHAYAT_CODE+"',"+USER_ID+",0 FROM employees_master AS e ON DUPLICATE KEY UPDATE staff_id= IF(!(VALUES(name) <=> name AND VALUES(mobile_no) <=> mobile_no AND VALUES(designation) <=> designation), VALUES(staff_id), staff_id), edited_by=IF(!(VALUES(name) <=> name AND VALUES(mobile_no) <=> mobile_no AND VALUES(designation) <=> designation), VALUES(edited_by), edited_by), name=VALUES(name), designation=VALUES(designation), mobile_no=VALUES(mobile_no), to_delete=VALUES(to_delete);";
+exports.editor_upsert = function(STAFF_ID,NAME,DESIGNATION,STEP,MOBILE_NO,BLOCK_CODE,PANCHAYAT_CODE,USER_ID) {
+    return "INSERT INTO employees_master (staff_id,name,designation,step,mobile_no,block_code,panchayat_code,edited_by,to_delete) VALUES ('"+STAFF_ID+"',IF('"+NAME+"'='null',NULL,'"+NAME+"'),IF('"+DESIGNATION+"'='null',NULL,'"+DESIGNATION+"'),'"+STEP+"',IF('"+MOBILE_NO+"'='null',NULL,'"+MOBILE_NO+"'),'"+BLOCK_CODE+"','"+PANCHAYAT_CODE+"',"+USER_ID+",0) ON DUPLICATE KEY UPDATE edited_by=IF(!(VALUES(name) <=> name AND VALUES(mobile_no) <=> mobile_no AND VALUES(designation) <=> designation), VALUES(edited_by), edited_by), staff_id= VALUES(staff_id), name=VALUES(name), designation=VALUES(designation), mobile_no=VALUES(mobile_no), to_delete=VALUES(to_delete);";
 }
 
 exports.outcomes = function() {

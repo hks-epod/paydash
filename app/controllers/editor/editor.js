@@ -68,6 +68,7 @@ exports.updateData = {
         data.forEach(function(d) {
 
             var panchayat_code = (level==='panchayat' ? d.panchayat_code : '0000000000');
+            var staff_id = (level==='panchayat' ? panchayat_code + '_' + step : block_code + '_' + step);
 
             // clean up the user-entered inputs
             var name = (d.name===null || d.name.trim()==='') ? null : d.name.trim();
@@ -111,10 +112,9 @@ exports.updateData = {
 
                 // Custom upsert
                 // Only update if the user fillable fields (name, designation, mobile) are updated
-                // On insert or update assign a new staff id (manual auto increment)
                 // Inserting in the history table taken care of by insert/update triggers
                 
-                var upsertString = Queries.editor_upsert(name,designation,step,mobile_no,block_code,panchayat_code,user_id);
+                var upsertString = Queries.editor_upsert(staff_id,name,designation,step,mobile_no,block_code,panchayat_code,user_id);
 
                 sequelize.query(upsertString);
 
