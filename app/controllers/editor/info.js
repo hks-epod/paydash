@@ -21,7 +21,8 @@ exports.show = {
 
             var officer_data = {
                 block_officer1: rows[0].designation,
-                block_officer2: rows[1].designation
+                block_officer2: rows[1].designation,
+                designation: request.auth.credentials.designation
             };
 
             var template = Handlebars.compile(Translate('/web/editor/info/body', request.auth.credentials, null));
