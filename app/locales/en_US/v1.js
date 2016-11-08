@@ -130,6 +130,7 @@ module.exports = {
         editor: {
             title: 'MGNREGA Employee Data Entry',
             nav: {
+                info: 'Info',
                 t2: 'Attendance (T+2)',
                 t5: 'Measurement book (T+5)',
                 t6: 'Wagelist sending (T+6)',

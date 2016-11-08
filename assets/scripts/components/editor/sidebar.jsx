@@ -57,6 +57,7 @@ const Table = React.createClass({
                   }
               </select>
               <div className="menu menu--vertical menu--pointing-right menu--borderRight menu--width-wide">
+                <a onClick={_this.handleClick} className="menu-item" href="/editor/info">{_this.props.translation.nav.info}</a>
                 <a onClick={_this.handleClick} className="menu-item" href="/editor/t2">{_this.props.translation.nav.t2}</a>
                 <a onClick={_this.handleClick} className="menu-item" href="/editor/t5">{_this.props.translation.nav.t5}</a>
                 <a onClick={_this.handleClick} className="menu-item" href="/editor/t6">{_this.props.translation.nav.t6}</a>
