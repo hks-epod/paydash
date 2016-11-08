@@ -73,7 +73,7 @@ exports.editor = function(BLOCK_CODE,STEP) {
 }
 
 exports.editor_info = function(BLOCK_CODE) {
-    return "SELECT * FROM officer_configuration WHERE state_code IN (SELECT state_code from blocks WHERE block_code = '"+BLOCK_CODE+"') ORDER BY designation_id;";
+    return "SELECT * FROM officer_configuration WHERE state_code IN (SELECT state_code from blocks WHERE block_code = '"+BLOCK_CODE+"') and role='block' ORDER BY designation_id;";
 }
 
 exports.editor_upsert = function(STAFF_ID,NAME,DESIGNATION,STEP,MOBILE_NO,BLOCK_CODE,PANCHAYAT_CODE,USER_ID) {

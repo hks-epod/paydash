@@ -26,6 +26,7 @@ exports.show = {
             };
 
             var template = Handlebars.compile(Translate('/web/editor/info/body', request.auth.credentials, null));
+
             var result = template(officer_data);
             reply.view('editor/info', {info_body : result});
 

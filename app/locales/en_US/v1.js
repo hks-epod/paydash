@@ -130,15 +130,22 @@ module.exports = {
         editor: {
             title: 'MGNREGA Employee Data Entry',
             nav: {
-                info: 'Info',
+                info: 'Data Entry Home',
                 t2: 'Attendance (T+2)',
                 t5: 'Measurement book (T+5)',
                 t6: 'Wagelist sending (T+6)',
                 t7: 'FTO first signature (T+7)',
                 t8: 'FTO second signature (T+8)',
             },
+            long_labels: {
+                t2: 'Filling attendance (T+2)',
+                t5: 'Filling measurement book (T+5)',
+                t6: 'Wagelist sending (T+6)',
+                t7: 'FTO first signature (T+7)',
+                t8: 'FTO second signature (T+8)'
+            },
             info: {
-                body: '<p>Respected {{designation}} of {{block_name}},</p><p>In order for PayDash to serve you better, we request you to kindly enter details of various MGNREGA employees in your Block in the following section. To serve PayDash\'s purpose of helping you manage the payment process better, we request you to update this section regularly.</p> <p>In the absence of regular updation, PayDash will not be able point to officials who are responsible for different steps in the payment process. Please read the following guidelines for using this system.</p> <ol> <li>You may use this system only through the web version of PayDash. Any data entered/edited will automatically reflect in the app version.</li> <li>Kindly update officials\' names and contact details as soon as there is any movement of officials for a certain position. Please click the "Fill Data" option to enter and/or edit employee data.</li> <li>This login is only available for the {{block_officer2}} and {{block_officer1}} of your Block. Please do not share PayDash login details with anybody else.</li> <li>You may, however, invite a junior official to edit employee information, if you wish to. Kindly click the "Share this" option to do so. This will allow the official to only view the employee data entry system, but no other feature of PayDash.</li> <li>As mentioned above, because this login is being given to both the {{block_officer2}} and {{block_officer1}}, we request you to coordinate before any of you makes any change because changes made by one official will also reflect in the other official\'s PayDash account.</li> <p>For any other information, please contact the EPoD India team.</p> </ul>',
+                body: '<p>Respected MGNREGA Official, {{block_name}},</p><p>In order for PayDash to serve you better, we request you to kindly enter details of various MGNREGA employees in your Block in the following section. To serve PayDash\'s purpose of helping you manage the payment process better, we request you to update this section regularly.</p> <p>In the absence of regular updation, PayDash will not be able point to officials who are responsible for different steps in the payment process. Please read the following guidelines for using this system.</p> <ol> <li>You may use this system only through the web version of PayDash. Any data entered/edited will automatically reflect in the app version.</li> <li>Kindly update officials\' names and contact details as soon as there is any movement of officials for a certain position. Please click the "Fill Data" option to enter and/or edit employee data.</li> <li>This login is only available for the {{block_officer2}} and {{block_officer1}} of your Block. Please do not share PayDash login details with anybody else.</li> <li>You may, however, invite a junior official to edit employee information, if you wish to. Kindly click the "Share this" option to do so. This will allow the official to only view the employee data entry system, but no other feature of PayDash.</li> <li>As mentioned above, because this login is being given to both the {{block_officer2}} and {{block_officer1}}, we request you to coordinate before any of you makes any change because changes made by one official will also reflect in the other official\'s PayDash account.</li> <p>For any other information, please contact the EPoD India team.</p> </ul>',
                 share: 'Share this',
                 fill: 'Fill data'
             },
