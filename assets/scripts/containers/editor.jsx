@@ -30,9 +30,10 @@ const Overview = React.createClass({
             .get();
     },
 
-    updateSavedState: function(){
+    updateSavedState: function(status){
+
         this.setState({
-            unsaved :true
+            unsaved : status
         });
     },
 

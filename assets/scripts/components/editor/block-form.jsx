@@ -27,13 +27,14 @@ const Table = React.createClass({
                     _this.setState({
                         unsavedChanges : rawData.response
                     });
+                    _this.props.updateSavedState(false);
                 }
             );
     },
 
     handleChange(event) {
 
-        this.props.updateSavedState();
+        this.props.updateSavedState(true);
         var updatedState = this.state.data;
         updatedState.table[event.target.dataset.index][event.target.name] = event.target.value;
         

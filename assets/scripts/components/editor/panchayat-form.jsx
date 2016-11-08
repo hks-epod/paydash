@@ -7,7 +7,7 @@ const D3 = require('d3');
 const Table = React.createClass({
 
     handleSubmit(event) {
-
+        event.preventDefault();
         var _this = this;
 
         ga('send', 'event', {
@@ -27,13 +27,14 @@ const Table = React.createClass({
                     _this.setState({
                         unsavedChanges : rawData.response
                     });
+                    _this.props.updateSavedState(false);
                 }
             );
     },
 
     handleChange(event) {
 
-        this.props.updateSavedState();
+        this.props.updateSavedState(true);
         var updatedState = this.state.data;
         updatedState.table[event.target.dataset.index][event.target.name] = event.target.value;
         
@@ -80,7 +81,7 @@ const Table = React.createClass({
                                 <tr key={i}>
                                     <td >{data.panchayat_name}</td>
                                     <td><input type="text" name="name" data-index={i} defaultValue={data.name || ''} onChange={_this.handleChange}/></td>
-                                    <td><input type="text" name="mobile_no" data-index={i} defaultValue={data.mobile_no || ''} onChange={_this.handleChange}/></td>
+                                    <td><input type="text" pattern="[0-9]{10}" name="mobile_no" data-index={i} defaultValue={data.mobile_no || ''} onChange={_this.handleChange}/></td>
                                     <td>
                                         <select name="designation" defaultValue={data.designation || ''}  data-index={i} onChange={_this.handleChange}>
                                             <option value=""></option>
@@ -102,7 +103,7 @@ const Table = React.createClass({
         }
 
         return (
-            <div>
+            <form>
                 <h2 className="u-spacing-page-top">{_this.props.translation.long_labels[_this.props.step]}</h2>
                 <div>{_this.props.translation.editor.instruction} {_this.props.translation.long_labels[_this.props.step]}.</div>
                 <div className="editor__table__header u-cf u-spacing-page-top">
@@ -111,7 +112,7 @@ const Table = React.createClass({
                 </div> 
 
                 {table}
-            </div>     
+            </form>     
         );
     }
 });
