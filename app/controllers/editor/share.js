@@ -32,7 +32,7 @@ exports.postShareForm = {
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            request.session.flash('error', 'Bad request');
+            request.yar.flash('error', 'Bad request');
             return reply.redirect('/editor/share');
         }
     },
