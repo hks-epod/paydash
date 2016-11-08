@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+const $ = require('jquery');
 
 const Table = React.createClass({
 
@@ -37,6 +38,10 @@ const Table = React.createClass({
         return {
             block_code: this.props.user.regions[0].region_code
         };
+    },
+    componentDidMount: function() {
+        $('a[href="' + location.pathname + '"]').addClass('active');
+        // set el height and width etc.
     },
 
     render: function(){
