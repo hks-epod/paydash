@@ -28,7 +28,8 @@ exports.postShareForm = {
     },
     validate: {
         payload: {
-            name_email: Joi.string().min(2).max(20).required()
+            name_email: Joi.string().min(2).max(20).required(),
+            share_region: Joi.string().min(2).max(20).required()
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
@@ -41,6 +42,8 @@ exports.postShareForm = {
         var tempPass = Math.random().toString(36).substr(2, 7);
         var tempUsername = Math.random().toString(36).substr(2, 4);
         Crypto.randomBytes(8, function(err, buffer) {
+
+            // request.payload.share_region is the region_code
 
             var newUser = {
                 email: request.payload.name_email.toLowerCase(),
