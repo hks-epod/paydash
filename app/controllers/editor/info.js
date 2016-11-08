@@ -2,18 +2,9 @@
 
 const Queries = require('../../helpers/queries');
 const Translate = require('../../templates/helpers/t');
+const Handlebars = require('handlebars');
 
 exports.show = {
-    auth: {
-        scope: ['block', 'editor']
-    },
-    handler: function(request, reply) {
-        reply.view('editor/info');
-
-    }
-};
-
-exports.getData = {
     auth: {
         scope: ['block', 'editor']
     },
@@ -33,10 +24,11 @@ exports.getData = {
                 block_officer2: rows[1].designation
             };
 
-            reply({
-                officer_data: officer_data,
-                translation: Translate('/web/editor', request.auth.credentials, null)
-            });
+            var template = Handlebars.compile(Translate('/web/editor/info/body', request.auth.credentials, null));
+            var result = template(officer_data);
+            reply.view('editor/info', {info_body : result});
+
         });
+
     }
 };
