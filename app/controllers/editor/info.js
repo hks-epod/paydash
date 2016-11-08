@@ -19,15 +19,15 @@ exports.show = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-            var officer_data = {
-                block_officer1: rows[0].designation,
-                block_officer2: rows[1].designation,
-                designation: request.auth.credentials.designation
+            var data = {
+                block_officer1: rows[0][0].designation,
+                block_officer2: rows[0][1].designation,
+                block_name: rows[1][0].block_name 
             };
 
             var template = Handlebars.compile(Translate('/web/editor/info/body', request.auth.credentials, null));
 
-            var result = template(officer_data);
+            var result = template(data);
             reply.view('editor/info', {info_body : result});
 
         });

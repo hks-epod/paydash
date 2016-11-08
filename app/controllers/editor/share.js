@@ -51,8 +51,17 @@ exports.postShareForm = {
                 password: Crypto.createHash('md5').update(tempPass).digest('hex')
             };
 
+            console.log(payload)
             var User = request.server.plugins.sequelize.db.User;
+            var User_Regions = request.server.plugins.sequelize.db.user_blocks;
             User.create(newUser).then(function(user) {
+
+                // var newUserRegion = {
+                //     region_code: ,
+                //     region_name: ,
+                //     user_id ,
+
+                // }
 
                 var data = {
                     from: 'epodindianrega@gmail.com',
