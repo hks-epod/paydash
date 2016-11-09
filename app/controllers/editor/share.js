@@ -51,17 +51,32 @@ exports.postShareForm = {
                 password: Crypto.createHash('md5').update(tempPass).digest('hex')
             };
 
-            console.log(payload)
+            console.log(request.payload)
             var User = request.server.plugins.sequelize.db.User;
             var User_Regions = request.server.plugins.sequelize.db.user_blocks;
+            var Blocks = request.server.plugins.sequelize.db.Blocks;
+
+
             User.create(newUser).then(function(user) {
 
-                // var newUserRegion = {
-                //     region_code: ,
-                //     region_name: ,
-                //     user_id ,
+                Blocks.findOne({
+                    where: {
+                        block_code: request.payload.share_region
+                    }
+                }).then(function(block) {
+                
+                    var newUserRegion = {
+                        region_code: request.payload.share_region,
+                        region_name: block.block_name
+                        user_id: user.id,
+                    };
 
-                // }
+                    User_Regions.create(newUserRegion).then(function(user_region) {
+
+
+                    });
+
+
 
                 var data = {
                     from: 'epodindianrega@gmail.com',
