@@ -28,7 +28,7 @@ exports.postShareForm = {
     },
     validate: {
         payload: {
-            name_email: Joi.string().min(2).max(20).required(),
+            name_email: Joi.string().email().required(),
             share_region: Joi.string().min(2).max(20).required()
         },
         failAction: function(request, reply, source, error) {
