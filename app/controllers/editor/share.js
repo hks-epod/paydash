@@ -6,7 +6,7 @@ const Joi = require('joi');
 
 exports.show = {
     auth: {
-      scope : ['block', 'editor']
+        scope: ['block', 'editor']
     },
     handler: function(request, reply) {
         var share = Translate('/web/editor/share', request.auth.credentials, null);
@@ -19,7 +19,7 @@ exports.postShareForm = {
     auth: {
         mode: 'try',
         strategy: 'standard',
-        scope : 'block'
+        scope: 'block'
     },
     plugins: {
         'hapi-auth-cookie': {
@@ -41,9 +41,8 @@ exports.postShareForm = {
 
         var tempPass = Math.random().toString(36).substr(2, 7);
         var tempUsername = Math.random().toString(36).substr(2, 4);
-        Crypto.randomBytes(8, function(err, buffer) {
 
-            // request.payload.share_region is the region_code
+        Crypto.randomBytes(8, function(err, buffer) {
 
             var newUser = {
                 email: request.payload.name_email.toLowerCase(),
@@ -51,7 +50,6 @@ exports.postShareForm = {
                 password: Crypto.createHash('md5').update(tempPass).digest('hex')
             };
 
-            console.log(request.payload)
             var User = request.server.plugins.sequelize.db.User;
             var User_Regions = request.server.plugins.sequelize.db.user_blocks;
             var Blocks = request.server.plugins.sequelize.db.Blocks;
@@ -64,46 +62,40 @@ exports.postShareForm = {
                         block_code: request.payload.share_region
                     }
                 }).then(function(block) {
-                
+
                     var newUserRegion = {
                         region_code: request.payload.share_region,
-                        region_name: block.block_name
+                        region_name: block.block_name,
                         user_id: user.id,
                     };
 
                     User_Regions.create(newUserRegion).then(function(user_region) {
-
-
+                        var data = {
+                            from: 'epodindianrega@gmail.com',
+                            to: user.email,
+                            subject: 'Invitation for Data Entry - PayDash',
+                            path: 'emails/editor-share',
+                            context: {
+                                name: request.auth.credentials.firstname + request.auth.credentials.lastname,
+                                url: request.connection.info.protocol + '://' + request.info.host + '/login',
+                                username: tempUsername,
+                                password: tempPass
+                            }
+                        };
+                        //  Send Email
+                        var Mailer = request.server.plugins.mailer;
+                        Mailer.sendMail(data, function(err, info) {
+                            console.log(err);
+                        });
+                        request.yar.flash('success', Translate('/web/editor/share/success', request.auth.credentials, null));
+                        return reply.redirect('/editor/info');
                     });
-
-
-
-                var data = {
-                    from: 'epodindianrega@gmail.com',
-                    to: user.email,
-                    subject: 'Invitation for Data Entry - PayDash',
-                    path: 'emails/editor-share',
-                    context: {
-                        name: request.auth.credentials.firstname + request.auth.credentials.lastname,
-                        url: request.connection.info.protocol + '://' + request.info.host + '/login',
-                        username: tempUsername,
-                        password: tempPass
-                    }
-                };
-                //  Send Email
-                var Mailer = request.server.plugins.mailer;
-                Mailer.sendMail(data, function(err, info) {
-                    console.log(err);
+                    
+                }).catch(function(err) {
+                    request.yar.flash('success', Translate('/web/editor/share/user_exists', request.auth.credentials, null));
+                    return reply.redirect('/editor/info');
                 });
-                request.yar.flash('success', Translate('/web/editor/share/success', request.auth.credentials, null));
-                return reply.redirect('/editor/info');
-
-            }).catch(function(err) {
-                request.yar.flash('success', Translate('/web/editor/share/user_exists', request.auth.credentials, null));
-                return reply.redirect('/editor/info');
             });
-
         });
-
     }
 };
