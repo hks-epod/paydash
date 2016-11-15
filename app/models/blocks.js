@@ -6,7 +6,10 @@ module.exports = function(sequelize, DataTypes) {
         state_name: DataTypes.STRING,
         district_code: DataTypes.STRING,
         district_name: DataTypes.STRING,
-        block_code: DataTypes.STRING,
+        block_code: {
+            type: DataTypes.STRING,
+            primaryKey: true
+        },
         block_name: DataTypes.STRING
     }, {
         tableName: 'blocks',
