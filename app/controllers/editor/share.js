@@ -93,7 +93,7 @@ exports.postShareForm = {
                     
                 }).catch(function(err) {
                     request.yar.flash('success', Translate('/web/editor/share/user_exists', request.auth.credentials, null));
-                    return reply.redirect('/editor/info');
+                    return reply.redirect('/editor/share');
                 });
             });
         });
