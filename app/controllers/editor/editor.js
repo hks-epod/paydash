@@ -138,7 +138,7 @@ exports.updateData = {
 
         });
 
-        reply('Changes saved succesfully');
+        reply(Translate('/web/editor/editor/success', request.auth.credentials, null));
 
     }
 };
