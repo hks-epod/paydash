@@ -60,16 +60,16 @@ exports.updateData = {
             block_code: Joi.string().min(1).max(20),
             step: Joi.string().min(1).max(20),
             data: Joi.object().keys({
-                block_code: Joi.number().min(1).max(10).integer(),
+                block_code: Joi.string().min(1).max(20),
                 designations: Joi.array(),
                 level: Joi.string().min(1).max(20),
                 table: Joi.array()
             })
         },
         failAction: function(request, reply, source, error) {
-            console.log(error);
-            return reply('sdsd');
-            // return reply(error);
+
+            return reply('Something went wrong');
+
         },
     },
     handler: function(request, reply) {
