@@ -67,9 +67,9 @@ exports.updateData = {
             })
         },
         failAction: function(request, reply, source, error) {
-            // Username, passowrd minimum validation failed
-            request.yar.flash('error', 'Invalid username or password');
-            return reply.redirect('/login');
+            console.log(error);
+            return reply('sdsd');
+            // return reply(error);
         },
     },
     handler: function(request, reply) {
