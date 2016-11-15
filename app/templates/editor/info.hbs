@@ -4,6 +4,7 @@
       {{> editor-nav}}
     </div>
     <div class="pure-u pure-u-19-24 u-pl-10">
+      {{> flash}}
       <h2>{{{t "/web/editor/title" credentials null}}}</h2>
       <div class="">
         {{{info_body}}}
@@ -11,7 +12,6 @@
       <br>
       <a onclick="ga('send', 'event', {eventCategory: 'Info Screen',eventAction: 'click',eventLabel: 'Share Button'});" href="/editor/share" class="button button--primary">{{t "/web/editor/info/share" credentials null}}</a>
       <a onclick="ga('send', 'event', {eventCategory: 'Info Screen',eventAction: 'click',eventLabel: 'Fill Data Button'});" href="/editor/t2" class="button button--primary">{{t "/web/editor/info/fill" credentials null}}</a>
-      {{> flash}}
     </div>
   </div>
 </div>
