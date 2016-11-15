@@ -51,7 +51,7 @@ exports.postShareForm = {
             };
 
             var User = request.server.plugins.sequelize.db.User;
-            var User_Regions = request.server.plugins.sequelize.db.user_blocks;
+            var User_Regions = request.server.plugins.sequelize.db.user_regions;
             var Blocks = request.server.plugins.sequelize.db.Blocks;
 
 
