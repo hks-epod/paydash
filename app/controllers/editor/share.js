@@ -33,7 +33,7 @@ exports.postShareForm = {
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            request.yar.flash('error', 'Bad request');
+            request.yar.flash('error', 'Please enter a valid email address');
             return reply.redirect('/editor/share');
         }
     },
@@ -93,7 +93,7 @@ exports.postShareForm = {
                     
                 }).catch(function(err) {
                     console.log(err);
-                    request.yar.flash('success', Translate('/web/editor/share/user_exists', request.auth.credentials, null));
+                    request.yar.flash('error', Translate('/web/editor/share/user_exists', request.auth.credentials, null));
                     return reply.redirect('/editor/share');
                 });
             });

@@ -122,7 +122,7 @@ exports.updateData = {
                     }
 
                 }).catch(function(err) {
-                    reply('Unable to save changes');
+                    return reply('Unable to save changes');
                 });
 
 
@@ -135,7 +135,7 @@ exports.updateData = {
                 var upsertString = Queries.editor_upsert(staff_id, name, designation, step, mobile_no, block_code, panchayat_code, user_id);
 
                 sequelize.query(upsertString)
-                    .catch(function(err) { reply('Unable to save changes'); });
+                    .catch(function(err) { return reply('Unable to save changes'); });
 
             }
 
