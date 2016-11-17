@@ -85,7 +85,7 @@ exports.updateData = {
 
         data.forEach(function(d) {
 
-            var panchayat_code = (level === 'panchayat' ? d.panchayat_code : null);
+            var panchayat_code = (level === 'panchayat' ? d.panchayat_code : '');
             var staff_id = (level === 'panchayat' ? panchayat_code + '_' + step : block_code + '_' + step);
 
             // clean up the user-entered inputs
@@ -121,6 +121,8 @@ exports.updateData = {
                         });
                     }
 
+                }).catch(function(err) {
+                    reply('Unable to save changes');
                 });
 
 
@@ -132,7 +134,8 @@ exports.updateData = {
 
                 var upsertString = Queries.editor_upsert(staff_id, name, designation, step, mobile_no, block_code, panchayat_code, user_id);
 
-                sequelize.query(upsertString).catch(function(err) { console.log(err) });
+                sequelize.query(upsertString)
+                    .catch(function(err) { reply('Unable to save changes'); });
 
             }
 
