@@ -47,7 +47,8 @@ exports.postShareForm = {
             var newUser = {
                 email: request.payload.name_email.toLowerCase(),
                 username: tempUsername,
-                password: Crypto.createHash('md5').update(tempPass).digest('hex')
+                password: Crypto.createHash('md5').update(tempPass).digest('hex'),
+                scope: 'editor'
             };
 
             var User = request.server.plugins.sequelize.db.User;
