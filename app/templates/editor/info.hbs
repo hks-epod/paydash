@@ -10,8 +10,11 @@
         {{{info_body}}}
       </div>
       <br>
-      <a onclick="ga('send', 'event', {eventCategory: 'Info Screen',eventAction: 'click',eventLabel: 'Share Button'});" href="/editor/share" class="button button--primary">{{t "/web/editor/info/share" credentials null}}</a>
+      {{#compare credentials.scope '===' 'editor'}}
+        <a onclick="ga('send', 'event', {eventCategory: 'Info Screen',eventAction: 'click',eventLabel: 'Share Button'});" href="/editor/share" class="button button--primary">{{t "/web/editor/info/share" credentials null}}</a>
+      {{/compare}}
       <a onclick="ga('send', 'event', {eventCategory: 'Info Screen',eventAction: 'click',eventLabel: 'Fill Data Button'});" href="/editor/t2" class="button button--primary">{{t "/web/editor/info/fill" credentials null}}</a>
+
     </div>
   </div>
 </div>

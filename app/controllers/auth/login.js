@@ -74,6 +74,10 @@ exports.postForm = {
                 }
 
                 request.cookieAuth.set(user);
+
+                if(user.scope === 'editor'){
+                    return reply.redirect('/editor/info');
+                }
                 
                 if (!user.isActive) {
                     request.yar.flash('info', 'Please check your profile details');
