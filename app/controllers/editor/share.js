@@ -94,7 +94,6 @@ exports.postShareForm = {
 
                 });
             }).catch(function(err) {
-                console.log(err);
                 request.yar.flash('error', Translate('/web/editor/share/user_exists', request.auth.credentials, null));
                 return reply.redirect('/editor/share');
             });
