@@ -29,6 +29,7 @@ module.exports = function(sequelize, DataTypes) {
         scope:  DataTypes.STRING,
         colorblind: DataTypes.BOOLEAN,
         deactivated: DataTypes.BOOLEAN,
+        super_token: DataTypes.STRING,
         reset_password_token: DataTypes.STRING,
         reset_password_expires: DataTypes.DATE
     }, {

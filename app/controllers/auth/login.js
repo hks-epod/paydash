@@ -56,7 +56,7 @@ exports.postForm = {
         if (request.auth.isAuthenticated) {
             return reply.redirect('/overview');
         }
-            
+
         var db = request.server.plugins.sequelize.db;
         var User = request.server.plugins.sequelize.db.User;
         User.findOne({
@@ -67,28 +67,32 @@ exports.postForm = {
             include: [db.user_regions]
         }).then(function(user) {
             if (user) {
-                
-                if(user.deactivated){
+
+                if (user.deactivated) {
                     request.yar.flash('error', 'Your account has been deactivated. Please contact the PayDash team if you require assistance.');
                     return reply.redirect('/login');
                 }
 
-                request.cookieAuth.set(user);
 
-                if(user.scope === 'editor'){
-                    return reply.redirect('/editor/info');
-                }
-                
-                if (!user.isActive) {
-                    request.yar.flash('info', 'Please check your profile details');
-                    user.update({
-                        isActive: true
-                    }).then(function() {
-                        return reply.redirect('/me/settings/profile');
-                    });
-                } else {
-                    return reply.redirect('/overview');
-                }
+                user.super_token = new Date().getTime().toString();
+                user.save().then(function() {
+                    request.cookieAuth.set(user);
+
+                    // Handle Redirection
+                    if (user.scope === 'editor') {
+                        return reply.redirect('/editor/info');
+                    }
+                    if (!user.isActive) {
+
+                        request.yar.flash('info', 'Please check your profile details');
+                        user.update({ isActive: true }).then(function() {
+                            return reply.redirect('/me/settings/profile');
+                        });
+
+                    } else {
+                        return reply.redirect('/overview');
+                    }
+                });
 
             } else {
                 // User not fond in database
