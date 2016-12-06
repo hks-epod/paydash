@@ -44,7 +44,7 @@ module.exports = {
             name: 'NAME',
             designation: 'DESIGNATION',
             block_name: 'BLOCK NAME',
-            days_to_payment: 'DAYS TO PAYMENT',
+            days_to_payment: 'DAYS TO PAYMENT(Last 3 months)',
             no_muster_information: 'There is no muster information available',
             sort_by: 'Sort By',
             search_placeholder: 'Search'
@@ -53,14 +53,14 @@ module.exports = {
             overview: {
                 title: {
                     $filter: 'role',
-                    district: 'District Performance',
+                    district: 'Your District/Block\'s Performance',
                     block: 'Your Block/Panchayat\'s Performance',
                     $default: 'Overview Performance'
                 },
                 description: {
                     $filter: 'role',
-                    district: 'Average number of days to complete each step of the payment process in your district.',
-                    block: 'Average number of days to complete each step of the payment process in your block.',
+                    district: 'Average number of days to complete each step of the payment process in your district/block.',
+                    block: 'Average number of days to complete each step of the payment process in your block/panchayat.',
                     $default: 'Average number of days to complete each step of the payment process in your region.'
                 },
                 labels: [
