@@ -56,6 +56,8 @@ exports.find = function(role, activeRegion, performance, comparison_line) {
             return region = performance[activeRegion.region_type][activeRegion.block_index];
         } else if (activeRegion.region_type === 'panchayat' && comparison_line === 'panchayat') {
             return region = performance[activeRegion.region_type][activeRegion.block_index].data[activeRegion.panchayat_index];
+        } else if (activeRegion.region_type === 'panchayat' && comparison_line === 'block') {
+            return region = performance[comparison_line][activeRegion.block_index];
         } else {
             return region = performance[comparison_line];
         }
@@ -64,6 +66,8 @@ exports.find = function(role, activeRegion, performance, comparison_line) {
             return region = performance[activeRegion.region_type][activeRegion.district_index];
         } else if (activeRegion.region_type === 'block' && comparison_line === 'block') {
             return region = performance[activeRegion.region_type][activeRegion.block_index].data[activeRegion.block_index];
+        } else if (activeRegion.region_type === 'block' && comparison_line === 'district') {
+            return region = performance[comparison_line][activeRegion.block_index];
         } else {
             return region = performance[comparison_line];
         }

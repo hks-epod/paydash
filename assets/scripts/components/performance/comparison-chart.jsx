@@ -26,7 +26,6 @@ const ComparisonChart =  React.createClass({
         if(!_this.props.activeRegion) {
             return;
         }
-
         _this.state.active_lines.forEach(function(comparison_line, index) {
 
             var region = Region.find(_this.props.config.role, _this.props.activeRegion, _this.props.performance, comparison_line);
@@ -152,6 +151,14 @@ const ComparisonChart =  React.createClass({
         }
         var comparison_lines = nextProps.config.comparison_lines.slice(0);
         comparison_lines.push(nextProps.activeRegion.region_type);
+
+        if(nextProps.config.role === 'block' && nextProps.activeRegion.region_type ==='panchayat'){
+            comparison_lines = ['state', 'district', 'block', 'panchayat'];
+        }
+        if(nextProps.config.role === 'district' && nextProps.activeRegion.region_type ==='block'){
+            comparison_lines = ['state', 'district', 'block'];
+        }
+        
         this.setState({
             comparison_lines : comparison_lines,
             active_lines : comparison_lines
