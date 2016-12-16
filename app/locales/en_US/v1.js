@@ -15,7 +15,7 @@ module.exports = {
         overview: {
             current: 'CURRENT',
             delayed: 'DELAYED',
-            days_to_payment: 'DAYS TO PAYMENT',
+            days_to_payment: 'DAYS TO PAYMENT (LAST 3 MONTHS)',
             welcome: {
                 1: 'Hello',
                 2: 'ji'
@@ -44,7 +44,7 @@ module.exports = {
             name: 'NAME',
             designation: 'DESIGNATION',
             block_name: 'BLOCK NAME',
-            days_to_payment: 'DAYS TO PAYMENT(Last 3 months)',
+            days_to_payment: 'DAYS TO PAYMENT (LAST 3 MONTHS)',
             no_muster_information: 'There is no muster information available',
             sort_by: 'Sort By',
             search_placeholder: 'Search'
