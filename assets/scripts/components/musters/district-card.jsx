@@ -12,7 +12,7 @@ const DistrictCard =  React.createClass({
         ga('send', 'event', {
             eventCategory: 'District Muster detail',
             eventAction: 'click',
-            eventLabel: this.props.data.block_code + '/' + this.props.key
+            eventLabel: this.props.data.block_code + '/' + this.props.identifier
         });
     },
     getInitialState: function(){

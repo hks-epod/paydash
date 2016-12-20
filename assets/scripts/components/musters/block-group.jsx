@@ -62,7 +62,7 @@ const BlockGroup =  React.createClass({
                 <div className="pure-g">
                 {
                     this.state.cards.map(function(data, i) {
-                        return <BlockCard key={i}  data={data} translation={_this.props.translation}></BlockCard>;
+                        return <BlockCard key={i} identifier={i}  data={data} translation={_this.props.translation}></BlockCard>;
                     })
                 }  
                 </div>

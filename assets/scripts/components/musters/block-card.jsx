@@ -12,7 +12,7 @@ const BlockCard =  React.createClass({
         ga('send', 'event', {
             eventCategory: 'Block Muster detail',
             eventAction: 'click',
-            eventLabel: this.props.data.staff_id + '/' + this.props.key
+            eventLabel: this.props.data.staff_id + '/' + this.props.identifier
         });
     },
     getInitialState: function(){
