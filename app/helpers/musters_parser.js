@@ -19,6 +19,7 @@ exports.block = function(rows) {
         })
         .rollup(function(v) {
             return {
+                'staff_id': v[0].staff_id,
                 'name': v[0].name,
                 'designation': Utils.getDesignation(v[0].task_assign, stateCode),
                 'mobile': v[0].mobile_no,
