@@ -22,7 +22,6 @@ exports.getData = {
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-
         var block_code = request.query.block_code || request.auth.credentials.user_regions[0].region_code;
         var step = request.query.step;
         var queryString = Queries.editor(block_code, step);
@@ -31,12 +30,6 @@ exports.getData = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-            // Notes:
-            // staff_id is included for database update purposes, not to be shown on the editor interface
-            // panchayat_code is included for database update purposes, not to be shown on the editor interface
-            // How do we deal with designations of already-seeded users that are different from the approved list of designations?
-            // --> Set the dropdown default as blank and make them choose from the list
-            // 
             var final_result = {
                 editor: EditorParser.parser(rows),
                 translation: Translate('/web/editor', request.auth.credentials, null),

@@ -67,7 +67,6 @@ exports.postForm = {
             include: [db.user_regions]
         }).then(function(user) {
             if (user) {
-
                 if (user.deactivated) {
                     request.yar.flash('error', 'Your account has been deactivated. Please contact the PayDash team if you require assistance.');
                     return reply.redirect('/login');
@@ -76,6 +75,7 @@ exports.postForm = {
 
                 user.super_token = new Date().getTime().toString();
                 user.save().then(function() {
+
                     request.cookieAuth.set(user);
 
                     // Handle Redirection

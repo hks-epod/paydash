@@ -11,7 +11,6 @@ exports.show = {
     handler: function(request, reply) {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-
         var block_code = request.query.block || request.auth.credentials.user_regions[0].region_code;
         var queryString = Queries.editor_info(block_code);
 
