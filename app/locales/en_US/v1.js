@@ -70,7 +70,8 @@ module.exports = {
                     'Wage list sent to FTO generation',
                     'FTO generation to first signature',
                     'First signature to second signature',
-                    'Second signature to processed by bank'
+                    'Second signature to processed by bank',
+                    'Muster roll closure to payment processed'
                 ],
                 tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
             },

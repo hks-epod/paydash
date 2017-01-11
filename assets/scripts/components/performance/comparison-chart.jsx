@@ -31,11 +31,10 @@ const ComparisonChart =  React.createClass({
             var region = Region.find(_this.props.config.role, _this.props.activeRegion, _this.props.performance, comparison_line);
 
             labels.push(region[comparison_line + '_name'] + ' ' + _this.props.translation.comparison.labels[comparison_line]);
-
             var line_data = Parser.lines({
                 data: region.data,
-                col: [_this.state.active_step],
-                isCumulative: false
+                col: _this.state.active_step === 8 ? [7] : [_this.state.active_step],
+                isCumulative: _this.state.active_step=== 8 ? true : false
             });
             if (line_data[0]) {
                 c_data.push(line_data[0]); // Workaround to append region data
@@ -182,6 +181,7 @@ const ComparisonChart =  React.createClass({
                         <option value="5">{this.props.translation && this.props.translation.overview.labels[4]}</option>
                         <option value="6">{this.props.translation && this.props.translation.overview.labels[5]}</option>
                         <option value="7">{this.props.translation && this.props.translation.overview.labels[6]}</option>
+                        <option value="8">{this.props.translation && this.props.translation.overview.labels[7]}</option>
                     </select>
                     <div id="compareRegion" className="group-selector">
                         {
