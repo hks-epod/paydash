@@ -79,7 +79,6 @@ exports.updateData = {
         data.forEach(function(d) {
 
             var panchayat_code = (level === 'panchayat' ? d.panchayat_code : '');
-            var staff_id = (level === 'panchayat' ? panchayat_code + '_' + step : block_code + '_' + step);
 
             // clean up the user-entered inputs
             var name = (d.name === null || d.name.trim() === '') ? null : d.name.trim();
@@ -124,6 +123,9 @@ exports.updateData = {
                 // Custom upsert
                 // Only update if the user fillable fields (name, designation, mobile) are updated
                 // Inserting in the history table taken care of by insert/update triggers
+
+                // Insert ignore in the employees_unique table
+                // Upsert into the employee_regions table, use embedded select to get the appropriate staff_id from empoyees_unique
 
                 var upsertString = Queries.editor_upsert(staff_id, name, designation, step, mobile_no, block_code, panchayat_code, user_id);
 

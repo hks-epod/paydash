@@ -4,27 +4,21 @@ module.exports = function(sequelize, DataTypes) {
 
     var Employees = sequelize.define('Employees', {
 
-        staff_id: DataTypes.STRING,
-        name: DataTypes.STRING,
-        designation: DataTypes.STRING,
-        step: {
+        staff_id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true
+        },
+        name: {
             type: DataTypes.STRING,
             primaryKey: true
         },
-        mobile_no: DataTypes.STRING,
-        block_code: {
+        mobile_no: {
             type: DataTypes.STRING,
             primaryKey: true
-        },
-        panchayat_code: {
-            type: DataTypes.STRING,
-            primaryKey: true
-        },
-        edited_by: DataTypes.INTEGER,
-        to_delete: DataTypes.INTEGER
+        }
 
     }, {
-        tableName: 'employees_master',
+        tableName: 'employees_unique',
         underscored: true,
         timestamps: false
     });
