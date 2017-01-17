@@ -1,27 +1,51 @@
-.modal-wrapper{
+.modal-wrapper {
     position: fixed;
     top: 62px;
     left: 0;
     height: 100%;
     width: 100%;
     z-index: 1000;
-    padding-top:60px;
+    padding-top: 60px;
     background-color: rgba($color-background, .95);
 }
+
 .modal-item {
     background: $color-background;
-    padding: 30px;  
-    box-shadow: 0 1px 4px rgba($color-foreground,.04);
-    border: 1px solid rgba($color-foreground,.09);
+    padding: 30px;
+    box-shadow: 0 1px 4px rgba($color-foreground, .04);
+    border: 1px solid rgba($color-foreground, .09);
     border-radius: 4px;
     max-height: 80%;
     overflow-y: scroll
 }
-.muster-table{
+
+.muster-table {
     text-align: left;
     width: 100%;
 }
-.modal-close{
+
+.modal-close {
     font-size: 2em;
     cursor: pointer
 }
+
+.muster-table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    th, td {
+        width: 300px
+    }
+    thead {
+        tr {
+            display: block;
+            position: relative;
+        }
+    }
+    tbody {
+        display: block;
+        overflow: auto;
+        width: 100%;
+        height: 300px;
+    }
+}
+
