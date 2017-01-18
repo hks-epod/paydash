@@ -6,7 +6,7 @@ import Table from './table.jsx';
 
 const BlockCard =  React.createClass({
  
-    toggleModal() {
+    toggleModal: function() {
         const state = this.state.modalOpen;
         this.setState({ modalOpen: !state});
         ga('send', 'event', {
@@ -15,9 +15,13 @@ const BlockCard =  React.createClass({
             eventLabel: this.props.data.staff_id + '/' + this.props.identifier
         });
     },
+    toggleTable: function(value){
+        this.setState({ active_table: value});
+    },
     getInitialState: function(){
         return {
-           modalOpen: false
+           modalOpen: false,
+           active_table: 'delayed'
          };
     },
     render: function(){
@@ -48,9 +52,12 @@ const BlockCard =  React.createClass({
                     </div>
                     <button className="button button--primary" onClick={this.toggleModal}>{this.props.translation.muster_details}</button>
                     <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>
-                        <h1 className="u-text-left">{this.props.data.name}, {this.props.data.designation}, {this.props.data.mobile}</h1> 
-                        <Table title={this.props.translation.delayed} data={this.props.data.delayed_musters} translation={this.props.translation}></Table>
-                        <Table title={this.props.translation.current} data={this.props.data.current_musters} translation={this.props.translation}></Table> 
+                        <h1 className="u-text-left">{this.props.data.name}, {this.props.data.designation}, {this.props.data.mobile}</h1>
+                        <div className="u-pull-right">
+                            <button className="button" onClick={this.toggleTable.bind(this, 'delayed')} >{this.props.translation.delayed}</button>
+                            <button className="button" onClick={this.toggleTable.bind(this, 'current')}>{this.props.translation.current}</button> 
+                        </div>
+                        <Table title={this.props.translation[this.state.active_table]} data={this.props.data[this.state.active_table + '_musters']} translation={this.props.translation}></Table>
                     </Modal>
                 </div>
             </div>
