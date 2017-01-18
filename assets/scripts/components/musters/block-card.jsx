@@ -47,7 +47,8 @@ const BlockCard =  React.createClass({
                         </div>
                     </div>
                     <button className="button button--primary" onClick={this.toggleModal}>{this.props.translation.muster_details}</button>
-                    <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>  
+                    <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>
+                        <h1 className="u-text-left">{this.props.data.name}, {this.props.data.designation}, {this.props.data.mobile}</h1> 
                         <Table title={this.props.translation.delayed} data={this.props.data.delayed_musters} translation={this.props.translation}></Table>
                         <Table title={this.props.translation.current} data={this.props.data.current_musters} translation={this.props.translation}></Table> 
                     </Modal>

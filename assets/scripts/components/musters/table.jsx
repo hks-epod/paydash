@@ -42,7 +42,7 @@ const Table = React.createClass({
 
         return (
             <div>
-                <h1 className="">{_this.props.title}</h1>
+                <h2 className="">{_this.props.title}</h2>
                 {table}
             </div>     
         );

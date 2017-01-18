@@ -5,17 +5,17 @@
     height: 100%;
     width: 100%;
     z-index: 1000;
-    padding-top: 60px;
+    padding-top: 40px;
     background-color: rgba($color-background, .95);
 }
 
 .modal-item {
     background: $color-background;
-    padding: 30px;
+    padding: 10px 40px;
     box-shadow: 0 1px 4px rgba($color-foreground, .04);
     border: 1px solid rgba($color-foreground, .09);
     border-radius: 4px;
-    max-height: 80%;
+    max-height: 85%;
     overflow-y: scroll
 }
 
@@ -31,9 +31,13 @@
 
 .muster-table {
     table-layout: fixed;
+    border: solid 1px #ddd;
     border-collapse: collapse;
     th, td {
         width: 300px
+    }
+    th:first-child, td:first-child {
+        padding-left: 10px;
     }
     thead {
         tr {
