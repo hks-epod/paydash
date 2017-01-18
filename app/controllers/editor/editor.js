@@ -69,6 +69,7 @@ exports.updateData = {
 
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var Employees = request.server.plugins.sequelize.db.Employees;
+        var Employee_regions = request.server.plugins.sequelize.db.Employee_regions;
 
         var block_code = request.payload.block_code;
         var user_id = request.auth.credentials.id;
@@ -76,13 +77,13 @@ exports.updateData = {
         var level = request.payload.data.level;
         var data = request.payload.data.table;
 
-        data.forEach(function(d) {
+        data.forEach(function(d,i) {
 
             var panchayat_code = (level === 'panchayat' ? d.panchayat_code : '');
 
             // clean up the user-entered inputs
-            var name = (d.name === null || d.name.trim() === '') ? null : d.name.trim();
-            var mobile_no = (d.mobile_no === null || d.mobile_no.trim() === '') ? null : d.mobile_no.trim();
+            var name = (d.name === null || d.name.trim() === '') ? null : d.name.trim().replace(/\s\s+/g, ' ').toLowerCase();
+            var mobile_no = (d.mobile_no === null || d.mobile_no.trim() === '') ? null : d.mobile_no.trim().replace('-','').replace(/\s/g, '');
             var designation = (d.designation === null || d.designation.trim() === '') ? null : d.designation.trim();
 
             if (name === null && mobile_no === null && designation === null) { // check if fields are empty, in which case we want to delete the record if it exists
@@ -90,7 +91,7 @@ exports.updateData = {
                 // Update the record to have the current user's id in the edited_by field and set the record to be deleted. 
                 // The update trigger will take care of inserting the record into the history table and deleting it from the master table.
 
-                Employees.update({
+                Employee_regions.update({
                     to_delete: 1,
                     edited_by: user_id
                 }, {
@@ -103,7 +104,7 @@ exports.updateData = {
                 }).then(function(result) {
 
                     if (result[0] === 1) {
-                        Employees.destroy({
+                        Employee_regions.destroy({
                             where: {
                                 step: step,
                                 block_code: block_code,
@@ -127,10 +128,24 @@ exports.updateData = {
                 // Insert ignore in the employees_unique table
                 // Upsert into the employee_regions table, use embedded select to get the appropriate staff_id from empoyees_unique
 
-                var upsertString = Queries.editor_upsert(staff_id, name, designation, step, mobile_no, block_code, panchayat_code, user_id);
+                var insertString = Queries.editor_insert_unique(name,mobile_no);
+                var upsertString = Queries.editor_upsert(name, designation, step, mobile_no, block_code, panchayat_code, user_id);
+                
+                // console.log(insertString)
+                sequelize
+                    .query(insertString)
+                    .then(function(result) {
+                        sequelize.query(upsertString);
+                    
+                    }
+                )
+                // .catch(function(err) { return reply('Unable to save changes'); });
+                
+                
+                // console.log(upsertString);
+                // sequelize.query(upsertString);
+                    // .catch(function(err) { return reply('Unable to save changes'); });
 
-                sequelize.query(upsertString)
-                    .catch(function(err) { return reply('Unable to save changes'); });
 
             }
 

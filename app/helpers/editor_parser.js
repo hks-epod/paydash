@@ -15,7 +15,7 @@ exports.parser = function(rows) {
         tableData = employeesResponse.map(function(d) {
             return {
                 'staff_id': d.staff_id,
-                'name': d.name,
+                'name': Utils.toProperCase(d.name),
                 'mobile_no': d.mobile_no,
                 'designation': d.designation
             };
@@ -26,7 +26,7 @@ exports.parser = function(rows) {
         tableData = employeesResponse.map(function(d) {
             return {
                 'staff_id': d.staff_id,
-                'name': d.name,
+                'name': Utils.toProperCase(d.name),
                 'mobile_no': d.mobile_no,
                 'panchayat_code': d.panchayat_code,
                 'panchayat_name': d.panchayat_name,

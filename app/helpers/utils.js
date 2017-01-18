@@ -7,6 +7,14 @@ exports.padNum = function(num) {
     return str.length === 1 ? '0' + str : str;
 };
 
+exports.toProperCase = function(str) {
+    if (str === null) {
+        return null;
+    } else {
+        return str.split(' ').map(i => i[0].toUpperCase() + i.substring(1)).join(' ');
+    }
+};
+
 exports.getDesignation = function(task_assign, state_code) {
     var designationLookup = {
         17: 'SE',

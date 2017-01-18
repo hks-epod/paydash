@@ -4,10 +4,7 @@ module.exports = function(sequelize, DataTypes) {
 
     var Employees = sequelize.define('Employees', {
 
-        staff_id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true
-        },
+        staff_id: DataTypes.INTEGER,
         name: {
             type: DataTypes.STRING,
             primaryKey: true

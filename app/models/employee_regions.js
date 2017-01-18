@@ -27,5 +27,5 @@ module.exports = function(sequelize, DataTypes) {
         timestamps: false
     });
 
-    return Employees;
+    return Employee_regions;
 };
