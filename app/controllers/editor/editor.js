@@ -82,11 +82,11 @@ exports.updateData = {
             var panchayat_code = (level === 'panchayat' ? d.panchayat_code : '');
 
             // clean up the user-entered inputs
-            var name = (d.name === null || d.name.trim() === '') ? null : d.name.trim().replace(/\s\s+/g, ' ').toLowerCase();
-            var mobile_no = (d.mobile_no === null || d.mobile_no.trim() === '') ? null : d.mobile_no.trim().replace('-','').replace(/\s/g, '');
-            var designation = (d.designation === null || d.designation.trim() === '') ? null : d.designation.trim();
+            var name = (d.name === null || d.name.trim() === '') ? '' : d.name.trim().replace(/\s\s+/g, ' ').toLowerCase();
+            var mobile_no = (d.mobile_no === null || d.mobile_no.trim() === '') ? '' : d.mobile_no.trim().replace('-','').replace(/\s/g, '');
+            var designation = (d.designation === null || d.designation.trim() === '') ? '' : d.designation.trim();
 
-            if (name === null && mobile_no === null && designation === null) { // check if fields are empty, in which case we want to delete the record if it exists
+            if (name === '' && mobile_no === '' && designation === '') { // check if fields are empty, in which case we want to delete the record if it exists
 
                 // Update the record to have the current user's id in the edited_by field and set the record to be deleted. 
                 // The update trigger will take care of inserting the record into the history table and deleting it from the master table.

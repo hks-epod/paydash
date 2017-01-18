@@ -29,7 +29,7 @@ exports.parser = function(rows) {
                 'name': Utils.toProperCase(d.name),
                 'mobile_no': d.mobile_no,
                 'panchayat_code': d.panchayat_code,
-                'panchayat_name': d.panchayat_name,
+                'panchayat_name': d.panchayat_name.toUpperCase(),
                 'designation': d.designation
             };
         }).sort(function(a,b) { 

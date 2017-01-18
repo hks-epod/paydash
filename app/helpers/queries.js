@@ -78,7 +78,7 @@ exports.editor_info = function(BLOCK_CODE) {
 }
 
 exports.editor_upsert = function(NAME,DESIGNATION,STEP,MOBILE_NO,BLOCK_CODE,PANCHAYAT_CODE,USER_ID) {
-    return "INSERT INTO employee_regions (staff_id,designation,step,block_code,panchayat_code,edited_by,to_delete) VALUES ((SELECT staff_id FROM employees_unique WHERE name='"+NAME+"' AND mobile_no='"+MOBILE_NO+"'), IF('"+DESIGNATION+"'='null',NULL,'"+DESIGNATION+"'), '"+STEP+"', '"+BLOCK_CODE+"', '"+PANCHAYAT_CODE+"', "+USER_ID+", 0 ) ON DUPLICATE KEY UPDATE edited_by=IF(!(VALUES(staff_id) <=> staff_id AND VALUES(designation) <=> designation), VALUES(edited_by), edited_by), staff_id= VALUES(staff_id), designation=VALUES(designation), to_delete=VALUES(to_delete);";
+    return "INSERT INTO employee_regions (staff_id,designation,step,block_code,panchayat_code,edited_by,to_delete) VALUES ((SELECT staff_id FROM employees_unique WHERE name='"+NAME+"' AND mobile_no='"+MOBILE_NO+"'), '"+DESIGNATION+"', '"+STEP+"', '"+BLOCK_CODE+"', '"+PANCHAYAT_CODE+"', "+USER_ID+", 0 ) ON DUPLICATE KEY UPDATE edited_by=IF(!(VALUES(staff_id) <=> staff_id AND VALUES(designation) <=> designation), VALUES(edited_by), edited_by), staff_id= VALUES(staff_id), designation=VALUES(designation), to_delete=VALUES(to_delete);";
 }
 
 exports.editor_insert_unique = function(NAME,MOBILE_NO) {

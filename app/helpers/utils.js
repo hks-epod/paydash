@@ -8,8 +8,8 @@ exports.padNum = function(num) {
 };
 
 exports.toProperCase = function(str) {
-    if (str === null) {
-        return null;
+    if (str === null || str==='') {
+        return '';
     } else {
         return str.split(' ').map(i => i[0].toUpperCase() + i.substring(1)).join(' ');
     }
