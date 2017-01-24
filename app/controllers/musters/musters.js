@@ -6,7 +6,7 @@ const Translate = require('../../templates/helpers/t');
 
 exports.showPage = {
     auth: {
-      scope : ['block', 'editor', 'district']
+      scope : ['block', 'district']
     },
     handler: function(request, reply) {
         return reply.view('musters/musters');
@@ -14,6 +14,9 @@ exports.showPage = {
 };
 
 exports.getData = {
+    auth: {
+      scope : ['block', 'district']
+    },
     handler: function(request, reply) {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var userId = request.auth.credentials.id;

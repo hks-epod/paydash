@@ -6,7 +6,7 @@ const Translate = require('../../templates/helpers/t');
 
 exports.showPage = {
     auth: {
-      scope : ['block', 'editor', 'district']
+      scope : ['block', 'district']
     },
     handler: function(request, reply) {
         return reply.view('performance/performance');
@@ -15,7 +15,7 @@ exports.showPage = {
 
 exports.getData = {
     auth: {
-      scope : ['block', 'editor', 'district']
+      scope : ['block', 'district']
     },
     handler: function(request, reply) {
 

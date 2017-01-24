@@ -53,7 +53,9 @@ exports.postForm = {
         },
     },
     handler: function(request, reply) {
-        if (request.auth.isAuthenticated) {
+        if (request.auth.isAuthenticated && request.auth.scope === 'editor') {
+            return reply.redirect('/editor/info');
+        } else if (request.auth.isAuthenticated){
             return reply.redirect('/overview');
         }
 
