@@ -32,9 +32,15 @@ const ComparisonChart =  React.createClass({
             labels.push(region[comparison_line + '_name'] + ' ' + _this.props.translation.comparison.labels[comparison_line]);
             var line_data = Parser.lines({
                 data: region.data,
-                col: _this.state.active_step === '8' ? [7] : [_this.state.active_step],
+                col: _this.state.active_step === '8' ? [1,2,3,4,5,6,7] : [_this.state.active_step],
                 isCumulative: _this.state.active_step=== '8' ? true : false
             });
+
+            // Workaroud to get just all steps
+            if(_this.state.active_step === '8'){
+                c_data.push(line_data[6]); 
+                return;
+            }
             if (line_data[0]) {
                 c_data.push(line_data[0]); // Workaround to append region data
             }
