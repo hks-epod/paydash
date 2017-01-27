@@ -21,7 +21,7 @@ exports.block = function(rows) {
             return {
                 'staff_id': v[0].staff_id,
                 'name': v[0].name,
-                'designation': Utils.getDesignation(v[0].task_assign, stateCode),
+                'designation': v[0].task_assign,
                 'mobile': v[0].mobile_no,
                 'current_total': v[0].current_total,
                 'delayed_total': v[0].delayed_total,

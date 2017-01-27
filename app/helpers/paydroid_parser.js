@@ -236,7 +236,7 @@ exports.v2 = function(rows, role) {
                 return {
                     'name': v[0].name,
                     'staff_id': v[0].staff_id,
-                    'designation': Utils.getDesignation(v[0].task_assign, state_code),
+                    'designation': v[0].task_assign,
                     'mobile': v[0].mobile_no,
                     'block_name': v[0].block_name,
                     'current_total': v[0].current_total,
