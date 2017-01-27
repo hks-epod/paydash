@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         role: DataTypes.STRING,
         mobile: DataTypes.STRING,
         email: {
-            DataTypes.STRING,
+            type: DataTypes.STRING,
             unique: true,
         },
         title: DataTypes.STRING,
