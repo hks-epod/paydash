@@ -52,7 +52,7 @@ const BlockCard =  React.createClass({
                     </div>
                     <button className="button button--primary" onClick={this.toggleModal}>{this.props.translation.muster_details}</button>
                     <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>
-                        <h1 className="u-text-left">{this.props.data.name}, {this.props.data.designation}, {this.props.data.mobile}</h1>
+                        <h1 className="u-text-left">{this.props.data.name.toUpperCase()}, {this.props.data.designation}, {this.props.data.mobile}</h1>
                         <div className="u-pull-right">
                             <button className={'button btndl--' + this.state.active_table} onClick={this.toggleTable.bind(this, 'delayed')} >{this.props.translation.delayed}</button>
                             <button className={'button btncr--' + this.state.active_table} onClick={this.toggleTable.bind(this, 'current')}>{this.props.translation.current}</button> 
