@@ -29,6 +29,15 @@ exports.getDesignation = function(task_assign, state_code) {
     }
 };
 
+exports.buildName = function(firstname, lastname) {
+    var name = (firstname.toUpperCase() + ' ' + lastname.toUpperCase()).trim();
+    if (name==='') {
+        return 'No Data';
+    } else {
+        return name;
+    }
+
+}
 exports.buildSubject = function(subjectStub, regionsResponse) {
     var subjectLine = subjectStub + ' [';
     for (var i=0; i<regionsResponse.length; i++) {

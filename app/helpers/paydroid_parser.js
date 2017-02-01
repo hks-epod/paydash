@@ -461,7 +461,7 @@ exports.v2 = function(rows, role) {
                     'officers': v.map(function(d) {
                         return {
                             officer_id: d.block_code + '_' + d.designation_id,
-                            name: d.firstname == null && d.lastname == null ? 'No Data' : d.firstname.toUpperCase() + ' ' + d.lastname.toUpperCase(),
+                            name: Utils.buildName(d.firstname,d.lastname),
                             designation: d.designation,
                             designation_id: d.designation_id,
                             mobile: d.mobile
