@@ -76,10 +76,9 @@ exports.postForm = {
                     return reply.redirect('/login');
                 }
 
-
                 user.super_token = new Date().getTime().toString();
                 user.save().then(function() {
-
+                
                     request.cookieAuth.set(user);
 
                     // Handle Redirection

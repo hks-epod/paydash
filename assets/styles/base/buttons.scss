@@ -62,8 +62,15 @@ $button--letterSpacing: $letterSpacing-normal;
     border-color: $color-error-dark;
     background-color: $color-error-dark;
 }
-.btndl--delayed,.btncr--current {
+.button.btndl--delayed,.button.btncr--current {
     color: #fff;
+    border-color: $color-accent;
+    background-color: $color-accent;
+}
+.button.btndl--delayed:hover,
+.button.btndl--delayed:focus,
+.button.btncr--current:hover,
+.button.btncr--current:focus {
     border-color: $color-accent;
     background-color: $color-accent;
 }
