@@ -61,6 +61,7 @@ exports.postForm = {
 
         var db = request.server.plugins.sequelize.db;
         var User = request.server.plugins.sequelize.db.User;
+
         User.findOne({
             where: {
                 username: request.payload.username,
@@ -68,6 +69,7 @@ exports.postForm = {
             },
             include: [db.user_regions]
         }).then(function(user) {
+
             if (user) {
                 if (user.deactivated) {
                     request.yar.flash('error', 'Your account has been deactivated. Please contact the PayDash team if you require assistance.');
