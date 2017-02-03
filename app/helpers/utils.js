@@ -32,7 +32,7 @@ exports.getDesignation = function(task_assign, state_code) {
 exports.buildName = function(firstname, lastname) {
     var name = (firstname.toUpperCase() + ' ' + lastname.toUpperCase()).trim();
     if (name==='') {
-        return 'No Data';
+        return 'No Officer Data';
     } else {
         return name;
     }
