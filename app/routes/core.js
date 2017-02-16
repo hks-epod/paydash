@@ -18,6 +18,12 @@ exports.register = function(plugin, options, next) {
             path: '/',
             config: Controllers.core.pages.home
         },
+        // Policy Page
+        {
+            method: 'GET',
+            path: '/policy',
+            config: Controllers.core.pages.policy
+        },
         // Assets & static Routes
         {
             method: 'GET',
