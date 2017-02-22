@@ -8,11 +8,15 @@ exports.register = function(plugin, options, next) {
 
     plugin.route([
 
-        //  Muster cards
         {
             method: 'GET',
             path: '/contact',
-            config: Controllers.contact.getData
+            config: Controllers.contact.show
+        },
+        {
+            method: 'POST',
+            path: '/contact',
+            config: Controllers.contact.sendMessage
         }
     ]);
 

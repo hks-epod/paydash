@@ -1,9 +1,18 @@
 <div class="container-narrow u-spacing-page-top">
   <h1 class="u-text-center">Contact PayDash team</h1>
   <br>
-  <a target="_blank" href='mailto:{{info.email}}?subject={{info.subject}}' class="button button--primary u-full-width"/>Email Us</a>
-   <br>
+   
+   <div class="u-text-center">Call us at {{info.phone}} </div>
    <br>
    <div class="u-text-center">Or </div>
-   <div class="u-text-center">Call us at {{info.phone}} </div>
+   <br>
+   <div class="u-text-center">Send message </div>
+   <br>
+   {{> flash}}
+   {{!-- <a target="_blank" href='mailto:{{info.email}}?subject={{info.subject}}' class="button button--primary u-full-width"/>Send  Message</a> --}}
+   <form method="post" action="/contact">
+     <textarea style="height:200px" class="u-full-width" id="messgae" name="message" value=""></textarea>
+     {{> form_security}}
+     <input type="submit" value="Send" class=" button button--primary u-full-width">
+   </form>
 </div>
