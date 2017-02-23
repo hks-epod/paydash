@@ -136,6 +136,7 @@ module.exports = {
                 gmail: 'Gmail',
                 phone: 'Phone'
             },
+            whatsapp: {
                 muster_selection: {
                     all: 'Send delayed musters and musters closing today',
                     current: 'Send musters closing today only',
