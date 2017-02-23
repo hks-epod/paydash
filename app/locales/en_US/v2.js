@@ -136,7 +136,13 @@ module.exports = {
                 gmail: 'Gmail',
                 phone: 'Phone'
             },
-            whatsapp: {
+                muster_selection: {
+                    all: 'Send delayed musters and musters closing today',
+                    current: 'Send musters closing today only',
+                    delayed: 'Send delayed musters only'
+                },
+                overview_current:'{name}\n\n{current_total} musters closing today\n\n',
+                overview_delayed:'{name}\n\n{delayed_total} delayed musters\n\n',
                 overview:'Muster Roll Details for {name}\n\n{current_total} musters closing today\n{delayed_total} delayed musters\n\n',
                 current:'MUSTERS CLOSING TODAY\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n\n',
                 delayed:'DELAYED MUSTERS\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n_Days delayed_\n{days_pending}\n\n'
