@@ -128,6 +128,13 @@ module.exports = {
             forgot_pass: 'I forgot my password',
             colorblind: 'Colorblind'
         },
+        contact: {
+            header:'Contact PayDash team',
+            call:'Call us at {{info.phone}}',
+            or: 'Or',
+            send_message: 'Send us a message using the form below',
+            send_button: 'SEND'
+        },
         editor: {
             title: 'MGNREGA Employee Data Entry',
             nav: {

@@ -127,6 +127,13 @@ module.exports = {
             forgot_pass: 'मैं अपना पासवर्ड भूल गयी/गया',
             colorblind: 'कलर ब्लाइंड'
         },
+        contact: {
+            header:'पे-डॅश दल से संपर्क करें',
+            call:'आप {{info.phone}} पर हमे कॉल कर सकते हैं',
+            or: 'या',
+            send_message: 'नीचे बने बक्से में हमारे लिए संदेश लिखें',
+            send_button: 'संदेश भेजें'
+        },
         editor: {
             title: 'MGNREGA अधिकारी जानकारी डाटा एंट्री सिस्टम',
             nav: {
