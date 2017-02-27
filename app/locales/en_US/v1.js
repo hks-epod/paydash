@@ -130,7 +130,7 @@ module.exports = {
         },
         contact: {
             header:'Contact PayDash team',
-            call:'Call us at {{info.phone}}',
+            call:'Call us at {{phone}}',
             or: 'Or',
             send_message: 'Send us a message using the form below',
             send_button: 'SEND'

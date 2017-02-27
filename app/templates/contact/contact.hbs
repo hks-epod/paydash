@@ -1,18 +1,17 @@
 <div class="container-narrow u-spacing-page-top">
-  <h1 class="u-text-center">Contact PayDash team</h1>
+  <h1 class="u-text-center">{{t "/web/contact/header" credentials null}}</h1>
   <br>
    
-   <div class="u-text-center">Call us at {{info.phone}} </div>
+   <div class="u-text-center">{{{info}}} </div>
    <br>
-   <div class="u-text-center">Or </div>
+   <div class="u-text-center">{{t "/web/contact/or" credentials null}} </div>
    <br>
-   <div class="u-text-center">Send message </div>
+   <div class="u-text-center">{{t "/web/contact/send_message" credentials null}} </div>
    <br>
    {{> flash}}
-   {{!-- <a target="_blank" href='mailto:{{info.email}}?subject={{info.subject}}' class="button button--primary u-full-width"/>Send  Message</a> --}}
    <form method="post" action="/contact">
      <textarea style="height:200px" class="u-full-width" id="messgae" name="message" value=""></textarea>
      {{> form_security}}
-     <input type="submit" value="Send" class=" button button--primary u-full-width">
+     <input type="submit" value="{{t "/web/contact/send" credentials null}}" class=" button button--primary u-full-width">
    </form>
 </div>

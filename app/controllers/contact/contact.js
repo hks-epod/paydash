@@ -4,6 +4,8 @@ const Queries = require('../../helpers/queries');
 const D3 = require('d3');
 const Utils = require('../../helpers/utils');
 const Joi = require('joi');
+const Translate = require('../../templates/helpers/t');
+const Handlebars = require('handlebars');
 
 
 exports.show = {
@@ -24,7 +26,9 @@ exports.show = {
             var data = {
                 'phone': contactResponse[0].phone
             };
-            reply.view('contact/contact', {info: data});
+            var template = Handlebars.compile(Translate('/web/contact/call', request.auth.credentials, null));
+            var result = template(data);
+            reply.view('contact/contact', {info: result});
         });
     }
 };

@@ -129,7 +129,7 @@ module.exports = {
         },
         contact: {
             header:'पे-डॅश दल से संपर्क करें',
-            call:'आप {{info.phone}} पर हमे कॉल कर सकते हैं',
+            call:'आप {{phone}} पर हमे कॉल कर सकते हैं',
             or: 'या',
             send_message: 'नीचे बने बक्से में हमारे लिए संदेश लिखें',
             send_button: 'संदेश भेजें'
