@@ -38,15 +38,8 @@ exports.buildName = function(firstname, lastname) {
     }
 
 }
-exports.buildSubject = function(subjectStub, regionsResponse) {
-    var subjectLine = subjectStub + ' [';
-    for (var i=0; i<regionsResponse.length; i++) {
-        if (i>0) {
-            subjectLine += '/';
-        }
-        subjectLine += regionsResponse[i].region_name + ' (' + regionsResponse[i].region_code + ')';
-    }
-    subjectLine += ']';
+exports.buildSubject = function(subjectStub, userId) {
+    var subjectLine = subjectStub + ' [' + userId + ']';
     return subjectLine;
 }
 

@@ -38,7 +38,7 @@ exports.getData = {
             if (version === 1) {
                 data = Parser.v1(rows);
             } else if (version === 2) {
-                data = Parser.v2(rows, role);
+                data = Parser.v2(rows, role, userId);
             }
 
             reply(data);

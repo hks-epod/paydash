@@ -3,7 +3,7 @@
 const D3 = require('d3');
 const Utils = require('./utils');
 
-exports.v1 = function(rows) {
+exports.v1 = function(rows, userId) {
 
     var overviewResponse = D3.values(rows[0]);
 
@@ -145,6 +145,7 @@ exports.v1 = function(rows) {
             return bSum - aSum;
         });
 
+    var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
     var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'];
 
     var data = {
@@ -176,7 +177,7 @@ exports.v1 = function(rows) {
         'contact': {
             'phone': contactResponse[0].phone,
             'email': contactResponse[0].email,
-            'subject': contactResponse[0].subject
+            'subject': subjectLine
         }
     };
 
@@ -185,7 +186,7 @@ exports.v1 = function(rows) {
 };
 
 
-exports.v2 = function(rows, role) {
+exports.v2 = function(rows, role, userId) {
 
     function parse_block(rows) {
         
@@ -202,8 +203,6 @@ exports.v2 = function(rows, role) {
         var contactResponse = D3.values(rows[5]);
 
         var versionResponse = D3.values(rows[6]);
-
-        var regionsResponse = D3.values(rows[7]);
 
         // Parse the overview response
         var overview = D3.nest()
@@ -357,7 +356,7 @@ exports.v2 = function(rows, role) {
 
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
 
-        var subjectLine = Utils.buildSubject(contactResponse[0].subject, regionsResponse);
+        var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
         
         var data = {
             'overview': overview,
@@ -427,8 +426,6 @@ exports.v2 = function(rows, role) {
         var contactResponse = D3.values(rows[5]);
 
         var versionResponse = D3.values(rows[6]);
-
-        var regionsResponse = D3.values(rows[7]);
 
         // Parse the overview response
         var overview = D3.nest()
@@ -562,7 +559,7 @@ exports.v2 = function(rows, role) {
             });
 
 
-        var subjectLine = Utils.buildSubject(contactResponse[0].subject, regionsResponse);
+        var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
 
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
 
