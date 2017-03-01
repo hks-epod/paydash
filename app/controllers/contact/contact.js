@@ -22,7 +22,7 @@ exports.show = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-            var contactResponse = D3.values(rows[0]);
+            var contactResponse = rows;
             var data = {
                 'phone': contactResponse[0].phone
             };
@@ -57,10 +57,9 @@ exports.sendMessage = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-            var contactResponse = D3.values(rows[0]);
-            var regionsResponse = D3.values(rows[1]);
+            var contactResponse = rows;
 
-            var subjectLine = Utils.buildSubject(contactResponse[0].subject, regionsResponse);
+            var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
 
             var data = {
                 from: 'epodindianrega@gmail.com',

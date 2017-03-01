@@ -31,8 +31,7 @@ exports.performance = function(USER_ID, ROLE) {
 };
 
 exports.contact = function(USER_ID) {
-    return "SELECT * FROM contact;" + 
-    "SELECT * FROM user_regions WHERE user_id="+USER_ID+";";
+    return "SELECT * FROM contact;";
 };
 
 exports.paydroid = function(USER_ID,ROLE,VERSION) {
