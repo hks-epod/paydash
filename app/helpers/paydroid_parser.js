@@ -405,8 +405,7 @@ exports.v2 = function(rows, role, userId) {
                     '#0072b2'
                 ]
             },
-            // 'version': versionResponse[0].version
-            'version': '2.1'
+            'version': versionResponse[0].version
         };
 
         return data;
