@@ -30,13 +30,14 @@ exports.v1 = function(rows, userId) {
     // Nest the cards response and include the overview stats
     var cards = D3.nest()
         .key(function(d) {
-            return d.staff_id;
+            var key = d.staff_id + d.block_code;
+            return key;
         })
         .rollup(function(v) {
             return {
                 'name': v[0].name,
                 'staff_id': v[0].staff_id,
-                'designation': Utils.getDesignation(v[0].task_assign, state_code),
+                'designation': v[0].task_assign,
                 'mobile': v[0].mobile_no,
                 'block_name': v[0].block_name,
                 'current_total': v[0].current_total,
@@ -44,31 +45,52 @@ exports.v1 = function(rows, userId) {
                 'delayed_musters': v.filter(function(d) {
                     return d.type === 'delayed_musters';
                 }).map(function(d) {
-                    return [{
+                    return {
                         'msr_no': d.msr_no,
                         'panchayat_name': d.panchayat_name,
                         'work_name': d.work_name,
                         'work_code': d.work_code,
                         'closure_date': d.end_date,
-                        'days_pending': d.days_pending
-                    }];
+                        'days_pending': d.days_pending,
+                        'step': d.step
+                    };
                 }),
                 'current_musters': v.filter(function(d) {
                     return d.type === 'current_musters';
                 }).map(function(d) {
-                    return [{
+                    return {
                         'msr_no': d.msr_no,
                         'panchayat_name': d.panchayat_name,
                         'work_name': d.work_name,
                         'work_code': d.work_code,
                         'closure_date': d.end_date
-                    }];
+                    };
                 })
             };
         })
         .entries(cardsResponse)
         .map(function(d) {
             return d.values;
+        })
+        .sort(function (a, b){
+            var aActive = a.current_total + a.delayed_total > 0 ? 1 : 0;
+            var bActive = b.current_total + b.delayed_total > 0 ? 1 : 0;
+            var aUnmapped = a.name.toLowerCase() === 'unmapped' ? 1 : 0;
+            var bUnmapped = b.name.toLowerCase() === 'unmapped' ? 1 : 0;
+
+            // ORDER BY active DESC, unmapped, delayed_total DESC, current_total DESC, name;"
+
+            if (aActive < bActive) return 1;
+            if (aActive > bActive) return -1;
+            if (aUnmapped < bUnmapped) return -1;
+            if (aUnmapped > bUnmapped) return 1;
+            if (a.delayed_total < b.delayed_total) return 1;
+            if (a.delayed_total > b.delayed_total) return -1;
+            if (a.current_total < b.current_total) return 1;
+            if (a.current_total > b.current_total) return -1;
+            if (a.name < b.name) return -1;
+            if (a.name > b.name) return 1;
+            return 0;
         });
 
     // Nest the block response
