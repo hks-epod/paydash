@@ -67,20 +67,24 @@ exports.paydroid = function(USER_ID,ROLE,VERSION) {
 exports.editor = function(BLOCK_CODE,STEP) {
     return "SELECT * FROM (SELECT level FROM employee_configuration WHERE state_code IN (SELECT state_code from blocks WHERE block_code = '"+BLOCK_CODE+"') AND step='"+STEP+"') a LEFT JOIN ((SELECT a.block_code, a.panchayat_code, a.panchayat_name, b.staff_id, b.name, b.designation, b.mobile_no, 'panchayat' AS level FROM (SELECT panchayat_code, panchayat_name, block_code FROM panchayats WHERE block_code='"+BLOCK_CODE+"') a LEFT JOIN (SELECT a.staff_id, a.name, b.designation, a.mobile_no, b.panchayat_code FROM employees_unique a INNER JOIN employee_regions b ON a.staff_id=b.staff_id AND block_code='"+BLOCK_CODE+"' AND step='"+STEP+"' AND panchayat_code <> '') b ON a.panchayat_code = b.panchayat_code) UNION (SELECT a.block_code, NULL AS panchayat_code, NULL AS panchayat_name, b.staff_id, b.name, b.designation, b.mobile_no, 'block' AS level FROM (SELECT '"+BLOCK_CODE+"' AS block_code) a LEFT JOIN (SELECT a.staff_id, a.name, b.designation, a.mobile_no, b.block_code, b.panchayat_code FROM employees_unique a INNER JOIN employee_regions b ON a.staff_id=b.staff_id AND block_code='"+BLOCK_CODE+"' AND step='"+STEP+"' AND panchayat_code = '') b ON a.block_code = b.block_code)) b ON a.level = b.level;" +
         "SELECT level, designation, alternative_designation FROM employee_configuration WHERE state_code IN (SELECT state_code from blocks WHERE block_code = '"+BLOCK_CODE+"') AND step='"+STEP+"';"
-}
+};
 
 exports.editor_info = function(BLOCK_CODE) {
     return "SELECT * FROM officer_configuration WHERE state_code IN (SELECT state_code from blocks WHERE block_code = '"+BLOCK_CODE+"') and role='block' ORDER BY designation_id;" +
         "SELECT block_name from blocks WHERE block_code='"+BLOCK_CODE+"';";
-}
+};
 
 exports.editor_upsert = function(NAME,DESIGNATION,STEP,MOBILE_NO,BLOCK_CODE,PANCHAYAT_CODE,USER_ID) {
     return "INSERT INTO employee_regions (staff_id,designation,step,block_code,panchayat_code,edited_by,to_delete) VALUES ((SELECT staff_id FROM employees_unique WHERE name='"+NAME+"' AND mobile_no='"+MOBILE_NO+"'), '"+DESIGNATION+"', '"+STEP+"', '"+BLOCK_CODE+"', '"+PANCHAYAT_CODE+"', "+USER_ID+", 0 ) ON DUPLICATE KEY UPDATE edited_by=IF(!(VALUES(staff_id) <=> staff_id AND VALUES(designation) <=> designation), VALUES(edited_by), edited_by), staff_id= VALUES(staff_id), designation=VALUES(designation), to_delete=VALUES(to_delete);";
-}
+};
 
 exports.editor_insert_unique = function(NAME,MOBILE_NO) {
     return "INSERT IGNORE INTO employees_unique (name,mobile_no) VALUES ('"+NAME+"','"+MOBILE_NO+"');"
-}
+};
+
+exports.usage_nav = function() {
+    return "select a.metric, a.metric_label, b.comparison as filter_comparison, b.comparison_label as filter_comparison_label, 'comparison' as type, NULL as `option`, NULL as option_label from usage_metrics a inner join usage_comparisons b on a.comparison=b.comparison union select a.metric, a.metric_label, b.filter as filter_comparison, b.filter_label as filter_comparison_label, 'filter' as type, b.option, b.option_label from usage_metrics a inner join usage_filters b on a.filter=b.filter;";
+};
 
 exports.outcomes = function() {
     return "SELECT outcome, label FROM outcomes;" +
