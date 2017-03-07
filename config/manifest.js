@@ -178,6 +178,10 @@ internals.manifest = {
         //  Api routes
         {
             plugin: './app/routes/api.js'
+        },
+        //  Monitoring routes
+        {
+            plugin: './app/routes/monitor.js'
         }
     ]
 };
