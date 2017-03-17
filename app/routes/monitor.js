@@ -21,8 +21,8 @@ exports.register = function(plugin, options, next) {
         // usgae monitoring data
         {
             method: 'GET',
-            path: '/monitor/usage/data',
-            config: Controllers.monitor.usage.getData
+            path: '/monitor/usage/metric',
+            config: Controllers.monitor.usage.metric
         },
         // Outcome monitoring dashbaord
         {
