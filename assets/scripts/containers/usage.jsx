@@ -20,56 +20,82 @@ const Usage = React.createClass({
             })
             .get();
     },
-    setValue: function(value) {
-        this.setState({ selectedMetric: value });
+    setMetric: function(value) {
+        this.setState({ 
+            selectedMetric: value, 
+            selectedComparison: null,
+            selectedFilters: {} 
+        });
+    },
+    setComparison: function(value) {
+        this.setState({ selectedComparison: value });
+    },
+    setFilter: function(filter) {
+        var _this = this;
+
+        return function(value){
+            var newState= {selectedFilters:{}};
+            newState.selectedFilters = _this.state.selectedFilters;
+            newState.selectedFilters[filter]= value;
+            _this.setState(newState);
+        };
     },
     getInitialState: function() {
         return {
             metrices: [],
-            selectedMetric : null
+            selectedMetric : null,
+            selectedComparison: null,
+            selectedFilters: {}
         };
     },
     componentWillMount: function() {
         this.fetchData();
     },
     render: function(){
-        var _this = this;        
+        var _this = this;
 
+        var comparisonsList =  this.state.selectedMetric && this.state.selectedMetric.comparisons;
         return (
             <div className="sidebar_wrapper">
                 <h3 className="sidebar__heading">METRIC</h3>
                 <Select 
                     className ='monitor-selector'
-                    name="region_selector" 
+                    name="metric_selector" 
                     placeholder ="Select..."
                     options={this.state.metrices} 
                     clearable= {false}
-                    onChange={this.setValue}
+                    onChange={this.setMetric}
                     autosize = {true}
                     value={this.state.selectedMetric}
                     />
                 <h3 className="sidebar__heading">COMPARISON</h3>
                 <Select 
                     className ='monitor-selector'
-                    name="region_selector" 
+                    name="comparison_selector" 
                     placeholder ="Select..."
-                    options={this.state.metrices} 
+                    options={comparisonsList} 
                     clearable= {false}
-                    onChange={this.setValue}
+                    onChange={this.setComparison}
                     autosize = {true}
-                    value={this.state.selectedMetric}
+                    value={this.state.selectedComparison}
                     />
                 <h3 className="sidebar__heading">FILTERS</h3>
-                <Select 
-                    className ='monitor-selector'
-                    name="region_selector" 
-                    placeholder ="Select..."
-                    options={this.state.metrices} 
-                    clearable= {false}
-                    onChange={this.setValue}
-                    autosize = {true}
-                    value={this.state.selectedMetric}
-                    />
+                {
+
+                    _this.state.selectedMetric && _this.state.selectedMetric.filters.map(function(filter, i) {
+                        return <Select 
+                                key = {i}
+                                className ='monitor-selector'
+                                name="filter_selector" 
+                                placeholder = {filter.filter_label}
+                                options={filter.options} 
+                                clearable= {true}
+                                onChange={_this.setFilter(filter.filter)}
+                                autosize = {true}
+                                value={_this.state.selectedFilters[filter.filter]}/>;
+                    })
+                }  
+                
             </div>    
         );
     }

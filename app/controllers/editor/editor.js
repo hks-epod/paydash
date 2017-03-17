@@ -77,13 +77,13 @@ exports.updateData = {
         var level = request.payload.data.level;
         var data = request.payload.data.table;
 
-        data.forEach(function(d,i) {
+        data.forEach(function(d, i) {
 
             var panchayat_code = (level === 'panchayat' ? d.panchayat_code : '');
 
             // clean up the user-entered inputs
             var name = (d.name === null || d.name.trim() === '') ? '' : d.name.trim().replace(/\s\s+/g, ' ').toLowerCase();
-            var mobile_no = (d.mobile_no === null || d.mobile_no.trim() === '') ? '' : d.mobile_no.trim().replace('-','').replace(/\s/g, '');
+            var mobile_no = (d.mobile_no === null || d.mobile_no.trim() === '') ? '' : d.mobile_no.trim().replace('-', '').replace(/\s/g, '');
             var designation = (d.designation === null || d.designation.trim() === '') ? '' : d.designation.trim();
 
             if (name === '' && mobile_no === '' && designation === '') { // check if fields are empty, in which case we want to delete the record if it exists
@@ -128,23 +128,22 @@ exports.updateData = {
                 // Insert ignore in the employees_unique table
                 // Upsert into the employee_regions table, use embedded select to get the appropriate staff_id from empoyees_unique
 
-                var insertString = Queries.editor_insert_unique(name,mobile_no);
+                var insertString = Queries.editor_insert_unique(name, mobile_no);
                 var upsertString = Queries.editor_upsert(name, designation, step, mobile_no, block_code, panchayat_code, user_id);
-                
+
                 // console.log(insertString)
                 sequelize
                     .query(insertString)
                     .then(function(result) {
                         sequelize.query(upsertString);
-                    
-                    }
-                )
+
+                    });
                 // .catch(function(err) { return reply('Unable to save changes'); });
-                
-                
+
+
                 // console.log(upsertString);
                 // sequelize.query(upsertString);
-                    // .catch(function(err) { return reply('Unable to save changes'); });
+                // .catch(function(err) { return reply('Unable to save changes'); });
 
 
             }

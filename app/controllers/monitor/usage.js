@@ -32,8 +32,8 @@ exports.metric = {
                                 return d.type === 'comparison'; })
                             .map(function(d) {
                                 return {
-                                    'comparison': d.filter_comparison,
-                                    'comparison_label': d.filter_comparison_label,
+                                    'value': d.filter_comparison,
+                                    'label': d.filter_comparison_label,
                                 };
                             }),
                         'filters': D3.nest()
@@ -45,8 +45,8 @@ exports.metric = {
                                     'filter_label': w[0].filter_comparison_label,
                                     'options': w.map(function(d) {
                                         return {
-                                            'option': d.option,
-                                            'option_label': d.option_label
+                                            'value': d.option,
+                                            'label': d.option_label
                                         };
                                     })
                                 };
