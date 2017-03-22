@@ -69,3 +69,22 @@ exports.metric = {
 
     }
 };
+
+exports.chartData = {
+    handler: function(request, reply) {
+        var sequelize = request.server.plugins.sequelize.db.sequelize;
+
+        // users_1session_date
+        var queryString = 'SELECT SUM(IF(session_count>0,1,0)) as session_flag, COUNT(DISTINCT user_id) as count, date'+compVars+' FROM ga_sessions '+whereClause+'GROUP BY date'+compVars+';'
+
+        // API CODE
+        sequelize.query(queryString, {
+            type: sequelize.QueryTypes.SELECT
+        }).then(function(rows) {
+
+            
+
+        });
+
+    }
+};
