@@ -74,8 +74,26 @@ exports.chartData = {
     handler: function(request, reply) {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
 
-        // users_1session_date
-        var queryString = 'SELECT SUM(IF(session_count>0,1,0)) as session_flag, COUNT(DISTINCT user_id) as count, date'+compVars+' FROM ga_sessions '+whereClause+'GROUP BY date'+compVars+';'
+        // // usage_overview
+        // 'SELECT 'COUNT(DISTINCT date) as day_count,
+        // 'SELECT b.session_flag_count/b.day_count AS value FROM (SELECT IF(SUM(a.session_flag)/COUNT(DISTINCT a.date)=1,1,0) AS daily_user, IF(SUM(a.session_flag)/COUNT(DISTINCT a.date)=1,1,0) AS daily_user, a.user_id FROM (SELECT IF(session_count>0,1,0) as session_flag, user_id, date FROM ga_sessions GROUP BY user_id, date) a GROUP BY user_id) b;'
+        // 'SELECT a.session_flag_count/a.user_count AS value, date'+compVars+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, date'+compVars+' FROM ga_sessions '+whereClause+'GROUP BY date'+compVars+') a;'
+
+        // // users_1session_date
+        // 'SELECT a.session_flag_count/a.user_count AS value, date FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, date FROM ga_sessions GROUP BY date) a;'
+        // 'SELECT a.session_flag_count/a.user_count AS value, date'+compVars+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, date'+compVars+' FROM ga_sessions '+whereClause+'GROUP BY date'+compVars+') a;'
+
+        // // users_1session_day
+        // 'SELECT a.session_flag_count/a.user_count AS value, day_of_intervention FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, DATEDIFF(date,rollout_date) AS day_of_intervention FROM ga_sessions GROUP BY day_of_intervention) a;'
+        // 'SELECT a.session_flag_count/a.user_count AS value, day_of_intervention'+compVars+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, DATEDIFF(date,rollout_date) AS day_of_intervention'+compVars+' FROM ga_sessions '+whereClause+'GROUP BY day_of_intervention'+compVars+') a;'
+
+        // // total_users
+        // 'SELECT COUNT(DISTINCT user_id) as user_count, date FROM ga_sessions GROUP BY date;'
+        // 'SELECT COUNT(DISTINCT user_id) as user_count, date'+compVars+' FROM ga_sessions '+whereClause+'GROUP BY date'+compVars+';'
+
+        // // sessions_per_user
+        // 'SELECT a.session_total/a.user_count AS value, date FROM (SELECT SUM(session_count) as session_total, COUNT(DISTINCT user_id) as user_count, date FROM ga_sessions GROUP BY date) a;'
+        // 'SELECT a.session_total/a.user_count AS value, date'+compVars+' FROM (SELECT SUM(session_count) as session_total, COUNT(DISTINCT user_id) as user_count, date'+compVars+' FROM ga_sessions '+whereClause+'GROUP BY date'+compVars+') a;'
 
         // API CODE
         sequelize.query(queryString, {
