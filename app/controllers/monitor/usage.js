@@ -2,6 +2,7 @@
 
 const Queries = require('../../helpers/queries');
 const D3 = require('d3');
+const Joi = require('joi');
 
 exports.showPage = {
     handler: function(request, reply) {
@@ -29,7 +30,8 @@ exports.metric = {
                         'value': v[0].metric,
                         'label': v[0].metric_label,
                         'comparisons': v.filter(function(d) {
-                                return d.type === 'comparison'; })
+                                return d.type === 'comparison';
+                            })
                             .map(function(d) {
                                 return {
                                     'value': d.filter_comparison,
@@ -38,7 +40,8 @@ exports.metric = {
                             }),
                         'filters': D3.nest()
                             .key(function(d) {
-                                return d.filter_comparison; })
+                                return d.filter_comparison;
+                            })
                             .rollup(function(w) {
                                 return {
                                     'filter': w[0].filter_comparison,
@@ -52,7 +55,8 @@ exports.metric = {
                                 };
                             })
                             .entries(v.filter(function(d) {
-                                return d.type === 'filter'; }))
+                                return d.type === 'filter';
+                            }))
                             .map(function(d) {
                                 return d.values;
                             })
@@ -70,8 +74,22 @@ exports.metric = {
     }
 };
 
-exports.chartData = {
+exports.data = {
+    validate: {
+        payload: { // payload for POST, query for GET
+            metric: Joi.string().min(3).max(20),
+            comparison: Joi.string().min(6).max(20),
+            filter: Joi.object()
+        },
+        failAction: function(request, reply, source, error) {
+            return reply('Invalid parameters');
+        },
+    },
     handler: function(request, reply) {
+
+        var metric = request.payload.metric;
+        var comparison = request.payload.comparison;
+        var filter = request.payload.filter;
         var sequelize = request.server.plugins.sequelize.db.sequelize;
 
         // // usage_overview
@@ -96,13 +114,15 @@ exports.chartData = {
         // 'SELECT a.session_total/a.user_count AS value, date'+compVars+' FROM (SELECT SUM(session_count) as session_total, COUNT(DISTINCT user_id) as user_count, date'+compVars+' FROM ga_sessions '+whereClause+'GROUP BY date'+compVars+') a;'
 
         // API CODE
-        sequelize.query(queryString, {
-            type: sequelize.QueryTypes.SELECT
-        }).then(function(rows) {
+        // sequelize.query(queryString, {
+        //     type: sequelize.QueryTypes.SELECT
+        // }).then(function(rows) {
 
-            
 
-        });
+
+        // });
+
+        reply({ssdsd :'sdsds'});
 
     }
 };

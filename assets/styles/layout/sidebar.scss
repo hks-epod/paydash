@@ -19,6 +19,7 @@ $sidebar__gutter: 40px;
     box-shadow: 0 0 1px rgba(0, 0, 0, .15);
     @extend %clearfix;
     padding: 0 40px;
+    overflow: scroll;
 }
 
 .main {
