@@ -18,11 +18,17 @@ exports.register = function(plugin, options, next) {
             path: '/monitor/usage',
             config: Controllers.monitor.usage.showPage
         },
-        // usgae monitoring data
+        // usgae monitoring metric data
         {
             method: 'GET',
             path: '/monitor/usage/metric',
             config: Controllers.monitor.usage.metric
+        },
+        // usgae monitoring data
+        {
+            method: 'POST',
+            path: '/monitor/usage/data',
+            config: Controllers.monitor.usage.data
         },
         // Outcome monitoring dashbaord
         {
