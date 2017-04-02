@@ -40,6 +40,21 @@ const Usage = React.createClass({
             _this.setState(newState);
         };
     },
+    submitMetric: function(){
+        var  url = '/monitor/usage/data';
+        D3.xhr(url)
+            .header('Content-Type', 'application/json')
+            .post(
+                JSON.stringify({
+                    metric: this.state.selectedMetric.value,
+                    comparison: this.state.selectedComparison.value,
+                    filter: this.state.selectedFilters
+                }),
+                function(err, rawData){
+                    var data = JSON.parse(rawData);
+                }
+            );
+    },
     getInitialState: function() {
         return {
             metrices: [],
@@ -92,9 +107,12 @@ const Usage = React.createClass({
                                 clearable= {true}
                                 onChange={_this.setFilter(filter.filter)}
                                 autosize = {true}
+                                multi={true}
                                 value={_this.state.selectedFilters[filter.filter]}/>;
                     })
-                }  
+                }
+                <button onClick={this.submitMetric} className="button button--primary u-full-width" type="button">Submit</button>
+
                 
             </div>    
         );
