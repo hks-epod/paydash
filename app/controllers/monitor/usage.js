@@ -81,16 +81,16 @@ exports.metric = {
 };
 
 exports.data = {
-    // validate: {
-    //     payload: { // payload for POST, query for GET
-    //         metric: Joi.string().min(3).max(20),
-    //         comparison: Joi.string().min(6).max(20),
-    //         filter: Joi.object()
-    //     },
-    //     failAction: function(request, reply, source, error) {
-    //         return reply('Invalid parameters');
-    //     },
-    // },
+    validate: {
+        payload: { // payload for POST, query for GET
+            metric: Joi.string().min(3).max(20),
+            comparison: Joi.string().min(6).max(20),
+            filter: Joi.object()
+        },
+        failAction: function(request, reply, source, error) {
+            return reply('Invalid parameters');
+        },
+    },
     handler: function(request, reply) {
 
         var metric = request.payload.metric;
@@ -98,23 +98,28 @@ exports.data = {
         var filter = request.payload.filter;
         var sequelize = request.server.plugins.sequelize.db.sequelize;
 
-        var metric = 'users_1session_day';
-        var metric = 'total_users';
-        var comparison = 'overall';
-        var filter = {
-            // 'platform': ['web','mobile'],
-            'treatment_role': ['t1d','t3d','t2b','t3b'],
-            'state_code': ['17'],
-            'officer_type': ['d1','d2','b1','b2']
-        };
+        // var metric = 'users_1session_day';
+        // var metric = 'total_users';
+        // var comparison = 'overall';
+        // var filter = {
+        //     // 'platform': ['web','mobile'],
+        //     'treatment_role': ['t1d','t3d','t2b','t3b'],
+        //     'state_code': ['17'],
+        //     'officer_type': ['d1','d2','b1','b2']
+        // };
+        console.log(metric);
+        console.log(comparison);
+        console.log(filter);
 
         // Use the filter data to construct the conditional clause for the query
         var filter_types = Object.keys(filter);
         var clauseArray = [];
         filter_types.forEach(function(d) {
-            clauseArray.push(d+" IN ('"+filter[d].join("','")+"')");
+            if (filter[d].length>0) {
+                clauseArray.push(d+" IN ('"+filter[d].map(function(e) { return e.value; }).join("','")+"')");
+            }
         });
-        var whereClause = 'WHERE '+clauseArray.join(' AND ')+' ';
+        var whereClause = (clauseArray.length>0) ? 'WHERE '+clauseArray.join(' AND ')+' ' : '';
 
         // Use the comparison data to construct the comparison strings for the query
         if (comparison==='overall') {
@@ -205,6 +210,7 @@ exports.data = {
                 'band': (chartInfo.band===1 ? true : false),
                 'chart_data': chart_data
             }
+            console.log(JSON.stringify(data))
             reply(data);
 
         });
