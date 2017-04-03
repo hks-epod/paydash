@@ -128,13 +128,15 @@ exports.data = {
         }
         else {
             var compText = ','+comparison;
-            var compTextAs = compText+' AS comparison';        }
+            var compTextAs = compText+' AS comparison';        
+        }
 
         var queryTemplates = {
             'users_1session_date':'SELECT a.session_flag_count/a.user_count AS value, date'+compTextAs+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+') a;',
             'users_1session_day':'SELECT a.session_flag_count/a.user_count AS value, day_of_intervention'+compTextAs+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, DATEDIFF(date,rollout_date) AS day_of_intervention'+compText+' FROM ga_sessions '+whereClause+'GROUP BY day_of_intervention'+compText+') a;',
             'total_users':'SELECT COUNT(DISTINCT user_id) as value, date'+compTextAs+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+';',
             'sessions_per_user':'SELECT a.session_total/a.user_count AS value, date'+compTextAs+' FROM (SELECT SUM(session_count) as session_total, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+') a;'
+            'session_duration':'SELECT AVG(a.avg_session_duration) AS avg_session_duration, a.date'+compTextAs+' FROM (SELECT SUM(session_duration)/SUM(session_count) AS avg_session_duration,user_id,date'+compText+' FROM ga_sessions WHERE session_count>0 '+whereClause.replace('WHERE','AND')+'GROUP BY user_id,date'+compText+') a GROUP BY date'+compText+';'
         };
 
         // 'users_1session_date'
@@ -142,9 +144,6 @@ exports.data = {
         // 'total_users'
         // 'sessions_per_user'
         // 'session_duration'
-        // SELECT AVG(a.avg_session_duration) AS avg_session_duration, a.date FROM (SELECT SUM(session_duration)/SUM(session_count) AS avg_session_duration,user_id,date FROM ga_sessions WHERE session_count>0 GROUP BY user_id,date) a GROUP BY date;
-        
-
 
 
 
