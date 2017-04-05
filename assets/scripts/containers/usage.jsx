@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Select from 'react-select';
+import UsageChart from '../components/usage/chart.jsx';
 
 const D3= require('d3'); 
 
@@ -41,6 +42,7 @@ const Usage = React.createClass({
         };
     },
     submitMetric: function(){
+        var _this = this;
         var  url = '/monitor/usage/data';
         D3.xhr(url)
             .header('Content-Type', 'application/json')
@@ -51,7 +53,10 @@ const Usage = React.createClass({
                     filter: this.state.selectedFilters
                 }),
                 function(err, rawData){
-                    var data = JSON.parse(rawData);
+                    var data = JSON.parse(rawData.response);
+                    _this.setState({
+                        data: data
+                    });
                 }
             );
     },
@@ -60,7 +65,8 @@ const Usage = React.createClass({
             metrices: [],
             selectedMetric : null,
             selectedComparison: null,
-            selectedFilters: {}
+            selectedFilters: {},
+            data: {}
         };
     },
     componentWillMount: function() {
@@ -71,50 +77,53 @@ const Usage = React.createClass({
 
         var comparisonsList =  this.state.selectedMetric && this.state.selectedMetric.comparisons;
         return (
-            <div className="sidebar_wrapper">
-                <h3 className="sidebar__heading">METRIC</h3>
-                <Select 
-                    className ='monitor-selector'
-                    name="metric_selector" 
-                    placeholder ="Select..."
-                    options={this.state.metrices} 
-                    clearable= {false}
-                    onChange={this.setMetric}
-                    autosize = {true}
-                    value={this.state.selectedMetric}
-                    />
-                <h3 className="sidebar__heading">COMPARISON</h3>
-                <Select 
-                    className ='monitor-selector'
-                    name="comparison_selector" 
-                    placeholder ="Select..."
-                    options={comparisonsList} 
-                    clearable= {false}
-                    onChange={this.setComparison}
-                    autosize = {true}
-                    value={this.state.selectedComparison}
-                    />
-                <h3 className="sidebar__heading">FILTERS</h3>
-                {
+            <div>
+                <div className="sidebar">
+                    <h3 className="sidebar__heading">METRIC</h3>
+                    <Select 
+                        className ='monitor-selector'
+                        name="metric_selector" 
+                        placeholder ="Select..."
+                        options={this.state.metrices} 
+                        clearable= {false}
+                        onChange={this.setMetric}
+                        autosize = {true}
+                        value={this.state.selectedMetric}
+                        />
+                    <h3 className="sidebar__heading">COMPARISON</h3>
+                    <Select 
+                        className ='monitor-selector'
+                        name="comparison_selector" 
+                        placeholder ="Select..."
+                        options={comparisonsList} 
+                        clearable= {false}
+                        onChange={this.setComparison}
+                        autosize = {true}
+                        value={this.state.selectedComparison}
+                        />
+                    <h3 className="sidebar__heading">FILTERS</h3>
+                    {
 
-                    _this.state.selectedMetric && _this.state.selectedMetric.filters.map(function(filter, i) {
-                        return <Select 
-                                key = {i}
-                                className ='monitor-selector'
-                                name="filter_selector" 
-                                placeholder = {filter.filter_label}
-                                options={filter.options} 
-                                clearable= {true}
-                                onChange={_this.setFilter(filter.filter)}
-                                autosize = {true}
-                                multi={true}
-                                value={_this.state.selectedFilters[filter.filter]}/>;
-                    })
-                }
-                <button onClick={this.submitMetric} className="button button--primary u-full-width" type="button">Submit</button>
-
-                
-            </div>    
+                        _this.state.selectedMetric && _this.state.selectedMetric.filters.map(function(filter, i) {
+                            return <Select 
+                                    key = {i}
+                                    className ='monitor-selector'
+                                    name="filter_selector" 
+                                    placeholder = {filter.filter_label}
+                                    options={filter.options} 
+                                    clearable= {true}
+                                    onChange={_this.setFilter(filter.filter)}
+                                    autosize = {true}
+                                    multi={true}
+                                    value={_this.state.selectedFilters[filter.filter]}/>;
+                        })
+                    }
+                    <button onClick={this.submitMetric} className="button button--primary u-full-width" type="button">Submit</button>   
+                </div>
+                <div className="main">
+                    <UsageChart data={this.state.data}/> 
+                </div>   
+            </div>   
         );
     }
 });
