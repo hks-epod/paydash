@@ -6,6 +6,13 @@ import MG from '../../lib/mg';
 const D3 = require('d3');
 const Parser = require('../../lib/parser');
 
+function parseDate(string) {
+    var y = string.substring(0, 4);
+    var m = string.substring(4, 6) - 1;
+    var d = string.substring(6, 8);
+    return new Date(y, m, d);
+}
+
 const OverviewChart =  React.createClass({
 
     loadChart: function(){
@@ -18,15 +25,16 @@ const OverviewChart =  React.createClass({
         if(!data.metric) {
             return;
         }
-
-        console.log(data.chart_data[0].line_data);
+        data.chart_data[0].line_data.forEach(function(val, index){
+            data.chart_data[0].line_data[index].x_var = parseDate(val.x_var);
+        });
 
         MG.data_graphic({
-                title: data.metric_label,
+                title: '',
                 target: _this.elem,
                 data: data.chart_data[0].line_data,
                 width: 600,
-                height: 900,
+                height: 700,
                 left: 100,
                 full_width: true,
                 decimals: 0,
@@ -45,8 +53,8 @@ const OverviewChart =  React.createClass({
                 x_accessor:'x_var', 
                 y_accessor:'y_var', 
                 transition_on_update: true,
-                interplate: 'linear',
-                interpolate_tension: 1,
+                // interplate: 'linear',
+                // interpolate_tension: .1,
                 area: false,
                 y_label: data.y_label,
                 show_rollover_text: false
@@ -63,6 +71,7 @@ const OverviewChart =  React.createClass({
         return (
             <div className="pure-g">
                 <div className="pure-u-24-24">
+                    <h2 className="sidebar__heading">{this.props.data.metric_label}</h2>  
                     <div id="usage_performance" ref={el => {if (el){this.elem = el;}}}></div>
                     <div id="usage_performance_legend"></div>
                 </div>
