@@ -125,10 +125,12 @@ exports.data = {
         if (comparison==='overall') {
             var compText = '';
             var compTextAs = ',"overall" AS comparison';
+            var joinText = '';
         }
         else {
             var compText = ','+comparison;
-            var compTextAs = compText+' AS comparison';        
+            var compTextAs = compText+' AS comparison';
+            var joinText = ' AND a.'+comparison+'=b.'+comparison;        
         }
 
         var queryTemplates = {
@@ -136,43 +138,47 @@ exports.data = {
             'users_1session_day':'SELECT a.session_flag_count/a.user_count AS value, day_of_intervention'+compTextAs+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, DATEDIFF(date,rollout_date) AS day_of_intervention'+compText+' FROM ga_sessions '+whereClause+'GROUP BY day_of_intervention'+compText+') a;',
             'total_users':'SELECT COUNT(DISTINCT user_id) as value, date'+compTextAs+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+';',
             'sessions_per_user':'SELECT a.session_total/a.user_count AS value, date'+compTextAs+' FROM (SELECT SUM(session_count) as session_total, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+') a;',
-            'session_duration':'SELECT AVG(a.avg_session_duration) AS avg_session_duration, a.date'+compTextAs+' FROM (SELECT SUM(session_duration)/SUM(session_count) AS avg_session_duration,user_id,date'+compText+' FROM ga_sessions WHERE session_count>0 '+whereClause.replace('WHERE','AND')+'GROUP BY user_id,date'+compText+') a GROUP BY date'+compText+';'
+            'session_duration':'SELECT AVG(a.avg_session_duration) AS value, a.date'+compTextAs+' FROM (SELECT SUM(session_duration)/SUM(session_count) AS avg_session_duration,user_id,date'+compText+' FROM ga_sessions WHERE session_count>0 '+whereClause.replace('WHERE','AND')+'GROUP BY user_id,date'+compText+') a GROUP BY date'+compText+';',
+            'chart_duration':'SELECT AVG(c.time_per_session) AS value, date'+compTextAs+' FROM (SELECT a.view_duration/b.session_count AS time_per_session,a.user_id, a.date'+compText+' FROM (SELECT SUM(view_duration) as view_duration, date, user_id'+compText+' FROM ga_chart_views '+whereClause+'GROUP BY user_id,date'+compText+') a LEFT JOIN (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b ON a.date = b.date AND a.user_id = b.user_id'+joinText+') c GROUP BY c.date'+compText+';'
         };
         // average time on charts per session per user            
-            // SELECT AVG(c.time_per_session) AS avg_chart_duration, date FROM 
-            // (SELECT a.view_duration/b.session_count AS time_per_session,a.user_id, a.date
-            // FROM (SELECT SUM(view_duration) as view_duration, date, user_id FROM ga_chart_views GROUP BY user_id,date) a 
+            // SELECT AVG(c.time_per_session) AS avg_chart_duration, date'+compTextAs+' FROM 
+            // (SELECT a.view_duration/b.session_count AS time_per_session,a.user_id, a.date'+compText+'
+            // FROM (SELECT SUM(view_duration) as view_duration, date, user_id'+compText+' FROM ga_chart_views GROUP BY user_id,date'+compText+') a 
             // LEFT JOIN 
-            // (SELECT SUM(session_count) as session_count, date, user_id FROM ga_sessions GROUP BY user_id,date) b
-            // ON a.date = b.date AND a.user_id = b.user_id
-            // ) c GROUP BY c.date;
+            // (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions GROUP BY user_id,date'+compText+') b
+            // ON a.date = b.date AND a.user_id = b.user_id'+joinText+'
+            // ) c GROUP BY c.date'+compText+';
 
         // average card views per session per user            
-            // SELECT AVG(c.cards_per_session) AS avg_card_views, date FROM 
-            // (SELECT a.view_count/b.session_count AS cards_per_session,a.user_id, a.date
-            // FROM (SELECT SUM(z.view_count) as view_count, z.date, z.user_id FROM (SELECT view_count, date, user_id FROM ga_block_card_views_mobile UNION SELECT view_count, date, user_id FROM ga_district_card_views_mobile) z GROUP BY user_id,date) a 
+            // SELECT AVG(c.cards_per_session) AS avg_card_views, date'+compTextAs+' FROM 
+            // (SELECT a.view_count/b.session_count AS cards_per_session,a.user_id, a.date'+compText+'
+            // FROM (SELECT SUM(z.view_count) as view_count, z.date, z.user_id'+compText+' FROM (SELECT view_count, date, user_id'+compText+' FROM ga_block_card_views_mobile '+whereClause+'UNION SELECT view_count, date, user_id'+compText+' FROM ga_district_card_views_mobile '+whereClause+') z GROUP BY user_id,date'+compText+') a 
             // LEFT JOIN 
-            // (SELECT SUM(session_count) as session_count, date, user_id FROM ga_sessions GROUP BY user_id,date) b
-            // ON a.date = b.date AND a.user_id = b.user_id
-            // ) c GROUP BY c.date;
+            // (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b
+            // ON a.date = b.date AND a.user_id = b.user_id'+joinText+'
+            // ) c GROUP BY c.date'+compText+';
 
         // average calls per session per user            
-            // SELECT AVG(c.calls_per_session) AS avg_calls, date FROM 
-            // (SELECT a.call_count/b.session_count AS calls_per_session,a.user_id, a.date
-            // FROM (SELECT SUM(z.call_count) as call_count, z.date, z.user_id FROM (SELECT call_count, date, user_id FROM ga_block_calls UNION SELECT call_count, date, user_id FROM ga_district_calls) z GROUP BY user_id,date) a 
+            // SELECT AVG(c.calls_per_session) AS avg_calls, date'+compTextAs+' FROM 
+            // (SELECT a.call_count/b.session_count AS calls_per_session,a.user_id, a.date'+compText+'
+            // FROM (SELECT SUM(z.call_count) as call_count, z.date, z.user_id'+compText+' FROM (SELECT call_count, date, user_id'+compText+' FROM ga_block_calls '+whereClause+'UNION SELECT call_count, date, user_id'+compText+' FROM ga_district_calls '+whereClause+') z GROUP BY user_id,date'+compText+') a 
             // LEFT JOIN 
-            // (SELECT SUM(session_count) as session_count, date, user_id FROM ga_sessions GROUP BY user_id,date) b
-            // ON a.date = b.date AND a.user_id = b.user_id
-            // ) c GROUP BY c.date;
+            // (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b
+            // ON a.date = b.date AND a.user_id = b.user_id'+joinText+'
+            // ) c GROUP BY c.date'+compText+';
 
+        // average call duration per call per user
+        // SELECT AVG(a.avg_call_duration) AS avg_call_duration, a.date'+compTextAs+' FROM (SELECT SUM(z.call_duration)/SUM(z.call_count) AS avg_call_duration,user_id,date'+compText+' FROM (SELECT call_count, call_duration, date, user_id'+compText+' FROM ga_block_calls '+whereClause+'UNION SELECT call_count, call_duration, date, user_id'+compText+' FROM ga_district_calls '+whereClause+') z WHERE call_count>0 GROUP BY user_id,date'+compText+') a GROUP BY date'+compText+';
+        
         // average whatsapp actions per session per user            
-            // SELECT AVG(c.whatsapp_per_session) AS avg_whatsapp_actions, date FROM 
-            // (SELECT a.message_count/b.session_count AS whatsapp_per_session,a.user_id, a.date
-            // FROM (SELECT SUM(z.message_count) as message_count, z.date, z.user_id FROM (SELECT message_count, date, user_id FROM ga_block_whatsapp_contacts UNION SELECT message_count, date, user_id FROM ga_district_whatsapp_contacts) z GROUP BY user_id,date) a 
+            // SELECT AVG(c.whatsapp_per_session) AS avg_whatsapp_actions, date'+compTextAs+' FROM 
+            // (SELECT a.message_count/b.session_count AS whatsapp_per_session,a.user_id, a.date'+compText+'
+            // FROM (SELECT SUM(z.message_count) as message_count, z.date, z.user_id'+compText+' FROM (SELECT message_count, date, user_id'+compText+' FROM ga_block_whatsapp_contacts '+whereClause+'UNION SELECT message_count, date, user_id'+compText+' FROM ga_district_whatsapp_contacts '+whereClause+') z GROUP BY user_id,date'+compText+') a 
             // LEFT JOIN 
-            // (SELECT SUM(session_count) as session_count, date, user_id FROM ga_sessions GROUP BY user_id,date) b
-            // ON a.date = b.date AND a.user_id = b.user_id
-            // ) c GROUP BY c.date;
+            // (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date+compText+') b
+            // ON a.date = b.date AND a.user_id = b.user_id'+joinText+'
+            // ) c GROUP BY c.date+compText+';
 
 
 
