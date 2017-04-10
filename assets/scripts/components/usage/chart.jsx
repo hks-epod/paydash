@@ -20,19 +20,17 @@ const OverviewChart =  React.createClass({
         var _this = this;
         var data = _this.props.data;
         var legend_target = '.comparison_legend';
-        var labels = [];
 
         if(!data.metric) {
             return;
         }
-        data.chart_data[0].line_data.forEach(function(val, index){
-            data.chart_data[0].line_data[index].x_var = parseDate(val.x_var);
-        });
+        console.log(_this.props.data.chart_data);
+        var chart_data = Parser.usage(_this.props.data.chart_data); 
 
         MG.data_graphic({
                 title: '',
                 target: _this.elem,
-                data: data.chart_data[0].line_data,
+                data: chart_data.data,
                 width: 600,
                 height: 600,
                 left: 100,
@@ -44,7 +42,7 @@ const OverviewChart =  React.createClass({
                 missing_text: 'No data',
                 show_secondary_x_label: false,
                 x_extended_ticks: true,
-                legend: labels,
+                legend: chart_data.labels,
                 legend_target: '.comparison_legend',
                 show_tooltips: false,
                 aggregate_rollover: true,

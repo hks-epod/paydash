@@ -1,5 +1,7 @@
 'use strict';
 
+import MG from './mg';
+
 //  Parse the "20140412" string to date object
 function parseDate(string) {
     var y = string.substring(0, 4);
@@ -56,3 +58,24 @@ exports.lines = function(options) {
     });
     return result;
 };
+
+exports.usage = function(data){
+
+    var labels = [];
+    var lineData = [];
+   
+    data.forEach(function(line, lineIndex){
+        labels.push(line.option_label);
+
+        line.line_data.forEach(function(val, index){ 
+            data[lineIndex].line_data[index].x_var = parseDate(val.x_var);
+        }); 
+        lineData.push(data[lineIndex].line_data);
+    });
+    return {
+        labels : labels,
+        data: lineData
+    };
+
+};
+
