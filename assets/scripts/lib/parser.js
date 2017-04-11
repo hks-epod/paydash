@@ -69,6 +69,7 @@ exports.usage = function(data){
 
         line.line_data.forEach(function(val, index){ 
             data[lineIndex].line_data[index].x_var = parseDate(val.x_var);
+            // data[lineIndex].line_data[index].value = parseDate(val.y_var);
         }); 
         lineData.push(data[lineIndex].line_data);
     });

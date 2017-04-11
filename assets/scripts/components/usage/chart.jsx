@@ -19,12 +19,11 @@ const OverviewChart =  React.createClass({
 
         var _this = this;
         var data = _this.props.data;
-        var legend_target = '.comparison_legend';
+        var legend_target = '#usage_performance_legend';
 
         if(!data.metric) {
             return;
         }
-        console.log(_this.props.data.chart_data);
         var chart_data = Parser.usage(_this.props.data.chart_data); 
 
         MG.data_graphic({
@@ -43,11 +42,11 @@ const OverviewChart =  React.createClass({
                 show_secondary_x_label: false,
                 x_extended_ticks: true,
                 legend: chart_data.labels,
-                legend_target: '.comparison_legend',
+                legend_target: legend_target,
                 show_tooltips: false,
                 aggregate_rollover: true,
                 show_year_markers: true,
-                point_size : 3.5,
+                point_size : 3.5,   
                 x_accessor:'x_var', 
                 y_accessor:'y_var', 
                 transition_on_update: true,
