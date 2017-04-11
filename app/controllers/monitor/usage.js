@@ -64,13 +64,13 @@ exports.metric = {
                                 return d.type === 'filter';
                             }))
                             .map(function(d) {
-                                return d.values;
+                                return d.value;
                             })
                     };
                 })
                 .entries(rows)
                 .map(function(d) {
-                    return d.values;
+                    return d.value;
                 });
 
             reply(data);
@@ -234,7 +234,7 @@ exports.data = {
                 })
                 .entries(D3.values(rows[0]))
                 .map(function(d) {
-                    return d.values;
+                    return d.value;
                 });
 
             var chartInfo = D3.values(rows[1])[0];
