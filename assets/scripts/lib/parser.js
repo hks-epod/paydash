@@ -1,7 +1,5 @@
 'use strict';
 
-import MG from './mg';
-
 //  Parse the "20140412" string to date object
 function parseDate(string) {
     var y = string.substring(0, 4);
