@@ -134,6 +134,7 @@ exports.data = {
         }
 
         var queryTemplates = {
+            'usage_overview':'SELECT AVG(IF(session_sum=0,1,0)) AS no_sessions, AVG(IF(day7_sum>0,1,0)) AS day7_session, AVG(IF(day3_sum>0,1,0)) AS day3_session'+compTextAs+' FROM (SELECT SUM(session_flag) as session_sum, SUM(day7_flag) as day7_sum, SUM(day3_flag) as day3_sum, COUNT(distinct date) as date_count, user_id FROM (SELECT IF(session_count>0,1,0) as session_flag, IF((date >= DATE(NOW()) - INTERVAL 8 DAY) AND session_count>0,1,0) AS day7_flag, IF((date >= DATE(NOW()) - INTERVAL 4 DAY) AND session_count>0,1,0) AS day3_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b;'
             'users_1session_date':'SELECT a.session_flag_count/a.user_count AS value, date'+compTextAs+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+') a;',
             'users_1session_day':'SELECT a.session_flag_count/a.user_count AS value, day_of_intervention'+compTextAs+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, DATEDIFF(date,rollout_date) AS day_of_intervention'+compText+' FROM ga_sessions '+whereClause+'GROUP BY day_of_intervention'+compText+') a;',
             'total_users':'SELECT COUNT(DISTINCT user_id) as value, date'+compTextAs+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+';',
@@ -178,7 +179,7 @@ exports.data = {
             // ON a.date = b.date AND a.user_id = b.user_id'+joinText+'
             // ) c GROUP BY c.date+compText+';
 
-
+        //SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(c.whatsapp_per_session ORDER BY c.whatsapp_per_session SEPARATOR ","),",", 25/100 * COUNT(*) + 1), ",", -1) AS lower, SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(c.whatsapp_per_session ORDER BY c.whatsapp_per_session SEPARATOR ","),",", 75/100 * COUNT(*) + 1), ",", -1) AS upper,
 
         // 'users_1session_date'
         // 'users_1session_day'
@@ -186,7 +187,7 @@ exports.data = {
         // 'sessions_per_user'
         // 'session_duration'
 
-
+        // SELECT AVG(IF(session_sum=0,1,0)) AS no_sessions, AVG(IF(day7_sum>0,1,0)) AS day7_session, AVG(IF(day3_sum>0,1,0)) AS day3_session'+compTextAs+' FROM (SELECT SUM(session_flag) as session_sum, SUM(day7_flag) as day7_sum, SUM(day3_flag) as day3_sum, COUNT(distinct date) as date_count, user_id FROM (SELECT IF(session_count>0,1,0) as session_flag, IF((date >= DATE(NOW()) - INTERVAL 8 DAY) AND session_count>0,1,0) AS day7_flag, IF((date >= DATE(NOW()) - INTERVAL 4 DAY) AND session_count>0,1,0) AS day3_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b;
 
         var queryString = queryTemplates[metric] + "SELECT distinct metric,metric_label,chart_type,band,x_label,y_label FROM usage_metrics WHERE metric='"+metric+"';";
 
@@ -196,46 +197,38 @@ exports.data = {
         // 'SELECT b.session_flag_count/b.day_count AS value FROM (SELECT IF(SUM(a.session_flag)/COUNT(DISTINCT a.date)=1,1,0) AS daily_user, IF(SUM(a.session_flag)/COUNT(DISTINCT a.date)=1,1,0) AS daily_user, a.user_id FROM (SELECT IF(session_count>0,1,0) as session_flag, user_id, date FROM ga_sessions GROUP BY user_id, date) a GROUP BY user_id) b;'
         // 'SELECT a.session_flag_count/a.user_count AS value, date'+compText+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+') a;'
 
-        // // users_1session_date
-        // 'SELECT a.session_flag_count/a.user_count AS value, date FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, date FROM ga_sessions GROUP BY date) a;'
-
-        // // users_1session_day
-        // 'SELECT a.session_flag_count/a.user_count AS value, day_of_intervention FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, DATEDIFF(date,rollout_date) AS day_of_intervention FROM ga_sessions GROUP BY day_of_intervention) a;'
-
-        // // total_users
-        // 'SELECT COUNT(DISTINCT user_id) as user_count, date FROM ga_sessions GROUP BY date;'
-        // 'SELECT COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+';'
-
-        // // sessions_per_user
-        // 'SELECT a.session_total/a.user_count AS value, date FROM (SELECT SUM(session_count) as session_total, COUNT(DISTINCT user_id) as user_count, date FROM ga_sessions GROUP BY date) a;'
-        // 'SELECT a.session_total/a.user_count AS value, date'+compText+' FROM (SELECT SUM(session_count) as session_total, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+') a;'
 
         // API CODE
         sequelize.query(queryString, {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-            // if (chart_type==='line'):
-            var chart_data = D3.nest()
-                .key(function(d) {
-                    return d.comparison;
-                })
-                .rollup(function(v) {
-                    return {
-                        'option': v[0].comparison,
-                        'option_label': v[0].comparison,
-                        'line_data': v.map(function(d) {
-                            return {
-                                'y_var': d.value,
-                                'x_var': d.day_of_intervention || d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate())
-                            };
-                        })
-                    };
-                })
-                .entries(D3.values(rows[0]))
-                .map(function(d) {
-                    return d.value;
-                });
+            if (chart_type==='line') {
+                var chart_data = D3.nest()
+                    .key(function(d) {
+                        return d.comparison;
+                    })
+                    .rollup(function(v) {
+                        return {
+                            'option': v[0].comparison,
+                            'option_label': v[0].comparison,
+                            'line_data': v.map(function(d) {
+                                return {
+                                    'y_val': d.value,
+                                    'x_val': d.day_of_intervention || d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate())
+                                };
+                            })
+                        };
+                    })
+                    .entries(D3.values(rows[0]))
+                    .map(function(d) {
+                        return d.value;
+                    });
+            }
+
+            else if (chart_type==='bar') {
+                console.log(rows[0]);
+            }
 
             var chartInfo = D3.values(rows[1])[0];
 
