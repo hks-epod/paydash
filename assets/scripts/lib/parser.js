@@ -66,8 +66,8 @@ exports.usage = function(data){
         labels.push(line.option_label);
 
         line.line_data.forEach(function(val, index){ 
-            data[lineIndex].line_data[index].x_var = parseDate(val.x_var);
-            // data[lineIndex].line_data[index].value = parseDate(val.y_var);
+            data[lineIndex].line_data[index].x_val = parseDate(val.x_val);
+            // data[lineIndex].line_data[index].value = parseDate(val.y_val);
         }); 
         lineData.push(data[lineIndex].line_data);
     });

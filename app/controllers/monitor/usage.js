@@ -126,15 +126,17 @@ exports.data = {
             var compText = '';
             var compTextAs = ',"overall" AS comparison';
             var joinText = '';
+            var groupbyText = '';
         }
         else {
             var compText = ','+comparison;
             var compTextAs = compText+' AS comparison';
-            var joinText = ' AND a.'+comparison+'=b.'+comparison;        
+            var joinText = ' AND a.'+comparison+'=b.'+comparison;
+            var groupbyText = 'GROUP BY '+comparison + ' ';    
         }
 
         var queryTemplates = {
-            'usage_overview':'SELECT AVG(IF(session_sum=0,1,0)) AS no_sessions, AVG(IF(day7_sum>0,1,0)) AS day7_session, AVG(IF(day3_sum>0,1,0)) AS day3_session'+compTextAs+' FROM (SELECT SUM(session_flag) as session_sum, SUM(day7_flag) as day7_sum, SUM(day3_flag) as day3_sum, COUNT(distinct date) as date_count, user_id FROM (SELECT IF(session_count>0,1,0) as session_flag, IF((date >= DATE(NOW()) - INTERVAL 8 DAY) AND session_count>0,1,0) AS day7_flag, IF((date >= DATE(NOW()) - INTERVAL 4 DAY) AND session_count>0,1,0) AS day3_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b;'
+            'usage_overview':'SELECT AVG(IF(session_sum=0,1,0)) AS bar_value, "No sessions" AS bar_label'+compTextAs+' FROM (SELECT SUM(session_flag) as session_sum, user_id'+compText+' FROM (SELECT IF(session_count>0,1,0) as session_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+'UNION SELECT AVG(IF(day7_sum>0,1,0)) AS bar_value, "Session in past 7 days" AS bar_label'+compTextAs+' FROM (SELECT SUM(day7_flag) as day7_sum, user_id'+compText+' FROM (SELECT IF((date >= DATE(NOW()) - INTERVAL 8 DAY) AND session_count>0,1,0) AS day7_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+'UNION SELECT AVG(IF(day3_sum>0,1,0)) AS bar_value, "Session in past 3 days" AS bar_label'+compTextAs+' FROM (SELECT SUM(day3_flag) as day3_sum, user_id'+compText+' FROM (SELECT IF((date >= DATE(NOW()) - INTERVAL 4 DAY) AND session_count>0,1,0) AS day3_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+';',
             'users_1session_date':'SELECT a.session_flag_count/a.user_count AS value, date'+compTextAs+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+') a;',
             'users_1session_day':'SELECT a.session_flag_count/a.user_count AS value, day_of_intervention'+compTextAs+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, DATEDIFF(date,rollout_date) AS day_of_intervention'+compText+' FROM ga_sessions '+whereClause+'GROUP BY day_of_intervention'+compText+') a;',
             'total_users':'SELECT COUNT(DISTINCT user_id) as value, date'+compTextAs+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+';',
@@ -181,6 +183,12 @@ exports.data = {
 
         //SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(c.whatsapp_per_session ORDER BY c.whatsapp_per_session SEPARATOR ","),",", 25/100 * COUNT(*) + 1), ",", -1) AS lower, SUBSTRING_INDEX(SUBSTRING_INDEX(GROUP_CONCAT(c.whatsapp_per_session ORDER BY c.whatsapp_per_session SEPARATOR ","),",", 75/100 * COUNT(*) + 1), ",", -1) AS upper,
 
+        // 'SELECT AVG(IF(session_sum=0,1,0)) AS bar_value, 'No sessions' AS bar_label'+compTextAs+' FROM (SELECT SUM(session_flag) as session_sum, user_id'+compText+' FROM (SELECT IF(session_count>0,1,0) as session_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+'UNION SELECT AVG(IF(day7_sum>0,1,0)) AS bar_value, 'Session in past 7 days' AS bar_label'+compTextAs+' FROM (SELECT SUM(day7_flag) as day7_sum, user_id'+compText+' FROM (SELECT IF((date >= DATE(NOW()) - INTERVAL 8 DAY) AND session_count>0,1,0) AS day7_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+'UNION SELECT AVG(IF(day3_sum>0,1,0)) AS bar_value, 'Session in past 3 days' AS bar_label'+compTextAs+' FROM (SELECT SUM(day3_flag) as day3_sum, user_id'+compText+' FROM (SELECT IF((date >= DATE(NOW()) - INTERVAL 4 DAY) AND session_count>0,1,0) AS day3_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+';'
+
+        // SELECT AVG(IF(session_sum=0,1,0)) AS bar_value, 'No sessions' AS bar_label'+compTextAs+' FROM (SELECT SUM(session_flag) as session_sum, user_id'+compText+' FROM (SELECT IF(session_count>0,1,0) as session_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+'
+        // UNION SELECT AVG(IF(day7_sum>0,1,0)) AS bar_value, 'Session in past 7 days' AS bar_label'+compTextAs+' FROM (SELECT SUM(day7_flag) as day7_sum, user_id'+compText+' FROM (SELECT IF((date >= DATE(NOW()) - INTERVAL 8 DAY) AND session_count>0,1,0) AS day7_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+'
+        // UNION SELECT AVG(IF(day3_sum>0,1,0)) AS bar_value, 'Session in past 3 days' AS bar_label'+compTextAs+' FROM (SELECT SUM(day3_flag) as day3_sum, user_id'+compText+' FROM (SELECT IF((date >= DATE(NOW()) - INTERVAL 4 DAY) AND session_count>0,1,0) AS day3_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+';
+        
         // 'users_1session_date'
         // 'users_1session_day'
         // 'total_users'
@@ -203,7 +211,9 @@ exports.data = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-            if (chart_type==='line') {
+            var chartInfo = D3.values(rows[1])[0];
+
+            if (chartInfo.chart_type==='line') {
                 var chart_data = D3.nest()
                     .key(function(d) {
                         return d.comparison;
@@ -226,11 +236,29 @@ exports.data = {
                     });
             }
 
-            else if (chart_type==='bar') {
+            else if (chartInfo.chart_type==='bar') {
                 console.log(rows[0]);
-            }
-
-            var chartInfo = D3.values(rows[1])[0];
+                var chart_data = D3.nest()
+                    .key(function(d) {
+                        return d.comparison;
+                    })
+                    .rollup(function(v) {
+                        return {
+                            'option': v[0].comparison,
+                            'option_label': v[0].comparison,
+                            'bar_data': v.map(function(d) {
+                                return {
+                                    'bar_label': d.bar_label,
+                                    'bar_value': d.bar_value
+                                };
+                            })
+                        };
+                    })
+                    .entries(D3.values(rows[0]))
+                    .map(function(d) {
+                        return d.value;
+                    });
+            };
 
             var data = {
                 'metric': chartInfo.metric,
