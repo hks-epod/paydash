@@ -70,7 +70,7 @@ exports.v1 = function(rows, userId) {
         })
         .entries(cardsResponse)
         .map(function(d) {
-            return d.values;
+            return d.value;
         })
         .sort(function (a, b){
             var aActive = a.current_total + a.delayed_total > 0 ? 1 : 0;
@@ -119,7 +119,7 @@ exports.v1 = function(rows, userId) {
         })
         .entries(blockResponse)
         .map(function(d) {
-            return d.values;
+            return d.value;
         })
         .sort(function(a, b) {
             var aTarget = a.data[a.data.length - 1];
@@ -157,7 +157,7 @@ exports.v1 = function(rows, userId) {
         })
         .entries(panchayatResponse)
         .map(function(d) {
-            return d.values;
+            return d.value;
         })
         .sort(function(a, b) {
             var aTarget = a.data[a.data.length - 1];
@@ -242,7 +242,7 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(overviewResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
 
         var state_code = stateResponse[0].state_code;
@@ -290,7 +290,7 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(cardsResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             })
             .sort(function (a, b){
                 var aActive = a.current_total + a.delayed_total > 0 ? 1 : 0;
@@ -341,7 +341,7 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(blockResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
 
 
@@ -373,7 +373,7 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(panchayatResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
 
         var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
@@ -465,7 +465,7 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(overviewResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
 
         var state_code = stateResponse[0].state_code;
@@ -508,7 +508,7 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(cardsResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             })
             .sort(function (a, b){
                 if (a.district_name.toLowerCase() < b.district_name.toLowerCase()) return -1;
@@ -546,7 +546,7 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(districtResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
 
 
@@ -577,7 +577,7 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(blockResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
 
 

@@ -31,7 +31,7 @@ const UsageChart =  React.createClass({
             target: _this.elem,
             data: chart_data.data,
             width: 600,
-            height: 600,
+            height: 500,
             left: 100,
             x_accessor: 'x_val',
             y_accessor: 'y_val',
@@ -52,7 +52,7 @@ const UsageChart =  React.createClass({
             show_year_markers: true,
             point_size : 3.5,
             transition_on_update: true,
-            area: true
+            area: _this.props.data.area
         });
 
     },
