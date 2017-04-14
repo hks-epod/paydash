@@ -130,6 +130,7 @@ exports.data = {
         }
         else {
             var compText = ','+comparison;
+            var compTextAlias = ',a.'+comparison
             var compTextAs = compText+' AS comparison';
             var joinText = ' AND a.'+comparison+'=b.'+comparison;
             var groupbyText = 'GROUP BY '+comparison + ' ';    
@@ -142,11 +143,11 @@ exports.data = {
             'total_users':'SELECT COUNT(DISTINCT user_id) as value, date'+compTextAs+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+';',
             'sessions_per_user':'SELECT a.session_total/a.user_count AS value, date'+compTextAs+' FROM (SELECT SUM(session_count) as session_total, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+') a;',
             'session_duration':'SELECT AVG(a.avg_session_duration) AS value, a.date'+compTextAs+' FROM (SELECT SUM(session_duration)/SUM(session_count) AS avg_session_duration,user_id,date'+compText+' FROM ga_sessions WHERE session_count>0 '+whereClause.replace('WHERE','AND')+'GROUP BY user_id,date'+compText+') a GROUP BY date'+compText+';',
-            'chart_duration':'SELECT AVG(c.time_per_session) AS value, date'+compTextAs+' FROM (SELECT a.view_duration/b.session_count AS time_per_session,a.user_id, a.date'+compText+' FROM (SELECT SUM(view_duration) as view_duration, date, user_id'+compText+' FROM ga_chart_views '+whereClause+'GROUP BY user_id,date'+compText+') a LEFT JOIN (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b ON a.date = b.date AND a.user_id = b.user_id'+joinText+') c GROUP BY c.date'+compText+';',
-            'cards_per_session_mobile':'SELECT AVG(c.cards_per_session) AS value, date'+compTextAs+' FROM (SELECT a.view_count/b.session_count AS cards_per_session,a.user_id, a.date'+compText+' FROM (SELECT SUM(z.view_count) as view_count, z.date, z.user_id'+compText+' FROM (SELECT view_count, date, user_id'+compText+' FROM ga_block_card_views_mobile '+whereClause+'UNION SELECT view_count, date, user_id'+compText+' FROM ga_district_card_views_mobile '+whereClause+') z GROUP BY user_id,date'+compText+') a LEFT JOIN (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b ON a.date = b.date AND a.user_id = b.user_id'+joinText+') c GROUP BY c.date'+compText+';',
-            'calls_per_session':'SELECT AVG(c.calls_per_session) AS value, date'+compTextAs+' FROM (SELECT a.call_count/b.session_count AS calls_per_session,a.user_id, a.date'+compText+' FROM (SELECT SUM(z.call_count) as call_count, z.date, z.user_id'+compText+' FROM (SELECT call_count, date, user_id'+compText+' FROM ga_block_calls '+whereClause+'UNION SELECT call_count, date, user_id'+compText+' FROM ga_district_calls '+whereClause+') z GROUP BY user_id,date'+compText+') a LEFT JOIN (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b ON a.date = b.date AND a.user_id = b.user_id'+joinText+') c GROUP BY c.date'+compText+';',
+            'chart_duration':'SELECT AVG(c.time_per_session) AS value, date'+compTextAs+' FROM (SELECT a.view_duration/b.session_count AS time_per_session,a.user_id, a.date'+compTextAlias+' FROM (SELECT SUM(view_duration) as view_duration, date, user_id'+compText+' FROM ga_chart_views '+whereClause+'GROUP BY user_id,date'+compText+') a LEFT JOIN (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b ON a.date = b.date AND a.user_id = b.user_id'+joinText+') c GROUP BY c.date'+compText+';',
+            'cards_per_session_mobile':'SELECT AVG(c.cards_per_session) AS value, date'+compTextAs+' FROM (SELECT a.view_count/b.session_count AS cards_per_session,a.user_id, a.date'+compTextAlias+' FROM (SELECT SUM(z.view_count) as view_count, z.date, z.user_id'+compText+' FROM (SELECT view_count, date, user_id'+compText+' FROM ga_block_card_views_mobile '+whereClause+'UNION SELECT view_count, date, user_id'+compText+' FROM ga_district_card_views_mobile '+whereClause+') z GROUP BY user_id,date'+compText+') a LEFT JOIN (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b ON a.date = b.date AND a.user_id = b.user_id'+joinText+') c GROUP BY c.date'+compText+';',
+            'calls_per_session':'SELECT AVG(c.calls_per_session) AS value, date'+compTextAs+' FROM (SELECT a.call_count/b.session_count AS calls_per_session,a.user_id, a.date'+compTextAlias+' FROM (SELECT SUM(z.call_count) as call_count, z.date, z.user_id'+compText+' FROM (SELECT call_count, date, user_id'+compText+' FROM ga_block_calls '+whereClause+'UNION SELECT call_count, date, user_id'+compText+' FROM ga_district_calls '+whereClause+') z GROUP BY user_id,date'+compText+') a LEFT JOIN (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b ON a.date = b.date AND a.user_id = b.user_id'+joinText+') c GROUP BY c.date'+compText+';',
             'call_duration':'SELECT AVG(a.avg_call_duration) AS value, a.date'+compTextAs+' FROM (SELECT SUM(z.call_duration)/SUM(z.call_count) AS avg_call_duration,user_id,date'+compText+' FROM (SELECT call_count, call_duration, date, user_id'+compText+' FROM ga_block_calls '+whereClause+'UNION SELECT call_count, call_duration, date, user_id'+compText+' FROM ga_district_calls '+whereClause+') z WHERE call_count>0 GROUP BY user_id,date'+compText+') a GROUP BY date'+compText+';',
-            'whatsapp_per_session':'SELECT AVG(c.whatsapp_per_session) AS value, date'+compTextAs+' FROM (SELECT a.message_count/b.session_count AS whatsapp_per_session,a.user_id, a.date'+compText+' FROM (SELECT SUM(z.message_count) as message_count, z.date, z.user_id'+compText+' FROM (SELECT message_count, date, user_id'+compText+' FROM ga_block_whatsapp_contacts '+whereClause+'UNION SELECT message_count, date, user_id'+compText+' FROM ga_district_whatsapp_contacts '+whereClause+') z GROUP BY user_id,date'+compText+') a LEFT JOIN (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b ON a.date = b.date AND a.user_id = b.user_id'+joinText+') c GROUP BY c.date'+compText+';'
+            'whatsapp_per_session':'SELECT AVG(c.whatsapp_per_session) AS value, date'+compTextAs+' FROM (SELECT a.message_count/b.session_count AS whatsapp_per_session,a.user_id, a.date'+compTextAlias+' FROM (SELECT SUM(z.message_count) as message_count, z.date, z.user_id'+compText+' FROM (SELECT message_count, date, user_id'+compText+' FROM ga_block_whatsapp_contacts '+whereClause+'UNION SELECT message_count, date, user_id'+compText+' FROM ga_district_whatsapp_contacts '+whereClause+') z GROUP BY user_id,date'+compText+') a LEFT JOIN (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b ON a.date = b.date AND a.user_id = b.user_id'+joinText+') c GROUP BY c.date'+compText+';'
         };
         // average time on charts per session per user            
             // SELECT AVG(c.time_per_session) AS avg_chart_duration, date'+compTextAs+' FROM 
@@ -197,7 +198,7 @@ exports.data = {
 
         // SELECT AVG(IF(session_sum=0,1,0)) AS no_sessions, AVG(IF(day7_sum>0,1,0)) AS day7_session, AVG(IF(day3_sum>0,1,0)) AS day3_session'+compTextAs+' FROM (SELECT SUM(session_flag) as session_sum, SUM(day7_flag) as day7_sum, SUM(day3_flag) as day3_sum, COUNT(distinct date) as date_count, user_id FROM (SELECT IF(session_count>0,1,0) as session_flag, IF((date >= DATE(NOW()) - INTERVAL 8 DAY) AND session_count>0,1,0) AS day7_flag, IF((date >= DATE(NOW()) - INTERVAL 4 DAY) AND session_count>0,1,0) AS day3_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b;
 
-        var queryString = queryTemplates[metric] + "SELECT distinct metric,metric_label,chart_type,band,x_label,y_label FROM usage_metrics WHERE metric='"+metric+"';";
+        var queryString = queryTemplates[metric] + "SELECT distinct metric,metric_label,chart_type,band,x_label,y_label FROM usage_metrics WHERE metric='"+metric+"'; SELECT `option`, `option_label` FROM usage_comparisons WHERE comparison='"+comparison+"';";
 
         console.log(queryString);
         // // usage_overview
@@ -213,6 +214,15 @@ exports.data = {
 
             var chartInfo = D3.values(rows[1])[0];
 
+            var comparisonInfo = D3.values(rows[2]);
+            var comparisonLookup = {};
+            comparisonInfo.forEach(function(d) {
+                comparisonLookup[d.option] = d.option_label;
+            });
+            if (comparison==='overall') {
+                comparisonLookup['overall'] = 'Overall';
+            }
+
             if (chartInfo.chart_type==='line') {
                 var chart_data = D3.nest()
                     .key(function(d) {
@@ -221,7 +231,7 @@ exports.data = {
                     .rollup(function(v) {
                         return {
                             'option': v[0].comparison,
-                            'option_label': v[0].comparison,
+                            'option_label': comparisonLookup[v[0].comparison],
                             'line_data': v.map(function(d) {
                                 return {
                                     'y_val': d.value,
@@ -245,7 +255,7 @@ exports.data = {
                     .rollup(function(v) {
                         return {
                             'option': v[0].comparison,
-                            'option_label': v[0].comparison,
+                            'option_label': comparisonLookup[v[0].comparison],
                             'bar_data': v.map(function(d) {
                                 return {
                                     'bar_label': d.bar_label,
@@ -269,6 +279,7 @@ exports.data = {
                 'y_label': chartInfo.y_label,
                 'chart_type': chartInfo.chart_type,
                 'band': (chartInfo.band===1 ? true : false),
+                'area': (comparison==='overall' ? true : false),
                 'chart_data': chart_data
             }
             console.log(JSON.stringify(data))

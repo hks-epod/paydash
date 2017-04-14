@@ -57,7 +57,7 @@ exports.block = function(rows) {
                 'region_code': d.key.substr(0,7),
                 'region_name': d.key.substr(7),
                 'cards': d.values.map(function(e) { 
-                    return e.values; 
+                    return e.value; 
                 }).sort(function (a, b){
                     var aActive = a.current_total + a.delayed_total > 0 ? 1 : 0;
                     var bActive = b.current_total + b.delayed_total > 0 ? 1 : 0;
@@ -80,6 +80,7 @@ exports.block = function(rows) {
                 })
             };
         });
+            console.log(cards)
 
     var data = {
         'musters': cards
@@ -137,7 +138,7 @@ exports.district = function(rows) {
                 'region_code': d.key.substr(0,4),
                 'region_name': d.key.substr(4),
                 'cards': d.values.map(function(e) { 
-                    return e.values;
+                    return e.value;
                 }).sort(function (a, b){
                     if (a.block_name.toLowerCase() < b.block_name.toLowerCase()) return -1;
                     if (a.block_name.toLowerCase() > b.block_name.toLowerCase()) return 1;

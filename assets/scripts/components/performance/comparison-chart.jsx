@@ -58,7 +58,7 @@ const ComparisonChart =  React.createClass({
                 xax_count: 10,
                 // max_x : options.max_x || null,
                 // min_x: options.min_x || null,
-                xax_format: D3.time.format('%b %Y'),
+                xax_format: D3.timeFormat('%b %Y'),
                 chart_type: c_data.length !== 0 ? 'line' : 'missing-data',
                 missing_text: 'No data',
                 show_secondary_x_label: false,
@@ -91,7 +91,7 @@ const ComparisonChart =  React.createClass({
                         var l_span = D3.select(legend_target + ' .mg-line' + val.line_id + '-legend-color');
                         l_span.text(' ');
                         l_span.text('— ' + labels[val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
-                        var format = D3.time.format('%b %Y');
+                        var format = D3.timeFormat('%b %Y');
                         D3.select('#region_comparison_total_trans').text( _this.props.translation.comparison.total_trans[_this.props.activeRegion.region_type] + ' '+ format(val.date) + ': ' + val.total_trans);
                     });
                 },
