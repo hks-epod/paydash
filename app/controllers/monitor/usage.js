@@ -124,13 +124,14 @@ exports.data = {
         // Use the comparison data to construct the comparison strings for the query
         if (comparison==='overall') {
             var compText = '';
+            var compTextAlias = '';
             var compTextAs = ',"overall" AS comparison';
             var joinText = '';
             var groupbyText = '';
         }
         else {
             var compText = ','+comparison;
-            var compTextAlias = ',a.'+comparison
+            var compTextAlias = ',a.'+comparison;
             var compTextAs = compText+' AS comparison';
             var joinText = ' AND a.'+comparison+'=b.'+comparison;
             var groupbyText = 'GROUP BY '+comparison + ' ';    
