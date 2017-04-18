@@ -24,7 +24,7 @@ const Usage = React.createClass({
     setMetric: function(value) {
         this.setState({ 
             selectedMetric: value, 
-            selectedComparison: null,
+            selectedComparison: {label: 'None',value: 'overall'},
             selectedFilters: {} 
         });
     },
