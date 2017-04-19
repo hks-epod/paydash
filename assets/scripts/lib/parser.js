@@ -57,7 +57,7 @@ exports.lines = function(options) {
     return result;
 };
 
-exports.usage = function(data){
+exports.usage = function(data, x_label){
 
     var labels = [];
     var lineData = [];
@@ -66,8 +66,13 @@ exports.usage = function(data){
         labels.push(line.option_label);
 
         line.line_data.forEach(function(val, index){ 
-            data[lineIndex].line_data[index].x_val = parseDate(val.x_val);
-            // data[lineIndex].line_data[index].value = parseDate(val.y_val);
+            if(x_label === 'Date'){
+                data[lineIndex].line_data[index].x_val = parseDate(val.x_val);    
+            }
+            else {
+                data[lineIndex].line_data[index].x_val = val.x_val;
+            }
+            
         }); 
         lineData.push(data[lineIndex].line_data);
     });
