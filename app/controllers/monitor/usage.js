@@ -112,7 +112,7 @@ exports.data = {
         console.log(filter);
 
         // Use the filter data to construct the conditional clause for the query
-        var filter_types = Object.keys(filter);
+        var filter_types = Object.keys(filter).filter(function(d) { return filter[d]!==null; });
         var clauseArray = [];
         filter_types.forEach(function(d) {
             if (filter[d].length>0) {
@@ -213,6 +213,7 @@ exports.data = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
+            console.log(D3.values(rows[0]))
             var chartInfo = D3.values(rows[1])[0];
 
             var comparisonInfo = D3.values(rows[2]);
