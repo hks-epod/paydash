@@ -55,7 +55,9 @@ exports.postForm = {
     handler: function(request, reply) {
         if (request.auth.isAuthenticated && request.auth.scope === 'editor') {
             return reply.redirect('/editor/info');
-        } else if (request.auth.isAuthenticated){
+        } else if (request.auth.isAuthenticated && request.auth.scope === 'monitoring'){
+            return reply.redirect('/monitor/usage');
+        }else if (request.auth.isAuthenticated){
             return reply.redirect('/overview');
         }
 
@@ -69,13 +71,11 @@ exports.postForm = {
             },
             include: [db.user_regions]
         }).then(function(user) {
-
             if (user) {
                 if (user.deactivated) {
                     request.yar.flash('error', 'Your account has been deactivated. Please contact the PayDash team if you require assistance.');
                     return reply.redirect('/login');
                 }
-
                 user.super_token = new Date().getTime().toString();
                 user.save().then(function() {
                 
@@ -84,6 +84,8 @@ exports.postForm = {
                     // Handle Redirection
                     if (user.scope === 'editor') {
                         return reply.redirect('/editor/info');
+                    } else if (user.scope === 'monitoring') {
+                        return reply.redirect('/monitor/usage');
                     }
                     if (!user.isActive) {
 
