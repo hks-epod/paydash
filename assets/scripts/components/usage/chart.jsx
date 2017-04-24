@@ -78,16 +78,20 @@ const UsageChart =  React.createClass({
 
 
         } else{
-            var values = D3.range(10000).map(D3.randomBates(10));
-
+            var bar_chart_data = Parser.bargroup(data.chart_data); 
             MG.data_graphic({
                 title: '',
-                data: _this.props.data.chart_data[0].bar_data,
+                data: bar_chart_data,
                 chart_type: 'bar',
-                width: 600,
+                width: 700,
                 height: 500,
-                full_width: true,
+                xgroup_accessor: 'option_label',
                 left: 100,
+                right:100,
+                legend: ['No sessions', 'Session in past 7 days', 'Session in past 3 days'],
+                // size_accessor: 'size',
+                // size_domain: [0,1],
+                // size_range: [3,6],
                 y_accessor: 'bar_value',
                 x_accessor: 'bar_label',
                 target: _this.elem

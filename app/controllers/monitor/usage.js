@@ -6,12 +6,18 @@ const Joi = require('joi');
 const Utils = require('../../helpers/utils');
 
 exports.showPage = {
+    auth: {
+      scope : ['monitoring']
+    },
     handler: function(request, reply) {
         return reply.view('monitor/usage', null, { layout: 'monitor' });
     }
 };
 
 exports.metric = {
+    auth: {
+      scope : ['monitoring']
+    },
     handler: function(request, reply) {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
 
@@ -81,6 +87,9 @@ exports.metric = {
 };
 
 exports.data = {
+    auth: {
+      scope : ['monitoring']
+    },
     validate: {
         payload: { // payload for POST, query for GET
             metric: Joi.string().min(3).max(50),
@@ -107,9 +116,6 @@ exports.data = {
         //     'state_code': ['17'],
         //     'officer_type': ['d1','d2','b1','b2']
         // };
-        console.log(metric);
-        console.log(comparison);
-        console.log(filter);
 
         // Use the filter data to construct the conditional clause for the query
         var filter_types = Object.keys(filter).filter(function(d) { return filter[d]!==null; });

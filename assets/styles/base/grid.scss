@@ -7,19 +7,17 @@
     text-rendering: optimizespeed;
     display: -webkit-flex;
     
-    display: -ms-flexbox;
-    flex-flow: row wrap;
-    -webkit-flex-flow: row wrap;
-    -ms-flex-flow: row wrap;
-     align-content: flex-start;
-    -webkit-align-content: flex-start;
-    -ms-align-content: flex-start;
-    
-   
-
-    // display: flex;
+    // display: -ms-flexbox;
     // flex-flow: row wrap;
+    // -webkit-flex-flow: row wrap;
+    // -ms-flex-flow: row wrap;
     // align-content: flex-start;
+    // -webkit-align-content: flex-start;
+    // -ms-align-content: flex-start;
+    
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
 }
 .pure-u {
     display: inline-block;

@@ -83,3 +83,20 @@ exports.usage = function(data, x_label){
 
 };
 
+exports.bargroup = function(data){
+    var bar_data = [];
+    data.forEach(function(group, index){
+        
+        group.bar_data.forEach(function(val, index){
+            var line = {};
+            line.option_label = group.option_label;
+            line.bar_value = val.bar_value;
+            line.bar_label = val.bar_label;
+            line.size = Math.random();
+            bar_data.push(line); 
+        });
+        
+    });
+    return bar_data;
+};
+

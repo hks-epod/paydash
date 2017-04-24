@@ -2,12 +2,18 @@
 const Queries = require('../../helpers/queries');
 
 exports.showPage = {
+    auth: {
+      scope : ['monitoring']
+    },
     handler: function(request, reply) {
         return reply.view('monitor/user', null, {layout: 'monitor'});
     }
 };
 
 exports.getData = {
+    auth: {
+      scope : ['monitoring']
+    },
     handler: function(request, reply) {
 
     	
