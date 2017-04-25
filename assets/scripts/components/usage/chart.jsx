@@ -70,6 +70,7 @@ const UsageChart =  React.createClass({
                 left: 100,
                 x_accessor: 'x_val',
                 y_accessor: 'y_val',
+                interpolate: D3.curveLinear,
                 full_width: true,
                 bins: 50,
                 bar_margin: 0,
@@ -78,20 +79,23 @@ const UsageChart =  React.createClass({
 
 
         } else{
+            MG.data_graphic({
+                title: '',
+                chart_type: 'missing-data',
+                target: _this.elem
+            });
             var bar_chart_data = Parser.bargroup(data.chart_data); 
             MG.data_graphic({
                 title: '',
                 data: bar_chart_data,
+                bar_orientation: 'horizontal',
                 chart_type: 'bar',
-                width: 700,
+                width: bar_chart_data.length > 3 ? 400 : 300,
                 height: 500,
                 xgroup_accessor: 'option_label',
                 left: 100,
                 right:100,
                 legend: ['No sessions', 'Session in past 7 days', 'Session in past 3 days'],
-                // size_accessor: 'size',
-                // size_domain: [0,1],
-                // size_range: [3,6],
                 y_accessor: 'bar_value',
                 x_accessor: 'bar_label',
                 target: _this.elem

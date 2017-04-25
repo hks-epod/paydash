@@ -15,11 +15,12 @@ $sidebar__gutter: 40px;
     top: 62px;
     left: 0;
     height: 100%;
+    bottom:0;
     width: $sidebar__width;
     box-shadow: 0 0 1px rgba(0, 0, 0, .15);
     @extend %clearfix;
     padding: 0 40px;
-    overflow: scroll;
+    overflow: auto;
 }
 
 .main {
