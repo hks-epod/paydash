@@ -145,8 +145,8 @@ exports.data = {
 
         var queryTemplates = {
             'usage_overview':'SELECT AVG(IF(session_sum=0,1,0)) AS bar_value, "No sessions" AS bar_label'+compTextAs+' FROM (SELECT SUM(session_flag) as session_sum, user_id'+compText+' FROM (SELECT IF(session_count>0,1,0) as session_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+'UNION SELECT AVG(IF(day7_sum>0,1,0)) AS bar_value, "Session in past 7 days" AS bar_label'+compTextAs+' FROM (SELECT SUM(day7_flag) as day7_sum, user_id'+compText+' FROM (SELECT IF((date >= DATE(NOW()) - INTERVAL 8 DAY) AND session_count>0,1,0) AS day7_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+'UNION SELECT AVG(IF(day3_sum>0,1,0)) AS bar_value, "Session in past 3 days" AS bar_label'+compTextAs+' FROM (SELECT SUM(day3_flag) as day3_sum, user_id'+compText+' FROM (SELECT IF((date >= DATE(NOW()) - INTERVAL 4 DAY) AND session_count>0,1,0) AS day3_flag, user_id, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id, date'+compText+') a GROUP BY user_id'+compText+') b '+groupbyText+';',
-            'users_1session_date':'SELECT a.session_flag_count/a.user_count AS value, date'+compTextAs+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+') a;',
-            'users_1session_day':'SELECT a.session_flag_count/a.user_count AS value, day_of_intervention'+compTextAs+' FROM (SELECT SUM(IF(session_count>0,1,0)) as session_flag_count, COUNT(DISTINCT user_id) as user_count, DATEDIFF(date,rollout_date) AS day_of_intervention'+compText+' FROM ga_sessions '+whereClause+'GROUP BY day_of_intervention'+compText+') a;',
+            'users_1session_date':'SELECT a.session_flag_count/a.user_count AS value, date'+compTextAs+' FROM (SELECT SUM(session_flag) as session_flag_count, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM (SELECT IF(session_count>0,1,0) as session_flag, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b GROUP BY date'+compText+') a;',
+            'users_1session_day':'SELECT a.session_flag_count/a.user_count AS value, day_of_intervention'+compTextAs+' FROM (SELECT SUM(session_flag) as session_flag_count, COUNT(DISTINCT user_id) as user_count, day_of_intervention'+compText+' FROM (SELECT IF(session_count>0,1,0) as session_flag, DATEDIFF(date,rollout_date) AS day_of_intervention, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,day_of_intervention'+compText+') b GROUP BY day_of_intervention'+compText+') a;',
             'total_users':'SELECT COUNT(DISTINCT user_id) as value, date'+compTextAs+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+';',
             'sessions_per_user':'SELECT a.session_total/a.user_count AS value, date'+compTextAs+' FROM (SELECT SUM(session_count) as session_total, COUNT(DISTINCT user_id) as user_count, date'+compText+' FROM ga_sessions '+whereClause+'GROUP BY date'+compText+') a;',
             'session_duration':'SELECT AVG(a.avg_session_duration) AS value, a.date'+compTextAs+' FROM (SELECT SUM(session_duration)/SUM(session_count) AS avg_session_duration,user_id,date'+compText+' FROM ga_sessions WHERE session_count>0 '+whereClause.replace('WHERE','AND')+'GROUP BY user_id,date'+compText+') a GROUP BY date'+compText+';',
@@ -156,6 +156,30 @@ exports.data = {
             'call_duration':'SELECT AVG(a.avg_call_duration) AS value, a.date'+compTextAs+' FROM (SELECT SUM(z.call_duration)/SUM(z.call_count) AS avg_call_duration,user_id,date'+compText+' FROM (SELECT call_count, call_duration, date, user_id'+compText+' FROM ga_block_calls '+whereClause+'UNION SELECT call_count, call_duration, date, user_id'+compText+' FROM ga_district_calls '+whereClause+') z WHERE call_count>0 GROUP BY user_id,date'+compText+') a GROUP BY date'+compText+';',
             'whatsapp_per_session':'SELECT AVG(c.whatsapp_per_session) AS value, date'+compTextAs+' FROM (SELECT a.message_count/b.session_count AS whatsapp_per_session,a.user_id, a.date'+compTextAlias+' FROM (SELECT SUM(z.message_count) as message_count, z.date, z.user_id'+compText+' FROM (SELECT message_count, date, user_id'+compText+' FROM ga_block_whatsapp_contacts '+whereClause+'UNION SELECT message_count, date, user_id'+compText+' FROM ga_district_whatsapp_contacts '+whereClause+') z GROUP BY user_id,date'+compText+') a LEFT JOIN (SELECT SUM(session_count) as session_count, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b ON a.date = b.date AND a.user_id = b.user_id'+joinText+') c GROUP BY c.date'+compText+';'
         };
+
+
+// SELECT a.session_flag_count/a.user_count AS value, date'+compTextAs+' 
+//     FROM (
+//         SELECT 
+//         SUM(session_flag) as session_flag_count, 
+//         COUNT(DISTINCT user_id) as user_count, 
+//         date'+compText+' 
+//         FROM (SELECT IF(session_count>0,1,0) as session_flag, date, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,date'+compText+') b
+//         GROUP BY date'+compText+'
+//     ) a;
+
+
+// SELECT a.session_flag_count/a.user_count AS value, day_of_intervention'+compTextAs+' 
+//     FROM (
+//         SELECT 
+//         SUM(session_flag) as session_flag_count, 
+//         COUNT(DISTINCT user_id) as user_count, 
+//         day_of_intervention'+compText+' 
+//         FROM (SELECT IF(session_count>0,1,0) as session_flag, DATEDIFF(date,rollout_date) AS day_of_intervention, user_id'+compText+' FROM ga_sessions '+whereClause+'GROUP BY user_id,day_of_intervention'+compText+') b
+//         GROUP BY day_of_intervention'+compText+'
+//     ) a;
+
+
         // average time on charts per session per user            
             // SELECT AVG(c.time_per_session) AS avg_chart_duration, date'+compTextAs+' FROM 
             // (SELECT a.view_duration/b.session_count AS time_per_session,a.user_id, a.date'+compText+'
