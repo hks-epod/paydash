@@ -90,14 +90,16 @@ const UsageChart =  React.createClass({
                 data: bar_chart_data,
                 bar_orientation: 'horizontal',
                 chart_type: 'bar',
-                width: bar_chart_data.length > 3 ? 400 : 300,
+                width: 600,
                 height: 500,
-                xgroup_accessor: 'option_label',
+                ygroup_accessor: 'option_label',
+                y_axis_type: 'categorical',
                 left: 100,
                 right:100,
+                full_width: true,
                 legend: ['No sessions', 'Session in past 7 days', 'Session in past 3 days'],
-                y_accessor: 'bar_value',
-                x_accessor: 'bar_label',
+                x_accessor: 'bar_value',
+                y_accessor: 'bar_label',
                 target: _this.elem
             });
         }

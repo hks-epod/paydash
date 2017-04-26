@@ -5,7 +5,7 @@ exports.home = {
     auth: {
         mode: 'try',
         strategy: 'standard',
-        scope: ['block', 'district', 'editor']
+        scope: ['block', 'district', 'editor', 'monitoring']
     },
     plugins: {
         'hapi-auth-cookie': {
@@ -13,6 +13,10 @@ exports.home = {
         }
     },
     handler: function(request, reply) {
+
+        if(request.auth.credentials && request.auth.credentials.scope === 'monitoring'){
+            return reply.redirect('/monitor/usage');
+        }
         reply.view('homepage');
     }
 };
