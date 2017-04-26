@@ -24,6 +24,8 @@ exports.getData = {
 
 		var step = 'mrc_mre';
 
+		var queryString = 'SELECT * FROM outcomes WHERE `type`="payments";';
+
 		var queryString = 'SELECT b.treatment_label, a.period, a.val_type, a.'+step+' AS value FROM estimates_series a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment;';
 
         // var queryString = Queries.estimates(step);
