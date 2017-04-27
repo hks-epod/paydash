@@ -18,15 +18,13 @@ exports.getData = {
 
     	
 
-    	//'SELECT b.treatment_label, a.mrc_mre, a.mre_wlg, a.wlg_wls, a.wls_fto, a.fto_sn1, a.sn1_sn2, a.sequelize, a.mrc_prc FROM estimates_summary a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment;'
+    	//'SELECT b.treatment_label, a.mrc_mre, a.mre_wlg, a.wlg_wls, a.wls_fto, a.fto_sn1, a.sn1_sn2, a.sn2_prc, a.mrc_prc FROM estimates_summary a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment;'
 
 		var sequelize = request.server.plugins.sequelize.db.sequelize;
 
-		var step = 'mrc_mre';
+		var queryString = ''
 
-		var queryString = 'SELECT * FROM outcomes WHERE `type`="payments";';
-
-		var queryString = 'SELECT b.treatment_label, a.period, a.val_type, a.'+step+' AS value FROM estimates_series a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment;';
+		var queryString = 'SELECT b.treatment_label, b.treatment, a.period, a.est, a.est_type, a.outcome FROM estimates_series a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment inner join (SELECT * FROM outcomes WHERE `type`="payments") c ON a.outcome=c.outcome;SELECT * FROM outcomes WHERE `type`="payments";';
 
         // var queryString = Queries.estimates(step);
 
