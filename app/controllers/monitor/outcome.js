@@ -1,5 +1,6 @@
 'use strict';
 const Queries = require('../../helpers/queries');
+const D3 = require('d3');
 
 exports.showPage = {
     auth: {
@@ -16,15 +17,9 @@ exports.getData = {
     },
     handler: function(request, reply) {
 
-    	
-
-    	//'SELECT b.treatment_label, a.mrc_mre, a.mre_wlg, a.wlg_wls, a.wls_fto, a.fto_sn1, a.sn1_sn2, a.sn2_prc, a.mrc_prc FROM estimates_summary a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment;'
-
 		var sequelize = request.server.plugins.sequelize.db.sequelize;
 
-		var queryString = ''
-
-		var queryString = 'SELECT b.treatment_label, b.treatment, a.period, a.est, a.est_type, a.outcome FROM estimates_series a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment inner join (SELECT * FROM outcomes WHERE `type`="payments") c ON a.outcome=c.outcome;SELECT * FROM outcomes WHERE `type`="payments";';
+		var queryString = 'SELECT b.treatment_label, b.treatment, a.period, a.b, a.ci_u, a.ci_l, a.outcome FROM estimates_series a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment inner join (SELECT * FROM outcomes WHERE `type`="payments") c ON a.outcome=c.outcome;SELECT * FROM outcomes WHERE `type`="payments";SELECT b.treatment_label, a.val_type, a.mrc_mre, a.mre_wlg, a.wlg_wls, a.wls_fto, a.fto_sn1, a.sn1_sn2, a.sn2_prc, a.mrc_prc FROM estimates_summary a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment;';
 
         // var queryString = Queries.estimates(step);
 
@@ -33,11 +28,19 @@ exports.getData = {
             type: sequelize.QueryTypes.SELECT
         }).then(function(rows) {
 
-        	console.log(rows[0])
+        	var outcomes = D3.values(rows[1]).map(function(d) {
+        		return {
+        			'outcome':d.outcome,
+        			'outcome_label':d.label
+        		}
+        	});
 
             var estimates_series = D3.nest()
                 .key(function(d) {
-                    return d.treatment_label;
+                    return d.outcome;
+                })
+                .key(function(d) {
+                	return d.treatment;
                 })
                 .rollup(function(v) {
                     return {
@@ -53,31 +56,70 @@ exports.getData = {
                     };
                 })
                 .entries(D3.values(rows[0]))
-                .map(function(d) {
-                    return d.value;
-                });
+		        .map(function(d) {
+		            return {
+		                'outcome': d.key,
+		                'lines': d.values.map(function(e) { 
+		                    return e.value; 
+		                })
+		            }
+		        });
+
+		    var format = D3.format('.4f');
+		    var table_data = D3.values(rows[2]);
+		    table_data.forEach(function(d,i) {
+		    	if (d.val_type==='b') {
+		    		outcomes.forEach(function(e,j) {
+						if (table_data[i+1][e.outcome]<=.01) {
+							d[e.outcome] = format(d[e.outcome]) + '***';
+						}
+						else if (table_data[i+1][e.outcome] > .01 && table_data[i+1][e.outcome]<=.05) {
+							d[e.outcome] = format(d[e.outcome]) + '**';
+						}
+						else if (table_data[i+1][e.outcome] > .05 && table_data[i+1][e.outcome]<=.1) {
+							d[e.outcome] = format(d[e.outcome]) + '*';
+						}
+						else {
+							d[e.outcome] = format(d[e.outcome]);
+						}
+		    		});
+		    	}
+		    	else if (d.val_type==='p') {
+		    		outcomes.forEach(function(e,j) {
+						d[e.outcome] = '(' + format(d[e.outcome]) + ')';
+		    		});
+
+		    		d.treatment_label = '';
+		    	}
+		    })
 
             var estimates_summary = [
             	['','(1)','(2)','(3)','(4)','(5)','(6)','(7)','(8)'],
             	['','mrc_mre','mre_wlg','wlg_wls','wls_fto','fto_sn1','sn1_sn2','sn2_prc','mrc_prc']
-            ];
+            ].concat(table_data.map(function(d) {
+            	return [
+            		d.treatment_label,
+            		d.mrc_mre,
+            		d.mre_wlg,
+            		d.wlg_wls,
+            		d.wls_fto,
+            		d.fto_sn1,
+            		d.sn1_sn2,
+            		d.sn2_prc,
+            		d.mrc_prc
+            	];
+        	}));
 
+        	var data = {
+        		'chart_menu': outcomes,
+        		'chart': estimates_series,
+        		'table': estimates_summary
+        	}
 
             reply(data);
 
         });
-// treat_arm
-// period
-// period_name
-// val_type
-// mrc_mre
-// mre_wlg
-// wlg_wls
-// wls_fto
-// fto_sn1
-// sn1_sn2
-// sn2_prc
-// mrc_prc 
+
 
 	}
 };
