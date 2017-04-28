@@ -265,11 +265,11 @@ exports.data = {
                         return {
                             'option': v[0].comparison,
                             'option_label': comparisonLookup[v[0].comparison],
-                            'line_data': v.map(function(d) {
+                            'line_data': v.filter(function(d) { return d.value!==null; }).map(function(d) {
                                 return {
                                     'y_val': d.value,
                                     'x_val': d.day_of_intervention || d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate())
-                                };
+                                }; 
                             })
                         };
                     })
