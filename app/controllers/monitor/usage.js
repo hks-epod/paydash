@@ -157,10 +157,10 @@ exports.data = {
 
             var chartInfo = D3.values(rows[1])[0];
             
-            function buildComparisonLookup(info,comparison) {
+            function buildComparisonLookup(optionArray,comparison) {
 
                 var lookup = {};
-                info.forEach(function(d) {
+                optionArray.forEach(function(d) {
                     lookup[d.option] = d.option_label;
                 });
                 if (comparison==='overall') {
