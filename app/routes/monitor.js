@@ -1,17 +1,15 @@
 'use strict';
 
 exports.register = function(plugin, options, next) {
-
     const Controllers = {
         monitor: {
             usage: require('../controllers/monitor/usage'),
             outcome: require('../controllers/monitor/outcome'),
-            system: require('../controllers/monitor/system'),
+            system: require('../controllers/monitor/system')
         }
     };
 
     plugin.route([
-
         // User monitoring dashbaord
         {
             method: 'GET',
@@ -54,7 +52,6 @@ exports.register = function(plugin, options, next) {
             path: '/monitor/system/data',
             config: Controllers.monitor.system.getData
         }
-
     ]);
 
     next();
