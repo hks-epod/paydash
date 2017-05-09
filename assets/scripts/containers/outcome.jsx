@@ -55,13 +55,15 @@ const Usage = React.createClass({
                         autosize={true}
                         value={this.state.selectedMetric}
                     />
-                    <h3 className="sidebar__heading">Outcome</h3>
+                    <h3 className="sidebar__heading">Effect of receiving PayDash on days to complete step (by month of intervention)</h3>
                 </div>
                 <OutcomeChart data={this.state.chart} />
                 <h3 className="sidebar__headin u-spacing-page-top">
-                    Baseline fixed effect regression with tenure (all departments)
+                    Effect of receiving PayDash on days to complete payment step
                 </h3>
                 <OutcomeTable data={this.state.table} />
+                <h5>* p &#60; 0.10, ** p &#60; 0.05, *** p &#60; 0.01</h5>
+                <h5>P-values in parentheses</h5>
             </div>
         );
     }

@@ -56,15 +56,12 @@ exports.getData = {
                             })
                         };
                     })
-                    .entries(D3.values(rows[0]))
-                    .map(function(d) {
-                        return {
-                            outcome: d.key,
-                            lines: d.values.map(function(e) {
-                                return e.value;
-                            })
-                        };
-                    });
+                    .object(D3.values(rows[0]))
+
+                Object.keys(estimates_series).forEach(function (d) { // need to convert the inner objects into arrays
+                	estimates_series[d] = D3.values(estimates_series[d]);
+                })
+
 
                 var format = D3.format('.4f');
                 var table_data = D3.values(rows[2]);
