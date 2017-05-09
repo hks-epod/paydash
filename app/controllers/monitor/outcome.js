@@ -68,16 +68,16 @@ exports.getData = {
                 table_data.forEach(function(d, i) {
                     if (d.val_type === 'b') {
                         outcomes.forEach(function(e, j) {
-                            if (table_data[i + 1][e.value] <= 0.01) {
+                            if (table_data[i + 1][e.value] < 0.01) {
                                 d[e.value] = format(d[e.value]) + '***';
                             } else if (
-                                table_data[i + 1][e.value] > 0.01 &&
-                                table_data[i + 1][e.value] <= 0.05
+                                table_data[i + 1][e.value] >= 0.01 &&
+                                table_data[i + 1][e.value] < 0.05
                             ) {
                                 d[e.value] = format(d[e.value]) + '**';
                             } else if (
-                                table_data[i + 1][e.value] > 0.05 &&
-                                table_data[i + 1][e.value] <= 0.1
+                                table_data[i + 1][e.value] >= 0.05 &&
+                                table_data[i + 1][e.value] < 0.1
                             ) {
                                 d[e.value] = format(d[e.value]) + '*';
                             } else {
