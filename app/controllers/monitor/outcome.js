@@ -104,7 +104,7 @@ exports.getData = {
                         'fto_sn1',
                         'sn1_sn2',
                         'sn2_prc',
-                        'mrc_prc'
+                        'mrc_prc (all)'
                     ]
                 ].concat(
                     table_data.map(function(d) {
