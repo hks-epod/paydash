@@ -19,7 +19,7 @@ exports.getData = {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
 
         var queryString =
-            'SELECT b.treatment_label, b.treatment, a.period, a.b, a.ci_u, a.ci_l, a.outcome FROM estimates_series a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment inner join (SELECT * FROM outcomes WHERE `type`="payments") c ON a.outcome=c.outcome;SELECT * FROM outcomes WHERE `type`="payments";SELECT b.treatment_label, a.val_type, a.mrc_mre, a.mre_wlg, a.wlg_wls, a.wls_fto, a.fto_sn1, a.sn1_sn2, a.sn2_prc, a.mrc_prc FROM estimates_summary a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment;';
+            'SELECT b.treatment_label, b.treatment, a.period, a.b, a.ci_u, a.ci_l, a.outcome FROM estimates_series a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment inner join (SELECT * FROM outcomes WHERE `type`="payments") c ON a.outcome=c.outcome;SELECT * FROM outcomes WHERE `type`="payments";SELECT b.treatment_label, a.val_type, a.mrc_mre, a.mre_wlg, a.wlg_wls, a.wls_fto, a.fto_sn1, a.sn1_sn2, a.sn2_prc, a.mrc_prc FROM (SELECT * FROM estimates_summary WHERE val_type IN ("b","p")) a left join (SELECT DISTINCT treatment, treatment_label FROM treatment) b ON a.treat_arm=b.treatment;SELECT DISTINCT val_type, mrc_mre, mre_wlg, wlg_wls, wls_fto, fto_sn1, sn1_sn2, sn2_prc, mrc_prc FROM estimates_summary WHERE val_type IN ("c","n");';
 
         // var queryString = Queries.estimates(step);
 
@@ -90,8 +90,20 @@ exports.getData = {
                         });
 
                         d.treatment_label = '';
-                    }
+                    } 
                 });
+
+                var table_data_numobs = D3.values(rows[3])
+                    .filter(function(d) { return d.val_type=='n'; });
+                
+                var table_data_constant = D3.values(rows[3])
+                    .filter(function(d) { return d.val_type=='c'; });
+
+                table_data_constant.forEach(function(d) {
+                    outcomes.forEach(function(e) {
+                        d[e.value] = format(d[e.value]); 
+                    })
+                })
 
                 var estimates_summary = [
                     ['', '(1)', '(2)', '(3)', '(4)', '(5)', '(6)', '(7)', '(8)'],
@@ -110,6 +122,34 @@ exports.getData = {
                     table_data.map(function(d) {
                         return [
                             d.treatment_label,
+                            d.mrc_mre,
+                            d.mre_wlg,
+                            d.wlg_wls,
+                            d.wls_fto,
+                            d.fto_sn1,
+                            d.sn1_sn2,
+                            d.sn2_prc,
+                            d.mrc_prc
+                        ];
+                    })
+                ).concat(
+                    table_data_constant.map(function(d) {
+                        return [
+                            'Constant',
+                            d.mrc_mre,
+                            d.mre_wlg,
+                            d.wlg_wls,
+                            d.wls_fto,
+                            d.fto_sn1,
+                            d.sn1_sn2,
+                            d.sn2_prc,
+                            d.mrc_prc
+                        ];
+                        })
+                ).concat(
+                    table_data_numobs.map(function(d) {
+                        return [
+                            'N',
                             d.mrc_mre,
                             d.mre_wlg,
                             d.wlg_wls,
