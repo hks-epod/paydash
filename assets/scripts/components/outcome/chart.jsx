@@ -18,12 +18,14 @@ const UsageChart = React.createClass({
         var _this = this;
         var data = _this.props.data;
         var legend_target = '#usage_performance_legend';
-
-        if (!data[0]) {
+        if (!_this.state.step) {
+            return;
+        }
+        if (!data.mrc_mre) {
             return;
         }
 
-        var chart_data = Parser.outcome(data[4].lines);
+        var chart_data = Parser.outcome(data[_this.state.step.value]);
         MG.data_graphic({
             title: '',
             target: _this.elem,
@@ -46,11 +48,19 @@ const UsageChart = React.createClass({
             area: false
         });
     },
+    getInitialState: function() {
+        return {
+            step: this.props.step
+        };
+    },
     componentDidMount: function() {
         this.loadChart();
     },
     componentDidUpdate: function() {
         this.loadChart();
+    },
+    componentWillReceiveProps: function(nextProps) {
+        this.setState({ step: nextProps.step });
     },
     render: function() {
         return (
