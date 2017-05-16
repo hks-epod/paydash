@@ -33,7 +33,7 @@ const Usage = React.createClass({
             chart_menu: [],
             chart: [],
             table: [],
-            selectedMetric: null
+            selectedMetric: {'label':'All steps: muster roll closure to bank confirmation', 'value':'mrc_prc'}
         };
     },
     componentWillMount: function() {
