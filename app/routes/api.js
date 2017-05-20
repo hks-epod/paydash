@@ -10,7 +10,8 @@ exports.register = function(plugin, options, next) {
             cards: require('../controllers/api/cards'),
             profile: require('../controllers/api/profile'),
             translate: require('../controllers/api/translate'),
-            pages: require('../controllers/api/pages')
+            pages: require('../controllers/api/pages'),
+            support: require('../controllers/api/support')
         }
     };
 
@@ -25,6 +26,11 @@ exports.register = function(plugin, options, next) {
             method: 'POST',
             path: '/api/profile',
             config: Controllers.api.profile.postEditProfile
+        },
+        {
+            method: 'POST',
+            path: '/api/ticket',
+            config: Controllers.api.support.addTicket
         },
         {
             method: 'POST',
