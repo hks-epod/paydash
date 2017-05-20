@@ -2,7 +2,7 @@
 
 const Confidence = require('confidence');
 
-// Confidence criteria 
+// Confidence criteria
 let internals = {
     criteria: {
         env: process.env.NODE_ENV
