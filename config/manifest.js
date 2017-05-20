@@ -117,6 +117,14 @@ internals.manifest = {
             }
         },
 
+        // Auth
+        {
+            plugin: {
+                register: './lib/freshdesk',
+                options: Config.get('/freshdesk')
+            }
+        },
+
         // Versioning
         {
             plugin: {

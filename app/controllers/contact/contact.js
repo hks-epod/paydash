@@ -6,7 +6,6 @@ const Utils = require('../../helpers/utils');
 const Joi = require('joi');
 const Translate = require('../../templates/helpers/t');
 const Handlebars = require('handlebars');
-const FreshDesk = require('../../helpers/freshdesk');
 
 exports.show = {
     auth: {
@@ -69,10 +68,15 @@ exports.sendMessage = {
                     description: request.payload.message
                 };
 
-                FreshDesk.newTicket(ticket, function() {});
-
-                request.yar.flash('success', 'Your message has been sent.');
-                return reply.redirect('/contact');
+                var freshDesk = request.server.plugins.freshdesk;
+                freshDesk.newTicket(ticket, function(err) {
+                    if (err) {
+                        request.yar.flash('error', 'Something went wrong. Please try again.');
+                    } else {
+                        request.yar.flash('success', 'Your message has been sent.');
+                    }
+                    return reply.redirect('/contact');
+                });
             });
     }
 };

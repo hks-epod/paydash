@@ -1,7 +1,6 @@
 'use strict';
 
 const Joi = require('joi');
-const FreshDesk = require('../../helpers/freshdesk');
 const Boom = require('boom');
 
 exports.addTicket = {
@@ -33,7 +32,9 @@ exports.addTicket = {
             description: request.payload.description
         };
 
-        FreshDesk.newTicket(ticket, function() {
+        var freshDesk = request.server.plugins.freshdesk;
+
+        freshDesk.newTicket(ticket, function() {
             return reply({
                 statusCode: 200,
                 message: 'Successfully created ticket.'
