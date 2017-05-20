@@ -15,7 +15,6 @@ exports.newTicket = function(ticket, cb) {
             }
         },
         function(err, httpResponse, body) {
-            console.log(httpResponse);
             cb();
         }
     );
