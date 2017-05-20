@@ -1,13 +1,11 @@
 'use strict';
 
 exports.register = function(plugin, options, next) {
-
     const Controllers = {
         musters: require('../controllers/musters/musters')
     };
 
     plugin.route([
-
         //  Muster cards
         {
             method: 'GET',
@@ -20,7 +18,7 @@ exports.register = function(plugin, options, next) {
             method: 'GET',
             path: '/musters/data',
             config: Controllers.musters.getData
-        },
+        }
     ]);
 
     next();

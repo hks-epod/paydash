@@ -25,7 +25,6 @@ exports.showResetForm = {
         }
     },
     handler: function(request, reply) {
-
         var ctx = {};
         var User = request.server.plugins.sequelize.db.User;
         User.findOne({
@@ -41,11 +40,9 @@ exports.showResetForm = {
                 return reply.view('auth/password-reset', ctx);
             } else {
                 ctx.isValidToken = false;
-                return reply.view('auth/password-reset', ctx);    
+                return reply.view('auth/password-reset', ctx);
             }
-            
         });
-
     }
 };
 
@@ -74,7 +71,6 @@ exports.postResetForm = {
         }
     },
     handler: function(request, reply) {
-
         if (request.payload.password !== request.payload.verify) {
             request.yar.flash('error', ' New Password does not match');
             return reply.redirect('/reset-password');
@@ -89,23 +85,28 @@ exports.postResetForm = {
             }
         }).then(function(user) {
             if (user) {
-                user.update({
-                    password : Crypto.createHash('md5').update(request.payload.password).digest('hex'),
-                    reset_password_token: null,
-                    reset_password_expires: null
-                }).then(function() {
-                    request.yar.flash('success', 'Password changed successfully. Please login with new password');
-                    // TODO : Send password change email
-                    request.cookieAuth.clear();
-                    return reply.redirect('/login');
-                });
+                user
+                    .update({
+                        password: Crypto.createHash('md5')
+                            .update(request.payload.password)
+                            .digest('hex'),
+                        reset_password_token: null,
+                        reset_password_expires: null
+                    })
+                    .then(function() {
+                        request.yar.flash(
+                            'success',
+                            'Password changed successfully. Please login with new password'
+                        );
+                        // TODO : Send password change email
+                        request.cookieAuth.clear();
+                        return reply.redirect('/login');
+                    });
             } else {
                 // User not fond in database
                 request.yar.flash('error', 'Token is invalid');
                 return reply.redirect('/reset-password');
             }
         });
-
-
     }
 };

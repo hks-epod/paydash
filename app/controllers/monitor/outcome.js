@@ -56,12 +56,12 @@ exports.getData = {
                             })
                         };
                     })
-                    .object(D3.values(rows[0]))
+                    .object(D3.values(rows[0]));
 
-                Object.keys(estimates_series).forEach(function (d) { // need to convert the inner objects into arrays
-                	estimates_series[d] = D3.values(estimates_series[d]);
-                })
-
+                Object.keys(estimates_series).forEach(function(d) {
+                    // need to convert the inner objects into arrays
+                    estimates_series[d] = D3.values(estimates_series[d]);
+                });
 
                 var format = D3.format('.4f');
                 var table_data = D3.values(rows[2]);
@@ -90,20 +90,22 @@ exports.getData = {
                         });
 
                         d.treatment_label = '';
-                    } 
+                    }
                 });
 
-                var table_data_numobs = D3.values(rows[3])
-                    .filter(function(d) { return d.val_type=='n'; });
-                
-                var table_data_constant = D3.values(rows[3])
-                    .filter(function(d) { return d.val_type=='c'; });
+                var table_data_numobs = D3.values(rows[3]).filter(function(d) {
+                    return d.val_type == 'n';
+                });
+
+                var table_data_constant = D3.values(rows[3]).filter(function(d) {
+                    return d.val_type == 'c';
+                });
 
                 table_data_constant.forEach(function(d) {
                     outcomes.forEach(function(e) {
-                        d[e.value] = format(d[e.value]); 
-                    })
-                })
+                        d[e.value] = format(d[e.value]);
+                    });
+                });
 
                 var estimates_summary = [
                     ['', '(1)', '(2)', '(3)', '(4)', '(5)', '(6)', '(7)', '(8)'],
@@ -118,49 +120,52 @@ exports.getData = {
                         'sn2_prc',
                         'mrc_prc (all)'
                     ]
-                ].concat(
-                    table_data.map(function(d) {
-                        return [
-                            d.treatment_label,
-                            d.mrc_mre,
-                            d.mre_wlg,
-                            d.wlg_wls,
-                            d.wls_fto,
-                            d.fto_sn1,
-                            d.sn1_sn2,
-                            d.sn2_prc,
-                            d.mrc_prc
-                        ];
-                    })
-                ).concat(
-                    table_data_constant.map(function(d) {
-                        return [
-                            'Constant',
-                            d.mrc_mre,
-                            d.mre_wlg,
-                            d.wlg_wls,
-                            d.wls_fto,
-                            d.fto_sn1,
-                            d.sn1_sn2,
-                            d.sn2_prc,
-                            d.mrc_prc
-                        ];
+                ]
+                    .concat(
+                        table_data.map(function(d) {
+                            return [
+                                d.treatment_label,
+                                d.mrc_mre,
+                                d.mre_wlg,
+                                d.wlg_wls,
+                                d.wls_fto,
+                                d.fto_sn1,
+                                d.sn1_sn2,
+                                d.sn2_prc,
+                                d.mrc_prc
+                            ];
                         })
-                ).concat(
-                    table_data_numobs.map(function(d) {
-                        return [
-                            'N',
-                            d.mrc_mre,
-                            d.mre_wlg,
-                            d.wlg_wls,
-                            d.wls_fto,
-                            d.fto_sn1,
-                            d.sn1_sn2,
-                            d.sn2_prc,
-                            d.mrc_prc
-                        ];
-                    })
-                );
+                    )
+                    .concat(
+                        table_data_constant.map(function(d) {
+                            return [
+                                'Constant',
+                                d.mrc_mre,
+                                d.mre_wlg,
+                                d.wlg_wls,
+                                d.wls_fto,
+                                d.fto_sn1,
+                                d.sn1_sn2,
+                                d.sn2_prc,
+                                d.mrc_prc
+                            ];
+                        })
+                    )
+                    .concat(
+                        table_data_numobs.map(function(d) {
+                            return [
+                                'N',
+                                d.mrc_mre,
+                                d.mre_wlg,
+                                d.wlg_wls,
+                                d.wls_fto,
+                                d.fto_sn1,
+                                d.sn1_sn2,
+                                d.sn2_prc,
+                                d.mrc_prc
+                            ];
+                        })
+                    );
 
                 var data = {
                     chart_menu: outcomes,

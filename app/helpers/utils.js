@@ -8,7 +8,7 @@ exports.padNum = function(num) {
 };
 
 exports.toProperCase = function(str) {
-    if (str === null || str==='') {
+    if (str === null || str === '') {
         return '';
     } else {
         return str.split(' ').map(i => i[0].toUpperCase() + i.substring(1)).join(' ');
@@ -31,24 +31,26 @@ exports.getDesignation = function(task_assign, state_code) {
 
 exports.buildName = function(firstname, lastname) {
     var name = (firstname.toUpperCase() + ' ' + lastname.toUpperCase()).trim();
-    if (name==='') {
+    if (name === '') {
         return 'No Officer Data';
     } else {
         return name;
     }
-
-}
+};
 exports.buildSubject = function(subjectStub, userId) {
     var subjectLine = subjectStub + ' [' + userId + ']';
     return subjectLine;
-}
+};
 
-exports.getDesignationArray = function(designation,alternative_designation) {
+exports.getDesignationArray = function(designation, alternative_designation) {
     if (alternative_designation === null) {
-        return [designation.trim(),'Other'];
+        return [designation.trim(), 'Other'];
+    } else {
+        return [designation].concat(
+            alternative_designation.split(';').map(function(x) {
+                return x.trim();
+            }),
+            ['Other']
+        );
     }
-    else {
-        return [designation].concat(alternative_designation.split(';').map(function(x) { return x.trim(); }),['Other']);
-    }
-
-}
+};

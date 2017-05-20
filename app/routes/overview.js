@@ -1,14 +1,12 @@
 'use strict';
 
 exports.register = function(plugin, options, next) {
-
     const Controllers = {
         overview: require('../controllers/overview/overview')
     };
 
     plugin.route([
-
-        // Overview 
+        // Overview
         {
             method: 'GET',
             path: '/overview',

@@ -11,8 +11,7 @@ exports.show = {
     handler: function(request, reply) {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var block_code =
-            request.query.block ||
-            request.auth.credentials.user_regions[0].region_code;
+            request.query.block || request.auth.credentials.user_regions[0].region_code;
         var queryString = Queries.editor_info(block_code);
 
         sequelize
@@ -27,11 +26,7 @@ exports.show = {
                 };
 
                 var template = Handlebars.compile(
-                    Translate(
-                        '/web/editor/info/body',
-                        request.auth.credentials,
-                        null
-                    )
+                    Translate('/web/editor/info/body', request.auth.credentials, null)
                 );
 
                 var result = template(data);

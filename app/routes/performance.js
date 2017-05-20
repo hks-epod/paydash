@@ -1,19 +1,17 @@
 'use strict';
 
 exports.register = function(plugin, options, next) {
-
     const Controllers = {
         performance: require('../controllers/performance/performance')
     };
 
     plugin.route([
-
-        // Performance 
+        // Performance
         {
             method: 'GET',
             path: '/performance',
             config: Controllers.performance.showPage
-        }, 
+        },
 
         // Performance data
         {

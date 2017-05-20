@@ -13,8 +13,7 @@ exports.home = {
         }
     },
     handler: function(request, reply) {
-
-        if(request.auth.credentials && request.auth.credentials.scope === 'monitoring'){
+        if (request.auth.credentials && request.auth.credentials.scope === 'monitoring') {
             return reply.redirect('/monitor/usage');
         }
         reply.view('homepage');
@@ -34,11 +33,10 @@ exports.policy = {
         }
     },
     handler: function(request, reply) {
-        if(request.auth.credentials && request.auth.credentials.lang === 'hi'){
+        if (request.auth.credentials && request.auth.credentials.lang === 'hi') {
             return reply.view('pages/policy-hi');
-        }else {
+        } else {
             return reply.view('pages/policy-en');
-        }  
+        }
     }
-
 };
