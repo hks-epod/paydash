@@ -2,15 +2,12 @@
 
 const Joi = require('joi');
 const Boom = require('boom');
-const Crypto = require('crypto');
 
-exports.postChangePassword = {
-    description: 'Password change api',
+exports.registerToken = {
+    description: 'notification token register api',
     validate: {
         payload: {
-            oldPassword: Joi.string().min(6).max(20).required(),
-            newPassword: Joi.string().min(6).max(20).required(),
-            verify: Joi.string().required()
+            notification_token: Joi.string().min(2).max(1000).required()
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
@@ -31,36 +28,29 @@ exports.postChangePassword = {
             return Boom.forbidden('You are not logged in');
         }
 
-        if (request.payload.newPassword !== request.payload.verify) {
-            return reply(Boom.badRequest('New password does not match'));
-        }
         var User = request.server.plugins.sequelize.db.User;
 
         User.findOne({
             where: {
-                username: request.auth.credentials.username,
-                password: Crypto.createHash('md5').update(request.payload.oldPassword).digest('hex')
+                username: request.auth.credentials.username
             }
         }).then(function(user) {
             if (user) {
                 user
                     .update({
-                        password: Crypto.createHash('md5')
-                            .update(request.payload.newPassword)
-                            .digest('hex')
+                        notification_token: request.payload.notification_token
                     })
                     .then(function() {
                         request.cookieAuth.clear();
-
+                        request.cookieAuth.set(user);
                         var msg = {
                             statusCode: 200,
-                            message: 'Password changed successfully. Please login with new password'
+                            message: 'Token registered successfully.'
                         };
                         return reply(msg);
                     });
             } else {
-                // User not fond in database
-                return reply(Boom.badRequest('Old password is incorrect'));
+                return reply(Boom.badRequest('Something went wrong'));
             }
         });
     }

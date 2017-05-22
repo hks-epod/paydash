@@ -1,18 +1,16 @@
 'use strict';
 
 exports.register = function(plugin, options, next) {
-
     const Controllers = {
         editor: {
-            info : require('../controllers/editor/info'),
-            share : require('../controllers/editor/share'),
-            editor : require('../controllers/editor/editor'),
-            steps : require('../controllers/editor/steps')
+            info: require('../controllers/editor/info'),
+            share: require('../controllers/editor/share'),
+            editor: require('../controllers/editor/editor'),
+            steps: require('../controllers/editor/steps')
         }
     };
 
     plugin.route([
-
         //  Editor info
         {
             method: 'GET',
@@ -31,19 +29,19 @@ exports.register = function(plugin, options, next) {
             path: '/editor/data',
             config: Controllers.editor.editor.updateData
         },
-        //  Share 
+        //  Share
         {
             method: 'GET',
             path: '/editor/share',
             config: Controllers.editor.share.show
         },
-        //  Share 
+        //  Share
         {
             method: 'POST',
             path: '/editor/share',
             config: Controllers.editor.share.postShareForm
         },
-         //  T + 2
+        //  T + 2
         {
             method: 'GET',
             path: '/editor/t2',
@@ -72,7 +70,7 @@ exports.register = function(plugin, options, next) {
             method: 'GET',
             path: '/editor/t8',
             config: Controllers.editor.steps.showStep
-        },
+        }
     ]);
 
     next();

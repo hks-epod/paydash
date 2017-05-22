@@ -7,35 +7,36 @@ const Joi = require('joi');
 const Translate = require('../../templates/helpers/t');
 const Handlebars = require('handlebars');
 
-
 exports.show = {
     auth: {
-      scope : ['block', 'editor', 'district']
+        scope: ['block', 'editor', 'district']
     },
     handler: function(request, reply) {
-
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var userId = request.auth.credentials.id;
         var queryString = Queries.contact(userId);
 
-        sequelize.query(queryString, {
-            type: sequelize.QueryTypes.SELECT
-        }).then(function(rows) {
-
-            var contactResponse = rows;
-            var data = {
-                'phone': contactResponse[0].phone
-            };
-            var template = Handlebars.compile(Translate('/web/contact/call', request.auth.credentials, null));
-            var result = template(data);
-            reply.view('contact/contact', {info: result});
-        });
+        sequelize
+            .query(queryString, {
+                type: sequelize.QueryTypes.SELECT
+            })
+            .then(function(rows) {
+                var contactResponse = rows;
+                var data = {
+                    phone: contactResponse[0].phone
+                };
+                var template = Handlebars.compile(
+                    Translate('/web/contact/call', request.auth.credentials, null)
+                );
+                var result = template(data);
+                reply.view('contact/contact', { info: result });
+            });
     }
 };
 
 exports.sendMessage = {
     auth: {
-      scope : ['block', 'editor', 'district']
+        scope: ['block', 'editor', 'district']
     },
     validate: {
         payload: {
@@ -48,37 +49,34 @@ exports.sendMessage = {
         }
     },
     handler: function(request, reply) {
-
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var userId = request.auth.credentials.id;
         var queryString = Queries.contact(userId);
 
-        sequelize.query(queryString, {
-            type: sequelize.QueryTypes.SELECT
-        }).then(function(rows) {
+        sequelize
+            .query(queryString, {
+                type: sequelize.QueryTypes.SELECT
+            })
+            .then(function(rows) {
+                var contactResponse = rows;
 
-            var contactResponse = rows;
+                var subject = Utils.buildSubject(contactResponse[0].subject, userId);
 
-            var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
+                var ticket = {
+                    subject: subject,
+                    email: 'epodindianrega@gmail.com',
+                    description: request.payload.message
+                };
 
-            var data = {
-                from: 'epodindianrega@gmail.com',
-                to: contactResponse[0].email,
-                subject: subjectLine,
-                path: 'emails/contact',
-                context: {
-                    message: request.payload.message,
-                }
-            };
-            //  Send Email
-            var Mailer = request.server.plugins.mailer;
-            Mailer.sendMail(data, function(err, info) {
-                //  Email Sent 
+                var freshDesk = request.server.plugins.freshdesk;
+                freshDesk.newTicket(ticket, function(err) {
+                    if (err) {
+                        request.yar.flash('error', 'Something went wrong. Please try again.');
+                    } else {
+                        request.yar.flash('success', 'Your message has been sent.');
+                    }
+                    return reply.redirect('/contact');
+                });
             });
-            request.yar.flash('success', 'Your message has been sent.');
-            return reply.view('contact/contact', {info: data});
-
-        });
-
     }
 };

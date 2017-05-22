@@ -12,10 +12,8 @@ module.exports = {
         }
     },
     handler: function(request, reply) {
-
         request.cookieAuth.clear();
         request.yar.flash('success', 'Logged out successfully');
         return reply.redirect('/login');
-
     }
 };

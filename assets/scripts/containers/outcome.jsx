@@ -33,7 +33,10 @@ const Usage = React.createClass({
             chart_menu: [],
             chart: [],
             table: [],
-            selectedMetric: {'label':'All steps: muster roll closure to bank confirmation', 'value':'mrc_prc'}
+            selectedMetric: {
+                label: 'All steps: muster roll closure to bank confirmation',
+                value: 'mrc_prc'
+            }
         };
     },
     componentWillMount: function() {
@@ -43,7 +46,7 @@ const Usage = React.createClass({
         var _this = this;
 
         return (
-            <div className="container-fluid">
+            <div className="container-wide">
                 <div className="u-spacing-page-top">
                     <Select
                         className="outcome-selector u-pull-right"

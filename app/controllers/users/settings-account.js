@@ -6,18 +6,17 @@ const Crypto = require('crypto');
 exports.showEditAccount = {
     description: 'Show Edit account settings',
     auth: {
-      scope : ['block', 'editor', 'district']
+        scope: ['block', 'editor', 'district']
     },
     handler: function(request, reply) {
         reply.view('users/settings-account');
     }
 };
 
-
 exports.postChangePassword = {
     description: 'Password change',
     auth: {
-      scope : ['block', 'editor', 'district']
+        scope: ['block', 'editor', 'district']
     },
     plugins: {
         crumb: {
@@ -30,7 +29,7 @@ exports.postChangePassword = {
         payload: {
             oldPassword: Joi.string().min(6).max(20).required(),
             newPassword: Joi.string().min(6).max(20).required(),
-            verify: Joi.string().required(),
+            verify: Joi.string().required()
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
@@ -39,7 +38,6 @@ exports.postChangePassword = {
         }
     },
     handler: function(request, reply) {
-
         if (request.payload.newPassword !== request.payload.verify) {
             request.yar.flash('error', ' New Password does not match');
             return reply.redirect('/me/settings/account');
@@ -53,13 +51,20 @@ exports.postChangePassword = {
             }
         }).then(function(user) {
             if (user) {
-                user.update({
-                    password: Crypto.createHash('md5').update(request.payload.newPassword).digest('hex')
-                }).then(function() {
-                    request.yar.flash('success', 'Password changed successfully. Please login with new password');
-                    request.cookieAuth.clear();
-                    return reply.redirect('/login');
-                });
+                user
+                    .update({
+                        password: Crypto.createHash('md5')
+                            .update(request.payload.newPassword)
+                            .digest('hex')
+                    })
+                    .then(function() {
+                        request.yar.flash(
+                            'success',
+                            'Password changed successfully. Please login with new password'
+                        );
+                        request.cookieAuth.clear();
+                        return reply.redirect('/login');
+                    });
             } else {
                 // User not fond in database
                 request.yar.flash('error', 'Old password is incorrect');
