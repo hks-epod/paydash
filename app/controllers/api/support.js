@@ -9,7 +9,7 @@ exports.addTicket = {
         payload: {
             subject: Joi.string().max(100).allow(''),
             email: Joi.string().max(100).allow(''),
-            description: Joi.string().max(100).allow('')
+            description: Joi.string().max(2000).allow('')
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
