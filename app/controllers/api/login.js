@@ -27,6 +27,7 @@ exports.postForm = {
         },
     },
     handler: function(request, reply) {
+        console.log('made it to the handler')
         if (request.auth.isAuthenticated) {
             return reply(request.auth.credentials);
         }
