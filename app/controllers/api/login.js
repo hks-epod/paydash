@@ -30,7 +30,6 @@ exports.postForm = {
         if (request.auth.isAuthenticated) {
             return reply(request.auth.credentials);
         }
-        console.log('made it here')
         var User = request.server.plugins.sequelize.db.User;
         User.findOne({
             where: {
