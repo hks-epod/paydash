@@ -6,12 +6,18 @@
 .pure-g {
     text-rendering: optimizespeed;
     display: -webkit-flex;
-    -webkit-flex-flow: row wrap;
-    display: -ms-flexbox;
-    -ms-flex-flow: row wrap;
-    -ms-align-content: flex-start;
-    -webkit-align-content: flex-start;
-    align-content: flex-start
+    
+    // display: -ms-flexbox;
+    // flex-flow: row wrap;
+    // -webkit-flex-flow: row wrap;
+    // -ms-flex-flow: row wrap;
+    // align-content: flex-start;
+    // -webkit-align-content: flex-start;
+    // -ms-align-content: flex-start;
+    
+    display: flex;
+    flex-flow: row wrap;
+    align-content: flex-start;
 }
 .pure-u {
     display: inline-block;

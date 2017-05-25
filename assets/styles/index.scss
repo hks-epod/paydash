@@ -50,6 +50,7 @@ Bootstrap Styles
 
 @import 'layout/containers';
 @import 'layout/metabar';
+@import 'layout/sidebar';
 
 /* Views
 ---------------------------------------------*/
@@ -59,3 +60,4 @@ Bootstrap Styles
 @import 'views/overview';
 @import 'views/performance';
 @import 'views/editor';
+@import 'views/monitor';

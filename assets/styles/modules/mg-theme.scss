@@ -23,11 +23,12 @@ path.mg-main-area{
   stroke: #B276B2;
 }
 .mg-hover-line1-color {
-  stroke: #B276B2;
+  fill: #B276B2;
 }
 .mg-line1-legend-color {
     color: #B276B2;
 }
+
 .mg-area2-color {
     fill: #5DA5DA;
 }
@@ -35,11 +36,12 @@ path.mg-main-area{
   stroke: #5DA5DA;
 }
 .mg-hover-line2-color {
-  stroke: #5DA5DA;
+  fill: #5DA5DA;
 }
 .mg-line2-legend-color {
     color: #5DA5DA;
 }
+
 .mg-area3-color {
     fill: #FAA43A;
 }
@@ -47,11 +49,12 @@ path.mg-main-area{
   stroke: #FAA43A;
 }
 .mg-hover-line3-color {
-  stroke: #FAA43A;
+  fill: #FAA43A;
 }
 .mg-line3-legend-color {
     color: #FAA43A;
 }
+
 .mg-area4-color {
     fill: #60BD68;
 }
@@ -59,11 +62,12 @@ path.mg-main-area{
   stroke: #60BD68;
 }
 .mg-hover-line4-color {
-  stroke: #60BD68;
+  fill: #60BD68;
 }
 .mg-line4-legend-color {
     color: #60BD68;
 }
+
 .mg-area5-color {
     fill: #F17CB0;
 }
@@ -71,11 +75,12 @@ path.mg-main-area{
   stroke: #F17CB0;
 }
 .mg-hover-line5-color {
-  stroke: #F17CB0;
+  fill: #F17CB0;
 }
 .mg-line5-legend-color {
     color: #F17CB0;
 }
+
 .mg-area6-color {
     fill: #B2912F;
 }
@@ -83,11 +88,12 @@ path.mg-main-area{
   stroke: #B2912F;
 }
 .mg-hover-line6-color {
-  stroke: #B2912F;
+  fill: #B2912F;
 }
 .mg-line6-legend-color {
     color: #B2912F;
 }
+
 .mg-area7-color {
     fill: #F15854;
 }
@@ -95,7 +101,7 @@ path.mg-main-area{
   stroke: #F15854;
 }
 .mg-hover-line7-color {
-  stroke: #F15854;
+  fill: #F15854;
 }
 .mg-line7-legend-color {
     color: #F15854;
@@ -118,4 +124,18 @@ path.mg-main-area{
 .mg-baselines text {
     font-size: 1.7rem;
     opacity: 1;
+}
+
+// Confidence bands
+path.mg-confidence-band {
+    display:none;
+    stroke-width: 1.7px;
+    fill: #dcdcdc;
+    stroke-dasharray:7 4;
+}
+
+// Custom legend
+#custom_legend {
+	float:right;
+	height:0;
 }

@@ -72,8 +72,8 @@ module.exports = {
             profile: {
                 profile: 'Profile',
                 edit: 'EDIT',
-                save:'SAVE',
-                updating:'UPDATING...',
+                save: 'SAVE',
+                updating: 'UPDATING...',
                 firstname: 'First Name',
                 lastname: 'Last Name',
                 mobile: 'Mobile',
@@ -91,7 +91,7 @@ module.exports = {
                 new_pass: 'New password',
                 pass_confirm: 'Verify new password',
                 forgot_pass: 'I forgot my password',
-                change_pass_button: 'CHANGE PASSWORD',
+                change_pass_button: 'CHANGE PASSWORD'
             },
             search: 'Search for TA/GRS...',
             sort: {
@@ -111,9 +111,9 @@ module.exports = {
                 logout: {
                     connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
                     warning: {
-                        'message':'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
-                        'logout': 'Log out',
-                        'cancel': 'Cancel'
+                        message: 'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
+                        logout: 'Log out',
+                        cancel: 'Cancel'
                     },
                     general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.',
                     logging_out: 'Logging out...'
@@ -129,7 +129,7 @@ module.exports = {
                 requesting_change: 'Requesting password change...',
                 update_available: 'New Update Available',
                 update: 'Update',
-                grant_permission:'Please grant permission to proceed'
+                grant_permission: 'Please grant permission to proceed'
             },
             contact: {
                 contact: 'Contact',
@@ -142,11 +142,11 @@ module.exports = {
                     current: 'Send musters closing today only',
                     delayed: 'Send delayed musters only'
                 },
-                overview_current:'{name}\n\n{current_total} musters closing today\n\n',
-                overview_delayed:'{name}\n\n{delayed_total} delayed musters\n\n',
-                overview:'Muster Roll Details for {name}\n\n{current_total} musters closing today\n{delayed_total} delayed musters\n\n',
-                current:'MUSTERS CLOSING TODAY\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n\n',
-                delayed:'DELAYED MUSTERS\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n_Days delayed_\n{days_pending}\n\n'
+                overview_current: '{name}\n\n{current_total} musters closing today\n\n',
+                overview_delayed: '{name}\n\n{delayed_total} delayed musters\n\n',
+                overview: 'Muster Roll Details for {name}\n\n{current_total} musters closing today\n{delayed_total} delayed musters\n\n',
+                current: 'MUSTERS CLOSING TODAY\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n\n',
+                delayed: 'DELAYED MUSTERS\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n_Days delayed_\n{days_pending}\n\n'
             }
         },
         district: {
@@ -212,8 +212,8 @@ module.exports = {
             profile: {
                 profile: 'Profile',
                 edit: 'EDIT',
-                save:'SAVE',
-                updating:'UPDATING...',
+                save: 'SAVE',
+                updating: 'UPDATING...',
                 firstname: 'First Name',
                 lastname: 'Last Name',
                 mobile: 'Mobile',
@@ -231,7 +231,7 @@ module.exports = {
                 new_pass: 'New password',
                 pass_confirm: 'Verify new password',
                 forgot_pass: 'I forgot my password',
-                change_pass_button: 'CHANGE PASSWORD',
+                change_pass_button: 'CHANGE PASSWORD'
             },
             search: 'Search for Block or Officer Name...',
             sort: {
@@ -252,9 +252,9 @@ module.exports = {
                 logout: {
                     connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
                     warning: {
-                        'message':'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
-                        'logout': 'Log out',
-                        'cancel': 'Cancel'
+                        message: 'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
+                        logout: 'Log out',
+                        cancel: 'Cancel'
                     },
                     general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.',
                     logging_out: 'Logging out...'
@@ -270,7 +270,7 @@ module.exports = {
                 requesting_change: 'Requesting password change...',
                 update_available: 'New Update Available',
                 update: 'Update',
-                grant_permission:'Please grant permission to proceed'
+                grant_permission: 'Please grant permission to proceed'
             },
             contact: {
                 contact: 'Contact',

@@ -15,7 +15,6 @@ exports.getData = {
         }
     },
     handler: function(request, reply) {
-
         if (!request.auth.isAuthenticated) {
             return reply(Boom.forbidden('You are not logged in'));
         }
@@ -29,20 +28,20 @@ exports.getData = {
         var queryString = Queries.paydroid(userId, role, version);
 
         // API CODE
-        sequelize.query(queryString, {
-            type: sequelize.QueryTypes.SELECT
-        }).then(function(rows) {
+        sequelize
+            .query(queryString, {
+                type: sequelize.QueryTypes.SELECT
+            })
+            .then(function(rows) {
+                var data;
 
-            var data;
+                if (version === 1) {
+                    data = Parser.v1(rows);
+                } else if (version === 2) {
+                    data = Parser.v2(rows, role, userId);
+                }
 
-            if (version === 1) {
-                data = Parser.v1(rows);
-            } else if (version === 2) {
-                data = Parser.v2(rows, role, userId);
-            }
-
-            reply(data);
-
-        });
+                reply(data);
+            });
     }
 };

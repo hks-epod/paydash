@@ -22,12 +22,13 @@ internals.manifest = {
             }
         }
     },
-    connections: [{
-        port: Config.get('/port/web'),
-        labels: ['web']
-    }],
+    connections: [
+        {
+            port: Config.get('/port/web'),
+            labels: ['web']
+        }
+    ],
     registrations: [
-
         // Context credentials
         {
             plugin: 'hapi-context-credentials'
@@ -38,7 +39,7 @@ internals.manifest = {
             plugin: 'hapi-auth-cookie'
         },
 
-        // Crumb 
+        // Crumb
         {
             plugin: {
                 register: 'crumb',
@@ -78,12 +79,12 @@ internals.manifest = {
             plugin: 'inert'
         },
 
-        // Templates rendering support 
+        // Templates rendering support
         {
             plugin: 'vision'
         },
 
-        // Views loader 
+        // Views loader
         {
             plugin: {
                 register: 'visionary',
@@ -113,6 +114,14 @@ internals.manifest = {
             plugin: {
                 register: './lib/auth',
                 options: Config.get('/authCookie')
+            }
+        },
+
+        // Auth
+        {
+            plugin: {
+                register: './lib/freshdesk',
+                options: Config.get('/freshdesk')
             }
         },
 
@@ -178,6 +187,10 @@ internals.manifest = {
         //  Api routes
         {
             plugin: './app/routes/api.js'
+        },
+        //  Monitoring routes
+        {
+            plugin: './app/routes/monitor.js'
         }
     ]
 };

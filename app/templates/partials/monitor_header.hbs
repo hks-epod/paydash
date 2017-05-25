@@ -1,0 +1,29 @@
+<header class="metabar">
+  <div class="container-fluid">
+    <a href="/" class="brand">Paydash</a>
+    {{#if credentials}}
+      <div class="metabar-nav-right u-pull-right">
+        <a class="button avatar metabar-nav-item" href="/contact"><span class="pe-7s-chat"></span></a>
+        <div class="dropdown metabar-nav-item">
+          <button class="button avatar" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="pe-7s-users"></span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right dropdown-menu-pointing" aria-labelledby="dropdownMenu1">
+            <a class="dropdown-item" href="/me/settings/profile">Settings</a>
+            <div class="divider"></div>
+            <a class="dropdown-item" href="/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+      <div class="menu menu--pointing">
+        <a class="menu-item" href="/monitor/usage">Usage</a>
+        <a class="menu-item" href="/monitor/outcome">Outcomes</a>
+      </div>
+      
+    {{else}}
+      <div class="metabar-nav-right u-pull-right">
+        <a class="button button-success" href="/login">Login</a>
+      </div>
+    {{/if}}
+  </div>
+</header>
