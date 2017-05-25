@@ -1,13 +1,11 @@
 'use strict';
 
 exports.register = function(plugin, options, next) {
-
     const Controllers = {
         contact: require('../controllers/contact/contact')
     };
 
     plugin.route([
-
         {
             method: 'GET',
             path: '/contact',

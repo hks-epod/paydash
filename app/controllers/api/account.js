@@ -10,7 +10,7 @@ exports.postChangePassword = {
         payload: {
             oldPassword: Joi.string().min(6).max(20).required(),
             newPassword: Joi.string().min(6).max(20).required(),
-            verify: Joi.string().required(),
+            verify: Joi.string().required()
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
@@ -27,7 +27,6 @@ exports.postChangePassword = {
         }
     },
     handler: function(request, reply) {
-
         if (!request.auth.isAuthenticated) {
             return Boom.forbidden('You are not logged in');
         }
@@ -44,17 +43,21 @@ exports.postChangePassword = {
             }
         }).then(function(user) {
             if (user) {
-                user.update({
-                    password: Crypto.createHash('md5').update(request.payload.newPassword).digest('hex')
-                }).then(function() {
-                    request.cookieAuth.clear();
+                user
+                    .update({
+                        password: Crypto.createHash('md5')
+                            .update(request.payload.newPassword)
+                            .digest('hex')
+                    })
+                    .then(function() {
+                        request.cookieAuth.clear();
 
-                    var msg = {
-                        'statusCode': 200,
-                        'message': 'Password changed successfully. Please login with new password'
-                    };
-                    return reply(msg);
-                });
+                        var msg = {
+                            statusCode: 200,
+                            message: 'Password changed successfully. Please login with new password'
+                        };
+                        return reply(msg);
+                    });
             } else {
                 // User not fond in database
                 return reply(Boom.badRequest('Old password is incorrect'));

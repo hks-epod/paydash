@@ -4,16 +4,15 @@ const Utils = require('./utils');
 const D3 = require('d3');
 
 exports.block = function(rows) {
-
     // Process state data
     var stateResponse = D3.values(rows[0]);
     var stateName = stateResponse[0].state_name;
     var stateCode = stateResponse[0].state_code;
 
     var statePerformance = {
-        'state_code': stateCode,
-        'state_name': stateName,
-        'data': stateResponse.map(function(d) {
+        state_code: stateCode,
+        state_name: stateName,
+        data: stateResponse.map(function(d) {
             return [
                 d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                 d.mrc_mre,
@@ -33,9 +32,9 @@ exports.block = function(rows) {
     var districtName = districtResponse[0].district_name;
     var districtCode = districtResponse[0].district_code;
     var districtPerformance = {
-        'district_code': districtCode,
-        'district_name': districtName,
-        'data': districtResponse.map(function(d) {
+        district_code: districtCode,
+        district_name: districtName,
+        data: districtResponse.map(function(d) {
             return [
                 d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                 d.mrc_mre,
@@ -62,9 +61,9 @@ exports.block = function(rows) {
         })
         .rollup(function(v) {
             return {
-                'block_code': v[0].block_code,
-                'block_name': v[0].block_name,
-                'data': v.map(function(d) {
+                block_code: v[0].block_code,
+                block_name: v[0].block_name,
+                data: v.map(function(d) {
                     return [
                         d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                         d.mrc_mre,
@@ -81,9 +80,8 @@ exports.block = function(rows) {
         })
         .entries(blockResponse)
         .map(function(d) {
-            return d.values;
+            return d.value;
         });
-
 
     // Process list of panchayat names and codes
     var panchayatResponse = D3.values(rows[3]);
@@ -98,9 +96,9 @@ exports.block = function(rows) {
         })
         .rollup(function(v) {
             return {
-                'panchayat_code': v[0].panchayat_code,
-                'panchayat_name': v[0].panchayat_name,
-                'data': v.map(function(d) {
+                panchayat_code: v[0].panchayat_code,
+                panchayat_name: v[0].panchayat_name,
+                data: v.map(function(d) {
                     return [
                         d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                         d.mrc_mre,
@@ -118,20 +116,20 @@ exports.block = function(rows) {
         .entries(panchayatResponse)
         .map(function(d) {
             return {
-                'block_code': d.key.substr(0, 7),
-                'block_name': d.key.substr(7),
-                'data': d.values.map(function(e) {
-                    return e.values;
+                block_code: d.key.substr(0, 7),
+                block_name: d.key.substr(7),
+                data: d.values.map(function(e) {
+                    return e.value;
                 })
             };
         });
 
     var data = {
         performance: {
-            'state': statePerformance,
-            'district': districtPerformance,
-            'block': blockPerformance,
-            'panchayat': panchayatPerformance
+            state: statePerformance,
+            district: districtPerformance,
+            block: blockPerformance,
+            panchayat: panchayatPerformance
         }
     };
 
@@ -139,16 +137,15 @@ exports.block = function(rows) {
 };
 
 exports.district = function(rows) {
-
     // Process state data
     var stateResponse = D3.values(rows[0]);
     var stateName = stateResponse[0].state_name;
     var stateCode = stateResponse[0].state_code;
 
     var statePerformance = {
-        'state_code': stateCode,
-        'state_name': stateName,
-        'data': stateResponse.map(function(d) {
+        state_code: stateCode,
+        state_name: stateName,
+        data: stateResponse.map(function(d) {
             return [
                 d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                 d.mrc_mre,
@@ -173,9 +170,9 @@ exports.district = function(rows) {
         })
         .rollup(function(v) {
             return {
-                'district_code': v[0].district_code,
-                'district_name': v[0].district_name,
-                'data': v.map(function(d) {
+                district_code: v[0].district_code,
+                district_name: v[0].district_name,
+                data: v.map(function(d) {
                     return [
                         d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                         d.mrc_mre,
@@ -192,9 +189,8 @@ exports.district = function(rows) {
         })
         .entries(districtResponse)
         .map(function(d) {
-            return d.values;
+            return d.value;
         });
-
 
     // Process list of block names and codes
     var blockResponse = D3.values(rows[2]);
@@ -209,9 +205,9 @@ exports.district = function(rows) {
         })
         .rollup(function(v) {
             return {
-                'block_code': v[0].block_code,
-                'block_name': v[0].block_name,
-                'data': v.map(function(d) {
+                block_code: v[0].block_code,
+                block_name: v[0].block_name,
+                data: v.map(function(d) {
                     return [
                         d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                         d.mrc_mre,
@@ -229,19 +225,19 @@ exports.district = function(rows) {
         .entries(blockResponse)
         .map(function(d) {
             return {
-                'district_code': d.key.substr(0, 4),
-                'district_name': d.key.substr(4),
-                'data': d.values.map(function(e) {
-                    return e.values;
+                district_code: d.key.substr(0, 4),
+                district_name: d.key.substr(4),
+                data: d.values.map(function(e) {
+                    return e.value;
                 })
             };
         });
 
     var data = {
         performance: {
-            'state': statePerformance,
-            'district': districtPerformance,
-            'block': blockPerformance
+            state: statePerformance,
+            district: districtPerformance,
+            block: blockPerformance
         }
     };
 

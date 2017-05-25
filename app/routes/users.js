@@ -1,7 +1,6 @@
 'use strict';
 
 exports.register = function(plugin, options, next) {
-
     const Controllers = {
         settings: {
             profile: require('../controllers/users/settings-profile'),
@@ -10,7 +9,6 @@ exports.register = function(plugin, options, next) {
     };
 
     plugin.route([
-
         // Settings - Show Edit profile
         {
             method: 'GET',

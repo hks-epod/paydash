@@ -2,7 +2,7 @@
 
 const Confidence = require('confidence');
 
-// Confidence criteria 
+// Confidence criteria
 let internals = {
     criteria: {
         env: process.env.NODE_ENV
@@ -10,7 +10,7 @@ let internals = {
 };
 
 //  Confidence document object for gulp tasks
- 
+
 internals.paths = {
     fonts: ['./assets/fonts/*'],
     styles: ['./assets/styles/**/*'],
@@ -18,7 +18,7 @@ internals.paths = {
     misc: ['./assets/misc/*'],
     scripts: {
         main: ['./assets/scripts/**/*'],
-        vendor: ['./assets/scripts/vendor/*.js'],
+        vendor: ['./assets/scripts/vendor/*.js']
     },
     lint: [
         './assets/scripts/viz/*.js',
@@ -26,7 +26,7 @@ internals.paths = {
         './routes/**/*.js',
         './controllers/**/*.js',
         './lib/**/*.js',
-        './test/**/*.js',
+        './test/**/*.js'
     ]
 };
 

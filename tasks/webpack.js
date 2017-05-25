@@ -6,7 +6,8 @@ const Webpack = require('webpack');
 var webpackConfig = {
     entry: {
         vendor: ['jquery', 'd3', 'react'],
-        app: './assets/scripts/index.js'
+        app: './assets/scripts/index.js',
+        monitor: './assets/scripts/monitor.js'
     },
     output: {
         path: '.build/js/',

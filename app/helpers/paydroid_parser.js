@@ -4,7 +4,6 @@ const D3 = require('d3');
 const Utils = require('./utils');
 
 exports.v1 = function(rows, userId) {
-
     var overviewResponse = D3.values(rows[0]);
 
     var cardsResponse = D3.values(rows[1]);
@@ -35,44 +34,48 @@ exports.v1 = function(rows, userId) {
         })
         .rollup(function(v) {
             return {
-                'name': v[0].name,
-                'staff_id': v[0].staff_id,
-                'designation': v[0].task_assign,
-                'mobile': v[0].mobile_no,
-                'block_name': v[0].block_name,
-                'current_total': v[0].current_total,
-                'delayed_total': v[0].delayed_total,
-                'delayed_musters': v.filter(function(d) {
-                    return d.type === 'delayed_musters';
-                }).map(function(d) {
-                    return {
-                        'msr_no': d.msr_no,
-                        'panchayat_name': d.panchayat_name,
-                        'work_name': d.work_name,
-                        'work_code': d.work_code,
-                        'closure_date': d.end_date,
-                        'days_pending': d.days_pending,
-                        'step': d.step
-                    };
-                }),
-                'current_musters': v.filter(function(d) {
-                    return d.type === 'current_musters';
-                }).map(function(d) {
-                    return {
-                        'msr_no': d.msr_no,
-                        'panchayat_name': d.panchayat_name,
-                        'work_name': d.work_name,
-                        'work_code': d.work_code,
-                        'closure_date': d.end_date
-                    };
-                })
+                name: v[0].name,
+                staff_id: v[0].staff_id,
+                designation: v[0].task_assign,
+                mobile: v[0].mobile_no,
+                block_name: v[0].block_name,
+                current_total: v[0].current_total,
+                delayed_total: v[0].delayed_total,
+                delayed_musters: v
+                    .filter(function(d) {
+                        return d.type === 'delayed_musters';
+                    })
+                    .map(function(d) {
+                        return {
+                            msr_no: d.msr_no,
+                            panchayat_name: d.panchayat_name,
+                            work_name: d.work_name,
+                            work_code: d.work_code,
+                            closure_date: d.end_date,
+                            days_pending: d.days_pending,
+                            step: d.step
+                        };
+                    }),
+                current_musters: v
+                    .filter(function(d) {
+                        return d.type === 'current_musters';
+                    })
+                    .map(function(d) {
+                        return {
+                            msr_no: d.msr_no,
+                            panchayat_name: d.panchayat_name,
+                            work_name: d.work_name,
+                            work_code: d.work_code,
+                            closure_date: d.end_date
+                        };
+                    })
             };
         })
         .entries(cardsResponse)
         .map(function(d) {
-            return d.values;
+            return d.value;
         })
-        .sort(function (a, b){
+        .sort(function(a, b) {
             var aActive = a.current_total + a.delayed_total > 0 ? 1 : 0;
             var bActive = b.current_total + b.delayed_total > 0 ? 1 : 0;
             var aUnmapped = a.name.toLowerCase() === 'unmapped' ? 1 : 0;
@@ -100,11 +103,15 @@ exports.v1 = function(rows, userId) {
         })
         .rollup(function(v) {
             return {
-                'block_code': v[0].block_code,
-                'block_name': v[0].block_name,
-                'data': v.map(function(d) {
+                block_code: v[0].block_code,
+                block_name: v[0].block_name,
+                data: v.map(function(d) {
                     return [
-                        d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
+                        d.date.getFullYear() +
+                            '' +
+                            Utils.padNum(d.date.getMonth() + 1) +
+                            '' +
+                            Utils.padNum(d.date.getDate()),
                         d.mrc_mre,
                         d.mre_wlg,
                         d.wlg_wls,
@@ -119,16 +126,29 @@ exports.v1 = function(rows, userId) {
         })
         .entries(blockResponse)
         .map(function(d) {
-            return d.values;
+            return d.value;
         })
         .sort(function(a, b) {
             var aTarget = a.data[a.data.length - 1];
             var bTarget = b.data[b.data.length - 1];
-            var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
-            var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
+            var aSum =
+                aTarget[1] +
+                aTarget[2] +
+                aTarget[3] +
+                aTarget[4] +
+                aTarget[5] +
+                aTarget[6] +
+                aTarget[7];
+            var bSum =
+                bTarget[1] +
+                bTarget[2] +
+                bTarget[3] +
+                bTarget[4] +
+                bTarget[5] +
+                bTarget[6] +
+                bTarget[7];
             return bSum - aSum;
         });
-
 
     // Nest the panchayat response
     var panchayatPerformance = D3.nest()
@@ -137,12 +157,16 @@ exports.v1 = function(rows, userId) {
         })
         .rollup(function(v) {
             return {
-                'block_code': v[0].block_code,
-                'panchayat_code': v[0].panchayat_code,
-                'panchayat_name': v[0].panchayat_name,
-                'data': v.map(function(d) {
+                block_code: v[0].block_code,
+                panchayat_code: v[0].panchayat_code,
+                panchayat_name: v[0].panchayat_name,
+                data: v.map(function(d) {
                     return [
-                        d.date.getFullYear() + '' + Utils.padNum(d.date.getMonth() + 1) + '' + Utils.padNum(d.date.getDate()),
+                        d.date.getFullYear() +
+                            '' +
+                            Utils.padNum(d.date.getMonth() + 1) +
+                            '' +
+                            Utils.padNum(d.date.getDate()),
                         d.mrc_mre,
                         d.mre_wlg,
                         d.wlg_wls,
@@ -157,33 +181,57 @@ exports.v1 = function(rows, userId) {
         })
         .entries(panchayatResponse)
         .map(function(d) {
-            return d.values;
+            return d.value;
         })
         .sort(function(a, b) {
             var aTarget = a.data[a.data.length - 1];
             var bTarget = b.data[b.data.length - 1];
-            var aSum = aTarget[1] + aTarget[2] + aTarget[3] + aTarget[4] + aTarget[5] + aTarget[6] + aTarget[7];
-            var bSum = bTarget[1] + bTarget[2] + bTarget[3] + bTarget[4] + bTarget[5] + bTarget[6] + bTarget[7];
+            var aSum =
+                aTarget[1] +
+                aTarget[2] +
+                aTarget[3] +
+                aTarget[4] +
+                aTarget[5] +
+                aTarget[6] +
+                aTarget[7];
+            var bSum =
+                bTarget[1] +
+                bTarget[2] +
+                bTarget[3] +
+                bTarget[4] +
+                bTarget[5] +
+                bTarget[6] +
+                bTarget[7];
             return bSum - aSum;
         });
 
     var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
-    var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'tot_trn'];
+    var headers = [
+        'date',
+        'mrc_mre',
+        'mre_wlg',
+        'wlg_wls',
+        'wls_fto',
+        'fto_sn1',
+        'sn1_sn2',
+        'sn2_prc',
+        'tot_trn'
+    ];
 
     var data = {
-        'overview': {
-            'current_total': current_total,
-            'delayed_total': delayed_total,
-            'days_to_payment': days_to_payment,
-            'total_transactions': total_transactions,
-            'cards_total': cards.length
+        overview: {
+            current_total: current_total,
+            delayed_total: delayed_total,
+            days_to_payment: days_to_payment,
+            total_transactions: total_transactions,
+            cards_total: cards.length
         },
-        'cards': cards,
-        'block_performance': blockPerformance,
-        'panchayat_performance': panchayatPerformance,
-        'notifications': notificationsResponse,
-        'config': {
-            'headers': headers,
+        cards: cards,
+        block_performance: blockPerformance,
+        panchayat_performance: panchayatPerformance,
+        notifications: notificationsResponse,
+        config: {
+            headers: headers,
             labels: [
                 'Date',
                 'Muster roll closure to muster roll entry',
@@ -194,24 +242,20 @@ exports.v1 = function(rows, userId) {
                 'First signature to second signature',
                 'Second signature to processed by bank',
                 'Total Transactions'
-            ],
+            ]
         },
-        'contact': {
-            'phone': contactResponse[0].phone,
-            'email': contactResponse[0].email,
-            'subject': subjectLine
+        contact: {
+            phone: contactResponse[0].phone,
+            email: contactResponse[0].email,
+            subject: subjectLine
         }
     };
 
     return data;
-
 };
 
-
 exports.v2 = function(rows, role, userId) {
-
     function parse_block(rows) {
-        
         var overviewResponse = D3.values(rows[0]);
 
         var cardsResponse = D3.values(rows[1]);
@@ -233,16 +277,16 @@ exports.v2 = function(rows, role, userId) {
             })
             .rollup(function(v) {
                 return {
-                    'block_code': v[0].block_code,
-                    'block_name': v[0].block_name,
-                    'current_total': v[0].current_total,
-                    'delayed_total': v[0].delayed_total,
-                    'days_to_payment': v[0].days_to_payment
-                }
+                    block_code: v[0].block_code,
+                    block_name: v[0].block_name,
+                    current_total: v[0].current_total,
+                    delayed_total: v[0].delayed_total,
+                    days_to_payment: v[0].days_to_payment
+                };
             })
             .entries(overviewResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
 
         var state_code = stateResponse[0].state_code;
@@ -255,44 +299,48 @@ exports.v2 = function(rows, role, userId) {
             })
             .rollup(function(v) {
                 return {
-                    'name': v[0].name,
-                    'staff_id': v[0].staff_id,
-                    'designation': v[0].task_assign,
-                    'mobile': v[0].mobile_no,
-                    'block_name': v[0].block_name,
-                    'current_total': v[0].current_total,
-                    'delayed_total': v[0].delayed_total,
-                    'delayed_musters': v.filter(function(d) {
-                        return d.type === 'delayed_musters';
-                    }).map(function(d) {
-                        return {
-                            'msr_no': d.msr_no,
-                            'panchayat_name': d.panchayat_name,
-                            'work_name': d.work_name,
-                            'work_code': d.work_code,
-                            'closure_date': d.end_date,
-                            'days_pending': d.days_pending,
-                            'step': d.step
-                        };
-                    }),
-                    'current_musters': v.filter(function(d) {
-                        return d.type === 'current_musters';
-                    }).map(function(d) {
-                        return {
-                            'msr_no': d.msr_no,
-                            'panchayat_name': d.panchayat_name,
-                            'work_name': d.work_name,
-                            'work_code': d.work_code,
-                            'closure_date': d.end_date
-                        };
-                    })
+                    name: v[0].name,
+                    staff_id: v[0].staff_id,
+                    designation: v[0].task_assign,
+                    mobile: v[0].mobile_no,
+                    block_name: v[0].block_name,
+                    current_total: v[0].current_total,
+                    delayed_total: v[0].delayed_total,
+                    delayed_musters: v
+                        .filter(function(d) {
+                            return d.type === 'delayed_musters';
+                        })
+                        .map(function(d) {
+                            return {
+                                msr_no: d.msr_no,
+                                panchayat_name: d.panchayat_name,
+                                work_name: d.work_name,
+                                work_code: d.work_code,
+                                closure_date: d.end_date,
+                                days_pending: d.days_pending,
+                                step: d.step
+                            };
+                        }),
+                    current_musters: v
+                        .filter(function(d) {
+                            return d.type === 'current_musters';
+                        })
+                        .map(function(d) {
+                            return {
+                                msr_no: d.msr_no,
+                                panchayat_name: d.panchayat_name,
+                                work_name: d.work_name,
+                                work_code: d.work_code,
+                                closure_date: d.end_date
+                            };
+                        })
                 };
             })
             .entries(cardsResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             })
-            .sort(function (a, b){
+            .sort(function(a, b) {
                 var aActive = a.current_total + a.delayed_total > 0 ? 1 : 0;
                 var bActive = b.current_total + b.delayed_total > 0 ? 1 : 0;
                 var aUnmapped = a.name.toLowerCase() === 'unmapped' ? 1 : 0;
@@ -313,7 +361,6 @@ exports.v2 = function(rows, role, userId) {
                 return 0;
             });
 
-
         // Nest the block response
         var blockPerformance = D3.nest()
             .key(function(d) {
@@ -321,9 +368,9 @@ exports.v2 = function(rows, role, userId) {
             })
             .rollup(function(v) {
                 return {
-                    'block_code': v[0].block_code,
-                    'block_name': v[0].block_name,
-                    'data': v.map(function(d) {
+                    block_code: v[0].block_code,
+                    block_name: v[0].block_name,
+                    data: v.map(function(d) {
                         return [
                             d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                             d.mrc_mre,
@@ -341,9 +388,8 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(blockResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
-
 
         // Nest the panchayat response
         var panchayatPerformance = D3.nest()
@@ -352,10 +398,10 @@ exports.v2 = function(rows, role, userId) {
             })
             .rollup(function(v) {
                 return {
-                    'block_code': v[0].block_code,
-                    'panchayat_code': v[0].panchayat_code,
-                    'panchayat_name': v[0].panchayat_name,
-                    'data': v.map(function(d) {
+                    block_code: v[0].block_code,
+                    panchayat_code: v[0].panchayat_code,
+                    panchayat_name: v[0].panchayat_name,
+                    data: v.map(function(d) {
                         return [
                             d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                             d.mrc_mre,
@@ -373,20 +419,31 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(panchayatResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
 
-        var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
+        var headers = [
+            'date',
+            'mrc_mre',
+            'mre_wlg',
+            'wlg_wls',
+            'wls_fto',
+            'fto_sn1',
+            'sn1_sn2',
+            'sn2_prc',
+            'mrc_prc',
+            'tot_trn'
+        ];
 
         var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
-        
+
         var data = {
-            'overview': overview,
-            'cards': cards,
-            'block_performance': blockPerformance,
-            'panchayat_performance': panchayatPerformance,
-            'config': {
-                'headers': headers,
+            overview: overview,
+            cards: cards,
+            block_performance: blockPerformance,
+            panchayat_performance: panchayatPerformance,
+            config: {
+                headers: headers,
                 labels: [
                     'Date',
                     'Muster roll closure to muster roll entry',
@@ -398,15 +455,15 @@ exports.v2 = function(rows, role, userId) {
                     'Second signature to processed by bank',
                     'Total Length of Process',
                     'Total Transactions'
-                ],
+                ]
             },
-            'contact': {
-                'phone': contactResponse[0].phone,
-                'email': contactResponse[0].email,
-                'subject': subjectLine
+            contact: {
+                phone: contactResponse[0].phone,
+                email: contactResponse[0].email,
+                subject: subjectLine
             },
-            'colors': {
-                'default': [
+            colors: {
+                default: [
                     '#F15854',
                     '#B2912F',
                     '#F17CB0',
@@ -416,7 +473,7 @@ exports.v2 = function(rows, role, userId) {
                     '#B276B2',
                     '#97D19C'
                 ],
-                'colorblind': [
+                colorblind: [
                     '#E69F00',
                     '#56B4E9',
                     '#009E73',
@@ -427,14 +484,13 @@ exports.v2 = function(rows, role, userId) {
                     '#0072b2'
                 ]
             },
-            'version': versionResponse[0].version
+            version: versionResponse[0].version
         };
 
         return data;
     }
 
     function parse_district(rows) {
-
         var overviewResponse = D3.values(rows[0]);
 
         var cardsResponse = D3.values(rows[1]);
@@ -456,16 +512,16 @@ exports.v2 = function(rows, role, userId) {
             })
             .rollup(function(v) {
                 return {
-                    'district_code': v[0].district_code,
-                    'district_name': v[0].district_name,
-                    'current_total': v[0].current_total,
-                    'delayed_total': v[0].delayed_total,
-                    'days_to_payment': v[0].days_to_payment
-                }
+                    district_code: v[0].district_code,
+                    district_name: v[0].district_name,
+                    current_total: v[0].current_total,
+                    delayed_total: v[0].delayed_total,
+                    days_to_payment: v[0].days_to_payment
+                };
             })
             .entries(overviewResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
 
         var state_code = stateResponse[0].state_code;
@@ -477,40 +533,42 @@ exports.v2 = function(rows, role, userId) {
             })
             .rollup(function(v) {
                 return {
-                    'officers': v.map(function(d) {
-                        return {
-                            officer_id: d.block_code + '_' + d.designation_id,
-                            name: Utils.buildName(d.firstname,d.lastname),
-                            designation: d.designation,
-                            designation_id: d.designation_id,
-                            mobile: d.mobile
-                        };
-                    }).sort(function(a,b) {
-                        return a.designation_id - b.designation_id;
-                    }),
-                    'district_name': v[0].district_name,
-                    'block_code': v[0].block_code,
-                    'block_name': v[0].block_name,
-                    'current_total': v[0].current_total,
-                    'delayed_total': v[0].delayed_total,
-                    'days_to_payment': v[0].days_to_payment,
-                    't2_total': v[0].t2_total,
-                    't2_avg': v[0].t2_avg,
-                    't5_total': v[0].t5_total,
-                    't5_avg': v[0].t5_avg,
-                    't6_total': v[0].t6_total,
-                    't6_avg': v[0].t6_avg,
-                    't7_total': v[0].t7_total,
-                    't7_avg': v[0].t7_avg,
-                    't8_total': v[0].t8_total,
-                    't8_avg': v[0].t8_avg
+                    officers: v
+                        .map(function(d) {
+                            return {
+                                officer_id: d.block_code + '_' + d.designation_id,
+                                name: Utils.buildName(d.firstname, d.lastname),
+                                designation: d.designation,
+                                designation_id: d.designation_id,
+                                mobile: d.mobile
+                            };
+                        })
+                        .sort(function(a, b) {
+                            return a.designation_id - b.designation_id;
+                        }),
+                    district_name: v[0].district_name,
+                    block_code: v[0].block_code,
+                    block_name: v[0].block_name,
+                    current_total: v[0].current_total,
+                    delayed_total: v[0].delayed_total,
+                    days_to_payment: v[0].days_to_payment,
+                    t2_total: v[0].t2_total,
+                    t2_avg: v[0].t2_avg,
+                    t5_total: v[0].t5_total,
+                    t5_avg: v[0].t5_avg,
+                    t6_total: v[0].t6_total,
+                    t6_avg: v[0].t6_avg,
+                    t7_total: v[0].t7_total,
+                    t7_avg: v[0].t7_avg,
+                    t8_total: v[0].t8_total,
+                    t8_avg: v[0].t8_avg
                 };
             })
             .entries(cardsResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             })
-            .sort(function (a, b){
+            .sort(function(a, b) {
                 if (a.district_name.toLowerCase() < b.district_name.toLowerCase()) return -1;
                 if (a.district_name.toLowerCase() > b.district_name.toLowerCase()) return 1;
                 if (a.block_name.toLowerCase() < b.block_name.toLowerCase()) return -1;
@@ -525,10 +583,10 @@ exports.v2 = function(rows, role, userId) {
             })
             .rollup(function(v) {
                 return {
-                    'district_code': v[0].district_code,
-                    'district_name': v[0].district_name,
-                    'block_code': v[0].block_code,
-                    'data': v.map(function(d) {
+                    district_code: v[0].district_code,
+                    district_name: v[0].district_name,
+                    block_code: v[0].block_code,
+                    data: v.map(function(d) {
                         return [
                             d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                             d.mrc_mre,
@@ -546,9 +604,8 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(districtResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
-
 
         // Nest the block response
         var blockPerformance = D3.nest()
@@ -557,9 +614,9 @@ exports.v2 = function(rows, role, userId) {
             })
             .rollup(function(v) {
                 return {
-                    'block_code': v[0].block_code,
-                    'block_name': v[0].block_name,
-                    'data': v.map(function(d) {
+                    block_code: v[0].block_code,
+                    block_name: v[0].block_name,
+                    data: v.map(function(d) {
                         return [
                             d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                             d.mrc_mre,
@@ -577,21 +634,31 @@ exports.v2 = function(rows, role, userId) {
             })
             .entries(blockResponse)
             .map(function(d) {
-                return d.values;
+                return d.value;
             });
-
 
         var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
 
-        var headers = ['date', 'mrc_mre', 'mre_wlg', 'wlg_wls', 'wls_fto', 'fto_sn1', 'sn1_sn2', 'sn2_prc', 'mrc_prc','tot_trn'];
+        var headers = [
+            'date',
+            'mrc_mre',
+            'mre_wlg',
+            'wlg_wls',
+            'wls_fto',
+            'fto_sn1',
+            'sn1_sn2',
+            'sn2_prc',
+            'mrc_prc',
+            'tot_trn'
+        ];
 
         var data = {
-            'overview': overview,
-            'cards': cards,
-            'district_performance': districtPerformance,
-            'block_performance': blockPerformance,
-            'config': {
-                'headers': headers,
+            overview: overview,
+            cards: cards,
+            district_performance: districtPerformance,
+            block_performance: blockPerformance,
+            config: {
+                headers: headers,
                 labels: [
                     'Date',
                     'Muster roll closure to muster roll entry',
@@ -603,15 +670,15 @@ exports.v2 = function(rows, role, userId) {
                     'Second signature to processed by bank',
                     'Total Length of Process',
                     'Total Transactions'
-                ],
+                ]
             },
-            'contact': {
-                'phone': contactResponse[0].phone,
-                'email': contactResponse[0].email,
-                'subject': subjectLine
+            contact: {
+                phone: contactResponse[0].phone,
+                email: contactResponse[0].email,
+                subject: subjectLine
             },
-            'colors': {
-                'default': [
+            colors: {
+                default: [
                     '#F15854',
                     '#B2912F',
                     '#F17CB0',
@@ -621,7 +688,7 @@ exports.v2 = function(rows, role, userId) {
                     '#B276B2',
                     '#97D19C'
                 ],
-                'colorblind': [
+                colorblind: [
                     '#E69F00',
                     '#56B4E9',
                     '#009E73',
@@ -632,22 +699,17 @@ exports.v2 = function(rows, role, userId) {
                     '#0072b2'
                 ]
             },
-            'version': versionResponse[0].version
+            version: versionResponse[0].version
         };
 
         return data;
     }
 
-    if (role==='block') {
-
+    if (role === 'block') {
         var data = parse_block(rows);
-
-    } else if (role==='district') {
-
+    } else if (role === 'district') {
         var data = parse_district(rows);
-
     }
 
     return data;
-
 };
