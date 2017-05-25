@@ -45,6 +45,5 @@ assets/scripts/temp
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-.ebextensions/00_nginx_https_rw.config
 
 .DS_Store
