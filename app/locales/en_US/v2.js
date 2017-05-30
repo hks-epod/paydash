@@ -134,6 +134,8 @@ module.exports = {
             contact: {
                 contact: 'Contact',
                 gmail: 'Gmail',
+                message_head: 'Send us a message',
+                message_subhead: 'Tell us what\'s on your mind. We\'ll respond as soon as we can.',
                 phone: 'Phone'
             },
             whatsapp: {
@@ -275,6 +277,8 @@ module.exports = {
             contact: {
                 contact: 'Contact',
                 gmail: 'Gmail',
+                message_head: 'Send us a message',
+                message_subhead: 'Tell us what\'s on your mind. We\'ll respond as soon as we can.',
                 phone: 'Phone'
             },
             whatsapp: 'MGNREGA Payment Delay Performance for {name}\n\n_Block_\n{block_name}\n\n{days_to_payment} days to complete payment\n{current_total} musters closing today\n{delayed_total} delayed musters\n\nMUSTERS DELAYED AT DIFFERENT STEPS\n\n*Attendance not filled (T+2)*\n_Total_\n{t2_total}\n_Avg. days pending_\n{t2_avg}\n\n*Measurement book not filled (T+5)*\n_Total_\n{t5_total}\n_Avg. days pending_\n{t5_avg}\n\n*Wagelist not sent (T+6)*\n_Total_\n{t6_total}\n_Avg. days pending_\n{t6_avg}\n\n*Pending for FTO first signature (T+7)*\n_Total_\n{t7_total}\n_Avg. days pending_\n{t7_avg}\n\n*Pending for FTO second signature (T+8)*\n_Total_\n{t8_total}\n_Avg. days pending_\n{t8_avg}\n'
