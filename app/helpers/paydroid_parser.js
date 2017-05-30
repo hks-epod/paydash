@@ -3,7 +3,7 @@
 const D3 = require('d3');
 const Utils = require('./utils');
 
-exports.v1 = function(rows, userId) {
+exports.v1 = function(rows, userId, name) {
     var overviewResponse = D3.values(rows[0]);
 
     var cardsResponse = D3.values(rows[1]);
@@ -17,6 +17,8 @@ exports.v1 = function(rows, userId) {
     var stateResponse = D3.values(rows[5]);
 
     var contactResponse = D3.values(rows[6]);
+
+    var regionsResponse = D3.values(rows[7]);
 
     // Parse the overview response
     var current_total = overviewResponse[0].current_total;
@@ -205,7 +207,8 @@ exports.v1 = function(rows, userId) {
             return bSum - aSum;
         });
 
-    var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
+    var subjectLine = Utils.buildSubject(name, regionsResponse, userId);
+
     var headers = [
         'date',
         'mrc_mre',
@@ -254,7 +257,7 @@ exports.v1 = function(rows, userId) {
     return data;
 };
 
-exports.v2 = function(rows, role, userId) {
+exports.v2 = function(rows, role, userId, name) {
     function parse_block(rows) {
         var overviewResponse = D3.values(rows[0]);
 
@@ -268,7 +271,9 @@ exports.v2 = function(rows, role, userId) {
 
         var contactResponse = D3.values(rows[5]);
 
-        var versionResponse = D3.values(rows[6]);
+        var regionsResponse = D3.values(rows[6]);
+
+        var versionResponse = D3.values(rows[7]);
 
         // Parse the overview response
         var overview = D3.nest()
@@ -435,7 +440,7 @@ exports.v2 = function(rows, role, userId) {
             'tot_trn'
         ];
 
-        var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
+        var subjectLine = Utils.buildSubject(name, regionsResponse, userId);
 
         var data = {
             overview: overview,
@@ -503,7 +508,9 @@ exports.v2 = function(rows, role, userId) {
 
         var contactResponse = D3.values(rows[5]);
 
-        var versionResponse = D3.values(rows[6]);
+        var regionsResponse = D3.values(rows[6]);
+
+        var versionResponse = D3.values(rows[7]);
 
         // Parse the overview response
         var overview = D3.nest()
@@ -637,7 +644,7 @@ exports.v2 = function(rows, role, userId) {
                 return d.value;
             });
 
-        var subjectLine = Utils.buildSubject(contactResponse[0].subject, userId);
+        var subjectLine = Utils.buildSubject(name, regionsResponse, userId);
 
         var headers = [
             'date',

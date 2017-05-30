@@ -14,14 +14,15 @@ exports.show = {
     handler: function(request, reply) {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var userId = request.auth.credentials.id;
-        var queryString = Queries.contact(userId);
+        var role = request.auth.credentials.role;
+        var queryString = Queries.contact(userId,role);
 
         sequelize
             .query(queryString, {
                 type: sequelize.QueryTypes.SELECT
             })
             .then(function(rows) {
-                var contactResponse = rows;
+                var contactResponse = rows[0];
                 var data = {
                     phone: contactResponse[0].phone
                 };
@@ -51,20 +52,26 @@ exports.sendMessage = {
     handler: function(request, reply) {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var userId = request.auth.credentials.id;
-        var queryString = Queries.contact(userId);
+        var name = request.auth.credentials.firstname + ' ' + request.auth.credentials.lastname;
+        var email = request.auth.credentials.email;
+        var role = request.auth.credentials.role;
+
+        var queryString = Queries.contact(userId,role);
 
         sequelize
             .query(queryString, {
                 type: sequelize.QueryTypes.SELECT
             })
             .then(function(rows) {
-                var contactResponse = rows;
 
-                var subject = Utils.buildSubject(contactResponse[0].subject, userId);
+                var contactResponse = D3.values(rows[0]);
+                var regionsResponse = D3.values(rows[1]);
+
+                var subject = Utils.buildSubject(name, regionsResponse, userId);
 
                 var ticket = {
                     subject: subject,
-                    email: 'epodindianrega@gmail.com',
+                    email: email,
                     description: request.payload.message
                 };
 

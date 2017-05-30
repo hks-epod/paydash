@@ -24,6 +24,7 @@ exports.getData = {
         var userId = request.auth.credentials.id;
         var role = request.auth.credentials.role;
         var version = request.pre.apiVersion;
+        var name = request.auth.credentials.firstname + ' ' + request.auth.credentials.lastname;
 
         var queryString = Queries.paydroid(userId, role, version);
 
@@ -36,9 +37,9 @@ exports.getData = {
                 var data;
 
                 if (version === 1) {
-                    data = Parser.v1(rows);
+                    data = Parser.v1(rows, userId, name);
                 } else if (version === 2) {
-                    data = Parser.v2(rows, role, userId);
+                    data = Parser.v2(rows, role, userId, name);
                 }
 
                 reply(data);

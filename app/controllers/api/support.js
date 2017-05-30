@@ -7,7 +7,7 @@ exports.addTicket = {
     description: 'Add new support ticket',
     validate: {
         payload: {
-            subject: Joi.string().max(100).allow(''),
+            subject: Joi.string().max(500).allow(''),
             email: Joi.string().max(100).allow(''),
             description: Joi.string().max(5000).allow('')
         },
