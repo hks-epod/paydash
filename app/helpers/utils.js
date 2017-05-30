@@ -42,6 +42,19 @@ exports.buildSubject = function(subjectStub, userId) {
     return subjectLine;
 };
 
+exports.buildSubject = function(name, regionsResponse, userId) {
+    var subjectLine = name + ' [';
+    for (var i=0; i<regionsResponse.length; i++) {
+        if (i>0) {
+            subjectLine += '/';
+        }
+        subjectLine += regionsResponse[i].designation + ' ' + regionsResponse[i].region_name + ' (' + regionsResponse[i].region_code + ')';
+    }
+    subjectLine += ']';
+    subjectLine += ' [user_id: ' + userId + ']';
+    return subjectLine;
+}
+
 exports.getDesignationArray = function(designation, alternative_designation) {
     if (alternative_designation === null) {
         return [designation.trim(), 'Other'];

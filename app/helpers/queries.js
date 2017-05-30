@@ -114,8 +114,9 @@ exports.performance = function(USER_ID, ROLE) {
     }
 };
 
-exports.contact = function(USER_ID) {
-    return 'SELECT * FROM contact;';
+exports.contact = function(USER_ID,ROLE) {
+    return "SELECT * FROM contact;" +
+    "SELECT a.region_code, a.region_name, IFNULL(c.designation,'NO DESIGNATION') AS designation FROM (select * from user_regions WHERE user_id="+USER_ID+") a inner join blocks b ON a.region_code=b."+ROLE+"_code LEFT join officer_configuration c on b.state_code=c.state_code and c.role='"+ROLE+"' and a.designation_id=c.designation_id;";
 };
 
 exports.paydroid = function(USER_ID, ROLE, VERSION) {
@@ -161,7 +162,9 @@ exports.paydroid = function(USER_ID, ROLE, VERSION) {
             "SELECT state_code FROM blocks WHERE block_code IN (SELECT region_code FROM user_regions WHERE user_id='" +
             USER_ID +
             "') GROUP BY state_code;" +
-            'SELECT * FROM contact;'
+            "SELECT * FROM contact;" +
+            "SELECT a.region_code, a.region_name, IFNULL(c.designation,'NO DESIGNATION') AS designation FROM (select * from user_regions WHERE user_id="+USER_ID+") a inner join blocks b ON a.region_code=b."+ROLE+"_code LEFT join officer_configuration c on b.state_code=c.state_code and c.role='"+ROLE+"' and a.designation_id=c.designation_id;"
+
         );
     } else if (VERSION === 2) {
         if (ROLE === 'block') {
@@ -205,7 +208,8 @@ exports.paydroid = function(USER_ID, ROLE, VERSION) {
                 "SELECT state_code FROM blocks WHERE block_code IN (SELECT region_code FROM user_regions WHERE user_id='" +
                 USER_ID +
                 "') GROUP BY state_code;" +
-                'SELECT * FROM contact;' +
+                "SELECT * FROM contact;" +
+                "SELECT a.region_code, a.region_name, IFNULL(c.designation,'NO DESIGNATION') AS designation FROM (select * from user_regions WHERE user_id="+USER_ID+") a inner join blocks b ON a.region_code=b."+ROLE+"_code LEFT join officer_configuration c on b.state_code=c.state_code and c.role='"+ROLE+"' and a.designation_id=c.designation_id;" +
                 'SELECT * FROM paydroid_version;'
             );
         } else if (ROLE == 'district') {
@@ -249,7 +253,8 @@ exports.paydroid = function(USER_ID, ROLE, VERSION) {
                 "SELECT state_code FROM districts WHERE district_code IN (SELECT region_code FROM user_regions WHERE user_id='" +
                 USER_ID +
                 "') GROUP BY state_code;" +
-                'SELECT * FROM contact;' +
+                "SELECT * FROM contact;" +
+                "SELECT a.region_code, a.region_name, IFNULL(c.designation,'NO DESIGNATION') AS designation FROM (select * from user_regions WHERE user_id="+USER_ID+") a inner join blocks b ON a.region_code=b."+ROLE+"_code LEFT join officer_configuration c on b.state_code=c.state_code and c.role='"+ROLE+"' and a.designation_id=c.designation_id;" +
                 'SELECT * FROM paydroid_version;'
             );
         }
