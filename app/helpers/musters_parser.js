@@ -35,7 +35,8 @@ exports.block = function(rows) {
                             work_name: d.work_name,
                             work_code: d.work_code,
                             closure_date: d.end_date,
-                            days_pending: d.days_pending
+                            days_pending: d.days_pending,
+                            step: d.step
                         };
                     }),
                 current_musters: v
@@ -85,8 +86,6 @@ exports.block = function(rows) {
                     })
             };
         });
-
-    console.log(cards);
 
     var data = {
         musters: cards
