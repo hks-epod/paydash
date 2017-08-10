@@ -22,8 +22,8 @@ module.exports = {
             },
             description: {
                 $filter: 'role',
-                block: 'Here\'s how your Block is doing on MGNREGA payment delays.',
-                district: 'Here\'s how your District is doing on MGNREGA payment delays.'
+                block: "Here's how your Block is doing on MGNREGA payment delays.",
+                district: "Here's how your District is doing on MGNREGA payment delays."
             }
         },
         musters: {
@@ -39,6 +39,12 @@ module.exports = {
             work_code: 'WORK CODE',
             closure_date: 'CLOSURE DATE',
             days_pending: 'DAYS PENDING',
+            step: 'STEP',
+            ds_t2: 'Attendance not filled (T+2)',
+            ds_t5: 'Measurement book not filled (T+5)',
+            ds_t6: 'Wagelist not sent (T+6)',
+            ds_t7: 'Pending for FTO first signature (T+7)',
+            ds_t8: 'Pending for FTO second signature (T+8)',
             current_total: 'CURRENT TOTAL',
             delayed_total: 'DELAYED TOTAL',
             name: 'NAME',
@@ -53,8 +59,8 @@ module.exports = {
             overview: {
                 title: {
                     $filter: 'role',
-                    district: 'Your District/Block\'s Performance',
-                    block: 'Your Block/Panchayat\'s Performance',
+                    district: "Your District/Block's Performance",
+                    block: "Your Block/Panchayat's Performance",
                     $default: 'Overview Performance'
                 },
                 description: {
@@ -73,7 +79,7 @@ module.exports = {
                     'Second signature to processed by bank',
                     'Muster roll closure to payment processed'
                 ],
-                tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
+                tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.'
             },
             comparison: {
                 title: {
@@ -89,18 +95,18 @@ module.exports = {
                     $default: 'Compare your performance with averages for other regions.'
                 },
                 labels: {
-                    'state': 'state average',
-                    'district': 'district average',
-                    'block': 'block average',
-                    'panchayat': 'panchayat average',
+                    state: 'state average',
+                    district: 'district average',
+                    block: 'block average',
+                    panchayat: 'panchayat average'
                 },
                 total_trans: {
-                    'state': 'Total state transactions in',
-                    'district': 'Total district transactions in',
-                    'block': 'Total block transactions in',
-                    'panchayat': 'Total panchayat transactions in',
+                    state: 'Total state transactions in',
+                    district: 'Total district transactions in',
+                    block: 'Total block transactions in',
+                    panchayat: 'Total panchayat transactions in'
                 },
-                tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.',
+                tooltip: 'The chart at right shows the average number of days to complete each step of the payment process for payments that reached beneficiaries’ bank accounts on the given date. Therefore, only completed payments are displayed.'
             },
             y_axis_label: 'Days to complete process',
             total_trans: 'Total transactions in'
@@ -129,8 +135,8 @@ module.exports = {
             colorblind: 'Colorblind'
         },
         contact: {
-            header:'Contact PayDash team',
-            call:'Call us at {{phone}}',
+            header: 'Contact PayDash team',
+            call: 'Call us at {{phone}}',
             or: 'Or',
             send_message: 'Send us a message using the form below',
             send_button: 'SEND'
@@ -143,7 +149,7 @@ module.exports = {
                 t5: 'Measurement book (T+5)',
                 t6: 'Wagelist sending (T+6)',
                 t7: 'FTO first signature (T+7)',
-                t8: 'FTO second signature (T+8)',
+                t8: 'FTO second signature (T+8)'
             },
             long_labels: {
                 t2: 'Filling attendance (T+2)',
@@ -166,10 +172,10 @@ module.exports = {
                 stay: 'Stay on page',
                 success: 'Changes saved successfully',
                 error: 'There was an error saving your changes. Please contact the PayDash team if this problem persists.',
-                table:{
+                table: {
                     name: 'Name',
                     mobile_no: 'Mobile No.',
-                    panchayat_name : 'Panchayat',
+                    panchayat_name: 'Panchayat',
                     designation: 'Designation'
                 }
             },
@@ -223,7 +229,7 @@ module.exports = {
             },
             regions: {
                 panchayat: 'Panchayat',
-                block: 'Block',
+                block: 'Block'
             },
             tooltip: {
                 date: 'Date',
@@ -268,9 +274,9 @@ module.exports = {
             logout: {
                 connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
                 warning: {
-                    'message': 'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
-                    'logout': 'Log out',
-                    'cancel': 'Cancel'
+                    message: 'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
+                    logout: 'Log out',
+                    cancel: 'Cancel'
                 },
                 general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.'
             }

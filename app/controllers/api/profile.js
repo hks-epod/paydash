@@ -3,7 +3,6 @@
 var Joi = require('joi');
 var Boom = require('boom');
 
-
 exports.postEditProfile = {
     description: 'Post Edit profile settings',
     validate: {
@@ -29,13 +28,12 @@ exports.postEditProfile = {
         }
     },
     handler: function(request, reply) {
-
         if (!request.auth.isAuthenticated) {
             return Boom.forbidden('You are not logged in');
         }
 
         var id = request.auth.credentials.id.toString();
-        if(request.payload.email === ''){
+        if (request.payload.email === '') {
             request.payload.email = null;
         }
         request.payload.updated_at = Date.now();
@@ -45,13 +43,13 @@ exports.postEditProfile = {
                 id: id
             }
         }).then(function(user) {
-            if (user) { // if the record exists in the db
+            if (user) {
+                // if the record exists in the db
                 user.update(request.payload).then(function() {
                     request.cookieAuth.clear();
                     request.cookieAuth.set(user);
                     return reply(user);
                 });
-
             } else {
                 return reply(Boom.badImplementation('An internal server error occurred'));
             }

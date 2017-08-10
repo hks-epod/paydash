@@ -1,0 +1,29 @@
+/* Copyright 2017 Go Jek
+
+sidebar.scss
+Sidebar components configuration. 
+
+Syntax: componentName__<property>[--<modifier>]
+------------------------------------------------------------------------*/
+
+$sidebar__width: 280px;
+$sidebar__gutter: 40px;
+.sidebar {
+    position: fixed;
+    z-index: 999;
+    background-color: #fff;
+    top: 62px;
+    left: 0;
+    height: calc(100% - 62px);
+    bottom:0;
+    width: $sidebar__width;
+    box-shadow: 0 0 1px rgba(0, 0, 0, .15);
+    @extend %clearfix;
+    padding: 0 40px;
+    overflow: auto;
+}
+
+.main {
+    margin-left: $sidebar__width;
+    padding : 0 30px
+}

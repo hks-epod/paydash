@@ -12,19 +12,19 @@ exports.showPage = {
 
 exports.getData = {
     handler: function(request, reply) {
-
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var role = request.auth.credentials.role;
         var userId = request.auth.credentials.id;
         var queryString = Queries.overview(userId, role);
 
-        sequelize.query(queryString, {
-            type: sequelize.QueryTypes.SELECT
-        }).then(function(rows) {
-
-            var data = OverviewParser.parser(rows);
-            data.translation = Translate('/web/overview', request.auth.credentials, null);
-            reply(data);
-        });
+        sequelize
+            .query(queryString, {
+                type: sequelize.QueryTypes.SELECT
+            })
+            .then(function(rows) {
+                var data = OverviewParser.parser(rows);
+                data.translation = Translate('/web/overview', request.auth.credentials, null);
+                reply(data);
+            });
     }
 };

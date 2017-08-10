@@ -134,6 +134,8 @@ module.exports = {
             contact: {
                 contact: 'संपर्क करें',
                 gmail: 'Gmail',
+                message_head: 'Send us a message',
+                message_subhead: 'Tell us what\'s on your mind. We\'ll respond as soon as we can.',
                 phone: 'Phone'
             },
             whatsapp: {
@@ -275,6 +277,8 @@ module.exports = {
             contact: {
                 contact: 'संपर्क करें',
                 gmail: 'Gmail',
+                message_head: 'Send us a message',
+                message_subhead: 'Tell us what\'s on your mind. We\'ll respond as soon as we can.',
                 phone: 'Phone'
             },
             whatsapp: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_प्रखंड/जनपद_\n{block_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n'

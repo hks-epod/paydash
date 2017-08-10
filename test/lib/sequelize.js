@@ -1,26 +1,37 @@
-// 'use strict';
+'use strict';
 
-// var Lab = require('lab');
-// var Code = require('code');
-// var Hapi = require('hapi');
-// var sequelize = require('../../lib/sequelize');
+const Sequelize = require('../../lib/sequelize');
+const Code = require('code');
+const Config = require('../../config/config');
+const Hapi = require('hapi');
+const Lab = require('lab');
+const Path = require('path');
 
-// var lab = exports.lab = Lab.script();
+const lab = (exports.lab = Lab.script());
+let request;
+let server;
 
-// lab.experiment('Sequelize plugin', function() {
+lab.beforeEach(done => {
+    const plugins = [
+        {
+            register: Sequelize,
+            options: Config.get('/sequelize')
+        }
+    ];
+    server = new Hapi.Server();
+    server.connection({ port: Config.get('/port/web') });
+    server.register(plugins, err => {
+        if (err) {
+            return done(err);
+        }
+        done();
+    });
+});
 
-//     var server = new Hapi.Server();
-//     server.connection();
-
-//     lab.test('Plugins successfully loads', function(done) {
-        
-//         server.register(sequelize, function(err) {
-
-//             Code.expect(err).to.not.exist();
-//             done();
-            
-//         });
-
-//     });
-
-// });
+lab.experiment('Sequelize', () => {
+    lab.test('It should have sequelize instance', done => {
+        let sequelize = server.plugins.sequelize;
+        Code.expect(sequelize).to.be.an.object();
+        done();
+    });
+});

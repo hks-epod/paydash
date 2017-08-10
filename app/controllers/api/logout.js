@@ -13,12 +13,30 @@ exports.postForm = {
         }
     },
     handler: function(request, reply) {
+        var User = request.server.plugins.sequelize.db.User;
 
-        request.cookieAuth.clear();
+        User.findOne({
+            where: {
+                username: request.auth.credentials.username
+            }
+        }).then(function(user) {
+            if (user) {
+                user
+                    .update({
+                        notification_token: null
+                    })
+                    .then(function() {
+                        request.cookieAuth.clear();
 
-        return reply({
-            "statusCode": 200,
-            "message": "Successfully logged out."
+                        var msg = {
+                            statusCode: 200,
+                            message: 'Successfully logged out.'
+                        };
+                        return reply(msg);
+                    });
+            } else {
+                return reply(Boom.badRequest('Something went wrong'));
+            }
         });
     }
 };

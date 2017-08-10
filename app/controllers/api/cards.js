@@ -15,7 +15,6 @@ exports.getData = {
         }
     },
     handler: function(request, reply) {
-
         if (!request.auth.isAuthenticated) {
             return reply(Boom.forbidden('You are not logged in'));
         }
@@ -25,24 +24,25 @@ exports.getData = {
         var userId = request.auth.credentials.id;
         var role = request.auth.credentials.role;
         var version = request.pre.apiVersion;
+        var name = request.auth.credentials.firstname + ' ' + request.auth.credentials.lastname;
 
         var queryString = Queries.paydroid(userId, role, version);
 
         // API CODE
-        sequelize.query(queryString, {
-            type: sequelize.QueryTypes.SELECT
-        }).then(function(rows) {
+        sequelize
+            .query(queryString, {
+                type: sequelize.QueryTypes.SELECT
+            })
+            .then(function(rows) {
+                var data;
 
-            var data;
+                if (version === 1) {
+                    data = Parser.v1(rows, userId, name);
+                } else if (version === 2) {
+                    data = Parser.v2(rows, role, userId, name);
+                }
 
-            if (version === 1) {
-                data = Parser.v1(rows);
-            } else if (version === 2) {
-                data = Parser.v2(rows, role, userId);
-            }
-
-            reply(data);
-
-        });
+                reply(data);
+            });
     }
 };

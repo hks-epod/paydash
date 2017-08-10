@@ -16,12 +16,10 @@ exports.showForm = {
         }
     },
     handler: function(request, reply) {
-
         if (request.auth.isAuthenticated) {
             return reply.redirect('/overview');
         }
         reply.view('auth/login');
-
     }
 };
 
@@ -42,7 +40,8 @@ exports.postForm = {
         }
     },
     validate: {
-        payload: { // payload for POST, query for GET
+        payload: {
+            // payload for POST, query for GET
             username: Joi.string().min(3).max(20),
             password: Joi.string().min(6).max(20)
         },
@@ -50,12 +49,14 @@ exports.postForm = {
             // Username, passowrd minimum validation failed
             request.yar.flash('error', 'Invalid username or password');
             return reply.redirect('/login');
-        },
+        }
     },
     handler: function(request, reply) {
         if (request.auth.isAuthenticated && request.auth.scope === 'editor') {
             return reply.redirect('/editor/info');
-        } else if (request.auth.isAuthenticated){
+        } else if (request.auth.isAuthenticated && request.auth.scope === 'monitoring') {
+            return reply.redirect('/monitor/usage');
+        } else if (request.auth.isAuthenticated) {
             return reply.redirect('/overview');
         }
 
@@ -69,40 +70,38 @@ exports.postForm = {
             },
             include: [db.user_regions]
         }).then(function(user) {
-
             if (user) {
                 if (user.deactivated) {
-                    request.yar.flash('error', 'Your account has been deactivated. Please contact the PayDash team if you require assistance.');
+                    request.yar.flash(
+                        'error',
+                        'Your account has been deactivated. Please contact the PayDash team if you require assistance.'
+                    );
                     return reply.redirect('/login');
                 }
-
                 user.super_token = new Date().getTime().toString();
                 user.save().then(function() {
-                
                     request.cookieAuth.set(user);
 
                     // Handle Redirection
                     if (user.scope === 'editor') {
                         return reply.redirect('/editor/info');
+                    } else if (user.scope === 'monitoring') {
+                        return reply.redirect('/monitor/usage');
                     }
                     if (!user.isActive) {
-
                         request.yar.flash('info', 'Please check your profile details');
                         user.update({ isActive: true }).then(function() {
                             return reply.redirect('/me/settings/profile');
                         });
-
                     } else {
                         return reply.redirect('/overview');
                     }
                 });
-
             } else {
                 // User not fond in database
                 request.yar.flash('error', 'Invalid username or password');
                 return reply.redirect('/login');
             }
         });
-
     }
 };

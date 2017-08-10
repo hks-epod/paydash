@@ -1,8 +1,7 @@
 'use strict';
-
 const Confidence = require('confidence');
 
-// Confidence criteria 
+// Confidence criteria
 let internals = {
     criteria: {
         env: process.env.NODE_ENV
@@ -12,8 +11,8 @@ let internals = {
 //  Confidence document object
 
 internals.config = {
-    $meta: 'Paydash app configuration file',
-    projectName: 'Paydash',
+    $meta: 'paydash app example configuration file',
+    projectName: 'paydash',
     port: {
         web: {
             $filter: 'env',
@@ -32,9 +31,9 @@ internals.config = {
         $filter: 'env',
         production: {
             database: 'db_name',
-            username: 'username',
-            password: 'password',
-            host: 'host.name',
+            username: 'db_user',
+            password: 'db_pass',
+            host: 'db_host',
             dialect: 'mysql',
             pool: {
                 max: 5,
@@ -44,9 +43,9 @@ internals.config = {
         },
         test: {
             database: 'db_name',
-            username: 'username',
-            password: 'password',
-            host: 'host.name',
+            username: 'db_user',
+            password: 'db_pass',
+            host: 'db_host',
             dialect: 'mysql',
             pool: {
                 max: 5,
@@ -56,9 +55,9 @@ internals.config = {
         },
         $default: {
             database: 'db_name',
-            username: 'username',
-            password: 'password',
-            host: 'host.name',
+            username: 'db_user',
+            password: 'db_pass',
+            host: 'db_host',
             dialect: 'mysql',
             pool: {
                 max: 5,
@@ -68,12 +67,22 @@ internals.config = {
         }
     },
     yarCookie: {
-        password: 'cookiepasswordhere',
+        password: '32_char_pass',
         ssl: false
     },
     authCookie: {
-        cookieSecret: 'cookiesecrethere',
+        cookieSecret: '32_char_pass',
         cookieName: 'Basic-auth'
+    },
+    mailer: {
+        sendgrid: {
+            auth: {
+                api_key: 'sendgrod_api_key'
+            }
+        }
+    },
+    freshdesk: {
+        key: 'api_key'
     }
 };
 

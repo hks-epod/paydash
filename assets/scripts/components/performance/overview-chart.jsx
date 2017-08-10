@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import MG from '../../lib/mg';
+import MG from 'metrics-graphics';
 
 const D3 = require('d3');
 const Parser = require('../../lib/parser');
@@ -37,13 +37,12 @@ const OverviewChart =  React.createClass({
                 transition_on_update: true,
                 aggregate_rollover: true,
                 show_tooltips: false,
-                interplate: 'linear',
-                interpolate_tension: .98,
+                interpolate: D3.curveLinear,
                 area: true,
                 show_secondary_x_label: false,
                 x_extended_ticks: true,
                 xax_count: 5,
-                xax_format: D3.time.format('%b %Y'),
+                xax_format: D3.timeFormat('%b %Y'),
                 decimals: 0,
                 baselines: [{
                     value: 15,
@@ -64,7 +63,7 @@ const OverviewChart =  React.createClass({
                             l_span.text('— ' + _this.props.translation.overview.labels[i - 1]);
                         }
                     }  
-                    var format = D3.time.format('%b %Y'); 
+                    var format = D3.timeFormat('%b %Y'); 
                     d.values.forEach(function(val, index) {
                         var l_span = D3.select(legend_target + ' .mg-line' + val.line_id + '-legend-color');
                         l_span.text(' ');

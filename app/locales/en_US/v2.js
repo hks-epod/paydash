@@ -72,8 +72,8 @@ module.exports = {
             profile: {
                 profile: 'Profile',
                 edit: 'EDIT',
-                save:'SAVE',
-                updating:'UPDATING...',
+                save: 'SAVE',
+                updating: 'UPDATING...',
                 firstname: 'First Name',
                 lastname: 'Last Name',
                 mobile: 'Mobile',
@@ -91,7 +91,7 @@ module.exports = {
                 new_pass: 'New password',
                 pass_confirm: 'Verify new password',
                 forgot_pass: 'I forgot my password',
-                change_pass_button: 'CHANGE PASSWORD',
+                change_pass_button: 'CHANGE PASSWORD'
             },
             search: 'Search for TA/GRS...',
             sort: {
@@ -111,9 +111,9 @@ module.exports = {
                 logout: {
                     connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
                     warning: {
-                        'message':'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
-                        'logout': 'Log out',
-                        'cancel': 'Cancel'
+                        message: 'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
+                        logout: 'Log out',
+                        cancel: 'Cancel'
                     },
                     general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.',
                     logging_out: 'Logging out...'
@@ -129,11 +129,13 @@ module.exports = {
                 requesting_change: 'Requesting password change...',
                 update_available: 'New Update Available',
                 update: 'Update',
-                grant_permission:'Please grant permission to proceed'
+                grant_permission: 'Please grant permission to proceed'
             },
             contact: {
                 contact: 'Contact',
                 gmail: 'Gmail',
+                message_head: 'Send us a message',
+                message_subhead: 'Tell us what\'s on your mind. We\'ll respond as soon as we can.',
                 phone: 'Phone'
             },
             whatsapp: {
@@ -142,11 +144,11 @@ module.exports = {
                     current: 'Send musters closing today only',
                     delayed: 'Send delayed musters only'
                 },
-                overview_current:'{name}\n\n{current_total} musters closing today\n\n',
-                overview_delayed:'{name}\n\n{delayed_total} delayed musters\n\n',
-                overview:'Muster Roll Details for {name}\n\n{current_total} musters closing today\n{delayed_total} delayed musters\n\n',
-                current:'MUSTERS CLOSING TODAY\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n\n',
-                delayed:'DELAYED MUSTERS\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n_Days delayed_\n{days_pending}\n\n'
+                overview_current: '{name}\n\n{current_total} musters closing today\n\n',
+                overview_delayed: '{name}\n\n{delayed_total} delayed musters\n\n',
+                overview: 'Muster Roll Details for {name}\n\n{current_total} musters closing today\n{delayed_total} delayed musters\n\n',
+                current: 'MUSTERS CLOSING TODAY\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n\n',
+                delayed: 'DELAYED MUSTERS\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n_Days delayed_\n{days_pending}\n\n'
             }
         },
         district: {
@@ -212,8 +214,8 @@ module.exports = {
             profile: {
                 profile: 'Profile',
                 edit: 'EDIT',
-                save:'SAVE',
-                updating:'UPDATING...',
+                save: 'SAVE',
+                updating: 'UPDATING...',
                 firstname: 'First Name',
                 lastname: 'Last Name',
                 mobile: 'Mobile',
@@ -231,7 +233,7 @@ module.exports = {
                 new_pass: 'New password',
                 pass_confirm: 'Verify new password',
                 forgot_pass: 'I forgot my password',
-                change_pass_button: 'CHANGE PASSWORD',
+                change_pass_button: 'CHANGE PASSWORD'
             },
             search: 'Search for Block or Officer Name...',
             sort: {
@@ -252,9 +254,9 @@ module.exports = {
                 logout: {
                     connectivity: 'Unable to log out of PayDash. Please try again when your device has internet connectivity.',
                     warning: {
-                        'message':'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
-                        'logout': 'Log out',
-                        'cancel': 'Cancel'
+                        message: 'Are you sure you want to log out? PayDash offline mode is only available if you stay logged in.',
+                        logout: 'Log out',
+                        cancel: 'Cancel'
                     },
                     general: 'Unable to log out of PayDash. Please contact the PayDash team if this issue persists.',
                     logging_out: 'Logging out...'
@@ -270,11 +272,13 @@ module.exports = {
                 requesting_change: 'Requesting password change...',
                 update_available: 'New Update Available',
                 update: 'Update',
-                grant_permission:'Please grant permission to proceed'
+                grant_permission: 'Please grant permission to proceed'
             },
             contact: {
                 contact: 'Contact',
                 gmail: 'Gmail',
+                message_head: 'Send us a message',
+                message_subhead: 'Tell us what\'s on your mind. We\'ll respond as soon as we can.',
                 phone: 'Phone'
             },
             whatsapp: 'MGNREGA Payment Delay Performance for {name}\n\n_Block_\n{block_name}\n\n{days_to_payment} days to complete payment\n{current_total} musters closing today\n{delayed_total} delayed musters\n\nMUSTERS DELAYED AT DIFFERENT STEPS\n\n*Attendance not filled (T+2)*\n_Total_\n{t2_total}\n_Avg. days pending_\n{t2_avg}\n\n*Measurement book not filled (T+5)*\n_Total_\n{t5_total}\n_Avg. days pending_\n{t5_avg}\n\n*Wagelist not sent (T+6)*\n_Total_\n{t6_total}\n_Avg. days pending_\n{t6_avg}\n\n*Pending for FTO first signature (T+7)*\n_Total_\n{t7_total}\n_Avg. days pending_\n{t7_avg}\n\n*Pending for FTO second signature (T+8)*\n_Total_\n{t8_total}\n_Avg. days pending_\n{t8_avg}\n'

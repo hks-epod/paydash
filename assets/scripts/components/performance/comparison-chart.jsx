@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import MG from '../../lib/mg';
+import MG from 'metrics-graphics';
 
 const D3 = require('d3');
 const Parser = require('../../lib/parser');
@@ -58,7 +58,7 @@ const ComparisonChart =  React.createClass({
                 xax_count: 10,
                 // max_x : options.max_x || null,
                 // min_x: options.min_x || null,
-                xax_format: D3.time.format('%b %Y'),
+                xax_format: D3.timeFormat('%b %Y'),
                 chart_type: c_data.length !== 0 ? 'line' : 'missing-data',
                 missing_text: 'No data',
                 show_secondary_x_label: false,
@@ -70,8 +70,7 @@ const ComparisonChart =  React.createClass({
                 show_year_markers: true,
                 point_size : 3.5,
                 transition_on_update: true,
-                interplate: 'linear',
-                interpolate_tension: 1,
+                interpolate: D3.curveLinear,
                 area: false,
                 y_label:  _this.props.translation.y_axis_label,
                 show_rollover_text: false,
@@ -87,11 +86,11 @@ const ComparisonChart =  React.createClass({
                         }
                     }
                     d.values.forEach(function(val, index) {
-                        var prefix = D3.formatPrefix(val.value);
+                        // var prefix = D3.formatPrefix(val.value);
                         var l_span = D3.select(legend_target + ' .mg-line' + val.line_id + '-legend-color');
                         l_span.text(' ');
-                        l_span.text('— ' + labels[val.line_id - 1] + ' : ' + prefix.scale(val.value).toFixed(0));
-                        var format = D3.time.format('%b %Y');
+                        l_span.text('— ' + labels[val.line_id - 1] + ' : ' + val.value);
+                        var format = D3.timeFormat('%b %Y');
                         D3.select('#region_comparison_total_trans').text( _this.props.translation.comparison.total_trans[_this.props.activeRegion.region_type] + ' '+ format(val.date) + ': ' + val.total_trans);
                     });
                 },
