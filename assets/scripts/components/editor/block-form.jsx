@@ -13,7 +13,7 @@ const Table = React.createClass({
             eventAction: 'click',
             eventLabel: _this.props.step + '/' + _this.props.user.id
         });
-        D3.xhr('/editor/data').header('Content-Type', 'application/json').post(JSON.stringify({
+        D3.request('/editor/data').header('Content-Type', 'application/json').post(JSON.stringify({
             block_code: _this.state.data.block_code,
             step: _this.props.step,
             data: this.state.data
