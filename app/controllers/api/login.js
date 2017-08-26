@@ -43,7 +43,7 @@ exports.postForm = {
             }
             
             // If user is test or pilot 
-            else if (user && user.type === 'test' || user.type === 'pilot_one') {
+            else if (user && (user.type === 'test' || user.type === 'pilot_one')) {
                 request.cookieAuth.set(user);
                 delete user.password;
                 return reply(user);
