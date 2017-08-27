@@ -25,9 +25,8 @@ exports.registerToken = {
     },
     handler: function(request, reply) {
         if (!request.auth.isAuthenticated) {
-            return Boom.forbidden('You are not logged in');
+            return reply(Boom.forbidden('You are not logged in'));
         }
-
         var User = request.server.plugins.sequelize.db.User;
 
         User.findOne({
@@ -35,6 +34,7 @@ exports.registerToken = {
                 username: request.auth.credentials.username
             }
         }).then(function(user) {
+            console.log('ssdsd');
             if (user) {
                 user
                     .update({
