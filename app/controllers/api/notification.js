@@ -34,7 +34,6 @@ exports.registerToken = {
                 username: request.auth.credentials.username
             }
         }).then(function(user) {
-            console.log('ssdsd');
             if (user) {
                 user
                     .update({
