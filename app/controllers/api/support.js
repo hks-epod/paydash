@@ -31,6 +31,7 @@ exports.addTicket = {
             email: request.payload.email,
             description: request.payload.description
         };
+        console.log(ticket);
 
         var freshDesk = request.server.plugins.freshdesk;
 
