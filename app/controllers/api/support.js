@@ -8,7 +8,7 @@ exports.addTicket = {
     validate: {
         payload: {
             subject: Joi.string().max(500).allow(''),
-            email: Joi.string().max(100),
+            email: Joi.string().max(100).allow(''),
             description: Joi.string().max(5000).allow('')
         },
         failAction: function(request, reply, source, error) {
@@ -28,7 +28,7 @@ exports.addTicket = {
     handler: function(request, reply) {
         var ticket = {
             subject: request.payload.subject,
-            email: request.payload.email,
+            email: request.auth.credentials.email,
             description: request.payload.description
         };
 
