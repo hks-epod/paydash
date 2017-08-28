@@ -8,7 +8,7 @@ exports.addTicket = {
     validate: {
         payload: {
             subject: Joi.string().max(500).allow(''),
-            email: Joi.string().max(100).allow(''),
+            email: Joi.string().max(100),
             description: Joi.string().max(5000).allow('')
         },
         failAction: function(request, reply, source, error) {
@@ -31,7 +31,6 @@ exports.addTicket = {
             email: request.payload.email,
             description: request.payload.description
         };
-        console.log(ticket);
 
         var freshDesk = request.server.plugins.freshdesk;
 
