@@ -32,6 +32,10 @@ exports.addTicket = {
             description: request.payload.description
         };
 
+        if (ticket.email==='' || ticket.email===null || ticket.email===undefined) { 
+            ticket.email = ('user'+request.auth.credentials.id+'@noemail.com');
+        }
+
         var freshDesk = request.server.plugins.freshdesk;
 
         freshDesk.newTicket(ticket, function() {
