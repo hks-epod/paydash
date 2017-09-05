@@ -41,7 +41,7 @@ exports.getData = {
                     data = Parser.v1(rows, userId, name);
                 } else if (version === 2) {
 
-                    if (role==='block' && D3.values(rows[4])[0]===undefined) {
+                    if (D3.values(rows[4])[0]===undefined) {
                         console.log("Couldn't find state code in db for request:\n" + request);
                         return reply(Boom.badRequest('Bad request'));
                     }
