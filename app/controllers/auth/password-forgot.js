@@ -31,7 +31,7 @@ exports.postRecoveryForm = {
     },
     validate: {
         payload: {
-            name_email: Joi.string().min(2).max(20).required()
+            name_email: Joi.string().min(2).max(50).required()
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
