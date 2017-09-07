@@ -4,6 +4,7 @@ const Queries = require('../../helpers/queries');
 const Parser = require('../../helpers/paydroid_parser');
 const Boom = require('boom');
 const D3 = require('d3');
+const util = require('util');
 
 exports.getData = {
     auth: {
@@ -42,7 +43,8 @@ exports.getData = {
                 } else if (version === 2) {
 
                     if (D3.values(rows[4])[0]===undefined) {
-                        console.log("Couldn't find state code in db for request:\n" + request);
+                        console.log("Couldn't find state code in db for request:");
+                        console.log(util.inspect(request, {showHidden: false, depth: null}));
                         return reply(Boom.badRequest('Bad request'));
                     }
 
