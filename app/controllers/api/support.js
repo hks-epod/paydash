@@ -13,7 +13,7 @@ exports.addTicket = {
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            return reply.reply(Boom.badRequest(error));
+            return reply(Boom.badRequest(error));
         }
     },
     auth: {

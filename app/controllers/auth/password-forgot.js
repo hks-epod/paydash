@@ -35,7 +35,7 @@ exports.postRecoveryForm = {
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
-            request.session.flash('error', 'Bad request');
+            request.yar.flash('error', 'Bad request');
             return reply.redirect('/me/settings/profile');
         }
     },
@@ -70,7 +70,8 @@ exports.postRecoveryForm = {
                                 path: 'emails/forgot-password',
                                 context: {
                                     name: user.firstname + ' ' + user.lastname,
-                                    url: request.connection.info.protocol +
+                                    url:
+                                        request.connection.info.protocol +
                                         '://' +
                                         request.info.host +
                                         '/reset-password/' +
