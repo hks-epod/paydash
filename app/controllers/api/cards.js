@@ -43,7 +43,7 @@ exports.getData = {
                 } else if (version === 2) {
 
                     if (D3.values(rows[4])[0]===undefined) {
-                        console.log("Couldn't find state code in db for request:"+);
+                        console.log("Couldn't find state code in db for request:");
                         console.log(util.inspect(request, {showHidden: false, depth: null}));
                         return reply(Boom.badRequest('Bad request'));
                     }
