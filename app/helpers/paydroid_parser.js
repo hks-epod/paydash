@@ -3,7 +3,7 @@
 const D3 = require('d3');
 const Utils = require('./utils');
 
-exports.v1 = function(rows, userId, name) {
+exports.v1 = function(rows, userId, name, userMobile) {
     var overviewResponse = D3.values(rows[0]);
 
     var cardsResponse = D3.values(rows[1]);
@@ -207,7 +207,7 @@ exports.v1 = function(rows, userId, name) {
             return bSum - aSum;
         });
 
-    var subjectLine = Utils.buildSubject(name, regionsResponse, userId);
+    var subjectLine = Utils.buildSubject(name, regionsResponse, userId, userMobile);
 
     var headers = [
         'date',
@@ -257,7 +257,7 @@ exports.v1 = function(rows, userId, name) {
     return data;
 };
 
-exports.v2 = function(rows, role, userId, name) {
+exports.v2 = function(rows, role, userId, name, userMobile) {
     function parse_block(rows) {
         var overviewResponse = D3.values(rows[0]);
 
@@ -440,7 +440,7 @@ exports.v2 = function(rows, role, userId, name) {
             'tot_trn'
         ];
 
-        var subjectLine = Utils.buildSubject(name, regionsResponse, userId);
+        var subjectLine = Utils.buildSubject(name, regionsResponse, userId, userMobile);
 
         var data = {
             overview: overview,
@@ -644,7 +644,7 @@ exports.v2 = function(rows, role, userId, name) {
                 return d.value;
             });
 
-        var subjectLine = Utils.buildSubject(name, regionsResponse, userId);
+        var subjectLine = Utils.buildSubject(name, regionsResponse, userId, userMobile);
 
         var headers = [
             'date',
