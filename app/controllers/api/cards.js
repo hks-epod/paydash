@@ -26,6 +26,7 @@ exports.getData = {
         var role = request.auth.credentials.role;
         var version = request.pre.apiVersion;
         var name = request.auth.credentials.firstname + ' ' + request.auth.credentials.lastname;
+        var userMobile = request.auth.credentials.mobile;
 
         var queryString = Queries.paydroid(userId, role, version);
 
@@ -38,7 +39,7 @@ exports.getData = {
                 var data;
 
                 if (version === 1) {
-                    data = Parser.v1(rows, userId, name);
+                    data = Parser.v1(rows, userId, name, userMobile);
                 } else if (version === 2) {
 
                     if (D3.values(rows[4])[0]===undefined) {
@@ -48,7 +49,7 @@ exports.getData = {
                         return reply(Boom.badRequest('Bad request'));
                     }
 
-                    data = Parser.v2(rows, role, userId, name);
+                    data = Parser.v2(rows, role, userId, name, userMobile);
 
                 }
 

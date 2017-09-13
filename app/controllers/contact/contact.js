@@ -55,6 +55,7 @@ exports.sendMessage = {
         var name = request.auth.credentials.firstname + ' ' + request.auth.credentials.lastname;
         var email = request.auth.credentials.email === null ? 'user'+userId+'@noemail.com' : request.auth.credentials.email;
         var role = request.auth.credentials.role;
+        var userMobile = request.auth.credentials.mobile;
 
         var queryString = Queries.contact(userId,role);
 
@@ -67,7 +68,7 @@ exports.sendMessage = {
                 var contactResponse = D3.values(rows[0]);
                 var regionsResponse = D3.values(rows[1]);
 
-                var subject = Utils.buildSubject(name, regionsResponse, userId);
+                var subject = Utils.buildSubject(name, regionsResponse, userId, userMobile);
 
                 var ticket = {
                     subject: subject,

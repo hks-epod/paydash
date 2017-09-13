@@ -37,12 +37,8 @@ exports.buildName = function(firstname, lastname) {
         return name;
     }
 };
-exports.buildSubject = function(subjectStub, userId) {
-    var subjectLine = subjectStub + ' [' + userId + ']';
-    return subjectLine;
-};
 
-exports.buildSubject = function(name, regionsResponse, userId) {
+exports.buildSubject = function(name, regionsResponse, userId, userMobile) {
     var subjectLine = name + ' [';
     for (var i=0; i<regionsResponse.length; i++) {
         if (i>0) {
@@ -52,6 +48,7 @@ exports.buildSubject = function(name, regionsResponse, userId) {
     }
     subjectLine += ']';
     subjectLine += ' [user_id: ' + userId + ']';
+    subjectLine += ' [mobile: ' + userMobile + ']';
     return subjectLine;
 }
 
