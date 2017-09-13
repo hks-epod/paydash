@@ -53,7 +53,7 @@ exports.sendMessage = {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var userId = request.auth.credentials.id;
         var name = request.auth.credentials.firstname + ' ' + request.auth.credentials.lastname;
-        var email = request.auth.credentials.email;
+        var email = request.auth.credentials.email === null ? 'user'+userId+'@noemail.com' : request.auth.credentials.email;
         var role = request.auth.credentials.role;
 
         var queryString = Queries.contact(userId,role);
