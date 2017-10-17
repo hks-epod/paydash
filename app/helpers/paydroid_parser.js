@@ -325,6 +325,18 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
                                 days_pending: d.days_pending,
                                 step: d.step
                             };
+                        })
+                        .sort(function(a,b) {
+                        var aStep = a.step;
+                        var bStep = b.step;
+                        var aMsr_no = a.msr_no;
+                        var bMsr_no = b.msr_no;
+
+                        if (aStep > bStep) return 1;
+                        if (aStep < bStep) return -1;
+                        if (aMsr_no > bMsr_no) return 1;
+                        if (aMsr_no < bMsr_no) return -1;
+                        return 0;
                         }),
                     current_musters: v
                         .filter(function(d) {
