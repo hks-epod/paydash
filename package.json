@@ -48,7 +48,7 @@
     "lab": "^10.9.0",
     "lodash": "^4.13.1",
     "media-type": "^0.3.0",
-    "metrics-graphics" : "git://github.com/hks-epod/metrics-graphics.git",
+    "metrics-graphics": "git://github.com/hks-epod/metrics-graphics.git",
     "moment": "^2.14.1",
     "mysql": "^2.11.1",
     "nodemailer": "^2.6.4",
