@@ -14,11 +14,7 @@ const Table = React.createClass({
                         <tr>
                             {_this.props.data.length > 0 &&
                                 Object.keys(_this.props.data[0]).map(function(key) {
-                                    return (
-                                        <th key={key}>
-                                            {_this.props.translation[key]}
-                                        </th>
-                                    );
+                                    return <th key={key}>{_this.props.translation[key]}</th>;
                                 })}
                         </tr>
                     </thead>
@@ -34,11 +30,7 @@ const Table = React.createClass({
                                                 </td>
                                             );
                                         }
-                                        return (
-                                            <td key={i}>
-                                                {data[key]}
-                                            </td>
-                                        );
+                                        return <td key={i}>{data[key]}</td>;
                                     })}
                                 </tr>
                             );
@@ -47,18 +39,10 @@ const Table = React.createClass({
                 </table>
             );
         } else {
-            table = (
-                <p>
-                    {_this.props.translation.no_muster_information}
-                </p>
-            );
+            table = <p>{_this.props.translation.no_muster_information}</p>;
         }
 
-        return (
-            <div>
-                {table}
-            </div>
-        );
+        return <div>{table}</div>;
     }
 });
 

@@ -4,27 +4,23 @@ import React from 'react';
 import Modal from '../global/modal.jsx';
 import Table from './table.jsx';
 
-const DistrictCard =  React.createClass({
- 
+const DistrictCard = React.createClass({
     toggleModal() {
         const state = this.state.modalOpen;
-        this.setState({ modalOpen: !state});
+        this.setState({ modalOpen: !state });
         ga('send', 'event', {
             eventCategory: 'District Muster detail',
             eventAction: 'click',
             eventLabel: this.props.data.block_code + '/' + this.props.identifier
         });
     },
-    getInitialState: function(){
+    getInitialState: function() {
         return {
-           modalOpen: false
-         };
+            modalOpen: false
+        };
     },
-    render: function(){
+    render: function() {
         return (
-
-
-            
             <div className="pure-u pure-u-6-24">
                 <div className="card">
                     <div className="district-card-top">
@@ -32,7 +28,9 @@ const DistrictCard =  React.createClass({
                     </div>
                     <div className="district-card-numbers pure-g">
                         <div className="pure-u pure-u-24-24 ">
-                            <div className="card-number-sub">{this.props.translation.days_to_payment}</div>
+                            <div className="card-number-sub">
+                                {this.props.translation.days_to_payment}
+                            </div>
                             <div>{this.props.data.days_to_payment}</div>
                         </div>
                     </div>
@@ -46,21 +44,21 @@ const DistrictCard =  React.createClass({
                             <div>{this.props.data.delayed_total}</div>
                         </div>
                     </div>
-                    {
-                        this.props.data.officers.map(function(officer, i) {
-                            return (
-                               <div className="card-officer" key={i}>
-                                    <div>{officer.name}</div>
-                                    <div className="card-officer-sub">
-                                        {officer.designation}
-                                        <span className="u-pull-right">{officer.mobile}</span>
-                                    </div>
-                               </div>
-                            );
-                        })
-                    }
-                    <button className="button button--primary" onClick={this.toggleModal}>{this.props.translation.muster_details}</button>
-                    <Modal show={ this.state.modalOpen } onClose={this.toggleModal}>  
+                    {this.props.data.officers.map(function(officer, i) {
+                        return (
+                            <div className="card-officer" key={i}>
+                                <div>{officer.name}</div>
+                                <div className="card-officer-sub">
+                                    {officer.designation}
+                                    <span className="u-pull-right">{officer.mobile}</span>
+                                </div>
+                            </div>
+                        );
+                    })}
+                    <button className="button button--primary" onClick={this.toggleModal}>
+                        {this.props.translation.muster_details}
+                    </button>
+                    <Modal show={this.state.modalOpen} onClose={this.toggleModal}>
                         <h1 className="">MUSTER DETAILS</h1>
                         <table className="table">
                             <thead>
@@ -97,14 +95,12 @@ const DistrictCard =  React.createClass({
                                     <td>{this.props.data.t8_avg}</td>
                                 </tr>
                             </tbody>
-                            
-                        </table>   
+                        </table>
                     </Modal>
                 </div>
             </div>
-        ); 
+        );
     }
 });
-
 
 export default DistrictCard;

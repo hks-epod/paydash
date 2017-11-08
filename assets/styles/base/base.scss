@@ -9,7 +9,7 @@ html {
 }
 html,
 * {
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 body {
     font-family: $fontType--body;
@@ -21,5 +21,5 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -moz-font-feature-settings: "liga" on;
+    -moz-font-feature-settings: 'liga' on;
 }

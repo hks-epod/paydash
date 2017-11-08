@@ -13,16 +13,22 @@ const Table = React.createClass({
             eventAction: 'click',
             eventLabel: _this.props.step + '/' + _this.props.user.id
         });
-        D3.request('/editor/data').header('Content-Type', 'application/json').post(JSON.stringify({
-            block_code: _this.state.data.block_code,
-            step: _this.props.step,
-            data: this.state.data
-        }), function(err, rawData) {
-            _this.setState({
-                unsavedChanges: rawData.response
-            });
-            _this.props.updateSavedState(false);
-        });
+        D3.request('/editor/data')
+            .header('Content-Type', 'application/json')
+            .post(
+                JSON.stringify({
+                    block_code: _this.state.data.block_code,
+                    step: _this.props.step,
+                    data: this.state.data
+                }),
+                function(err, rawData) {
+                    _this.setState({
+                        isUnsavedChanges: false,
+                        unsavedChanges: rawData.response
+                    });
+                    _this.props.updateSavedState(false);
+                }
+            );
     },
 
     handleChange(event) {
@@ -32,6 +38,7 @@ const Table = React.createClass({
 
         this.setState({
             data: updatedState,
+            isUnsavedChanges: true,
             unsavedChanges: this.props.translation.editor.unsaved
         });
     },
@@ -39,6 +46,7 @@ const Table = React.createClass({
     getInitialState: function() {
         return {
             data: [],
+            isUnsavedChanges: false,
             unsavedChanges: ''
         };
     },
@@ -59,15 +67,9 @@ const Table = React.createClass({
                 <table className="editor__table">
                     <thead>
                         <tr>
-                            <th>
-                                {_this.props.translation.editor.table['name']}
-                            </th>
-                            <th>
-                                {_this.props.translation.editor.table['mobile_no']}
-                            </th>
-                            <th>
-                                {_this.props.translation.editor.table['designation']}
-                            </th>
+                            <th>{_this.props.translation.editor.table['name']}</th>
+                            <th>{_this.props.translation.editor.table['mobile_no']}</th>
+                            <th>{_this.props.translation.editor.table['designation']}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -133,8 +135,16 @@ const Table = React.createClass({
                     .
                 </div>
                 <div className="editor__table__header u-cf u-spacing-page-top">
-                    <h5 className="u-pull-left">
+                    <h5
+                        className={
+                            'u-pull-left' +
+                            (this.state.isUnsavedChanges === false ? 'editor__table__saved' : '')
+                        }
+                    >
+                        {' '}
+                        {this.state.isUnsavedChanges}
                         {_this.state.unsavedChanges}
+                        }
                     </h5>
                     <button
                         className="button button--primary u-pull-right"

@@ -1,22 +1,27 @@
-.editor__subtext{
+.editor__subtext {
     font-size: $fontSize-small;
     color: $color-grey-light;
     margin-bottom: 10px;
 }
-.editor__selector{
+.editor__selector {
     width: 18rem;
     margin-bottom: 40px;
 }
-.editor__table{
+.editor__table {
     width: 100%;
 }
-.editor__table td{
+.editor__table td {
     padding: 0;
 }
 .editor__table td input {
     border: solid 1px #ccc;
-    margin-top:12px;
+    margin-top: 12px;
 }
-.editor__table__header{
+.editor__table__header {
     background-color: #fff;
+}
+
+.editor__table__saved {
+    color: $color-success;
+    font-weight: bold;
 }
