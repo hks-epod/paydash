@@ -12,7 +12,8 @@ exports.block = function(rows) {
     var statePerformance = {
         state_code: stateCode,
         state_name: stateName,
-        data: stateResponse.map(function(d) {
+        data: stateResponse.filter(function(d) { return d.tot_trn!==null; })
+            .map(function(d) {
             return [
                 d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                 d.mrc_mre,
@@ -34,7 +35,8 @@ exports.block = function(rows) {
     var districtPerformance = {
         district_code: districtCode,
         district_name: districtName,
-        data: districtResponse.map(function(d) {
+        data: districtResponse.filter(function(d) { return d.tot_trn!==null; })
+            .map(function(d) {
             return [
                 d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                 d.mrc_mre,
@@ -63,7 +65,8 @@ exports.block = function(rows) {
             return {
                 block_code: v[0].block_code,
                 block_name: v[0].block_name,
-                data: v.map(function(d) {
+                data: v.filter(function(d) { return d.tot_trn!==null; })
+                    .map(function(d) {
                     return [
                         d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                         d.mrc_mre,
@@ -98,7 +101,8 @@ exports.block = function(rows) {
             return {
                 panchayat_code: v[0].panchayat_code,
                 panchayat_name: v[0].panchayat_name,
-                data: v.map(function(d) {
+                data: v.filter(function(d) { return d.tot_trn!==null; })
+                    .map(function(d) {
                     return [
                         d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                         d.mrc_mre,
@@ -145,7 +149,8 @@ exports.district = function(rows) {
     var statePerformance = {
         state_code: stateCode,
         state_name: stateName,
-        data: stateResponse.map(function(d) {
+        data: stateResponse.filter(function(d) { return d.tot_trn!==null; })
+            .map(function(d) {
             return [
                 d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                 d.mrc_mre,
@@ -172,7 +177,8 @@ exports.district = function(rows) {
             return {
                 district_code: v[0].district_code,
                 district_name: v[0].district_name,
-                data: v.map(function(d) {
+                data: v.filter(function(d) { return d.tot_trn!==null; })
+                    .map(function(d) {
                     return [
                         d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                         d.mrc_mre,
@@ -207,7 +213,8 @@ exports.district = function(rows) {
             return {
                 block_code: v[0].block_code,
                 block_name: v[0].block_name,
-                data: v.map(function(d) {
+                data: v.filter(function(d) { return d.tot_trn!==null; })
+                    .map(function(d) {
                     return [
                         d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
                         d.mrc_mre,
