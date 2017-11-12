@@ -59,7 +59,8 @@ const Usage = React.createClass({
                         value={this.state.selectedMetric}
                     />
                     <h3 className="sidebar__heading">
-                        Effect of receiving PayDash on days to complete step (by month of intervention)
+                        Effect of receiving PayDash on days to complete step (by month of
+                        intervention)
                     </h3>
                 </div>
                 <OutcomeChart data={this.state.chart} step={this.state.selectedMetric} />

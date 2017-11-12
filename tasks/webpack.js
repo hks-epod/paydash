@@ -9,7 +9,12 @@ var webpackConfig = {
         app: './assets/scripts/index.js',
         monitor: './assets/scripts/monitor.js'
     },
-    externals: 'fs',
+    externals: [
+        'fs',
+        {
+            xmlhttprequest: '{XMLHttpRequest:XMLHttpRequest}'
+        }
+    ],
     output: {
         path: '.build/js/',
         filename: '[name].bundle.js'

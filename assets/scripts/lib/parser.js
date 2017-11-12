@@ -46,9 +46,10 @@ exports.lines = function(options) {
                 var obj = {
                     date: parseDate(tSmry[0])
                 };
-                obj.value = options.isCumulative && result[index - 1]
-                    ? tSmry[val] + result[index - 1][result[index - 1].length - 1].value
-                    : tSmry[val];
+                obj.value =
+                    options.isCumulative && result[index - 1]
+                        ? tSmry[val] + result[index - 1][result[index - 1].length - 1].value
+                        : tSmry[val];
                 obj.total_trans = tSmry[8];
                 result[index] = result[index] || [];
                 result[index].push(obj);

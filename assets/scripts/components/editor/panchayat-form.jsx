@@ -14,16 +14,22 @@ const Table = React.createClass({
             eventAction: 'click',
             eventLabel: _this.props.step + '/' + _this.props.user.id
         });
-        D3.request('/editor/data').header('Content-Type', 'application/json').post(JSON.stringify({
-            block_code: _this.state.data.block_code,
-            step: _this.props.step,
-            data: this.state.data
-        }), function(err, rawData) {
-            _this.setState({
-                unsavedChanges: rawData.response
-            });
-            _this.props.updateSavedState(false);
-        });
+        D3.request('/editor/data')
+            .header('Content-Type', 'application/json')
+            .post(
+                JSON.stringify({
+                    block_code: _this.state.data.block_code,
+                    step: _this.props.step,
+                    data: this.state.data
+                }),
+                function(err, rawData) {
+                    _this.setState({
+                        isUnsavedChanges: false,
+                        unsavedChanges: rawData.response
+                    });
+                    _this.props.updateSavedState(false);
+                }
+            );
     },
 
     handleChange(event) {
@@ -33,6 +39,7 @@ const Table = React.createClass({
 
         this.setState({
             data: updatedState,
+            isUnsavedChanges: true,
             unsavedChanges: this.props.translation.editor.unsaved
         });
     },
@@ -40,6 +47,7 @@ const Table = React.createClass({
     getInitialState: function() {
         return {
             data: [],
+            isUnsavedChanges: false,
             unsavedChanges: ''
         };
     },
@@ -126,13 +134,19 @@ const Table = React.createClass({
                     {_this.props.translation.long_labels[_this.props.step]}
                 </h2>
                 <div>
-                    {_this.props.translation.editor.instruction}
-                    {' '}
+                    {_this.props.translation.editor.instruction}{' '}
                     {_this.props.translation.long_labels[_this.props.step]}
                     .
                 </div>
                 <div className="editor__table__header u-cf u-spacing-page-top">
-                    <h5 className="u-pull-left">{_this.state.unsavedChanges}</h5>
+                    <h5
+                        className={
+                            'u-pull-left ' +
+                            (this.state.isUnsavedChanges === false ? 'editor__table__saved' : '')
+                        }
+                    >
+                        {_this.state.unsavedChanges}
+                    </h5>
                     <button
                         className="button button--primary u-pull-right"
                         onClick={this.handleSubmit}

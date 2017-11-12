@@ -42,9 +42,7 @@ const Table = React.createClass({
 
     return (
       <div className="">
-        <div className="editor__subtext">
-          {_this.props.translation.title}
-        </div>
+        <div className="editor__subtext">{_this.props.translation.title}</div>
         <select
           className="editor__selector"
           name="share_region"
@@ -54,7 +52,9 @@ const Table = React.createClass({
         >
           {_this.props.user.regions.map(function(user) {
             return (
-              <option key={user.region_code} value={user.region_code}>{user.region_name}</option>
+              <option key={user.region_code} value={user.region_code}>
+                {user.region_name}
+              </option>
             );
           })}
         </select>

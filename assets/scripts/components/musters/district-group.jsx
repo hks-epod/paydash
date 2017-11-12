@@ -75,9 +75,7 @@ const BlockGroup = React.createClass({
                         sortBy={_this.sortBy}
                         translation={_this.props.translation}
                     />
-                    <h1 className="u-inline-block">
-                        {_this.props.data.region_name}
-                    </h1>
+                    <h1 className="u-inline-block">{_this.props.data.region_name}</h1>
                 </div>
                 <div className="pure-g">
                     {_this.state.cards.map(function(data, i) {

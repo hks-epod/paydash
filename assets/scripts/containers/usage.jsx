@@ -43,16 +43,21 @@ const Usage = React.createClass({
     submitMetric: function() {
         var _this = this;
         var url = '/monitor/usage/data';
-        D3.request(url).header('Content-Type', 'application/json').post(JSON.stringify({
-            metric: this.state.selectedMetric.value,
-            comparison: this.state.selectedComparison.value,
-            filter: this.state.selectedFilters
-        }), function(err, rawData) {
-            var data = JSON.parse(rawData.response);
-            _this.setState({
-                data: data
-            });
-        });
+        D3.request(url)
+            .header('Content-Type', 'application/json')
+            .post(
+                JSON.stringify({
+                    metric: this.state.selectedMetric.value,
+                    comparison: this.state.selectedComparison.value,
+                    filter: this.state.selectedFilters
+                }),
+                function(err, rawData) {
+                    var data = JSON.parse(rawData.response);
+                    _this.setState({
+                        data: data
+                    });
+                }
+            );
     },
     getInitialState: function() {
         return {
