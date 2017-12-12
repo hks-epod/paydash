@@ -171,7 +171,7 @@ module.exports = {
                 leave: 'Leave page',
                 stay: 'Stay on page',
                 success: 'Changes saved successfully',
-                error: 'There was an error saving your changes. Please contact the PayDash team if this problem persists.',
+                error: 'An error occurred and your changes were not saved. Please check your internet connectivity and try again.',
                 table: {
                     name: 'Name',
                     mobile_no: 'Mobile No.',
