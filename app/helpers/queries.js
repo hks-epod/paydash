@@ -350,3 +350,7 @@ exports.outcomes = function() {
         'SELECT t1_mean, t2_mean, t3_mean, p_val, outcome FROM estimates_summary_arms;'
     );
 };
+
+exports.contact = function() {
+    return ("SELECT * FROM contact;");
+};

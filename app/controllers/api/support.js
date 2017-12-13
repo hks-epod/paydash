@@ -2,14 +2,19 @@
 
 const Joi = require('joi');
 const Boom = require('boom');
+const Queries = require('../../helpers/queries');
 
 exports.addTicket = {
     description: 'Add new support ticket',
     validate: {
         payload: {
-            subject: Joi.string().max(500).allow(''),
-            email: Joi.string().max(100).allow(''),
-            description: Joi.string().max(5000).allow('')
+            subject: Joi.string()
+                .max(500)
+                .allow(''),
+            email: Joi.string().max(100),
+            description: Joi.string()
+                .max(5000)
+                .allow('')
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
@@ -44,5 +49,34 @@ exports.addTicket = {
                 message: 'Successfully created ticket.'
             });
         });
+    }
+};
+
+exports.askHelp = {
+    description: 'Contact number for ask help call',
+    auth: {
+        mode: 'try',
+        strategy: 'standard'
+    },
+    plugins: {
+        'hapi-auth-cookie': {
+            redirectTo: false
+        }
+    },
+    handler: function(request, reply) {
+
+        var sequelize = request.server.plugins.sequelize.db.sequelize;
+        var queryString = Queries.contact();
+        sequelize
+            .query(queryString, {
+                type: sequelize.QueryTypes.SELECT
+            })
+            .then(function(rows) {
+                var data = {
+                    contact_no: rows[0].phone
+                };
+
+                reply(data);
+            });
     }
 };
