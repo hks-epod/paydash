@@ -2,6 +2,7 @@
 
 const Joi = require('joi');
 const Boom = require('boom');
+const Queries = require('../../helpers/queries');
 
 exports.addTicket = {
     description: 'Add new support ticket',
@@ -59,8 +60,19 @@ exports.askHelp = {
         }
     },
     handler: function(request, reply) {
-        return reply({
-            contact_no: '+xxx'
-        });
+
+        var sequelize = request.server.plugins.sequelize.db.sequelize;
+        var queryString = Queries.contact();
+        sequelize
+            .query(queryString, {
+                type: sequelize.QueryTypes.SELECT
+            })
+            .then(function(rows) {
+                var data = {
+                    contact_no: rows[0].phone
+                };
+
+                reply(data);
+            });
     }
 };
