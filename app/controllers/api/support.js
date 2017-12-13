@@ -7,9 +7,13 @@ exports.addTicket = {
     description: 'Add new support ticket',
     validate: {
         payload: {
-            subject: Joi.string().max(500).allow(''),
+            subject: Joi.string()
+                .max(500)
+                .allow(''),
             email: Joi.string().max(100),
-            description: Joi.string().max(5000).allow('')
+            description: Joi.string()
+                .max(5000)
+                .allow('')
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
@@ -39,6 +43,24 @@ exports.addTicket = {
                 statusCode: 200,
                 message: 'Successfully created ticket.'
             });
+        });
+    }
+};
+
+exports.askHelp = {
+    description: 'Contact number for ask help call',
+    auth: {
+        mode: 'try',
+        strategy: 'standard'
+    },
+    plugins: {
+        'hapi-auth-cookie': {
+            redirectTo: false
+        }
+    },
+    handler: function(request, reply) {
+        return reply({
+            contact_no: '+xxx'
         });
     }
 };

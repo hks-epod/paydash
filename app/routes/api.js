@@ -61,6 +61,11 @@ exports.register = function(plugin, options, next) {
             method: 'GET',
             path: '/api/policy',
             config: Controllers.api.pages.policy
+        },
+        {
+            method: 'GET',
+            path: '/api/help',
+            config: Controllers.api.support.askHelp
         }
     ]);
 
