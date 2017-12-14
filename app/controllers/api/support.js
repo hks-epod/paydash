@@ -73,7 +73,8 @@ exports.askHelp = {
             })
             .then(function(rows) {
                 var data = {
-                    contact_no: rows[0].phone
+                    contact_no: rows[0].phone,
+                    email: rows[0].email
                 };
 
                 reply(data);

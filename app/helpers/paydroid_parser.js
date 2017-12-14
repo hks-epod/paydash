@@ -606,7 +606,6 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
                 return {
                     district_code: v[0].district_code,
                     district_name: v[0].district_name,
-                    block_code: v[0].block_code,
                     data: v.filter(function(d) { return d.tot_trn!==null; })
                         .map(function(d) {
                         return [
