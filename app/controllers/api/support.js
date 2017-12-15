@@ -55,9 +55,14 @@ exports.submitHelp = {
             type: Joi.string()
                 .max(500)
                 .allow(''),
-            contact: Joi.string()
-                .max(5000)
-                .allow('')
+            data: {
+                contact_no: Joi.string()
+                    .max(20)
+                    .allow(''),
+                description: Joi.string()
+                    .max(5000)
+                    .allow('')
+            }
         },
         failAction: function(request, reply, source, error) {
             // Boom bad request
@@ -74,21 +79,39 @@ exports.submitHelp = {
         }
     },
     handler: function(request, reply) {
-        var ticket = {
-            subject: 'Employee data screen help request' + request.payload.contact,
-            email: 'epodindianrega@gmail.com',
-            description:
-                'A user has requested assistance updating their employee information. Please contact them at the number provided in the subject line.'
-        };
-
         var freshDesk = request.server.plugins.freshdesk;
+        
+        if (request.payload.type==='help-employee-info') {
+            var ticket = {
+                subject: 'Employee data help request [phone: ' + (request.payload.data.contact_no) + ']',
+                email: 'epodindianrega@gmail.com',
+                description: 'A user has requested assistance updating their employee information. Please contact them at the number provided in the subject line.'
+            };
 
-        freshDesk.newTicket(ticket, function() {
-            return reply({
-                statusCode: 200,
-                message: 'Successfully created ticket.'
+            freshDesk.newTicket(ticket, function() {
+                return reply({
+                    statusCode: 200,
+                    message: 'Successfully created ticket.'
+                });
             });
-        });
+        } else if (request.payload.type==='help-login') {
+            var ticket = {
+                subject: 'Login screen help request [phone: ' + (request.payload.data.contact_no) + ']',
+                email: 'epodindianrega@gmail.com',
+                description: request.payload.data.description
+            };
+
+            freshDesk.newTicket(ticket, function() {
+                return reply({
+                    statusCode: 200,
+                    message: 'Successfully created ticket.'
+                });
+            });
+        } else {
+            return reply(Boom.badRequest('Bad request'));
+        }
+
+
     }
 };
 exports.askHelp = {
