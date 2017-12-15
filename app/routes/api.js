@@ -66,6 +66,11 @@ exports.register = function(plugin, options, next) {
             method: 'GET',
             path: '/api/help',
             config: Controllers.api.support.askHelp
+        },
+        {
+            method: 'POST',
+            path: '/api/help',
+            config: Controllers.api.support.submitHelp
         }
     ]);
 

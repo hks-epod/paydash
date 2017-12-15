@@ -48,6 +48,49 @@ exports.addTicket = {
     }
 };
 
+exports.submitHelp = {
+    description: 'Add new support ticket',
+    validate: {
+        payload: {
+            type: Joi.string()
+                .max(500)
+                .allow(''),
+            contact: Joi.string()
+                .max(5000)
+                .allow('')
+        },
+        failAction: function(request, reply, source, error) {
+            // Boom bad request
+            return reply(Boom.badRequest(error));
+        }
+    },
+    auth: {
+        mode: 'try',
+        strategy: 'standard'
+    },
+    plugins: {
+        'hapi-auth-cookie': {
+            redirectTo: false
+        }
+    },
+    handler: function(request, reply) {
+        var ticket = {
+            subject: 'Employee data screen help request' + request.payload.contact,
+            email: 'epodindianrega@gmail.com',
+            description:
+                'A user has requested assistance updating their employee information. Please contact them at the number provided in the subject line.'
+        };
+
+        var freshDesk = request.server.plugins.freshdesk;
+
+        freshDesk.newTicket(ticket, function() {
+            return reply({
+                statusCode: 200,
+                message: 'Successfully created ticket.'
+            });
+        });
+    }
+};
 exports.askHelp = {
     description: 'Contact number for ask help call',
     auth: {
@@ -60,7 +103,6 @@ exports.askHelp = {
         }
     },
     handler: function(request, reply) {
-
         var sequelize = request.server.plugins.sequelize.db.sequelize;
         var queryString = Queries.contact();
         sequelize
