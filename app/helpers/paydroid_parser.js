@@ -727,10 +727,226 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
         return data;
     }
 
+    function parse_state(rows) {
+        var overviewResponse = D3.values(rows[0]);
+
+        var cardsResponse = D3.values(rows[1]);
+
+        var stateResponse = D3.values(rows[2]);
+
+        var districtResponse = D3.values(rows[3]);
+
+        var contactResponse = D3.values(rows[4]);
+
+        var regionsResponse = D3.values(rows[5]);
+
+        var versionResponse = D3.values(rows[6]);
+
+        // Parse the overview response
+        var overview = D3.nest()
+            .key(function(d) {
+                return d.state_code;
+            })
+            .rollup(function(v) {
+                return {
+                    state_code: v[0].state_code,
+                    state_name: v[0].state_name,
+                    current_total: v[0].current_total,
+                    delayed_total: v[0].delayed_total,
+                    days_to_payment: v[0].days_to_payment
+                };
+            })
+            .entries(overviewResponse)
+            .map(function(d) {
+                return d.value;
+            });
+
+        var state_code = overviewResponse[0].state_code;
+
+        // Nest the cards response and include the overview stats
+        var cards = D3.nest()
+            .key(function(d) {
+                return d.district_code;
+            })
+            .rollup(function(v) {
+                return {
+                    officers: v
+                        .map(function(d) {
+                            return {
+                                officer_id: d.district_code + '_' + d.designation_id,
+                                name: Utils.buildName(d.firstname, d.lastname),
+                                designation: d.designation,
+                                designation_id: d.designation_id,
+                                mobile: d.mobile
+                            };
+                        })
+                        .sort(function(a, b) {
+                            return a.designation_id - b.designation_id;
+                        }),
+                    state_name: v[0].state_name,
+                    district_code: v[0].district_code,
+                    district_name: v[0].district_name,
+                    current_total: v[0].current_total,
+                    delayed_total: v[0].delayed_total,
+                    days_to_payment: v[0].days_to_payment,
+                    t2_total: v[0].t2_total,
+                    t2_avg: v[0].t2_avg,
+                    t5_total: v[0].t5_total,
+                    t5_avg: v[0].t5_avg,
+                    t6_total: v[0].t6_total,
+                    t6_avg: v[0].t6_avg,
+                    t7_total: v[0].t7_total,
+                    t7_avg: v[0].t7_avg,
+                    t8_total: v[0].t8_total,
+                    t8_avg: v[0].t8_avg
+                };
+            })
+            .entries(cardsResponse)
+            .map(function(d) {
+                return d.value;
+            })
+            .sort(function(a, b) {
+                if (a.district_name.toLowerCase() < b.district_name.toLowerCase()) return -1;
+                if (a.district_name.toLowerCase() > b.district_name.toLowerCase()) return 1;
+                return 0;
+            });
+
+        // Nest the state response
+        var statePerformance = D3.nest()
+            .key(function(d) {
+                return d.state_code;
+            })
+            .rollup(function(v) {
+                return {
+                    state_code: v[0].state_code,
+                    state_name: v[0].state_name,
+                    data: v.filter(function(d) { return d.tot_trn!==null; })
+                        .map(function(d) {
+                        return [
+                            d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
+                            d.mrc_mre,
+                            d.mre_wlg,
+                            d.wlg_wls,
+                            d.wls_fto,
+                            d.fto_sn1,
+                            d.sn1_sn2,
+                            d.sn2_prc,
+                            d.mrc_prc,
+                            d.tot_trn
+                        ];
+                    })
+                };
+            })
+            .entries(stateResponse)
+            .map(function(d) {
+                return d.value;
+            });
+
+        // Nest the district response
+        var districtPerformance = D3.nest()
+            .key(function(d) {
+                return d.district_code;
+            })
+            .rollup(function(v) {
+                return {
+                    district_code: v[0].district_code,
+                    district_name: v[0].district_name,
+                    data: v.filter(function(d) { return d.tot_trn!==null; })
+                        .map(function(d) {
+                        return [
+                            d.year + '' + Utils.padNum(d.month) + '' + Utils.padNum(1),
+                            d.mrc_mre,
+                            d.mre_wlg,
+                            d.wlg_wls,
+                            d.wls_fto,
+                            d.fto_sn1,
+                            d.sn1_sn2,
+                            d.sn2_prc,
+                            d.mrc_mre,
+                            d.tot_trn
+                        ];
+                    })
+                };
+            })
+            .entries(districtResponse)
+            .map(function(d) {
+                return d.value;
+            });
+
+        var subjectLine = Utils.buildSubject(name, regionsResponse, userId, userMobile);
+
+        var headers = [
+            'date',
+            'mrc_mre',
+            'mre_wlg',
+            'wlg_wls',
+            'wls_fto',
+            'fto_sn1',
+            'sn1_sn2',
+            'sn2_prc',
+            'mrc_prc',
+            'tot_trn'
+        ];
+
+        var data = {
+            overview: overview,
+            cards: cards,
+            state_performance: statePerformance,
+            district_performance: districtPerformance,
+            config: {
+                headers: headers,
+                labels: [
+                    'Date',
+                    'Muster roll closure to muster roll entry',
+                    'Muster roll entry to wage list generation',
+                    'Wage list generation to wage list sent',
+                    'Wage list sent to FTO generation',
+                    'FTO generation to first signature',
+                    'First signature to second signature',
+                    'Second signature to processed by bank',
+                    'Total Length of Process',
+                    'Total Transactions'
+                ]
+            },
+            contact: {
+                phone: contactResponse[0].phone,
+                email: contactResponse[0].email,
+                subject: subjectLine
+            },
+            colors: {
+                default: [
+                    '#F15854',
+                    '#B2912F',
+                    '#F17CB0',
+                    '#60BD68',
+                    '#FAA43A',
+                    '#5DA5DA',
+                    '#B276B2',
+                    '#97D19C'
+                ],
+                colorblind: [
+                    '#E69F00',
+                    '#56B4E9',
+                    '#009E73',
+                    '#000000',
+                    '#F0E442',
+                    '#D55E00',
+                    '#CC79A7',
+                    '#0072b2'
+                ]
+            },
+            version: versionResponse[0].version
+        };
+
+        return data;
+    }
+
     if (role === 'block') {
         var data = parse_block(rows);
     } else if (role === 'district') {
         var data = parse_district(rows);
+    } else if (role === 'state') {
+        var data = parse_state(rows);
     }
 
     return data;

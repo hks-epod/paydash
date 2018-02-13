@@ -5,7 +5,7 @@ exports.notfound = {
     auth: {
         mode: 'try',
         strategy: 'standard',
-        scope: ['block', 'district', 'user']
+        scope: ['block', 'district', 'state', 'user']
     },
     plugins: {
         'hapi-auth-cookie': {

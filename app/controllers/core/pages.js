@@ -5,7 +5,7 @@ exports.home = {
     auth: {
         mode: 'try',
         strategy: 'standard',
-        scope: ['block', 'district', 'editor', 'monitoring']
+        scope: ['block', 'district', 'state', 'editor', 'monitoring']
     },
     plugins: {
         'hapi-auth-cookie': {
@@ -25,7 +25,7 @@ exports.policy = {
     auth: {
         mode: 'try',
         strategy: 'standard',
-        scope: ['block', 'district', 'editor']
+        scope: ['block', 'district', 'state', 'editor']
     },
     plugins: {
         'hapi-auth-cookie': {

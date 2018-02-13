@@ -7,6 +7,7 @@ module.exports = {
             overview: 'OVERVIEW',
             musters: {
                 $filter: 'role',
+                state: 'DISTRICTS',
                 district: 'BLOCKS',
                 block: 'MUSTERS'
             },
@@ -23,7 +24,8 @@ module.exports = {
             description: {
                 $filter: 'role',
                 block: "Here's how your Block is doing on MGNREGA payment delays.",
-                district: "Here's how your District is doing on MGNREGA payment delays."
+                district: "Here's how your District is doing on MGNREGA payment delays.",
+                state: "Here's how your State is doing on MGNREGA payment delays."
             }
         },
         musters: {
@@ -59,12 +61,14 @@ module.exports = {
             overview: {
                 title: {
                     $filter: 'role',
+                    state: "Your State/District's Performance",
                     district: "Your District/Block's Performance",
                     block: "Your Block/Panchayat's Performance",
                     $default: 'Overview Performance'
                 },
                 description: {
                     $filter: 'role',
+                    state: 'Average number of days to complete each step of the payment process in your state/district.',
                     district: 'Average number of days to complete each step of the payment process in your district/block.',
                     block: 'Average number of days to complete each step of the payment process in your block/panchayat.',
                     $default: 'Average number of days to complete each step of the payment process in your region.'
@@ -84,12 +88,14 @@ module.exports = {
             comparison: {
                 title: {
                     $filter: 'role',
+                    state: 'Benchmarking Your Performance',
                     district: 'Benchmarking Your Performance',
                     block: 'Benchmarking Your Performance',
                     $default: 'Benchmarking Your Performance'
                 },
                 description: {
                     $filter: 'role',
+                    state: '',
                     district: 'Compare your performance with averages for your state.',
                     block: 'Compare your performance with averages for your district and state.',
                     $default: 'Compare your performance with averages for other regions.'

@@ -5,7 +5,7 @@ const Joi = require('joi');
 exports.showEditProfile = {
     description: 'Show Edit profile settings',
     auth: {
-        scope: ['block', 'editor', 'district']
+        scope: ['block', 'editor', 'district', 'state']
     },
     handler: function(request, reply) {
         var ctx = {
@@ -18,7 +18,7 @@ exports.showEditProfile = {
 exports.postEditProfile = {
     description: 'Post Edit profile settings',
     auth: {
-        scope: ['block', 'editor', 'district']
+        scope: ['block', 'editor', 'district', 'state']
     },
     validate: {
         payload: {

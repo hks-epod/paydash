@@ -172,3 +172,72 @@ exports.district = function(rows) {
 
     return data;
 };
+
+
+exports.state = function(rows) {
+    var cardsResponse = rows;
+
+    // Nest the cards response
+    var cards = D3.nest()
+        .key(function(d) {
+            return d.state_code + d.state_name;
+        })
+        .key(function(d) {
+            return d.district_code;
+        })
+        .rollup(function(v) {
+            return {
+                officers: v
+                    .map(function(d) {
+                        return {
+                            officer_id: d.district_code + '_' + d.designation_id,
+                            name: Utils.buildName(d.firstname, d.lastname),
+                            designation: d.designation,
+                            designation_id: d.designation_id,
+                            mobile: d.mobile
+                        };
+                    })
+                    .sort(function(a, b) {
+                        return a.designation_id - b.designation_id;
+                    }),
+                district_code: v[0].district_code,
+                district_name: v[0].district_name,
+                current_total: v[0].current_total,
+                delayed_total: v[0].delayed_total,
+                days_to_payment: v[0].days_to_payment,
+                t2_total: v[0].t2_total,
+                t2_avg: v[0].t2_avg,
+                t5_total: v[0].t5_total,
+                t5_avg: v[0].t5_avg,
+                t6_total: v[0].t6_total,
+                t6_avg: v[0].t6_avg,
+                t7_total: v[0].t7_total,
+                t7_avg: v[0].t7_avg,
+                t8_total: v[0].t8_total,
+                t8_avg: v[0].t8_avgw
+            };
+        })
+        .entries(cardsResponse)
+        .map(function(d) {
+            return {
+                region_type: 'state',
+                region_code: d.key.substr(0, 2),
+                region_name: d.key.substr(2),
+                cards: d.values
+                    .map(function(e) {
+                        return e.value;
+                    })
+                    .sort(function(a, b) {
+                        if (a.district_name.toLowerCase() < b.district_name.toLowerCase()) return -1;
+                        if (a.district_name.toLowerCase() > b.district_name.toLowerCase()) return 1;
+                        return 0;
+                    })
+            };
+        });
+
+    var data = {
+        musters: cards
+    };
+
+    return data;
+};

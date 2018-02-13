@@ -6,7 +6,7 @@ const Translate = require('../../templates/helpers/t');
 
 exports.showPage = {
     auth: {
-        scope: ['block', 'district']
+        scope: ['block', 'district', 'state']
     },
     handler: function(request, reply) {
         return reply.view('performance/performance');
@@ -15,7 +15,7 @@ exports.showPage = {
 
 exports.getData = {
     auth: {
-        scope: ['block', 'district']
+        scope: ['block', 'district', 'state']
     },
     handler: function(request, reply) {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
@@ -29,11 +29,18 @@ exports.getData = {
             })
             .then(function(rows) {
                 var data;
+                var comparison_lines;
                 if (role === 'block') {
                     data = PerformanceParser.block(rows);
+                    comparison_lines = ['state', 'district'];
                 } else if (role === 'district') {
                     data = PerformanceParser.district(rows);
+                    comparison_lines = ['state'];
+                } else if (role === 'state') {
+                    data = PerformanceParser.state(rows);
+                    comparison_lines = [];
                 }
+
 
                 data.config = {
                     role: role,
@@ -48,7 +55,7 @@ exports.getData = {
                         'sn2_prc',
                         'tot_trn'
                     ],
-                    comparison_lines: role === 'block' ? ['state', 'district'] : ['state']
+                    comparison_lines: comparison_lines
                 };
 
                 data.translation = Translate('/web/performance', request.auth.credentials, null);

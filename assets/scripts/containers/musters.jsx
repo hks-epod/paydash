@@ -3,6 +3,7 @@
 import React from 'react';
 import BlockGroup from '../components/musters/block-group.jsx';
 import DistrictGroup from '../components/musters/district-group.jsx';
+import StateGroup from '../components/musters/state-group.jsx';
 import Loader from '../components/global/loader.jsx';
 
 const D3 = require('d3');
@@ -56,6 +57,14 @@ const Musters = React.createClass({
                         } else if (_this.state.config.role === 'district') {
                             return (
                                 <DistrictGroup
+                                    key={data.region_code}
+                                    data={data}
+                                    translation={_this.state.translation}
+                                />
+                            );
+                        } else if (_this.state.config.role === 'state') {
+                            return (
+                                <StateGroup
                                     key={data.region_code}
                                     data={data}
                                     translation={_this.state.translation}

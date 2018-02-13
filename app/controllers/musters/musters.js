@@ -6,7 +6,7 @@ const Translate = require('../../templates/helpers/t');
 
 exports.showPage = {
     auth: {
-        scope: ['block', 'district']
+        scope: ['block', 'district', 'state']
     },
     handler: function(request, reply) {
         return reply.view('musters/musters');
@@ -15,7 +15,7 @@ exports.showPage = {
 
 exports.getData = {
     auth: {
-        scope: ['block', 'district']
+        scope: ['block', 'district', 'state']
     },
     handler: function(request, reply) {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
@@ -38,6 +38,11 @@ exports.getData = {
                     data = MustersParser.district(rows);
                     data.config = {
                         role: 'district'
+                    };
+                } else if (role === 'state') {
+                    data = MustersParser.state(rows);
+                    data.config = {
+                        role: 'state'
                     };
                 }
 
