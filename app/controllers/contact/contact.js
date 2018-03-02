@@ -9,7 +9,7 @@ const Handlebars = require('handlebars');
 
 exports.show = {
     auth: {
-        scope: ['block', 'editor', 'district']
+        scope: ['block', 'editor', 'district', 'state']
     },
     handler: function(request, reply) {
         var sequelize = request.server.plugins.sequelize.db.sequelize;
@@ -24,7 +24,7 @@ exports.show = {
             .then(function(rows) {
                 var contactResponse = rows[0];
                 var data = {
-                    phone: contactResponse[0].phone
+                    phone: contactResponse.phone
                 };
                 var template = Handlebars.compile(
                     Translate('/web/contact/call', request.auth.credentials, null)
@@ -37,7 +37,7 @@ exports.show = {
 
 exports.sendMessage = {
     auth: {
-        scope: ['block', 'editor', 'district']
+        scope: ['block', 'editor', 'district', 'state']
     },
     validate: {
         payload: {
