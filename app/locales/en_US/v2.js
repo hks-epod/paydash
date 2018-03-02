@@ -9,6 +9,7 @@ module.exports = {
             overview: {
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
+                delayed_no_t5: 'Excluding musters delayed at T+5',
                 total_transactions: 'Transactions in last 3 months',
                 days_to_payment: 'Avg. days to payment in last 3 months',
                 cards_need_attention: 'cards require your attention',
@@ -18,6 +19,7 @@ module.exports = {
                 cards: 'Cards',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters_1: 'Delayed musters',
+                delayed_no_t5: 'Excluding musters delayed at T+5',
                 muster_details: 'Muster details',
                 current_musters: 'CURRENT MUSTERS',
                 delayed_musters_2: 'DELAYED MUSTERS',
@@ -158,13 +160,15 @@ module.exports = {
                 show_blocks: 'GO TO BLOCKS',
                 days_to_payment: 'Avg. days to payment in last 3 months',
                 musters_closing_today: 'Musters closing today',
-                delayed_musters: 'Delayed musters'
+                delayed_musters: 'Delayed musters',
+                delayed_no_t5: 'Excluding musters delayed at T+5',
             },
             cards: {
                 cards: 'Cards',
                 days_to_payment: 'Avg. days to payment in last 3 months',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
+                delayed_no_t5: 'Excluding musters delayed at T+5',
                 musters_diff_steps: 'Musters delayed at different steps',
                 avg_days_pending: 'Avg. days pending',
                 total: 'Total',
@@ -290,13 +294,15 @@ module.exports = {
                 show_districts: 'GO TO DISTRICTS',
                 days_to_payment: 'Avg. days to payment in last 3 months',
                 musters_closing_today: 'Musters closing today',
-                delayed_musters: 'Delayed musters'
+                delayed_musters: 'Delayed musters',
+                delayed_no_t5: 'Excluding musters delayed at T+5'
             },
             cards: {
                 cards: 'Cards',
                 days_to_payment: 'Avg. days to payment in last 3 months',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
+                delayed_no_t5: 'Excluding musters delayed at T+5',
                 musters_diff_steps: 'Musters delayed at different steps',
                 avg_days_pending: 'Avg. days pending',
                 total: 'Total',
