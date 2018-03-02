@@ -15,6 +15,7 @@ exports.parser = function(rows) {
                 region_name: v[0].region_name,
                 current_total: v[0].current_total,
                 delayed_total: v[0].delayed_total,
+                delayed_no_t5: v[0].delayed_no_t5,
                 days_to_payment: v[0].days_to_payment
             };
         })
