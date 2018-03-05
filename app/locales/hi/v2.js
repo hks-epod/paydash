@@ -9,7 +9,7 @@ module.exports = {
             overview: {
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
-                delayed_no_t5: 'Excluding musters delayed at T+5',
+                delayed_no_t5: 'T+5 पर विलंबित MRs को घटाने के बाद',
                 total_transactions: 'पिछले 3 महीनों में कुल कितने भुगतान हुए',
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 cards_need_attention: 'कार्ड्स को आपके ध्यान की ज़रूरत है',
@@ -19,7 +19,7 @@ module.exports = {
                 cards: 'कार्ड्स',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters_1: 'विलंबित मस्टर्स',
-                delayed_no_t5: 'Excluding musters delayed at T+5',
+                delayed_no_t5: 'T+5 पर विलंबित MRs को घटाने के बाद',
                 muster_details: 'मस्टर्स की विस्तार से जानकारी',
                 current_musters: 'वर्तमान मस्टर्स',
                 delayed_musters_2: 'विलंबित मस्टर्स',
@@ -161,14 +161,14 @@ module.exports = {
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
-                delayed_no_t5: 'Excluding musters delayed at T+5'
+                delayed_no_t5: 'T+5 पर विलंबित MRs को घटाने के बाद'
             },
             cards: {
                 cards: 'कार्ड्स',
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
-                delayed_no_t5: 'Excluding musters delayed at T+5',
+                delayed_no_t5: 'T+5 पर विलंबित MRs को घटाने के बाद',
                 musters_diff_steps: 'विभिन्न पड़ावों पर विलंबित मस्टर रोल',
                 avg_days_pending: 'औसत विलंब',
                 total: 'कुल मस्टर रोल',
@@ -295,14 +295,14 @@ module.exports = {
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
-                delayed_no_t5: 'Excluding musters delayed at T+5'
+                delayed_no_t5: 'T+5 पर विलंबित MRs को घटाने के बाद'
             },
             cards: {
                 cards: 'कार्ड्स',
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
-                delayed_no_t5: 'Excluding musters delayed at T+5',
+                delayed_no_t5: 'T+5 पर विलंबित MRs को घटाने के बाद',
                 musters_diff_steps: 'विभिन्न पड़ावों पर विलंबित मस्टर रोल',
                 avg_days_pending: 'औसत विलंब',
                 total: 'कुल मस्टर रोल',
