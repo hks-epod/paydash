@@ -49,24 +49,20 @@ exports.addTicket = {
         // Second choice is their Google account email address.
         // Third choice is epodindianrega@gmail.com. In this case the subject line will still contain their identifying information. But the email address is how FreshDesk categorizes our "contacts" so it is preferable to use the user's email address if it is available.
 
-        var userEmail; 
         if ((request.payload.email==='epodindianrega@gmail.com') && (request.auth.isAuthenticated)) { // this is how we know it's an in-app (logged in) request
             // We want to use the user-entered email field on their account. 
             // If that's not filled we want to use their Google Account. 
             // If that's empty we set the email as epodindianrega@gmail.com. This is the "master" PayDash account on FreshDesk. Email address is a required field for opening FreshDesk tickets. 
             if ((request.auth.credentials.email==='' || request.auth.credentials.email===null) && (request.auth.credentials.google_account!==null)) { 
-                userEmail = request.auth.credentials.google_account;
+                ticket.email = request.auth.credentials.google_account;
             } else if (request.auth.credentials.email!==null) {
-                userEmail = request.auth.credentials.email;
+                ticket.email = request.auth.credentials.email;
             } else {
-                userEmail = 'epodindianrega@gmail.com';
+                ticket.email = 'epodindianrega@gmail.com';
             }
-        }
-        // Case 2: Login help (by definition not logged in) FreshDesk ticket creation
-        // Email address will be blank and needs to be replaced with epodindianrega@gmail.com
 
-        // Case 3: Employee data help () FreshDesk ticket creation
-        // Email address will be blank and needs to be replaced with epodindianrega@gmail.com
+            ticket.email = userEmail;
+        }
 
         if (ticket.email==='' || ticket.email===null || ticket.email===undefined) { 
             ticket.email = ('user'+request.auth.credentials.id+'@noemail.com');
@@ -115,7 +111,6 @@ exports.submitHelp = {
     },
     handler: function(request, reply) {
         var freshDesk = request.server.plugins.freshdesk;
-        console.log(request.payload)
         if (request.payload.type==='help-employee-info') {
             var ticket = {
                 subject: 'Employee data help request [phone: ' + (request.payload.data.contact_no) + ']',
@@ -130,7 +125,7 @@ exports.submitHelp = {
                 });
             });
         } else if (request.payload.type==='help-login') {
-            
+
             var ticket = {
                 subject: 'Login screen help request [phone: ' + (request.payload.data.contact_no) + ']',
                 email: 'epodindianrega@gmail.com',
