@@ -115,7 +115,7 @@ exports.submitHelp = {
     },
     handler: function(request, reply) {
         var freshDesk = request.server.plugins.freshdesk;
-        
+        console.log(request.payload)
         if (request.payload.type==='help-employee-info') {
             var ticket = {
                 subject: 'Employee data help request [phone: ' + (request.payload.data.contact_no) + ']',
@@ -130,9 +130,10 @@ exports.submitHelp = {
                 });
             });
         } else if (request.payload.type==='help-login') {
+            
             var ticket = {
                 subject: 'Login screen help request [phone: ' + (request.payload.data.contact_no) + ']',
-                email: '',
+                email: 'epodindianrega@gmail.com',
                 description: request.payload.data.description
             };
 
