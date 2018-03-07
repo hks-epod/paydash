@@ -290,7 +290,7 @@ module.exports = {
         state: {
             paydash: 'PayDash',
             overview: {
-                view_your_blocks: 'View your {districts_total} districts',
+                view_your_districts: 'View your {districts_total} districts',
                 show_districts: 'GO TO DISTRICTS',
                 days_to_payment: 'Avg. days to payment in last 3 months',
                 musters_closing_today: 'Musters closing today',
