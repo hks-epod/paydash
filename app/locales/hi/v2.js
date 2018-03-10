@@ -290,7 +290,7 @@ module.exports = {
         state: {
             paydash: 'पे-डॅश',
             overview: {
-                view_your_districts: 'अपने राज्य के {district_total} ज़िलों का प्रदर्शन देखें',
+                view_your_districts: 'अपने राज्य के {districts_total} ज़िलों का प्रदर्शन देखें',
                 show_districts: 'ज़िला देखें',
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
