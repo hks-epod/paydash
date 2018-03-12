@@ -9,7 +9,7 @@ module.exports = {
             overview: {
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
-                delayed_no_t5: 'T+5 पर विलंबित MRs को घटाने के बाद',
+                delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
                 total_transactions: 'पिछले 3 महीनों में कुल कितने भुगतान हुए',
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 cards_need_attention: 'कार्ड्स को आपके ध्यान की ज़रूरत है',
