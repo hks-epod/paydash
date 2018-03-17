@@ -387,3 +387,7 @@ exports.outcomes = function() {
 exports.contact = function() {
     return ("SELECT * FROM contact;");
 };
+
+exports.employee_data_help = function(USER_ID, ROLE) {
+    return "SELECT a.region_code, a.region_name, IFNULL(c.designation,'NO DESIGNATION') AS designation FROM (select * from user_regions WHERE user_id="+USER_ID+") a inner join "+ROLE+"s b ON a.region_code=b."+ROLE+"_code LEFT join officer_configuration c on b.state_code=c.state_code and c.role='"+ROLE+"' and a.designation_id=c.designation_id;";
+};

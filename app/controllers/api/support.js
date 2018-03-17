@@ -3,6 +3,8 @@
 const Joi = require('joi');
 const Boom = require('boom');
 const Queries = require('../../helpers/queries');
+const Utils = require('../../helpers/utils');
+const D3 = require('d3');
 
 exports.addTicket = {
     description: 'Add new support ticket',
@@ -61,7 +63,6 @@ exports.addTicket = {
                 ticket.email = 'epodindianrega@gmail.com';
             }
 
-            ticket.email = userEmail;
         }
 
         if (ticket.email==='' || ticket.email===null || ticket.email===undefined) { 
@@ -112,24 +113,63 @@ exports.submitHelp = {
     handler: function(request, reply) {
         var freshDesk = request.server.plugins.freshdesk;
         if (request.payload.type==='help-employee-info') {
-            var ticket = {
-                subject: 'Employee data help request [phone: ' + (request.payload.data.contact_no) + ']',
-                email: '',
-                description: 'A user has requested assistance updating their employee information. Please contact them at the number provided in the subject line.'
-            };
+            
+            if (request.auth.isAuthenticated) {
+                var ticket = {
+                    subject: '',
+                    email: '',
+                    description: 'A user has requested assistance updating their employee information. Please contact them at '+request.payload.data.contact_no+'.'
+                };
 
-            freshDesk.newTicket(ticket, function() {
-                return reply({
-                    statusCode: 200,
-                    message: 'Successfully created ticket.'
+                if ((request.auth.credentials.email==='' || request.auth.credentials.email===null) && (request.auth.credentials.google_account!==null)) { 
+                    ticket.email = request.auth.credentials.google_account;
+                } else if (request.auth.credentials.email!==null) {
+                    ticket.email = request.auth.credentials.email;
+                } else {
+                    ticket.email = 'epodindianrega@gmail.com';
+                }
+            
+                var sequelize = request.server.plugins.sequelize.db.sequelize;
+                var queryString = Queries.employee_data_help(request.auth.credentials.id, request.auth.credentials.role);
+
+                sequelize
+                .query(queryString, {
+                    type: sequelize.QueryTypes.SELECT
+                })
+                .then(function(rows) {
+                    var regionsResponse = rows;
+                    ticket.subject = '[Employee Data Update Request] '+Utils.buildSubject(Utils.buildName(request.auth.credentials.firstname, request.auth.credentials.lastname), regionsResponse, request.auth.credentials.id, request.payload.data.contact_no);
+
+                    freshDesk.newTicket(ticket, function() {
+                        return reply({
+                            statusCode: 200,
+                            message: 'Successfully created ticket.'
+                        });
+                    });
                 });
-            });
+            } else {
+                var ticket = {
+                    subject: 'Employee data update request [phone: ' + (request.payload.data.contact_no) + ']',
+                    email: 'epodindianrega@gmail.com',
+                    description: 'A user has requested assistance updating their employee information. Please contact them at '+request.payload.data.contact_no+'. Note that the user was not logged in when making this request so it was registered anonymously.'
+                };
+
+                freshDesk.newTicket(ticket, function() {
+                    return reply({
+                        statusCode: 200,
+                        message: 'Successfully created ticket.'
+                    });
+                });
+            }
+
+            
+
         } else if (request.payload.type==='help-login') {
 
             var ticket = {
                 subject: 'Login screen help request [phone: ' + (request.payload.data.contact_no) + ']',
                 email: 'epodindianrega@gmail.com',
-                description: request.payload.data.description
+                description: 'A user has requested assistance logging into the PayDash app. Please contact them at '+request.payload.data.contact_no+'.'
             };
 
             freshDesk.newTicket(ticket, function() {
