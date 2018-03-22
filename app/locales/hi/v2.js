@@ -13,7 +13,8 @@ module.exports = {
                 total_transactions: 'पिछले 3 महीनों में कुल कितने भुगतान हुए',
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 cards_need_attention: 'कार्ड्स को आपके ध्यान की ज़रूरत है',
-                view_cards: 'कार्ड्स देखें'
+                view_cards: 'कार्ड्स देखें',
+                indic_help: 'How are these calculated?'
             },
             cards: {
                 cards: 'कार्ड्स',
@@ -151,6 +152,27 @@ module.exports = {
                 overview:'{name} के लिए मस्टर रोल विवरण\n\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\n',
                 current:'आज बंद हो रहे मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{msr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n\n',
                 delayed:'विलंबित मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{msr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n_विलंब(दिन)_\n{days_pending}\n\n'
+            },
+            indic_details: {
+                screen_title: 'Indicator Details',
+                content: [
+                    {
+                        indic_name:'Musters closing today',
+                        indic_text:'The total number of muster rolls in your region that are closing on today\'s date.'
+                    },
+                    {
+                        indic_name:'Delayed musters',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed. These may be delayed at one of the following steps - T+2 (Attendance), T+5 (Measurement Book), T+6 (Wage List Generation), T+7 (1st Signature) and T+8 (2nd Signature). Note that total musters delayed at T+5 are calculated by taking the number of musters delayed at T+5 from MIS Report 14.3 and removing muster rolls for which a wage list has been generated, even if the e-MB was not entered.'
+                    },
+                    {
+                        indic_name:'Delayed musters excluding T+5',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because entry of the measurement book is not always completed, which can cause the number of muster rolls delayed at T+5 to give an inaccurate picture of delays.'
+                    },
+                    {
+                        indic_name:'Avg. days to payment in last 3 months',
+                        indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                    }
+                ]
             }
         },
         district: {
@@ -161,7 +183,8 @@ module.exports = {
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
-                delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद'
+                delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
+                indic_help: 'How are these calculated?'
             },
             cards: {
                 cards: 'कार्ड्स',
@@ -285,7 +308,28 @@ module.exports = {
                 message_subhead: 'Tell us what\'s on your mind. We\'ll respond as soon as we can.',
                 phone: 'Phone'
             },
-            whatsapp: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_प्रखंड/जनपद_\n{block_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n'
+            whatsapp: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_प्रखंड/जनपद_\n{block_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n',
+            indic_details: {
+                screen_title: 'Indicator Details',
+                content: [
+                    {
+                        indic_name:'Musters closing today',
+                        indic_text:'The total number of muster rolls in your region that are closing on today\'s date.'
+                    },
+                    {
+                        indic_name:'Delayed musters',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed. These may be delayed at one of the following steps - T+2 (Attendance), T+5 (Measurement Book), T+6 (Wage List Generation), T+7 (1st Signature) and T+8 (2nd Signature). Note that total musters delayed at T+5 are calculated by taking the number of musters delayed at T+5 from MIS Report 14.3 and removing muster rolls for which a wage list has been generated, even if the e-MB was not entered.'
+                    },
+                    {
+                        indic_name:'Delayed musters excluding T+5',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because entry of the measurement book is not always completed, which can cause the number of muster rolls delayed at T+5 to give an inaccurate picture of delays.'
+                    },
+                    {
+                        indic_name:'Avg. days to payment in last 3 months',
+                        indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                    }
+                ]
+            }
         },
         state: {
             paydash: 'पे-डॅश',
@@ -295,7 +339,8 @@ module.exports = {
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
-                delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद'
+                delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
+                indic_help: 'How are these calculated?'
             },
             cards: {
                 cards: 'कार्ड्स',
@@ -419,7 +464,28 @@ module.exports = {
                 message_subhead: 'Tell us what\'s on your mind. We\'ll respond as soon as we can.',
                 phone: 'Phone'
             },
-            whatsapp: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_ज़िला_\n{district_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n'
+            whatsapp: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_ज़िला_\n{district_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n',
+            indic_details: {
+                screen_title: 'Indicator Details',
+                content: [
+                    {
+                        indic_name:'Musters closing today',
+                        indic_text:'The total number of muster rolls in your region that are closing on today\'s date.'
+                    },
+                    {
+                        indic_name:'Delayed musters',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed. These may be delayed at one of the following steps - T+2 (Attendance), T+5 (Measurement Book), T+6 (Wage List Generation), T+7 (1st Signature) and T+8 (2nd Signature). Note that total musters delayed at T+5 are calculated by taking the number of musters delayed at T+5 from MIS Report 14.3 and removing muster rolls for which a wage list has been generated, even if the e-MB was not entered.'
+                    },
+                    {
+                        indic_name:'Delayed musters excluding T+5',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because entry of the measurement book is not always completed, which can cause the number of muster rolls delayed at T+5 to give an inaccurate picture of delays.'
+                    },
+                    {
+                        indic_name:'Avg. days to payment in last 3 months',
+                        indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                    }
+                ]
+            }
         }
     }
 };
