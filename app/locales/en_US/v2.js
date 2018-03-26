@@ -166,7 +166,7 @@ module.exports = {
                     },
                     {
                         indic_name:'Delayed musters excluding T+5',
-                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because entry of the measurement book is not always completed, which can cause the number of muster rolls delayed at T+5 to give an inaccurate picture of delays.'
+                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because, due to the optional nature of e-MB, the number of muster rolls delayed at T+5 as depicted on the MIS may give an inaccurate picture of delays.'
                     },
                     {
                         indic_name:'Avg. days to payment in last 3 months',
@@ -322,7 +322,7 @@ module.exports = {
                     },
                     {
                         indic_name:'Delayed musters excluding T+5',
-                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because entry of the measurement book is not always completed, which can cause the number of muster rolls delayed at T+5 to give an inaccurate picture of delays.'
+                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because, due to the optional nature of e-MB, the number of muster rolls delayed at T+5 as depicted on the MIS may give an inaccurate picture of delays.'
                     },
                     {
                         indic_name:'Avg. days to payment in last 3 months',
@@ -478,7 +478,7 @@ module.exports = {
                     },
                     {
                         indic_name:'Delayed musters excluding T+5',
-                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because entry of the measurement book is not always completed, which can cause the number of muster rolls delayed at T+5 to give an inaccurate picture of delays.'
+                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because, due to the optional nature of e-MB, the number of muster rolls delayed at T+5 as depicted on the MIS may give an inaccurate picture of delays.'
                     },
                     {
                         indic_name:'Avg. days to payment in last 3 months',

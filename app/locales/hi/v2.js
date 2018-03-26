@@ -11,10 +11,10 @@ module.exports = {
                 delayed_musters: 'विलंबित मस्टर्स',
                 delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
                 total_transactions: 'पिछले 3 महीनों में कुल कितने भुगतान हुए',
-                days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
+                days_to_payment: 'पिछले 3 महीनों में किए गये भुगतनों में लगे औसत दिन (बैंक डेपॉज़िट मिला कर)',
                 cards_need_attention: 'कार्ड्स को आपके ध्यान की ज़रूरत है',
                 view_cards: 'कार्ड्स देखें',
-                indic_help: 'How are these calculated?'
+                indic_help: 'इन आँकड़ों की गणना किस प्रकार होती है?'
             },
             cards: {
                 cards: 'कार्ड्स',
@@ -154,23 +154,23 @@ module.exports = {
                 delayed:'विलंबित मस्टर्स\n\n_मस्टर रोल क्रमांक_\n{msr_no}\n_पंचायत_\n{panchayat_name}\n_कार्य कोड_\n{work_code}\n_कार्य नाम_\n{work_name}\n_मस्टर रोल बंद होने की तिथि_\n{closure_date}\n_विलंब(दिन)_\n{days_pending}\n\n'
             },
             indic_details: {
-                screen_title: 'Indicator Details',
+                screen_title: 'आँकड़ों की विस्तार में जानकारी',
                 content: [
                     {
-                        indic_name:'Musters closing today',
-                        indic_text:'The total number of muster rolls in your region that are closing on today\'s date.'
+                        indic_name:'आज बंद हो रहे मस्टर्स',
+                        indic_text:'आपके क्षेत्र में आज बंद होने वाले मस्टर रोल की कुल संख्या|'
                     },
                     {
-                        indic_name:'Delayed musters',
-                        indic_text:'The total number of muster rolls in your region that are currently delayed. These may be delayed at one of the following steps - T+2 (Attendance), T+5 (Measurement Book), T+6 (Wage List Generation), T+7 (1st Signature) and T+8 (2nd Signature). Note that total musters delayed at T+5 are calculated by taking the number of musters delayed at T+5 from MIS Report 14.3 and removing muster rolls for which a wage list has been generated, even if the e-MB was not entered.'
+                        indic_name:'विलंबित मस्टर्स',
+                        indic_text:'आपके क्षेत्र में आज की तारीक़ में विलंबित मस्टर रोल की कुल संख्या| यह मस्टर रोल निम्नलिखित में से किसी भी पड़ाव पर विलंबित हो सकते हैं: T+2 (अटेंडेन्स), T+5 (मूल्यांकन), T+6 (वेज लिस्ट), T+7 (पहला हस्ताक्षर) या T+8 (दूसरा हस्ताक्षर)| कृपया ध्यान दें कि PayDash में T+5 पर अटके मस्टर रोल की संख्या की गणना निम्नलिखित तरीके से करी जाती है: MGNREGA MIS के टेबल 14.3 में दिखाए जा रहे T+5 पर अटके मस्टर रोल (जिनकी e-MB 5 दिनों में भरी नही गयी है) में से वे मस्टर रोल निकाल दिए जाते हैं जिनकी वेज लिस्ट बन चुकी है, भले ही उनकी e-MB न भरी गयी हो|'
                     },
                     {
-                        indic_name:'Delayed musters excluding T+5',
-                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because entry of the measurement book is not always completed, which can cause the number of muster rolls delayed at T+5 to give an inaccurate picture of delays.'
+                        indic_name:'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
+                        indic_text:'यह आँकड़ा आप के क्षेत्र में विलंबित मस्टर रोल की कुल संख्या में से T+5 (मूल्यांकन) पर अटके मस्टर रोल घटाने के बाद की संख्या बताता है| यह आँकड़ा इसलिए दर्शाया गया है क्योंकि e-MB अनिवार्य ना होने के कारण, MIS पर दर्शाया जा रहा T+5 पर अटके मस्टर रोल का आँकड़ा भुगतान में हो रही देरी का ग़लत आकलन दे सकता है|'
                     },
                     {
-                        indic_name:'Avg. days to payment in last 3 months',
-                        indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                        indic_name:'पिछले 3 महीनों में किए गये भुगतनों में लगे औसत दिन (बैंक डेपॉज़िट मिला कर)',
+                        indic_text:'यह आँकड़ा यह बताता है कि पिछले 3 महीनों में आप के क्षेत्र में हुए सभी भुगतनों में मस्टर रोल बंद होने से बैंक डेपॉज़िट तक की प्रक्रिया में कुल (औसत) कितने दिन लगे| यदि आपके क्षेत्र में सारे भुगतान समय पर हो रहे हैं, तो यह आँकड़ा 15 या उस से कम होना चाहिए|'
                     }
                 ]
             }
@@ -178,17 +178,17 @@ module.exports = {
         district: {
             paydash: 'पे-डॅश',
             overview: {
-                view_your_blocks: 'अपने ज़िले के {blocks_total} जनपदों का प्रदर्शन देखें',
+                view_your_blocks: 'पिछले 3 महीनों में किए गये भुगतनों में लगे औसत दिन (बैंक डेपॉज़िट मिला कर)',
                 show_blocks: 'जनपद देखें',
                 days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
                 delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
-                indic_help: 'How are these calculated?'
+                indic_help: 'इन आँकड़ों की गणना किस प्रकार होती है?'
             },
             cards: {
                 cards: 'कार्ड्स',
-                days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
+                days_to_payment: 'पिछले 3 महीनों में किए गये भुगतनों में लगे औसत दिन (बैंक डेपॉज़िट मिला कर)',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
                 delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
@@ -310,23 +310,23 @@ module.exports = {
             },
             whatsapp: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_प्रखंड/जनपद_\n{block_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n',
             indic_details: {
-                screen_title: 'Indicator Details',
+                screen_title: 'आँकड़ों की विस्तार में जानकारी',
                 content: [
                     {
-                        indic_name:'Musters closing today',
-                        indic_text:'The total number of muster rolls in your region that are closing on today\'s date.'
+                        indic_name:'आज बंद हो रहे मस्टर्स',
+                        indic_text:'आपके क्षेत्र में आज बंद होने वाले मस्टर रोल की कुल संख्या|'
                     },
                     {
-                        indic_name:'Delayed musters',
-                        indic_text:'The total number of muster rolls in your region that are currently delayed. These may be delayed at one of the following steps - T+2 (Attendance), T+5 (Measurement Book), T+6 (Wage List Generation), T+7 (1st Signature) and T+8 (2nd Signature). Note that total musters delayed at T+5 are calculated by taking the number of musters delayed at T+5 from MIS Report 14.3 and removing muster rolls for which a wage list has been generated, even if the e-MB was not entered.'
+                        indic_name:'विलंबित मस्टर्स',
+                        indic_text:'आपके क्षेत्र में आज की तारीक़ में विलंबित मस्टर रोल की कुल संख्या| यह मस्टर रोल निम्नलिखित में से किसी भी पड़ाव पर विलंबित हो सकते हैं: T+2 (अटेंडेन्स), T+5 (मूल्यांकन), T+6 (वेज लिस्ट), T+7 (पहला हस्ताक्षर) या T+8 (दूसरा हस्ताक्षर)| कृपया ध्यान दें कि PayDash में T+5 पर अटके मस्टर रोल की संख्या की गणना निम्नलिखित तरीके से करी जाती है: MGNREGA MIS के टेबल 14.3 में दिखाए जा रहे T+5 पर अटके मस्टर रोल (जिनकी e-MB 5 दिनों में भरी नही गयी है) में से वे मस्टर रोल निकाल दिए जाते हैं जिनकी वेज लिस्ट बन चुकी है, भले ही उनकी e-MB न भरी गयी हो|'
                     },
                     {
-                        indic_name:'Delayed musters excluding T+5',
-                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because entry of the measurement book is not always completed, which can cause the number of muster rolls delayed at T+5 to give an inaccurate picture of delays.'
+                        indic_name:'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
+                        indic_text:'यह आँकड़ा आप के क्षेत्र में विलंबित मस्टर रोल की कुल संख्या में से T+5 (मूल्यांकन) पर अटके मस्टर रोल घटाने के बाद की संख्या बताता है| यह आँकड़ा इसलिए दर्शाया गया है क्योंकि e-MB अनिवार्य ना होने के कारण, MIS पर दर्शाया जा रहा T+5 पर अटके मस्टर रोल का आँकड़ा भुगतान में हो रही देरी का ग़लत आकलन दे सकता है|'
                     },
                     {
-                        indic_name:'Avg. days to payment in last 3 months',
-                        indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                        indic_name:'पिछले 3 महीनों में किए गये भुगतनों में लगे औसत दिन (बैंक डेपॉज़िट मिला कर)',
+                        indic_text:'यह आँकड़ा यह बताता है कि पिछले 3 महीनों में आप के क्षेत्र में हुए सभी भुगतनों में मस्टर रोल बंद होने से बैंक डेपॉज़िट तक की प्रक्रिया में कुल (औसत) कितने दिन लगे| यदि आपके क्षेत्र में सारे भुगतान समय पर हो रहे हैं, तो यह आँकड़ा 15 या उस से कम होना चाहिए|'
                     }
                 ]
             }
@@ -336,15 +336,15 @@ module.exports = {
             overview: {
                 view_your_districts: 'अपने राज्य के {districts_total} ज़िलों का प्रदर्शन देखें',
                 show_districts: 'ज़िला देखें',
-                days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
+                days_to_payment: 'पिछले 3 महीनों में किए गये भुगतनों में लगे औसत दिन (बैंक डेपॉज़िट मिला कर)',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
                 delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
-                indic_help: 'How are these calculated?'
+                indic_help: 'इन आँकड़ों की गणना किस प्रकार होती है?'
             },
             cards: {
                 cards: 'कार्ड्स',
-                days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
+                days_to_payment: 'पिछले 3 महीनों में किए गये भुगतनों में लगे औसत दिन (बैंक डेपॉज़िट मिला कर)',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
                 delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
@@ -466,23 +466,23 @@ module.exports = {
             },
             whatsapp: '{name} के लए MGNREGA भुगतान प्रदर्शन\n\n_ज़िला_\n{district_name}\n\nभुगतान प्रक्रिया पूरी करने के लिए औसतन {days_to_payment} दिन लगे\n{current_total} मस्टर रोल आज बंद हो रहे हैं\n{delayed_total} मस्टर रोल विलंबित हैं\n\nविभिन्न पड़ावों पर विलंबित मस्टर रोल\n\n*अटेंडेन्स नहीं भरी गयी (T+2)*\n_कुल मस्टर रोल_\n{t2_total}\n_औसत विलंब_\n{t2_avg}\n\n*MB नहीं भरी गयी (T+5)*\n_कुल मस्टर रोल_\n{t5_total}\n_औसत विलंब_\n{t5_avg}\n\n*वेज लिस्ट नहीं भेजी गयी (T+6)*\n_कुल मस्टर रोल_\n{t6_total}\n_औसत विलंब_\n{t6_avg}\n\n*FTO पर पहला हस्ताक्षर नहीं हुआ (T+7)*\n_कुल मस्टर रोल_\n{t7_total}\n_औसत विलंब_\n{t7_avg}\n\n*FTO पर दूसरा हस्ताक्षर नहीं हुआ (T+8)*\n_कुल मस्टर रोल_\n{t8_total}\n_औसत विलंब_\n{t8_avg}\n',
             indic_details: {
-                screen_title: 'Indicator Details',
+                screen_title: 'आँकड़ों की विस्तार में जानकारी',
                 content: [
                     {
-                        indic_name:'Musters closing today',
-                        indic_text:'The total number of muster rolls in your region that are closing on today\'s date.'
+                        indic_name:'आज बंद हो रहे मस्टर्स',
+                        indic_text:'आपके क्षेत्र में आज बंद होने वाले मस्टर रोल की कुल संख्या|'
                     },
                     {
-                        indic_name:'Delayed musters',
-                        indic_text:'The total number of muster rolls in your region that are currently delayed. These may be delayed at one of the following steps - T+2 (Attendance), T+5 (Measurement Book), T+6 (Wage List Generation), T+7 (1st Signature) and T+8 (2nd Signature). Note that total musters delayed at T+5 are calculated by taking the number of musters delayed at T+5 from MIS Report 14.3 and removing muster rolls for which a wage list has been generated, even if the e-MB was not entered.'
+                        indic_name:'विलंबित मस्टर्स',
+                        indic_text:'आपके क्षेत्र में आज की तारीक़ में विलंबित मस्टर रोल की कुल संख्या| यह मस्टर रोल निम्नलिखित में से किसी भी पड़ाव पर विलंबित हो सकते हैं: T+2 (अटेंडेन्स), T+5 (मूल्यांकन), T+6 (वेज लिस्ट), T+7 (पहला हस्ताक्षर) या T+8 (दूसरा हस्ताक्षर)| कृपया ध्यान दें कि PayDash में T+5 पर अटके मस्टर रोल की संख्या की गणना निम्नलिखित तरीके से करी जाती है: MGNREGA MIS के टेबल 14.3 में दिखाए जा रहे T+5 पर अटके मस्टर रोल (जिनकी e-MB 5 दिनों में भरी नही गयी है) में से वे मस्टर रोल निकाल दिए जाते हैं जिनकी वेज लिस्ट बन चुकी है, भले ही उनकी e-MB न भरी गयी हो|'
                     },
                     {
-                        indic_name:'Delayed musters excluding T+5',
-                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because entry of the measurement book is not always completed, which can cause the number of muster rolls delayed at T+5 to give an inaccurate picture of delays.'
+                        indic_name:'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
+                        indic_text:'यह आँकड़ा आप के क्षेत्र में विलंबित मस्टर रोल की कुल संख्या में से T+5 (मूल्यांकन) पर अटके मस्टर रोल घटाने के बाद की संख्या बताता है| यह आँकड़ा इसलिए दर्शाया गया है क्योंकि e-MB अनिवार्य ना होने के कारण, MIS पर दर्शाया जा रहा T+5 पर अटके मस्टर रोल का आँकड़ा भुगतान में हो रही देरी का ग़लत आकलन दे सकता है|'
                     },
                     {
-                        indic_name:'Avg. days to payment in last 3 months',
-                        indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                        indic_name:'पिछले 3 महीनों में किए गये भुगतनों में लगे औसत दिन (बैंक डेपॉज़िट मिला कर)',
+                        indic_text:'यह आँकड़ा यह बताता है कि पिछले 3 महीनों में आप के क्षेत्र में हुए सभी भुगतनों में मस्टर रोल बंद होने से बैंक डेपॉज़िट तक की प्रक्रिया में कुल (औसत) कितने दिन लगे| यदि आपके क्षेत्र में सारे भुगतान समय पर हो रहे हैं, तो यह आँकड़ा 15 या उस से कम होना चाहिए|'
                     }
                 ]
             }
