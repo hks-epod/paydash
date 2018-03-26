@@ -178,9 +178,9 @@ module.exports = {
         district: {
             paydash: 'पे-डॅश',
             overview: {
-                view_your_blocks: 'पिछले 3 महीनों में किए गये भुगतनों में लगे औसत दिन (बैंक डेपॉज़िट मिला कर)',
+                view_your_blocks: 'अपने ज़िले के {blocks_total} जनपदों का प्रदर्शन देखें',
                 show_blocks: 'जनपद देखें',
-                days_to_payment: 'पिछले 3 महीनों में किए गये हर भुगतान में लगे औसत दिन',
+                days_to_payment: 'पिछले 3 महीनों में किए गये भुगतनों में लगे औसत दिन (बैंक डेपॉज़िट मिला कर)',
                 musters_closing_today: 'आज बंद हो रहे मस्टर्स',
                 delayed_musters: 'विलंबित मस्टर्स',
                 delayed_no_t5: 'कुल विलंबित से T+5 पर अटके MRs घटाने के बाद',
