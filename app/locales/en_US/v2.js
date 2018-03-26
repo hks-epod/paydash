@@ -11,7 +11,7 @@ module.exports = {
                 delayed_musters: 'Delayed musters',
                 delayed_no_t5: 'Delayed musters excluding T+5',
                 total_transactions: 'Transactions in last 3 months',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 cards_need_attention: 'cards require your attention',
                 view_cards: 'VIEW CARDS',
                 indic_help: 'How are these calculated?'
@@ -169,7 +169,7 @@ module.exports = {
                         indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because, due to the optional nature of e-MB, the number of muster rolls delayed at T+5 as depicted on the MIS may give an inaccurate picture of delays.'
                     },
                     {
-                        indic_name:'Avg. days to payment in last 3 months',
+                        indic_name:'Avg. days to payment in last 3 months (incl. bank transfer)',
                         indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
                     }
                 ]
@@ -180,7 +180,7 @@ module.exports = {
             overview: {
                 view_your_blocks: 'View your {blocks_total} blocks',
                 show_blocks: 'GO TO BLOCKS',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
                 delayed_no_t5: 'Delayed musters excluding T+5',
@@ -188,7 +188,7 @@ module.exports = {
             },
             cards: {
                 cards: 'Cards',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
                 delayed_no_t5: 'Delayed musters excluding T+5',
@@ -266,7 +266,7 @@ module.exports = {
             sort: {
                 current_total: 'Musters closing today',
                 delayed_total: 'Delayed musters',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 block_name: 'Block name',
                 ceo_name: 'Block CEO name'
             },
@@ -325,7 +325,7 @@ module.exports = {
                         indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because, due to the optional nature of e-MB, the number of muster rolls delayed at T+5 as depicted on the MIS may give an inaccurate picture of delays.'
                     },
                     {
-                        indic_name:'Avg. days to payment in last 3 months',
+                        indic_name:'Avg. days to payment in last 3 months (incl. bank transfer)',
                         indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
                     }
                 ]
@@ -336,7 +336,7 @@ module.exports = {
             overview: {
                 view_your_districts: 'View your {districts_total} districts',
                 show_districts: 'GO TO DISTRICTS',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
                 delayed_no_t5: 'Delayed musters excluding T+5',
@@ -344,7 +344,7 @@ module.exports = {
             },
             cards: {
                 cards: 'Cards',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
                 delayed_no_t5: 'Delayed musters excluding T+5',
@@ -422,7 +422,7 @@ module.exports = {
             sort: {
                 current_total: 'Musters closing today',
                 delayed_total: 'Delayed musters',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 district_name: 'District name',
                 ceo_name: 'District CEO name'
             },
@@ -481,7 +481,7 @@ module.exports = {
                         indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because, due to the optional nature of e-MB, the number of muster rolls delayed at T+5 as depicted on the MIS may give an inaccurate picture of delays.'
                     },
                     {
-                        indic_name:'Avg. days to payment in last 3 months',
+                        indic_name:'Avg. days to payment in last 3 months (incl. bank transfer)',
                         indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
                     }
                 ]
