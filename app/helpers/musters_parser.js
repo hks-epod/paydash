@@ -24,6 +24,7 @@ exports.block = function(rows) {
                 mobile: v[0].mobile_no,
                 current_total: v[0].current_total,
                 delayed_total: v[0].delayed_total,
+                delayed_no_t5: v[0].delayed_no_t5,
                 delayed_musters: v
                     .filter(function(d) {
                         return d.type === 'delayed_musters';
@@ -135,6 +136,7 @@ exports.district = function(rows) {
                 block_name: v[0].block_name,
                 current_total: v[0].current_total,
                 delayed_total: v[0].delayed_total,
+                delayed_no_t5: v[0].delayed_no_t5,
                 days_to_payment: v[0].days_to_payment,
                 t2_total: v[0].t2_total,
                 t2_avg: v[0].t2_avg,
@@ -204,6 +206,7 @@ exports.state = function(rows) {
                 district_name: v[0].district_name,
                 current_total: v[0].current_total,
                 delayed_total: v[0].delayed_total,
+                delayed_no_t5: v[0].delayed_no_t5,
                 days_to_payment: v[0].days_to_payment,
                 t2_total: v[0].t2_total,
                 t2_avg: v[0].t2_avg,

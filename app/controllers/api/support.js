@@ -3,6 +3,8 @@
 const Joi = require('joi');
 const Boom = require('boom');
 const Queries = require('../../helpers/queries');
+const Utils = require('../../helpers/utils');
+const D3 = require('d3');
 
 exports.addTicket = {
     description: 'Add new support ticket',
@@ -49,24 +51,19 @@ exports.addTicket = {
         // Second choice is their Google account email address.
         // Third choice is epodindianrega@gmail.com. In this case the subject line will still contain their identifying information. But the email address is how FreshDesk categorizes our "contacts" so it is preferable to use the user's email address if it is available.
 
-        var userEmail; 
         if ((request.payload.email==='epodindianrega@gmail.com') && (request.auth.isAuthenticated)) { // this is how we know it's an in-app (logged in) request
             // We want to use the user-entered email field on their account. 
             // If that's not filled we want to use their Google Account. 
             // If that's empty we set the email as epodindianrega@gmail.com. This is the "master" PayDash account on FreshDesk. Email address is a required field for opening FreshDesk tickets. 
             if ((request.auth.credentials.email==='' || request.auth.credentials.email===null) && (request.auth.credentials.google_account!==null)) { 
-                userEmail = request.auth.credentials.google_account;
+                ticket.email = request.auth.credentials.google_account;
             } else if (request.auth.credentials.email!==null) {
-                userEmail = request.auth.credentials.email;
+                ticket.email = request.auth.credentials.email;
             } else {
-                userEmail = 'epodindianrega@gmail.com';
+                ticket.email = 'epodindianrega@gmail.com';
             }
-        }
-        // Case 2: Login help (by definition not logged in) FreshDesk ticket creation
-        // Email address will be blank and needs to be replaced with epodindianrega@gmail.com
 
-        // Case 3: Employee data help () FreshDesk ticket creation
-        // Email address will be blank and needs to be replaced with epodindianrega@gmail.com
+        }
 
         if (ticket.email==='' || ticket.email===null || ticket.email===undefined) { 
             ticket.email = ('user'+request.auth.credentials.id+'@noemail.com');
@@ -115,25 +112,64 @@ exports.submitHelp = {
     },
     handler: function(request, reply) {
         var freshDesk = request.server.plugins.freshdesk;
-        
         if (request.payload.type==='help-employee-info') {
-            var ticket = {
-                subject: 'Employee data help request [phone: ' + (request.payload.data.contact_no) + ']',
-                email: '',
-                description: 'A user has requested assistance updating their employee information. Please contact them at the number provided in the subject line.'
-            };
+            
+            if (request.auth.isAuthenticated) {
+                var ticket = {
+                    subject: '',
+                    email: '',
+                    description: 'A user has requested assistance updating their employee information. Please contact them at '+request.payload.data.contact_no+'.'
+                };
 
-            freshDesk.newTicket(ticket, function() {
-                return reply({
-                    statusCode: 200,
-                    message: 'Successfully created ticket.'
+                if ((request.auth.credentials.email==='' || request.auth.credentials.email===null) && (request.auth.credentials.google_account!==null)) { 
+                    ticket.email = request.auth.credentials.google_account;
+                } else if (request.auth.credentials.email!==null) {
+                    ticket.email = request.auth.credentials.email;
+                } else {
+                    ticket.email = 'epodindianrega@gmail.com';
+                }
+            
+                var sequelize = request.server.plugins.sequelize.db.sequelize;
+                var queryString = Queries.employee_data_help(request.auth.credentials.id, request.auth.credentials.role);
+
+                sequelize
+                .query(queryString, {
+                    type: sequelize.QueryTypes.SELECT
+                })
+                .then(function(rows) {
+                    var regionsResponse = rows;
+                    ticket.subject = '[Employee Data Update Request] '+Utils.buildSubject(Utils.buildName(request.auth.credentials.firstname, request.auth.credentials.lastname), regionsResponse, request.auth.credentials.id, request.payload.data.contact_no);
+
+                    freshDesk.newTicket(ticket, function() {
+                        return reply({
+                            statusCode: 200,
+                            message: 'Successfully created ticket.'
+                        });
+                    });
                 });
-            });
+            } else {
+                var ticket = {
+                    subject: 'Employee data update request [phone: ' + (request.payload.data.contact_no) + ']',
+                    email: 'epodindianrega@gmail.com',
+                    description: 'A user has requested assistance updating their employee information. Please contact them at '+request.payload.data.contact_no+'. Note that the user was not logged in when making this request so it was registered anonymously.'
+                };
+
+                freshDesk.newTicket(ticket, function() {
+                    return reply({
+                        statusCode: 200,
+                        message: 'Successfully created ticket.'
+                    });
+                });
+            }
+
+            
+
         } else if (request.payload.type==='help-login') {
+
             var ticket = {
                 subject: 'Login screen help request [phone: ' + (request.payload.data.contact_no) + ']',
-                email: '',
-                description: request.payload.data.description
+                email: 'epodindianrega@gmail.com',
+                description: 'A user has requested assistance logging into the PayDash app. Please contact them at '+request.payload.data.contact_no+'.'
             };
 
             freshDesk.newTicket(ticket, function() {

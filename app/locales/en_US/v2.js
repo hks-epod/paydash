@@ -9,15 +9,18 @@ module.exports = {
             overview: {
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
+                delayed_no_t5: 'Delayed musters excluding T+5',
                 total_transactions: 'Transactions in last 3 months',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 cards_need_attention: 'cards require your attention',
-                view_cards: 'VIEW CARDS'
+                view_cards: 'VIEW CARDS',
+                indic_help: 'How are these calculated?'
             },
             cards: {
                 cards: 'Cards',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters_1: 'Delayed musters',
+                delayed_no_t5: 'Delayed musters excluding T+5',
                 muster_details: 'Muster details',
                 current_musters: 'CURRENT MUSTERS',
                 delayed_musters_2: 'DELAYED MUSTERS',
@@ -149,6 +152,27 @@ module.exports = {
                 overview: 'Muster Roll Details for {name}\n\n{current_total} musters closing today\n{delayed_total} delayed musters\n\n',
                 current: 'MUSTERS CLOSING TODAY\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n\n',
                 delayed: 'DELAYED MUSTERS\n\n_Msr_\n{msr_no}\n_Panchayat_\n{panchayat_name}\n_Work code_\n{work_code}\n_Work name_\n{work_name}\n_Closure date_\n{closure_date}\n_Days delayed_\n{days_pending}\n\n'
+            },
+            indic_details: {
+                screen_title: 'Indicator Details',
+                content: [
+                    {
+                        indic_name:'Musters closing today',
+                        indic_text:'The total number of muster rolls in your region that are closing on today\'s date.'
+                    },
+                    {
+                        indic_name:'Delayed musters',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed. These may be delayed at one of the following steps - T+2 (Attendance), T+5 (Measurement Book), T+6 (Wage List Generation), T+7 (1st Signature) and T+8 (2nd Signature). Note that total musters delayed at T+5 are calculated by taking the number of musters delayed at T+5 from MIS Report 14.3 and removing muster rolls for which a wage list has been generated, even if the e-MB was not entered.'
+                    },
+                    {
+                        indic_name:'Delayed musters excluding T+5',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because, due to the optional nature of e-MB, the number of muster rolls delayed at T+5 as depicted on the MIS may give an inaccurate picture of delays.'
+                    },
+                    {
+                        indic_name:'Avg. days to payment in last 3 months (incl. bank transfer)',
+                        indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                    }
+                ]
             }
         },
         district: {
@@ -156,15 +180,18 @@ module.exports = {
             overview: {
                 view_your_blocks: 'View your {blocks_total} blocks',
                 show_blocks: 'GO TO BLOCKS',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 musters_closing_today: 'Musters closing today',
-                delayed_musters: 'Delayed musters'
+                delayed_musters: 'Delayed musters',
+                delayed_no_t5: 'Delayed musters excluding T+5',
+                indic_help: 'How are these calculated?'
             },
             cards: {
                 cards: 'Cards',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
+                delayed_no_t5: 'Delayed musters excluding T+5',
                 musters_diff_steps: 'Musters delayed at different steps',
                 avg_days_pending: 'Avg. days pending',
                 total: 'Total',
@@ -239,7 +266,7 @@ module.exports = {
             sort: {
                 current_total: 'Musters closing today',
                 delayed_total: 'Delayed musters',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 block_name: 'Block name',
                 ceo_name: 'Block CEO name'
             },
@@ -281,22 +308,46 @@ module.exports = {
                 message_subhead: 'Tell us what\'s on your mind. We\'ll respond as soon as we can.',
                 phone: 'Phone'
             },
-            whatsapp: 'MGNREGA Payment Delay Performance for {name}\n\n_Block_\n{block_name}\n\n{days_to_payment} days to complete payment\n{current_total} musters closing today\n{delayed_total} delayed musters\n\nMUSTERS DELAYED AT DIFFERENT STEPS\n\n*Attendance not filled (T+2)*\n_Total_\n{t2_total}\n_Avg. days pending_\n{t2_avg}\n\n*Measurement book not filled (T+5)*\n_Total_\n{t5_total}\n_Avg. days pending_\n{t5_avg}\n\n*Wagelist not sent (T+6)*\n_Total_\n{t6_total}\n_Avg. days pending_\n{t6_avg}\n\n*Pending for FTO first signature (T+7)*\n_Total_\n{t7_total}\n_Avg. days pending_\n{t7_avg}\n\n*Pending for FTO second signature (T+8)*\n_Total_\n{t8_total}\n_Avg. days pending_\n{t8_avg}\n'
+            whatsapp: 'MGNREGA Payment Delay Performance for {name}\n\n_Block_\n{block_name}\n\n{days_to_payment} days to complete payment\n{current_total} musters closing today\n{delayed_total} delayed musters\n\nMUSTERS DELAYED AT DIFFERENT STEPS\n\n*Attendance not filled (T+2)*\n_Total_\n{t2_total}\n_Avg. days pending_\n{t2_avg}\n\n*Measurement book not filled (T+5)*\n_Total_\n{t5_total}\n_Avg. days pending_\n{t5_avg}\n\n*Wagelist not sent (T+6)*\n_Total_\n{t6_total}\n_Avg. days pending_\n{t6_avg}\n\n*Pending for FTO first signature (T+7)*\n_Total_\n{t7_total}\n_Avg. days pending_\n{t7_avg}\n\n*Pending for FTO second signature (T+8)*\n_Total_\n{t8_total}\n_Avg. days pending_\n{t8_avg}\n',
+            indic_details: {
+                screen_title: 'Indicator Details',
+                content: [
+                    {
+                        indic_name:'Musters closing today',
+                        indic_text:'The total number of muster rolls in your region that are closing on today\'s date.'
+                    },
+                    {
+                        indic_name:'Delayed musters',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed. These may be delayed at one of the following steps - T+2 (Attendance), T+5 (Measurement Book), T+6 (Wage List Generation), T+7 (1st Signature) and T+8 (2nd Signature). Note that total musters delayed at T+5 are calculated by taking the number of musters delayed at T+5 from MIS Report 14.3 and removing muster rolls for which a wage list has been generated, even if the e-MB was not entered.'
+                    },
+                    {
+                        indic_name:'Delayed musters excluding T+5',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because, due to the optional nature of e-MB, the number of muster rolls delayed at T+5 as depicted on the MIS may give an inaccurate picture of delays.'
+                    },
+                    {
+                        indic_name:'Avg. days to payment in last 3 months (incl. bank transfer)',
+                        indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                    }
+                ]
+            }
         },
         state: {
             paydash: 'PayDash',
             overview: {
-                view_your_blocks: 'View your {districts_total} districts',
+                view_your_districts: 'View your {districts_total} districts',
                 show_districts: 'GO TO DISTRICTS',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 musters_closing_today: 'Musters closing today',
-                delayed_musters: 'Delayed musters'
+                delayed_musters: 'Delayed musters',
+                delayed_no_t5: 'Delayed musters excluding T+5',
+                indic_help: 'How are these calculated?'
             },
             cards: {
                 cards: 'Cards',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 musters_closing_today: 'Musters closing today',
                 delayed_musters: 'Delayed musters',
+                delayed_no_t5: 'Delayed musters excluding T+5',
                 musters_diff_steps: 'Musters delayed at different steps',
                 avg_days_pending: 'Avg. days pending',
                 total: 'Total',
@@ -371,7 +422,7 @@ module.exports = {
             sort: {
                 current_total: 'Musters closing today',
                 delayed_total: 'Delayed musters',
-                days_to_payment: 'Avg. days to payment in last 3 months',
+                days_to_payment: 'Avg. days to payment in last 3 months (incl. bank transfer)',
                 district_name: 'District name',
                 ceo_name: 'District CEO name'
             },
@@ -413,7 +464,28 @@ module.exports = {
                 message_subhead: 'Tell us what\'s on your mind. We\'ll respond as soon as we can.',
                 phone: 'Phone'
             },
-            whatsapp: 'MGNREGA Payment Delay Performance for {name}\n\n_District_\n{district_name}\n\n{days_to_payment} days to complete payment\n{current_total} musters closing today\n{delayed_total} delayed musters\n\nMUSTERS DELAYED AT DIFFERENT STEPS\n\n*Attendance not filled (T+2)*\n_Total_\n{t2_total}\n_Avg. days pending_\n{t2_avg}\n\n*Measurement book not filled (T+5)*\n_Total_\n{t5_total}\n_Avg. days pending_\n{t5_avg}\n\n*Wagelist not sent (T+6)*\n_Total_\n{t6_total}\n_Avg. days pending_\n{t6_avg}\n\n*Pending for FTO first signature (T+7)*\n_Total_\n{t7_total}\n_Avg. days pending_\n{t7_avg}\n\n*Pending for FTO second signature (T+8)*\n_Total_\n{t8_total}\n_Avg. days pending_\n{t8_avg}\n'
+            whatsapp: 'MGNREGA Payment Delay Performance for {name}\n\n_District_\n{district_name}\n\n{days_to_payment} days to complete payment\n{current_total} musters closing today\n{delayed_total} delayed musters\n\nMUSTERS DELAYED AT DIFFERENT STEPS\n\n*Attendance not filled (T+2)*\n_Total_\n{t2_total}\n_Avg. days pending_\n{t2_avg}\n\n*Measurement book not filled (T+5)*\n_Total_\n{t5_total}\n_Avg. days pending_\n{t5_avg}\n\n*Wagelist not sent (T+6)*\n_Total_\n{t6_total}\n_Avg. days pending_\n{t6_avg}\n\n*Pending for FTO first signature (T+7)*\n_Total_\n{t7_total}\n_Avg. days pending_\n{t7_avg}\n\n*Pending for FTO second signature (T+8)*\n_Total_\n{t8_total}\n_Avg. days pending_\n{t8_avg}\n',
+            indic_details: {
+                screen_title: 'Indicator Details',
+                content: [
+                    {
+                        indic_name:'Musters closing today',
+                        indic_text:'The total number of muster rolls in your region that are closing on today\'s date.'
+                    },
+                    {
+                        indic_name:'Delayed musters',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed. These may be delayed at one of the following steps - T+2 (Attendance), T+5 (Measurement Book), T+6 (Wage List Generation), T+7 (1st Signature) and T+8 (2nd Signature). Note that total musters delayed at T+5 are calculated by taking the number of musters delayed at T+5 from MIS Report 14.3 and removing muster rolls for which a wage list has been generated, even if the e-MB was not entered.'
+                    },
+                    {
+                        indic_name:'Delayed musters excluding T+5',
+                        indic_text:'The total number of muster rolls in your region that are currently delayed, excluding muster rolls delayed at T+5 (Measurement Book). This number is displayed because, due to the optional nature of e-MB, the number of muster rolls delayed at T+5 as depicted on the MIS may give an inaccurate picture of delays.'
+                    },
+                    {
+                        indic_name:'Avg. days to payment in last 3 months (incl. bank transfer)',
+                        indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                    }
+                ]
+            }
         }
     }
 };
