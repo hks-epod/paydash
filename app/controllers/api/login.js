@@ -41,7 +41,7 @@ exports.postForm = {
             // If user account is deactivated
             if (user && user.deactivated) {
                 return reply(Boom.badRequest('User account deactivated'));
-            } else if (user && (user.type === 'test' || user.type === 'pilot_one')) {
+            } else if (user && user.type === 'test') {
                 // If user is test or pilot
                 request.cookieAuth.set(user);
                 delete user.password;
