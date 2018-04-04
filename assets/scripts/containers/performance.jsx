@@ -47,6 +47,19 @@ const Overview = React.createClass({
         var divStyle = {
             display: this.state.isFetching ? 'none' : 'block'
         };
+
+        const comparison =
+            this.state.config.role == 'state' ? (
+                <p />
+            ) : (
+                <ComparisonChart
+                    activeRegion={this.state.activeRegion}
+                    performance={this.state.performance}
+                    config={this.state.config}
+                    translation={this.state.translation}
+                />
+            );
+
         return (
             <div>
                 <Loader loading={this.state.isFetching} />
@@ -63,13 +76,8 @@ const Overview = React.createClass({
                         config={this.state.config}
                         translation={this.state.translation}
                     />
+                    {comparison}
                     <div className="u-region-divider" />
-                    <ComparisonChart
-                        activeRegion={this.state.activeRegion}
-                        performance={this.state.performance}
-                        config={this.state.config}
-                        translation={this.state.translation}
-                    />
                 </div>
             </div>
         );
