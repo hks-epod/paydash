@@ -44,6 +44,27 @@ exports.list = function(performance, role) {
             });
         });
     }
+    if (role === 'state') {
+        performance['district'].forEach(function(state, state_index) {
+            regions.push({
+                value: state.state_code,
+                label: state.state_name,
+                region_type: 'state',
+                class: 'select_parent',
+                state_index: state_index
+            });
+            state.data.forEach(function(district, district_index) {
+                regions.push({
+                    value: district.district_code,
+                    label: district.district_name,
+                    region_type: 'district',
+                    class: 'select_child',
+                    state_index: state_index,
+                    district_index: district_index
+                });
+            });
+        });
+    }
     return regions;
 };
 
@@ -99,6 +120,16 @@ exports.overview_data = function(role, activeRegion, performance) {
                 performance[activeRegion.region_type][activeRegion.district_index].data[
                     activeRegion.block_index
                 ].data;
+        } else {
+            return;
+        }
+    } else if (role === 'state') {
+        if (activeRegion && activeRegion.region_type === 'state') {
+            data = performance[activeRegion.region_type][activeRegion.state_index].data;
+        } else if (activeRegion && activeRegion.region_type === 'district') {
+            data =
+                performance['district'][activeRegion.state_index].data[activeRegion.district_index]
+                    .data;
         } else {
             return;
         }
