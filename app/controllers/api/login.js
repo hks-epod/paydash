@@ -24,7 +24,7 @@ exports.postForm = {
         },
         failAction: function(request, reply, source, error) {
             // Username, passowrd minimum validation failed
-            return reply(Boom.badRequest('Invalid username or password. Please check your login details and try again.'));
+            return reply(Boom.badRequest('Invalid username or password. Please check your login details and try again. To get help, click the "Need help?" link below.'));
         }
     },
     handler: function(request, reply) {
@@ -69,9 +69,9 @@ exports.postForm = {
                 return reply(Boom.badRequest('Google account does not match'));
             } else if (!user) {
                 // User not found in database
-                return reply(Boom.badRequest('Username/password combination not found'));
+                return reply(Boom.badRequest('Username/password combination not found. To get help, click the "Need help?" link below.'));
             } else {
-                return reply(Boom.badRequest('An internal error occurred. Please try again and contact the PayDash team if this error persists.'))
+                return reply(Boom.badRequest('An internal error occurred. To get help, click the "Need help?" link below.'))
             }
         });
     }
