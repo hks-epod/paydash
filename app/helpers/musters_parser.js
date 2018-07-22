@@ -122,7 +122,7 @@ exports.district = function(rows) {
                 officers: v
                     .map(function(d) {
                         return {
-                            officer_id: d.block_code + '_' + d.designation_id,
+                            officer_id: d.uid,
                             name: Utils.buildName(d.firstname, d.lastname),
                             designation: d.designation,
                             designation_id: d.designation_id,
@@ -192,7 +192,7 @@ exports.state = function(rows) {
                 officers: v
                     .map(function(d) {
                         return {
-                            officer_id: d.district_code + '_' + d.designation_id,
+                            officer_id: d.uid,
                             name: Utils.buildName(d.firstname, d.lastname),
                             designation: d.designation,
                             designation_id: d.designation_id,
