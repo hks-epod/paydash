@@ -275,6 +275,8 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
 
         var versionResponse = D3.values(rows[7]);
 
+        var tsResponse = D3.values(rows[8]);
+
         // Parse the overview response
         var overview = D3.nest()
             .key(function(d) {
@@ -505,7 +507,8 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
                     '#0072b2'
                 ]
             },
-            version: versionResponse[0].version
+            version: versionResponse[0].version,
+            data_ts: tsResponse[0].data_ts
         };
 
         return data;
@@ -527,6 +530,8 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
         var regionsResponse = D3.values(rows[6]);
 
         var versionResponse = D3.values(rows[7]);
+
+        var tsResponse = D3.values(rows[8]);
 
         // Parse the overview response
         var overview = D3.nest()
@@ -725,7 +730,8 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
                     '#0072b2'
                 ]
             },
-            version: versionResponse[0].version
+            version: versionResponse[0].version,
+            data_ts: tsResponse[0].data_ts
         };
 
         return data;
@@ -745,6 +751,8 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
         var regionsResponse = D3.values(rows[5]);
 
         var versionResponse = D3.values(rows[6]);
+
+        var tsResponse = D3.values(rows[7]);
 
         // Parse the overview response
         var overview = D3.nest()
@@ -941,7 +949,8 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
                     '#0072b2'
                 ]
             },
-            version: versionResponse[0].version
+            version: versionResponse[0].version,
+            data_ts: tsResponse[0].data_ts
         };
 
         return data;
