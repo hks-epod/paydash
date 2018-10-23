@@ -508,7 +508,10 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
                 ]
             },
             version: versionResponse[0].version,
-            data_ts: tsResponse[0].data_ts
+            data_ts: {
+                overview_ts: tsResponse[0].delay_scrape_ts,
+                card_ts: tsResponse[0].delay_api_ts
+            }
         };
 
         return data;
@@ -731,7 +734,10 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
                 ]
             },
             version: versionResponse[0].version,
-            data_ts: tsResponse[0].data_ts
+            data_ts: {
+                overview_ts: tsResponse[0].delay_scrape_ts,
+                card_ts: tsResponse[0].delay_scrape_ts
+            }
         };
 
         return data;
@@ -950,7 +956,10 @@ exports.v2 = function(rows, role, userId, name, userMobile) {
                 ]
             },
             version: versionResponse[0].version,
-            data_ts: tsResponse[0].data_ts
+            data_ts: {
+                overview_ts: tsResponse[0].delay_scrape_ts,
+                card_ts: tsResponse[0].delay_scrape_ts
+            }
         };
 
         return data;
