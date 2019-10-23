@@ -46,3 +46,4 @@ assets/scripts/temp
 
 # IntelliJ Idea
 .idea
+*.iml
