@@ -72,6 +72,10 @@ module.exports = {
                 profile: 'Profile',
                 logout: 'Logout'
             },
+            help_dropdown: {
+                faq: 'F.A.Q.',
+                contact: 'Contact'
+            },
             profile: {
                 profile: 'Profile',
                 edit: 'EDIT',
@@ -242,6 +246,10 @@ module.exports = {
                 profile: 'Profile',
                 logout: 'Logout'
             },
+            help_dropdown: {
+                faq: 'F.A.Q.',
+                contact: 'Contact'
+            },
             profile: {
                 profile: 'Profile',
                 edit: 'EDIT',
@@ -401,6 +409,10 @@ module.exports = {
             user_dropdown: {
                 profile: 'Profile',
                 logout: 'Logout'
+            },
+            help_dropdown: {
+                faq: 'F.A.Q.',
+                contact: 'Contact'
             },
             profile: {
                 profile: 'Profile',
