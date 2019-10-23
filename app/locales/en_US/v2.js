@@ -331,6 +331,10 @@ module.exports = {
                     {
                         indic_name:'Avg. days to payment in last 3 months (incl. bank transfer)',
                         indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                    },
+                    {
+                        indic_name:'How is data updated on PayDash?',
+                        indic_text:'PayDash displays muster roll data that is given to us by National Informatics Centre, MoRD. The data on PayDash gets updated once a day with fresh data from NIC between 8 AM and 10 AM. The time stamp on the home screen will tell the exact time of data updation. You will require internet connectivity once during the day for the data to get updated.'
                     }
                 ]
             }
@@ -487,6 +491,10 @@ module.exports = {
                     {
                         indic_name:'Avg. days to payment in last 3 months (incl. bank transfer)',
                         indic_text:'The average number of days from muster roll closure until payment is credited into the beneficiary\'s account over the last 3 months in your region. If your area is following the 15-day limit this number should be 15 days or less.'
+                    },
+                    {
+                        indic_name:'How is data updated on PayDash?',
+                        indic_text:'PayDash displays muster roll data that is given to us by National Informatics Centre, MoRD. The data on PayDash gets updated once a day with fresh data from NIC between 8 AM and 10 AM. The time stamp on the home screen will tell the exact time of data updation. You will require internet connectivity once during the day for the data to get updated.'
                     }
                 ]
             }
