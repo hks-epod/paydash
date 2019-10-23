@@ -72,6 +72,10 @@ module.exports = {
                 profile: 'प्रोफ़ाइल',
                 logout: 'लौग आउट'
             },
+            help_dropdown: {
+                faq: 'एफ. ए. क्यू.',
+                contact: 'संपर्क करें'
+            },
             profile: {
                 profile: 'प्रोफ़ाइल',
                 edit: 'प्रोफ़ाइल बदलें',
@@ -242,6 +246,10 @@ module.exports = {
                 profile: 'प्रोफ़ाइल',
                 logout: 'लौग आउट'
             },
+            help_dropdown: {
+                faq: 'एफ. ए. क्यू.',
+                contact: 'संपर्क करें'
+            },
             profile: {
                 profile: 'प्रोफ़ाइल',
                 edit: 'प्रोफ़ाइल बदलें',
@@ -397,6 +405,10 @@ module.exports = {
             user_dropdown: {
                 profile: 'प्रोफ़ाइल',
                 logout: 'लौग आउट'
+            },
+            help_dropdown: {
+                faq: 'एफ. ए. क्यू.',
+                contact: 'संपर्क करें'
             },
             profile: {
                 profile: 'प्रोफ़ाइल',
