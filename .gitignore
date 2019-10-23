@@ -34,12 +34,9 @@ config/keys
 test/artifacts/*
 assets/scripts/temp
 
-
 #Sublime project files 
 *.sublime-project
 *.sublime-workspace
-
-
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
@@ -47,4 +44,5 @@ assets/scripts/temp
 !.elasticbeanstalk/*.global.yml
 .ebextensions/00_nginx_https_rw.config
 
-.DS_Store
+# IntelliJ Idea
+.idea
