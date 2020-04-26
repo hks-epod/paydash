@@ -4,6 +4,14 @@ const Queries = require('../../helpers/queries');
 
 exports.show = {
     description: 'Delayed musters tables',
+    auth: {
+        mode: 'optional'
+    },
+    plugins: {
+        'hapi-auth-cookie': {
+            redirectTo: false // '/login' if set redirects to ./login.
+        }
+    },
     handler: function(request, reply) {
         const pachayat_code = request.query.pc
         var sequelize = request.server.plugins.sequelize.db.sequelize;
@@ -89,8 +97,8 @@ exports.show = {
                     const days_since_t8 = datediff(a.date_t8, today)
                     return days_since_t8 < 1
                 }).sort(function(a,b) {
-                    if (a.days_delayed > b.days_delayed) return 1
-                    if (a.days_delayed < b.days_delayed) return -1
+                    if (a.days_delayed > b.days_delayed) return -1
+                    if (a.days_delayed < b.days_delayed) return 1
                     return 0
                 }).map(function(d, i) {
                     return {
@@ -109,8 +117,8 @@ exports.show = {
                     const days_since_t8 = datediff(a.date_t8, today)
                     return days_since_t8 >= 1
                 }).sort(function(a,b) {
-                    if (a.days_delayed > b.days_delayed) return 1
-                    if (a.days_delayed < b.days_delayed) return -1
+                    if (a.days_delayed > b.days_delayed) return -1
+                    if (a.days_delayed < b.days_delayed) return 1
                     return 0
                 }).map(function(d, i) {
                     return {
@@ -127,7 +135,8 @@ exports.show = {
 
                 return reply.view('delayed_musters/delayed_musters', { 
                     actionable_musters: actionable_musters,
-                    other_musters: other_musters
+                    other_musters: other_musters,
+                    panchayat_name: rows[0].panchayat_name
                 });
         });
 
@@ -137,8 +146,4 @@ exports.show = {
 
 function datediff(first, second) {
     return Math.round((second-first)/(1000*60*60*24));
-}
-
-function filter_t8_not_crossed() {
-
 }
