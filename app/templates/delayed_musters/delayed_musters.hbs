@@ -1,0 +1,44 @@
+{{#if error}}
+<p>{{error}}</p>
+{{else}}
+
+<table>
+<thead>
+  <tr>
+    {{#each actionable_musters.[0]}}
+      <th>{{@key}}</th>
+    {{/each}}
+  </tr>
+</thead>
+<tbody>
+  {{#each actionable_musters}}
+    <tr>
+    	{{#each this}}
+        <td>{{this}}</td>
+      {{/each}}
+    </tr>
+  {{/each}}
+</tbody>
+</table>
+
+
+<table>
+<thead>
+  <tr>
+    {{#each other_musters.[0]}}
+      <th>{{@key}}</th>
+    {{/each}}
+  </tr>
+</thead>
+<tbody>
+  {{#each other_musters}}
+    <tr>
+    	{{#each this}}
+        <td>{{this}}</td>
+      {{/each}}
+    </tr>
+  {{/each}}
+</tbody>
+</table>
+
+{{/if}}
