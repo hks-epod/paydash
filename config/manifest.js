@@ -191,6 +191,10 @@ internals.manifest = {
         //  Monitoring routes
         {
             plugin: './app/routes/monitor.js'
+        },
+         //  Delayed muster tables routes
+         {
+            plugin: './app/routes/delayed_musters.js'
         }
     ]
 };
