@@ -25,13 +25,9 @@ exports.show = {
             })
             .then(function(rows) {
 
-                console.log(rows)
-
                 if (rows.length == 0) {
-                    return reply.view('delayed_musters/delayed_musters', { error: 'Panchayat not found' });
+                    return reply.view('delayed_musters/delayed_musters', { error: 'No delayed musters found' });
                 }
-
-               console.log(rows[0])
 
                const today = new Date()
 
@@ -145,5 +141,5 @@ exports.show = {
 };
 
 function datediff(first, second) {
-    return Math.round((second-first)/(1000*60*60*24));
+    return Math.round((second-first)/(1000 * 60 * 60 * 24));
 }
