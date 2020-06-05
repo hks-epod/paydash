@@ -31,15 +31,11 @@ exports.show = {
 
                 const today = new Date()
 
-                const tomorrow = new Date()
-                tomorrow.setDate(today.getDate() + 1)
-
                 const delayed_muster_rows = rows.map(function (d) {
 
                     const end_date = new Date(d.end_date)
 
-                    const date_t8 = new Date()
-                    date_t8.setDate(end_date.getDate() + 8)
+                    const date_t8 = addDays(end_date, 8)
 
                     let days_delayed = -1
                     let delay_step = ''
@@ -47,26 +43,22 @@ exports.show = {
                     switch (d.step) {
                         case "ds_t2":
                             delay_step = 'T + 2'
-                            const date_t2 = new Date()
-                            date_t2.setDate(end_date.getDate() + 2)
+                            const date_t2 = addDays(end_date, 2)
                             days_delayed = datediff(date_t2, today)
                             break;
                         case "ds_t5":
                             delay_step = 'T + 5'
-                            const date_t5 = new Date()
-                            date_t5.setDate(end_date.getDate() + 5)
+                            const date_t5 = addDays(end_date, 5)
                             days_delayed = datediff(date_t5, today)
                             break;
                         case "ds_t6":
                             delay_step = 'T + 6'
-                            const date_t6 = new Date()
-                            date_t6.setDate(end_date.getDate() + 6)
+                            const date_t6 = addDays(end_date, 6)
                             days_delayed = datediff(date_t6, today)
                             break;
                         case "ds_t7":
                             delay_step = 'T + 7'
-                            const date_t7 = new Date()
-                            date_t7.setDate(end_date.getDate() + 7)
+                            const date_t7 = addDays(end_date, 7)
                             days_delayed = datediff(date_t7, today)
                             break;
                         case "ds_t8":
@@ -134,6 +126,12 @@ exports.show = {
 
     }
 };
+
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
 
 function datediff(first, second) {
     return Math.round((second - first) / (1000 * 60 * 60 * 24));
