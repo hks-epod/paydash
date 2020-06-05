@@ -85,17 +85,7 @@ exports.show = {
                     if (a.days_delayed > b.days_delayed) return -1
                     if (a.days_delayed < b.days_delayed) return 1
                     return 0
-                }).map(function (d, i) {
-                    return {
-                        "S. No.": i + 1,
-                        "Work code": d.work_code,
-                        "Muster Roll no.": d.msr_no,
-                        "Delay step": d.delay_step,
-                        "No. of days delayed at step": d.days_delayed,
-                        "End date": d.end_date.toISOString().slice(0, 10),
-                        "T + 8 day": d.date_t8.toISOString().slice(0, 10)
-                    };
-                })
+                }).map(createObj)
 
                 const other_musters = delayed_muster_rows.filter(function (a) {
                     const days_since_t8 = datediff(a.date_t8, today)
@@ -104,17 +94,7 @@ exports.show = {
                     if (a.days_delayed > b.days_delayed) return -1
                     if (a.days_delayed < b.days_delayed) return 1
                     return 0
-                }).map(function (d, i) {
-                    return {
-                        "S. No.": i + 1,
-                        "Work code": d.work_code,
-                        "Muster Roll no.": d.msr_no,
-                        "Delay step": d.delay_step,
-                        "No. of days delayed at step": d.days_delayed,
-                        "End date": d.end_date.toISOString().slice(0, 10),
-                        "T + 8 day": d.date_t8.toISOString().slice(0, 10)
-                    };
-                })
+                }).map(createObj)
 
                 return reply.view('delayed_musters/delayed_musters', {
                     actionable_musters: actionable_musters,
@@ -126,6 +106,26 @@ exports.show = {
 
     }
 };
+
+function createObj(d, i) {
+    return {
+        'क्र.सं.': i + 1,
+        'वर्क कोड': d.work_code,
+        'MR नंबर': d.msr_no,
+        'जिस कदम पर डिलेड है': d.delay_step,
+        'जितने दिन से इस कदम पर विलंबित है': d.days_delayed,
+        'जिस दिन MR बंद हुआ (T)': formatDate(d.end_date),
+        'T + 8 दिनांक': formatDate(d.date_t8)
+    };
+}
+
+function formatDate(d) {
+    function pad(s) {
+        return (s < 10) ? '0' + s : s;
+    }
+
+    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/')
+}
 
 function addDays(date, days) {
     var result = new Date(date);
