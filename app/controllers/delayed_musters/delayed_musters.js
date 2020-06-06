@@ -12,10 +12,10 @@ exports.show = {
             redirectTo: false // '/login' if set redirects to ./login.
         }
     },
-    handler: function(request, reply) {
+    handler: function (request, reply) {
         const pachayat_code = request.query.pc
         var sequelize = request.server.plugins.sequelize.db.sequelize;
-        
+
         var queryString = Queries.panchayat_delayed_musters(pachayat_code);
 
         console.log(queryString)
@@ -23,52 +23,42 @@ exports.show = {
             .query(queryString, {
                 type: sequelize.QueryTypes.SELECT
             })
-            .then(function(rows) {
+            .then(function (rows) {
 
                 if (rows.length == 0) {
-                    return reply.view('delayed_musters/delayed_musters', { error: 'No delayed musters found' });
+                    return reply.view('delayed_musters/delayed_musters', {error: 'No delayed musters found'});
                 }
 
-               const today = new Date()
+                const today = new Date()
 
-               const tomorrow = new Date()
-               tomorrow.setDate(today.getDate() + 1)
-
-               
-               const delayed_muster_rows = rows.map(function(d) {
+                const delayed_muster_rows = rows.map(function (d) {
 
                     const end_date = new Date(d.end_date)
 
-                    const date_t8 = new Date()
-                    date_t8.setDate(end_date.getDate() + 8)
-
+                    const date_t8 = addDays(end_date, 8)
 
                     let days_delayed = -1
                     let delay_step = ''
 
-                    switch(d.step) {
+                    switch (d.step) {
                         case "ds_t2":
                             delay_step = 'T + 2'
-                            const date_t2 = new Date()
-                            date_t2.setDate(end_date.getDate() + 2)
+                            const date_t2 = addDays(end_date, 2)
                             days_delayed = datediff(date_t2, today)
                             break;
                         case "ds_t5":
                             delay_step = 'T + 5'
-                            const date_t5 = new Date()
-                            date_t5.setDate(end_date.getDate() + 5)
+                            const date_t5 = addDays(end_date, 5)
                             days_delayed = datediff(date_t5, today)
                             break;
                         case "ds_t6":
                             delay_step = 'T + 6'
-                            const date_t6 = new Date()
-                            date_t6.setDate(end_date.getDate() + 6)
+                            const date_t6 = addDays(end_date, 6)
                             days_delayed = datediff(date_t6, today)
                             break;
                         case "ds_t7":
                             delay_step = 'T + 7'
-                            const date_t7 = new Date()
-                            date_t7.setDate(end_date.getDate() + 7)
+                            const date_t7 = addDays(end_date, 7)
                             days_delayed = datediff(date_t7, today)
                             break;
                         case "ds_t8":
@@ -79,7 +69,6 @@ exports.show = {
 
                     return {
                         msr_no: d.msr_no,
-                        panchayat_name: d.panchayat_name,
                         work_name: d.work_name,
                         work_code: d.work_code,
                         end_date: d.end_date,
@@ -89,57 +78,61 @@ exports.show = {
                     };
                 })
 
-                const actionable_musters = delayed_muster_rows.filter(function(a) {
+                const actionable_musters = delayed_muster_rows.filter(function (a) {
                     const days_since_t8 = datediff(a.date_t8, today)
                     return days_since_t8 < 1
-                }).sort(function(a,b) {
+                }).sort(function (a, b) {
                     if (a.days_delayed > b.days_delayed) return -1
                     if (a.days_delayed < b.days_delayed) return 1
                     return 0
-                }).map(function(d, i) {
-                    return {
-                        "S. No.": i + 1,
-                        "Panchayat name": d.panchayat_name,
-                        "Work code": d.work_code,
-                        "Muster Roll no.": d.msr_no,
-                        "Delay step": d.delay_step,
-                        "No. of days delayed at step": d.days_delayed,
-                        "End date": d.end_date.toISOString().slice(0,10),
-                        "T + 8 day": d.date_t8.toISOString().slice(0,10)
-                    };
-                })
+                }).map(createObj)
 
-                const other_musters = delayed_muster_rows.filter(function(a) {
+                const other_musters = delayed_muster_rows.filter(function (a) {
                     const days_since_t8 = datediff(a.date_t8, today)
                     return days_since_t8 >= 1
-                }).sort(function(a,b) {
+                }).sort(function (a, b) {
                     if (a.days_delayed > b.days_delayed) return -1
                     if (a.days_delayed < b.days_delayed) return 1
                     return 0
-                }).map(function(d, i) {
-                    return {
-                        "S. No.": i + 1,
-                        "Panchayat name": d.panchayat_name,
-                        "Work code": d.work_code,
-                        "Muster Roll no.": d.msr_no,
-                        "Delay step": d.delay_step,
-                        "No. of days delayed at step": d.days_delayed,
-                        "End date": d.end_date.toISOString().slice(0,10),
-                        "T + 8 day": d.date_t8.toISOString().slice(0,10)
-                    };
-                })
+                }).map(createObj)
 
-                return reply.view('delayed_musters/delayed_musters', { 
+                return reply.view('delayed_musters/delayed_musters', {
                     actionable_musters: actionable_musters,
                     other_musters: other_musters,
                     panchayat_name: rows[0].panchayat_name
                 });
-        });
+            });
 
-        
+
     }
 };
 
+function createObj(d, i) {
+    return {
+        'क्र.सं.': i + 1,
+        'वर्क कोड': d.work_code,
+        'MR नंबर': d.msr_no,
+        'जिस कदम पर डिलेड है': d.delay_step,
+        'जितने दिन से इस कदम पर विलंबित है': d.days_delayed,
+        'जिस दिन MR बंद हुआ (T)': formatDate(d.end_date),
+        'T + 8 दिनांक': formatDate(d.date_t8)
+    };
+}
+
+function formatDate(d) {
+    function pad(s) {
+        return (s < 10) ? '0' + s : s;
+    }
+
+    return [pad(d.getDate()), pad(d.getMonth() + 1), d.getFullYear()].join('/')
+}
+
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+}
+
 function datediff(first, second) {
-    return Math.round((second-first)/(1000 * 60 * 60 * 24));
+    return Math.round((second - first) / (1000 * 60 * 60 * 24));
 }
