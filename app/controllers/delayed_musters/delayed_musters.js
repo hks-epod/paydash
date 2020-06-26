@@ -81,20 +81,12 @@ exports.show = {
                 const actionable_musters = delayed_muster_rows.filter(function (a) {
                     const days_since_t8 = datediff(a.date_t8, today)
                     return days_since_t8 < 1
-                }).sort(function (a, b) {
-                    if (a.days_delayed > b.days_delayed) return -1
-                    if (a.days_delayed < b.days_delayed) return 1
-                    return 0
-                }).map(createObj)
+                }).sort(sortMusters).map(createObj)
 
                 const other_musters = delayed_muster_rows.filter(function (a) {
                     const days_since_t8 = datediff(a.date_t8, today)
                     return days_since_t8 >= 1
-                }).sort(function (a, b) {
-                    if (a.days_delayed > b.days_delayed) return -1
-                    if (a.days_delayed < b.days_delayed) return 1
-                    return 0
-                }).map(createObj)
+                }).sort(sortMusters).map(createObj)
 
                 return reply.view('delayed_musters/delayed_musters', {
                     actionable_musters: actionable_musters,
@@ -106,6 +98,16 @@ exports.show = {
 
     }
 };
+
+function sortMusters(a, b) {
+    if (a.delay_step === b.delay_step) {
+        if (a.days_delayed === b.days_delayed) {
+            return a.msr_no - b.msr_no
+        }
+        return b.days_delayed - a.days_delayed
+    }
+    return a.delay_step.localeCompare(b.delay_step)
+}
 
 function createObj(d, i) {
     return {
