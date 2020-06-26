@@ -4,10 +4,9 @@
 
 <h1 style="padding-top: 20px; margin-left: 14px">{{panchayat_name}}</h1>
 
+<h3 style="padding-top: 20px; margin-left: 14px">विलंबित MR जिन्होने अभी T+8 पार नही किया है</h3>
+
 {{#if actionable_musters}}
-
-<h3 style="padding-top: 20px; margin-left: 14px">विलंबित MR जिन्होने अभी T+8 पार नही किया है</h1>
-
 <table style="margin: 14px;"
 <thead>
   <tr>
@@ -26,13 +25,13 @@
   {{/each}}
 </tbody>
 </table>
+{{else}}
+<h4 style="margin: 14px">इस तरह के कोई भी MR आज विलंबित नहीं है</h4>
 {{/if}}
 
+<h3 style="padding-top: 20px; margin-left: 14px">विलंबित MR जिन्होने T+8 पार कर लिया है</h3>
 
 {{#if other_musters}}
-
-<h3 style="padding-top: 20px; margin-left: 14px">विलंबित MR जिन्होने T+8 पार कर लिया है</h1>
-
 <table style="margin: 14px;">
 <thead>
   <tr>
@@ -51,4 +50,6 @@
   {{/each}}
 </tbody>
 </table>
+{{else}}
+<h4 style="margin: 14px">इस तरह के कोई भी MR आज विलंबित नहीं है</h4>
 {{/if}}
