@@ -111,13 +111,13 @@ function sortMusters(a, b) {
 
 function createObj(d, i) {
     return {
-        'क्र.सं. (1)': i + 1,
-        'वर्क कोड (2)': d.work_code,
-        'MR नंबर (3)': d.msr_no,
-        'जिस कदम पर डिलेड है (4)': d.delay_step,
-        'जितने दिन से इस कदम पर विलंबित है (5)': d.days_delayed,
-        'जिस दिन MR बंद हुआ (T) (6)': formatDate(d.end_date),
-        'T + 8 दिनांक (7)': formatDate(d.date_t8)
+        'क्र.सं.<br>(1)': i + 1,
+        'वर्क कोड<br>(2)': d.work_code,
+        'MR नंबर<br>(3)': d.msr_no,
+        'जिस कदम पर विलंबित है<br>(4)': d.delay_step,
+        'जितने दिन से इस कदम पर विलंबित है<br>(5)': d.days_delayed,
+        'जिस दिन MR बंद हुआ (T)<br>(6)': formatDate(d.end_date),
+        'T + 8 दिनांक<br>(7)': formatDate(d.date_t8)
     };
 }
 
