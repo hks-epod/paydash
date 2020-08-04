@@ -81,20 +81,12 @@ exports.show = {
                 const actionable_musters = delayed_muster_rows.filter(function (a) {
                     const days_since_t8 = datediff(a.date_t8, today)
                     return days_since_t8 < 1
-                }).sort(function (a, b) {
-                    if (a.days_delayed > b.days_delayed) return -1
-                    if (a.days_delayed < b.days_delayed) return 1
-                    return 0
-                }).map(createObj)
+                }).sort(sortMusters).map(createObj)
 
                 const other_musters = delayed_muster_rows.filter(function (a) {
                     const days_since_t8 = datediff(a.date_t8, today)
                     return days_since_t8 >= 1
-                }).sort(function (a, b) {
-                    if (a.days_delayed > b.days_delayed) return -1
-                    if (a.days_delayed < b.days_delayed) return 1
-                    return 0
-                }).map(createObj)
+                }).sort(sortMusters).map(createObj)
 
                 return reply.view('delayed_musters/delayed_musters', {
                     actionable_musters: actionable_musters,
@@ -107,15 +99,25 @@ exports.show = {
     }
 };
 
+function sortMusters(a, b) {
+    if (a.delay_step === b.delay_step) {
+        if (a.days_delayed === b.days_delayed) {
+            return a.msr_no - b.msr_no
+        }
+        return b.days_delayed - a.days_delayed
+    }
+    return a.delay_step.localeCompare(b.delay_step)
+}
+
 function createObj(d, i) {
     return {
-        'क्र.सं.': i + 1,
-        'वर्क कोड': d.work_code,
-        'MR नंबर': d.msr_no,
-        'जिस कदम पर डिलेड है': d.delay_step,
-        'जितने दिन से इस कदम पर विलंबित है': d.days_delayed,
-        'जिस दिन MR बंद हुआ (T)': formatDate(d.end_date),
-        'T + 8 दिनांक': formatDate(d.date_t8)
+        'क्र.सं.<br>(1)': i + 1,
+        'वर्क कोड<br>(2)': d.work_code,
+        'MR नंबर<br>(3)': d.msr_no,
+        'जिस कदम पर विलंबित है<br>(4)': d.delay_step,
+        'जितने दिन से इस कदम पर विलंबित है<br>(5)': d.days_delayed,
+        'जिस दिन MR बंद हुआ (T)<br>(6)': formatDate(d.end_date),
+        'T + 8 दिनांक<br>(7)': formatDate(d.date_t8)
     };
 }
 
