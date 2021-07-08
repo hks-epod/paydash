@@ -91,6 +91,7 @@ exports.postRecoveryForm = {
                         });
                 } else {
                     request.yar.flash('error', 'Invalid username or email');
+                    return reply.redirect('/forgot-password');
                 }
             });
         });
